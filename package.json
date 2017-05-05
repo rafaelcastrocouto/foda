@@ -1,21 +1,21 @@
 {
-  "name": "dotacard",
-  "version": "0.9.9",
+  "name": "foda",
+  "version": "0.1.0",
   "author": "rafaelcastrocouto",
-  "description": "DotaCard - Strategy Card Game",
-  "homepage": "http://dotacard.ga",
+  "description": "Fight Over Dat Ancient - Card Game",
+  "homepage": "https://foda-app.herokuapp.com/",
   "readmeFilename": "README.md",
   "engine": "node >= 0.10.x",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafaelcastrocouto/dotacard"
+    "url": "https://github.com/rafaelcastrocouto/foda"
   },
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "bugs": {
-    "url": "https://github.com/rafaelcastrocouto/dotacard/issues"
+    "url": "https://github.com/rafaelcastrocouto/foda/issues"
   },
   "keywords": [
     "cardgame",

@@ -18,7 +18,7 @@ game.states.menu = {
       game.setMode('library');
       game.states.changeTo('choose');
     });
-    this.credits = $('<a>').addClass('button').appendTo(this.menu).attr({title: game.data.ui.choosecredits, href: 'https://github.com/rafaelcastrocouto/dotacard/graphs/contributors', target: '_blank'}).html(game.data.ui.credits+' <span class="external">➔</span>');
+    this.credits = $('<a>').addClass('button').appendTo(this.menu).attr({title: game.data.ui.choosecredits, href: 'https://github.com/rafaelcastrocouto/foda/graphs/contributors', target: '_blank'}).html(game.data.ui.credits+' <span class="external">➔</span>');
   },
   start: function () {
     game.clear();

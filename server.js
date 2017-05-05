@@ -39,7 +39,7 @@ var clientServer = serveStatic('client', {'index': ['index.html', 'index.htm']})
 var rootServer = serveStatic(__dirname);
 
 var allowed = [
-  'dotacard.herokuapp.com',
+  'foda-app.herokuapp.com',
   'rafaelcastrocouto.github.io'
 ];
 
@@ -138,7 +138,7 @@ http.createServer(function(request, response) {
           return;
       }
     } else {
-      send(response, '{"msg": "DotaCard DB working!"}');
+      send(response, '{"msg": "FODA DataBase working!"}');
       return;
     }
   } else { //STATIC
@@ -152,4 +152,4 @@ http.createServer(function(request, response) {
   }
 }).listen(port, host);
 
-console.log(new Date().toLocaleString() + ' DOTACARD server running at: http://'+(host || 'localhost')+(port === '80' ? '/' : ':'+port+'/') );
+console.log(new Date().toLocaleString() + ' FODA server running at: http://'+(host || 'localhost')+(port === '80' ? '/' : ':'+port+'/') );

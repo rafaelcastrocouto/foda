@@ -11,7 +11,7 @@
   "remember": "Remember my name",
   "welcome": "Welcome",
   "joined": "joined",
-  "alphaalert": "This game is in <b>pre-alpha</b> and bugs may (will) happen<br>Thanks for testing and come back soon for more updates<br>Works best with Chrome and Safari<br><a href='https://github.com/rafaelcastrocouto/dotacard/blob/gh-pages/PRIVACY.md'>Privacy Policy</a><br><small class=\"version\">Version ",
+  "alphaalert": "This game is in <b>pre-alpha</b> and bugs may (will) happen<br>Thanks for testing and come back soon for more updates<br>Works best with Chrome and Safari<br><a href='https://github.com/rafaelcastrocouto/foda/blob/gh-pages/PRIVACY.md'>Privacy Policy</a><br><small class=\"version\">Version ",
   "reconnected": "reconnected",
   "logout": "Logout",
   "loading": "Loading",

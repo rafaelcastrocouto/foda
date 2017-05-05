@@ -1,8 +1,8 @@
 # [Fight Over Dat Ancient][3]
 
-[![FODA](http://dotacard.herokuapp.com/client/img/campaign/ico_rosh.png)][1]
+[![FODA](https://foda-app.herokuapp.com/client/img/campaign/ico_rosh.png)][1]
 
-[![Discord Chat Channel](http://dotacard.herokuapp.com/client/img/discord.png)][2]
+[![Discord Chat Channel](https://foda-app.herokuapp.com/client/img/discord.png)][2]
 
 A **card game** with magical heroes, full of skills and powerful ultimates.
 
@@ -21,9 +21,8 @@ More information on how to [setup your own server][10]
 
 The game is available **free to play** at the following URLs:
 
- - http://dotacard.ga
- - http://dotacard.herokuapp.com
- - http://rafaelcastrocouto.github.io/dotacard/client
+ - https://foda-app.herokuapp.com/
+ - http://rafaelcastrocouto.github.io/foda/client
 
 Special thanks to:
 
@@ -33,25 +32,25 @@ Special thanks to:
 
 *Powered by*
 
-[![Powered by Github, Heroku, Grunt and Jquery](http://dotacard.herokuapp.com/client/img/poweredby-banner.jpg)][1]
+[![Powered by Github, Heroku, Grunt and Jquery](https://foda-app.herokuapp.com/client/img/poweredby-banner.jpg)][1]
 
 
-[1]: http://dotacard.herokuapp.com
+[1]: https://foda-app.herokuapp.com/
 
 [2]: https://discord.gg/FvTDss3
 
-[3]: http://dotacard.ga
+[3]: https://foda-app.herokuapp.com/
 
-[4]: https://github.com/rafaelcastrocouto/dotacard/fork
+[4]: https://github.com/rafaelcastrocouto/foda/fork
 
-[5]: https://github.com/rafaelcastrocouto/dotacard/archive/gh-pages.zip
+[5]: https://github.com/rafaelcastrocouto/foda/archive/gh-pages.zip
 
-[6]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-develop-a-new-hero
+[6]: https://github.com/rafaelcastrocouto/foda/wiki/How-to-develop-a-new-hero
 
-[7]: https://github.com/rafaelcastrocouto/dotacard/wiki
+[7]: https://github.com/rafaelcastrocouto/foda/wiki
 
-[8]: https://github.com/rafaelcastrocouto/dotacard/issues/new
+[8]: https://github.com/rafaelcastrocouto/foda/issues/new
 
 [9]: http://steamcommunity.com/sharedfiles/filedetails/?id=500624204
 
-[10]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-setup-a-local-server
+[10]: https://github.com/rafaelcastrocouto/foda/wiki/How-to-setup-a-local-server

@@ -1,6 +1,6 @@
 var game = {
-  staticHost: 'http://rafaelcastrocouto.github.io/dotacard/client/',
-  dynamicHost: 'http://dotacard.herokuapp.com/',
+  staticHost: 'http://rafaelcastrocouto.github.io/foda/client/',
+  dynamicHost: 'https://foda-app.herokuapp.com/',
   container: $('.game-container'),
   loader: $('<span>').addClass('loader'),
   message: $('<span>').addClass('message').html('<b>WARNING</b>: This game is in alpha and bugs may (will) happen.'),

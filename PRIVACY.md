@@ -1,4 +1,4 @@
-﻿This Privacy Policy governs the manner in which DotaCard collects, uses, maintains and discloses information collected from users (each, a "User") of the http://dotacard.ga website ("Site").
+This Privacy Policy governs the manner in which FODA collects, uses, maintains and discloses information collected from users (each, a "User") of the website ("Site").
 
 #Personal identification information
 
@@ -35,7 +35,7 @@ We may share generic aggregated demographic information not linked to any person
 
 #Changes to this privacy policy
 
-DotaCard has the discretion to update this privacy policy at any time. 
+FODA has the discretion to update this privacy policy at any time. 
 When we do, we will revise the updated date at the bottom of this page. 
 We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. 
 You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications.
@@ -49,6 +49,6 @@ Your continued use of the Site following the posting of changes to this policy w
 #Contacting us
 
 If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us.
-https://github.com/rafaelcastrocouto/dotacard
+https://github.com/rafaelcastrocouto/foda
 
 This document was last updated on August 19, 2016

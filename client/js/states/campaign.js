@@ -112,7 +112,7 @@ game.states.campaign = {
     }
     if (game.states.campaign.stage == 2) {
       game.ai.mode = 'hard';
-      game.alert('More stages coming soon!<br>Please tell us about your experience,<br><a href="https://github.com/rafaelcastrocouto/dotacard/issues/new" target="_blank">feedback at Github</a> ');
+      game.alert('More stages coming soon!<br>Please tell us about your experience,<br><a href="https://github.com/rafaelcastrocouto/foda/issues/new" target="_blank">feedback at Github</a> ');
     }
   },
   backClick: function () {
