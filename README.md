@@ -35,7 +35,7 @@ Special thanks to:
 [![Powered by Github, Heroku, Grunt and Jquery](https://foda-app.herokuapp.com/client/img/poweredby-banner.jpg)][1]
 
 
-[1]: https://foda-app.herokuapp.com/
+[1]: http://foda.gq/
 
 [2]: https://discord.gg/FvTDss3
 
