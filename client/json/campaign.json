@@ -1,0 +1,27 @@
+﻿{
+  "start": {
+    "name": "Stage 1",
+    "img": "tower",
+    "title": "Very Easy - Radiant Tower",
+    "ai": "easy",
+    "desc": [
+      "Destroy enemy tower",
+      "Don't die (bonus)",
+      "Kill 3 heroes (bonus)"
+    ],
+    "picks": [ "cm", "kotl", "pud", "ld", "am" ]
+  },
+  "easy": {
+    "name": "Stage 2",
+    "img": "tree",
+    "title": "Easy - Radiant Jungle",
+    "ai": "easy",
+    "desc": [
+      "Destroy enemy tower",
+      "Don't die (bonus)",
+      "Kill 5 heroes (bonus)"
+    ],
+    "picks": [ "nyx", "wk", "ld", "am", "pud" ]
+
+  }
+}

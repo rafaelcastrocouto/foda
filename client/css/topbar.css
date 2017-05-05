@@ -1,0 +1,128 @@
+.topbar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3px;
+  color: #eee;
+  height: 24px;
+  font-size: 16px;
+  line-height: 16px;
+  overflow: hidden;
+  z-index: 15;
+  transform: translateZ(1px);
+  background: rgba(11, 15, 14, 0.7);
+  font-weight: 300;
+}
+
+.topbar * {
+  position: absolute;
+  top: 5px;
+  line-height: 14px;
+}
+
+.loader {
+  width: 12px;
+  height: 12px;
+  margin: 1px;
+  padding: 0;
+  border: 3px solid transparent;
+  border-bottom: 3px solid white;
+  border-radius: 50%;
+  display: inline-block;
+  visibility: hidden;
+  vertical-align: text-bottom;
+}
+
+.loader.loading {
+  visibility: visible;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.topbar .loader {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+}
+
+.topbar .triescounter {
+  font-size: 6px;
+  left: 7px;
+  top: 5px;
+  width: 12px;
+  text-align: center;
+}
+
+.topbar p {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.topbar .message {
+  padding-left: 26px;
+  padding-right: 4px;
+  border-radius: 4px;
+  cursor: default;
+  width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topbar .message * {
+  position: static;
+}
+
+.topbar .time {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.topbar .time span {
+  position: initial;
+  color: rgb(255,211,55);
+}
+
+.topbar .turns {
+  right: 210px;
+}
+
+.topbar .opt {
+  cursor: pointer;
+  right: 10px;
+}
+
+.topbar .opt.disabled {
+  color: #bbb;
+  cursor: default;
+}
+
+.topbar .opt.disabled:hover {
+  text-decoration: none;
+}
+
+.topbar .logout {
+  position: absolute;
+  right: 80px;
+  cursor: pointer;
+}
+
+.topbar .logout, .topbar .opt {
+  font-size: 13px;
+}
+
+.topbar .logout:hover, .topbar .opt:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Fight Over Dat Ancient",
+  "short_name": "FODA",
+  "start_url": ".",
+  "background_color": "#22272c",
+  "display": "fullscreen",
+  "description": "Free and open source card game based on Defense of the Ancients",
+  "icons": [{
+    "src": "favicon.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  },{
+    "src": "img/icon.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }]
+}

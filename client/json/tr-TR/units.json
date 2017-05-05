@@ -1,0 +1,53 @@
+{
+  "creeps":{
+    "melee": {
+      "name": "Melee Creep",
+      "attribute": "Creeps",
+      "range": "Melee",
+      "hp": 20,
+      "damage": 10,
+      "armor": 2,
+      "resistance": 1
+    },
+    "ranged": {
+      "name": "Ranged Creep",
+      "attribute": "Creeps",
+      "range": "Ranged",
+      "hp": 16,
+      "damage": 6,
+      "armor": 1,
+      "resistance": 2
+    },
+    "catapult": {
+      "name": "Catapult",
+      "attribute": "Creeps",
+      "range": "Long",
+      "hp": 26,
+      "damage": 14,
+      "armor": 4,
+      "resistance": 6
+    }
+  },
+  "forest":{
+    "cent": {
+      "name": "Centaur",
+      "attribute": "Jungle Creep",
+      "range": "Melee",
+      "hp": 28,
+      "damage": 5,
+      "armor": 2,
+      "resistance": 3,
+      "description": "Centaur Jungle Creep"
+     },
+    "golem": {
+      "name": "Golem",
+      "attribute": "Jungle Creep",
+      "range": "Melee",
+      "hp": 24,
+      "damage": 6,
+      "armor": 4,
+      "resistance": 3,
+      "description": "Golem Jungle Creep"
+    }
+  }
+}

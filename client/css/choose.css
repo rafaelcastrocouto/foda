@@ -1,0 +1,89 @@
+.choose .counter {
+  width: 100%;
+  margin: 160px 0 0;
+}
+
+.choose .pickbox {
+  width: 760px;
+  height: 340px;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  padding: 0;
+  text-align: center;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.6);
+}
+
+.choose .pickbox .deck {
+  position: relative;
+  left: 0;
+  height: 340px;
+  transform: translateZ(0);
+}
+
+.choose .pickedbox {
+  height: 190px;
+  position: absolute;
+  bottom: 20px;
+  left: 105px;
+  padding: 4px 2px;
+  text-align: center;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.6);
+  transform: translateZ(0);
+}
+
+.choose .pickedbox .skills:hover {
+  transform: translate3d(-50%, -65%, 0) scale(1);
+}
+
+.choose .slot {
+  position: relative;
+  border-radius: 4px;
+  float: left;
+  width: 100px;
+  height: 150px;
+  margin: 4px;
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+}
+
+.library .choose .slot {
+  width: 120px;
+  height: 180px;
+}
+
+.choose .slot:hover, .choose .slot.drop {
+  background: rgba(255,255,255,0.1);
+}
+
+.library .choose .buff {
+  display: none;
+}
+
+.choose .video {
+  z-index: 30;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 760px;
+  height: 340px;
+}
+
+.choose .buttonbox {
+  position: absolute;
+  right: 100px;
+  top: 400px;
+  width: 220px;
+}
+
+.choose .buttonbox .button {
+  margin-bottom: 16px;
+}
+
+.choose .buttonbox .button.playing {
+  background: #b7a986
+}

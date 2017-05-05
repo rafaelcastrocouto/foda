@@ -1,0 +1,44 @@
+{
+  "name": "dotacard",
+  "version": "0.9.9",
+  "author": "rafaelcastrocouto",
+  "description": "DotaCard - Strategy Card Game",
+  "homepage": "http://dotacard.ga",
+  "readmeFilename": "README.md",
+  "engine": "node >= 0.10.x",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafaelcastrocouto/dotacard"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "bugs": {
+    "url": "https://github.com/rafaelcastrocouto/dotacard/issues"
+  },
+  "keywords": [
+    "cardgame",
+    "cardgames",
+    "game",
+    "games",
+    "card",
+    "cards",
+    "dota",
+    "strategy",
+    "tactical"
+  ],
+  "dependencies": {
+    "serve-static": "~1.10.2",
+    "mongodb": "^2.2.7"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.14.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.5.0"
+  },
+  "license": "MIT"
+}

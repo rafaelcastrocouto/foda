@@ -1,0 +1,108 @@
+.sweet-alert.log {
+  min-height: 450px;
+}
+
+.sweet-alert.options {
+  font-weight: bold;
+  color: white;
+  background: hsla(215, 25%, 7%, 0.95) !important;
+  min-width: 760px;
+}
+
+.sweet-overlay {
+  background-color: rgba(0,0,0,0.6);
+}
+.sweet-confirm {
+  background: tomato;
+  box-shadow: 0 4px 0 #df4327;
+}
+.sweet-confirm:hover {
+  background: #ff7357;
+}
+
+.sweet-alert.options .sweet-confirm {
+  background: #9dada4;
+  box-shadow: 0 4px 0 #888888;
+  min-width: 140px;
+}
+
+.sweet-container p {
+  color: #222;
+}
+
+.sweet-container p a {
+  text-decoration: underline;
+  font-size: 84%;
+}
+
+.sweet-confirm.vote {
+  background-color: #66bb8c;
+  box-shadow: 0 4px 0 #4b8864;
+}
+
+.sweet-alert {
+  top: 50% !important;
+  left: 50% !important;
+  margin: 0 !important;
+  transform: translate3d(-50%, -50%, 0);
+  min-width: 660px;
+  overflow: hidden !important;
+}
+
+.sweet-alert.vote {
+  overflow: hidden;
+}
+
+.sweet-alert.vote label {
+  height: 180px;
+  width: 150px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 40px 6px;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.sweet-alert.vote label[disabled] {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.sweet-alert.vote label:not([disabled]):hover, .sweet-alert.vote label.vote {
+  background: #dfeff6;
+  opacity: 1;
+}
+
+.sweet-alert.vote .votes {
+  margin-left: 7px;
+}
+
+.sweet-alert.vote label.voted p span {
+  font-weight: bold;
+}
+
+
+.sweet-alert.vote img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.sweet-alert button {
+  font-weight: bold;
+  margin: 22px;
+}
+
+.sweet-alert .sweet-cancel {
+  min-width: 120px
+}
+
+.sweet-alert.vote .button.voteBt:not([disabled]) {
+  background-color: #66bb8c;
+  box-shadow: 0 4px 0 #4b8864;
+}
+
+
+.sweet-spacer {
+  display: none !important;
+}

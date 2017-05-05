@@ -1,0 +1,94 @@
+.resultsbox {
+  width: 800px;
+  animation: slideresult 0.8s;
+}
+
+@keyframes slideresult {
+  0% {
+    top: -800px;
+  }
+
+  100% {
+    top: 50%;
+  }
+}
+.result h1 {
+  display: inline;
+}
+.result .resultTitle {
+  text-transform: uppercase;
+  font-size: 25px;
+  display: block;
+}
+.result .resultTitle + h1 {
+  margin-right: 30px;
+}
+
+.result .results {
+  display: inline-block;
+  width: 320px;
+  text-align: right;
+}
+
+.result .results.enemy {
+  color: hsla(6, 73%, 64%, 1);
+}
+
+.result .results p {
+  box-shadow: inset 0 0 0 50px rgba(0,0,0,0.7);
+  border: 0;
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 6px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.result .results span {
+  line-height: 40px;
+  margin: 10px;
+}
+
+.result .results .portrait {
+  float: left;
+}
+
+.result .results .img {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: 50%;
+  border-radius: 50%;
+}
+
+.result .resultsbox .close {
+  width: 60px;
+  display: block;
+  margin: 20px auto 0;
+  position: static;
+}
+
+.result .turntitle {
+  z-index: 30;
+  position: absolute;
+  width: 970px;
+  top: 220px;
+  left: 0;
+  font-weight: bold;
+  color: white;
+  font-size: 80px;
+  text-align: center;
+  transition: all 0.3s;
+  transform: translateZ(0);
+  cursor: default;
+  background: rgba(0,0,0,0.4);
+  line-height: 100px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.result .turntitle.show {
+  opacity: 1;
+}

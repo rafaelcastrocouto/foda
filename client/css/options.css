@@ -1,0 +1,131 @@
+.optionState .state {
+  opacity: 0.3;
+}
+.optionState .bkgdeck {
+  display: block !important;
+}
+
+.options h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.options h2 {
+  font-size: 18px;
+  color: white;
+}
+
+.audioconfig, .screenresolution {
+  display: inline-block;
+  vertical-align: top;
+  width: 260px;
+  margin-bottom: -10px;
+}
+
+.audioconfig h2, .screenresolution h2 {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.audioconfig h2 {
+  text-align: right;
+}
+
+.options label {
+  position: relative;
+}
+.screenresolution label {
+  margin: 0 0 4px 0;
+}
+.screenresolution label:nth-child(2) {
+  margin: 0px 0 16px 0;
+}
+.audioconfig label {
+  height: 56px;
+  margin-right: 6px;
+}
+.audioconfig label:nth-child(2) {
+  height: 30px;
+  text-align: right;
+  margin-bottom: 30px;
+}
+.audioconfig label:nth-child(3) {
+  margin-top: 20px;
+}
+.options label > * {
+  vertical-align: middle;
+}
+.options input + span {
+  cursor: pointer;
+}
+.options .audioconfig label span:first-child {
+  
+margin-left: 60px;
+}
+.game-container.high {
+  transform: translate3d(-50%, -50%, 0) scale(1.5) !important;
+}
+.game-container.medium {
+  transform: translate3d(-50%, -50%, 0) scale(1.2) !important;
+}
+.game-container.default {
+  transform: translate3d(-50%, -50%, 0) scale(1) !important;
+}
+.game-container.low {
+  transform: translate3d(-50%, -50%, 0) scale(0.75) !important;
+}
+
+
+.volume {
+  cursor: pointer;
+  position: relative;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-top: 40px solid transparent;
+  border-right: 100px solid rgba(255,255,255,0.2);
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 34px;
+  transform: translateZ(0);
+}
+
+.volumecontrol {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-top: 40px solid transparent;
+  border-right: 100px solid rgba(255,255,255,0.7);
+  transform-origin: 0 100%;
+  transform: scale(0.25);
+}
+
+.options .lang {
+  text-align: left;
+  float: left;
+  clear: left;
+  margin-top: 10px;
+  margin-left: 60px;
+}
+
+.options .lang h2 {
+  display: inline;
+  margin-right: 20px;
+  color: white;
+}
+
+.options .lang select {
+  font-size: 14px;
+  background: #fff;
+  color: #222;
+  border-radius: 3px;
+  padding: 6px;
+  font-weight: normal;
+  font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
+}

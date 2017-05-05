@@ -1,0 +1,247 @@
+.campaign-map {
+  position: relative;
+  width: 600px;
+  height: 550px;
+  background: url("../img/bkg/campaign.jpg");
+  background-size: cover;
+  top: 310px;
+  left: 370px;
+  transform: translate(-50%, -50%);
+}
+
+.campaign-box.box {
+  right: 20px;
+  transform: none;
+  padding: 8px 16px;
+  width: 270px;
+  left: auto;
+  top: 40px;
+  height: 420px;
+}
+
+.campaign-img {
+  height: 132px;
+  background-size: cover;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  background-position: 50% 50%;
+}
+
+.campaign-img.tower {
+  background-image: url("../img/towers/tower-player.jpg");
+}
+
+.campaign-img.tree {
+  background-image: url("../img/trees/tree_rad.jpg");
+}
+
+.state .campaign-box p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.campaign-box p.achieve {
+  text-align: left;
+  font-size: 13px;
+  margin: 0;
+  line-height: 24px;
+}
+.campaign-box p.achieve:before {
+  content: "•";
+  margin: 0 10px;
+}
+.campaign-heroes {
+  text-align: center;
+  margin-top: 20px;
+}
+.campaign-box .campaign-heroes .heroes {
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0px 1px;
+}
+
+.campaign-box .campaign-heroes .heroes .img {
+  margin: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.stages {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+}
+
+.stages:hover {
+  background-color: rgba(255,255,225,0.3);
+  box-shadow: 0 0 15px 0 rgba(255,255,225,0.7);
+}
+
+.stages.blink {
+  animation: stagesblink 1s infinite;
+  background-color: rgba(255,255,225,0.3);
+}
+.stages.blink:after {
+  display: none;
+}
+.stages.done {
+  box-shadow: 0 0 15px 0 rgba(255,255,225,0.7);
+}
+.stages.done:after {
+  content: "X";
+  font-size: 80px;
+  position: relative;
+  top: 40px;
+  left: 30px;
+  opacity: 0.5;
+  font-family: monospace;
+}
+
+@keyframes stagesblink {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(0,0,0,0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 4px white;
+  }
+}
+
+.stages.enabled {
+  cursor: pointer;
+  background-color: rgba(255,255,225,0.3);
+}
+
+.stages.enabled:hover {
+  box-shadow: 0 0 0 2px white;
+  animation: none;
+}
+
+.stages.start {
+  bottom: 30px;
+  left: 30px;
+  background-image: url(../img/campaign/ico_rad.png);
+  width: 110px;
+  height: 110px;
+  background-size: 90%;
+}
+
+.stages.easy {
+  background-image: url(../img/campaign/ico_easy.png);
+}
+
+.stages.easy.top {
+  top: 250px;
+  left: 30px;
+}
+
+.stages.easy.mid {
+  top: 330px;
+  left: 140px;
+}
+
+.stages.easy.bot {
+  bottom: 30px;
+  left: 255px;
+}
+
+.stages.rune {
+  background-image: url(../img/campaign/ico_rune.png);
+  top: 310px;
+  left: 360px;
+  width: 60px;
+  height: 60px;
+}
+
+.stages.roshan {
+  background-image: url(../img/campaign/ico_rosh.png);
+  top: 130px;
+  left: 150px;
+}
+
+.stages.shop {
+  background-image: url(../img/campaign/ico_shop.png);
+  top: 300px;
+  left: 440px;
+  width: 60px;
+  height: 60px;
+  opacity: 1;
+}
+
+.stages.normal.mid {
+  background-image: url(../img/campaign/ico_medium.png);
+  top: 190px;
+  left: 295px;
+}
+
+.stages.hard {
+  background-image: url(../img/campaign/ico_hard.png);
+}
+
+.stages.hard.top {
+  top: 10px;
+  left: 400px;
+}
+
+.stages.hard.mid {
+  top: 80px;
+  left: 430px;
+}
+
+.stages.hard.bot {
+  bottom: 335px;
+  left: 500px;
+}
+
+.stages.final {
+  background-image: url(../img/campaign/ico_dire.png);
+  top: 5px;
+  left: 510px;
+}
+
+.stages.optional {
+  background-image: url(../img/campaign/ico_opt.png);
+  width: 60px;
+  height: 60px;
+}
+
+.stages.optional.top {
+  top: 290px;
+  left: 95px;
+}
+.stages.optional.mid {
+  top: 380px;
+  left: 215px;
+}
+.stages.optional.bot {
+  bottom: 88px;
+  left: 390px;
+}
+
+.campaign-path {
+  background: white;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.campaign-path.enabled {
+  opacity: 1.
+}
+
+.campaign .buttonbox {
+  position: absolute;
+  right: 40px;
+  top: 470px;
+  width: 240px;
+}

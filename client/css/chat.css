@@ -1,0 +1,135 @@
+.chat {
+  z-index: 19;
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  transform: translate3d(0%,0%, 0);
+  bottom: 4px;
+  left: -10px;
+  border-radius: 4px;
+  padding: 8px;
+  padding-left: 16px;
+  color: #4d4843;
+  transition: width 0.4s;
+  box-sizing: border-box;
+  width: 70px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.chat:hover, .chat.hover {
+  bottom: 4px;
+  left: -4px;
+  height: auto;
+  width: 380px;
+  padding-left: 10px;
+  padding-bottom: 0px;
+}
+
+.chat > * {
+  display: none;
+}
+
+.chat h1 {
+  display: block;
+  color: white;
+  font-size: 16px;
+  line-height: 20px;
+  height: 14px;
+  opacity: 1;
+}
+
+.chat:hover h1, .chat.hover h1 {
+  display: none;
+}
+
+.chat:hover .dis, .chat.hover .dis {
+  display: block;
+}
+
+.chat .dis {
+  margin-bottom: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #222629;
+}
+
+.chat.hover .dis, .chat:hover .dis, .chat.hover .dis iframe, .chat:hover .dis iframe {
+  width: 363px;
+  height: 250px;
+}
+
+.chat.hover .messages, .chat:hover .messages {
+  height: 188px;
+  width: 363px;
+  overflow: hidden;
+  margin: 0;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background: white;
+  word-break: break-word;
+  display: block;
+  padding: 0;
+}
+
+.chat .messages p {
+  padding: 2px 8px;
+  border-bottom: 1px solid #ddd;
+  margin: 0;
+  cursor: text;
+  font-size: 15px;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.chat .messages p .user {
+  font-weight: bold;
+}
+
+.chat .messages p .date {
+  font-size: 70%;
+  margin: 0 5px;
+  color: #666;
+}
+
+.chat .messages p .data {
+  display: block;
+}
+
+.chat input {
+  background: white;
+  padding: 0;
+  margin: 0;
+}
+
+.chat:hover input, .chat.hover input {
+  height: 26px;
+  width: 252px;
+  margin: 10px 5px 8px 0;
+  padding: 5px;
+  display: inline;
+  position: absolute;
+  bottom: 0;
+}
+
+.chat .button {
+  top: auto;
+  bottom: 9px;
+  float: right;
+  margin: 14px 0px 0px;
+  display: none;
+  padding: 10px 16px;
+}
+
+.chat .button:active {
+  top: auto;
+  bottom: 6px;
+}
+
+.chat.hover .button, .chat:hover .button {
+  width: 50px;
+  display: inline-block;
+  line-height: 18px;
+  min-width: 60px;
+  min-height: 20px;
+}

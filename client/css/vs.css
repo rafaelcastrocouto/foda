@@ -1,0 +1,127 @@
+.vs {
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+}
+
+.versus {
+  position: absolute;
+  top: 0px;
+  left: 425px;
+  z-index: 10;
+  font-size: 40px;
+  animation: slidevs 1s 1;
+}
+
+@keyframes slidevs {
+  0% {
+    top: -70px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+
+.vsplayer, .vsenemy {
+  transition: all 1s;
+  width: 345px;
+  height: 460px;
+  position: absolute;
+  top: 50px;
+  padding: 30px 20px;
+  background: rgba(0,0,0,0.6);
+  transform-style: preserve-3d;
+}
+
+.vsplayer {
+  transform: translateX(100px) rotateY(10deg);
+}
+
+.vsplayer.slide {
+  transform: translateX(-1100px) rotateY(20deg);
+}
+
+.vsenemy {
+  transform: translateX(500px) rotateY(-10deg);
+  text-align: right;
+}
+
+.vsenemy.slide {
+  transform: translateX(1500px) rotateY(-20deg);
+}
+
+.vs .vsplayer > h1, .vs .vsenemy > h1 {
+  font-size: 36px;
+  padding: 10px 40px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vs .card {
+  margin-right: -164px;
+}
+
+.vs .card:hover {
+  z-index: 1;
+}
+
+.vs .vsplayer .card:nth-child(1) {
+  transform: scale(0.9) translateZ(0);
+}
+
+.vs .vsplayer .card:nth-child(2) {
+  margin-top: 30px;
+  transform: scale(0.9) translateZ(20px);
+}
+
+.vs .vsplayer .card:nth-child(3) {
+  margin-top: 60px;
+  transform: scale(0.9) translateZ(40px);
+}
+
+.vs .vsplayer .card:nth-child(4) {
+  margin-top: 90px;
+  transform: scale(0.9) translateZ(60px);
+}
+
+.vs .vsplayer .card:nth-child(5) {
+  margin-top: 120px;
+  transform: scale(0.9) translateZ(80px);
+}
+
+.vs .vsdeckenemy {
+  margin-right: 162px;
+}
+
+.vs .vsenemy .card {
+  float: right;
+}
+
+.vs .vsenemy .card:nth-child(1) {
+  transform: scale(0.9) translateZ(0);
+}
+
+.vs .vsenemy .card:nth-child(5) {
+  margin-top: 120px;
+  transform: scale(0.9) translateZ(80px);
+}
+
+.vs .vsenemy .card:nth-child(4) {
+  margin-top: 90px;
+  transform: scale(0.9) translateZ(60px);
+}
+
+.vs .vsenemy .card:nth-child(3) {
+  margin-top: 60px;
+  transform: scale(0.9) translateZ(40px);
+}
+
+.vs .vsenemy .card:nth-child(2) {
+  margin-top: 30px;
+  transform: scale(0.9) translateZ(20px);
+}
+
+.library .vs .vsplayerdeck .card {
+  margin-left: 50px;
+  margin-top: 50px;
+}

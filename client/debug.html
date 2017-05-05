@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FODA Debug</title>
+    <meta name="author" content="rafaelcastrocouto"/>
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-script-type" content="text/javascript"/>
+    <meta http-equiv="content-style-type" content="text/css"/>
+    <link href="favicon.ico" rel="icon" type="image/vnd.microsoft.icon"/>
+    <link href="favicon.png" rel="icon" type="image/png"/>    
+    <link href="browser_modules/normalize/normalize.min.css" rel="stylesheet"/>
+    <link href="browser_modules/sweetalert2/sweetalert2.min.css" rel="stylesheet"/>
+    <link href="css/campaign.css" rel="stylesheet"/>
+    <link href="css/card.css" rel="stylesheet"/>
+    <link href="css/chat.css" rel="stylesheet"/>
+    <link href="css/choose.css" rel="stylesheet"/>
+    <link href="css/fonts.css" rel="stylesheet"/>
+    <link href="css/game.css" rel="stylesheet"/>
+    <link href="css/heroes.css" rel="stylesheet"/>
+    <link href="css/highlight.css" rel="stylesheet"/>
+    <link href="css/map.css" rel="stylesheet"/>
+    <link href="css/options.css" rel="stylesheet"/>
+    <link href="css/table.css" rel="stylesheet"/>
+    <link href="css/result.css" rel="stylesheet"/>
+    <link href="css/sweet.css" rel="stylesheet"/>
+    <link href="css/topbar.css" rel="stylesheet"/>
+    <link href="css/tutorial.css" rel="stylesheet"/>
+    <link href="css/vs.css" rel="stylesheet"/>
+    <link rel="manifest" href="manifest.json">
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="states">
+        <noscript class="state">
+          <div class="box">
+            <div class="logo slide">
+              <img class="h1" alt="DOTA" src="img/title.png"/>
+              <img class="h2" alt="CARD" src="img/subtitle.png"/>
+            </div>
+            <h2>FODA requires <i>JavaScript</i></h2>
+            <p><a href="http://www.enable-javascript.com/" target="_blank">How can I turn on <i>JavaScript?</i></a></p>
+          </div>
+        </noscript>
+      </div>
+      <div class="social">
+        <div class="greenlight-button">
+          <img src="img/social/greenlight-button.png" alt="Vote for us on Steam GreenLight"/>
+          <a href="http://steamcommunity.com/sharedfiles/filedetails/?id=500624204" target="_blank"><img class="greenlight-banner" src="img/social/greenlight-banner.png" alt="Vote for us on Steam GreenLight"/></a>
+        </div>
+        <div class="patreon-button">
+          <img src="img/social/patreon-button.png" alt="Support us on Patreon"/>
+          <a href="https://www.patreon.com/racascou" target="_blank"><img class="patreon-banner" src="img/social/patreon-banner.png" alt="Support us on Patreon"/></a>
+        </div>
+      </div>
+    </div>
+    <script src="browser_modules/promise/promise.min.js"></script>
+    <script src="browser_modules/jquery/jquery.min.js"></script>
+    <script src="browser_modules/sweetalert2/sweetalert2.min.js"></script>
+    <script src="browser_modules/bigscreen/bigscreen.min.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/modes/library.js"></script>
+    <script src="js/modes/online.js"></script>
+    <script src="js/modes/single.js"></script>
+    <script src="js/modes/tutorial.js"></script>
+    <script src="js/core/card.js"></script>
+    <script src="js/core/deck.js"></script>
+    <script src="js/core/skill.js"></script>
+    <script src="js/core/states.js"></script>
+    <script src="js/core/enemy.js"></script>
+    <script src="js/core/player.js"></script>
+    <script src="js/core/units.js"></script>
+    <script src="js/modules/chat.js"></script>
+    <script src="js/modules/events.js"></script>
+    <script src="js/modules/history.js"></script>
+    <script src="js/modules/poll.js"></script>
+    <script src="js/modules/timeout.js"></script>
+    <script src="js/modules/utils.js"></script>
+    <script src="js/options/audio.js"></script>
+    <script src="js/options/language.js"></script>
+    <script src="js/options/options.js"></script>
+    <script src="js/options/screen.js"></script>
+    <script src="js/skills/am.js"></script>
+    <script src="js/skills/cm.js"></script>
+    <script src="js/skills/kotl.js"></script>
+    <script src="js/skills/ld.js"></script>
+    <script src="js/skills/nyx.js"></script>
+    <script src="js/skills/pud.js"></script>
+    <script src="js/skills/wk.js"></script>
+    <script src="js/states/campaign.js"></script>
+    <script src="js/states/choose.js"></script>
+    <script src="js/states/loading.js"></script>
+    <script src="js/states/log.js"></script>
+    <script src="js/states/menu.js"></script>
+    <script src="js/states/result.js"></script>
+    <script src="js/states/table.js"></script>
+    <script src="js/states/vs.js"></script>
+    <script src="js/states/unsupported.js"></script>
+    <script src="js/table/highlight.js"></script>
+    <script src="js/table/map.js"></script>
+    <script src="js/table/tower.js"></script>
+    <script src="js/table/tree.js"></script>
+    <script src="js/table/turn.js"></script>
+    <script src="js/ai/ai.js"></script>
+    <script src="js/ai/am.js"></script>
+    <script src="js/ai/cm.js"></script>
+    <script src="js/ai/kotl.js"></script>
+    <script src="js/ai/ld.js"></script>
+    <script src="js/ai/nyx.js"></script>
+    <script src="js/ai/pud.js"></script>
+    <script src="js/ai/wk.js"></script>
+    <script> game.debug = true;  $(game.start); </script>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+.table .playerdecks {
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  perspective: 600px;
+}
+
+.table .playerdecks .deck {
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+.table .enemydecks {
+  position: absolute;
+  height: 214px;
+  width: 100%;
+  top: 24px;
+  transform: translateZ(0);
+  pointer-events: none;
+}
+
+.table .enemydecks .deck {
+  top: -104px;
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+.table .deck {
+  height: 120px;
+  position: absolute;
+  border-radius: 4px;
+}
+
+.table .enemy .skills.sidehand {
+  margin-right: 38px;
+  right: 670px;
+  width: 250px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.table .enemy .skills.hand {
+  right: 240px;
+  width: 424px;
+}
+
+.table .player .skills.sidehand {
+  margin-right: 60px;
+  right: 630px;
+  width: 265px;
+  display: flex;
+  /* flex-direction: row-reverse; */
+  justify-content: flex-end;
+}
+
+.table .player .skills.hand {
+  left: 340px;
+  width: 600px;
+  padding-right: 20px;
+}
+
+.table .selectedarea {
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  top: 28px;
+  right: 5px;
+  border-radius: 10px;
+  perspective: 600px;
+  z-index: 5;
+  transform: translateZ(0);
+}
+
+.table .selectedarea.enemymoving {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.table .buttonbox {
+  position: absolute;
+  right: 0;
+  top: 330px;
+  width: 210px;
+}
+
+.table .camera {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 760px;
+  height: 450px;
+  perspective: 730px;
+  perspective-origin: 57% 50%;
+  overflow: hidden;
+  transform: translateZ(0);
+  background-image: url("../img/bkg/map.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+
+.table .camera.night {
+  background-image: url("../img/bkg/map-night.jpg");
+}
+
+.table .camera:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 760px;
+  height: 450px;
+  box-shadow: inset 0 12px 22px rgba(0,0,0,0.6);
+  pointer-events: none;
+}
+
+/*RESULTS*/
+.table .resultsbox {
+  width: 800px;
+}
+
+.table .result {
+  text-transform: uppercase;
+  font-size: 25px;
+}
+
+.table .results {
+  display: inline-block;
+  width: 320px;
+}
+
+.table .results.enemy {
+  color: tomato;
+}
+
+.table .results p {
+  box-shadow: inset 0 0 0 50px rgba(0,0,0,0.7);
+  border: 0;
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 6px;
+}
+
+.table .results span {
+  line-height: 30px;
+  margin-left: 70px;
+}
+
+.table .results .portrait {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 60px;
+  height: 30px;
+}
+
+.table .results .img {
+  width: 60px;
+  height: 30px;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.table .resultsbox .close {
+  width: 60px;
+  display: block;
+  margin: 20px auto 0;
+  position: static;
+}
+
+.table .turntitle {
+  z-index: 30;
+  position: absolute;
+  width: 970px;
+  top: 220px;
+  left: 0;
+  font-weight: bold;
+  color: white;
+  font-size: 80px;
+  text-align: center;
+  transition: all 0.3s;
+  transform: translateZ(0);
+  cursor: default;
+  background: rgba(0,0,0,0.4);
+  line-height: 100px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.table .turntitle.show {
+  opacity: 1;
+}

@@ -1,0 +1,90 @@
+{
+
+  "am":{
+    "name": "Magina",
+    "attribute": "Agilidade",
+    "range": "Perto",
+    "hp": 40,
+    "mana": 3,
+    "damage": 13,
+    "armor": 3,
+    "resistance": 3,
+    "description": "Nuker, Carry, Escape",
+    "intro": "hIySV3k0cqo"
+  },
+
+  "cm":{
+    "name": "Ice Maiden",
+    "attribute": "Inteligência",
+    "range": "Distante",
+    "hp": 40,
+    "mana": 4,
+    "damage": 12,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Nuker, Support, Disabler",
+    "intro": "um5z4d9SFkI"
+  },
+
+  "kotl":{
+    "name": "Light Keeper",
+    "attribute": "Inteligência",
+    "range": "Distante",
+    "hp": 40,
+    "mana": 4,
+    "damage": 13,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Support, Nuker, Disabler"
+  },
+
+  "ld":{
+    "name": "Bear Druid",
+    "attribute": "Agilidade",
+    "range": "Médio",
+    "hp": 50,
+    "mana": 2,
+    "damage": 15,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Pusher, Carry, Durable"
+  },
+
+  "nyx":{
+    "name": "Nyxmix",
+    "attribute": "Agilidade",
+    "range": "Perto",
+    "hp": 50,
+    "mana": 3,
+    "damage": 12,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Initiator, Nuker, Disabler, Escape"
+  },
+
+  "pud":{
+    "name": "Butcher",
+    "attribute": "Força",
+    "range": "Perto",
+    "hp": 70,
+    "mana": 2,
+    "damage": 14,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Initiator, Nuker, Disabler, Durable",
+    "intro": "hExBCxjiKsI"
+  },
+
+  "wk":{
+    "name": "Dead King",
+    "attribute": "Força",
+    "range": "Perto",
+    "hp": 60,
+    "mana": 3,
+    "damage": 14,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Initiator, Carry, Disabler, Durable"
+  }
+
+}
