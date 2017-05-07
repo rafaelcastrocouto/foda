@@ -15,7 +15,7 @@
     },
     "blink": {
       "name": "Blink",
-      "type": "Aktif",
+      "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer", "Bedava"],
@@ -24,20 +24,20 @@
       "description": "Hedeflenen noktaya ışınlanır"
     },
     "shield": {
-      "name": "Spell Shield",
+      "name": "Resistance Shield",
       "type": "Pasif",
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["Aynı"],
       "cards": 1,
-      "description": "Anti-Mage'in büyü hasarına karşı direncini arttırır.",
+      "description": "Magino'in büyü hasarına karşı direncini arttırır.",
       "buff": {
         "resistance bonus": 3,
         "description": "Büyü Hasarı Direncini Arttırır"
       }
     },
     "ult": {
-      "name": "Mana Void",
+      "name": "Mana Blast",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -48,13 +48,13 @@
       "damage": 12,
       "damage type": "Büyü",
       "cards": 1,
-      "description": "hedef üzerinde hasar alanı. Hasar bonus düşman sağ elinde olurdu beceri kart sayısını eşit. hedef kanal Kesmeler"
+      "description": "Hedef üzerinde hasar alanı. Hasar bonus düşman sağ elinde olurdu beceri kart sayısını eşit. Hedef kanal Kesmeler"
     }
   },
 
   "cm": {
     "slow": {
-      "name": "Crystal Nova",
+      "name": "Snow Blast",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -74,7 +74,7 @@
       }
     },
     "aura": {
-      "name": "Arcane Aura",
+      "name": "Mana Aura",
       "type": "Pasif",
       "hand": "Sol",
       "deck": "Satın Al",
@@ -86,7 +86,7 @@
       }
     },
     "freeze": {
-      "name": "Frostbite",
+      "name": "Ice Prison",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -102,7 +102,7 @@
       }
     },
     "ult": {
-      "name": "Freezing Field",
+      "name": "Ice Storm",
       "type": "Channel",
       "channel": 3,
       "hand": "Sağ",
@@ -133,7 +133,7 @@
 
   "kotl": {
     "illuminate": {
-      "name": "Illuminate",
+      "name": "Light Ball",
       "type": "Kanal",
       "channel": 8,
       "hand": "Sağ",
@@ -150,7 +150,7 @@
       "description": "Düşmana zarar veren bir ışık gönderir"
     },
     "leak": {
-      "name": "Mana Leak",
+      "name": "Mana Curse",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -165,7 +165,7 @@
       }
     },
     "mana": {
-      "name": "Chakra Magic",
+      "name": "Mana Magic",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -175,20 +175,20 @@
       "description": "Oyuncuya 3 beceri kartı verir"
     },
     "ult": {
-      "name": "Spirit Form",
+      "name": "Astral Form",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Işık ile bir olur. satın kartı Blinding Ligh ve Recall",
+      "description": "Işık ile bir olur. satın kartı 'Light Blast' ve 'Rescue'",
       "buff": {
         "duration": 10,
         "description": "Spirit Form"
       }
     },
     "blind": {
-      "name": "Blinding Light",
+      "name": "Light Blast",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Geçici",
@@ -206,7 +206,7 @@
       }
     },
     "recall": {
-      "name": "Recall",
+      "name": "Rescue",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Geçici",
@@ -224,8 +224,8 @@
 
   "ld": {
     "summon": {
-      "name": "Summon Spirit Bear",
-      "summon name": "Spirit Bear",
+      "name": "Summon Bear",
+      "summon name": "Bear",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -242,14 +242,14 @@
       "buffs": {
         "demolish": {
           "source": {
-            "name": "Demolish",
+            "name": "Demolition",
             "tower bonus": 4,
             "description": "Kulenin karşı 4 hasar ayı saldırısı gücünü artırır"
           }
         },
         "entangle": {
           "source": {
-            "name": "Entangling Claws",
+            "name": "Nature Claws",
             "chance": 20,
             "description": "Sabitler düşman saldırı birimleri ve 6 hasar her fırsatta neden olur. Hedef kanal Kesmeler"
           },
@@ -269,16 +269,16 @@
       "targets": ["Yer", "Bedava"],
       "cast range": "Dövüş",
       "cards": 1,
-      "description": "Ayıyı Lone Druid yanına ışınlar belli bir saniye aralıgında düşman kahramandan hasar almaması gerekir;"
+      "description": "Ayıyı Bear Druid yanına ışınlar belli bir saniye aralıgında düşman kahramandan hasar almaması gerekir;"
     },
     "rabid": {
-      "name": "Rabid",
+      "name": "Bear Fury",
       "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 4,
-      "description": "Lone Druid ve Ruh Bear saldırı ve hareket hızını artırır",
+      "description": "Bear Druid ve Ruh Bear saldırı ve hareket hızını artırır",
       "buff": {
         "duration": 3,
         "damage bonus": 3,
@@ -287,7 +287,7 @@
       }
     },
     "roar": {
-      "name": "Savage Roar",
+      "name": "Bear Roar",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -301,13 +301,13 @@
       "description": "Düşmanları geri gitmesi için ayı güçlü bir bagırmaya yol açar"
     },
     "ult": {
-      "name": "True Form",
+      "name": "Bear Form",
       "type": "Geçiş",
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Lone Druid arttırılmış HP ve zırh'ı ile Şiddetli bir ayı içine kendini dönüştürür. Ayrıca Savaş Cry beceri kartı kazanır",
+      "description": "Bear Druid arttırılmış HP ve zırh'ı ile Şiddetli bir ayı içine kendini dönüştürür. Ayrıca 'Battle Roar' beceri kartı kazanır",
       "buff": {
         "hp bonus": 9,
         "armor bonus": 2,
@@ -315,7 +315,7 @@
       }
     },
     "cry": {
-      "name": "Battle Cry",
+      "name": "Battle Roar",
       "type": "Anlık",
       "hand": "Sağ",
       "deck": "Geçici",
@@ -333,7 +333,7 @@
 
   "nyx": {
     "stun": {
-      "name": "Impale",
+      "name": "Rock Wave",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -350,7 +350,7 @@
       "description": "Sivri bir kaya ile düşmana yerden patlama verir, düşman uyur ve hasar alır"
     },
     "burn": {
-      "name": "Mana Burn",
+      "name": "Mind Burn",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -362,7 +362,7 @@
       "description": "Kalan mana 4X çarpanı ile düşmanın manasını yakar ve düşman kart kaybesine yol açar"
     },
     "spike": {
-      "name": "Spiked Carapace",
+      "name": "Carapace",
       "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -379,7 +379,7 @@
       }
     },
     "ult": {
-      "name": "Vendetta",
+      "name": "Vengeance",
       "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -387,7 +387,7 @@
       "duration": 8,
       "damage type": "Fiziksel",
       "cards": 1,
-      "description": "Nyx Assassin görünmez olur ve bir sonraki saldırıda fazladan hasar bonusu kazanır",
+      "description": "Mix görünmez olur ve bir sonraki saldırıda fazladan hasar bonusu kazanır",
       "buff": {
         "duration": 10,
         "damage bonus": 20,
@@ -412,10 +412,10 @@
       "highlight": "in",
       "damage type": "Saf",
       "cards": 4,
-      "description": "Pudge düşman veya dost birimi yanına çeker.Çekilen birim dost ise hasar vermez düşman ise belli bir hasara urar"
+      "description": "Butcher düşman veya dost birimi yanına çeker. Çekilen birim dost ise hasar vermez düşman ise belli bir hasara urar"
     },
     "rot": {
-      "name": "Rot",
+      "name": "Stink",
       "type": "Geçiş",
       "hand": "Sol",
       "deck": "Satın Al",
@@ -430,24 +430,24 @@
       "buffs": {
         "rot": {
           "source": {
-            "description": "Rot Aktif"
+            "description": "Stink Aktif"
           },
           "targets": {
             "speed slow": 1,
             "duration": 2,
-            "description": "Pudge rot yavaşladı"
+            "description": "Stink yavaşladı"
           }
         }
       }
     },
     "passive": {
-      "name": "Flesh Heap",
+      "name": "Meat Armor",
       "type": "Pasif",
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Pudge Bonus, HP ve hasar Her öldürme üzerine verir ve büyü hasarı azaltır",
+      "description": "Butcher Bonus, HP ve hasar Her öldürme üzerine verir ve büyü hasarı azaltır",
       "buff": {
         "hp per kill": 2,
         "damage per kill": 1,
@@ -456,7 +456,7 @@
       }
     },
     "ult": {
-      "name": "Dismember",
+      "name": "Fresh Meat",
       "type": "Kanal",
       "channel": 3,
       "hand": "Sağ",
@@ -466,12 +466,12 @@
       "dot": 10,
       "damage type": "Büyü",
       "cards": 2,
-      "description": "Pudge düşman birimi belli bir saniye devre dışı bırakarak onu kesmesini saglar zamanla hasar alır düşman",
+      "description": "Butcher düşman birimi belli bir saniye devre dışı bırakarak onu kesmesini saglar zamanla hasar alır düşman",
       "buffs": {
         "ult": { 
           "source": {
             "duration": 3,
-            "description": "Kanallık - Dismember"
+            "description": "Kanallık - Fresh Meat"
           },
           "target": {
             "duration": 3,
@@ -484,7 +484,7 @@
 
   "wk": {
     "stun": {
-      "name": "Wraithfire Blast",
+      "name": "Fire Blast",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -524,7 +524,7 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Wraith King her saldırıda belli bir şansı olacak ve düşmana kritik hasar vericektir.",
+      "description": "Dead King her saldırıda belli bir şansı olacak ve düşmana kritik hasar vericektir.",
       "buff": {
         "chance": 15,
         "percentage": 300,
@@ -538,12 +538,12 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Wraith King öldükden sonra tekrar öldügü yerden dogucak ve savaşmaya devam edicektir",
+      "description": "Dead King öldükden sonra tekrar öldügü yerden dogucak ve savaşmaya devam edicektir",
       "buffs": {
         "ult": {
           "source": {
             "range": "Dövüş",
-            "description": "Kimse Wraith King'i Öldüremez!"
+            "description": "Kimse Dead King'i Öldüremez!"
           },
           "targets": {
             "duration": 2,

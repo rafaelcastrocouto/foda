@@ -1,7 +1,7 @@
 {
   "am": {
     "burn": {
-      "name": "Mana Break",
+      "name": "Mana Burn",
       "type": "Passive",
       "hand": "Left",
       "deck": "Buy",
@@ -15,16 +15,16 @@
     },
     "blink": {
       "name": "Blink",
-      "type": "Active",
+      "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Free"],
       "cast range": "Long",
       "cards": 5,
-      "description": "Teleport AntiMage to the target spot"
+      "description": "Teleport Magino to the target spot"
     },
     "shield": {
-      "name": "Spell Shield",
+      "name": "Resistance Shield",
       "type": "Passive",
       "hand": "Left",
       "deck": "Buy",
@@ -37,7 +37,7 @@
       }
     },
     "ult": {
-      "name": "Mana Void",
+      "name": "Mana Blast",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -54,7 +54,7 @@
 
   "cm": {
     "slow": {
-      "name": "Crystal Nova",
+      "name": "Snow Blast",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -69,12 +69,12 @@
       "buff": {
         "speed slow": 1,
         "duration": 3,
-        "description": "Slowed by a burst of damaging frost",
+        "description": "Slowed by Snow Blast",
         "purgeable": true
       }
     },
     "aura": {
-      "name": "Arcane Aura",
+      "name": "Mana Aura",
       "type": "Passive",
       "hand": "Left",
       "deck": "Buy",
@@ -86,7 +86,7 @@
       }
     },
     "freeze": {
-      "name": "Frostbite",
+      "name": "Ice Prison",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -98,11 +98,11 @@
         "duration": 3,
         "dot": 6,
         "damage type": "Magical",
-        "description": "Frozen (disarmed and rooted) and receiving damage over time"
+        "description": "Ice Prison: disarmed, rooted and receiving damage over time"
       }
     },
     "ult": {
-      "name": "Freezing Field",
+      "name": "Ice Storm",
       "type": "Channel",
       "channel": 3,
       "hand": "Right",
@@ -114,7 +114,7 @@
       "damage": 10,
       "damage type": "Magical",
       "cards": 1,
-      "description": "Rylai channels a storm of icy explosions that deals damage to enemies around her",
+      "description": "Channels a storm of icy explosions that deals damage to enemies around her",
       "buffs": {
         "ult": {
           "source": {
@@ -133,7 +133,7 @@
 
   "kotl": {
     "illuminate": {
-      "name": "Illuminate",
+      "name": "Light Ball",
       "type": "Channel",
       "channel": 8,
       "hand": "Right",
@@ -150,7 +150,7 @@
       "description": "Channels light to damage enemies in a line"
     },
     "leak": {
-      "name": "Mana Leak",
+      "name": "Mana Curse",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -165,7 +165,7 @@
       }
     },
     "mana": {
-      "name": "Chakra Magic",
+      "name": "Mana Magic",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -175,20 +175,20 @@
       "description": "Gives the player 3 skill cards"
     },
     "ult": {
-      "name": "Spirit Form",
+      "name": "Astral Form",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Ezalor becomes one with the light! Gains Recall and Blinding Light skill cards",
+      "description": "Becomes one with the light! Gains 'Rescue' and 'Light Blast'",
       "buff": {
         "duration": 10,
         "description": "Spirit Form"
       }
     },
     "blind": {
-      "name": "Blinding Light",
+      "name": "Light Blast",
       "type": "Active",
       "hand": "Right",
       "deck": "Temporary",
@@ -206,7 +206,7 @@
       }
     },
     "recall": {
-      "name": "Recall",
+      "name": "Rescue",
       "type": "Active",
       "hand": "Right",
       "deck": "Temporary",
@@ -214,18 +214,18 @@
       "cast range": "Global",
       "delay": 1,
       "cards": 1,
-      "description": "If unharmed after enemy turn, target is teleported to a free spot near Ezalor",
+      "description": "If unharmed after enemy turn, target is teleported to a free spot near Light Keeper",
       "buff": {
         "duration": 2,
-        "description": "Recalling"
+        "description": "Being rescued"
       }
     }
   },
 
   "ld": {
     "summon": {
-      "name": "Summon Spirit Bear",
-      "summon name": "Spirit Bear",
+      "name": "Summon Bear",
+      "summon name": "Bear",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -238,18 +238,18 @@
       "armor": 3,
       "resistance": 3,
       "death damage": 10,
-      "description": "Summons a powerful Spirit Bear with Entangling claws and Demolish. Player gets one Return skill card",
+      "description": "Summons a powerful Bear with 'Nature claws' and 'Demolition'. Gains 'Return'",
       "buffs": {
         "demolish": {
           "source": {
-            "name": "Demolish",
+            "name": "Demolition",
             "tower bonus": 4,
-            "description": "Increases the power of the Spirit Bear, causing it to deal 4 extra damage to buildings"
+            "description": "Increases the power of the Bear, causing it to deal 4 extra damage to buildings"
           }
         },
         "entangle": {
           "source": {
-            "name": "Entangling Claws",
+            "name": "Nature Claws",
             "chance": 20,
             "description": "Attacks have a chance to cause roots to burst from the ground, immobilizing the attacked enemy unit, and dealing 6 damage per second. Interrupts target channel"
           },
@@ -269,16 +269,16 @@
       "targets": ["Spot", "Free"],
       "cast range": "Melee",
       "cards": 1,
-      "description": "Teleports the Spirit Bear back to the Lone Druid. Player must discard if the bear is killed;"
+      "description": "Teleports the Bear back to the Bear Druid. Must be discarded if the bear is killed"
     },
     "rabid": {
-      "name": "Rabid",
+      "name": "Bear Fury",
       "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 4,
-      "description": "Increases the attack and movement speed of Lone Druid and the Spirit Bear",
+      "description": "Increases the attack and movement speed of Bear Druid and the Spirit Bear",
       "buff": {
         "duration": 3,
         "damage bonus": 3,
@@ -287,7 +287,7 @@
       }
     },
     "roar": {
-      "name": "Savage Roar",
+      "name": "Wild Roar",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -301,13 +301,13 @@
       "description": "Roars causing enemies to flee in terror. Unit retreats one spot if the position is free. Interrupts targets channel"
     },
     "ult": {
-      "name": "True Form",
+      "name": "Bear Form",
       "type": "Toggle",
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Lone Druid morphs himself into a raging bear with increased HP and armor. Also gains the Battle Cry skill card",
+      "description": "Bear Druid morphs himself into a raging bear with increased HP and armor. Gains 'Battle Roar'",
       "buff": {
         "hp bonus": 9,
         "armor bonus": 2,
@@ -315,7 +315,7 @@
       }
     },
     "cry": {
-      "name": "Battle Cry",
+      "name": "Battle Roar",
       "type": "Instant",
       "hand": "Right",
       "deck": "Temporary",
@@ -333,7 +333,7 @@
 
   "nyx": {
     "stun": {
-      "name": "Impale",
+      "name": "Rock Wave",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -350,7 +350,7 @@
       "description": "Rock spikes burst along a straight path, hitted enemies are stunned and take damage"
     },
     "burn": {
-      "name": "Mana Burn",
+      "name": "Mind Burn",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -362,7 +362,7 @@
       "description": "Damages an enemy unit by 4X it's mana and makes enemy player lose a card of that hero"
     },
     "spike": {
-      "name": "Spiked Carapace",
+      "name": "Carapace",
       "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
@@ -379,7 +379,7 @@
       }
     },
     "ult": {
-      "name": "Vendetta",
+      "name": "Vengeance",
       "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
@@ -387,7 +387,7 @@
       "duration": 8,
       "damage type": "Physical",
       "cards": 1,
-      "description": "Nyx Assassin becomes invisible and gains bonus on next attack",
+      "description": "Mix becomes invisible and gains bonus on next attack",
       "buff": {
         "duration": 10,
         "damage bonus": 20,
@@ -412,10 +412,10 @@
       "highlight": "in",
       "damage type": "Pure",
       "cards": 4,
-      "description": "Launches a bloody hook that will snag the first unit it encounters, dragging the unit to Pudge and dealing damage if enemy. Interrupts enemy channel"
+      "description": "Launches a bloody hook that will snag the first unit it encounters, dragging the unit and dealing damage if enemy. Interrupts enemy channel"
     },
     "rot": {
-      "name": "Rot",
+      "name": "Stink",
       "type": "Toggle",
       "hand": "Left",
       "deck": "Buy",
@@ -426,28 +426,28 @@
       "damage": 6,
       "damage type": "Magical",
       "cards": 1,
-      "description": "A toxic cloud that deals damage and slows enemies. Damage is dealt at the turn end, Pudge will also be damaged",
+      "description": "A stink cloud that deals damage and slows enemies. Damage is dealt at the turn end, Butcher will also be damaged",
       "buffs": {
         "rot": {
           "source": {
-            "description": "Rot is active"
+            "description": "Stink is active"
           },
           "targets": {
             "speed slow": 1,
             "duration": 2,
-            "description": "Slowed by Pudge's rot"
+            "description": "Slowed by Butcher's Stink"
           }
         }
       }
     },
     "passive": {
-      "name": "Flesh Heap",
+      "name": "Meat Armor",
       "type": "Passive",
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Gives Pudge bonus HP and damage on every kill and reduces magic damage",
+      "description": "Gives Butcher bonus HP and damage on every kill and reduces magic damage",
       "buff": {
         "hp per kill": 2,
         "damage per kill": 1,
@@ -456,7 +456,7 @@
       }
     },
     "ult": {
-      "name": "Dismember",
+      "name": "Fresh Meat",
       "type": "Channel",
       "channel": 3,
       "hand": "Right",
@@ -466,12 +466,12 @@
       "dot": 10,
       "damage type": "Magical",
       "cards": 2,
-      "description": "Pudge chows down on an enemy, disabling and dealing damage over time. Interrupts target channel",
+      "description": "Butcher chows down on an enemy, disabling and dealing damage over time. Interrupts target channel",
       "buffs": {
         "ult": { 
           "source": {
             "duration": 3,
-            "description": "Channeling - Dismember"
+            "description": "Channeling - Fresh Meat"
           },
           "target": {
             "duration": 3,
@@ -484,7 +484,7 @@
 
   "wk": {
     "stun": {
-      "name": "Wraithfire Blast",
+      "name": "Fire Blast",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -500,7 +500,7 @@
         "speed slow": 1,
         "duration": 3,
         "dot": 6,
-        "description": "Wraithfire damage over time",
+        "description": "Fire Blast damage over time",
         "purgeable": true
       }
     },
@@ -524,7 +524,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Wraith King attacks will have a chance of inflicting critical damage bonus",
+      "description": "Dead King attacks will have a chance of inflicting critical damage bonus",
       "buff": {
         "chance": 15,
         "percentage": 300,
@@ -538,12 +538,12 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Wraith King will come back to full HP on next player turn after being killed",
+      "description": "Dead King will come back to full HP on next player turn after being killed",
       "buffs": {
         "ult": {
           "source": {
             "range": "Melee",
-            "description": "No one can kill the Wraith King!"
+            "description": "No one can kill the Dead King!"
           },
           "targets": {
             "duration": 2,

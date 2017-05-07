@@ -1,7 +1,7 @@
 {
   "am": {
     "burn": {
-      "name": "Quebra de Mana",
+      "name": "Queima Mana",
       "type": "Passiva",
       "hand": "Esquerda",
       "deck": "Comprar",
@@ -15,16 +15,16 @@
     },
     "blink": {
       "name": "Blink",
-      "type": "Ativa",
+      "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local", "Livre"],
       "cast range": "Longe",
       "cards": 5,
-      "description": "Teleporta o AntiMage para o destino Instantâneaâneamente"
+      "description": "Teleporta para o destino imediatamente"
     },
     "shield": {
-      "name": "Escudo Antimagia",
+      "name": "Escudo de Resistência",
       "type": "Passiva",
       "hand": "Esquerda",
       "deck": "Comprar",
@@ -37,7 +37,7 @@
       }
     },
     "ult": {
-      "name": "Mana Void",
+      "name": "Explosão de Mana",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -54,7 +54,7 @@
 
   "cm": {
     "slow": {
-      "name": "Explosão Cristalina",
+      "name": "Explosão de Neve",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -74,7 +74,7 @@
       }
     },
     "aura": {
-      "name": "Aura Arcana",
+      "name": "Aura de Mana",
       "type": "Passiva",
       "hand": "Esquerda",
       "deck": "Comprar",
@@ -86,7 +86,7 @@
       }
     },
     "freeze": {
-      "name": "Congelamento",
+      "name": "Prisão de Gelo",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -98,11 +98,11 @@
         "duration": 3,
         "dot": 6,
         "damage type": "Mágico",
-        "description": "Congeladoa (disarmado e sem movimento) e recebendo dano por turno"
+        "description": "Congelado (disarmado e sem movimento) e recebendo dano por turno"
       }
     },
     "ult": {
-      "name": "Campo Congelante",
+      "name": "Tempestade de Gelo",
       "type": "Canalização",
       "channel": 3,
       "hand": "Direita",
@@ -114,7 +114,7 @@
       "damage": 10,
       "damage type": "Mágico",
       "cards": 1,
-      "description": "Rylai canaliza uma tempestade de neve ao seu redor cauzando dano em área",
+      "description": "Canaliza uma tempestade de neve ao seu redor cauzando dano em área",
       "buffs": {
         "ult": {
           "source": {
@@ -133,7 +133,7 @@
 
   "kotl": {
     "illuminate": {
-      "name": "Iluminar",
+      "name": "Bola de Luz",
       "type": "Canalização",
       "channel": 8,
       "hand": "Direita",
@@ -150,7 +150,7 @@
       "description": "Canaliza luz causando dano em área"
     },
     "leak": {
-      "name": "Vazamento de Mana",
+      "name": "Maldição de Mana",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -165,7 +165,7 @@
       }
     },
     "mana": {
-      "name": "Magia do Chakra",
+      "name": "Magia de Mana",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -175,20 +175,20 @@
       "description": "O jogador compra 3 cartas de habilidade"
     },
     "ult": {
-      "name": "Forma Espiritual",
+      "name": "Forma Astral",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "Ezalor se torna um com a luz! Ganha Recall and Luz Cegante",
+      "description": "Light Keeper se torna um com a luz! Recebe 'Resgate' e 'Luz Cegante'",
       "buff": {
         "duration": 10,
         "description": "Forma Espiritual"
       }
     },
     "blind": {
-      "name": "Luz Cegante",
+      "name": "Explosão de Luz",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Temporária",
@@ -206,7 +206,7 @@
       }
     },
     "recall": {
-      "name": "Recall",
+      "name": "Resgate",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Temporária",
@@ -224,8 +224,8 @@
 
   "ld": {
     "summon": {
-      "name": "Invocar Espírito Urso",
-      "summon name": "Espírito Urso",
+      "name": "Invocar Urso",
+      "summon name": "Urso",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -238,47 +238,47 @@
       "armor": 3,
       "resistance": 3,
       "death damage": 10,
-      "description": "Invoca um poderoso Espírito Urso companheiro Entangling claws and Demolish. O jogador compra uma carta temporária 'Retornar'",
+      "description": "Invoca um poderoso Urso companheiro Entangling claws and Demolish. O jogador compra uma carta temporária 'Retornar'",
       "buffs": {
         "demolish": {
           "source": {
-            "name": "Demolir",
+            "name": "Demolidor",
             "tower bonus": 4,
-            "description": "O Espírito Urso causa 4 de dano extra contra a torre"
+            "description": "O Urso causa 4 de dano extra contra a torre"
           }
         },
         "entangle": {
           "source": {
-            "name": "Garras Entrelaçantes",
+            "name": "Garras da Natureza",
             "chance": 20,
-            "description": "Os ataques do Espírito Urso têm chance de fazer com que raízes prendam o inimigo, imobilizando e causando 6 de dano por turno. Interrompe canalização"
+            "description": "Os ataques do Urso têm chance de fazer com que raízes prendam o inimigo, imobilizando e causando 6 de dano por turno. Interrompe canalização"
           },
           "target": {
             "dot": 6,
             "duration": 3,
-            "description": "Preso pelas Garras Entrelaçantes e recebendo dano por turno"
+            "description": "Preso pelas Garras da Natureza e recebendo dano por turno"
           }
         }
       }
     },
     "bearreturn": {
-      "name": "Retornar",
+      "name": "Junto",
       "type": "Instantânea",
       "hand": "Esquerda",
       "deck": "Temporária",
       "targets": ["Local", "Livre"],
       "cast range": "Perto",
       "cards": 1,
-      "description": "Teleporta o Espírito Urso de volta para o Druida. Esta carta deve ser descartada quando o Espírito Urso morre"
+      "description": "Teleporta o Urso de volta para o Druida. Esta carta deve ser descartada quando o Espírito Urso morre"
     },
     "rabid": {
-      "name": "Rabid",
+      "name": "Fúria de Urso",
       "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 4,
-      "description": "Aumenta o ataque e o movimento do Druida e do Espírito Urso",
+      "description": "Aumenta o ataque e o movimento do Druida e do Urso",
       "buff": {
         "duration": 3,
         "damage bonus": 3,
@@ -287,7 +287,7 @@
       }
     },
     "roar": {
-      "name": "Rugido Fero",
+      "name": "Rugido de Urso",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -301,13 +301,13 @@
       "description": "Ruge de forma tão feroz que os inimigos fogem de medo. Interrompe canalização"
     },
     "ult": {
-      "name": "Forma Real",
+      "name": "Forma de Urso",
       "type": "Alternar",
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "O Duida se tranforma em um urso furioso com bonus de HP e armadura. O jogador recebe a carta temporária 'Grito de Guerra'",
+      "description": "O Duida se tranforma em um urso furioso com bonus de HP e armadura. Recebe 'Grito de Guerra'",
       "buff": {
         "hp bonus": 9,
         "armor bonus": 2,
@@ -315,13 +315,13 @@
       }
     },
     "cry": {
-      "name": "Grito de Guerra",
+      "name": "Rugido de Guerra",
       "type": "Instantânea",
       "hand": "Direita",
       "deck": "Temporária",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "Aumenta o ataque e a armadura do Druida e do Espírito Urso",
+      "description": "Aumenta o ataque e a armadura do Druida e do Urso",
       "buff": {
         "duration": 4,
         "armor bonus": 2,
@@ -333,7 +333,7 @@
 
   "nyx": {
     "stun": {
-      "name": "Impalar",
+      "name": "Onda de Rocha",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -350,7 +350,7 @@
       "description": "Espinhos rochosos emergem da terra, unidades inimigas atingidas são atordoadas e recebem dano"
     },
     "burn": {
-      "name": "Mana Burn",
+      "name": "Queima Mente",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -362,7 +362,7 @@
       "description": "Causa dano igual ao mana do alvo multiplicado por 4 e obriga o oponente a descartar uma habilidade do alvo"
     },
     "spike": {
-      "name": "Spiked Carapace",
+      "name": "Carapaça",
       "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
@@ -379,7 +379,7 @@
       }
     },
     "ult": {
-      "name": "Vendetta",
+      "name": "Vingança",
       "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
@@ -415,7 +415,7 @@
       "description": "Lança um gancho que agarra a primeira unidade que encontrar, arrastando-a de volta e causando dano caso seja uma unidade inimiga"
     },
     "rot": {
-      "name": "Podridão",
+      "name": "Fedor",
       "type": "Alternar",
       "hand": "Esquerda",
       "deck": "Comprar",
@@ -426,22 +426,22 @@
       "damage": 6,
       "damage type": "Mágico",
       "cards": 1,
-      "description": "Uma nuvem tóxica que causa dano as unidades inimigas e ao próprio Pudge. O dano acontece somente no fim do turno",
+      "description": "O odor do Açougueiro causa dano as unidades inimigas e ao próprio Pudge. O dano acontece somente no fim do turno",
       "buffs": {
         "rot": {
           "source": {
-            "description": "Emanando podridão"
+            "description": "Emanando cheiro fétido"
           },
           "targets": {
             "speed slow": 1,
             "duration": 2,
-            "description": "Movimento restrito pela Podridão"
+            "description": "Movimento restrito pela cheiro do Açougueiro"
           }
         }
       }
     },
     "passive": {
-      "name": "Armadura de Corpos",
+      "name": "Armadura de Carne",
       "type": "Passiva",
       "hand": "Esquerda",
       "deck": "Comprar",
@@ -456,7 +456,7 @@
       }
     },
     "ult": {
-      "name": "Desmembrar",
+      "name": "Carne Fresca",
       "type": "Canalização",
       "channel": 3,
       "hand": "Direita",
@@ -471,7 +471,7 @@
         "ult": { 
           "source": {
             "duration": 3,
-            "description": "Desmembrar - Canalizando"
+            "description": "Desmembrando - Canalizando"
           },
           "target": {
             "duration": 3,
@@ -484,7 +484,7 @@
 
   "wk": {
     "stun": {
-      "name": "Explosão Maldita",
+      "name": "Golpe de Fogo",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -518,7 +518,7 @@
       }
     },
     "crit": {
-      "name": "Mortal Strike",
+      "name": "Ataque Mortal",
       "type": "Passiva",
       "hand": "Esquerda",
       "deck": "Comprar",
@@ -538,7 +538,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "Wraith King volta à vida com HP cheio após ser assassinato",
+      "description": "Dead King volta à vida com HP cheio após ser assassinato",
       "buffs": {
         "ult": {
           "source": {
