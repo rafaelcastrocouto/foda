@@ -21,7 +21,10 @@ game.events = {
     game.container.on('mousemove', game.events.move);
     game.container.on('touchmove', game.events.touchmove);
     game.container.on('mouseup touchend', game.events.end);
-    game.container.on('contextmenu', game.events.cancel);
+    game.container.on('contextmenu', function (event) {
+      game.card.unselect();
+      game.events.cancel(event);
+    });
   },
   getCoordinates: function(event) {
     var position = {

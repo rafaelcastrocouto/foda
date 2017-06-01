@@ -72,7 +72,7 @@ game.states.log = {
       background: game.alertColor
     }).then(function () {
       game.poll.clear();
-      game.states.log.title.appendTo(game.states.log.logo);
+      //game.states.log.title.appendTo(game.states.log.logo);
       if (!game.states.log.input.val()) game.states.log.input.focus();
     });
     game.screen.resize();
