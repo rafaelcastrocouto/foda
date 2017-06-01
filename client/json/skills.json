@@ -1,4 +1,63 @@
 {
+  "lina": {
+    "fire": {
+      "name": "Flames",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 1,
+      "aoe range": 3,
+      "damage": 14,
+      "damage type": "Magical",
+      "cards": 5,
+      "description": "A column of flames damages enemies in a line"
+    },
+    "stun": {
+      "name": "Fireball",
+      "type": "Instant",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Self"],
+      "cast range": "Ranged",
+      "aoe": "Radial",
+      "aoe range": "Melee",
+      "damage": 10,
+      "stun": 2,
+      "damage type": "Magical",
+      "cards": 5,
+      "description": "A ball of fire stuns and damages enemies"
+    },
+    "passive": {
+      "name": "Soul on fire",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "cards": 1,
+      "description": "Every attack will have fire bonus damage",
+      "buff": {
+        "damage bonus": 3,
+        "description": "Damage increased by 'Soul on fire'"
+      }
+    },
+    "ult": {
+      "name": "Zap",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "cast range": "Ranged",
+      "cards": 1,
+      "damage": 30,
+      "damage type": "Magical",
+      "description": "Fires off a bolt of lightning at a single enemy unit"
+    }
+  },
+
   "am": {
     "burn": {
       "name": "Mana Burn",
@@ -87,7 +146,7 @@
     },
     "freeze": {
       "name": "Ice Prison",
-      "type": "Active",
+      "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
@@ -151,7 +210,7 @@
     },
     "leak": {
       "name": "Mana Curse",
-      "type": "Active",
+      "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
@@ -351,7 +410,7 @@
     },
     "burn": {
       "name": "Mind Burn",
-      "type": "Active",
+      "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
@@ -399,7 +458,7 @@
   "pud": {
     "hook": {
       "name": "Meat Hook",
-      "type": "Active",
+      "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot"],
@@ -485,7 +544,7 @@
   "wk": {
     "stun": {
       "name": "Fire Blast",
-      "type": "Active",
+      "type": "Instant",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],

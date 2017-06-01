@@ -292,3 +292,29 @@
 .wk-ult .img, .buffs .buff.wk-ult .img {
   background-image: url("../img/skills/wk/skeleton_king_reincarnation.jpg");
 }
+
+
+.lina {
+  background: #e08725;
+}
+
+.lina.heroes .img {
+  background-image: url("../img/heroes/lina.jpg");
+}
+
+.lina-fire .img {
+  background-image: url("../img/skills/lina/lina_dragon_slave.jpg");
+}
+
+.lina-stun .img, .buffs .buff.lina-stun .img {
+  background-image: url("../img/skills/lina/lina_light_strike_array.jpg");
+}
+
+.lina-passive .img, .buffs .buff.lina-passive .img {
+  background-image: url("../img/skills/lina/lina_fiery_soul.jpg");
+}
+
+.lina-ult .img {
+  background-image: url("../img/skills/lina/lina_laguna_blade.jpg");
+}
+

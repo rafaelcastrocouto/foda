@@ -1,4 +1,63 @@
 {
+  "lina": {
+    "fire": {
+      "name": "Chamas",
+      "type": "Activa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Local"],
+      "aoe": "Linear",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 1,
+      "aoe range": 3,
+      "damage": 14,
+      "damage type": "Mágico",
+      "cards": 5,
+      "description": "Uma coluna de fogo causa dano em linha"
+    },
+    "stun": {
+      "name": "Bola de Fogo",
+      "type": "Instantânea",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Local", "Próprio"],
+      "cast range": "Distante",
+      "aoe": "Radial",
+      "aoe range": "Melee",
+      "damage": 10,
+      "stun": 2,
+      "damage type": "Mágico",
+      "cards": 5,
+      "description": "Uma bola de fogo atordoa e causa dano em área"
+    },
+    "passive": {
+      "name": "Alma em chamas",
+      "type": "Passiva",
+      "hand": "Esquerda",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "cards": 1,
+      "description": "Todo ataque ganha bonus de fogo",
+      "buff": {
+        "damage bonus": 3,
+        "description": "Dano aumentado pela 'Alma em chamas'"
+      }
+    },
+    "ult": {
+      "name": "Zap",
+      "type": "Activa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos"],
+      "cast range": "Distante",
+      "cards": 1,
+      "damage": 30,
+      "damage type": "Mágico",
+      "description": "Manda um relâmpago em uma unidade inimiga"
+    }
+  },
+
   "am": {
     "burn": {
       "name": "Queima Mana",
@@ -87,7 +146,7 @@
     },
     "freeze": {
       "name": "Prisão de Gelo",
-      "type": "Ativa",
+      "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
@@ -151,7 +210,7 @@
     },
     "leak": {
       "name": "Maldição de Mana",
-      "type": "Ativa",
+      "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
@@ -351,7 +410,7 @@
     },
     "burn": {
       "name": "Queima Mente",
-      "type": "Ativa",
+      "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
@@ -399,7 +458,7 @@
   "pud": {
     "hook": {
       "name": "Gancho de Carne",
-      "type": "Ativa",
+      "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local"],
@@ -485,7 +544,7 @@
   "wk": {
     "stun": {
       "name": "Golpe de Fogo",
-      "type": "Ativa",
+      "type": "Instantânea",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],

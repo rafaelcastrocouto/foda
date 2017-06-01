@@ -1,4 +1,63 @@
 {
+  "lina": {
+    "fire": {
+      "name": "Flames",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Yer"],
+      "aoe": "Linear",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 1,
+      "aoe range": 3,
+      "damage": 14,
+      "damage type": "Büyü",
+      "cards": 5,
+      "description": "Ateşten oluşan bir sütun düşmanları bir çizgide hasara uğratır"
+    },
+    "stun": {
+      "name": "Fireball",
+      "type": "Anlık",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Yer", "Bedava"],
+      "cast range": "Menzilli",
+      "aoe": "Radyal",
+      "aoe range": "Dövüş",
+      "damage": 10,
+      "stun": 2,
+      "damage type": "Büyü",
+      "cards": 5,
+      "description": "Ateş topu düşmanları şaşırtıyor ve düşmanlarına zarar veriyor"
+    },
+    "passive": {
+      "name": "Soul on fire",
+      "type": "Pasif",
+      "hand": "Sol",
+      "deck": "Satın Al",
+      "targets": ["Aynı"],
+      "cards": 1,
+      "description": "Her saldırıda yangın bonus hasarı olur",
+      "buff": {
+        "damage bonus": 3,
+        "description": "Zarar arttı 'Soul on fire'"
+      }
+    },
+    "ult": {
+      "name": "Zap",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman"],
+      "cast range": "Menzilli",
+      "cards": 1,
+      "damage": 30,
+      "damage type": "Büyü",
+      "description": "Tek bir düşman biriminde yıldırım çarpması sonucu patlar"
+    }
+  },
+  
   "am": {
     "burn": {
       "name": "Mana Break",
@@ -87,7 +146,7 @@
     },
     "freeze": {
       "name": "Ice Prison",
-      "type": "Aktif",
+      "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
@@ -151,7 +210,7 @@
     },
     "leak": {
       "name": "Mana Curse",
-      "type": "Aktif",
+      "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
@@ -351,7 +410,7 @@
     },
     "burn": {
       "name": "Mind Burn",
-      "type": "Aktif",
+      "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
@@ -399,7 +458,7 @@
   "pud": {
     "hook": {
       "name": "Meat Hook",
-      "type": "Aktif",
+      "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer"],
@@ -485,7 +544,7 @@
   "wk": {
     "stun": {
       "name": "Fire Blast",
-      "type": "Aktif",
+      "type": "Anlık",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],

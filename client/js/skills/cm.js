@@ -1,7 +1,6 @@
 game.skills.cm = {
   slow: {
     cast: function (skill, source, target) {
-      var spot = target.getPosition();
       var range = skill.data('aoe range');
       target.opponentsInRange(range, function (card) {
         source.damage(skill.data('damage'), card, skill.data('damage type'));
@@ -49,7 +48,6 @@ game.skills.cm = {
   },
   ult: {
     cast: function (skill, source) {
-      var spot = source.getPosition();
       source.addClass('cm-ult');
       source.selfBuff(skill, 'ult-source');
       source.on('channel', this.channel);
