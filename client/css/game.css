@@ -418,8 +418,13 @@ label span {
 }
 
 .log .box {
-  padding: 250px 100px 40px;
-  width: 550px;
+  padding: 50px;
+  width: 520px;
+}
+
+.log h1 {
+  font-size: 26px;
+  margin-bottom: 14px;
 }
 
 .log form {
@@ -435,8 +440,8 @@ label span {
 
 .log .steel {
   position: absolute;
-  bottom: 75px;
-  right: 124px;
+  bottom: 84px;
+  right: 109px;
   width: 100px;
   height: 42px;
   background: url("/img/bkg/steel.jpg");

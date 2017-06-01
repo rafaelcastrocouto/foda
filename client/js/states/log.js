@@ -3,7 +3,7 @@ game.states.log = {
   build: function () {
     this.box = $('<div>').addClass('box');
     this.logo = $('<div>').appendTo(this.el).addClass('logo slide');
-    this.title = $('<img>').attr({alt: 'DOTA', src: 'img/title.png'}).addClass('h1');
+    //this.title = $('<img>').attr({alt: 'DOTA', src: 'img/title.png'}).addClass('h1');
     //this.subtitle = $('<img>').appendTo(this.logo).attr({alt: 'CARD', src: 'img/subtitle.png'}).addClass('h2');
     this.boxtitle = $('<h1>').appendTo(this.box).text(game.data.ui.choosename);
     this.form = $('<form>').appendTo(this.box).on('submit', function (event) { event.preventDefault(); return false; });

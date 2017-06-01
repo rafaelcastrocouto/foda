@@ -19,7 +19,6 @@ game.heroesAI.am = {
       cardData.strats.cast += 7;
       cardData['can-make-action'] = true;
     }
-    var canBlinkTower = false;
     var towerInBlinkRange = false;
     var blinkSpots = [];
     card.inRange(6, function (spot) {
