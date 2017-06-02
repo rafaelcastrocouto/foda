@@ -32,6 +32,7 @@ game.states.loading = {
   },
   finished: function () {
     game.options.build();
+    game.container.append(game.topbar);
     game.states.build(function () {
       game.container.addClass('finished');
       game.states.log.createBkgDeck();

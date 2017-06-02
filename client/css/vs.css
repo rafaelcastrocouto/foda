@@ -37,6 +37,12 @@
   transform: translateX(100px) rotateY(10deg);
 }
 
+.vsplayerinfo {
+  position: absolute;
+  bottom: 6px;
+  left: 12px;
+}
+
 .vsplayer.slide {
   transform: translateX(-1100px) rotateY(20deg);
 }
@@ -44,6 +50,12 @@
 .vsenemy {
   transform: translateX(500px) rotateY(-10deg);
   text-align: right;
+}
+
+.vsenemyinfo {
+  position: absolute;
+  bottom: 6px;
+  right: 12px;
 }
 
 .vsenemy.slide {

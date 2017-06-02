@@ -30,7 +30,7 @@ game.skills.am = {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
       var opponent = source.opponent();
-      var maxCards = game[opponent].maxSkillCards();
+      var maxCards = game[opponent].maxCards;
       var cardsInHand = game[opponent].cardsInHand();
       var damage = skill.data('damage');
       var mana = target.data('mana');

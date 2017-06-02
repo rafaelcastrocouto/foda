@@ -817,3 +817,15 @@
 .map .card.units.ranged.enemy .img {
   background-position: 60% 50%;
 }
+
+
+.card.units.catapult.player .img {
+  background-image: url("../img/creeps/player_catapult.jpg");
+}
+.card.units.catapult.enemy .img {
+  background-image: url("../img/creeps/enemy_catapult.jpg");
+}
+.map .card.units.catapult.enemy .img {
+  background-position: 55% 50%;
+  background-size: 300%;
+}

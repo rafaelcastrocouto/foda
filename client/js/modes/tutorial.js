@@ -33,8 +33,9 @@ game.tutorial = {
   chooseStart: function () {
     game.states.choose.selectFirst('force');
     game.states.choose.randombt.show();
-    $('.pickbox .card').addClass('hidden');
+    $('.pickbox .card').addClass('hidden').removeClass('selected');
     $('.am, .cm, .pud, .ld, .nyx', '.pickbox').removeClass('hidden');
+    $('.am','.pickbox').addClass('selected').removeClass('half');
     game.states.choose.counter.show().text(game.data.ui.clickpick);
   },
   pick: function () {
@@ -82,7 +83,7 @@ game.tutorial = {
       game.tutorial.axebaloon.hide();
       game.player.kills = 0;
       game.enemy.kills = 0;
-      game.tutorial.moveCountValue = 5;
+      game.tutorial.moveCountValue = 2;
       game.message.text(game.data.ui.yourturncount + ' ' + game.tutorial.moveCountValue);
       game.tutorial.axe.addClass('up left');
       game.enemy.tower.addClass('blink').on('select', game.tutorial.selected);
@@ -164,6 +165,7 @@ game.tutorial = {
   moveCount: function (event, data) {  //console.trace('moveCount', event, data);
     data.card.removeClass('blink');
     game.states.table.skip.attr('disabled', false);
+    game.tutorial.message.html(game.data.ui.axemoveagain);
     game.message.text(game.data.ui.yourturncount + ' ' + --game.tutorial.moveCountValue);
     if (game.tutorial.moveCountValue === 0) game.tutorial.endTurnLesson();
   },
@@ -208,14 +210,11 @@ game.tutorial = {
     game.tutorial.message.html(game.data.ui.axeenemymove);
     game.message.html(game.data.ui.enemymove);
     game.currentData.moves = [
-      'S:'+game.map.mirrorPosition('H2')+':ranged',
-      'S:'+game.map.mirrorPosition('H3')+':melee',
       'S:'+game.map.mirrorPosition('G3')+':melee',
       'C:'+game.map.mirrorPosition('C1')+':'+game.map.mirrorPosition('D3')+':blink:am',
       'M:'+game.map.mirrorPosition('D1')+':'+game.map.mirrorPosition('C2'),
       'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),
       'C:'+game.map.mirrorPosition('F1')+':'+game.map.mirrorPosition('F1')+':mana:kotl',
-      'M:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition('F2')
     ].join('|');
     game.enemy.startMoving(game.tutorial.endTurn);
   },

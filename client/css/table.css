@@ -32,17 +32,20 @@
   border-radius: 4px;
 }
 
-.table .enemy .skills.sidehand {
+.table .enemy .skills.hand {
   margin-right: 38px;
-  right: 670px;
-  width: 250px;
+  right: 520px;
+  width: 400px;
   display: flex;
   flex-direction: row-reverse;
 }
 
-.table .enemy .skills.hand {
-  right: 240px;
-  width: 424px;
+.table .enemy .skills.sidehand {
+  right: 210px;
+  width: 230px;
+  flex-direction: row;
+  display: flex;
+  padding-right: 60px;
 }
 
 .table .player .skills.sidehand {

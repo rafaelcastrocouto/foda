@@ -3,10 +3,12 @@ game.states.vs = {
     this.player = $('<div>').addClass('vsplayer slide');
     this.playername = $('<h1>').appendTo(this.player);
     this.playerdeck = $('<div>').addClass('vsdeckplayer').appendTo(this.player);
+    this.playerinfo = $('<div>').addClass('vsplayerinfo').appendTo(this.player);
     this.vs = $('<p>').text('VS').addClass('versus').appendTo(this.el);
     this.enemy = $('<div>').addClass('vsenemy slide');
     this.enemyname = $('<h1>').appendTo(this.enemy);
     this.enemydeck = $('<div>').addClass('vsdeckenemy').appendTo(this.enemy);
+    this.enemyinfo = $('<div>').addClass('vsenemyinfo').appendTo(this.enemy);
     this.el.append(this.player).append(this.enemy);
   },
   start: function (recover) {
@@ -40,6 +42,8 @@ game.states.vs = {
         deck.addClass('vsplayerdeck').appendTo(game.states.vs.playerdeck);
       }
     });
+    game.skill.calcMana('player');
+    this.playerinfo.text('Buy: '+game.player.cardsPerTurn+' Max: '+game.player.maxCards);
   },
   buildEnemy: function () {
     if (!game.enemy.name) {
@@ -57,6 +61,8 @@ game.states.vs = {
         deck.addClass('vsenemyrdeck').appendTo(game.states.vs.enemydeck);
       }
     });
+    game.skill.calcMana('enemy');
+    this.enemyinfo.text('Buy: '+game.enemy.cardsPerTurn+' Max: '+game.enemy.maxCards);
   },
   playerPicks: function () {
     if (game.mode == 'library') {
@@ -77,7 +83,7 @@ game.states.vs = {
   enemyPicks: function () {
     var picks;
     if (game.mode == 'library' || game.mode == 'tutorial') {
-      return [ 'nyx', 'kotl', 'pud', 'ld', 'am' ];
+      return [ 'lina', 'kotl', 'pud', 'ld', 'am' ];
     }
     if (game.mode == 'online') {
       picks = game.enemy.picks;

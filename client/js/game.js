@@ -3,7 +3,7 @@ var game = {
   dynamicHost: 'https://foda-app.herokuapp.com/',
   container: $('.game-container'),
   loader: $('<span>').addClass('loader'),
-  message: $('<span>').addClass('message').html('<b>WARNING</b>: This game is in alpha and bugs may (will) happen.'),
+  message: $('<span>').addClass('message'),
   triesCounter: $('<small>').addClass('triescounter'),
   timeToPick: 40,
   timeToPlay: 60,
@@ -42,10 +42,9 @@ var game = {
       game.utils();
       game.events.build();
       game.history.build();
-      game.topbar = $('<div>').addClass('topbar');
       game.sweet = $('.sweet-alert');
+      game.topbar = $('<div>').addClass('topbar');
       game.topbar.append(game.loader, game.message, game.triesCounter);
-      game.container.append(game.topbar);
       game.states.changeTo('loading');
     } else
       game.states.changeTo('unsupported');

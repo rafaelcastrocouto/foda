@@ -227,8 +227,5 @@ game.enemy = {
   },
   cardsInHand: function () {
     return game.enemy.skills.hand.children().length;
-  },
-  maxSkillCards: function () {
-    return game.enemy.maxCards;
   }
 };

@@ -430,7 +430,7 @@ game.card = {
   },
   projectile: function () {
     var p = this.offset();
-    game.projectile.css({'top': p.top - 80, 'left': p.left - 30});
+    game.projectile.css({'top': p.top - 40, 'left': p.left - 20});
   },
   damage: function (damage, target, type) {
     var source = this, evt, x, y, position, spot, resistance, armor, hp, finalDamage = damage;

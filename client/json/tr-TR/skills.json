@@ -18,7 +18,7 @@
     },
     "stun": {
       "name": "Fireball",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer", "Bedava"],
@@ -74,7 +74,7 @@
     },
     "blink": {
       "name": "Blink",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer", "Bedava"],
@@ -146,7 +146,7 @@
     },
     "freeze": {
       "name": "Ice Prison",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Light Ball",
       "type": "Kanal",
-      "channel": 8,
+      "channel": 6,
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer"],
@@ -210,7 +210,7 @@
     },
     "leak": {
       "name": "Mana Curse",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
@@ -257,7 +257,7 @@
       "cast range": "Menzilli",
       "highlight": "out",
       "cards": 1,
-      "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar",
+      "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar 80%",
       "buff": {
         "duration": 4,
         "miss": 80,
@@ -322,7 +322,7 @@
     },
     "bearreturn": {
       "name": "Return",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sol",
       "deck": "Geçici",
       "targets": ["Yer", "Bedava"],
@@ -332,7 +332,7 @@
     },
     "rabid": {
       "name": "Bear Fury",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
@@ -375,7 +375,7 @@
     },
     "cry": {
       "name": "Battle Roar",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Geçici",
       "targets": ["AynÄ"],
@@ -410,7 +410,7 @@
     },
     "burn": {
       "name": "Mind Burn",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
@@ -422,7 +422,7 @@
     },
     "spike": {
       "name": "Carapace",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
@@ -439,7 +439,7 @@
     },
     "ult": {
       "name": "Vengeance",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
@@ -458,7 +458,7 @@
   "pud": {
     "hook": {
       "name": "Meat Hook",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer"],
@@ -544,7 +544,7 @@
   "wk": {
     "stun": {
       "name": "Fire Blast",
-      "type": "Anlık",
+      "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],

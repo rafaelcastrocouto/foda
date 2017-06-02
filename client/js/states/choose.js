@@ -210,7 +210,7 @@ game.states.choose = {
   clear: function () {
     setTimeout(function () {
       $('.slot .card.skills').appendTo(game.library.skills);
-      $('.pickbox .card').show().removeClass('hidden');
+      $('.pickbox .card').removeClass('hidden');
       $('.slot').addClass('available').show();
       this.mydeck.attr('disabled', false);
       this.randombt.attr('disabled', false);

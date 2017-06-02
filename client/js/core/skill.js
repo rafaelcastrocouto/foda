@@ -12,9 +12,6 @@ game.skill = {
     });
   },
   build: function (side, single) {
-    game.skill.calcMana(side);
-    game[side].maxCards = Math.round(game[side].mana / 2);
-    game[side].cardsPerTurn = Math.round(game[side].mana / 5);
     game[side].skills = {};
     game[side].skills.hand = $('<div>').appendTo(game.states.table[side]).addClass('deck skills hand');
     game[side].skills.sidehand = $('<div>').appendTo(game.states.table[side]).addClass('deck skills sidehand');
@@ -45,12 +42,12 @@ game.skill = {
     $(game[side].picks).each(function (i, name) { 
       game[side].mana += game.data.heroes[name].mana;
     });
+    game[side].maxCards = Math.round(game[side].mana / 2);
+    game[side].cardsPerTurn = Math.round(game[side].mana / 5);
   },
   canCast: function (skill) {
-    var c = !this.hasClasses('dead done stunned silenced hexed disabled sleeping cycloned taunted');
-    if ( skill.hasClass('am-blink') && this.hasClass('rooted') ) {
-      c = false;
-    }
+    var c = !this.hasClasses('dead stunned silenced hexed disabled sleeping cycloned taunted');
+    if ( skill.hasClass('am-blink') && this.hasClass('rooted') ) c = false;
     return c;
   },
   cast: function (skill, target) { //console.trace('cast')

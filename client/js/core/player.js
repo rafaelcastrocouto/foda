@@ -127,13 +127,10 @@ game.player = {
       hero = skill.data('hero'),
       skillid = skill.data('skill');
     if (game.isPlayerTurn() &&
-        hero && skillid && from && to &&
-        !source.hasClass('done')) {
+        hero && skillid && from && to) {
       source.cast(skill, to);
       if (skill.data('targets').indexOf(game.data.ui.summon) >= 0) {
         target.addClass('done').removeClass('draggable');
-      } else if (skill.data('type') !== game.data.ui.instant) {
-        source.addClass('done').removeClass('draggable');
       }
       if (game.mode == 'online') game.currentMoves.push('C:' + from + ':' + to + ':' + skillid + ':' + hero);
       game.states.table.animateCast(skill, to, event);
@@ -167,8 +164,5 @@ game.player = {
   },
   cardsInHand: function () {
     return game.player.skills.hand.children().length;
-  },
-  maxSkillCards: function () {
-    return game.player.maxCards;
   }
 };

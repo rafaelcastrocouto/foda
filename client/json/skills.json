@@ -18,7 +18,7 @@
     },
     "stun": {
       "name": "Fireball",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Self"],
@@ -74,7 +74,7 @@
     },
     "blink": {
       "name": "Blink",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Free"],
@@ -146,7 +146,7 @@
     },
     "freeze": {
       "name": "Ice Prison",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Light Ball",
       "type": "Channel",
-      "channel": 8,
+      "channel": 6,
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot"],
@@ -210,7 +210,7 @@
     },
     "leak": {
       "name": "Mana Curse",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
@@ -257,7 +257,7 @@
       "cast range": "Ranged",
       "highlight": "out",
       "cards": 1,
-      "description": "Knock back and blind enemies, causing them to miss attacks",
+      "description": "Knock back and blind enemies, causing them to miss 80% attacks",
       "buff": {
         "duration": 4,
         "miss": 80,
@@ -322,7 +322,7 @@
     },
     "bearreturn": {
       "name": "Return",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Left",
       "deck": "Temporary",
       "targets": ["Spot", "Free"],
@@ -332,7 +332,7 @@
     },
     "rabid": {
       "name": "Bear Fury",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
@@ -375,7 +375,7 @@
     },
     "cry": {
       "name": "Battle Roar",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Temporary",
       "targets": ["Self"],
@@ -410,7 +410,7 @@
     },
     "burn": {
       "name": "Mind Burn",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
@@ -422,7 +422,7 @@
     },
     "spike": {
       "name": "Carapace",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
@@ -439,7 +439,7 @@
     },
     "ult": {
       "name": "Vengeance",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
@@ -458,7 +458,7 @@
   "pud": {
     "hook": {
       "name": "Meat Hook",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot"],
@@ -544,7 +544,7 @@
   "wk": {
     "stun": {
       "name": "Fire Blast",
-      "type": "Instant",
+      "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],

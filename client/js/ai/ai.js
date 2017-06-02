@@ -63,7 +63,7 @@ game.ai = {
         //per hero defend
         if (card.hasClass('heroes')) {
           var hero = card.data('hero');
-          game.heroesAI[hero].defend(card);
+          if (game.heroesAI[hero]) game.heroesAI[hero].defend(card);
         }
       });
       // add per hero data and strats
@@ -279,8 +279,10 @@ game.ai = {
       //per hero play
       if (card.hasClass('heroes')) {
         var hero = card.data('hero');
-        cardData.strats[game.heroesAI[hero].move.default] += 8;
-        game.heroesAI[hero].play(card, cardData);
+        if (game.heroesAI[hero] && cardData.strats[game.heroesAI[hero].move.default]) {
+          cardData.strats[game.heroesAI[hero].move.default] += 8;
+        }
+        if (game.heroesAI[hero]) game.heroesAI[hero].play(card, cardData);
       }
       card.data('ai', cardData);
     });

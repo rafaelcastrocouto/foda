@@ -16,6 +16,7 @@
       "hp": 16,
       "damage": 6,
       "armor": 1,
+      "mana": 4,
       "resistance": 2
     },
     "catapult": {

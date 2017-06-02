@@ -47,10 +47,10 @@ game.skills.kotl = {
         game.skills.kotl.illuminate.release(ghost.data('skill'), ghost);
       }
     },
-    release: function (skill, source) {
+    release: function (skill, source) { 
       var kotl = source.data('source') || source;
       var target = source.data('illuminate-target');
-      var time = game.player.turn - source.data('illuminate');
+      var time = game.player.turn - source.data('illuminate') + 1;
       var damage = skill.data('damage');
       var range = skill.data('aoe range');
       var width = skill.data('aoe width');
@@ -147,21 +147,23 @@ game.skills.kotl = {
     cast: function (skill, source, target) {
     var side = source.side();
     var opponent = game.opponent(side);
-      target.inCross(1, 0, function (spot, dir) {
-        var card = $('.card.'+opponent, spot);
-        if (card.length && !card.hasClasses('tower ghost')) {
-          var destiny = card.getDirSpot(dir);
-          if (destiny && destiny.hasClass('free')) {
-            card.place(destiny);
-            source.addBuff(card, skill);
-            card.on('attack.kotl-blind', this.attack);
-          }
+    source.addBuff(target, skill);
+    target.on('attack.kotl-blind', this.attack);
+    target.inCross(1, 0, function (spot, dir) {
+      var card = $('.card.'+opponent, spot);
+      if (card.length && !card.hasClasses('tower ghost')) {
+        source.addBuff(card, skill);
+        card.on('attack.kotl-blind', this.attack);
+        var destiny = card.getDirSpot(dir);
+        if (destiny && destiny.hasClass('free')) {
+          card.place(destiny);
         }
-      });
+      }
+    });
     },
     attack: function (event, eventdata) {
       var source = eventdata.source;
-      var buff = source.getBuff('wk-crit');
+      var buff = source.getBuff('kotl-blind');
       var misschance = buff.data('miss') / 100;
       if (game.random() < chance) {
         source.data('miss-attack', true);

@@ -15,7 +15,7 @@ game.skills.pud = {
   },
   rot: {
     toggle: function (skill, source) {
-      if(skill.hasClass('on')) { //turn off
+      if (skill.hasClass('on')) { //turn off
         skill.removeClass('on');
         source.off('turnend.rot');
         source.data('pud-rot', null);

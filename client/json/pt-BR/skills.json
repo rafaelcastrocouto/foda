@@ -2,7 +2,7 @@
   "lina": {
     "fire": {
       "name": "Chamas",
-      "type": "Activa",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local"],
@@ -18,7 +18,7 @@
     },
     "stun": {
       "name": "Bola de Fogo",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local", "Próprio"],
@@ -46,7 +46,7 @@
     },
     "ult": {
       "name": "Zap",
-      "type": "Activa",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
@@ -74,7 +74,7 @@
     },
     "blink": {
       "name": "Blink",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local", "Livre"],
@@ -146,7 +146,7 @@
     },
     "freeze": {
       "name": "Prisão de Gelo",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Bola de Luz",
       "type": "Canalização",
-      "channel": 8,
+      "channel": 6,
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local"],
@@ -210,7 +210,7 @@
     },
     "leak": {
       "name": "Maldição de Mana",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
@@ -257,7 +257,7 @@
       "cast range": "Distante",
       "highlight": "out",
       "cards": 1,
-      "description": "Uma luz cegante arremessa as unidades inimigas, fazendo com que errem ataques",
+      "description": "Uma luz cegante arremessa as unidades inimigas, fazendo com que errem 80% dos ataques",
       "buff": {
         "duration": 4,
         "miss": 80,
@@ -322,7 +322,7 @@
     },
     "bearreturn": {
       "name": "Junto",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Esquerda",
       "deck": "Temporária",
       "targets": ["Local", "Livre"],
@@ -332,7 +332,7 @@
     },
     "rabid": {
       "name": "Fúria de Urso",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
@@ -375,7 +375,7 @@
     },
     "cry": {
       "name": "Rugido de Guerra",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Temporária",
       "targets": ["Próprio"],
@@ -410,7 +410,7 @@
     },
     "burn": {
       "name": "Queima Mente",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
@@ -422,7 +422,7 @@
     },
     "spike": {
       "name": "Carapaça",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
@@ -439,7 +439,7 @@
     },
     "ult": {
       "name": "Vingança",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
@@ -458,7 +458,7 @@
   "pud": {
     "hook": {
       "name": "Gancho de Carne",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local"],
@@ -544,7 +544,7 @@
   "wk": {
     "stun": {
       "name": "Golpe de Fogo",
-      "type": "Instantânea",
+      "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],

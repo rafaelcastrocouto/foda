@@ -30,18 +30,18 @@ game.highlight = {
           }
         }
       }
-      if (game.selectedCard.hasClass('skills') && !game.selectedCard.hasClass('done')) {
+      if (game.selectedCard.hasClass('skills')) {
+        game.selectedCard.highlightSource();
+        game.selectedCard.strokeSkill();
+        if (game.isPlayerTurn()) {
+          game.selectedCard.highlightArrows();
+          game.selectedCard.highlightTargets(event);
+        }
         if (game.selectedCard.closest('.hand').length &&
             (game.mode != 'tutorial' || game.mode != 'library') &&
             game.isPlayerTurn()) {
           game.states.table.discard.attr('disabled', false);
         }
-        game.selectedCard.highlightSource();
-        if (!game.selectedCard.hasClasses('channel-on on') && game.isPlayerTurn()) {
-          game.selectedCard.strokeSkill();
-          game.selectedCard.highlightArrows();
-        }
-        if (game.isPlayerTurn()) game.selectedCard.highlightTargets(event);
       }
       if (game.selectedCard.hasClass('towers')) {
         game.selectedCard.strokeAttack();
@@ -78,9 +78,8 @@ game.highlight = {
           game.highlight.passive(source);
         } else if (skill.data('type') === game.data.ui.toggle) {
           game.highlight.toggle(skill, source);
-        } else if (skill.data('type') === game.data.ui.active || 
-                   skill.data('type') === game.data.ui.channel ||
-                   skill.data('type') === game.data.ui.instant) {
+        } else if (skill.data('type') === game.data.ui.active ||
+                   skill.data('type') === game.data.ui.channel) {
           game.highlight.active(event, source, skill);
         }
         if (skill.data('targets').indexOf(game.data.ui.summon) > 0) {
@@ -92,6 +91,26 @@ game.highlight = {
       }
     }
     return skill;
+  },
+  active: function (event, source, skill) {
+    var targets = skill.data('targets');
+    if (source.canCast(skill)) {
+      if (skill.hasClasses('channel-on on')) game.highlight.channelStop(event, skill, source);
+      else {
+        if (targets.indexOf(game.data.ui.self) >= 0) game.highlight.self(source);
+        if (targets.indexOf(game.data.ui.ally) >= 0) game.highlight.ally(source, skill);
+        if (targets.indexOf(game.data.ui.enemy) >= 0) game.highlight.enemy(source, skill);
+        if (targets.indexOf(game.data.ui.sumonner) >= 0) game.highlight.summoner(source, skill);
+        if (targets.indexOf(game.data.ui.spot) >= 0) {
+          if (targets.indexOf(game.data.ui.free) >= 0) game.highlight.freeSpots(source, skill);
+          else {
+            var aoe = skill.data('aoe');
+            if (aoe === game.data.ui.radial) game.highlight.radial(source, skill);
+            if (aoe === game.data.ui.linear) game.highlight.linear(source, skill);
+          }
+        }
+      }
+    }
   },
   passive: function (source) {
     if (!source.hasClass('dead')) {
@@ -169,26 +188,6 @@ game.highlight = {
       } else neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
     });
   },
-  active: function (event, source, skill) {
-    var targets = skill.data('targets');
-    if (source.canCast(skill)) {
-      if (skill.hasClasses('channel-on on')) game.highlight.channelStop(event, skill, source);
-      else {
-        if (targets.indexOf(game.data.ui.self) >= 0) game.highlight.self(source);
-        if (targets.indexOf(game.data.ui.ally) >= 0) game.highlight.ally(source, skill);
-        if (targets.indexOf(game.data.ui.enemy) >= 0) game.highlight.enemy(source, skill);
-        if (targets.indexOf(game.data.ui.sumonner) >= 0) game.highlight.summoner(source, skill);
-        if (targets.indexOf(game.data.ui.spot) >= 0) {
-          if (targets.indexOf(game.data.ui.free) >= 0) game.highlight.freeSpots(source, skill);
-          else {
-            var aoe = skill.data('aoe');
-            if (aoe === game.data.ui.radial) game.highlight.radial(source, skill);
-            if (aoe === game.data.ui.linear) game.highlight.linear(source, skill);
-          }
-        }
-      }
-    }
-  },
   move: function () {
     var card = this, speed;
     if (card.hasClass('player') && card.hasClasses('units heroes') && card.canMove()) {
@@ -227,8 +226,7 @@ game.highlight = {
     var skill = this,
       hero = skill.data('hero'),
       source = $('.map .source');
-    if (hero && 
-        !source.hasClasses('dead done stunned')) {
+    if (hero) {
       game.skill.castsource = source;
       game.skill.castrange = skill.data('cast range') || skill.data('stroke range');
       if (skill.data('aoe')) {
@@ -292,7 +290,7 @@ game.highlight = {
     }
   },
   possible: function (unit) {
-    return (unit && game.map.el.has(unit) && !unit.hasClass('done'));
+    return (unit && game.map.el.has(unit));
   },
   highlightArrows: function (spot) {
     var skill = this,
