@@ -11,9 +11,9 @@
       "cast width": 0,
       "aoe width": 1,
       "aoe range": 3,
-      "damage": 14,
+      "damage": 12,
       "damage type": "Magical",
-      "cards": 5,
+      "cards": 3,
       "description": "A column of flames damages enemies in a line"
     },
     "stun": {
@@ -28,7 +28,7 @@
       "damage": 10,
       "stun": 2,
       "damage type": "Magical",
-      "cards": 5,
+      "cards": 3,
       "description": "A ball of fire stuns and damages enemies"
     },
     "passive": {
@@ -79,7 +79,7 @@
       "deck": "Buy",
       "targets": ["Spot", "Free"],
       "cast range": "Long",
-      "cards": 5,
+      "cards": 3,
       "description": "Teleport Magino to the target spot"
     },
     "shield": {
@@ -106,7 +106,7 @@
       "aoe range": "Melee",
       "damage": 12,
       "damage type": "Magical",
-      "cards": 1,
+      "cards": 2,
       "description": "Damage area over target with bonus damage equal the number of skill cards the enemy could have in his right hand. Interrupts target channel"
     }
   },
@@ -121,9 +121,9 @@
       "cast range": "Ranged",
       "aoe": "Radial",
       "aoe range": "Melee",
-      "damage": 12,
+      "damage": 10,
       "damage type": "Magical",
-      "cards": 5,
+      "cards": 3,
       "description": "A burst of damaging frost that slows enemies in the target area",
       "buff": {
         "speed slow": 1,
@@ -151,11 +151,11 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "cast range": "Ranged",
-      "cards": 5,
+      "cards": 3,
       "description": "Encases an enemy unit in ice, prohibiting movement and attack, while dealing damage over time. Interrupts target channel",
       "buff": {
         "duration": 3,
-        "dot": 6,
+        "dot": 4,
         "damage type": "Magical",
         "description": "Ice Prison: disarmed, rooted and receiving damage over time"
       }
@@ -215,7 +215,7 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "cast range": "Long",
-      "cards": 4,
+      "cards": 1,
       "description": "Forces a right hand target skill discard on every move. Stuns if target has no more right hand skill cards",
       "stun": 2,
       "buff": {
@@ -229,7 +229,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 4,
+      "cards": 3,
       "bonus cards": 3,
       "description": "Gives the player 3 skill cards"
     },
@@ -336,7 +336,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 4,
+      "cards": 2,
       "description": "Increases the attack and movement speed of Bear Druid and the Spirit Bear",
       "buff": {
         "duration": 3,
@@ -356,7 +356,7 @@
       "aoe range": "Melee",
       "stroke range": "Melee",
       "highlight": "top",
-      "cards": 3,
+      "cards": 2,
       "description": "Roars causing enemies to flee in terror. Unit retreats one spot if the position is free. Interrupts targets channel"
     },
     "ult": {
@@ -402,9 +402,9 @@
       "aoe range": 3,
       "cast range": 1,
       "cast width": 0,
-      "cards": 4,
+      "cards": 2,
       "damage type": "Magical",
-      "damage": 13,
+      "damage": 12,
       "stun": 2,
       "description": "Rock spikes burst along a straight path, hitted enemies are stunned and take damage"
     },
@@ -417,7 +417,7 @@
       "cast range": "Ranged",
       "multiplier": 4,
       "damage type": "Magical",
-      "cards": 4,
+      "cards": 2,
       "description": "Damages an enemy unit by 4X it's mana and makes enemy player lose a card of that hero"
     },
     "spike": {
@@ -427,7 +427,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "damage type": "Pure",
-      "cards": 3,
+      "cards": 2,
       "stun": 3,
       "description": "Bonus armor, bonus resistance and reflects damage received, while stunning the source of damage",
       "buff": {
@@ -470,7 +470,7 @@
       "damage": 18,
       "highlight": "in",
       "damage type": "Pure",
-      "cards": 4,
+      "cards": 2,
       "description": "Launches a bloody hook that will snag the first unit it encounters, dragging the unit and dealing damage if enemy. Interrupts enemy channel"
     },
     "rot": {
@@ -549,11 +549,11 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "cast range": "Short",
-      "damage": 10,
+      "damage": 12,
       "damage type": "Magical",
       "stun": 2,
-      "cards": 5,
-      "description": "Damage and stun a target then slows and deals over time",
+      "cards": 3,
+      "description": "Damage and stun a target then slows and deals 6 damage over 3 turns",
       "buff": {
         "damage type": "Magical",
         "speed slow": 1,

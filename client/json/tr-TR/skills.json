@@ -11,9 +11,9 @@
       "cast width": 0,
       "aoe width": 1,
       "aoe range": 3,
-      "damage": 14,
+      "damage": 12,
       "damage type": "Büyü",
-      "cards": 5,
+      "cards": 3,
       "description": "Ateşten oluşan bir sütun düşmanları bir çizgide hasara uğratır"
     },
     "stun": {
@@ -28,7 +28,7 @@
       "damage": 10,
       "stun": 2,
       "damage type": "Büyü",
-      "cards": 5,
+      "cards": 3,
       "description": "Ateş topu düşmanları şaşırtıyor ve düşmanlarına zarar veriyor"
     },
     "passive": {
@@ -79,7 +79,7 @@
       "deck": "Satın Al",
       "targets": ["Yer", "Bedava"],
       "cast range": "Uzun",
-      "cards": 5,
+      "cards": 3,
       "description": "Hedeflenen noktaya ışınlanır"
     },
     "shield": {
@@ -106,7 +106,7 @@
       "aoe range": "Dövüş",
       "damage": 12,
       "damage type": "Büyü",
-      "cards": 1,
+      "cards": 2,
       "description": "Hedef üzerinde hasar alanı. Hasar bonus düşman sağ elinde olurdu beceri kart sayısını eşit. Hedef kanal Kesmeler"
     }
   },
@@ -121,9 +121,9 @@
       "cast range": "Menzilli",
       "aoe": "Radyal",
       "aoe range": "Dövüş",
-      "damage": 12,
+      "damage": 10,
       "damage type": "Büyü",
-      "cards": 5,
+      "cards": 3,
       "description": "Hedef alınan düşmanı yavaşlatır ve hasar almasına yol açar",
       "buff": {
         "speed slow": 1,
@@ -151,11 +151,11 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "cast range": "Menzilli",
-      "cards": 5,
+      "cards": 3,
       "description": "Zamanla çevresindekı düşmanlara hasar veren bir buz ile saldırır ve düşman yavaşlar",
       "buff": {
         "duration": 3,
-        "dot": 6,
+        "dot": 4,
         "damage type": "Büyü",
         "description": "Çevresinde bulunan düşmanlara dondurulmuş buz ile hasar verir ve yavaşlatır"
       }
@@ -215,7 +215,7 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "cast range": "Uzun",
-      "cards": 4,
+      "cards": 1,
       "description": "Bu kahraman artık kart yoksa her hareket bir beceri kart kaybı kullanarak bir hedef kartı açar",
       "stun": 2,
       "buff": {
@@ -229,7 +229,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 4,
+      "cards": 3,
       "bonus cards": 3,
       "description": "Oyuncuya 3 beceri kartı verir"
     },
@@ -402,9 +402,9 @@
       "aoe range": 3,
       "cast range": 1,
       "cast width": 0,
-      "cards": 4,
+      "cards": 2,
       "damage type": "Büyü",
-      "damage": 13,
+      "damage": 12,
       "stun": 2,
       "description": "Sivri bir kaya ile düşmana yerden patlama verir, düşman uyur ve hasar alır"
     },
@@ -417,7 +417,7 @@
       "cast range": "Menzilli",
       "multiplier": 4,
       "damage type": "Büyü",
-      "cards": 4,
+      "cards": 2,
       "description": "Kalan mana 4X çarpanı ile düşmanın manasını yakar ve düşman kart kaybesine yol açar"
     },
     "spike": {
@@ -427,7 +427,7 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "damage type": "Saf",
-      "cards": 3,
+      "cards": 2,
       "stun": 3,
       "description": "Bonus zırh, ikramiye direnci. Alınan hasarı yansıtır ve kaynağını sersemletir",
       "buff": {
@@ -470,7 +470,7 @@
       "damage": 18,
       "highlight": "in",
       "damage type": "Saf",
-      "cards": 4,
+      "cards": 2,
       "description": "Butcher düşman veya dost birimi yanına çeker. Çekilen birim dost ise hasar vermez düşman ise belli bir hasara urar"
     },
     "rot": {
@@ -549,10 +549,10 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "cast range": "Kısa",
-      "damage": 10,
+      "damage": 12,
       "damage type": "Büyü",
       "stun": 2,
-      "cards": 5,
+      "cards": 3,
       "description": "Hasar ve sonra yavaşlatır bir hedef şaşırtmaya ve zamanla fırsatlar",
       "buff": {
         "damage type": "Büyü",
@@ -570,7 +570,7 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Düşmana her saldırıda çevresindekı birimlerde saldırdıgında her saldırıda can kazanır",
+      "description": "Her saldırı düşman ömrünün% 30'unu bozar",
       "buff": {
         "percentage": 30,
         "description": "Her saldırıda canın artar"
@@ -583,7 +583,7 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Dead King her saldırıda belli bir şansı olacak ve düşmana kritik hasar vericektir.",
+      "description": "Dead King saldırıları, kritik hasar bonusuna% 15 şans verecek",
       "buff": {
         "chance": 15,
         "percentage": 300,

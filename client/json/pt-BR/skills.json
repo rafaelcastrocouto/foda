@@ -11,9 +11,9 @@
       "cast width": 0,
       "aoe width": 1,
       "aoe range": 3,
-      "damage": 14,
+      "damage": 12,
       "damage type": "Mágico",
-      "cards": 5,
+      "cards": 3,
       "description": "Uma coluna de fogo causa dano em linha"
     },
     "stun": {
@@ -28,7 +28,7 @@
       "damage": 10,
       "stun": 2,
       "damage type": "Mágico",
-      "cards": 5,
+      "cards": 3,
       "description": "Uma bola de fogo atordoa e causa dano em área"
     },
     "passive": {
@@ -79,7 +79,7 @@
       "deck": "Comprar",
       "targets": ["Local", "Livre"],
       "cast range": "Longe",
-      "cards": 5,
+      "cards": 3,
       "description": "Teleporta para o destino imediatamente"
     },
     "shield": {
@@ -106,7 +106,7 @@
       "aoe range": "Perto",
       "damage": 4,
       "damage type": "Mágico",
-      "cards": 1,
+      "cards": 2,
       "description": "Causa dano em área na posição de uma unidade inimiga. O bonus de dano é igual ao número de cartas que o jogador poderia ter em sua mão direita (Max-Hand/2)"
     }
   },
@@ -121,9 +121,9 @@
       "cast range": "Distante",
       "aoe": "Radial",
       "aoe range": "Perto",
-      "damage": 12,
+      "damage": 10,
       "damage type": "Mágico",
-      "cards": 5,
+      "cards": 3,
       "description": "Uma explosão de gelo que causa dano em area e diminui a velocidade dos inimigos",
       "buff": {
         "speed slow": 1,
@@ -151,11 +151,11 @@
       "deck": "Comprar",
       "targets": ["Inimigos"],
       "cast range": "Distante",
-      "cards": 5,
+      "cards": 3,
       "description": "Congela uma unidade inimiga (disarma e bloqueia o movimento), causa dano por turno e interrompe canalização",
       "buff": {
         "duration": 3,
-        "dot": 6,
+        "dot": 4,
         "damage type": "Mágico",
         "description": "Congelado (disarmado e sem movimento) e recebendo dano por turno"
       }
@@ -215,7 +215,7 @@
       "deck": "Comprar",
       "targets": ["Inimigos"],
       "cast range": "Longe",
-      "cards": 4,
+      "cards": 1,
       "description": "Amaldiçoa uma unidade inimiga obrigando o inimigo a descartar uma carta de habilidade (direita) a cada movimento, caso o inimigo não tenha mais cartas a unidade é atordoada",
       "stun": 2,
       "buff": {
@@ -229,7 +229,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 4,
+      "cards": 3,
       "bonus cards": 3,
       "description": "O jogador compra 3 cartas de habilidade"
     },
@@ -336,7 +336,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 4,
+      "cards": 2,
       "description": "Aumenta o ataque e o movimento do Druida e do Urso",
       "buff": {
         "duration": 3,
@@ -356,7 +356,7 @@
       "aoe range": "Perto",
       "stroke range": "Perto",
       "highlight": "top",
-      "cards": 3,
+      "cards": 2,
       "description": "Ruge de forma tão feroz que os inimigos fogem de medo. Interrompe canalização"
     },
     "ult": {
@@ -402,9 +402,9 @@
       "aoe range": 3,
       "cast range": 1,
       "cast width": 0,
-      "cards": 4,
+      "cards": 2,
       "damage type": "Mágico",
-      "damage": 13,
+      "damage": 12,
       "stun": 2,
       "description": "Espinhos rochosos emergem da terra, unidades inimigas atingidas são atordoadas e recebem dano"
     },
@@ -417,7 +417,7 @@
       "cast range": "Distante",
       "multiplier": 4,
       "damage type": "Mágico",
-      "cards": 4,
+      "cards": 2,
       "description": "Causa dano igual ao mana do alvo multiplicado por 4 e obriga o oponente a descartar uma habilidade do alvo"
     },
     "spike": {
@@ -427,7 +427,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "damage type": "Puro",
-      "cards": 3,
+      "cards": 2,
       "stun": 3,
       "description": "Bonus de armadura e resistência e reflete e o dano recebido e atordoa o atacante",
       "buff": {
@@ -470,7 +470,7 @@
       "damage": 18,
       "highlight": "in",
       "damage type": "Puro",
-      "cards": 4,
+      "cards": 2,
       "description": "Lança um gancho que agarra a primeira unidade que encontrar, arrastando-a de volta e causando dano caso seja uma unidade inimiga"
     },
     "rot": {
@@ -549,10 +549,10 @@
       "deck": "Comprar",
       "targets": ["Inimigos"],
       "cast range": "Médio",
-      "damage": 10,
+      "damage": 12,
       "damage type": "Mágico",
       "stun": 2,
-      "cards": 5,
+      "cards": 3,
       "description": "Atordoa e depois causa dano por turno à uma unidade inimiga",
       "buff": {
         "damage type": "Mágico",
@@ -570,7 +570,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "Drena uma porcentagem da vida dos inimigos a cada ataque",
+      "description": "Drena a vida dos inimigos a cada ataque",
       "buff": {
         "percentage": 30,
         "description": "Drena vida a cada ataque"

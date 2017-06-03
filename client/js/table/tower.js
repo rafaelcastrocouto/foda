@@ -9,8 +9,8 @@ game.tower = {
       description: game.data.ui.towerDescription,
       armor: 4,
       resistance: 100,
-      damage: 16,
-      hp: 80
+      damage: 15,
+      hp: 100
     });
     tower.on('mousedown touchstart', game.card.select);
     tower.place(pos);

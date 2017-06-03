@@ -4,8 +4,8 @@
       "name": "Melee Creep",
       "attribute": "Creeps",
       "range": "Melee",
-      "hp": 20,
-      "damage": 10,
+      "hp": 30,
+      "damage": 18,
       "armor": 2,
       "resistance": 1
     },
@@ -13,8 +13,8 @@
       "name": "Ranged Creep",
       "attribute": "Creeps",
       "range": "Ranged",
-      "hp": 16,
-      "damage": 6,
+      "hp": 26,
+      "damage": 14,
       "armor": 1,
       "mana": 4,
       "resistance": 2
