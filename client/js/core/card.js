@@ -605,7 +605,7 @@ game.card = {
       this.setCurrentHp(hp);
       this.removeClass('dead');
       this.place(spot);
-      this.trigger('reborn');
+      this.trigger('reborn', {target: this});
       return this;
     }
   }
