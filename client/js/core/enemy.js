@@ -28,34 +28,39 @@ game.enemy = {
     }
     card = availableSkills.randomCard();
     if (card.data('hand') === game.data.ui.right) {
-      if (game.enemy.skills.hand.children().length < game.enemy.maxCards) {
+      if (game.enemy.skills.hand.children().length < 10) {
         card.appendTo(game.enemy.skills.hand);
       }
-    } else {
+    } else if (game.enemy.skills.sidehand.children().length < 10) {
       card.appendTo(game.enemy.skills.sidehand);
     }
   },
   buyHand: function () {
     game.enemy.buyCreeps();
-    for (var i = 0; i < game.enemy.cardsPerTurn; i += 1) {
-      game.enemy.buyCard();
-    }
+    game.enemy.buyCards(game.enemy.cardsPerTurn);
   },
   buyCreeps: function (force) {
+    var ranged, melee, catapult;
     if (game.enemy.turn === 1 || force) {
-      var ranged = game.enemy.unitsDeck.children('.ranged');
+      ranged = game.enemy.unitsDeck.children('.ranged');
       game.units.clone(ranged).addClass('flipped').on('mousedown touchstart', game.card.select).appendTo(game.enemy.skills.sidehand);
       for (var i = 0; i < 3; i += 1) {
-        var melee = game.enemy.unitsDeck.children('.melee');
+        melee = game.enemy.unitsDeck.children('.melee');
         game.units.clone(melee).addClass('flipped').on('mousedown touchstart', game.card.select).appendTo(game.enemy.skills.sidehand);
       }
+    }
+    if (game.enemy.turn === 10 || force) {
+      ranged = game.enemy.unitsDeck.children('.ranged');
+      game.units.clone(ranged).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
+      melee = game.enemy.unitsDeck.children('.melee');
+      game.units.clone(melee).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
+      catapult = game.enemy.unitsDeck.children('.catapult');
+      game.units.clone(catapult).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
     }
   },
   buyCards: function (n) {
     for (var i=0; i<n; i++) {
-      if (game.enemy.skills.hand.children().length < game.enemy.maxCards) {
-        game.enemy.buyCard();
-      }
+      game.enemy.buyCard();
     }
   },
   startMoving: function (cb) {

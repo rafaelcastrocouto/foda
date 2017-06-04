@@ -36,28 +36,35 @@ game.player = {
     }
     card = availableSkills.randomCard();
     if (card.data('hand') === game.data.ui.right) {
-      if (game.player.skills.hand.children().length < game.player.maxCards) {
+      if (game.player.skills.hand.children().length < 10) {
         card.appendTo(game.player.skills.hand);
       }
-    } else {
+    } else if (game.player.skills.sidehand.children().length < 10) {
       card.appendTo(game.player.skills.sidehand);
     }
   },
   buyHand: function () {
     game.player.buyCreeps();
-    for (var i = 0; i < game.player.cardsPerTurn; i += 1) {
-      game.player.buyCard();
-    }
+    game.player.buyCards(game.player.cardsPerTurn);
   },
   buyCreeps: function (force) {
+    var ranged, melee, catapult;
     if (game.player.turn === 1 || force) {
-      var ranged = game.player.unitsDeck.children('.ranged');
+      ranged = game.player.unitsDeck.children('.ranged');
       game.units.clone(ranged).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
-      for (var i = 0; i < 3; i += 1) {
-        var melee = game.player.unitsDeck.children('.melee');
+      for (var i = 0; i < 2; i += 1) {
+        melee = game.player.unitsDeck.children('.melee');
         game.units.clone(melee).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
       }
     }
+    if (game.player.turn === 10 || force) {
+      ranged = game.player.unitsDeck.children('.ranged');
+      game.units.clone(ranged).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
+      melee = game.player.unitsDeck.children('.melee');
+      game.units.clone(melee).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
+      catapult = game.player.unitsDeck.children('.catapult');
+      game.units.clone(catapult).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
+     }
   },
   buyCards: function (n) {
     for (var i=0; i<n; i++) {
