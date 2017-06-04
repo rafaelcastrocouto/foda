@@ -18,7 +18,7 @@ game.chat = {
         game.chat.dis.removeClass('hidden');
       });
     }
-    $('.social').toggleClass('hidden', (event.type === 'mouseenter'));
+    //$('.social').toggleClass('hidden', (event.type === 'mouseenter'));
     game.chat.updating = (event.type === 'mouseenter');
     game.db({ 'get': 'chat' }, function (chat) {
       game.chat.update(chat);

@@ -107,7 +107,7 @@
       "damage": 12,
       "damage type": "Magical",
       "cards": 2,
-      "description": "Damage area over target with bonus damage equal the number of skill cards the enemy could have in his right hand. Interrupts target channel"
+      "description": "Damage area over target with bonus damage equal the target mana. Interrupts target channel"
     }
   },
 

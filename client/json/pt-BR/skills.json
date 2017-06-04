@@ -107,7 +107,7 @@
       "damage": 4,
       "damage type": "Mágico",
       "cards": 2,
-      "description": "Causa dano em área na posição de uma unidade inimiga. O bonus de dano é igual ao número de cartas que o jogador poderia ter em sua mão direita (Max-Hand/2)"
+      "description": "Causa dano em área na posição de uma unidade inimiga. O bonus de dano é igual ao mana do alvo"
     }
   },
 

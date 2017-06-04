@@ -7,6 +7,7 @@
   top: 310px;
   left: 370px;
   transform: translate(-50%, -50%);
+  border-radius: 6px;
 }
 
 .campaign-box.box {
@@ -16,7 +17,7 @@
   width: 270px;
   left: auto;
   top: 40px;
-  height: 420px;
+  height: 400px;
 }
 
 .campaign-img {
@@ -36,7 +37,7 @@
 }
 
 .state .campaign-box p {
-  margin: 10px 0;
+  margin: 6px 0;
   font-size: 14px;
 }
 
@@ -242,6 +243,10 @@
 .campaign .buttonbox {
   position: absolute;
   right: 40px;
-  top: 470px;
+  top: 455px;
   width: 240px;
+}
+
+.campaign .buttonbox .button {
+  margin-bottom: 16px;
 }

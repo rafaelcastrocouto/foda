@@ -165,7 +165,7 @@ game.skills.kotl = {
       var source = eventdata.source;
       var buff = source.getBuff('kotl-blind');
       var misschance = buff.data('miss') / 100;
-      if (game.random() < chance) {
+      if (game.random() < misschance) {
         source.data('miss-attack', true);
       }
     }

@@ -27,9 +27,9 @@
 .choose .pickedbox {
   height: 190px;
   position: absolute;
-  bottom: 20px;
+  bottom: 18px;
   left: 105px;
-  padding: 4px 2px;
+  padding: 6px 10px;
   text-align: center;
   border-radius: 4px;
   background: rgba(0,0,0,0.6);
@@ -46,7 +46,7 @@
   float: left;
   width: 100px;
   height: 150px;
-  margin: 4px;
+  margin: 4px 2px;
   background: rgba(255,255,255,0.08);
   cursor: pointer;
 }
@@ -54,6 +54,7 @@
 .library .choose .slot {
   width: 120px;
   height: 180px;
+  margin: 4px 5px;
 }
 
 .choose .slot:hover, .choose .slot.drop {
@@ -76,12 +77,12 @@
 .choose .buttonbox {
   position: absolute;
   right: 100px;
-  top: 400px;
+  top: 390px;
   width: 220px;
 }
 
 .choose .buttonbox .button {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .choose .buttonbox .button.playing {

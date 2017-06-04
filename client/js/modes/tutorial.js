@@ -110,7 +110,7 @@ game.tutorial = {
       if (game.tutorial.lesson === 'Passive')   game.tutorial.selectedPassive();
       if (game.tutorial.lesson === 'Passive' ||
           game.tutorial.lesson === 'Toggle'  ||
-          game.tutorial.lesson === 'Instant' ||
+          game.tutorial.lesson === 'Channel' ||
           game.tutorial.lesson === 'Cast')      game.tutorial.sourceBlink(data);
     }
     return card;
@@ -180,7 +180,7 @@ game.tutorial = {
     game.turn.time.text(game.data.ui.time + ': 1:30 ' + game.data.ui.night);
     game.turn.msg.text(game.data.ui.turns + ': 1/1 (2)');    
     $('.blink').removeClass('blink');
-    game.message.addClass('blink');
+    //game.message.addClass('blink');
     if (!game.tutorial.waited) game.tutorial.moveCountValue = 4;
     else game.tutorial.moveCountValue = 2;
     game.tutorial.axebaloon.hide();
@@ -193,34 +193,32 @@ game.tutorial = {
     game.timeout(2000, game.tutorial.enemyStart);
   },
   enemyStart: function () {
+    //game.message.removeClass('blink');
     game.turn.el.removeClass('show');
     game.tutorial.axebaloon.fadeIn('slow');
     game.tutorial.message.html(game.data.ui.axedone);
-    game.enemy.unitsDeck.children('.ranged').first().addClass('flipped').appendTo(game.enemy.skills.sidehand);
-    game.enemy.unitsDeck.children('.melee').first().addClass('flipped').clone().addClass('flipped').appendTo(game.enemy.skills.sidehand);
-    game.enemy.unitsDeck.children('.melee').first().appendTo(game.enemy.skills.sidehand);
+    game.enemy.buyCreeps(true);
     $('.enemy .am-blink').first().appendTo(game.enemy.skills.hand);
     $('.enemy .kotl-leak').first().appendTo(game.enemy.skills.hand);
     $('.enemy .kotl-mana').first().appendTo(game.enemy.skills.hand);
     game.timeout(3000, game.tutorial.enemyMove);
   },
   enemyMove: function () {
-    game.turn.msg.removeClass('blink');
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.message.html(game.data.ui.axeenemymove);
     game.message.html(game.data.ui.enemymove);
     game.currentData.moves = [
       'S:'+game.map.mirrorPosition('G3')+':melee',
-      'C:'+game.map.mirrorPosition('C1')+':'+game.map.mirrorPosition('D3')+':blink:am',
-      'M:'+game.map.mirrorPosition('D1')+':'+game.map.mirrorPosition('C2'),
-      'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),
-      'C:'+game.map.mirrorPosition('F1')+':'+game.map.mirrorPosition('F1')+':mana:kotl',
+      'C:'+game.map.mirrorPosition('C1')+':'+game.map.mirrorPosition('D3')+':blink:am'
+      //'M:'+game.map.mirrorPosition('D1')+':'+game.map.mirrorPosition('C2'),
+      //'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),
+      //'C:'+game.map.mirrorPosition('F1')+':'+game.map.mirrorPosition('F1')+':mana:kotl',
     ].join('|');
     game.enemy.startMoving(game.tutorial.endTurn);
   },
   endTurn: function () {
     game.map.el.removeClass('night');
-    game.message.removeClass('blink');
+    //game.message.removeClass('blink');
     game.turn.time.text(game.data.ui.time + ': 1:30 ' + game.data.ui.day);
     $('.spot').removeClass('free');
     game.turn.el.text(game.data.ui.yourturn).addClass('show');
@@ -241,7 +239,7 @@ game.tutorial = {
       var hero = $(card),
           range = hero.data('range');
       hero.around(range, function (spot) {
-        if (spot.find('.card.enemy.heroes').length) {
+        if (spot.find('.card.enemy').length) {
           hero.addClass('blink');
         }
       });
@@ -273,7 +271,7 @@ game.tutorial = {
     game.tutorial.message.html(game.data.ui.axeskillselect);
   },
   sourceBlink: function (data) { //console.log(data.card)
-    data.card.data('source').addClass('blink');
+    if (data.card.data('source')) data.card.data('source').addClass('blink');
   },
   selectedPassive: function () {
     game.tutorial.axebaloon.hide().fadeIn('slow');
@@ -290,15 +288,14 @@ game.tutorial = {
   },
   toggleOffLesson: function () {
     game.tutorial.lesson = 'ToggleOff';
-    $('.blink').removeClass('blink');
-    $('.map .player.pud').off('toggle.tutorial').on('toggle.tutorialOff',  game.tutorial.instantLesson);
+    $('.map .player.pud').off('toggle.tutorial').on('toggle.tutorialOff',  game.tutorial.castLesson);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.message.html(game.data.ui.axetoggleoff);
     game.timeout(1000, function () {
       $('.map .player.pud').addClass('blink');
       $('.player .skills .pud-rot').select();
     });
-  },
+  },/*
   instantLesson: function () {
     game.tutorial.lesson = 'Instant';
     $('.map .player.pud').off('toggle.tutorialOff'); 
@@ -314,18 +311,14 @@ game.tutorial = {
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.message.html(game.data.ui.axeinstant);
     game.message.text(game.data.ui.yourturncount + ' ' + --game.tutorial.moveCountValue);
-  },
+  },*/
   castLesson: function () {
     game.tutorial.lesson = 'Cast';
     $('.blink').removeClass('blink');
-    var card = $('.player .available.skills .cm-slow'),
-        hero = $('.map .player.cm');
-    if (hero.hasClass('done')) {
-      card = $('.player .available.skills .am-blink');
-      hero = $('.map .player.am');
-    }
+    card = $('.player .available.skills .am-blink');
+    hero = $('.map .player.am');
     card.first().appendTo(game.player.skills.hand).addClass('blink').on('select', game.tutorial.selected);
-    hero.on('cast.tutorial', game.tutorial.casted);
+    hero.on('cast.tutorial', game.tutorial.channelLesson);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.message.text(game.data.ui.yourturncount + ' ' + --game.tutorial.moveCountValue);
     game.tutorial.message.html(game.data.ui.axecast);
@@ -333,9 +326,20 @@ game.tutorial = {
       if (!$('.card', spot).length) $(spot).addClass('free');
     });
   },
+  channelLesson: function () {
+    game.tutorial.lesson = 'Channel';
+    $('.blink').removeClass('blink');
+    var card = $('.player .ult.skills .cm-ult'),
+        hero = $('.map .player.cm');
+    card.first().appendTo(game.player.skills.hand).addClass('blink').on('select', game.tutorial.selected);
+    hero.on('cast.tutorial', game.tutorial.casted);
+    game.tutorial.axebaloon.hide().fadeIn('slow');
+    game.tutorial.message.html(game.data.ui.axechannel);
+    game.message.text(game.data.ui.yourturncount + ' ' + --game.tutorial.moveCountValue);
+  },
   casted: function () {
     game.message.text(game.data.ui.yourturncount + ' ' + --game.tutorial.moveCountValue);
-    game.timeout(2000, game.tutorial.end);
+    game.timeout(3000, game.tutorial.end);
   },
   surrender: function() {
     game.clear();

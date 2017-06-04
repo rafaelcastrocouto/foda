@@ -97,11 +97,11 @@ game.library = {
     });
   },
   action: function () {
-    game.timeout(400, function () {
+    /*game.timeout(400, function () {
       if ( game.turn.noAvailableMoves() ) {
         game.library.endPlayerTurn();
       }
-    });
+    });*/
   },
   skip: function () {
     if ( game.isPlayerTurn() ) {

@@ -78,7 +78,7 @@ game.player = {
       if (game.mode == 'online') game.currentMoves.push('M:' + from + ':' + to);
     }
   },
-  attack: function (event) {
+  attack: function (event) { 
     var target = $(this),
       source = game.selectedCard,
       from = source.getPosition(),

@@ -5,8 +5,8 @@
 .sweet-alert.options {
   font-weight: bold;
   color: white;
-  background: hsla(215, 25%, 7%, 0.95) !important;
-  min-width: 760px;
+  background: rgba(30, 33, 36, 0.9) !important;
+  min-width: 730px;
 }
 
 .sweet-overlay {
@@ -24,6 +24,8 @@
   background: #9dada4;
   box-shadow: 0 4px 0 #888888;
   min-width: 140px;
+  margin-bottom: 0px;
+  margin-top: 40px;
 }
 
 .sweet-container p {

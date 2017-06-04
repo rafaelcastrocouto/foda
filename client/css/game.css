@@ -60,44 +60,9 @@ noscript {
   display: block;
 }
 
-.greenlight-button, .patreon-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 56px;
-  height: 75px;
-  overflow: hidden;
-  transition: width 0.3s;
-  transform: translateZ(1px) translate(-490px, -275px);
-  z-index: 30;
-}
-.patreon-button {
-  top: 50%;
-  transform: translateZ(1px) translate(-490px, -200px);
-}
-
-.greenlight-button:hover, .patreon-button:hover {
-  width: 442px;
-}
-
-.greenlight-button img, .patreon-button img {
-  position: absolute;
-  top: 17px;
-}
-
-.greenlight-button .greenlight-banner,
-.patreon-button .patreon-banner {
-  top: 0;
-}
-
-.greenlight-banner, .greenlight-button:hover img,
-.patreon-banner, .patreon-button:hover img {
-  opacity: 0;
-}
-
-.greenlight-button:hover .greenlight-banner,
-.patreon-button:hover .patreon-banner {
-  opacity: 1;
+noscript .box {
+  top: 70%;
+  padding: 20px 40px;
 }
 
 .game-container {
@@ -167,6 +132,8 @@ noscript {
   border-radius: 5px;
   background-color: rgba(11, 15, 14, 0.7);
 }
+
+
 
 .box div p {
   display: block;

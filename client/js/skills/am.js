@@ -30,13 +30,10 @@ game.skills.am = {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
       var opponent = source.opponent();
-      var maxCards = game[opponent].maxCards;
-      var cardsInHand = game[opponent].cardsInHand();
       var damage = skill.data('damage');
       var mana = target.data('mana');
-      var damageBonus = (maxCards - cardsInHand);
       target.alliesInRange(range, function (targets) {
-        source.damage(damage + damageBonus, targets, skill.data('damage type'));
+        source.damage(damage + mana, targets, skill.data('damage type'));
       });
       target.stopChanneling();
       game.shake();

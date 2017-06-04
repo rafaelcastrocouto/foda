@@ -43,7 +43,7 @@ game.states.vs = {
       }
     });
     game.skill.calcMana('player');
-    this.playerinfo.text('Buy: '+game.player.cardsPerTurn+' Max: '+game.player.maxCards);
+    this.playerinfo.text('Cards per turn: '+game.player.cardsPerTurn/*+' Max: '+game.player.maxCards*/);
   },
   buildEnemy: function () {
     if (!game.enemy.name) {
@@ -62,7 +62,7 @@ game.states.vs = {
       }
     });
     game.skill.calcMana('enemy');
-    this.enemyinfo.text('Buy: '+game.enemy.cardsPerTurn+' Max: '+game.enemy.maxCards);
+    this.enemyinfo.text('Cards per turn: '+game.enemy.cardsPerTurn/*+' Max: '+game.enemy.maxCards*/);
   },
   playerPicks: function () {
     if (game.mode == 'library') {

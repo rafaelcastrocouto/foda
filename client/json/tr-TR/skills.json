@@ -107,7 +107,7 @@
       "damage": 12,
       "damage type": "Büyü",
       "cards": 2,
-      "description": "Hedef üzerinde hasar alanı. Hasar bonus düşman sağ elinde olurdu beceri kart sayısını eşit. Hedef kanal Kesmeler"
+      "description": "Zarar verici hedef hasar alanı, hedef manaya eşittir. Hedef kanala müdahale eder"
     }
   },
 

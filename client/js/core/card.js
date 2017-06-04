@@ -178,7 +178,7 @@ game.card = {
     var card = this, t, d,
       from = card.getPosition(),
       to = destiny.getPosition();
-    if (destiny.hasClass('free') && from !== to && card.canMove()) {
+    if (destiny.hasClass('free') && from !== to) {
       card.removeClass('draggable').off('mousedown touchstart');
       game.highlight.clearMap();
       card.stopChanneling();
