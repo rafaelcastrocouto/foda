@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Mágico",
-      "cards": 3,
+      "cards": 2,
       "description": "Uma coluna de fogo causa dano em linha"
     },
     "stun": {
@@ -28,7 +28,7 @@
       "damage": 10,
       "stun": 2,
       "damage type": "Mágico",
-      "cards": 3,
+      "cards": 2,
       "description": "Uma bola de fogo atordoa e causa dano em área"
     },
     "passive": {
@@ -106,7 +106,7 @@
       "aoe range": "Perto",
       "damage": 4,
       "damage type": "Mágico",
-      "cards": 2,
+      "cards": 1,
       "description": "Causa dano em área na posição de uma unidade inimiga. O bonus de dano é igual ao mana do alvo"
     }
   },
@@ -123,7 +123,7 @@
       "aoe range": "Perto",
       "damage": 10,
       "damage type": "Mágico",
-      "cards": 3,
+      "cards": 2,
       "description": "Uma explosão de gelo que causa dano em area e diminui a velocidade dos inimigos",
       "buff": {
         "speed slow": 1,
@@ -151,7 +151,7 @@
       "deck": "Comprar",
       "targets": ["Inimigos"],
       "cast range": "Distante",
-      "cards": 3,
+      "cards": 2,
       "description": "Congela uma unidade inimiga (disarma e bloqueia o movimento), causa dano por turno e interrompe canalização",
       "buff": {
         "duration": 3,
@@ -163,21 +163,21 @@
     "ult": {
       "name": "Tempestade de Gelo",
       "type": "Canalização",
-      "channel": 3,
+      "channel": 2,
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
       "aoe": "Radial",
       "aoe range": "Longe",
       "stroke range": "Longe",
-      "damage": 10,
+      "damage": 12,
       "damage type": "Mágico",
       "cards": 1,
       "description": "Canaliza uma tempestade de neve ao seu redor cauzando dano em área",
       "buffs": {
         "ult": {
           "source": {
-            "duration": 3,
+            "duration": 1,
             "description": "Let it go! Let it go!"
           },
           "targets": {
@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Bola de Luz",
       "type": "Canalização",
-      "channel": 6,
+      "channel": 4,
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local"],
@@ -205,7 +205,7 @@
       "aoe range": 4,
       "damage": 4,
       "damage type": "Mágico",
-      "cards": 3,
+      "cards": 2,
       "description": "Canaliza luz causando dano em área"
     },
     "leak": {
@@ -229,7 +229,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 3,
+      "cards": 2,
       "bonus cards": 3,
       "description": "O jogador compra 3 cartas de habilidade"
     },
@@ -336,7 +336,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 2,
+      "cards": 1,
       "description": "Aumenta o ataque e o movimento do Druida e do Urso",
       "buff": {
         "duration": 3,
@@ -356,7 +356,7 @@
       "aoe range": "Perto",
       "stroke range": "Perto",
       "highlight": "top",
-      "cards": 2,
+      "cards": 1,
       "description": "Ruge de forma tão feroz que os inimigos fogem de medo. Interrompe canalização"
     },
     "ult": {
@@ -417,7 +417,7 @@
       "cast range": "Distante",
       "multiplier": 4,
       "damage type": "Mágico",
-      "cards": 2,
+      "cards": 1,
       "description": "Causa dano igual ao mana do alvo multiplicado por 4 e obriga o oponente a descartar uma habilidade do alvo"
     },
     "spike": {
@@ -467,7 +467,7 @@
       "cast width": 0,
       "aoe width": 0,
       "aoe range": 3,
-      "damage": 18,
+      "damage": 14,
       "highlight": "in",
       "damage type": "Puro",
       "cards": 2,
@@ -517,23 +517,23 @@
     "ult": {
       "name": "Carne Fresca",
       "type": "Canalização",
-      "channel": 3,
+      "channel": 2,
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
       "cast range": "Perto",
       "dot": 10,
       "damage type": "Mágico",
-      "cards": 2,
-      "description": "Pudge devora uma unidade inimiga, desativando o alvo e causando dano por turno. Interrompe canalização",
+      "cards": 1,
+      "description": "Pudge devora a vida de uma unidade inimiga, desativando o alvo e causando dano por turno. Interrompe canalização",
       "buffs": {
         "ult": { 
           "source": {
-            "duration": 3,
+            "duration": 1,
             "description": "Desmembrando - Canalizando"
           },
           "target": {
-            "duration": 3,
+            "duration": 1,
             "description": "Desativado e recebendo dano por turno"
           }
         }
@@ -552,7 +552,7 @@
       "damage": 12,
       "damage type": "Mágico",
       "stun": 2,
-      "cards": 3,
+      "cards": 2,
       "description": "Atordoa e depois causa dano por turno à uma unidade inimiga",
       "buff": {
         "damage type": "Mágico",

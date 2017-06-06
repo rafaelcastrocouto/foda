@@ -56,7 +56,7 @@ game.single = {
   },
   countEnd: function (turn) {
     if (turn == 'player-turn') { 
-      game.single.endPlayerTurn();
+       game.single.endPlayerTurn();
     }
 //     if (turn == 'enemy-turn') {
 //       game.loader.addClass('loading');
@@ -73,17 +73,8 @@ game.single = {
       game.tower.attack('enemy');
     });
   },
-  action: function () {
-    game.timeout(400, function () {
-      if (game.turn.noAvailableMoves()) {
-        game.turn.stopCount();
-        game.single.endPlayerTurn();
-      }
-    });
-  },
   skip: function () {
     if ( game.isPlayerTurn() ) {
-      game.turn.stopCount();
       game.single.endPlayerTurn();
     }
   },
@@ -91,7 +82,7 @@ game.single = {
     game.states.table.el.removeClass('turn');
     game.turn.end('player-turn', game.single.beginEnemy);
   },
-  beginEnemy: function () {
+  beginEnemy: function () { 
     game.turn.beginEnemy(function () {
       game.single.startTurn('enemy-turn');
       if (game.enemy.turn === 6) {

@@ -147,8 +147,10 @@ game.skills.kotl = {
     cast: function (skill, source, target) {
     var side = source.side();
     var opponent = game.opponent(side);
-    source.addBuff(target, skill);
-    target.on('attack.kotl-blind', this.attack);
+    if (target.hasClass(opponent)) {
+      source.addBuff(target, skill);
+      target.on('attack.kotl-blind', this.attack);
+    }
     target.inCross(1, 0, function (spot, dir) {
       var card = $('.card.'+opponent, spot);
       if (card.length && !card.hasClasses('tower ghost')) {

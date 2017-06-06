@@ -549,9 +549,11 @@ game.card = {
     this.addClass('dead').removeClass('target done');
     this.unselect();
     var pos = this.getPosition(), deaths,
-      spot = $('#' + pos);
+      spot = $('#' + pos),
+      side = this.side();
     if (!spot.hasClass('cript')) { spot.addClass('free'); }
     if (this.hasClass('heroes')) {
+      game[game.opponent(side)].tower.damage(game.heroDeathDamage, game[side].tower, game.data.ui.pure);
       deaths = this.data('deaths') + 1;
       this.data('deaths', deaths);
       this.find('.deaths').text(deaths);
@@ -570,7 +572,6 @@ game.card = {
         if (game[game.mode].win) game[game.mode].win(); 
       }
     } else if (this.hasClass('units')) {
-      var side = this.side();
       if (evt.source.side() != side) evt.source.damage(game.creepDeathDamage, game[side].tower, game.data.ui.pure);
       this.detach();
     } else { this.detach(); }
@@ -584,7 +585,7 @@ game.card = {
         x = 1;
         y = 4;
         spot = game.map.toPosition(x, y);
-        while (!$('#' + spot).hasClass('free')) {
+        while (!$('#' + spot).hasClass('free') && x <= 5) {
           x += 1;
           spot = game.map.toPosition(x, y);
         }
@@ -592,13 +593,13 @@ game.card = {
         x = 6;
         y = 0;
         spot = game.map.toPosition(x, y);
-        while (!$('#' + spot).hasClass('free')) {
+        while (!$('#' + spot).hasClass('free') && x >= 2) {
           x -= 1;
           spot = game.map.toPosition(x, y);
         }
       }
     }
-    if (spot && spot.length) {  
+    if (spot && spot.length && $('#' + spot).hasClass('free')) {  
       var side = this.side();
       if (!nopenalty) game[game.opponent(side)].tower.damage(game.heroDeathDamage, game[side].tower, game.data.ui.pure);
       this.data('reborn', null);

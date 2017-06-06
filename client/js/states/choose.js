@@ -118,7 +118,8 @@ game.states.choose = {
   savedDeck:  function () {
     if (!$(this).attr('disabled')) {
       $(this).attr('disabled', true);
-      var deck = localStorage.getItem('mydeck').split(',');
+      var deck = localStorage.getItem('mydeck');
+      if (deck) deck = deck.split(',');
       if (deck && deck.length == 5) {
         game.states.choose.remember(deck);
         if (game[game.mode].chooseEnd) {

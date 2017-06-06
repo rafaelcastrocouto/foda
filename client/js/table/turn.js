@@ -71,7 +71,10 @@ game.turn = {
         game.turn.counter -= 1;
         game.turn.timeout = game.timeout(1000, game.turn.count.bind(this, turn, endCallback, countCallback));
       }
-      if (game.turn.counter === 0 && endCallback) game.turn.timeout = game.timeout(1000, function () { endCallback(turn); });
+      if (game.turn.counter === 0 && endCallback) {
+        clearTimeout(game.turn.timeout);
+        game.turn.timeout = game.timeout(1000, function () { endCallback(turn); });
+      }
     }
   },
   stopCount: function () {
@@ -96,7 +99,7 @@ game.turn = {
         game.states.table.el.removeClass('turn');
         game.states.table.skip.attr('disabled', true);
       }
-      if (turn == 'enemy-turn' && game.mode !== 'library') {
+      if (turn == 'enemy-turn' && game.mode !== 'library') { 
         game.turn.el.text(game.data.ui.enemyturn).addClass('show');
         game.timeout(800, function () { game.turn.el.removeClass('show'); });
       }
@@ -108,10 +111,11 @@ game.turn = {
       var duration = hero.data('channeling');
       if (duration) {
         var channel = hero.data('channel');
-        if (duration < channel) hero.trigger('channel', hero.data('channel event')); 
+        hero.trigger('channel', hero.data('channel event')); 
         duration -= 1;
         hero.data('channeling', duration);
-      } else hero.stopChanneling();
+      }
+      if (duration == 1) hero.stopChanneling();
     }
   },
   buffs: function (hero) {

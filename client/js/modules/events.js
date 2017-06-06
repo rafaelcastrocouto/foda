@@ -10,6 +10,7 @@ game.events = {
     game.skill.extendjQuery();
     game.highlight.extendjQuery();
     game.map.extendjQuery();
+    $(window).on('keypress', function (event) { if (event.keyCode == 32) $('.table .skip.button').mouseup(); });
     $(window).on('resize', game.screen.resize);
     $(window).on('beforeunload ', game.events.leave);
     if (game.debug) {

@@ -648,10 +648,17 @@
 .map .card.invisible {
   opacity: 0.7;
 }
+.map .enemyarea .card.player.invisible {
+  opacity: 1;
+}
 
 .map .card.enemy.invisible {
   display: none;
 }
+.map .playerarea .card.enemy.invisible {
+  display: inline-block;
+}
+
 
 .map .card:hover, .map .card.selected, .map .card.source {
   transform: translate3d(-50%, -50%, 30px) rotateX(-10deg);

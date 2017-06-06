@@ -44,6 +44,7 @@ game.states.vs = {
     });
     game.skill.calcMana('player');
     this.playerinfo.text('Cards per turn: '+game.player.cardsPerTurn/*+' Max: '+game.player.maxCards*/);
+    if (game.mode == 'library') this.playerinfo.text('Mana: '+game.player.cardsPerTurn);
   },
   buildEnemy: function () {
     if (!game.enemy.name) {

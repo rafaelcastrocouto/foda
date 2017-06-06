@@ -29,10 +29,18 @@ game.skills.pud = {
         source.addClass('pud-rot');
         source.selfBuff(skill, 'rot-source');
         var range = skill.data('aoe range');
-        source.opponentsInRange(range, function (target) {
-          target.addClass('pud-rot-target');
+        var curse = game.skills.pud.rot.curse.bind({source: source, skill: skill});
+        source.opponentsInRange(range, curse);
+        source.on('move.rot', function (event, eventdata) {
+          source.opponentsInRange(range, curse);
         });
       }
+    },
+    curse: function (target) {
+      var source = this.source,
+          skill = this.skill;
+      target.addClass('pud-rot-target');
+      source.addBuff(target, skill, 'rot-targets');
     },
     turnend: function (event, eventdata) {
       var source = eventdata.target;
@@ -40,13 +48,11 @@ game.skills.pud = {
       var range = skill.data('aoe range');
       var damage = skill.data('damage');
       source.damage(damage, source, skill.data('damage type'));
-      source.opponentsInRange(range, function (target) {
-        target.addClass('pud-rot-target');
-      });
+      var curse = game.skills.pud.rot.curse.bind({source: source, skill: skill});
+      source.opponentsInRange(range, curse);
       $('.pud-rot-target').each(function (i, card) {
         target = $(card);
         source.damage(damage, target, skill.data('damage type'));
-        source.addBuff(target, skill, 'rot-targets');
         target.removeClass('pud-rot-target');
     });
     }
@@ -89,6 +95,7 @@ game.skills.pud = {
       var target = eventData.target;
       var skill = eventData.skill;
       source.damage(skill.data('dot'), target, skill.data('damage type'));
+      source.heal(skill.data('dot'));
       game.audio.play('pud/ult-channel');
     },
     channelend: function (event, eventData) {

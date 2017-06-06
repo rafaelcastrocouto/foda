@@ -67,7 +67,7 @@ game.library = {
     game.enemy.kills = 0;
     game.turn.build(6);
     game.timeout(400, function () {
-      game.skill.build('player', 'single');
+      game.skill.build('player');
       game.skill.build('enemy');
       $('.map .player.card.'+game.library.hero).select();
       game.player.buyCreeps(true);
@@ -83,6 +83,7 @@ game.library = {
   startPlayerTurn: function () {
     game.turn.beginPlayer(function () {
       game.tower.attack('enemy');
+      if (game.player.turn > 1) game.player.buyHand();
     });
   },
   buildHand: function () {

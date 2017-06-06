@@ -156,7 +156,7 @@ game.tutorial = {
     game.tutorial.axe.removeClass('left');
     game.tutorial.axebaloon.hide().delay(800).fadeIn('slow');
     game.tutorial.letter(game.data.ui.axecreep);
-    game.player.buyCreeps('force');
+    game.player.buyCreeps(true);
     $('.player.units').addClass('blink').on('select', game.tutorial.selected);
   },
   selectedCreep: function () {
@@ -209,7 +209,6 @@ game.tutorial = {
     game.tutorial.axe.addClass('left');
     game.message.text(game.data.ui.enemyturn);
     game.loader.addClass('loading');
-    game.turn.el.text(game.data.ui.enemyturn).addClass('show');
     game.states.table.el.removeClass('turn');
     game.map.el.addClass('night');
     game.timeout(2000, game.tutorial.enemyStart);

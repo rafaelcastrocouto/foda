@@ -12,7 +12,7 @@ var game = {
   dayLength: 12,
   deadLength: 5,
   creepDeathDamage: 2,
-  heroDeathDamage: 8,
+  heroDeathDamage: 4,
   width: 9,
   height: 5,
   tries: 0,

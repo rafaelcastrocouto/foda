@@ -8,7 +8,7 @@ game.player = {
         if (game.mode == 'library') {
           var card = deck.data('cards')[0];
           card.addClass('player').on('mousedown touchstart', game.card.select);
-          card.place(game.map.toPosition(3, 4));
+          card.place(game.map.toPosition(4, 3));
           card.on('action', game.library.action).on('death', game.library.action);
         } else {
           var x = 2, y = 4;
@@ -24,14 +24,14 @@ game.player = {
     });
   },
   buyCard: function () {
-    var availableSkills = $('.table .player .available .card'),
+    var availableSkills = $('.table .player .skills.available .card'),
       card,
       heroid,
       hero,
       to,
       skillid;
-    if (availableSkills.length < game.player.cardsPerTurn) {
-      $('.table .player .cemitery .card').appendTo(game.player.skills.deck);
+    if (availableSkills.length < game.player.cardsPerTurn + 1) {
+      $('.table .player .skills.cemitery .card').appendTo(game.player.skills.deck);
       availableSkills = $('.table .player .available .card');
     }
     card = availableSkills.randomCard();
@@ -47,7 +47,7 @@ game.player = {
     game.player.buyCreeps();
     game.player.buyCards(game.player.cardsPerTurn);
   },
-  buyCreeps: function (force) {
+  buyCreeps: function (force, catapultforce) {
     var ranged, melee, catapult;
     if (game.player.turn === 1 || force) {
       ranged = game.player.unitsDeck.children('.ranged');
@@ -57,7 +57,7 @@ game.player = {
         game.units.clone(melee).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
       }
     }
-    if (game.player.turn === 10 || force) {
+    if (game.player.turn === 12 || catapultforce) {
       ranged = game.player.unitsDeck.children('.ranged');
       game.units.clone(ranged).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
       melee = game.player.unitsDeck.children('.melee');

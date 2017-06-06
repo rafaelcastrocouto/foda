@@ -22,7 +22,7 @@ game.enemy = {
       hero,
       to,
       skillid;
-    if (availableSkills.length < game.enemy.cardsPerTurn) {
+    if (availableSkills.length < game.enemy.cardsPerTurn + 1) {
       $('.table .enemy .cemitery .card').appendTo(game.enemy.skills.deck);
       availableSkills = $('.table .enemy .available .card');
     }
@@ -39,7 +39,7 @@ game.enemy = {
     game.enemy.buyCreeps();
     game.enemy.buyCards(game.enemy.cardsPerTurn);
   },
-  buyCreeps: function (force) {
+  buyCreeps: function (force, catapultforce) {
     var ranged, melee, catapult;
     if (game.enemy.turn === 1 || force) {
       ranged = game.enemy.unitsDeck.children('.ranged');
@@ -49,7 +49,7 @@ game.enemy = {
         game.units.clone(melee).addClass('flipped').on('mousedown touchstart', game.card.select).appendTo(game.enemy.skills.sidehand);
       }
     }
-    if (game.enemy.turn === 10 || force) {
+    if (game.enemy.turn === 12 || catapultforce) {
       ranged = game.enemy.unitsDeck.children('.ranged');
       game.units.clone(ranged).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
       melee = game.enemy.unitsDeck.children('.melee');

@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Magical",
-      "cards": 3,
+      "cards": 2,
       "description": "A column of flames damages enemies in a line"
     },
     "stun": {
@@ -28,7 +28,7 @@
       "damage": 10,
       "stun": 2,
       "damage type": "Magical",
-      "cards": 3,
+      "cards": 2,
       "description": "A ball of fire stuns and damages enemies"
     },
     "passive": {
@@ -104,9 +104,9 @@
       "cast range": "Short",
       "aoe": "Radial",
       "aoe range": "Melee",
-      "damage": 12,
+      "damage": 14,
       "damage type": "Magical",
-      "cards": 2,
+      "cards": 1,
       "description": "Damage area over target with bonus damage equal the target mana. Interrupts target channel"
     }
   },
@@ -123,7 +123,7 @@
       "aoe range": "Melee",
       "damage": 10,
       "damage type": "Magical",
-      "cards": 3,
+      "cards": 2,
       "description": "A burst of damaging frost that slows enemies in the target area",
       "buff": {
         "speed slow": 1,
@@ -151,7 +151,7 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "cast range": "Ranged",
-      "cards": 3,
+      "cards": 2,
       "description": "Encases an enemy unit in ice, prohibiting movement and attack, while dealing damage over time. Interrupts target channel",
       "buff": {
         "duration": 3,
@@ -163,21 +163,21 @@
     "ult": {
       "name": "Ice Storm",
       "type": "Channel",
-      "channel": 3,
+      "channel": 2,
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
       "aoe": "Radial",
       "aoe range": "Long",
       "stroke range": "Long",
-      "damage": 10,
+      "damage": 12,
       "damage type": "Magical",
       "cards": 1,
       "description": "Channels a storm of icy explosions that deals damage to enemies around her",
       "buffs": {
         "ult": {
           "source": {
-            "duration": 3,
+            "duration": 1,
             "description": "Let it go! Let it go!"
           },
           "targets": {
@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Light Ball",
       "type": "Channel",
-      "channel": 6,
+      "channel": 4,
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot"],
@@ -205,7 +205,7 @@
       "aoe range": 4,
       "damage": 4,
       "damage type": "Magical",
-      "cards": 3,
+      "cards": 2,
       "description": "Channels light to damage enemies in a line"
     },
     "leak": {
@@ -216,11 +216,11 @@
       "targets": ["Enemy"],
       "cast range": "Long",
       "cards": 1,
-      "description": "Forces a right hand target skill discard on every move. Stuns if target has no more right hand skill cards",
+      "description": "Forces a discard on cast and on every move. Stuns if target has no more skill cards",
       "stun": 2,
       "buff": {
         "duration": 4,
-        "description": "Loses a right hand skill card everytime this unit moves"
+        "description": "Loses a skill card everytime this unit moves"
       }
     },
     "mana": {
@@ -229,7 +229,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 3,
+      "cards": 2,
       "bonus cards": 3,
       "description": "Gives the player 3 skill cards"
     },
@@ -289,7 +289,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Free"],
-      "cards": 2,
+      "cards": 3,
       "cast range": "Melee",
       "hp": 80,
       "range": "Melee",
@@ -336,7 +336,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 2,
+      "cards": 1,
       "description": "Increases the attack and movement speed of Bear Druid and the Spirit Bear",
       "buff": {
         "duration": 3,
@@ -356,7 +356,7 @@
       "aoe range": "Melee",
       "stroke range": "Melee",
       "highlight": "top",
-      "cards": 2,
+      "cards": 1,
       "description": "Roars causing enemies to flee in terror. Unit retreats one spot if the position is free. Interrupts targets channel"
     },
     "ult": {
@@ -417,7 +417,7 @@
       "cast range": "Ranged",
       "multiplier": 4,
       "damage type": "Magical",
-      "cards": 2,
+      "cards": 1,
       "description": "Damages an enemy unit by 4X it's mana and makes enemy player lose a card of that hero"
     },
     "spike": {
@@ -467,7 +467,7 @@
       "cast width": 0,
       "aoe width": 0,
       "aoe range": 3,
-      "damage": 18,
+      "damage": 14,
       "highlight": "in",
       "damage type": "Pure",
       "cards": 2,
@@ -517,23 +517,23 @@
     "ult": {
       "name": "Fresh Meat",
       "type": "Channel",
-      "channel": 3,
+      "channel": 2,
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
       "cast range": "Melee",
       "dot": 10,
       "damage type": "Magical",
-      "cards": 2,
-      "description": "Butcher chows down on an enemy, disabling and dealing damage over time. Interrupts target channel",
+      "cards": 1,
+      "description": "Butcher chows down on an enemy, disabling and dealing damage over time while healing himself. Interrupts target channel",
       "buffs": {
         "ult": { 
           "source": {
-            "duration": 3,
+            "duration": 1,
             "description": "Channeling - Fresh Meat"
           },
           "target": {
-            "duration": 3,
+            "duration": 1,
             "description": "Disabled and receiving damage over time"
           }
         }
@@ -552,7 +552,7 @@
       "damage": 12,
       "damage type": "Magical",
       "stun": 2,
-      "cards": 3,
+      "cards": 2,
       "description": "Damage and stun a target then slows and deals 6 damage over 3 turns",
       "buff": {
         "damage type": "Magical",

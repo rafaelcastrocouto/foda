@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Büyü",
-      "cards": 3,
+      "cards": 2,
       "description": "Ateşten oluşan bir sütun düşmanları bir çizgide hasara uğratır"
     },
     "stun": {
@@ -28,7 +28,7 @@
       "damage": 10,
       "stun": 2,
       "damage type": "Büyü",
-      "cards": 3,
+      "cards": 2,
       "description": "Ateş topu düşmanları şaşırtıyor ve düşmanlarına zarar veriyor"
     },
     "passive": {
@@ -106,7 +106,7 @@
       "aoe range": "Dövüş",
       "damage": 12,
       "damage type": "Büyü",
-      "cards": 2,
+      "cards": 1,
       "description": "Zarar verici hedef hasar alanı, hedef manaya eşittir. Hedef kanala müdahale eder"
     }
   },
@@ -123,7 +123,7 @@
       "aoe range": "Dövüş",
       "damage": 10,
       "damage type": "Büyü",
-      "cards": 3,
+      "cards": 2,
       "description": "Hedef alınan düşmanı yavaşlatır ve hasar almasına yol açar",
       "buff": {
         "speed slow": 1,
@@ -151,7 +151,7 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "cast range": "Menzilli",
-      "cards": 3,
+      "cards": 2,
       "description": "Zamanla çevresindekı düşmanlara hasar veren bir buz ile saldırır ve düşman yavaşlar",
       "buff": {
         "duration": 3,
@@ -163,21 +163,21 @@
     "ult": {
       "name": "Ice Storm",
       "type": "Channel",
-      "channel": 3,
+      "channel": 2,
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Aynı"],
       "aoe": "Radyal",
       "aoe range": "Uzun",
       "stroke range": "Uzun",
-      "damage": 10,
+      "damage": 12,
       "damage type": "Büyü",
       "cards": 1,
       "description": "Etrafındakı düşmanları buzlu hasar veren bir patlama yaratır",
       "buffs": {
         "ult": {
           "source": {
-            "duration": 3,
+            "duration": 1,
             "description": "Bırak gitsin! Bırak gitsin!"
           },
           "targets": {
@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Light Ball",
       "type": "Kanal",
-      "channel": 6,
+      "channel": 4,
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer"],
@@ -205,7 +205,7 @@
       "aoe range": 4,
       "damage": 4,
       "damage type": "Büyü",
-      "cards": 3,
+      "cards": 2,
       "description": "Düşmana zarar veren bir ışık gönderir"
     },
     "leak": {
@@ -229,7 +229,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 3,
+      "cards": 2,
       "bonus cards": 3,
       "description": "Oyuncuya 3 beceri kartı verir"
     },
@@ -336,7 +336,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 4,
+      "cards": 1,
       "description": "Bear Druid ve Ruh Bear saldırı ve hareket hızını artırır",
       "buff": {
         "duration": 3,
@@ -356,7 +356,7 @@
       "aoe range": "Dövüş",
       "stroke range": "Dövüş",
       "highlight": "top",
-      "cards": 3,
+      "cards": 1,
       "description": "Düşmanları geri gitmesi için ayı güçlü bir bagırmaya yol açar"
     },
     "ult": {
@@ -417,7 +417,7 @@
       "cast range": "Menzilli",
       "multiplier": 4,
       "damage type": "Büyü",
-      "cards": 2,
+      "cards": 1,
       "description": "Kalan mana 4X çarpanı ile düşmanın manasını yakar ve düşman kart kaybesine yol açar"
     },
     "spike": {
@@ -467,7 +467,7 @@
       "cast width": 0,
       "aoe width": 0,
       "aoe range": 3,
-      "damage": 18,
+      "damage": 14,
       "highlight": "in",
       "damage type": "Saf",
       "cards": 2,
@@ -517,23 +517,23 @@
     "ult": {
       "name": "Fresh Meat",
       "type": "Kanal",
-      "channel": 3,
+      "channel": 2,
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "cast range": "Dövüş",
       "dot": 10,
       "damage type": "Büyü",
-      "cards": 2,
+      "cards": 1,
       "description": "Butcher düşman birimi belli bir saniye devre dışı bırakarak onu kesmesini saglar zamanla hasar alır düşman",
       "buffs": {
         "ult": { 
           "source": {
-            "duration": 3,
+            "duration": 1,
             "description": "Kanallık - Fresh Meat"
           },
           "target": {
-            "duration": 3,
+            "duration": 1,
             "description": "Engeller ve zamanla hasar verir"
           }
         }
@@ -552,7 +552,7 @@
       "damage": 12,
       "damage type": "Büyü",
       "stun": 2,
-      "cards": 3,
+      "cards": 2,
       "description": "Hasar ve sonra yavaşlatır bir hedef şaşırtmaya ve zamanla fırsatlar",
       "buff": {
         "damage type": "Büyü",
