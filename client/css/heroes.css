@@ -130,6 +130,9 @@
   pointer-events: none;
   opacity: 0.5;
 }
+.illuminate-ghost .current {
+  display: none;
+}
 
 .kotl-leak .img, .buffs .buff.kotl-leak .img {
   background-image: url("../img/skills/kotl/keeper_of_the_light_mana_leak.jpg");

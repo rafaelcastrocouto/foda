@@ -2,6 +2,7 @@ game.skills.kotl = {
   illuminate: {
     cast: function (skill, source, target) {
       var direction = source.getDirectionStr(target);
+      var side = source.side();
       skill.addClass('on');
       if (!source.hasBuff('kotl-ult')) {
         source.data('illuminate-target', target);
@@ -10,7 +11,6 @@ game.skills.kotl = {
         source.on('channelend', this.channelend);
       } else {
         var ghost = source.clone().removeClass('selected player').addClass('illuminate-ghost ghost illuminating illumi-'+direction).insertAfter(source);
-        $('.current', ghost).detach();
         ghost.data('release-counter', skill.data('channel'));
         ghost.data('skill', skill);
         ghost.data('source', source);
@@ -18,14 +18,12 @@ game.skills.kotl = {
         ghost.data('illuminate-target', target);
         source.data('illuminate-ghost', ghost);
         ghost.on('turnend.kotl-illuminate', this.turnend);
-        var side = source.side();
-        $('.table .'+side+' .skills .kotl-illuminate').addClass('done');
-        game.timeout(400, function () {
-          var side = this.side;
-          var skill = this.skill;
-          skill.appendTo(game[side].skills.sidehand).removeClass('done');
-        }.bind({side: side, skill: skill}));
       }
+      game.timeout(400, function () {
+        var side = this.side;
+        var skill = this.skill;
+        skill.appendTo(game[side].skills.sidehand);
+      }.bind({side: side, skill: skill}));
     },
     channelend: function (event, eventdata) {
       var source = eventdata.source;
@@ -64,25 +62,34 @@ game.skills.kotl = {
       source.off('turnend.kotl-illuminate');
       source.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
       if (source.hasClass('illuminate-ghost')) source.detach();
-      var side = kotl.side();
-      $('.table .'+side+' .skills .kotl-illuminate').removeClass('done');
+      skill.discard();
     }
   },
   leak: {
     cast: function (skill, source, target) {
       source.addBuff(target, skill);
       target.shake();
-      target.on('move.kotl-leak', this.move);
+      target.on('moved.kotl-leak', this.moved);
+      game.skills.kotl.leak.discard(target, source, skill);
     },
-    move: function (event, eventdata) {
+    moved: function (event, eventdata) {
       var target = eventdata.card;
+      target.shake();
       if (target.hasBuff('kotl-leak')) {
-        var hero = target.data('hero');
-        var opponent = target.side();
-        $('.'+opponent+' .hand .'+hero).randomCard().discard();
+        var buff = target.getBuff('kotl-leak');
+        var source = buff.data('source');
+        var skill = buff.data('skill');
+        game.skills.kotl.leak.discard(target, source, skill);
       } else {
-        target.off('move.kotl-leak');
+        target.off('moved.kotl-leak');
       }
+    },
+    discard: function (target, source, skill) {
+      var hero = target.data('hero');
+      var opponent = target.side();
+      var card = $('.'+opponent+' .hand .'+hero).randomCard();
+      if (card.length) card.discard();
+      else source.addStun(target, skill);
     }
   },
   mana: {

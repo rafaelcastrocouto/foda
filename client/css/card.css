@@ -428,6 +428,10 @@
   animation: enemybuyslide 2s;
 }
 
+.table .enemy .skills .card.channel-on {
+  transform: translate3d(-50%,-47%,0) scale(0.4) rotateY(180deg);
+}
+
 @keyframes enemybuyslide {
   0% {
     left: -1000px;
@@ -811,7 +815,7 @@
   background-size: 400%;
 }
 
-.card.units.ranged.player .img {
+.units.ranged.player .img {
   background-image: url("../img/creeps/player_ranged.jpg");
 }
 .map .card.units.ranged.player .img {

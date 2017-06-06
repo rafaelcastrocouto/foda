@@ -177,9 +177,14 @@ game.skill = {
   addInvisibility: function () {
     this.addClass('invisible');
     this.on('action.invisible', function (event, eventdata) {
+      var target = $(this);
       if (eventdata.type !== 'move') {
-        $(this).removeInvisibility();
-      }
+        target.removeInvisibility();
+      }/* else {
+        var spot = $('#'+eventdata.target);
+        var opponent = target.opponent();
+        if (spot.hasClass(opponent+'area')) target.removeInvisibility();
+      }*/
     });
   },
   removeInvisibility: function () {

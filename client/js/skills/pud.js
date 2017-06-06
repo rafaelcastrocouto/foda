@@ -31,9 +31,7 @@ game.skills.pud = {
         var range = skill.data('aoe range');
         var curse = game.skills.pud.rot.curse.bind({source: source, skill: skill});
         source.opponentsInRange(range, curse);
-        source.on('move.rot', function (event, eventdata) {
-          source.opponentsInRange(range, curse);
-        });
+        source.on('moved.rot', function () { source.opponentsInRange(range, curse); });
       }
     },
     curse: function (target) {
@@ -101,6 +99,8 @@ game.skills.pud = {
     channelend: function (event, eventData) {
       var source = eventData.source;
       var target = eventData.target;
+      source.removeBuff('pud-ult');
+      target.removeBuff('pud-ult');
       source.removeClass('pud-ult');
       target.removeClass('disabled');
     }

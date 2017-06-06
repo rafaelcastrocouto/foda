@@ -34,8 +34,8 @@
 
 .table .enemy .skills.hand {
   margin-right: 38px;
-  right: 520px;
-  width: 400px;
+  right: 525px;
+  width: 390px;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -59,8 +59,9 @@
 
 .table .player .skills.hand {
   left: 340px;
-  width: 600px;
+  width: 590px;
   padding-right: 20px;
+  display: flex;
 }
 
 .table .selectedarea {

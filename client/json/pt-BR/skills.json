@@ -29,7 +29,7 @@
       "stun": 2,
       "damage type": "Mágico",
       "cards": 2,
-      "description": "Uma bola de fogo atordoa e causa dano em área"
+      "description": "Uma bola de fogo atordoa e causa dano em área. Pode destruir árvores"
     },
     "passive": {
       "name": "Alma em chamas",
@@ -205,7 +205,7 @@
       "aoe range": 4,
       "damage": 4,
       "damage type": "Mágico",
-      "cards": 2,
+      "cards": 1,
       "description": "Canaliza luz causando dano em área"
     },
     "leak": {
@@ -230,8 +230,8 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 2,
-      "bonus cards": 3,
-      "description": "O jogador compra 3 cartas de habilidade"
+      "bonus cards": 2,
+      "description": "O jogador compra 2 cartas de habilidade"
     },
     "ult": {
       "name": "Forma Astral",
@@ -275,7 +275,7 @@
       "cards": 1,
       "description": "Caso não sofra dano por um turno, teletransporta o herói alvo para a sua posição",
       "buff": {
-        "duration": 2,
+        "duration": 1,
         "description": "Recalling"
       }
     }
@@ -432,13 +432,13 @@
       "description": "Bonus de armadura e resistência e reflete e o dano recebido e atordoa o atacante",
       "buff": {
         "duration": 2,
-        "armor bonus": 9,
+        "armor bonus": 10,
         "resistance bonus": 10,
         "description": "Bonus de armadura e resistência e reflete e o dano recebido e atordoa o atacante"
       }
     },
     "ult": {
-      "name": "Vingança",
+      "name": "Entocar",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",

@@ -54,7 +54,7 @@ game.highlight = {
   source: function () {
     var skill = this;
     var hero = skill.data('hero');
-    if (hero) $('.map .card.player.heroes.' + hero).addClass('source');
+    if (hero && !skill.hasClass('on')) $('.map .card.player.heroes.' + hero).addClass('source');
     return skill;
   },
   channelStop: function (event, skill, source) {

@@ -12,9 +12,15 @@ game.skills.lina = {
   stun: {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
-      target.opponentsInRange(range, function (card) {
-        source.damage(skill.data('damage'), card, skill.data('damage type'));
-        source.addStun(card, skill);
+      var opponent = source.opponent();
+      target.cardsInRange(range, function (card) {
+        if (card.hasClass(opponent)) {
+          source.damage(skill.data('damage'), card, skill.data('damage type'));
+          source.addStun(card, skill);
+        }
+        if (card.hasClass('trees')) {
+          game.tree.destroy(card);
+        }
       }, source);
     }
   },

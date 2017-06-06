@@ -1,15 +1,14 @@
 .states .map .spot.movearea {
   cursor: pointer;
-  background: rgba(200,255,230,0.2);
-  animation: 1s blinkmovearea infinite;
+  /*animation: 1s blinkmovearea infinite;*/
 }
-@keyframes blinkmovearea {
-  0%, 100% {background: rgba(200,255,230,0.1);}
-  50% {background: rgba(200,255,230,0.3);}
-}
+/*@keyframes blinkmovearea {
+  0%, 100% {background: rgba(200,255,230,0.05);}
+  50% {background: rgba(200,255,230,0.15);}
+}*/
 
 .map .spot.movearea.drop, .states .map .spot.movearea:hover {
-  background: rgba(100,255,100,0.2);
+  /*background: rgba(100,255,100,0.2);*/
 }
 
 .slot.available:after, .slot.available:before {
@@ -26,7 +25,7 @@
 .slot.available:after, .map .movearea:after {
   width: 120px;
   height: 12px;
-  background: #16c06a;
+  background: #00ff7f;
   left: 40px;
   bottom: 100px;
   border-radius: 6px;
@@ -41,8 +40,8 @@
   width: 50px;
   height: 50px;
   border: 20px solid transparent;
-  border-right: 12px solid #0a9750;
-  border-bottom: 12px solid #16c06a;
+  border-right: 12px solid #00ff7f;
+  border-bottom: 12px solid #00ff7f;
   background: transparent;
   left: 60px;
   top: 40px;
@@ -80,7 +79,7 @@
 }
 
 .map .attacktarget {
-  background: tomato
+  background: tomato;
 }
 
 .map .attacktarget fieldset {
@@ -165,15 +164,15 @@
 
 .map .spot.targetarea {
   cursor: pointer;
-  background: rgba(200,200,255,0.2);
-  animation: 1s blinktargetarea infinite;
-}
+  /*background: rgba(200,200,255,0.2);
+  animation: 1s blinktargetarea infinite;*/
+}/*
 @keyframes blinktargetarea {
   0%, 100% {background: rgba(200,200,255,0.1);}
   50% {background: rgba(200,200,255,0.3);}
-}
+}*/
 .map .spot.targetarea.drop, .map .spot.targetarea:hover {
-  background: rgba(100,100,255,0.4);
+  background: rgba(200,200,255,0.2);
 }
 
 .map .targetarea:after, .map .targetarea:before {
@@ -276,6 +275,7 @@
   box-shadow: 0 0 0 10px dodgerblue;
   /*filter: brightness(1.1);*/
   /*animation: blinkbright 1s infinite;*/
+  background: #40c3f7;
 }
 @keyframes blinkbright {
   0%, 100% {filter: brightness(1);}
@@ -449,23 +449,23 @@
 }
 
 .map .toparrow:after {
-  transform: translateY(20px) rotate(-135deg) scale(0.5);
+  transform: translateY(40px) rotate(-135deg) scale(0.6);
 }
 .map .bottomarrow:after {
-  transform: translateY(100px) rotate(45deg) scale(0.5);
+  transform: translateY(80px) rotate(45deg) scale(0.6);
 }
 .map .leftarrow:after {
-  transform: translate(-30px, 60px) rotate(135deg) scale(0.5);
+  transform: translate(-20px, 60px) rotate(135deg) scale(0.6);
 }
 .map .rightarrow:after {
-  transform: translate(30px, 60px) rotate(-45deg) scale(0.5);
+  transform: translate(20px, 60px) rotate(-45deg) scale(0.6);
 }
 
 .map .enemy.toparrow:after {
   transform: translateY(60px) rotate(-135deg) scale(0.9);
 }
 .map .enemy.bottomarrow:after {
-  transform: translateY(60px) rotate(45deg) scale(0.9);
+  transform: translateY(50px) rotate(45deg) scale(1.1);
 }
 .map .enemy.leftarrow:after {
   transform: translate(10px, 60px) rotate(135deg) scale(0.9);

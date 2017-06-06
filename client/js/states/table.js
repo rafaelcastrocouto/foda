@@ -58,7 +58,7 @@ game.states.table = {
       game.states.table.skip.attr('disabled', true);
       game.turn.stopCount();
       game.highlight.clearMap();
-      game.turn.el.text(game.data.ui.enemyturn).addClass('show');
+      if (game.mode !== 'library') game.turn.el.text(game.data.ui.enemyturn).addClass('show');
       if (game[game.mode].skip) game[game.mode].skip();
     }
   },

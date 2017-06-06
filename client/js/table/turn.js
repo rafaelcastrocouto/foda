@@ -89,7 +89,7 @@ game.turn = {
       $('.spot.fountain').find('.card').each(function () {
         $(this).heal(10);
       });
-      $('.map .card.heroes').each(function (i, card) {
+      $('.map .card').each(function (i, card) {
         var hero = $(card);
         game.turn.channel(hero);
         game.turn.buffs(hero);

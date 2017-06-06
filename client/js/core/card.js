@@ -193,6 +193,7 @@ game.card = {
         this.destiny.removeClass('free');
         this.card.getSpot().addClass('free');
         this.card.css({ transform: '' }).prependTo(this.destiny).on('mousedown touchstart', game.card.select);
+        card.trigger('moved', evt);
       }.bind({ card: card, destiny: destiny }));
     }
     return card;
