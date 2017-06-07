@@ -51,7 +51,7 @@ game.skill = {
     if ( skill.hasClass('am-blink') && this.hasClass('rooted') ) c = false;
     return c;
   },
-  cast: function (skill, target) { //console.trace('cast')
+  cast: function (skill, target) {
     var source = this, targets, duration, channeler, channelDuration,
       hero = skill.data('hero'),
       skillid = skill.data('skill');
@@ -143,10 +143,6 @@ game.skill = {
       if (skill.hasClass('enemy')) {
         game.enemy.hand -= 1;
       }
-      game.timeout(300, function () {
-        if (this.side() === 'player') this.select();
-        else this.addClass('flipped');
-      }.bind(target));
     }
     return this;
   },

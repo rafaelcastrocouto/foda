@@ -203,17 +203,18 @@ game.highlight = {
     return card;
   },
   attack: function () {
-    var card = this, pos, range;
-    if (card.hasClass('player') && card.hasClasses('units heroes') && card.canAttack()) {
-      range = card.data('range');
-      card.inRange(range, function (neighbor) {
+    var source = this, pos, range;
+    if (source.hasClass('player') && source.hasClasses('units heroes') && source.canAttack()) {
+      range = source.data('range');
+      source.inRange(range, function (neighbor) {
         var card = $('.card', neighbor);
         if (card.hasClass('enemy')) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
-        if (card.hasAllClasses('player units') && 
+        if (card[0] !== source[0] &&
+            card.hasAllClasses('player units') && 
             card.data('current hp') < card.data('hp')/2 ) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
       });
     }
-    return card;
+    return source;
   },
   strokeAttack: function () {
     var card = this;

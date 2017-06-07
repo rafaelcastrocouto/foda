@@ -107,7 +107,7 @@ game.online = {
   },
   enablePick: function () {
     game.states.choose.randombt.show().attr({disabled: false});
-    if (!game.states.choose.mydeck.attr('disabled')) game.states.choose.mydeck.show();
+    game.states.choose.mydeck.show();
     if (localStorage.getItem('mydeck')) game.states.choose.mydeck.attr({disabled: false});
     game.states.choose.enablePick();
     game.states.choose.count = game.timeToPick;

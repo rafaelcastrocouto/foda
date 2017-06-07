@@ -172,14 +172,11 @@ game.enemy = {
     skill.addClass('showMoves');
     source.addClass('enemyMoveHighlight');
     if (target.hasClass('.card')) target.addClass('enemyMoveHighlightTarget');
-    game.timeout(game.enemy.moveAnimation, function (skill, target, hero, skillid) {
-      if (game.skills[hero][skillid].cast && skill && !source.hasClass('done') && source.hasClass('enemy') && source.cast) {
+    setTimeout(function (skill, target, hero, skillid) {
+      if (game.skills[hero][skillid].cast && skill && source.hasClass('enemy') && source.cast) {
         source.cast(skill, target);
-        if (skill.data('type') !== game.data.ui.instant) {
-          source.addClass('done');
-        }
       }
-    }.bind(this, skill, target, hero, skillid));
+    }.bind(this, skill, target, hero, skillid), game.enemy.moveAnimation);
   },
   passive: function (to, hero, skillid) { 
     // console.log(game.currentData.moves)
