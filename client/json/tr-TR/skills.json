@@ -38,10 +38,10 @@
       "deck": "Satın Al",
       "targets": ["Aynı"],
       "cards": 1,
-      "description": "Her saldırıda yangın bonus hasarı olur",
+      "description": "Dökümden sonra her saldırıda yangın bonus hasarı olur",
       "buff": {
-        "damage bonus": 3,
-        "description": "Zarar arttı 'Soul on fire'"
+        "cast damage bonus": 4,
+        "description": "Dökümden sonra her saldırıda yangın bonus hasarı olur"
       }
     },
     "ult": {
@@ -91,7 +91,7 @@
       "cards": 1,
       "description": "Magino'in büyü hasarına karşı direncini arttırır.",
       "buff": {
-        "resistance bonus": 3,
+        "resistance bonus": 4,
         "description": "Büyü Hasarı Direncini Arttırır"
       }
     },

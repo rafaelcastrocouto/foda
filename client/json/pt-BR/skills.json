@@ -38,10 +38,10 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "Todo ataque ganha bonus de fogo",
+      "description": "Após usar uma habilidade o ataque ganha bonus de fogo",
       "buff": {
-        "damage bonus": 3,
-        "description": "Dano aumentado pela 'Alma em chamas'"
+        "cast damage bonus": 4,
+        "description": "Após usar uma habilidade o ataque ganha bonus de fogo"
       }
     },
     "ult": {
@@ -91,7 +91,7 @@
       "cards": 1,
       "description": "Aumenta a resistência a danos mágicos",
       "buff": {
-        "resistance bonus": 3,
+        "resistance bonus": 4,
         "description": "Resistência mágica aumentada"
       }
     },

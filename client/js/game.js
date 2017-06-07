@@ -8,7 +8,7 @@ var game = {
   timeToPick: 40,
   timeToPlay: 60,
   waitLimit: 60,
-  connectionLimit: 20,
+  connectionLimit: 30,
   dayLength: 12,
   deadLength: 5,
   creepDeathDamage: 2,

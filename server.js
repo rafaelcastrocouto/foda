@@ -9,7 +9,7 @@ var http = require('http'),
   waitTimeout,
   chat = [],
   debug = false,
-  waitLimit = 10,
+  waitLimit = 30,
   origin;
 
 var db = {

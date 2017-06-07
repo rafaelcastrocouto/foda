@@ -85,6 +85,7 @@ game.card = {
     }
     if (data.type == game.data.ui.channel) $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.channel);
     if (data.buff) {
+      if (data.buff['cast damage bonus'])  $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['cast damage bonus'] + ' per Cast');
       if (data.buff['damage per kill'])  $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['damage per kill'] + ' per Kill');
       if (data.buff['hp per kill'])      $('<p>').appendTo(desc).text(game.data.ui.hp + ': ' + data.buff['hp per kill'] + ' per Kill');
       if (data.buff.chance)              $('<p>').appendTo(desc).text(game.data.ui.chance + ': ' + data.buff.chance + '%');

@@ -6,7 +6,7 @@ game.skills.kotl = {
       skill.addClass('on');
       if (!source.hasBuff('kotl-ult')) {
         source.data('illuminate-target', target);
-        source.data('illuminate', game.player.turn);
+        source.data('illuminate', game.totalTurns);
         source.addClass('illuminating illumi-'+direction);
         source.on('channelend', this.channelend);
       } else {
@@ -14,7 +14,7 @@ game.skills.kotl = {
         ghost.data('release-counter', skill.data('channel'));
         ghost.data('skill', skill);
         ghost.data('source', source);
-        ghost.data('illuminate', game.player.turn);
+        ghost.data('illuminate', game.totalTurns);
         ghost.data('illuminate-target', target);
         source.data('illuminate-ghost', ghost);
         ghost.on('turnend.kotl-illuminate', this.turnend);
@@ -26,29 +26,29 @@ game.skills.kotl = {
       }.bind({side: side, skill: skill}));
     },
     channelend: function (event, eventdata) {
-      var source = eventdata.source;
+      var kotl = eventdata.source;
       var skill = eventdata.skill;
-      if (!source.hasBuff('kotl-ult')) {
-        game.skills.kotl.illuminate.release(skill, source);
-      } else {
-        game.skills.kotl.illuminate.release(skill, source.data('illuminate-ghost'));
-      }
+      var source = kotl;
+      if (source.hasBuff('kotl-ult')) source = kotl.data('illuminate-ghost');
+      source.data('illuminate', source.data('illuminate') - 1);
+      game.skills.kotl.illuminate.release(skill, source);
     },
     turnend: function (event, eventdata) {
       var ghost = eventdata.target;
       var counter = ghost.data('release-counter');
       var source = ghost.data('source');
+      var skill = ghost.data('skill');
       if (counter) {
         counter--;
         ghost.data('release-counter', counter);
       } else {
-        game.skills.kotl.illuminate.release(ghost.data('skill'), ghost);
+        game.skills.kotl.illuminate.release(skill, ghost);
       }
     },
     release: function (skill, source) { 
       var kotl = source.data('source') || source;
       var target = source.data('illuminate-target');
-      var time = game.player.turn - source.data('illuminate') + 1;
+      var time = game.totalTurns - source.data('illuminate') + 1;
       var damage = skill.data('damage');
       var range = skill.data('aoe range');
       var width = skill.data('aoe width');

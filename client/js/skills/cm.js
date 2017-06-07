@@ -55,6 +55,9 @@ game.skills.cm = {
       game.shake();
     },
     channel: function (event, eventdata) {
+      game.skills.cm.ult.damage(event, eventdata);
+    },
+    damage: function (event, eventdata) {
       var cm = eventdata.source;
       var skill = eventdata.skill;
       var range = skill.data('aoe range');
@@ -64,6 +67,7 @@ game.skills.cm = {
       });
     },
     channelend: function (event, eventdata) {
+      //game.skills.cm.ult.damage(event, eventdata);
       var cm = eventdata.source;
       cm.data('cm-ult', null);
       cm.removeBuff('ult-source');

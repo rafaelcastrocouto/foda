@@ -150,7 +150,7 @@ game.states.choose = {
       }
     }
   },
-  randomFill: function () {
+  randomFill: function (cb) {
     $('.slot').each(function () {
       var slot = $(this), card;
       if (slot.hasClass('available')) {
@@ -159,6 +159,7 @@ game.states.choose = {
       }
     });
     game.states.choose.selectFirst();
+    if (cb) cb();
   },
   playerpicks: function () {
     game.player.picks = [];

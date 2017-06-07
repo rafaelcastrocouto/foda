@@ -38,10 +38,10 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Every attack will have fire bonus damage",
+      "description": "After casting every attack will have fire bonus damage",
       "buff": {
-        "damage bonus": 3,
-        "description": "Damage increased by 'Soul on fire'"
+        "cast damage bonus": 4,
+        "description": "After casting every attack will have fire bonus damage"
       }
     },
     "ult": {
@@ -91,7 +91,7 @@
       "cards": 1,
       "description": "Increases the resistance to magic attacks",
       "buff": {
-        "resistance bonus": 3,
+        "resistance bonus": 4,
         "description": "Magic resistance increased"
       }
     },

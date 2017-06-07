@@ -88,7 +88,7 @@ game.online = {
       }
     });
   },
-  battle: function (type, name) { //console.trace('battle')
+  battle: function (type, name) {
     game.tries = 0;
     game.triesCounter.text('');
     game.loader.removeClass('loading');
@@ -98,18 +98,20 @@ game.online = {
     game.message.html(game.data.ui.battlefound + ' <b>' + game.player.name + '</b> vs <b class="enemy">' + game.enemy.name + '</b>');
     game.states.choose.counter.show();
     game.audio.play('battle');
-    if (game.currentData[game.player.type+'Deck'] &&
+    /*if (game.currentData[game.player.type+'Deck'] &&
         game.currentData[game.player.type+'Deck'].split('|').length == 5) {
       game.player.picks = game.currentData[game.player.type+'Deck'].split('|');
       game.online.chooseEnd();
-    } else game.online.enablePick();
+    } else */
+    setTimeout(game.online.enablePick, 200);
   },
   enablePick: function () {
-    game.states.choose.randombt.attr({disabled: false});
+    game.states.choose.randombt.show().attr({disabled: false});
+    if (!game.states.choose.mydeck.attr('disabled')) game.states.choose.mydeck.show();
     if (localStorage.getItem('mydeck')) game.states.choose.mydeck.attr({disabled: false});
     game.states.choose.enablePick();
     game.states.choose.count = game.timeToPick;
-    game.timeout(1000, game.online.pickCount);
+    setTimeout(game.online.pickCount, 1000);
   },
   pickCount: function () {
     game.states.choose.count -= 1;
@@ -137,13 +139,14 @@ game.online = {
     game.states.choose.disablePick();
     game.states.choose.counter.text(game.data.ui.getready);
     game.states.choose.playerpicks();
-    game.online.sendDeck(); 
+    game.online.sendDeck();
   },
   sendDeck: function () {
     game.states.choose.pickDeck.css('margin-left', 0);
     var picks = game.player.picks.join('|');
     // check if enemy picked
     game.db({ 'get': game.id }, function (found) {
+      var cb;
       game.setData(game.player.type + 'Deck', picks);
       if (found[game.enemy.type + 'Deck']) {
         cb = function () { game.online.foundDeck(game.enemy.type, found); };

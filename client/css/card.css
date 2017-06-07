@@ -807,7 +807,7 @@
   background-size: 360%;
 }
 
-.card.units.melee.enemy .img {
+.units.melee.enemy .img {
   background-image: url("../img/creeps/enemy_melee.jpg");
 }
 .map .card.units.melee.enemy .img {

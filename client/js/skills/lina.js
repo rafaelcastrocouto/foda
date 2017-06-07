@@ -27,6 +27,21 @@ game.skills.lina = {
   passive: {
     passive: function (skill, source) {
       source.addBuff(source, skill);
+      source.on('cast', game.skills.lina.passive.cast);
+    },
+    cast: function (event, eventdata) {
+      var source = eventdata.source;
+      var buff = source.getBuff('lina-passive');
+      var bonus = buff.data('cast damage bonus');
+      source.setDamage(source.data('current damage') + bonus);
+      source.on('turnend.passive', game.skills.lina.passive.turnend);
+    },
+    turnend: function () {
+      var source = $(this);
+      var buff = source.getBuff('lina-passive');
+      var bonus = buff.data('cast damage bonus');
+      source.setDamage(source.data('current damage') - bonus);
+      source.off('turnend.passive');
     }
   },
   ult: {
