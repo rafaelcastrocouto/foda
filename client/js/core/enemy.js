@@ -121,6 +121,9 @@ game.enemy = {
           hero = move[2];
           game.enemy.discard(hero, skillid);
         }
+        if (move[0] === 'G') {
+          game.enemy.stopChanneling(from);
+        }
       }
       if (!ai) {
         game.enemy.autoMoveCount++;
@@ -216,6 +219,14 @@ game.enemy = {
         creepCard.removeClass('showMoves flipped').addClass('done').place(target);
         creepCard.trigger('summon');
       });
+    }
+  },
+  stopChanneling: function (pos) {
+    $('#' + pos + ' .card');
+    if (card.length) {
+      if (card.data('illuminate-ghost')) card.data('illuminate-ghost').stopChanneling();
+      else card.stopChanneling();
+      card.stopChanneling();
     }
   },
   discard: function (hero, skillid) {

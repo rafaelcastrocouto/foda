@@ -109,13 +109,12 @@ game.turn = {
   channel: function (hero) {
     if (hero.hasClass('channeling')) {
       var duration = hero.data('channeling');
-      if (duration) {
-        var channel = hero.data('channel');
+      if (duration >= 0) {
         hero.trigger('channel', hero.data('channel event')); 
         duration -= 1;
         hero.data('channeling', duration);
+        if (duration == 1) hero.stopChanneling();
       }
-      if (duration == 1) hero.stopChanneling();
     }
   },
   buffs: function (hero) {

@@ -143,6 +143,16 @@ game.player = {
       game.states.table.animateCast(skill, to, event);
     }
   },
+  stopChanneling: function () {
+    var card = $(this);
+    if (card.data('illuminate-ghost')) card.data('illuminate-ghost').stopChanneling();
+    else card.stopChanneling();
+    if (game.mode == 'online') {
+      var to = card.getPosition();
+      game.currentMoves.push('G:' + to);
+    }
+    card.select();
+  },
   summonCreep: function () {
     var target = $(this),
         to = target.getPosition(),

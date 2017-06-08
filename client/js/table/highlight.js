@@ -32,7 +32,7 @@ game.highlight = {
       }
       if (game.selectedCard.hasClass('skills')) {
         game.selectedCard.highlightSource();
-        game.selectedCard.strokeSkill();
+        if (!game.selectedCard.hasAllClasses('kotl-illuminate on')) game.selectedCard.strokeSkill();
         if (game.isPlayerTurn()) {
           game.selectedCard.highlightArrows();
           game.selectedCard.highlightTargets(event);
@@ -58,15 +58,7 @@ game.highlight = {
     return skill;
   },
   channelStop: function (event, skill, source) {
-    source.addClass('casttarget').on('mouseup.highlight touchend.highlight', function () {
-      if (source.hasClass('channeling')) this.stopChanneling();
-      else {
-        var hero = source.data('hero');
-        var skillStr = skill.data('skill');
-        game.skills[hero][skillStr].channelend(event, {source: source, skill: skill});
-      }
-      this.select();
-    }.bind(source));
+    source.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.stopChanneling);
   },
   targets: function (event) {
     var skill = this, hero = skill.data('hero');

@@ -71,7 +71,6 @@ game.skill = {
           target: target
         };
         source.trigger('cast', evt).trigger('action', evt);
-        game.skills[hero][skillid].cast(skill, source, target);
         if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
           game.audio.play(hero + '/' + skillid);
         }
@@ -94,6 +93,7 @@ game.skill = {
             }
           });
         }
+        game.skills[hero][skillid].cast(skill, source, target);
         game.timeout(300, function () { 
           //console.trace('castend')
           this.skill.discard();

@@ -1,62 +1,44 @@
 game.skills.kotl = {
   illuminate: {
     cast: function (skill, source, target) {
-      var direction = source.getDirectionStr(target);
-      var side = source.side();
+      var kotl = source;
+      var direction = kotl.getDirectionStr(target);
+      var side = kotl.side();
       skill.addClass('on');
-      if (!source.hasBuff('kotl-ult')) {
-        source.data('illuminate-target', target);
-        source.data('illuminate', game.totalTurns);
-        source.addClass('illuminating illumi-'+direction);
-        source.on('channelend', this.channelend);
-      } else {
-        var ghost = source.clone().removeClass('selected player').addClass('illuminate-ghost ghost illuminating illumi-'+direction).insertAfter(source);
-        ghost.data('release-counter', skill.data('channel'));
-        ghost.data('skill', skill);
-        ghost.data('source', source);
-        ghost.data('illuminate', game.totalTurns);
-        ghost.data('illuminate-target', target);
-        source.data('illuminate-ghost', ghost);
-        ghost.on('turnend.kotl-illuminate', this.turnend);
+      if (kotl.hasBuff('kotl-ult')) {
+        var ghost = kotl.clone().removeClass('selected player').addClass('illuminate-ghost ghost channeling').insertAfter(kotl);
+        kotl.data('illuminate-ghost', ghost);
+        ghost.data('illuminate-source', kotl);
+        ghost.data('channeling', skill.data('channel'));
+        source = ghost;
       }
-      game.timeout(400, function () {
-        var side = this.side;
-        var skill = this.skill;
-        skill.appendTo(game[side].skills.sidehand);
-      }.bind({side: side, skill: skill}));
+      source.addClass('illuminating illumi-'+direction);
+      source.data('illuminate', skill);
+      source.data('illuminate-target', target);
+      source.on('channelend', this.channelend);
+      game.timeout(400, game.skills.kotl.illuminate.sidehand.bind({side: side, skill: skill}));
     },
-    channelend: function (event, eventdata) {
-      var kotl = eventdata.source;
-      var skill = eventdata.skill;
-      var source = kotl;
-      if (source.hasBuff('kotl-ult')) source = kotl.data('illuminate-ghost');
-      source.data('illuminate', source.data('illuminate') - 1);
+    sidehand: function () {
+      this.skill.appendTo(game[this.side].skills.sidehand);
+    },
+    channelend: function (event, eventdata) { 
+      var source = $(this);
+      var skill = source.data('illuminate');
+      //source.data('illuminate', source.data('illuminate') - 1);
       game.skills.kotl.illuminate.release(skill, source);
     },
-    turnend: function (event, eventdata) {
-      var ghost = eventdata.target;
-      var counter = ghost.data('release-counter');
-      var source = ghost.data('source');
-      var skill = ghost.data('skill');
-      if (counter) {
-        counter--;
-        ghost.data('release-counter', counter);
-      } else {
-        game.skills.kotl.illuminate.release(skill, ghost);
-      }
-    },
     release: function (skill, source) { 
-      var kotl = source.data('source') || source;
+      var kotl = source.data('illuminate-source') || source;
       var target = source.data('illuminate-target');
-      var time = game.totalTurns - source.data('illuminate') + 1;
       var damage = skill.data('damage');
       var range = skill.data('aoe range');
       var width = skill.data('aoe width');
+      var time = skill.data('channel') - source.data('channeling') + 1;
       skill.removeClass('on');
       source.opponentsInLine(target, range, width, function (card) {
         kotl.damage(damage * time, card, skill.data('damage type'));
       }, kotl);
-      source.data('illuminate', null);
+      source.data('illuminate-start', null);
       source.data('illuminate-target', null);
       source.data('illuminate-ghost', null);
       source.off('turnend.kotl-illuminate');
