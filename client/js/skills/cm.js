@@ -50,6 +50,7 @@ game.skills.cm = {
     cast: function (skill, source) {
       source.addClass('cm-ult');
       source.selfBuff(skill, 'ult-source');
+      game.skills.cm.ult.damage(0, {source:source,skill:skill});
       source.on('channel', this.channel);
       source.on('channelend', this.channelend);
       game.shake();

@@ -45,7 +45,7 @@
   "axetoggle": "Habilidades <b>alternáveis</b> ficam na mão esquerda. Elas são livres pra alternar",
   "axetoggleoff": "Habilidades <b>alternáveis</b> podem ser desligadas a qualquer momento",
   "axecast": "Habilidades <b>ativas</b> precisam de <b>mana</b> e ficam na <b>mão direita</b>",
-  "axechannel": "Habilidades de <b>canalização</b> impedem outras ações podem ser interrompidas",
+  "axechannel": "Habilidades de <b>canalização</b> impedem outras ações e podem ser interrompidas",
   "axeend": "Ah! Bom trabalho, agora vá encarar uma <br><b class='battle'>batalha</b>",
   "axecreep": "<b>Selecione</b> uma unidade ou creep no canto esquerdo. Todas as cartas que não precisam de mana ficam na mão esquerda",
   "axesummoncreep": "Clique na seta verde para <b>invocar</b>, a torre perde 2 de HP quando um creep morre",

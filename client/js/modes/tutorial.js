@@ -105,7 +105,7 @@ game.tutorial = {
       game.tutorial.axebaloon.hide();
       game.player.kills = 0;
       game.enemy.kills = 0;
-      game.tutorial.moveCountValue = 2;
+      game.tutorial.moveCountValue = 5;
       game.message.text(game.data.ui.yourturncount + ' ' + game.tutorial.moveCountValue);
       game.tutorial.axe.addClass('up left');
       game.enemy.tower.addClass('blink').on('select', game.tutorial.selected);
@@ -189,7 +189,7 @@ game.tutorial = {
     game.states.table.skip.attr('disabled', false);
     game.tutorial.letter(game.data.ui.axemoveagain);
     game.message.text(game.data.ui.yourturncount + ' ' + --game.tutorial.moveCountValue);
-    if (game.tutorial.moveCountValue === 0) game.tutorial.endTurnLesson();
+    if (game.tutorial.moveCountValue === 3) game.tutorial.endTurnLesson();
   },
   endTurnLesson: function () {
     $('.blink').removeClass('blink');

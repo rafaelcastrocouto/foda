@@ -84,6 +84,7 @@ game.skills.pud = {
       source.selfBuff(skill, 'ult-source');
       source.addBuff(target, skill, 'ult-target');
       target.addClass('disabled');
+      source.damage(skill.data('dot'), target, skill.data('damage type'));
       target.stopChanneling();
       source.on('channel', this.channel);
       source.on('channelend', this.channelend);
