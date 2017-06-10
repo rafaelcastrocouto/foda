@@ -153,13 +153,13 @@ game.map = {
           for (x = 1; x <= l; x += 1) {
             y = Math.round(Math.sqrt(r2 - x * x));
             fil(w + x, h + y);
-            fil(w + y, h + x);
+            if (y > 2) fil(w + y, h + x);
             fil(w + x, h - y);
-            fil(w + y, h - x);
+            if (y > 2) fil(w + y, h - x);
             fil(w - x, h + y);
-            fil(w - y, h + x);
+            if (y > 2) fil(w - y, h + x);
             fil(w - x, h - y);
-            fil(w - y, h - x);
+            if (y > 2) fil(w - y, h - x);
           }
         }
       }

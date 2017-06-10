@@ -210,7 +210,9 @@ game.online = {
 
   startTurn: function (turn) {
     game.turn.counter = game.timeToPlay;
-    game.timeout(1000, function () { 
+    var t = 1000;
+    if (turn == 'enemy-turn') t = 3000;
+    game.timeout(t, function () { 
       game.turn.count(turn, game.online.countEnd, game.online.preGetTurnData);
     });
   },

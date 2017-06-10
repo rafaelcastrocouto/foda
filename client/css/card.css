@@ -822,7 +822,7 @@
   background-position: 20% 50%;
 }
 
-.card.units.ranged.enemy .img {
+.units.ranged.enemy .img {
   background-image: url("../img/creeps/enemy_ranged.jpg");
 }
 .map .card.units.ranged.enemy .img {

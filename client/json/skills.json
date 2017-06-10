@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Light Ball",
       "type": "Channel",
-      "channel": 4,
+      "channel": 3,
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot"],

@@ -80,30 +80,36 @@ game.skills.pud = {
   },
   ult: {
     cast: function (skill, source, target) {
-      source.addClass('pud-ult');
       source.selfBuff(skill, 'ult-source');
       source.addBuff(target, skill, 'ult-target');
+      source.addClass('pud-ult');
       target.addClass('disabled');
-      source.damage(skill.data('dot'), target, skill.data('damage type'));
-      target.stopChanneling();
-      source.on('channel', this.channel);
+      game.skills.pud.ult.bite(source, target, skill);
       source.on('channelend', this.channelend);
-    },
+    },/*
     channel: function (event, eventData) {
       var source = eventData.source;
       var target = eventData.target;
       var skill = eventData.skill;
+      if ( source.data('channeling') != 1) game.skills.pud.ult.bite(source, target, skill);
+      
+    },*/
+    bite: function (source, target, skill) {
+      game.audio.play('pud/ult-channel');
+      target.shake();
+      target.stopChanneling();
       source.damage(skill.data('dot'), target, skill.data('damage type'));
       source.heal(skill.data('dot'));
-      game.audio.play('pud/ult-channel');
     },
     channelend: function (event, eventData) {
       var source = eventData.source;
       var target = eventData.target;
+      var skill = eventData.skill;
+      game.skills.pud.ult.bite(source, target, skill);
+      target.removeClass('disabled');
       source.removeBuff('pud-ult');
       target.removeBuff('pud-ult');
       source.removeClass('pud-ult');
-      target.removeClass('disabled');
     }
   }
 };

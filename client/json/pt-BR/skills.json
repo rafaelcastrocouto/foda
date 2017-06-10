@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Bola de Luz",
       "type": "Canalização",
-      "channel": 4,
+      "channel": 3,
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local"],

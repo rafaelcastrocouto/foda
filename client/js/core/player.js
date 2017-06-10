@@ -175,9 +175,9 @@ game.player = {
     game.currentMoves.push('D:' + skillid + ':' + hero);
     game.states.table.discard.attr('disabled', true);
     skill.addClass('slidedown');
-    game.timeout(300, function () {
-      skill.discard();
-    });
+    setTimeout(function () {
+      this.discard();
+    }.bind(skill), 200);
   },
   cardsInHand: function () {
     return game.player.skills.hand.children().length;

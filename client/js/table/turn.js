@@ -26,8 +26,8 @@ game.turn = {
     if (game.currentState == 'table') {
       game.enemy.turn += 1;
       game.message.text(game.data.ui.enemyturn);
-      game.turn.start('enemy-turn', cb);
       game.loader.addClass('loading');
+      game.turn.start('enemy-turn', cb);
     }
   },
   start: function (turn, cb) {
@@ -57,7 +57,10 @@ game.turn = {
           game.highlight.map();
         });
       }
-      if (cb) cb(turn);
+      if (cb) {
+        if (turn == 'player-turn') cb(turn);
+        else game.timeout(1000, cb.bind(this, turn));
+      }
     });
   },
   count: function (turn, endCallback, countCallback) {
@@ -113,7 +116,7 @@ game.turn = {
         hero.trigger('channel', hero.data('channel event')); 
         duration -= 1;
         hero.data('channeling', duration);
-        if (duration == 1) hero.stopChanneling();
+        if (duration === 0) hero.stopChanneling();
       }
     }
   },

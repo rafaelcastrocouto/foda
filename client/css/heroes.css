@@ -176,7 +176,7 @@
 
 .map .ld-summon .portrait .img,
 .fromMap.ld-summon .portrait .img,
-.selectedarea .units.ld-summon .img {
+.selectedarea .ld-summon .img {
   background-image: url("../img/skills/ld/lone_druid_spirit_bear.jpg");
 }
 

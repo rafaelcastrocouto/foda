@@ -194,7 +194,7 @@
     "illuminate": {
       "name": "Light Ball",
       "type": "Kanal",
-      "channel": 4,
+      "channel": 3,
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer"],

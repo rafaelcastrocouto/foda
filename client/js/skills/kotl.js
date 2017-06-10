@@ -96,8 +96,8 @@ game.skills.kotl = {
         illuminate.data('type', game.data.ui.active);
         illuminate.find('.type').text(game.data.ui.active);
         illuminate.addClass('spiritform');
-        recall.appendTo(game.player.skills.hand);
-        blind.appendTo(game.player.skills.hand);
+        recall.appendTo(game[side].skills.hand);
+        blind.appendTo(game[side].skills.hand);
       } else {
         this.off(source, true);
       }

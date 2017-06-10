@@ -44,7 +44,7 @@ game.enemy = {
     if (game.enemy.turn === 1 || force) {
       ranged = game.enemy.unitsDeck.children('.ranged');
       game.units.clone(ranged).addClass('flipped').on('mousedown touchstart', game.card.select).appendTo(game.enemy.skills.sidehand);
-      for (var i = 0; i < 3; i += 1) {
+      for (var i = 0; i < 2; i += 1) {
         melee = game.enemy.unitsDeck.children('.melee');
         game.units.clone(melee).addClass('flipped').on('mousedown touchstart', game.card.select).appendTo(game.enemy.skills.sidehand);
       }
@@ -67,9 +67,10 @@ game.enemy = {
     game.message.text(game.data.ui.enemymove);
     if (typeof(game.currentData.moves) == 'string') game.currentMoves = game.currentData.moves.split('|');
     else game.currentMoves = game.currentData.moves;
+    //console.log(game.currentMoves)
     game.enemy.autoMoveCount = 0;
     game.enemy.moveEndCallback = cb;
-    if (game.currentMoves.length) game.timeout(1000, game.enemy.autoMove);
+    if (game.currentMoves.length && game.currentMoves[0].length) game.timeout(1000, game.enemy.autoMove);
     else game.timeout(1000, game.enemy.movesEnd);
   },
   autoMove: function (ai) {
@@ -84,9 +85,9 @@ game.enemy = {
       $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
       $('.source').removeClass('source');
       game.enemy.moveAnimation = 1600;
-      if (move[1] && move[2]) {
+      if (move[1]) {
         from = game.map.mirrorPosition(move[1]);
-        to = game.map.mirrorPosition(move[2]);
+        if (move[2]) to = game.map.mirrorPosition(move[2]);
         if (move[0] === 'M') {
           game.enemy.move(from, to);
         }
@@ -165,17 +166,20 @@ game.enemy = {
     var s = hero + '-' + skillid;
     var skill = $('.enemydecks .hand .skills.'+s+', .enemydecks .sidehand .skills.'+s).first();
     var targets = skill.data('targets');
+    var card;
     if (targets) {
       if (targets.indexOf(game.data.ui.enemy) >= 0 ||
           targets.indexOf(game.data.ui.ally)  >= 0 ||
           targets.indexOf(game.data.ui.self)  >= 0) { 
-        target = $('#' + to + ' .card'); 
+        card = $('#' + to + ' .card');
+        if (card.length) target = card;
       }
     }
     skill.addClass('showMoves');
     source.addClass('enemyMoveHighlight');
     if (target.hasClass('.card')) target.addClass('enemyMoveHighlightTarget');
     setTimeout(function (skill, target, hero, skillid) {
+      //console.log(skill, target, hero, skillid)
       if (game.skills[hero][skillid].cast && skill && source.hasClass('enemy') && source.cast) {
         source.cast(skill, target);
       }
@@ -221,8 +225,8 @@ game.enemy = {
       });
     }
   },
-  stopChanneling: function (pos) {
-    $('#' + pos + ' .card');
+  stopChanneling: function (pos) {//console.log(pos)
+    var card = $('#' + pos + ' .card');
     if (card.length) {
       if (card.data('illuminate-ghost')) card.data('illuminate-ghost').stopChanneling();
       else card.stopChanneling();

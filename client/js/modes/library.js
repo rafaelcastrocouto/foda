@@ -80,7 +80,7 @@ game.library = {
         link = game.data.heroes[hero].intro;
     if (link && !$(this).attr('disabled')) game.states.choose.playVideo(link);
   },
-  startPlayerTurn: function () {
+  startPlayerTurn: function () { 
     game.turn.beginPlayer(function () {
       game.tower.attack('enemy');
       if (game.player.turn > 1) game.player.buyHand();
