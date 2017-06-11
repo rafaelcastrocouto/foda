@@ -49,7 +49,7 @@ game.enemy = {
         game.units.clone(melee).addClass('flipped').on('mousedown touchstart', game.card.select).appendTo(game.enemy.skills.sidehand);
       }
     }
-    if (game.enemy.turn === 12 || catapultforce) {
+    if (game.enemy.turn === 10 || catapultforce) {
       ranged = game.enemy.unitsDeck.children('.ranged');
       game.units.clone(ranged).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
       melee = game.enemy.unitsDeck.children('.melee');

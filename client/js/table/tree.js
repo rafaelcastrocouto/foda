@@ -21,7 +21,19 @@ game.tree = {
     });
   },
   destroy: function (tree) {
-    tree.parent().addClass('free');
-    tree.remove();
+    var spot = tree.parent();
+    var position = spot.getPosition();
+    spot.addClass('free');
+    tree.data('spot', spot).data('reborn-count',2);
+    tree.appendTo(game.states.table.treeDeck);
+    game.player.tower.on('turnend.tree'+position, function () {
+      var spot = this.data('spot');
+      this.data('reborn-count', this.data('reborn-count') - 1);
+      if (spot.hasClass('free') && this.data('reborn-count') < 1) {
+        this.appendTo(spot);
+        spot.removeClass('free');
+        game.player.tower.off('turnend.tree'+position);
+      }
+    }.bind(tree));
   }
 };

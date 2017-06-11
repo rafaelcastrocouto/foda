@@ -199,3 +199,7 @@
 .table .turntitle.show {
   opacity: 1;
 }
+
+.table .tree-deck {
+  display: none;
+}

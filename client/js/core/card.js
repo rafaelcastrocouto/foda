@@ -580,7 +580,7 @@ game.card = {
     } else { this.detach(); }
     return this;
   },
-  reborn: function (spot, nopenalty) { //console.trace(this, spot)
+  reborn: function (spot) { //console.trace(this, spot)
     if (spot && spot.hasClass) spot = spot[0].id;
     var hp = this.data('hp'), x, y;
     if (!spot) {
@@ -604,7 +604,7 @@ game.card = {
     }
     if (spot && spot.length && $('#' + spot).hasClass('free')) {  
       var side = this.side();
-      if (!nopenalty) game[game.opponent(side)].tower.damage(game.heroDeathDamage, game[side].tower, game.data.ui.pure);
+      if (game[side].tower.data('current hp') > 1) game[game.opponent(side)].tower.damage(1, game[side].tower, game.data.ui.pure);
       this.data('reborn', null);
       this.setCurrentHp(hp);
       this.removeClass('dead');

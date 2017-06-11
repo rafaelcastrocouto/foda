@@ -57,7 +57,7 @@ game.player = {
         game.units.clone(melee).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
       }
     }
-    if (game.player.turn === 12 || catapultforce) {
+    if (game.player.turn === 10 || catapultforce) {
       ranged = game.player.unitsDeck.children('.ranged');
       game.units.clone(ranged).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
       melee = game.player.unitsDeck.children('.melee');
