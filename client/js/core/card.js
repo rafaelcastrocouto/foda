@@ -183,7 +183,7 @@ game.card = {
       card.removeClass('draggable').off('mousedown touchstart');
       game.highlight.clearMap();
       card.stopChanneling();
-      card.animateMove(destiny);
+      if (!card.hasClass('dropped')) card.animateMove(destiny);
       var evt = { type: 'move', card: card, target: to };
       card.trigger('move', evt).trigger('action', evt);
       if (card.hasClass('selected')) card.unselect();
@@ -402,9 +402,8 @@ game.card = {
           cl = 'towers '+source.side();
         }
         game.projectile = $('<div>').addClass('projectile '+cl);
-        var p = source.offset();
+        game.projectile.appendTo(game.map.el);
         game.card.projectile.apply(source);
-        game.projectile.appendTo(game.camera);
         setTimeout(game.card.projectile.bind(target), 10);
         setTimeout(function () {
           game.projectile.remove();
@@ -431,8 +430,10 @@ game.card = {
     return this;
   },
   projectile: function () {
-    var p = this.offset();
-    game.projectile.css({'top': p.top - 40, 'left': p.left - 20});
+    var x = this.getX(),
+        y = this.getY();
+    game.projectile.css({'top': 380 + (y*320), 'left': 880 + (x*220)});
+
   },
   damage: function (damage, target, type) {
     var source = this, evt, x, y, position, spot, resistance, armor, hp, finalDamage = damage;

@@ -46,6 +46,7 @@ game.events = {
       var position = game.events.getCoordinates(event),
           cardOffset = card.offset(), fromMap = '';
       if (card.closest('.map').length) fromMap = ' fromMap';
+      game.offset = game.container.offset();
       game.events.dragging = card;
       game.events.draggingPosition = position;
       game.events.dragClone = card.clone().hide().removeClass('dragTarget').addClass('dragTargetClone ' + game.currentState + fromMap).appendTo(game.container);
@@ -68,10 +69,11 @@ game.events = {
         position.top !== game.events.draggingPosition.top) {
       game.events.dragging.addClass('dragTarget');
       var scale = game.events.dragClone.getScale();
+      var scale2 = game.container.getScale();
       if (game.events.dragClone.hasClass('fromMap')) scale = 1;
       game.events.dragClone.css({
-        'left': (position.left - game.offset.left) - (game.events.dragOffset.left * scale) + 'px',
-        'top': (position.top - game.offset.top) - (game.events.dragOffset.top * scale) + 'px'
+        'left': ((position.left - game.offset.left) - (game.events.dragOffset.left * scale)) / scale2 + 'px',
+        'top': ((position.top - game.offset.top) - (game.events.dragOffset.top * scale)) / scale2 + 'px'
       }).show();
       var target = $(document.elementFromPoint(position.left, position.top));
       $('.drop').removeClass('drop');
@@ -82,10 +84,10 @@ game.events = {
     }
   },
   end: function(event) {
+    var position = game.events.getCoordinates(event), 
+        target = $(document.elementFromPoint(position.left, position.top));
     if (event && event.type === 'touchend') {
       // fix touchend target
-      var position = game.events.getCoordinates(event), 
-          target = $(document.elementFromPoint(position.left, position.top));
       target.mouseup();
       if (event.preventDefault) event.preventDefault();
       return false;
@@ -93,6 +95,8 @@ game.events = {
       game.events.dragClone.remove();
       game.events.dragging.removeClass('dragTarget');
       game.events.dragging = false;
+      target.addClass('dropped');
+      setTimeout(function () { this.removeClass('dropped'); }.bind(target), 10);
     }
   },
   clearEvents: function(name) {

@@ -113,9 +113,10 @@
   border-radius: 50%;
   transition: all 0.25s linear;
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 40px;
+  height: 40px;
   background: white;
+  transform: translateZ(60px);
 }
 
 .projectile.cm {
