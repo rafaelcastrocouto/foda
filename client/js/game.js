@@ -11,8 +11,9 @@ var game = {
   connectionLimit: 30,
   dayLength: 12,
   deadLength: 5,
-  creepDeathDamage: 2,
   heroDeathDamage: 4,
+  heroRespawnDamage: 1,
+  creepDeathDamage: 1,
   width: 9,
   height: 5,
   tries: 0,
@@ -26,7 +27,7 @@ var game = {
   mode: '',
   //online, tutorial, campaign
   currentData: {},
-  // current game data
+  // game.currentData.moves should be a clone in online mode
   currentState: 'noscript',
   //unsupported, load, log, menu, options, choose, table
   heroesAI: {},
@@ -78,7 +79,8 @@ var game = {
   },
   db: function(send, cb) {
     var server = game.dynamicHost + 'db';
-    if (game.debug) server = '/db';
+    if (game.debug)
+      server = '/db';
     if (typeof send.data !== 'string') {
       send.data = JSON.stringify(send.data);
     }
@@ -179,13 +181,25 @@ var game = {
       }
     });
   },
-  print: function () {
-    game.states.choose.pickbox.css({left: 100, top: 130, transform: 'scale(2)', background: 'transparent'});
-    $(document.body).css({'background': 'transparent', 'box-shadow': 'none'});
+  print: function() {
+    game.states.choose.pickbox.css({
+      left: 100,
+      top: 130,
+      transform: 'scale(2)',
+      background: 'transparent'
+    });
+    $(document.body).css({
+      'background': 'transparent',
+      'box-shadow': 'none'
+    });
     game.topbar.css('background', 'transparent');
     game.container.css('background', 'transparent');
-    game.states.choose.pickedbox.css({opacity: 0});
-    game.states.choose.buttonbox.css({right: 0});
+    game.states.choose.pickedbox.css({
+      opacity: 0
+    });
+    game.states.choose.buttonbox.css({
+      right: 0
+    });
     $('.library.skills .card').appendTo(game.states.choose.pickDeck).on('mousedown.choose touchstart.choose', game.states.choose.select);
   }
 };

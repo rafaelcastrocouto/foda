@@ -48,7 +48,7 @@
   "axechannel": "Habilidades de <b>canalização</b> impedem outras ações e podem ser interrompidas",
   "axeend": "Ah! Bom trabalho, agora vá encarar uma <br><b class='battle'>batalha</b>",
   "axecreep": "<b>Selecione</b> uma unidade ou creep no canto esquerdo. Todas as cartas que não precisam de mana ficam na mão esquerda",
-  "axesummoncreep": "Clique na seta verde para <b>invocar</b>, a torre perde 2 de HP quando um creep morre",
+  "axesummoncreep": "Clique na seta verde para <b>invocar</b>, a torre perde 1 de HP quando um creep morre",
   "completedtutorial": "completou o tutorial",
   "online": "Jogo online",
   "chooselibrary": "Conheça todas as cartas do jogo",

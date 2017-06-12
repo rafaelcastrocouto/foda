@@ -48,7 +48,7 @@
   "axechannel": "<b>Kanal </b> diğer işlemleri engellemekte ve kesintiye uğramasına neden olabilir",
   "axeend": "Ah! Sen yaptın, şimdi gerçek bir için hazır <b class='battle'>savaş</b>",
   "axecreep": "Sol elinizde bir ünite seçin. Mana gereksinimi olmayan tüm kartlar sol elinize gidecek",
-  "axesummoncreep": "Çağırmak için yeşil bir oku tıklayın, bu küçük sürünme savaşta ölürse kulenin 2 HP kaybedeceğini unutmayın",
+  "axesummoncreep": "Çağırmak için yeşil bir oku tıklayın, bu küçük sürünme savaşta ölürse kulenin 1 HP kaybedeceğini unutmayın",
   "completedtutorial": "Egitim tamamlandı",
   "online": "Online oyun",
   "chooselibrary": "Oyundaki tüm kartları keşfedin",

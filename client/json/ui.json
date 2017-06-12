@@ -48,7 +48,7 @@
   "axechannel": "<b>Channel</b> skills prevent other actions but may be interrupted",
   "axeend": "Ah! You did it, now you are ready for a real <br><b class='battle'>battle!</b>",
   "axecreep": "Select a unit in your <b>left hand</b>. All cards that have no mana requirements go to your left hand",
-  "axesummoncreep": "Click on a green arrow to <b>summon</b>, remember that the tower will lose 2 HP if that little creep die in battle",
+  "axesummoncreep": "Click on a green arrow to <b>summon</b>, remember that the tower will lose 1 HP if that little creep die in battle",
   "completedtutorial": "completed the tutorial",
   "online": "Play online",
   "chooselibrary": "Learn every detail of all cards in the game",

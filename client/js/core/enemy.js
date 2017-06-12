@@ -1,27 +1,24 @@
 game.enemy = {
-  placeHeroes: function () {
+  placeHeroes: function() {
     game.enemy.heroesDeck = game.deck.build({
       name: 'heroes',
       filter: game.enemy.picks,
-      cb: function (deck) {
+      cb: function(deck) {
         deck.addClass('enemy').hide().appendTo(game.states.table.enemy);
-        var x = 2, y = 4;
-        $.each(deck.data('cards'), function (i, card) {
+        var x = 2;
+        var y = 4;
+        $.each(deck.data('cards'), function(i, card) {
           var p = game.enemy.picks.indexOf(card.data('hero'));
           card.addClass('enemy').on('mousedown touchstart', game.card.select);
           card.place(game.map.mirrorPosition(game.map.toPosition(x + p, y)));
-          if (game.mode == 'tutorial') card.on('select', game.tutorial.selected);
+          if (game.mode == 'tutorial')
+            card.on('select', game.tutorial.selected);
         });
       }
     });
   },
-  buyCard: function () {
-    var availableSkills = $('.table .enemy .available .card'),
-      card,
-      heroid,
-      hero,
-      to,
-      skillid;
+  buyCard: function() {
+    var availableSkills = $('.table .enemy .available .card'), card, heroid, hero, to, skillid;
     if (availableSkills.length < game.enemy.cardsPerTurn + 1) {
       $('.table .enemy .cemitery .card').appendTo(game.enemy.skills.deck);
       availableSkills = $('.table .enemy .available .card');
@@ -35,11 +32,11 @@ game.enemy = {
       card.appendTo(game.enemy.skills.sidehand);
     }
   },
-  buyHand: function () {
+  buyHand: function() {
     game.enemy.buyCreeps();
     game.enemy.buyCards(game.enemy.cardsPerTurn);
   },
-  buyCreeps: function (force, catapultforce) {
+  buyCreeps: function(force, catapultforce) {
     var ranged, melee, catapult;
     if (game.enemy.turn === 1 || force) {
       ranged = game.enemy.unitsDeck.children('.ranged');
@@ -58,27 +55,33 @@ game.enemy = {
       game.units.clone(catapult).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
     }
   },
-  buyCards: function (n) {
-    for (var i=0; i<n; i++) {
+  buyCards: function(n) {
+    for (var i = 0; i < n; i++) {
       game.enemy.buyCard();
     }
   },
-  startMoving: function (cb) {
+  startMoving: function(cb) {
     game.message.text(game.data.ui.enemymove);
-    if (typeof(game.currentData.moves) == 'string') game.currentMoves = game.currentData.moves.split('|');
-    else game.currentMoves = game.currentData.moves;
+    if (typeof (game.currentData.moves) == 'string')
+      game.currentMoves = game.currentData.moves.split('|');
+    else
+      game.currentMoves = game.currentData.moves;
     //console.log(game.currentMoves)
     game.enemy.autoMoveCount = 0;
     game.enemy.moveEndCallback = cb;
-    if (game.currentMoves.length && game.currentMoves[0].length) game.timeout(1000, game.enemy.autoMove);
-    else game.timeout(1000, game.enemy.movesEnd);
+    if (game.currentMoves.length && game.currentMoves[0].length)
+      game.timeout(1000, game.enemy.autoMove);
+    else
+      game.timeout(1000, game.enemy.movesEnd);
   },
-  autoMove: function (ai) {
+  autoMove: function(ai) {
     var from, to, hero, skillid, move;
-    if (ai) move = game.currentData.moves[0].split(':');
+    if (ai)
+      move = game.currentData.moves[0].split(':');
     else {
       var m = game.currentMoves[game.enemy.autoMoveCount];
-      if (m && m.length) move = m.split(':');
+      if (m && m.length)
+        move = m.split(':');
     }
     if (move && move.length) {
       $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
@@ -87,7 +90,8 @@ game.enemy = {
       game.enemy.moveAnimation = 1600;
       if (move[1]) {
         from = game.map.mirrorPosition(move[1]);
-        if (move[2]) to = game.map.mirrorPosition(move[2]);
+        if (move[2])
+          to = game.map.mirrorPosition(move[2]);
         if (move[0] === 'M') {
           game.enemy.move(from, to);
         }
@@ -130,19 +134,20 @@ game.enemy = {
         game.enemy.autoMoveCount++;
         if (game.enemy.autoMoveCount < game.currentMoves.length) {
           game.timeout(game.enemy.moveAnimation, game.enemy.autoMove);
-        } else game.timeout(1000, game.enemy.movesEnd);
+        } else
+          game.timeout(1000, game.enemy.movesEnd);
       } else {
         game.timeout(game.enemy.moveAnimation, ai);
       }
     }
   },
-  movesEnd: function () {
+  movesEnd: function() {
     $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.source').removeClass('source');
     game.timeout(1000, game.enemy.moveEndCallback);
   },
-  move: function (from, to) {
+  move: function(from, to) {
     var target = $('#' + from + ' .card');
     if (to && !target.hasClass('done') && target.hasClass('enemy') && target.move) {
       target.addClass('enemyMoveHighlight');
@@ -150,7 +155,7 @@ game.enemy = {
       target.addClass('done');
     }
   },
-  attack: function (from, to) {
+  attack: function(from, to) {
     var source = $('#' + from + ' .card');
     var target = $('#' + to + ' .card');
     if (to && !source.hasClass('done') && source.hasClass('enemy') && source.attack && target) {
@@ -160,89 +165,95 @@ game.enemy = {
       target.addClass('enemyMoveHighlightTarget');
     }
   },
-  cast: function (from, to, hero, skillid) {
+  cast: function(from, to, hero, skillid) {
     var source = $('#' + from + ' .card');
     var target = $('#' + to);
     var s = hero + '-' + skillid;
-    var skill = $('.enemydecks .hand .skills.'+s+', .enemydecks .sidehand .skills.'+s).first();
+    var skill = $('.enemydecks .hand .skills.' + s + ', .enemydecks .sidehand .skills.' + s).first();
     var targets = skill.data('targets');
     var card;
     if (targets) {
-      if (targets.indexOf(game.data.ui.enemy) >= 0 ||
-          targets.indexOf(game.data.ui.ally)  >= 0 ||
-          targets.indexOf(game.data.ui.self)  >= 0) { 
+      if (targets.indexOf(game.data.ui.enemy) >= 0 || targets.indexOf(game.data.ui.ally) >= 0 || targets.indexOf(game.data.ui.self) >= 0) {
         card = $('#' + to + ' .card');
-        if (card.length) target = card;
+        if (card.length)
+          target = card;
       }
     }
     skill.addClass('showMoves');
     source.addClass('enemyMoveHighlight');
-    if (target.hasClass('.card')) target.addClass('enemyMoveHighlightTarget');
-    setTimeout(function (skill, target, hero, skillid) {
+    if (target.hasClass('.card'))
+      target.addClass('enemyMoveHighlightTarget');
+    setTimeout(function(skill, target, hero, skillid) {
       //console.log(skill, target, hero, skillid)
       if (game.skills[hero][skillid].cast && skill && source.hasClass('enemy') && source.cast) {
         source.cast(skill, target);
       }
-    }.bind(this, skill, target, hero, skillid), game.enemy.moveAnimation);
+    }
+    .bind(this, skill, target, hero, skillid), game.enemy.moveAnimation);
   },
-  passive: function (to, hero, skillid) { 
+  passive: function(to, hero, skillid) {
     // console.log(game.currentData.moves)
     var target = $('#' + to + ' .card');
     var s = hero + '-' + skillid;
-    var skill = $('.enemydecks .hand .skills.'+s+', .enemydecks .sidehand .skills.'+s).first();
+    var skill = $('.enemydecks .hand .skills.' + s + ', .enemydecks .sidehand .skills.' + s).first();
     skill.addClass('showMoves');
     target.addClass('enemyMoveHighlight');
-    game.timeout(game.enemy.moveAnimation, function (skill, target, hero, skillid) { 
+    game.timeout(game.enemy.moveAnimation, function(skill, target, hero, skillid) {
       skill.removeClass('showMoves');
       if (game.skills[hero][skillid].passive && skill && target.hasClass('enemy') && skill.passive) {
         skill.passive(target);
       }
-    }.bind(this, skill, target, hero, skillid));
+    }
+    .bind(this, skill, target, hero, skillid));
   },
-  toggle: function (to, hero, skillid) {
+  toggle: function(to, hero, skillid) {
     var target = $('#' + to + ' .card');
     var s = hero + '-' + skillid;
-    var skill = $('.enemydecks .hand .skills.'+s+', .enemydecks .sidehand .skills.'+s).first();
+    var skill = $('.enemydecks .hand .skills.' + s + ', .enemydecks .sidehand .skills.' + s).first();
     skill.addClass('showMoves');
     target.addClass('enemyMoveHighlight');
-    game.timeout(game.enemy.moveAnimation, function (skill, target, hero, skillid) { 
-      skill.removeClass('showMoves'); 
+    game.timeout(game.enemy.moveAnimation, function(skill, target, hero, skillid) {
+      skill.removeClass('showMoves');
       if (game.skills[hero][skillid].toggle && skill && target.hasClass('enemy') && skill.toggle) {
         skill.toggle(target);
       }
-    }.bind(this, skill, target, hero, skillid));
+    }
+    .bind(this, skill, target, hero, skillid));
   },
-  summonCreep: function (to, creep) { 
+  summonCreep: function(to, creep) {
     var target = $('#' + to);
     var creepCard = game.enemy.skills.sidehand.children('.' + creep).first();
-    if ( !game.isPlayerTurn() &&
-         target.hasClass('free') &&
-         creepCard.length) {
-      creepCard.addClass('showMoves');    
-      game.timeout(game.enemy.moveAnimation, function () {
+    if (!game.isPlayerTurn() && target.hasClass('free') && creepCard.length) {
+      creepCard.addClass('showMoves');
+      game.timeout(game.enemy.moveAnimation, function() {
         creepCard.removeClass('showMoves flipped').addClass('done').place(target);
         creepCard.trigger('summon');
       });
     }
   },
-  stopChanneling: function (pos) {//console.log(pos)
+  stopChanneling: function(pos) {
+    //console.log(pos)
     var card = $('#' + pos + ' .card');
     if (card.length) {
-      if (card.data('illuminate-ghost')) card.data('illuminate-ghost').stopChanneling();
-      else card.stopChanneling();
+      if (card.data('illuminate-ghost'))
+        card.data('illuminate-ghost').stopChanneling();
+      else
+        card.stopChanneling();
       card.stopChanneling();
     }
   },
-  discard: function (hero, skillid) {
+  discard: function(hero, skillid) {
     var s = hero + '-' + skillid;
-    var skill = $('.enemydecks .hand .skills.'+s).first();
+    var skill = $('.enemydecks .hand .skills.' + s).first();
     skill.addClass('discardMove');
-    game.timeout(game.enemy.moveAnimation, function (skill) {
+    game.timeout(game.enemy.moveAnimation, function(skill) {
       skill.removeClass('discardMove');
-      if (skill.discard) skill.discard();
-    }.bind(this, skill));
+      if (skill.discard)
+        skill.discard();
+    }
+    .bind(this, skill));
   },
-  cardsInHand: function () {
+  cardsInHand: function() {
     return game.enemy.skills.hand.children().length;
   }
 };
