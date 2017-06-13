@@ -122,8 +122,8 @@
 
 .card fieldset h1 {
   cursor: inherit;
-  margin: 6px 0 2px;
-  font-size: 12px;
+  margin: 5px 0 4px;
+  font-size: 13px;
   font-weight: bold;
   float: left;
   line-height: 12px;
@@ -182,14 +182,9 @@
   text-align: justify;
   margin: 0;
   border: 0;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 13px;
   display: block;
-}
-
-.card.heroes .description {
-  font-size: 12px;
-  margin-top: 5px;
 }
 
 .table .card.heroes .description {
@@ -198,10 +193,10 @@
 
 .card .description {
   font-style: italic;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: -0.5px;
-  word-spacing: -0.5px;
-  margin-top: 1px;
+  word-spacing: -1px;
+  margin-top: 4px;
   margin-right: 2px;
   line-height: 13px;
 }

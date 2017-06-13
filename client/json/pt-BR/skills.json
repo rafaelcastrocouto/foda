@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Mágico",
-      "cards": 1,
+      "cards": 2,
       "description": "Uma coluna de fogo causa dano em linha"
     },
     "stun": {
@@ -24,11 +24,11 @@
       "targets": ["Local", "Próprio"],
       "cast range": "Distante",
       "aoe": "Radial",
-      "aoe range": "Melee",
+      "aoe range": "Perto",
       "damage": 10,
       "stun": 2,
       "damage type": "Mágico",
-      "cards": 2,
+      "cards": 1,
       "description": "Uma bola de fogo atordoa e causa dano em área. Pode destruir árvores"
     },
     "passive": {
@@ -141,7 +141,8 @@
       "cards": 1,
       "description": "O jogador compra uma carta de habilidade a mais por turno",
       "buff": {
-        "description": "Uma carta de habilidade bonus por turno"
+        "description": "Uma carta de habilidade bonus por turno",
+        "cards per turn": 1
       }
     },
     "freeze": {
@@ -231,7 +232,7 @@
       "targets": ["Próprio"],
       "cards": 2,
       "bonus cards": 2,
-      "description": "O jogador compra 2 cartas de habilidade"
+      "description": "O jogador compra cartas de habilidade"
     },
     "ult": {
       "name": "Forma Astral",
@@ -240,7 +241,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "Light Keeper se torna um com a luz! Recebe 'Resgate' e 'Luz Cegante'",
+      "description": "Light Keeper se torna um com a luz! Recebe 'Resgate' e 'Luz Cegante' e a Bola de Luz passa a ser Ativa",
       "buff": {
         "duration": 10,
         "description": "Forma Espiritual"
@@ -297,7 +298,7 @@
       "armor": 3,
       "resistance": 3,
       "death damage": 10,
-      "description": "Invoca um poderoso Urso companheiro Entangling claws and Demolish. O jogador compra uma carta temporária 'Retornar'",
+      "description": "O jogador compra uma carta temporária 'Retornar'",
       "buffs": {
         "demolish": {
           "source": {
@@ -555,7 +556,7 @@
       "damage type": "Mágico",
       "stun": 2,
       "cards": 2,
-      "description": "Atordoa e depois causa dano por turno à uma unidade inimiga",
+      "description": "Atordoa depois diminui a velocidade e causa dano por turno",
       "buff": {
         "damage type": "Mágico",
         "speed slow": 1,

@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Magical",
-      "cards": 1,
+      "cards": 2,
       "description": "A column of flames damages enemies in a line"
     },
     "stun": {
@@ -28,7 +28,7 @@
       "damage": 10,
       "stun": 2,
       "damage type": "Magical",
-      "cards": 2,
+      "cards": 1,
       "description": "A ball of fire stuns and damages enemies. Can destroy trees"
     },
     "passive": {
@@ -38,10 +38,10 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "After casting every attack will have fire bonus damage",
+      "description": "Each cast will increase attack with fire bonus damage",
       "buff": {
         "cast damage bonus": 4,
-        "description": "After casting every attack will have fire bonus damage"
+        "description": "Each cast will increase attack with fire bonus damage"
       }
     },
     "ult": {
@@ -83,7 +83,7 @@
       "description": "Teleport Magino to the target spot"
     },
     "shield": {
-      "name": "Resistance Shield",
+      "name": "Resistance",
       "type": "Passive",
       "hand": "Left",
       "deck": "Buy",
@@ -141,7 +141,8 @@
       "cards": 1,
       "description": "Give a bonus skill card per turn to the player",
       "buff": {
-        "description": "Player buys one extra skill card per turn"
+        "description": "Player buys one extra skill card per turn",
+        "cards per turn": 1
       }
     },
     "freeze": {
@@ -152,7 +153,7 @@
       "targets": ["Enemy"],
       "cast range": "Ranged",
       "cards": 1,
-      "description": "Encases an enemy unit in ice, prohibiting movement and attack, while dealing damage over time. Interrupts target channel",
+      "description": "Prevents movement and attack while dealing damage over time. Interrupts target channel",
       "buff": {
         "duration": 2,
         "dot": 6,
@@ -231,7 +232,7 @@
       "targets": ["Self"],
       "cards": 2,
       "bonus cards": 2,
-      "description": "Gives the player 2 skill cards"
+      "description": "Gives the player extra skill cards"
     },
     "ult": {
       "name": "Astral Form",
@@ -240,7 +241,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Becomes one with the light! Gains 'Rescue' and 'Light Blast'",
+      "description": "Becomes one with the light! Gains 'Rescue' and 'Light Blast' and changes 'Light Ball' into an Active skill",
       "buff": {
         "duration": 10,
         "description": "Spirit Form"
@@ -431,12 +432,12 @@
       "damage type": "Pure",
       "cards": 2,
       "stun": 3,
-      "description": "Bonus armor, bonus resistance and reflects damage received, while stunning the source of damage",
+      "description": "Reflect damage received and stun the source of damage",
       "buff": {
         "duration": 2,
         "armor bonus": 10,
         "resistance bonus": 10,
-        "description": "Bonus armor, bonus resistance and reflects damage received, while stunning the source of damage"
+        "description": "Reflect damage received and stun the source of damage"
       }
     },
     "ult": {
@@ -527,7 +528,7 @@
       "dot": 10,
       "damage type": "Magical",
       "cards": 1,
-      "description": "Butcher chows down on an enemy, disabling and dealing damage over time while healing himself. Interrupts target channel",
+      "description": "Disable and deals damage over time while healing himself. Interrupts target channel",
       "buffs": {
         "ult": { 
           "source": {
@@ -555,11 +556,11 @@
       "damage type": "Magical",
       "stun": 2,
       "cards": 2,
-      "description": "Damage and stun a target then slows and deals 6 damage over 3 turns",
+      "description": "Damage and stun a target then slows and deals damage over time",
       "buff": {
         "damage type": "Magical",
         "speed slow": 1,
-        "duration": 1,
+        "duration": 2,
         "dot": 6,
         "description": "Fire Blast damage over time",
         "purgeable": true

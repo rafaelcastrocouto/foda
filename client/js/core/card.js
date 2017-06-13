@@ -77,7 +77,7 @@ game.card = {
     else if (data.buff && data.buff['damage type'])
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['damage type']);
     if (data.aoe)
-      $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + data['aoe range'] + ')');
+      $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + data['aoe range']+')');
     if (data.range)
       $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range);
     if (data['cast range']) {
@@ -100,19 +100,23 @@ game.card = {
     }
     if (data.type == game.data.ui.channel)
       $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.channel);
+    if (data.stun) 
+      $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
+    else if (data.buff && data.buff.duration)
+      $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.buff.duration + ' ' + game.data.ui.turns);
     if (data.buff) {
       if (data.buff['cast damage bonus'])
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['cast damage bonus'] + ' per Cast');
+        $('<p>').appendTo(desc).html(game.data.ui.damage + ': ' + data.buff['cast damage bonus'] + ' per Cast');
       if (data.buff['damage per kill'])
         $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['damage per kill'] + ' per Kill');
       if (data.buff['hp per kill'])
         $('<p>').appendTo(desc).text(game.data.ui.hp + ': ' + data.buff['hp per kill'] + ' per Kill');
+      if (data.buff['cards per turn'])
+        $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + data.buff['cards per turn'] + ' per Turn');
       if (data.buff.chance)
         $('<p>').appendTo(desc).text(game.data.ui.chance + ': ' + data.buff.chance + '%');
       if (data.buff.percentage)
         $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + data.buff.percentage + '%');
-      if (data.buff.duration)
-        $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.buff.duration + ' ' + game.data.ui.turns);
       if (data.buff.multiplier)
         $('<p>').appendTo(desc).text(game.data.ui.multiplier + ': ' + data.buff.multiplier + 'X');
       if (data.buff['hp bonus'])

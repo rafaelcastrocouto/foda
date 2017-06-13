@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Büyü",
-      "cards": 1,
+      "cards": 2,
       "description": "Ateşten oluşan bir sütun düşmanları bir çizgide hasara uğratır"
     },
     "stun": {
@@ -28,7 +28,7 @@
       "damage": 10,
       "stun": 2,
       "damage type": "Büyü",
-      "cards": 2,
+      "cards": 1,
       "description": "Ateş topu düşmanları şaşırtıyor ve düşmanlarına zarar veriyor. Ağaçları yok edebilir miyim"
     },
     "passive": {
@@ -141,7 +141,8 @@
       "cards": 1,
       "description": "Dost kahramanların manasını bonus olarak beceri kartı verir",
       "buff": {
-        "description": "Oyunculara fazladan beceri kartı verir"
+        "description": "Oyunculara fazladan beceri kartı verir",
+        "cards per turn": 1
       }
     },
     "freeze": {
@@ -231,7 +232,7 @@
       "targets": ["AynÄ"],
       "cards": 2,
       "bonus cards": 2,
-      "description": "Oyuncuya 2 beceri kartı verir"
+      "description": "Oyuncuya ekstra beceri kartları verir"
     },
     "ult": {
       "name": "Astral Form",
@@ -240,7 +241,7 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Işık ile bir olur. satın kartı 'Light Blast' ve 'Rescue'",
+      "description": "Işık ile bir olur! Satın kartı 'Light Blast' ve 'Rescue'. 'Light Ball' nu Aktif bir beceriye dönüştürür",
       "buff": {
         "duration": 10,
         "description": "Spirit Form"
