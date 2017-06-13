@@ -3,25 +3,23 @@ game.skills.wk = {
     cast: function (skill, source, target) {
       source.addStun(target, skill);
       source.damage(skill.data('damage'), target, skill.data('damage type'));
-      target.data('wk-dot-count', 4);
+      target.data('wk-dot-count', 2);
       target.on('turnend.wk-stun', this.turnend.bind(this, {
         source: source, 
         target: target, 
         skill: skill
       }));
     },
-    turnend: function (skillData) {
+    turnend: function (skillData) { 
       var target = skillData.target;
       var source = skillData.source;
       var skill = skillData.skill;
+      var buff = skill.data('buff');
       var count = target.data('wk-dot-count');
-      var dotBuff = target.getBuff('wk-stun');
-      var stunBuff = target.getBuff('stun');
-      var buff = $(stunBuff[0] || dotBuff[0]);
-      if (dotBuff.length) source.damage(dotBuff.data('dot'), target, dotBuff.data('damage type'));
-      if (count === 3) source.addBuff(target, skill);
-      if (count === 0) target.off('turnend.wk-stun').data('wk-dot-count', null);
+      if (count >= 0 && count <= 1) source.damage(buff.dot, target, buff['damage type']);
+      if (count === 1) source.addBuff(target, skill);
       target.data('wk-dot-count', count - 1);
+      if (count === 0) target.off('turnend.wk-stun').data('wk-dot-count', null).removeBuff('wk-stun');
     }
   },
   lifesteal: {
@@ -87,7 +85,6 @@ game.skills.wk = {
       spot.addClass('cript block');
       wk.on(side + 'turnstart.wk-ult', game.skills.wk.ult.turnstart);
       wk.data('wk-ult-spot', spot);
-      wk.off('death.wk-ult');
     },
     turnstart: function (event, eventdata) {
       var wk = eventdata.target;
@@ -96,16 +93,17 @@ game.skills.wk = {
       var skill = buff.data('skill');
       var spot = wk.data('wk-ult-spot');
       var side = wk.side();
-      spot.removeClass('cript');
       wk.reborn(spot);
+      spot.removeClass('cript');
       wk.opponentsInRange(range, function (target) {
         wk.addBuff(target, skill, 'ult-targets');
       });
-      wk.removeBuff('wk-ult');
       wk.off(side + 'turnstart.wk-ult');
+      wk.off('death.wk-ult');
+      wk.removeBuff('wk-ult');
       wk.data('wk-ult-spot', null);
       if (game.mode == 'library') skill.appendTo(game[side].skills.sidehand);
-      else skill.appendTo(game[side].skills.sidehand);
+      else skill.appendTo(game[side].skills.cemitery);
       game.shake();
     }
   }

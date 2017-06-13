@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Büyü",
-      "cards": 2,
+      "cards": 1,
       "description": "Ateşten oluşan bir sütun düşmanları bir çizgide hasara uğratır"
     },
     "stun": {
@@ -79,7 +79,7 @@
       "deck": "Satın Al",
       "targets": ["Yer", "Bedava"],
       "cast range": "Uzun",
-      "cards": 3,
+      "cards": 2,
       "description": "Hedeflenen noktaya ışınlanır"
     },
     "shield": {
@@ -127,7 +127,7 @@
       "description": "Hedef alınan düşmanı yavaşlatır ve hasar almasına yol açar",
       "buff": {
         "speed slow": 1,
-        "duration": 3,
+        "duration": 2,
         "description": "Hasar verir ve bikaç saniye boyunca yavaşlarsın",
         "purgeable": true
       }
@@ -151,11 +151,11 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "cast range": "Menzilli",
-      "cards": 2,
+      "cards": 1,
       "description": "Zamanla çevresindekı düşmanlara hasar veren bir buz ile saldırır ve düşman yavaşlar",
       "buff": {
-        "duration": 3,
-        "dot": 4,
+        "duration": 2,
+        "dot": 6,
         "damage type": "Büyü",
         "description": "Çevresinde bulunan düşmanlara dondurulmuş buz ile hasar verir ve yavaşlatır"
       }
@@ -314,7 +314,7 @@
           },
           "target": {
             "dot": 6,
-            "duration": 3,
+            "duration": 2,
             "description": "Köklü bir her saniye hasar almasına yol açar"
           }
         }
@@ -351,6 +351,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Dövüş", "Yakarma"],
+      "damage": 6,
+      "damage type": "Magical",
       "range": "Dövüş",
       "aoe": "Radyal",
       "aoe range": "Dövüş",
@@ -427,7 +429,7 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "damage type": "Saf",
-      "cards": 2,
+      "cards": 1,
       "stun": 3,
       "description": "Bonus zırh, ikramiye direnci. Alınan hasarı yansıtır ve kaynağını sersemletir",
       "buff": {
@@ -493,7 +495,7 @@
           },
           "targets": {
             "speed slow": 1,
-            "duration": 2,
+            "duration": 1,
             "description": "Stink yavaşladı"
           }
         }
@@ -557,7 +559,7 @@
       "buff": {
         "damage type": "Büyü",
         "speed slow": 1,
-        "duration": 3,
+        "duration": 2,
         "dot": 6,
         "description": "Zamanla hasar verir",
         "purgeable": true

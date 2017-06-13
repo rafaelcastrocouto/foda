@@ -66,13 +66,16 @@ game.card = {
         $('<p>').appendTo(desc).text(game.data.ui.damage + ' ' + game.data.ui.bonus + ': ').addClass('dot').append($('<span>').text(data.buff['damage bonus']));
       if (data.buff.dot)
         $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(data.buff.dot));
+
     }
-    if (data.hand)
-      $('<p>').appendTo(desc).text(data.deck + ' (' + data.hand + ')');
-    if (data.cards)
+    //if (data.hand)
+    //  $('<p>').appendTo(desc).text(data.deck + ' (' + data.hand + ')');
+    if (data.cards > 1)
       $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + data.cards);
     if (data['damage type'])
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data['damage type']);
+    else if (data.buff && data.buff['damage type'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['damage type']);
     if (data.aoe)
       $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + data['aoe range'] + ')');
     if (data.range)
@@ -124,9 +127,9 @@ game.card = {
       $('<p>').appendTo(desc).addClass('description').text(data.description);
       //card.attr({ title: data.name + ': ' + data.description });
     }
-    card.attr({
+    /*card.attr({
       title: data.name
-    });
+    });*/
     if (data.kd) {
       $('<p>').addClass('kd').appendTo(desc).html(game.data.ui.kd + ': <span class="kills">0</span>/<span class="deaths">0</span>');
       data.kills = 0;
@@ -396,7 +399,7 @@ game.card = {
   reduceStun: function() {
     var target = this, currentstun;
     if (target.hasClass('stunned')) {
-      currentstun = parseInt(target.data('stun'), 10);
+      currentstun = parseInt(target.data('stun') - 1, 10);
       if (currentstun > 0) {
         target.data('stun', currentstun - 1);
       } else {
@@ -516,7 +519,7 @@ game.card = {
         setTimeout(game.card.projectile.bind(target), 10);
         setTimeout(function() {
           game.projectile.remove();
-        }, 260);
+        }, 500);
       }
       if (source.data('critical-attack'))
         source.data('critical-attack', false);
@@ -686,7 +689,7 @@ game.card = {
       spot.addClass('free');
     }
     if (this.hasClass('heroes')) {
-      game[game.opponent(side)].tower.damage(game.heroDeathDamage, game[side].tower, game.data.ui.pure);
+      if (!spot.hasClass('cript')) game[game.opponent(side)].tower.damage(game.heroDeathDamage, game[side].tower, game.data.ui.pure);
       deaths = this.data('deaths') + 1;
       this.data('deaths', deaths);
       this.find('.deaths').text(deaths);
@@ -719,7 +722,6 @@ game.card = {
     return this;
   },
   reborn: function(spot) {
-    //console.trace(this, spot)
     if (spot && spot.hasClass)
       spot = spot[0].id;
     var hp = this.data('hp'), x, y;
@@ -742,9 +744,11 @@ game.card = {
         }
       }
     }
-    if (spot && spot.length && $('#' + spot).hasClass('free')) {
+    var p = $('#' + spot);
+    if ( spot && spot.length && 
+     (p.hasClass('free') || p.hasClass('cript')) ) {
       var side = this.side();
-      if (game[side].tower.data('current hp') > game.heroRespawnDamage)
+      if (game[side].tower.data('current hp') > game.heroRespawnDamage && !p.hasClass('cript'))
         game[game.opponent(side)].tower.damage(game.heroRespawnDamage, game[side].tower, game.data.ui.pure);
       this.data('reborn', null);
       this.setCurrentHp(hp);

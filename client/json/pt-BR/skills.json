@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Mágico",
-      "cards": 2,
+      "cards": 1,
       "description": "Uma coluna de fogo causa dano em linha"
     },
     "stun": {
@@ -79,7 +79,7 @@
       "deck": "Comprar",
       "targets": ["Local", "Livre"],
       "cast range": "Longe",
-      "cards": 3,
+      "cards": 2,
       "description": "Teleporta para o destino imediatamente"
     },
     "shield": {
@@ -127,7 +127,7 @@
       "description": "Uma explosão de gelo que causa dano em area e diminui a velocidade dos inimigos",
       "buff": {
         "speed slow": 1,
-        "duration": 3,
+        "duration": 2,
         "description": "Movimento restrito pela explosão cristalina",
         "purgeable": true
       }
@@ -151,11 +151,11 @@
       "deck": "Comprar",
       "targets": ["Inimigos"],
       "cast range": "Distante",
-      "cards": 2,
+      "cards": 1,
       "description": "Congela uma unidade inimiga (disarma e bloqueia o movimento), causa dano por turno e interrompe canalização",
       "buff": {
-        "duration": 3,
-        "dot": 4,
+        "duration": 2,
+        "dot": 6,
         "damage type": "Mágico",
         "description": "Congelado (disarmado e sem movimento) e recebendo dano por turno"
       }
@@ -314,7 +314,7 @@
           },
           "target": {
             "dot": 6,
-            "duration": 3,
+            "duration": 2,
             "description": "Preso pelas Garras da Natureza e recebendo dano por turno"
           }
         }
@@ -351,6 +351,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio", "Invocação"],
+      "damage": 6,
+      "damage type": "Magical",
       "range": "Perto",
       "aoe": "Radial",
       "aoe range": "Perto",
@@ -402,7 +404,7 @@
       "aoe range": 3,
       "cast range": 1,
       "cast width": 0,
-      "cards": 2,
+      "cards": 1,
       "damage type": "Mágico",
       "damage": 12,
       "stun": 2,
@@ -493,7 +495,7 @@
           },
           "targets": {
             "speed slow": 1,
-            "duration": 2,
+            "duration": 1,
             "description": "Movimento restrito pela cheiro do Açougueiro"
           }
         }
@@ -557,7 +559,7 @@
       "buff": {
         "damage type": "Mágico",
         "speed slow": 1,
-        "duration": 3,
+        "duration": 2,
         "dot": 6,
         "description": "Dano por turno da Explosão Maldita",
         "purgeable": true

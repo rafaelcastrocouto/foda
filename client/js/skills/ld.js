@@ -83,6 +83,9 @@ game.skills.ld = {
   },
   roar: {
     cast: function (skill, source, target) {
+      source.opponentsInRange(skill.data('range'), function (card) {
+        source.damage(skill.data('damage'), card, skill.data('damage type'));
+      });
       this.opponent = source.opponent();
       var range = skill.data('aoe range');
       var x = game.map.getX(target);

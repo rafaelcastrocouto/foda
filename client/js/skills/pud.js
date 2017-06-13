@@ -1,11 +1,10 @@
 game.skills.pud = {
   hook: {
     cast: function (skill, source, target) {
-      var side = source.side(),
-        range = skill.data('aoe range'),
-        hooked = source.firstCardInLine(target, range);
+      var range = skill.data('aoe range'),
+          hooked = source.firstCardInLine(target, range);
       if (hooked && hooked.hasClasses('heroes units') && !hooked.hasClasses('ghost towers')) {
-        if (hooked.side() !== side) {
+        if (hooked.side() !== source.side()) {
           source.damage(skill.data('damage'), hooked, skill.data('damage type'));
           hooked.stopChanneling();
         }
@@ -22,6 +21,7 @@ game.skills.pud = {
         source.removeClass('pud-rot');
         source.removeBuff('pud-rot');
         $('.pud-rot-target').removeClass('pud-rot-target');
+        $('.map .card.'+source.opponent()).removeBuff('pud-rot');
       } else { //turn on
         skill.addClass('on');
         source.on('turnend.rot', game.skills.pud.rot.turnend);
@@ -58,24 +58,25 @@ game.skills.pud = {
   passive: {
     passive: function (skill, source) {
       var buff = source.selfBuff(skill);
+      source.on('kill', this.kill);
       var kills = source.data('kills');
+      game.skills.pud.passive.bonus(buff, source, kills);
+    },
+    bonus: function (buff, source, kills) {
+      if (!kills) kills = 1;
       var damage = source.data('current damage');
       var bonusDamage = buff.data('damage per kill') * kills;
       source.setDamage(damage + bonusDamage);
       var hp = source.data('hp');
       var bonusHp = buff.data('hp per kill') * kills;
       source.setHp(hp + bonusHp);
-      source.on('kill', this.kill);
+      hp = source.data('current hp');
+      source.setCurrentHp(hp + bonusHp);
     },
     kill: function (event, eventdata) {
       var source = eventdata.source;
       var buff = source.getBuff('pud-passive');
-      var damage = source.data('current damage');
-      var bonusDamage = buff.data('damage per kill');
-      source.setDamage(bonusDamage + damage);
-      var hp = source.data('hp');
-      var bonusHp = buff.data('hp per kill');
-      source.setHp(hp + bonusHp);
+      game.skills.pud.passive.bonus(buff, source);
     }
   },
   ult: {

@@ -126,11 +126,12 @@ game.turn = {
       var buff = $(buffElement);
       var duration = buff.data('duration'),
           data = buff.data('buff');
+      buff.trigger('buffcount', {target: hero, buff: buff});
       if (duration) {
         duration -= 1;
         buff.data('duration', duration);
       } else if (data && data.temp && data.buffId) {
-        buff.trigger('expire', {target: hero});
+        buff.trigger('expire', {target: hero, buff: buff});
         hero.removeBuff(data.buffId);
       }
     });

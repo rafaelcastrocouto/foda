@@ -29,18 +29,18 @@ game.skills.cm = {
   },
   freeze: {
     cast: function (skill, source, target) {
-      var buff = source.addBuff(target, skill);
       target.addClass('rooted disarmed');
-      target.on('turnend.cm-freeze', this.turnend);
       target.stopChanneling();
+      var buff = source.addBuff(target, skill);
+      source.damage(buff.data('dot'), target, buff.data('damage type'));
+      buff.on('buffcount', this.buffcount);
     },
-    turnend: function (event, eventdata) {
+    buffcount: function (event, eventdata) {
       var target = eventdata.target;
-      var buff = target.getBuff('cm-freeze');
+      var buff = eventdata.buff;
       var source = buff.data('source');
-      if (target.hasBuff('cm-freeze')) {
-        source.damage(buff.data('dot'), target, buff.data('damage type'));
-      } else {
+      if (buff.data('duration') !== 2) source.damage(buff.data('dot'), target, buff.data('damage type'));
+      if (buff.data('duration') === 0) {
         target.removeClass('rooted disarmed');
         target.off('turnend.cm-freeze');
       }

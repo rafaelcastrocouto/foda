@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Magical",
-      "cards": 2,
+      "cards": 1,
       "description": "A column of flames damages enemies in a line"
     },
     "stun": {
@@ -79,7 +79,7 @@
       "deck": "Buy",
       "targets": ["Spot", "Free"],
       "cast range": "Long",
-      "cards": 3,
+      "cards": 2,
       "description": "Teleport Magino to the target spot"
     },
     "shield": {
@@ -127,7 +127,7 @@
       "description": "A burst of damaging frost that slows enemies in the target area",
       "buff": {
         "speed slow": 1,
-        "duration": 3,
+        "duration": 2,
         "description": "Slowed by Snow Blast",
         "purgeable": true
       }
@@ -151,11 +151,11 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "cast range": "Ranged",
-      "cards": 2,
+      "cards": 1,
       "description": "Encases an enemy unit in ice, prohibiting movement and attack, while dealing damage over time. Interrupts target channel",
       "buff": {
-        "duration": 3,
-        "dot": 4,
+        "duration": 2,
+        "dot": 6,
         "damage type": "Magical",
         "description": "Ice Prison: disarmed, rooted and receiving damage over time"
       }
@@ -289,7 +289,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Free"],
-      "cards": 3,
+      "cards": 2,
       "cast range": "Melee",
       "hp": 80,
       "range": "Melee",
@@ -314,7 +314,7 @@
           },
           "target": {
             "dot": 6,
-            "duration": 3,
+            "duration": 2,
             "description": "Rooted and receiving damage per second"
           }
         }
@@ -351,6 +351,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self", "Summon"],
+      "damage": 6,
+      "damage type": "Magical",
       "range": "Melee",
       "aoe": "Radial",
       "aoe range": "Melee",
@@ -402,7 +404,7 @@
       "aoe range": 3,
       "cast range": 1,
       "cast width": 0,
-      "cards": 2,
+      "cards": 1,
       "damage type": "Magical",
       "damage": 12,
       "stun": 2,
@@ -493,7 +495,7 @@
           },
           "targets": {
             "speed slow": 1,
-            "duration": 2,
+            "duration": 1,
             "description": "Slowed by Butcher's Stink"
           }
         }
@@ -557,7 +559,7 @@
       "buff": {
         "damage type": "Magical",
         "speed slow": 1,
-        "duration": 3,
+        "duration": 1,
         "dot": 6,
         "description": "Fire Blast damage over time",
         "purgeable": true
