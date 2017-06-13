@@ -48,11 +48,11 @@ game.enemy = {
     }
     if (game.enemy.turn === 10 || catapultforce) {
       ranged = game.enemy.unitsDeck.children('.ranged');
-      game.units.clone(ranged).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
+      game.units.clone(ranged).addClass('flipped').appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
       melee = game.enemy.unitsDeck.children('.melee');
-      game.units.clone(melee).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
+      game.units.clone(melee).addClass('flipped').appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
       catapult = game.enemy.unitsDeck.children('.catapult');
-      game.units.clone(catapult).appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
+      game.units.clone(catapult).addClass('flipped').appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
     }
   },
   buyCards: function(n) {

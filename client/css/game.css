@@ -79,14 +79,68 @@ noscript .box {
   background-color: #859890;
 }
 
-.game-container.finished {
+.game-container.menu-state {
   background-color: #b2af9e;
   background-image: url("../img/bkg/polygon-light.jpg");
 }
 
-.game-container.library, .game-container.online, .game-container.tutorial, .game-container.single {
+.game-container.campaign-state, 
+.game-container.choose-state, 
+.game-container.vs-state, 
+.game-container.table-state,
+.game-container.result-state {
   background-color: #126766;
   background-image: url("../img/bkg/polygon-dark.jpg");
+}
+
+
+.bkgdeck {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.log-state .bkgdeck, 
+.campaign-state .bkgdeck, 
+.choose-state .bkgdeck, 
+.vs-state .bkgdeck, 
+.table-state .bkgdeck, 
+.result-state .bkgdeck{
+  display: none;
+}
+
+.bkgdeck .card {
+  position: absolute;
+  cursor: default;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bkgdeck .card:hover {
+  z-index: 1;
+}
+
+.bkgdeck .ld {
+  transform: translate3d(787px, -44px, -69px) rotateY(-61deg) rotateZ(34deg) rotateX(-25deg);
+}
+
+.bkgdeck .wk {
+  transform: translate3d(740px, -130px, -260px) rotateY(-50deg) rotateZ(30deg) rotateX(-15deg);
+}
+
+.bkgdeck .cm {
+  transform: translate3d(970px, 90px, -184px) rotateY(-85deg) rotateZ(35deg) rotateX(-5deg);
+}
+
+.bkgdeck .pud {
+  transform: translate(-65px, -60px) translateZ(-140px) rotateY(50deg) rotateZ(-36deg) rotateX(-2deg);
+}
+
+.bkgdeck .am {
+  transform: translate(-255px, 130px) translateZ(-290px) rotateY(70deg) rotateZ(-35deg) rotateX(5deg);
+}
+
+.bkgdeck .kotl {
+  transform: translate(-5px, -130px) translateZ(-323px) rotateY(40deg) rotateZ(-39deg) rotateX(-18deg);
 }
 
 .states {
@@ -132,8 +186,6 @@ noscript .box {
   border-radius: 5px;
   background-color: rgba(11, 15, 14, 0.7);
 }
-
-
 
 .box div p {
   display: block;
@@ -186,9 +238,9 @@ noscript .box {
 }
 
 .loading .box {
-  width: 230px;
-  top: 65%;
-  padding: 0;
+  width: 260px;
+  top: 68%;
+  padding: 12px;
 }
 
 .notfound .box {
@@ -260,6 +312,7 @@ input:focus {
   transform: translate(3px, -6px) scale(0.65) rotate(-45deg);
   display: inline-block;
 }
+
 .external:after {
   position: absolute;
   content: "◇";
@@ -269,6 +322,7 @@ input:focus {
   transform: scale(1.7);
   display: block;
 }
+
 .button, button, input[type=button], input[type=submit] {
   display: inline-block;
   text-align: center;
@@ -330,32 +384,34 @@ input:focus {
   background-color: #66bb8c;
   box-shadow: 0 4px 0 #4b8864;
 }
+
 .button.highlight:active {
   box-shadow: 0 1px 0 #4b8864;
 }
-.button.highlight[disabled],
-.button.highlight[disabled]:hover {
+
+.button.highlight[disabled], .button.highlight[disabled]:hover {
   background: #8da7a2;
   box-shadow: 0 4px 0 #6f7d76;
 }
+
 .button.highlight:hover {
   background: #82c19f;
 }
+
 input[type="checkbox"], input[type="radio"] {
   cursor: pointer;
 }
 
-.button.surrender, 
-.button.surrender[disabled]:hover {
+.button.surrender, .button.surrender[disabled]:hover {
   background: #da7664;
   box-shadow: 0 4px 0 #ca5c48;
 }
+
 .button.surrender:hover {
   background: #d27870;
 }
-.button:after, 
-button.sweet-confirm:after,
-button.sweet-cancel:after {
+
+.button:after, button.sweet-confirm:after, button.sweet-cancel:after {
   content: "";
   display: block;
   width: 100%;
@@ -385,8 +441,10 @@ label span {
 }
 
 .log .box {
-  padding: 50px;
-  width: 520px;
+  padding: 28px;
+  width: 460px;
+  top: 72%;
+  background-color: rgba(11, 15, 14, 0.85);
 }
 
 .log h1 {
@@ -407,8 +465,8 @@ label span {
 
 .log .steel {
   position: absolute;
-  bottom: 84px;
-  right: 109px;
+  bottom: 67px;
+  right: 79px;
   width: 100px;
   height: 42px;
   background: url("/img/bkg/steel.jpg");
@@ -429,50 +487,6 @@ label span {
 
 .log .remembername * {
   vertical-align: bottom;
-}
-
-.bkgdeck {
-  position: absolute;
-  transform-style: preserve-3d;
-}
-
-.tutorial .bkgdeck, .online .bkgdeck, .library .bkgdeck, .single .bkgdeck {
-  display: none;
-}
-
-.bkgdeck .card {
-  position: absolute;
-  cursor: default;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.bkgdeck .card:hover {
-  z-index: 1;
-}
-
-.bkgdeck .ld {
-  transform: translate3d(787px, -44px, -69px) rotateY(-61deg) rotateZ(34deg) rotateX(-25deg);
-}
-
-.bkgdeck .wk {
-  transform: translate3d(740px, -130px, -260px) rotateY(-50deg) rotateZ(30deg) rotateX(-15deg);
-}
-
-.bkgdeck .cm {
-  transform: translate3d(970px, 90px, -184px) rotateY(-85deg) rotateZ(35deg) rotateX(-5deg);
-}
-
-.bkgdeck .pud {
-  transform: translate(-65px, -60px) translateZ(-140px) rotateY(50deg) rotateZ(-36deg) rotateX(-2deg);
-}
-
-.bkgdeck .am {
-  transform: translate(-255px, 130px) translateZ(-290px) rotateY(70deg) rotateZ(-35deg) rotateX(5deg);
-}
-
-.bkgdeck .kotl {
-  transform: translate(-5px, -130px) translateZ(-323px) rotateY(40deg) rotateZ(-39deg) rotateX(-18deg);
 }
 
 .menu h1 {

@@ -24,6 +24,7 @@ game.history = {
       if (state == 'loading') state = 'log';
       if (state == 'table') state = 'vs';
       if (state !== 'log') {
+        game.states.log.createBkgDeck();
         game.chat.build();
         game.chat.set(game.data.ui.reconnected);
       }

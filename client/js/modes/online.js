@@ -231,7 +231,7 @@ game.online = {
   beginPlayer: function () {
     game.turn.beginPlayer(function () {
       game.online.startTurn('player-turn');
-      if (game.player.turn === 6) {
+      if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
       } 
       game.player.buyHand();
@@ -278,7 +278,7 @@ game.online = {
   beginEnemy: function () {
     game.turn.beginEnemy(function () {
       game.online.startTurn('enemy-turn');
-      if (game.enemy.turn === 6) {
+      if (game.enemy.turn === game.ultTurn) {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
       }
       game.enemy.buyHand();

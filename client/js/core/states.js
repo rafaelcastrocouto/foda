@@ -25,6 +25,10 @@ game.states = {
   },
   changeTo: function (state, recover) {
     if (game.states.validState(state)) {
+      $(game.states.valid).each(function () {
+        game.container.removeClass(this+'-state');
+      });
+      game.container.addClass(state+'-state');
       var oldstate = game.states[game.currentState];
       if (oldstate) {
         if (oldstate.end) oldstate.end();

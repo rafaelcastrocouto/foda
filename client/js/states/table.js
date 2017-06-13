@@ -73,7 +73,7 @@ game.states.table = {
   backClick: function () {
     //library only
     game.states.table.clear();
-    game.setMode('library');
+    //game.setMode('library');
     game.states.changeTo('choose');
   },
   discardClick: function () {
