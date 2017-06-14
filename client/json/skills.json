@@ -311,11 +311,12 @@
           "source": {
             "name": "Nature Claws",
             "chance": 20,
-            "description": "Attacks have a chance to cause roots to burst from the ground, immobilizing the attacked enemy unit, and dealing 6 damage per second. Interrupts target channel"
+            "description": "Attacks have a 20% chance to cause roots to burst from the ground, immobilizing the attacked enemy unit, and dealing 6 damage per second. Interrupts target channel"
           },
           "target": {
+            "name": "Nature Claws",
             "dot": 6,
-            "duration": 2,
+            "duration": 1,
             "description": "Rooted and receiving damage per second"
           }
         }
@@ -600,7 +601,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Dead King will come back to full HP on next player turn after being killed",
+      "description": "Dead King will come back on next player turn after being killed slowing enemies around. The passive is discarded",
       "buffs": {
         "ult": {
           "source": {

@@ -11,7 +11,7 @@
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0) translateZ(0) scale(0.4);
-  filter: blur(3px);
+  filter: blur(2.5px);
 }
 
 .pickbox .card.selected {
@@ -127,11 +127,12 @@
   font-weight: bold;
   float: left;
   line-height: 12px;
+  letter-spacing: -0.5px;
 }
 
 .card .current {
   position: absolute;
-  right: 6px;
+  right: 2px;
 }
 
 .card .current p {
@@ -384,15 +385,17 @@
 }
 
 .selectedarea .card .buffs .buff:hover {
-  transform: scale(3);
+  transform: scale(2.5);
   z-index: 10;
 }
 
 .selectedarea .card .buffs .buff:hover .img {
-  border-radius: 2px;
+  border-radius: 6px;
   border: 1px solid white;
 }
-
+.selectedarea .card .buffs .buff:hover .overlay {
+  opacity: 0;
+}
 .card .buffs .buff .img , .card .buffs .buff .overlay {
   border-radius: 50%;
   box-shadow: 0 0 8px rgba(0,0,0,0.5) inset;

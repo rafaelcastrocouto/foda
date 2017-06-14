@@ -314,8 +314,9 @@
             "description": "Sabitler düşman saldırı birimleri ve 6 hasar her fırsatta neden olur. Hedef kanal Kesmeler"
           },
           "target": {
+            "name": "Nature Claws",
             "dot": 6,
-            "duration": 2,
+            "duration": 1,
             "description": "Köklü bir her saniye hasar almasına yol açar"
           }
         }
@@ -600,7 +601,7 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "cards": 1,
-      "description": "Dead King öldükden sonra tekrar öldügü yerden dogucak ve savaşmaya devam edicektir",
+      "description": "Dead King, düşmanlarını yavaşlatan öldürdükten sonra bir sonraki oyuncuya dönecek. Pasif beceri kartı atılır",
       "buffs": {
         "ult": {
           "source": {

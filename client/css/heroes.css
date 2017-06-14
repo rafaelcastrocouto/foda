@@ -202,7 +202,9 @@
   background-image: url("../img/skills/ld/lone_druid_battle_cry.jpg");
 }
 
-.ld-summon.entangle-source .img, .buffs .buff.ld-summon.entangle-source .img {
+.ld-summon.entangle-source .img, 
+.buffs .buff.ld-summon.entangle-source .img, 
+.buffs .buff.ld-summon.entangle-target .img {
   background-image: url("../img/skills/ld/lone_druid_entangle.jpg");
 }
 

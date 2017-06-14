@@ -98,12 +98,18 @@ game.card = {
       data['current speed'] = data.speed;
       //$('<p>').appendTo(desc).text(game.data.ui.speed + ': ' + data.speed);
     }
+
+    if (data['bonus cards']) 
+      $('<p>').appendTo(desc).text(game.data.ui.bonus + ' ' + game.data.ui.cards + ': ' + data['bonus cards']);
     if (data.type == game.data.ui.channel)
       $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.channel);
     if (data.stun) 
       $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
     else if (data.buff && data.buff.duration)
       $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.buff.duration + ' ' + game.data.ui.turns);
+    else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration)
+        $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
+
     if (data.buff) {
       if (data.buff['cast damage bonus'])
         $('<p>').appendTo(desc).html(game.data.ui.damage + ': ' + data.buff['cast damage bonus'] + ' per Cast');

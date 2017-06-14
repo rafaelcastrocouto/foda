@@ -26,7 +26,7 @@ game.skills.ld = {
       if (target.hasClass('towers')) {
         var demolish = source.getBuff('demolish-source');
         damage = demolish.data('tower bonus');
-        source.damage(damage, target, game.data.ui.physical);
+        source.damage(damage, target, game.data.ui.pure);
       } else {
         var entangle = source.getBuff('entangle-source');
         var chance = entangle.data('chance') / 100;

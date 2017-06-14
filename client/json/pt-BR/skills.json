@@ -314,8 +314,9 @@
             "description": "Os ataques do Urso têm chance de fazer com que raízes prendam o inimigo, imobilizando e causando 6 de dano por turno. Interrompe canalização"
           },
           "target": {
+            "name": "Garras da Natureza",
             "dot": 6,
-            "duration": 2,
+            "duration": 1,
             "description": "Preso pelas Garras da Natureza e recebendo dano por turno"
           }
         }
@@ -600,7 +601,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "Dead King volta à vida com HP cheio após ser assassinato",
+      "description": "Dead King volta à vida após ser assassinado retardando os inimigos ao ser redor. A carta é devolvida ao cemiterioz",
       "buffs": {
         "ult": {
           "source": {
