@@ -258,7 +258,7 @@
       "cast range": "Distante",
       "highlight": "out",
       "cards": 1,
-      "description": "Uma luz cegante arremessa as unidades inimigas, fazendo com que errem 80% dos ataques",
+      "description": "Uma luz cegante arremessa as unidades inimigas, fazendo com que errem 80% dos ataques. Interrompe canalização",
       "buff": {
         "duration": 4,
         "miss": 80,

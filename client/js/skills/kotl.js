@@ -139,12 +139,14 @@ game.skills.kotl = {
     if (target.hasClass(opponent)) {
       source.addBuff(target, skill);
       target.on('attack.kotl-blind', this.attack);
+      target.stopChanneling();
     }
     target.inCross(1, 0, function (spot, dir) {
       var card = $('.card.'+opponent, spot);
       if (card.length && !card.hasClasses('tower ghost')) {
         source.addBuff(card, skill);
         card.on('attack.kotl-blind', this.attack);
+        target.stopChanneling();
         var destiny = card.getDirSpot(dir);
         if (destiny && destiny.hasClass('free')) {
           card.place(destiny);

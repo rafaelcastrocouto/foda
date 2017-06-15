@@ -258,7 +258,7 @@
       "cast range": "Menzilli",
       "highlight": "out",
       "cards": 1,
-      "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar 80%",
+      "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar 80%. Hedef kanal Kesmeler",
       "buff": {
         "duration": 4,
         "miss": 80,

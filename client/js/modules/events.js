@@ -121,9 +121,9 @@ game.events = {
   keyboard: function (event) { //console.log(event.keyCode)
     // space: skip turn
     if (event.keyCode == 32) $('.table .skip.button').mouseup();
-    // o: options
-    if (event.keyCode == 111) {
-      if (game.container.hasClass('option-state')) $('.options .back').mouseup();
+    // =: options
+    if (event.keyCode == 61) {
+      if (game.container.hasClass('option-state')) $('.game-overlay .back').mouseup();
       else $('.topbar .opt').mouseup();
     }
     // enter: chat

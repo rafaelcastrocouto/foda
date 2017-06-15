@@ -9,8 +9,8 @@ game.poll = {
     //game.poll.lina = $('<label>').appendTo(p).append($('<img>').attr({src:'img/poll/lina.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: 'lina'})).append($('<span>').text('Lina'))).on('mouseup touchend', game.poll.enableVote);
     game.poll.mirana = $('<label>').appendTo(p).append($('<img>').attr({src:'img/poll/mirana.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: 'mirana'})).append($('<span>').text('Mirana'))).on('mouseup touchend', game.poll.enableVote);
     game.poll.wind = $('<label>').appendTo(p).append($('<img>').attr({src:'img/poll/wind.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: 'wind'})).append($('<span>').text('Wind'))).on('mouseup touchend', game.poll.enableVote);
-    game.poll.voteBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).attr({title: game.data.ui.vote, disabled: true}).text(game.data.ui.vote).on('mouseup touchend', game.poll.vote);
-    game.poll.closeBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).attr({title: game.data.ui.close}).text(game.data.ui.close).on('mouseup touchend', game.poll.close);
+    game.poll.voteBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).attr({disabled: true}).text(game.data.ui.vote).on('mouseup touchend', game.poll.vote);
+    game.poll.closeBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).text(game.data.ui.close).on('mouseup touchend', game.poll.close);
   },
   enableVote: function () {
     var label = $(this);

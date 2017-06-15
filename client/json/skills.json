@@ -258,7 +258,7 @@
       "cast range": "Ranged",
       "highlight": "out",
       "cards": 1,
-      "description": "Knock back and blind enemies, causing them to miss 80% attacks",
+      "description": "Knock back and blind enemies, causing them to miss 80% attacks. Interrupts target channel",
       "buff": {
         "duration": 4,
         "miss": 80,

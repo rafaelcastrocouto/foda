@@ -12,7 +12,7 @@
 
 .option-state h2 {
   font-size: 18px;
-  color: white;
+  /* color: white; */
 }
 
 .audioconfig, .screenresolution {
@@ -97,7 +97,7 @@ label span {
   height: 0;
   border: 0 solid transparent;
   border-top: 40px solid transparent;
-  border-right: 100px solid rgba(255,255,255,0.2);
+  border-right: 100px solid rgba(0,0,0,0.2);
   display: inline-block;
   position: absolute;
   right: 0;
@@ -113,7 +113,7 @@ label span {
   height: 0;
   border: 0 solid transparent;
   border-top: 40px solid transparent;
-  border-right: 100px solid rgba(255,255,255,0.7);
+  border-right: 100px solid rgba(0,0,0,0.3);
   transform-origin: 0 100%;
   transform: scale(0.25);
 }
@@ -134,7 +134,8 @@ label span {
 .option-state .lang h2 {
   display: inline;
   margin-right: 20px;
-  color: white;
+  /* color: white; */
+  font-weight: bold;
 }
 
 .option-state .lang select {
@@ -211,10 +212,10 @@ label span {
 }
 
 .vote label:not([disabled]):hover, .vote label.voted.vote-send {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 .vote label.voted {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .vote label.voted p span {

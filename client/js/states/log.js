@@ -3,9 +3,9 @@ game.states.log = {
   build: function () {
     this.box = $('<div>').addClass('box');
     this.logo = $('<div>').appendTo(this.el).addClass('logo slide');
-    this.boxtitle = $('<h1>').appendTo(this.box).text(game.data.ui.choosename);
+    //this.boxtitle = $('<h1>').appendTo(this.box).text(game.data.ui.choosename);
     this.form = $('<form>').appendTo(this.box).on('submit', function (event) { event.preventDefault(); return false; });
-    this.input = $('<input>').appendTo(this.form).attr({placeholder: game.data.ui.logtype, type: 'text', required: 'required', minlength: 3, maxlength: 24, tabindex: 1}).keydown(function (event) { if (event.which === 13) { game.states.log.login(); } });
+    this.input = $('<input>').appendTo(this.form).attr({placeholder: game.data.ui.choosename/*game.data.ui.logtype*/, type: 'text', required: 'required', minlength: 3, maxlength: 24, tabindex: 1}).keydown(function (event) { if (event.which === 13) { game.states.log.login(); } });
     this.input.after($('<div>').addClass('steel'));
     this.button = $('<input>').addClass('button').appendTo(this.form).val(game.data.ui.log).attr({type: 'submit'}).on('mouseup touchend', this.login);
     this.rememberlabel = $('<label>').addClass('remembername').appendTo(this.form).append($('<span>').text(game.data.ui.remember));
