@@ -20,8 +20,8 @@ game.states.campaign = {
     this.om = $('<div>').addClass('stages optional mid').appendTo(this.map);
     this.ob = $('<div>').addClass('stages optional bot').appendTo(this.map);
     this.buttonbox = $('<div>').addClass('buttonbox');
-    this.back = $('<div>').addClass('back button').text(game.data.ui.back).attr({title: game.data.ui.backtomenu}).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
-    this.toChoose = $('<div>').addClass('campaign-play button highlight').text(game.data.ui.battle).attr({title: game.data.ui.battle}).on('mouseup touchend', this.toChoose).appendTo(this.buttonbox);
+    this.back = $('<div>').addClass('back button').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
+    this.toChoose = $('<div>').addClass('campaign-play button highlight').text(game.data.ui.battle).on('mouseup touchend', this.toChoose).appendTo(this.buttonbox);
     this.el.append(this.map).append(this.desc).append(this.buttonbox);
   },
   start: function (recover) {

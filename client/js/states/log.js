@@ -7,7 +7,7 @@ game.states.log = {
     this.form = $('<form>').appendTo(this.box).on('submit', function (event) { event.preventDefault(); return false; });
     this.input = $('<input>').appendTo(this.form).attr({placeholder: game.data.ui.logtype, type: 'text', required: 'required', minlength: 3, maxlength: 24, tabindex: 1}).keydown(function (event) { if (event.which === 13) { game.states.log.login(); } });
     this.input.after($('<div>').addClass('steel'));
-    this.button = $('<input>').addClass('button').appendTo(this.form).val(game.data.ui.log).attr({title: game.data.ui.choosename, type: 'submit'}).on('mouseup touchend', this.login);
+    this.button = $('<input>').addClass('button').appendTo(this.form).val(game.data.ui.log).attr({type: 'submit'}).on('mouseup touchend', this.login);
     this.rememberlabel = $('<label>').addClass('remembername').appendTo(this.form).append($('<span>').text(game.data.ui.remember));
     this.remembercheck = $('<input>').attr({type: 'checkbox', name: 'remember', checked: true}).change(this.remember).appendTo(this.rememberlabel);
     this.out = $('<small>').addClass('logout').hide().insertAfter(game.message).text(game.data.ui.logout).on('mouseup touchend', this.logout);
@@ -28,16 +28,18 @@ game.states.log = {
     }
   },
   createBkgDeck: function () {
-    var div = $('<div>').addClass('bkgdeck');
-    $('.pickbox .card.wk').clone().appendTo(div);
-    $('.pickbox .card.cm').clone().appendTo(div);
-    $('.pickbox .card.am').clone().appendTo(div);
-    $('.pickbox .card.kotl').clone().appendTo(div);
-    $('.pickbox .card.pud').clone().appendTo(div);
-    $('.pickbox .card.ld').clone().appendTo(div);
-    game.states.el.prepend(div).addClass('iddle');
-    game.bkgDeck = div;
-    $(window).on('mousemove', game.states.log.move);
+    if (!game.bkgDeck) {
+      var div = $('<div>').addClass('bkgdeck');
+      $('.pickbox .card.wk').clone().appendTo(div);
+      $('.pickbox .card.cm').clone().appendTo(div);
+      $('.pickbox .card.am').clone().appendTo(div);
+      $('.pickbox .card.kotl').clone().appendTo(div);
+      $('.pickbox .card.pud').clone().appendTo(div);
+      $('.pickbox .card.ld').clone().appendTo(div);
+      game.states.el.prepend(div).addClass('iddle');
+      game.bkgDeck = div;
+      $(window).on('mousemove', game.states.log.move);
+    }
   },
   scale: 0.01,
   move: function (event) {
@@ -57,21 +59,16 @@ game.states.log = {
     }
   },
   alertBox: function () {
-    swal({
-      title: game.data.ui.warning,
-      text: game.data.ui.alphaalert + game.version + '</small>',
-      animation: false,
-      type: 'warning',
-      customClass: 'log',
-      buttonsStyling: false,
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      confirmButtonText: game.data.ui.close,
-      background: game.alertColor
-    }).then(function () {
-      game.poll.clear();
+    var box = $('<div>').addClass('log box');
+    game.overlay.show().append(box);
+    box.append($('<h1>').text(game.data.ui.warning));
+    box.append($('<p>').html(game.data.ui.alphaalert + game.version + '</small>'));
+    game.poll.button = $('<div>').hide().addClass('button voteBt').text(game.data.ui.votenexthero).on('mouseup touchend', function () {
+      game.poll.build();
       if (!game.states.log.input.val()) game.states.log.input.focus();
     });
+    box.append(game.poll.button);
+    box.append($('<div>').addClass('button').text(game.data.ui.close).on('mouseup touchend', game.poll.close));
     game.screen.resize();
   },
   login: function () {

@@ -149,6 +149,8 @@
   "short": "Médio",
   "ranged": "Distante",
   "long": "Longe",
+  "far": "Balista",
+  "max": "Máximo",
   "aoe": "Efeito em Área",
   "self": "Próprio",
   "spot": "Local",

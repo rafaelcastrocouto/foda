@@ -134,7 +134,7 @@ game.card = {
     }
     //if (data.cards)      $('<p>').appendTo(desc).text(game.data.ui.cards+': ' + data.cards);
     if (data.description) {
-      $('<p>').appendTo(desc).addClass('description').text(data.description);
+      $('<p>').appendTo(desc).addClass('description').text('“'+data.description+'”');
       //card.attr({ title: data.name + ': ' + data.description });
     }
     /*card.attr({
@@ -526,7 +526,7 @@ game.card = {
         game.projectile = $('<div>').addClass('projectile ' + cl);
         game.projectile.appendTo(game.map.el);
         game.card.projectile.apply(source);
-        setTimeout(game.card.projectile.bind(target), 10);
+        setTimeout(game.card.projectile.bind(target), 50);
         setTimeout(function() {
           game.projectile.remove();
         }, 500);
@@ -540,7 +540,7 @@ game.card = {
         if (!missFx.length) {
           missFx = $('<span>').text(game.data.ui.miss).addClass('missed').appendTo(target);
         }
-        game.timeout(2000, function() {
+        game.timeout(5000, function() {
           this.remove();
         }
         .bind(missFx));
@@ -560,8 +560,7 @@ game.card = {
     var x = this.getX();
     var y = this.getY();
     game.projectile.css({
-      'top': 380 + (y * 320),
-      'left': 880 + (x * 220)
+      'transform': 'translate3d('+(910 + (x * 210))+'px,'+(440 + (y * 310))+'px, 60px)'
     });
 
   },
@@ -614,22 +613,12 @@ game.card = {
       if (type === 'critical') {
         source.data('critical-attack', true);
         game.audio.play('crit');
-        damageFx = target.find('.damaged.critical');
-        if (!damageFx.length) {
-          damageFx = $('<span>').addClass('damaged critical').appendTo(target);
-        } else {
-          finalDamage += parseInt(damageFx.text(), 10);
-        }
+        damageFx = $('<span>').addClass('damaged critical').appendTo(target);
       } else {
-        damageFx = target.find('.damaged').not('.critical');
-        if (!damageFx.length) {
-          damageFx = $('<span>').addClass('damaged').appendTo(target);
-        } else {
-          finalDamage += parseInt(damageFx.text(), 10);
-        }
+        damageFx = $('<span>').addClass('damaged').appendTo(target);
       }
       damageFx.text(finalDamage);
-      game.timeout(2000, function() {
+      game.timeout(5000, function() {
         this.remove();
       }
       .bind(damageFx));

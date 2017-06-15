@@ -22,8 +22,8 @@
     "catapult": {
       "name": "Catapult",
       "attribute": "Creeps",
-      "range": "Long",
-      "hp": 26,
+      "range": "Far",
+      "hp": 32,
       "damage": 14,
       "armor": 4,
       "resistance": 6

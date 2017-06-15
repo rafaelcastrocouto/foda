@@ -36,20 +36,20 @@ game.player = {
     }
     card = availableSkills.randomCard();
     if (card.data('hand') === game.data.ui.right) {
-      if (game.player.skills.hand.children().length < 10) {
+      if (game.player.skills.hand.children().length < game.maxCards) {
         card.appendTo(game.player.skills.hand);
       }
-    } else if (game.player.skills.sidehand.children().length < 10) {
+    } else if (game.player.skills.sidehand.children().length < game.maxCards) {
       card.appendTo(game.player.skills.sidehand);
     }
   },
   buyHand: function () {
     game.player.buyCreeps();
-    game.player.buyCards(game.player.cardsPerTurn);
+    if (game.player.turn > 1) game.player.buyCards(game.player.cardsPerTurn);
   },
   buyCreeps: function (force, catapultforce) {
     var ranged, melee, catapult;
-    if (game.player.turn === 1 || force) {
+    if (game.player.turn === game.creepTurn || force) {
       ranged = game.player.unitsDeck.children('.ranged');
       game.units.clone(ranged).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
       for (var i = 0; i < 2; i += 1) {
@@ -57,7 +57,7 @@ game.player = {
         game.units.clone(melee).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
       }
     }
-    if (game.player.turn === 10 || catapultforce) {
+    if (game.player.turn === game.catapultTurn || catapultforce) {
       ranged = game.player.unitsDeck.children('.ranged');
       game.units.clone(ranged).appendTo(game.player.skills.sidehand).on('mousedown touchstart', game.card.select);
       melee = game.player.unitsDeck.children('.melee');
@@ -176,7 +176,7 @@ game.player = {
     game.states.table.discard.attr('disabled', true);
     skill.addClass('slidedown');
     setTimeout(function () {
-      this.discard();
+      this.removeClass('slidedown').discard();
     }.bind(skill), 200);
   },
   cardsInHand: function () {

@@ -3,7 +3,7 @@
     "melee": {
       "name": "Melee Creep",
       "attribute": "Creeps",
-      "range": "Melee",
+      "range": "Perto",
       "hp": 30,
       "damage": 18,
       "armor": 2,
@@ -12,7 +12,7 @@
     "ranged": {
       "name": "Ranged Creep",
       "attribute": "Creeps",
-      "range": "Ranged",
+      "range": "Distante",
       "hp": 26,
       "damage": 14,
       "armor": 1,
@@ -22,8 +22,8 @@
     "catapult": {
       "name": "Catapult",
       "attribute": "Creeps",
-      "range": "Long",
-      "hp": 26,
+      "range": "Balista",
+      "hp": 32,
       "damage": 14,
       "armor": 4,
       "resistance": 6

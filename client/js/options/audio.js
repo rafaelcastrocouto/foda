@@ -153,7 +153,7 @@ game.audio = {
   },
   volumeControl: function (name) {
     game.options[name+'control'] = $('<div>').addClass('volumecontrol');
-    game.options[name+'input'] = $('<div>').addClass('volume').attr('id', name).on('mousedown.volume', game.audio.volumeMouseDown).append(game.options[name+'control']);
+    game.options[name+'input'] = $('<div>').addClass('volume').attr('id', name).append(game.options[name+'control']);
     $('<label>').appendTo(game.options.audio).append($('<span>').text(game.data.ui[name])).append(game.options[name+'input']);
   }
 };

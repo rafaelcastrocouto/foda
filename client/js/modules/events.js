@@ -10,14 +10,9 @@ game.events = {
     game.skill.extendjQuery();
     game.highlight.extendjQuery();
     game.map.extendjQuery();
-    $(window).on('keypress', function (event) { if (event.keyCode == 32) $('.table .skip.button').mouseup(); });
+    $(window).on('keypress', game.events.keyboard);
     $(window).on('resize', game.screen.resize);
     $(window).on('beforeunload ', game.events.leave);
-    if (game.debug) {
-      $(window).on('mousedown ', game.events.debugdown);
-      $(window).on('mousemove ', game.events.debugmove);
-      $(window).on('mouseup ', game.events.debugup);
-    }
     game.container.on('mousedown touchstart', game.events.hit);
     game.container.on('mousemove', game.events.move);
     game.container.on('touchmove', game.events.touchmove);
@@ -86,6 +81,7 @@ game.events = {
   end: function(event) {
     var position = game.events.getCoordinates(event), 
         target = $(document.elementFromPoint(position.left, position.top));
+    if (!target.closest('.chat').length) $('.chat').removeClass('hover');
     if (event && event.type === 'touchend') {
       // fix touchend target
       target.mouseup();
@@ -122,25 +118,15 @@ game.events = {
     if (sc && sc.split) s = sc.split(',')[0];
     return Number(s);
   },
-  debugdown: function (event) {
-    var target = $(event.target);
-    if (event.ctrlKey) {
-      game.events.debugDrag = target.parent().offset();
-      game.events.debugDrag.target = target;
+  keyboard: function (event) { //console.log(event.keyCode)
+    // space: skip turn
+    if (event.keyCode == 32) $('.table .skip.button').mouseup();
+    // o: options
+    if (event.keyCode == 111) {
+      if (game.container.hasClass('option-state')) $('.options .back').mouseup();
+      else $('.topbar .opt').mouseup();
     }
-  },
-  debugmove: function (event) {
-    if (game.events.debugDrag) {
-      var target = game.events.debugDrag.target;
-      if (target.css('position') == 'absolute') {
-        target.css({
-          top: event.clientY - game.events.debugDrag.top,
-          left: event.clientX - game.events.debugDrag.left,
-        });
-      }
-    }
-  },
-  debugup: function (e) {
-    game.events.debugDrag = false;
+    // enter: chat
+    if (event.keyCode == 13) $('.chat').toggleClass('hover');
   }
 };

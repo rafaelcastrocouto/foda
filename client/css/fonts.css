@@ -17,7 +17,7 @@ body, p, noscript, .card h1 {
   src: local('Julius Sans One'), local('JuliusSansOne-Regular'), url(../fonts/Julius-Sans-One.woff2) format('woff2'), url(../fonts/Julius-Sans-One.woff) format('woff');
 }
 
-h1, h2, .button, .sweet-alert button, .options span, .topbar *, .choose .counter {
+h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   font-family: "Julius Sans One";
 }
 

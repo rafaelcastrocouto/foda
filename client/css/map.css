@@ -117,6 +117,8 @@
   height: 40px;
   background: white;
   transform: translateZ(60px);
+  top: 0;
+  left: 0;
 }
 
 .projectile.cm {

@@ -11,7 +11,10 @@ var game = {
   connectionLimit: 30,
   dayLength: 12,
   deadLength: 4,
-  ultTurn: 5,
+  ultTurn: 4,
+  maxCards: 10,
+  creepTurn: 1,
+  catapultTurn: 10,
   heroDeathDamage: 4,
   heroRespawnDamage: 1,
   creepDeathDamage: 1,
@@ -21,7 +24,6 @@ var game = {
   seed: 0,
   id: null,
   timeoutArray: [],
-  alertColor: 'rgba(255,255,255,1)',
   skills: {},
   data: {},
   //json {heroes, skills, ui}
@@ -44,7 +46,7 @@ var game = {
       game.utils();
       game.events.build();
       game.history.build();
-      game.sweet = $('.sweet-alert');
+      game.overlay = $('<div>').addClass('game-overlay').appendTo(game.container);
       game.topbar = $('<div>').addClass('topbar');
       game.topbar.append(game.loader, game.message, game.triesCounter);
       game.states.changeTo('loading');
@@ -138,40 +140,40 @@ var game = {
     localStorage.removeItem('mode');
   },
   alert: function(txt, cb) {
-    swal({
-      title: game.data.ui.warning,
-      text: txt,
-      animation: false,
-      type: 'warning',
-      buttonsStyling: false,
-      confirmButtonText: game.data.ui.ok,
-      background: game.alertColor
-    }).then(cb);
+    var box = $('<div>').addClass('box');
+    game.overlay.show().append(box);
+    box.append($('<h1>').text(game.data.ui.warning));
+    box.append($('<p>').text(txt));
+    box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
+      game.overlay.hide();
+      game.overlay.empty();
+      cb(true);
+    }));
   },
   confirm: function(cb, text) {
-    swal({
-      title: text || game.data.ui.sure,
-      animation: false,
-      type: 'warning',
-      showCancelButton: true,
-      buttonsStyling: false,
-      confirmButtonText: game.data.ui.yes,
-      cancelButtonText: game.data.ui.no,
-      background: game.alertColor
-    }).then(cb);
+    var box = $('<div>').addClass('box');
+    game.overlay.show().append(box);
+    box.append($('<h1>').text(text || game.data.ui.sure));
+    box.append($('<div>').addClass('button alert').text(game.data.ui.yes).on('mouseup touchend', function () {
+      game.overlay.hide();
+      game.overlay.empty();
+      cb(true);
+    }));
+    box.append($('<div>').addClass('button').text(game.data.ui.no).on('mouseup touchend', function () {
+      game.overlay.hide();
+      game.overlay.empty();
+    }));
   },
   error: function(cb) {
-    swal({
-      title: game.data.ui.error,
-      text: game.data.ui.reload,
-      animation: false,
-      type: 'error',
-      showCancelButton: true,
-      buttonsStyling: false,
-      confirmButtonText: game.data.ui.yes,
-      cancelButtonText: game.data.ui.no,
-      background: game.alertColor
-    }).then(cb);
+    var box = $('<div>').addClass('box');
+    game.overlay.show().append(box);
+    box.append($('<h1>').text(game.data.ui.error));
+    box.append($('<p>').text(game.data.ui.reload));
+    box.append($('<div>').addClass('button alert').text(game.data.ui.ok).on('mouseup touchend', function () {
+      game.overlay.hide();
+      game.overlay.empty();
+      cb(true);
+    }));
   },
   reset: function() {
     game.error(function(confirmed) {

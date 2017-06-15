@@ -1,18 +1,18 @@
 {
   "creeps":{
     "melee": {
-      "name": "Melee Creep",
+      "name": "Meydan Creep",
       "attribute": "Creeps",
-      "range": "Melee",
+      "range": "Meydan",
       "hp": 30,
       "damage": 18,
       "armor": 2,
       "resistance": 1
     },
     "ranged": {
-      "name": "Ranged Creep",
+      "name": "Menzilli Creep",
       "attribute": "Creeps",
-      "range": "Ranged",
+      "range": "Menzilli",
       "hp": 26,
       "damage": 14,
       "armor": 1,
@@ -22,8 +22,8 @@
     "catapult": {
       "name": "Catapult",
       "attribute": "Creeps",
-      "range": "Long",
-      "hp": 26,
+      "range": "Far",
+      "hp": 32,
       "damage": 14,
       "armor": 4,
       "resistance": 6
@@ -33,7 +33,7 @@
     "cent": {
       "name": "Centaur",
       "attribute": "Jungle Creep",
-      "range": "Melee",
+      "range": "Meydan",
       "hp": 28,
       "damage": 5,
       "armor": 2,
@@ -43,7 +43,7 @@
     "golem": {
       "name": "Golem",
       "attribute": "Jungle Creep",
-      "range": "Melee",
+      "range": "Meydan",
       "hp": 24,
       "damage": 6,
       "armor": 4,

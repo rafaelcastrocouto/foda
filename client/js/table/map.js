@@ -119,13 +119,14 @@ game.map = {
     if ( typeof(r) == 'string' ) range = game.map.getRangeInt(r);
     var spot = $(this).closest('.spot');
     if (range >= 0 && range <= game.map.rangeArray.length) {
-      var radius, x, y, r2, l,
+      var radius, x, y, r2, l, t = [],
         fil = function (x, y) {
           var spot = game.map.getSpot(x, y);
-          if (spot) {
+          if (spot && t.indexOf(spot) < 0) {
             if (filter) {
               if (!spot.hasClasses(filter)) { cb(spot); }
             } else { cb(spot); }
+            t.push(spot);
           }
         },
         w = game.map.getX(spot),
@@ -153,13 +154,13 @@ game.map = {
           for (x = 1; x <= l; x += 1) {
             y = Math.round(Math.sqrt(r2 - x * x));
             fil(w + x, h + y);
-            if (range != 5) fil(w + y, h + x);
+            fil(w + y, h + x);
             fil(w + x, h - y);
-            if (range != 5) fil(w + y, h - x);
+            fil(w + y, h - x);
             fil(w - x, h + y);
-            if (range != 5) fil(w - y, h + x);
+            fil(w - y, h + x);
             fil(w - x, h - y);
-            if (range != 5) fil(w - y, h - x);
+            fil(w - y, h - x);
           }
         }
       }
@@ -168,21 +169,20 @@ game.map = {
   around: function (range, cb) { // in range not self
     var spot = this;
     spot.atRange(range, cb);
-    if (!game.map.rangeStrArray) {
-      game.map.rangeStrArray = [];
-      for (var i=0; i < 6; i++) {
-        game.map.rangeStrArray.push(game.map.getRangeStr(i));
-      }
-    }
-    if (range === game.map.rangeStrArray[3]) { 
+    var r = game.map.getRangeInt(range);
+    if (r === 3) { 
       spot.atRange(game.map.getRangeStr(1), cb); 
     }
-    if (range === game.map.rangeStrArray[4]) { 
+    if (r === 4) { 
       spot.atRange(game.map.getRangeStr(2), cb); 
     }
-    if (range === game.map.rangeStrArray[5]) {
+    if (r === 5) {
       spot.atRange(game.map.getRangeStr(1), cb);
       spot.atRange(game.map.getRangeStr(3), cb);
+    }
+    if (r === 6) {
+      spot.atRange(game.map.getRangeStr(2), cb);
+      spot.atRange(game.map.getRangeStr(4), cb);
     }
   },
   inRange: function (range, cb) {// in range and self
@@ -529,6 +529,8 @@ game.map = {
     if (range === game.data.ui.short)  { r = 3; }
     if (range === game.data.ui.ranged) { r = 4; }
     if (range === game.data.ui.long)   { r = 5; }
+    if (range === game.data.ui.far)   { r = 6; }
+    if (range === game.data.ui.max)   { r = 7; }
     return r;
   },
   getRangeStr: function (r) {
@@ -538,6 +540,8 @@ game.map = {
     if (r === 3) { range = game.data.ui.short; }
     if (r === 4) { range = game.data.ui.ranged; }
     if (r === 5) { range = game.data.ui.long; }
+    if (r === 6) { range = game.data.ui.far; }
+    if (r === 7) { range = game.data.ui.max; }
     return range;
   },
   clear: function () {

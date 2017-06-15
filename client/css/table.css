@@ -57,6 +57,12 @@
   justify-content: flex-end;
 }
 
+.left-side .table .player .skills.sidehand {
+  right: 60px;
+  justify-content: flex-start;
+  margin-right: 0;
+  margin-left: 20px;
+}
 .table .player .skills.hand {
   left: 340px;
   width: 590px;
@@ -64,6 +70,10 @@
   display: flex;
 }
 
+.left-side .table .player .skills.hand {
+  left: 20px;
+  justify-content: flex-end;
+}
 .table .selectedarea {
   width: 200px;
   height: 300px;
@@ -76,6 +86,11 @@
   transform: translateZ(0);
 }
 
+.left-side .table .selectedarea {
+  right: auto;
+  left: 5px;
+}
+
 .table .selectedarea.enemymoving {
   opacity: 0.5;
   pointer-events: none;
@@ -86,6 +101,11 @@
   right: 0;
   top: 330px;
   width: 210px;
+}
+
+.left-side .table .buttonbox {
+  right:auto;
+  left: 0;
 }
 
 .table .camera {
@@ -102,6 +122,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
+}
+
+.left-side .table .camera {
+  left: auto;
+  right: 0;
 }
 
 

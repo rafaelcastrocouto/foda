@@ -9,15 +9,23 @@
   transform: translate(-50%, -50%);
   border-radius: 6px;
 }
+.left-side .campaign-map {
+  left: 635px;
+}
 
 .campaign-box.box {
-  right: 20px;
+  right: 18px;
   transform: none;
   padding: 8px 16px;
   width: 270px;
   left: auto;
   top: 40px;
   height: 400px;
+}
+
+.left-side .campaign-box.box {
+  left: 52px;
+  right: auto;
 }
 
 .campaign-img {
@@ -242,9 +250,14 @@
 
 .campaign .buttonbox {
   position: absolute;
-  right: 40px;
+  right: 35px;
   top: 455px;
   width: 240px;
+}
+
+.left-side .campaign .buttonbox {
+  right: auto;
+  left: 70px;
 }
 
 .campaign .buttonbox .button {

@@ -3,7 +3,6 @@ game.screen = {
   height: 600,
   resolutions: ['auto', 'low', 'high', 'medium', 'default'],
   resize: function (event) {
-    $('#sweet-alert-mediaquery').remove();
     game.offset = game.container.offset();
     var scale = 1;
     if (window.innerWidth/window.innerHeight > game.screen.width/game.screen.height) {
@@ -11,12 +10,10 @@ game.screen = {
     } else {
       scale = window.innerWidth/game.screen.width;
     }
-    scale = (scale * 0.96).toFixed(2);
+    scale = (scale * 0.97).toFixed(2);
     if (scale < 0.5) scale = 0.5;
     game.screen.scale = scale;
     game.container.css('transform', 'translate3d(-50%, -50%, 0) scale('+scale+')');
-    if (game.screen.resolution !== 'auto') scale = 1;
-    $('.sweet-alert').css('transform', 'translate3d(-50%, -50%, 0) scale('+scale+')');
   },
   rememberResolution: function () {
     var res, rememberedres = localStorage.getItem('resolution');
@@ -38,7 +35,12 @@ game.screen = {
     localStorage.setItem('resolution', resolution);
   },
   toggleFS: function () {
-    if (BigScreen.enabled) BigScreen.toggle();
+    if (BigScreen.enabled) {
+      BigScreen.toggle();
+    }
     else $(this).attr('disabled', true);
+  },
+  toggleSide: function () {
+    $(document.body).toggleClass('left-side', $(this).prop('checked'));
   }
 };

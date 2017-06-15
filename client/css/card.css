@@ -127,12 +127,13 @@
   font-weight: bold;
   float: left;
   line-height: 12px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
 }
 
 .card .current {
   position: absolute;
   right: 2px;
+  letter-spacing: -0.4px;
 }
 
 .card .current p {
@@ -194,9 +195,7 @@
 
 .card .description {
   font-style: italic;
-  font-size: 11px;
-  letter-spacing: -0.5px;
-  word-spacing: -1px;
+  font-size: 10.5px;
   margin-top: 4px;
   margin-right: 2px;
   line-height: 13px;
@@ -293,7 +292,7 @@
   top: 0;
   right: 0;
   font-size: 150px;
-  animation: slideup 3s linear;
+  animation: slideup 5s cubic-bezier(0.4, 0, 1, 1);
   text-shadow:
    5px  0   #ffa,
   -5px  0   #ffa,
@@ -307,11 +306,11 @@
 
 .card .damaged.critical, .card .missed {
   color: orangered;
-  animation: slideup 4s linear;
+  animation: slideup 5s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .card .missed {
-  animation: slideup 2s linear;
+  animation: slideup 5s cubic-bezier(0.4, 0, 1, 1);
   font-size: 80px;
   text-shadow: 4px 0 white, -4px 0 white, 0 4px white, 0 -4px white, 4px 4px white, -4px 4px white, 4px -4px white, -4px -4px white;
 }
@@ -324,7 +323,7 @@
   top: 0;
   left: 0;
   font-size: 150px;
-  animation: slideup 3s linear;
+  animation: slideup 5s cubic-bezier(0.4, 0, 1, 1);
   text-shadow: 
   5px  0   #afa,
  -5px  0   #afa, 
@@ -342,15 +341,11 @@
     opacity: 0;
   }
 
-  10% {
-    opacity: 0;
-  }
-
-  20% {
+  15% {
     opacity: 1;
   }
 
-  90% {
+  80% {
     opacity: 1;
   }
 
@@ -469,7 +464,7 @@
   }
 
   100% {
-    left: -1000px;
+    left: 4000px;
     top: 185%;
     transform: translate(-50%, -50%) scale(0.5);
   }

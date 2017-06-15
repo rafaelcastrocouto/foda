@@ -29,8 +29,8 @@
   width: 175px;
   border-radius: 50%;
   position: absolute;
-  bottom: 240px;
-  right: 200px;
+  bottom: 245px;
+  right: 185px;
 }
 
 .tutorial.axe .baloon:before, .tutorial.axe .baloon:after {
@@ -137,24 +137,28 @@
   }
 }
 
-.tutorial.axe.left {
+.tutorial.axe.left, .left-side .tutorial.axe {
   right: auto;
   left: -140px;
   transform: scaleX(-1);
 }
 
-.tutorial.axe.left .txt {
+.left-side .tutorial.axe.left {
+  left: auto;
+  right: -55px;
+  transform: scaleX(1);
+}
+
+.tutorial.axe.left .txt, .left-side .tutorial.axe .txt {
   transform: scaleX(-1);
 }
 
-.tutorial.axe.left .baloon {
-  right: 160px;
-  bottom: 260px;
+.left-side .tutorial.axe.left .txt {
+  transform: scaleX(1);
 }
 
 .choose .tutorial.axe {
   width: 502px;
-  right: -15px;
 }
 
 .choose .tutorial.axe.up {

@@ -184,11 +184,15 @@ noscript .box {
   padding: 40px 80px;
   text-align: center;
   border-radius: 5px;
-  background-color: rgba(11, 15, 14, 0.7);
+  background-color: rgba(11, 15, 14, 0.75);
 }
 
 .box div p {
   display: block;
+}
+
+.game-overlay .log.box {
+  width: 660px;
 }
 
 .log .h1 {
@@ -323,6 +327,35 @@ input:focus {
   display: block;
 }
 
+.game-overlay:before {
+  content: "";
+  position: absolute;
+  left: -1000vw;
+  top: -1000vh;
+  height: 3000vh;
+  width: 3000vw;
+  background: rgba(0,0,0,0.7);
+  z-index: 29;
+}
+.game-overlay {
+  display: none;
+}
+
+.game-overlay .box {
+  background: rgba(30, 33, 36, 0.97);
+  z-index: 30;
+  padding: 60px 100px;
+  border: 1px solid #333;
+}
+
+.game-overlay h1 {
+  margin-bottom: 10px;
+}
+
+.option-state .game-overlay {
+  display: block;
+}
+
 .button, button, input[type=button], input[type=submit] {
   display: inline-block;
   text-align: center;
@@ -411,7 +444,7 @@ input[type="checkbox"], input[type="radio"] {
   background: #d27870;
 }
 
-.button:after, button.sweet-confirm:after, button.sweet-cancel:after {
+.button:after {
   content: "";
   display: block;
   width: 100%;
@@ -437,8 +470,6 @@ label input {
   margin: 0 5px;
 }
 
-label span {
-}
 
 .log .box {
   padding: 28px;
@@ -450,6 +481,10 @@ label span {
 .log h1 {
   font-size: 26px;
   margin-bottom: 14px;
+}
+
+.log a {
+  text-decoration: underline;
 }
 
 .log form {

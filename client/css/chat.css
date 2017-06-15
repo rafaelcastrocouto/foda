@@ -1,6 +1,6 @@
 .chat {
   z-index: 19;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   position: absolute;
   transform: translate3d(0%,0%, 0);
   bottom: 4px;
@@ -32,7 +32,7 @@
 .chat h1 {
   display: block;
   color: white;
-  font-size: 16px;
+  font-size: 16px !important;
   line-height: 20px;
   height: 14px;
   opacity: 1;

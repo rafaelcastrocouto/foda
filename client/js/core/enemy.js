@@ -25,20 +25,20 @@ game.enemy = {
     }
     card = availableSkills.randomCard();
     if (card.data('hand') === game.data.ui.right) {
-      if (game.enemy.skills.hand.children().length < 10) {
+      if (game.enemy.skills.hand.children().length < game.maxCards) {
         card.appendTo(game.enemy.skills.hand);
       }
-    } else if (game.enemy.skills.sidehand.children().length < 10) {
+    } else if (game.enemy.skills.sidehand.children().length < game.maxCards) {
       card.appendTo(game.enemy.skills.sidehand);
     }
   },
   buyHand: function() {
     game.enemy.buyCreeps();
-    game.enemy.buyCards(game.enemy.cardsPerTurn);
+    if (game.enemy.turn > 1) game.enemy.buyCards(game.enemy.cardsPerTurn);
   },
   buyCreeps: function(force, catapultforce) {
     var ranged, melee, catapult;
-    if (game.enemy.turn === 1 || force) {
+    if (game.enemy.turn === game.creepTurn || force) {
       ranged = game.enemy.unitsDeck.children('.ranged');
       game.units.clone(ranged).addClass('flipped').on('mousedown touchstart', game.card.select).appendTo(game.enemy.skills.sidehand);
       for (var i = 0; i < 2; i += 1) {
@@ -46,7 +46,7 @@ game.enemy = {
         game.units.clone(melee).addClass('flipped').on('mousedown touchstart', game.card.select).appendTo(game.enemy.skills.sidehand);
       }
     }
-    if (game.enemy.turn === 10 || catapultforce) {
+    if (game.enemy.turn === game.catapultTurn || catapultforce) {
       ranged = game.enemy.unitsDeck.children('.ranged');
       game.units.clone(ranged).addClass('flipped').appendTo(game.enemy.skills.sidehand).on('mousedown touchstart', game.card.select);
       melee = game.enemy.unitsDeck.children('.melee');
@@ -245,13 +245,12 @@ game.enemy = {
   discard: function(hero, skillid) {
     var s = hero + '-' + skillid;
     var skill = $('.enemydecks .hand .skills.' + s).first();
-    skill.addClass('discardMove');
-    game.timeout(game.enemy.moveAnimation, function(skill) {
-      skill.removeClass('discardMove');
-      if (skill.discard)
-        skill.discard();
+    if (skill) {
+        skill.addClass('discardMove');
+        game.timeout(game.enemy.moveAnimation, function(skill) {
+          skill.removeClass('discardMove').discard();
+        }.bind(this, skill));
     }
-    .bind(this, skill));
   },
   cardsInHand: function() {
     return game.enemy.skills.hand.children().length;

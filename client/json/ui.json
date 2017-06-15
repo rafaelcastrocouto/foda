@@ -149,6 +149,8 @@
   "short": "Short",
   "ranged": "Ranged",
   "long": "Long",
+  "far": "Far",
+  "max": "Maximum",
   "aoe": "Area of Effect",
   "self": "Self",
   "spot": "Spot",

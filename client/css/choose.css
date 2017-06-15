@@ -36,6 +36,10 @@
   transform: translateZ(0);
 }
 
+.left-side .choose .pickedbox {
+  left: auto;
+  right: 105px;
+}
 .choose .pickedbox .skills:hover {
   transform: translate3d(-50%, -65%, 0) scale(1);
 }
@@ -81,6 +85,10 @@
   width: 220px;
 }
 
+.left-side .choose .buttonbox {
+  left: 100px;
+  right: auto;
+}
 .choose .buttonbox .button {
   margin-bottom: 18px;
 }
