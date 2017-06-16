@@ -367,16 +367,22 @@
 
 .card .buffs {
   position: absolute;
-  bottom: -3px;
+  bottom: 3px;
   left: 3px;
+  display: flex;
+  height: 34px;
+  width: 176px;
 }
 
 .card .buffs .buff {
-  display: inline-block;
-  margin-right: 3px;
-  position: relative;
+  margin-right: 2px;
   pointer-events: auto;
   transition: all 0.1s;
+  width: 35px;
+}
+
+.card .buffs .buff:last-child {
+  margin-right: 20px;
 }
 
 .selectedarea .card .buffs .buff:hover {
@@ -396,6 +402,7 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.5) inset;
   width: 34px;
   height: 34px;
+  position: absolute;
 }
 
 .table .deck .card {
@@ -671,7 +678,7 @@
 }
 
 /*DRAG*/
-.bkgdeck .card .kd, .choose .card .kd, .card.dragTargetClone.choose .kd, .choose .card .damaged, .choose .card .heal {
+.vs .card .kd, .bkgdeck .card .kd, .choose .card .kd, .card.dragTargetClone.choose .kd, .choose .card .damaged, .choose .card .heal {
   display: none;
 }
 

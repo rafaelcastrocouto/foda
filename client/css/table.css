@@ -1,14 +1,12 @@
 .table .buttonbox .button {
   margin-bottom: 10px;
-  height: 28px;
-  min-height: 28px;
 }
 
 .table .playerdecks {
   position: absolute;
   height: 100px;
   width: 100%;
-  bottom: 0;
+  bottom: -10px;
   perspective: 600px;
 }
 
@@ -21,7 +19,7 @@
   position: absolute;
   height: 214px;
   width: 100%;
-  top: 24px;
+  top: 25px;
   transform: translateZ(0);
   pointer-events: none;
 }
@@ -56,8 +54,8 @@
 
 .table .player .skills.sidehand {
   margin-right: 60px;
-  right: 630px;
-  width: 265px;
+  right: 620px;
+  width: 280px;
   display: flex;
   /* flex-direction: row-reverse; */
   justify-content: flex-end;
@@ -71,8 +69,7 @@
 }
 .table .player .skills.hand {
   left: 340px;
-  width: 590px;
-  padding-right: 20px;
+  width: 580px;
   display: flex;
 }
 
@@ -116,10 +113,10 @@
 
 .table .camera {
   position: absolute;
-  top: 44px;
+  top: 45px;
   left: 0;
   width: 760px;
-  height: 450px;
+  height: 460px;
   perspective: 730px;
   perspective-origin: 57% 50%;
   overflow: hidden;
