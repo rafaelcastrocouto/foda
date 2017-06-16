@@ -1,3 +1,9 @@
+.table .buttonbox .button {
+  margin-bottom: 10px;
+  height: 28px;
+  min-height: 28px;
+}
+
 .table .playerdecks {
   position: absolute;
   height: 100px;
@@ -78,7 +84,7 @@
   width: 200px;
   height: 300px;
   position: absolute;
-  top: 28px;
+  top: 30px;
   right: 5px;
   border-radius: 10px;
   perspective: 600px;
@@ -98,14 +104,14 @@
 
 .table .buttonbox {
   position: absolute;
-  right: 0;
-  top: 330px;
-  width: 210px;
+  right: 2px;
+  top: 335px;
+  width: 206px;
 }
 
 .left-side .table .buttonbox {
   right:auto;
-  left: 0;
+  left: 2px;
 }
 
 .table .camera {

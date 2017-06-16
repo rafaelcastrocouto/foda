@@ -23,6 +23,10 @@
   height: 400px;
 }
 
+.campaign-box h2 {
+  margin: 6px;
+}
+
 .left-side .campaign-box.box {
   left: 52px;
   right: auto;
@@ -32,7 +36,7 @@
   height: 132px;
   background-size: cover;
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   background-position: 50% 50%;
 }
 
@@ -45,7 +49,7 @@
 }
 
 .state .campaign-box p {
-  margin: 6px 0;
+  margin: 2px 0;
   font-size: 14px;
 }
 
@@ -250,16 +254,13 @@
 
 .campaign .buttonbox {
   position: absolute;
-  right: 35px;
-  top: 455px;
-  width: 240px;
+  right: 25px;
+  top: 438px;
+  width: 250px;
+  padding: 16px 8px;
 }
 
 .left-side .campaign .buttonbox {
   right: auto;
-  left: 70px;
-}
-
-.campaign .buttonbox .button {
-  margin-bottom: 16px;
+  left: 52px;
 }

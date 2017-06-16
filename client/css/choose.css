@@ -4,7 +4,7 @@
 }
 
 .choose .pickbox {
-  width: 760px;
+  width: 800px;
   height: 340px;
   position: absolute;
   top: 35px;
@@ -27,8 +27,8 @@
 .choose .pickedbox {
   height: 190px;
   position: absolute;
-  bottom: 18px;
-  left: 105px;
+  bottom: 16px;
+  left: 85px;
   padding: 6px 10px;
   text-align: center;
   border-radius: 4px;
@@ -38,7 +38,7 @@
 
 .left-side .choose .pickedbox {
   left: auto;
-  right: 105px;
+  right: 86px;
 }
 .choose .pickedbox .skills:hover {
   transform: translate3d(-50%, -65%, 0) scale(1);
@@ -80,17 +80,15 @@
 
 .choose .buttonbox {
   position: absolute;
-  right: 100px;
-  top: 390px;
-  width: 220px;
+  right: 80px;
+  top: 384px;
+  width: 245px;
+  padding: 6px 10px;
 }
 
 .left-side .choose .buttonbox {
-  left: 100px;
+  left: 74px;
   right: auto;
-}
-.choose .buttonbox .button {
-  margin-bottom: 18px;
 }
 
 .choose .buttonbox .button.playing {

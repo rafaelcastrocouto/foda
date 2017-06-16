@@ -3,9 +3,9 @@
   width: 350px;
   height: 256px;
   position: absolute;
-  right: -55px;
+  right: -25px;
   bottom: -450px;
-  transition: all 1s;
+  transition: all 1s, transform 0s;
   pointer-events: none;
   transform: translateZ(0);
 }
@@ -161,6 +161,10 @@
   width: 502px;
 }
 
+.left-side .choose .tutorial.axe {
+  left: -60px;
+}
+
 .choose .tutorial.axe.up {
   bottom: -45px;
 }
@@ -171,10 +175,10 @@
 }
 
 .choose .tutorial.axe .baloon {
-  transform: scaleX(-1);
-  right: -12px;
+  /* transform: scaleX(-1); */
+  right: 90px;
 }
 
 .choose .tutorial.axe .txt {
-  transform: scaleX(-1);
+  /* transform: scaleX(-1); */
 }

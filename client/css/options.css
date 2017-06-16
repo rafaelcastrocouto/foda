@@ -178,6 +178,7 @@ label span {
 .game-overlay .voteBt, .game-overlay .voteBt[disabled]:active {
   background-color: #66bb8c;
   box-shadow: 0 4px 0 #4b8864;
+  width: 240px;
 }
 .game-overlay .voteBt:hover {
   background-color: #72c095;

@@ -78,11 +78,11 @@ noscript .box {
   background-color: #859890;
 }
 
-.game-container.menu-state {
+/*.game-container.menu-state {
   background-color: #b2af9e;
   background-image: url("../img/bkg/polygon-light.jpg");
-}
-
+}*/
+.game-container.menu-state,
 .game-container.campaign-state, 
 .game-container.choose-state, 
 .game-container.vs-state, 
@@ -255,6 +255,7 @@ noscript .box {
   padding: 8px;
 }
 
+.resultsbox,
 .loading .box,
 .game-overlay .box,
 .log .box,
@@ -262,10 +263,9 @@ noscript .box {
   background-color: white;
   color: #333;
   font-weight: bold;
-  box-shadow: inset 0 20px 30px #ddd, 0 0 0 6px #fff;
+  box-shadow: inset 0 20px 30px #d6d6d6, 0 0 0 6px #fff;
   border-radius: 18px;
 }
-
 .notfound .box {
   width: 500px;
   top: 92%;
@@ -370,6 +370,7 @@ input:focus {
 
 .game-overlay h1 {
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .option-state .game-overlay {
@@ -396,7 +397,7 @@ input:focus {
   transition: all 0.2s;
   transform: translateZ(0);
   min-width: 75px;
-  min-height: 30px;
+  min-height: 32px;
   overflow: hidden;
   font-weight: 300;
 }
@@ -430,7 +431,10 @@ input:focus {
 
 .buttonbox .button {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+}
+.buttonbox .button:last-child {
+  margin-bottom: 6px;
 }
 
 .button.highlight {
@@ -475,7 +479,7 @@ input[type="checkbox"], input[type="radio"] {
   top: 0;
   left: 0;
   z-index: -1;
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 label {
@@ -494,7 +498,7 @@ label input {
 .log .box {
   padding: 20px;
   padding-bottom: 8px;
-  width: 380px;
+  width: 400px;
   top: 72%;
   /* background-color: rgba(11, 15, 14, 0.85); */
 }
@@ -513,25 +517,8 @@ label input {
   margin-top: 1px;
 }
 
-.log input[type=submit] {
-  height: 40px;
-  width: 100px;
-  line-height: 16px;
-  font-weight: bold;
-}
-
-.log .steel {
-  position: absolute;
-  bottom: 41px;
-  right: 34px;
-  width: 100px;
-  height: 42px;
-  background: url("/img/bkg/steel.jpg");
-  background-size: cover;
-  opacity: 0.2;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: 3px;
+.log .button {
+  width: 110px;
 }
 
 .log label {
