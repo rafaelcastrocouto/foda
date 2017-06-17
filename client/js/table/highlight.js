@@ -32,7 +32,7 @@ game.highlight = {
       }
       if (game.selectedCard.hasClass('skills')) {
         game.selectedCard.highlightSource();
-        if (!game.selectedCard.hasAllClasses('kotl-illuminate on')) game.selectedCard.strokeSkill();
+        if (!game.selectedCard.hasAllClasses('channel-on')) game.selectedCard.strokeSkill();
         if (game.isPlayerTurn()) {
           game.selectedCard.highlightArrows();
           game.selectedCard.highlightTargets(event);
@@ -54,7 +54,7 @@ game.highlight = {
   source: function () {
     var skill = this;
     var hero = skill.data('hero');
-    if (hero && !skill.hasClass('on')) $('.map .card.player.heroes.' + hero).addClass('source');
+    if (hero) $('.map .card.player.heroes.' + hero).addClass('source');
     return skill;
   },
   channelStop: function (event, skill, source) {
@@ -87,7 +87,7 @@ game.highlight = {
   active: function (event, source, skill) {
     var targets = skill.data('targets');
     if (source.canCast(skill)) {
-      if (skill.hasClasses('channel-on on')) game.highlight.channelStop(event, skill, source);
+      if (skill.hasClass('channel-on')) game.highlight.channelStop(event, skill, source);
       else {
         if (targets.indexOf(game.data.ui.self) >= 0) game.highlight.self(source);
         if (targets.indexOf(game.data.ui.ally) >= 0) game.highlight.ally(source, skill);

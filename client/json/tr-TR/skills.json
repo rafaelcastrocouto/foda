@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Büyü",
-      "cards": 2,
+      "cards": 1,
       "description": "Ateşten oluşan bir sütun düşmanları bir çizgide hasara uğratır"
     },
     "stun": {
@@ -104,7 +104,7 @@
       "cast range": "Kısa",
       "aoe": "Radyal",
       "aoe range": "Dövüş",
-      "damage": 12,
+      "damage": 16,
       "damage type": "Büyü",
       "cards": 1,
       "description": "Zarar verici hedef hasar alanı, hedef manaya eşittir. Hedef kanala müdahale eder"
@@ -123,7 +123,7 @@
       "aoe range": "Dövüş",
       "damage": 10,
       "damage type": "Büyü",
-      "cards": 2,
+      "cards": 1,
       "description": "Hedef alınan düşmanı yavaşlatır ve hasar almasına yol açar",
       "buff": {
         "speed slow": 1,
@@ -254,13 +254,15 @@
       "deck": "Geçici",
       "targets": ["Yer", "AynÄ"],
       "aoe": "Radyal",
+      "damage": 6,
+      "damage type": "Büyü",
       "aoe range": "Küçük",
       "cast range": "Menzilli",
       "highlight": "out",
       "cards": 1,
       "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar 80%. Hedef kanal Kesmeler",
       "buff": {
-        "duration": 4,
+        "duration": 3,
         "miss": 80,
         "description": "Blinded"
       }
@@ -292,12 +294,12 @@
       "targets": ["Yer", "Bedava"],
       "cards": 2,
       "cast range": "Dövüş",
-      "hp": 80,
+      "hp": 42,
       "range": "Dövüş",
       "damage": 8,
       "armor": 3,
       "resistance": 3,
-      "death damage": 10,
+      "death damage": 12,
       "description": "Güçlü bir ayı çagırır ve bir Dönüş beceri kartı alırsınız",
       "buffs": {
         "demolish": {
@@ -406,7 +408,7 @@
       "aoe range": 3,
       "cast range": 1,
       "cast width": 0,
-      "cards": 2,
+      "cards": 1,
       "damage type": "Büyü",
       "damage": 12,
       "stun": 2,
@@ -474,7 +476,7 @@
       "damage": 14,
       "highlight": "in",
       "damage type": "Saf",
-      "cards": 2,
+      "cards": 1,
       "description": "Butcher düşman veya dost birimi yanına çeker. Çekilen birim dost ise hasar vermez düşman ise belli bir hasara urar"
     },
     "rot": {
@@ -512,8 +514,8 @@
       "cards": 1,
       "description": "Butcher Bonus, HP ve hasar Her öldürme üzerine verir ve büyü hasarı azaltır",
       "buff": {
-        "hp per kill": 2,
-        "damage per kill": 1,
+        "hp per kill": 4,
+        "damage per kill": 2,
         "resistance bonus": 2,
         "description": "HP ve saldırı öldürmek ve bonus büyü direnci başına arttı"
       }
@@ -553,10 +555,10 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "cast range": "Kısa",
-      "damage": 12,
+      "damage": 14,
       "damage type": "Büyü",
       "stun": 2,
-      "cards": 2,
+      "cards": 1,
       "description": "Hasar ve sonra yavaşlatır bir hedef şaşırtmaya ve zamanla fırsatlar",
       "buff": {
         "damage type": "Büyü",

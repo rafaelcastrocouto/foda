@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Magical",
-      "cards": 2,
+      "cards": 1,
       "description": "A column of flames damages enemies in a line"
     },
     "stun": {
@@ -104,7 +104,7 @@
       "cast range": "Short",
       "aoe": "Radial",
       "aoe range": "Melee",
-      "damage": 14,
+      "damage": 16,
       "damage type": "Magical",
       "cards": 1,
       "description": "Damage area over target with bonus damage equal the target mana. Interrupts target channel"
@@ -123,7 +123,7 @@
       "aoe range": "Melee",
       "damage": 10,
       "damage type": "Magical",
-      "cards": 2,
+      "cards": 1,
       "description": "A burst of damaging frost that slows enemies in the target area",
       "buff": {
         "speed slow": 1,
@@ -254,13 +254,15 @@
       "deck": "Temporary",
       "targets": ["Spot", "Self"],
       "aoe": "Radial",
+      "damage": 6,
+      "damage type": "Magical",
       "aoe range": "Small",
       "cast range": "Ranged",
       "highlight": "out",
       "cards": 1,
       "description": "Knock back and blind enemies, causing them to miss 80% attacks. Interrupts target channel",
       "buff": {
-        "duration": 4,
+        "duration": 3,
         "miss": 80,
         "description": "Blinded"
       }
@@ -292,12 +294,12 @@
       "targets": ["Spot", "Free"],
       "cards": 2,
       "cast range": "Melee",
-      "hp": 80,
+      "hp": 42,
       "range": "Melee",
       "damage": 8,
       "armor": 3,
       "resistance": 3,
-      "death damage": 10,
+      "death damage": 12,
       "description": "Summons a powerful Bear with 'Nature claws' and 'Demolition'. Gains 'Return'",
       "buffs": {
         "demolish": {
@@ -431,7 +433,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "damage type": "Pure",
-      "cards": 2,
+      "cards": 1,
       "stun": 3,
       "description": "Reflect damage received and stun the source of damage",
       "buff": {
@@ -471,10 +473,10 @@
       "cast width": 0,
       "aoe width": 0,
       "aoe range": 3,
-      "damage": 14,
+      "damage": 16,
       "highlight": "in",
       "damage type": "Pure",
-      "cards": 2,
+      "cards": 1,
       "description": "Launches a bloody hook that will snag the first unit it encounters, dragging the unit and dealing damage if enemy. Interrupts enemy channel"
     },
     "rot": {
@@ -512,8 +514,8 @@
       "cards": 1,
       "description": "Gives Butcher bonus HP and damage on every kill and reduces magic damage",
       "buff": {
-        "hp per kill": 2,
-        "damage per kill": 1,
+        "hp per kill": 4,
+        "damage per kill": 2,
         "resistance bonus": 2,
         "description": "HP and attack increased per kill and bonus magic resistance"
       }
@@ -553,10 +555,10 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "cast range": "Short",
-      "damage": 12,
+      "damage": 14,
       "damage type": "Magical",
       "stun": 2,
-      "cards": 2,
+      "cards": 1,
       "description": "Damage and stun a target then slows and deals damage over time",
       "buff": {
         "damage type": "Magical",

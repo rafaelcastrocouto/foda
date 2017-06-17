@@ -57,7 +57,7 @@ game.skills.ld = {
       var killer = eventdata.source;
       var skill = bear.data('summon');
       var ld = bear.data('summoner');
-      killer.damage(ld, skill.data('death damage'), game.data.ui.pure);
+      killer.damage(skill.data('death damage'), ld, game.data.ui.pure);
       bear.data('return').discard();
       ld.data('bear', null);
       ld.data('summon', null);

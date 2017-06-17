@@ -13,7 +13,7 @@
       "aoe range": 3,
       "damage": 12,
       "damage type": "Mágico",
-      "cards": 2,
+      "cards": 1,
       "description": "Uma coluna de fogo causa dano em linha"
     },
     "stun": {
@@ -104,7 +104,7 @@
       "cast range": "Médio",
       "aoe": "Radial",
       "aoe range": "Perto",
-      "damage": 4,
+      "damage": 16,
       "damage type": "Mágico",
       "cards": 1,
       "description": "Causa dano em área na posição de uma unidade inimiga. O bonus de dano é igual ao mana do alvo"
@@ -123,7 +123,7 @@
       "aoe range": "Perto",
       "damage": 10,
       "damage type": "Mágico",
-      "cards": 2,
+      "cards": 1,
       "description": "Uma explosão de gelo que causa dano em area e diminui a velocidade dos inimigos",
       "buff": {
         "speed slow": 1,
@@ -254,13 +254,15 @@
       "deck": "Temporária",
       "targets": ["Local", "Próprio"],
       "aoe": "Radial",
+      "damage": 6,
+      "damage type": "Mágico",
       "aoe range": "Curto",
       "cast range": "Distante",
       "highlight": "out",
       "cards": 1,
       "description": "Uma luz cegante arremessa as unidades inimigas, fazendo com que errem 80% dos ataques. Interrompe canalização",
       "buff": {
-        "duration": 4,
+        "duration": 3,
         "miss": 80,
         "description": "Blinded"
       }
@@ -292,12 +294,12 @@
       "targets": ["Local", "Livre"],
       "cards": 2,
       "cast range": "Perto",
-      "hp": 80,
+      "hp": 42,
       "range": "Perto",
       "damage": 8,
       "armor": 3,
       "resistance": 3,
-      "death damage": 10,
+      "death damage": 12,
       "description": "O jogador compra uma carta temporária 'Retornar'",
       "buffs": {
         "demolish": {
@@ -431,7 +433,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "damage type": "Puro",
-      "cards": 2,
+      "cards": 1,
       "stun": 3,
       "description": "Bonus de armadura e resistência e reflete e o dano recebido e atordoa o atacante",
       "buff": {
@@ -474,7 +476,7 @@
       "damage": 14,
       "highlight": "in",
       "damage type": "Puro",
-      "cards": 2,
+      "cards": 1,
       "description": "Lança um gancho que agarra a primeira unidade que encontrar, arrastando-a de volta e causando dano caso seja uma unidade inimiga"
     },
     "rot": {
@@ -512,8 +514,8 @@
       "cards": 1,
       "description": "Reduz o dano mágico e aumenta o HP e o Dano a cada uindade que o Pudge mata",
       "buff": {
-        "hp per kill": 2,
-        "damage per kill": 1,
+        "hp per kill": 4,
+        "damage per kill": 2,
         "resistance bonus": 2,
         "description": "Dano mágico reduzido e HP e o Dano aumentados por kill"
       }
@@ -553,10 +555,10 @@
       "deck": "Comprar",
       "targets": ["Inimigos"],
       "cast range": "Médio",
-      "damage": 12,
+      "damage": 14,
       "damage type": "Mágico",
       "stun": 2,
-      "cards": 2,
+      "cards": 1,
       "description": "Atordoa depois diminui a velocidade e causa dano por turno",
       "buff": {
         "damage type": "Mágico",

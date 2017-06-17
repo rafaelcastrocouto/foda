@@ -125,7 +125,7 @@ game.player = {
       game.states.table.animateCast(skill, target, event);
     }
   },
-  cast: function (event) {
+  cast: function (event) { 
     var target = $(this),
       skill = game.selectedCard,
       source = $('.map .source'),

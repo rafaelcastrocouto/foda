@@ -4,7 +4,7 @@ game.skills.kotl = {
       var kotl = source;
       var direction = kotl.getDirectionStr(target);
       var side = kotl.side();
-      skill.addClass('on');
+      skill.addClass('channel-on');
       if (kotl.hasBuff('kotl-ult')) {
         var ghost = kotl.clone().removeClass('selected player').addClass('illuminate-ghost ghost channeling').insertAfter(kotl);
         kotl.data('illuminate-ghost', ghost);
@@ -34,7 +34,7 @@ game.skills.kotl = {
       var range = skill.data('aoe range');
       var width = skill.data('aoe width');
       var time = skill.data('channel') - source.data('channeling') + 1;
-      skill.removeClass('on');
+      skill.removeClass('channel-on');
       source.opponentsInLine(target, range, width, function (card) {
         kotl.damage(damage * time, card, skill.data('damage type'));
       }, kotl);
@@ -85,22 +85,22 @@ game.skills.kotl = {
     cast: function (skill, source) {
       var side = source.side();
       if (!source.hasBuff('kotl-ult')) {
-        var recall = $('.table .'+side+' .skills .kotl-recall');
-        var blind = $('.table .'+side+' .skills .kotl-blind');
         var illuminate = $('.table .'+side+' .skills .kotl-illuminate');
         skill.addClass('on');
-        source.selfBuff(skill);
         source.on('turnend.kotl-ult', this.turnend);
         source.addClass('kotl-ult');
         source.data('kotl-ult', skill);
         illuminate.data('type', game.data.ui.active);
         illuminate.find('.type').text(game.data.ui.active);
         illuminate.addClass('spiritform');
-        recall.appendTo(game[side].skills.hand);
-        blind.appendTo(game[side].skills.hand);
-      } else {
-        this.off(source, true);
       }
+      source.selfBuff(skill);
+      var recall = $('.table .'+side+' .skills .kotl-recall');
+      if (recall.parent()[0] !== game[side].skills.hand[0]);
+        recall.appendTo(game[side].skills.hand);
+      var blind = $('.table .'+side+' .skills .kotl-blind');
+      if (blind.parent()[0] !== game[side].skills.hand[0]);
+        blind.appendTo(game[side].skills.hand);
     },
     turnend: function (event, eventdata) {
       var source = eventdata.target;
@@ -134,25 +134,26 @@ game.skills.kotl = {
   },
   blind: {
     cast: function (skill, source, target) {
-    var side = source.side();
-    var opponent = game.opponent(side);
-    if (target.hasClass(opponent)) {
+      var side = source.side();
+      var opponent = game.opponent(side);
+      var card = $('.card', target);
+      if (card.hasClass(opponent)) game.skills.kotl.blind.target(skill, source, card);
+      target.inCross(1, 0, function (spot, dir) {
+        var card = $('.card.'+opponent, spot);
+        if (card.length && !card.hasClasses('tower ghost')) {
+          game.skills.kotl.blind.target(skill, source, card);
+          var destiny = card.getDirSpot(dir);
+          if (destiny && destiny.hasClass('free')) {
+            card.place(destiny);
+          }
+        }
+      });
+    },
+    target: function (skill, source, target) {
       source.addBuff(target, skill);
       target.on('attack.kotl-blind', this.attack);
       target.stopChanneling();
-    }
-    target.inCross(1, 0, function (spot, dir) {
-      var card = $('.card.'+opponent, spot);
-      if (card.length && !card.hasClasses('tower ghost')) {
-        source.addBuff(card, skill);
-        card.on('attack.kotl-blind', this.attack);
-        target.stopChanneling();
-        var destiny = card.getDirSpot(dir);
-        if (destiny && destiny.hasClass('free')) {
-          card.place(destiny);
-        }
-      }
-    });
+      source.damage(skill.data('damage'), target, skill.data('damage type'));
     },
     attack: function (event, eventdata) {
       var source = eventdata.source;

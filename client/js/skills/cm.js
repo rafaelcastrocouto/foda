@@ -51,12 +51,12 @@ game.skills.cm = {
       source.addClass('cm-ult');
       source.selfBuff(skill, 'ult-source');
       game.skills.cm.ult.damage(0, {source:source,skill:skill});
-      //source.on('channel', this.channel);
+      source.on('channel', this.channel);
       source.on('channelend', this.channelend);
-    },/*
+    },
     channel: function (event, eventdata) {
-      if ( eventdata.source.data('channeling') != 1) game.skills.cm.ult.damage(event, eventdata);
-    },*/
+      if ( eventdata.source.data('channeling') === 0) game.skills.cm.ult.damage(event, eventdata);
+    },
     damage: function (event, eventdata) {
       game.shake();
       var cm = eventdata.source;
@@ -68,7 +68,6 @@ game.skills.cm = {
       });
     },
     channelend: function (event, eventdata) {
-      game.skills.cm.ult.damage(event, eventdata);
       var cm = eventdata.source;
       cm.data('cm-ult', null);
       cm.removeBuff('ult-source');

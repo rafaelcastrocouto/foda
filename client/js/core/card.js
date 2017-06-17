@@ -672,7 +672,8 @@ game.card = {
         source.select();
       }
     }
-    game.timeout(800, function() {
+    evt.position = target.getPosition();
+    game.timeout(1000, function() {
       this.source.trigger('kill', this);
       this.target.die(this);
     }
@@ -683,7 +684,7 @@ game.card = {
     this.data('killer', evt.source);
     this.addClass('dead').removeClass('target done');
     this.unselect();
-    var pos = this.getPosition(), deaths, spot = $('#' + pos), side = this.side();
+    var pos = evt.position, deaths, spot = $('#' + pos), side = this.side();
     if (!spot.hasClass('cript')) {
       spot.addClass('free');
     }
@@ -712,7 +713,7 @@ game.card = {
           game[game.mode].win();
       }
     } else if (this.hasClass('units')) {
-      if (evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
+      if (!this.hasClass('ld-summon') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
         evt.source.damage(game.creepDeathDamage, game[side].tower, game.data.ui.pure);
       this.detach();
     } else {
