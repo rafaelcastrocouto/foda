@@ -45,12 +45,12 @@ Special thanks to:
 
 [5]: https://github.com/rafaelcastrocouto/foda/archive/gh-pages.zip
 
-[6]: https://github.com/rafaelcastrocouto/foda/wiki/How-to-develop-a-new-hero
+[6]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-develop-a-new-hero
 
-[7]: https://github.com/rafaelcastrocouto/foda/wiki
+[7]: https://github.com/rafaelcastrocouto/dotacard/wiki
 
 [8]: https://github.com/rafaelcastrocouto/foda/issues/new
 
 [9]: http://steamcommunity.com/sharedfiles/filedetails/?id=500624204
 
-[10]: https://github.com/rafaelcastrocouto/foda/wiki/How-to-setup-a-local-server
+[10]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-setup-a-local-server

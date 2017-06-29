@@ -1,4 +1,4 @@
-﻿{
+{
   "start": {
     "name": "Adım 1",
     "img": "tower",
@@ -9,7 +9,7 @@
       "Ölmeyin (bonus)",
       "3 kahramanı öldür (bonus)"
     ],
-    "picks": [ "cm", "kotl", "pud", "ld", "am" ]
+    "picks": [ "cm", "pud", "lina", "wk", "am" ]
   },
   "easy": {
     "name": "Adım 2",
@@ -21,7 +21,7 @@
       "Ölmeyin (bonus)",
       "5 kahramanı öldür (bonus)"
     ],
-    "picks": [ "nyx", "wk", "ld", "am", "pud" ]
+    "picks": [ "nyx", "wk", "ld", "am", "kotl" ]
 
   }
 }

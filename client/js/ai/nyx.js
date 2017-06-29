@@ -2,9 +2,6 @@ game.heroesAI.nyx = {
   move: {
     default: 'defensive'
   },
-  action: {
-    default: 'cast'
-  },
   play: function (nyx) {
     // siege if has 2 spikes
     // stun if 2 enemies are aligned

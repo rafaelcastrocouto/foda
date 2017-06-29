@@ -5,15 +5,19 @@ game.skills.am = {
       source.data('am-burn', skill);
       source.on('attack', this.attack);
     },
-    attack: function (event, eventdata) { 
+    attack: function (event, eventdata) {
       var source = eventdata.source;
       var target = eventdata.target;
       var hero = target.data('hero');
       var opponent = target.side();
       var mana = target.data('mana');
-      game.audio.play('am/burn');
-      if (mana) source.damage(target.data('mana'), target, game.data.ui.pure);
-      $('.'+opponent+' .hand .'+hero).randomCard().discard();
+      if (opponent == source.opponent()) {
+        if (mana) {
+          source.data('attack bonus', mana);
+          $('.'+opponent+' .hand .'+hero).randomCard().discard();
+          game.audio.play('am/burn');
+        }
+      }
     }
   },
   shield: {

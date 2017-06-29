@@ -16,7 +16,7 @@
 
 .pickbox .card.selected {
   margin: 0 22px;
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0) scale(1.1);
   filter: blur(0);
 }
 
@@ -122,7 +122,7 @@
 
 .card fieldset h1 {
   cursor: inherit;
-  margin: 5px 0 4px;
+  margin: 5px 0;
   font-size: 13px;
   font-weight: bold;
   float: left;
@@ -134,6 +134,7 @@
   position: absolute;
   right: 2px;
   letter-spacing: -0.4px;
+  top: 116px;
 }
 
 .card .current p {
@@ -167,11 +168,15 @@
   clear: left;
 }
 
+.card .desc .dot {
+  position: relative;
+}
 .card .desc .dot span {
   width: 14px;
   height: 14px;
   line-height: 14px;
   position: absolute;
+  top: 0;
   display: inline-block;
   border-radius: 50%;
   box-shadow: 0 0 0 3px #ed8c8c;
@@ -185,8 +190,9 @@
   margin: 0;
   border: 0;
   font-size: 12px;
-  line-height: 13px;
+  line-height: 12px;
   display: block;
+  margin-bottom: 2px;
 }
 
 .table .card.heroes .description {
@@ -214,7 +220,7 @@
 }
 
 .card.enemy.towers {
-  background: #a23030;
+  background: #c83b4f;
 }
 
 .card.enemy {
@@ -229,8 +235,9 @@
   background: #277cd6;
 }
 
-.card.left-hand.skills {
-  background: #67bcd6;
+.card.left-hand.skills,
+.card.skills[class*="summon"] {
+  background: #5bb7b9;
 }
 
 .states .map .card.player.heroes.selected, .states .map .card.player.towers.selected {
@@ -380,6 +387,15 @@
   transition: all 0.1s;
   width: 35px;
 }
+.card .buffs .buff span {
+  position: absolute;
+  color: white;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-shadow: 0 0 1px black, 0 0 2px black;
+}
 
 .card .buffs .buff:last-child {
   margin-right: 20px;
@@ -408,7 +424,7 @@
 .table .deck .card {
   top: 50%;
   left: 40px;
-  transform: translate3d(-50%, -50%, 0) scale(0.4);
+  transform: translate3d(-50%, -50%, 0) scale(0.4) rotate(0);
   margin-right: -140px;
 }
 
@@ -417,11 +433,11 @@
 }
 
 .table .deck .card.on, .table .deck .card.channel-on {
-  transform: translate(-50%, -53.5%) scale(0.4);
+  transform: translate(-50%, -50%) scale(0.4) rotate(-5deg);
 }
 
 .table .deck .card.selected {
-  transform: translate(-50%, -50%) scale(0.5);
+  transform: translate(-50%, -50%) scale(0.5) rotate(0);
 }
 
 .table .enemy .skills .card {
@@ -434,7 +450,7 @@
 
 @keyframes enemybuyslide {
   0% {
-    left: -1000px;
+    left: -2000vw;
     top: 150%;
     transform: translate(-50%, -50%) rotateY(-180deg) scale(0.5);
   }
@@ -471,7 +487,7 @@
   }
 
   100% {
-    left: 4000px;
+    left: -4000vw;
     top: 185%;
     transform: translate(-50%, -50%) scale(0.5);
   }
@@ -552,13 +568,13 @@
   0% {
     left: -1000px;
     top: -50%;
-    transform: translate(-50%, -50%) scale(0.6) rotateY(179deg);
+    transform: translate(-50%, -50%) scale(0.6) rotateY(179deg) rotate(0);
   }
 
   30% {
     left: 40px;
     top: -50%;
-    transform: translate(-50%, -50%) scale(0.6) rotateY(179deg);
+    transform: translate(-50%, -50%) scale(0.6) rotateY(179deg) rotate(0);
   }
 
   100% {
@@ -583,6 +599,7 @@
   backface-visibility: hidden;
   transform-style: preserve-3d;
   transform: rotateY(-180deg);
+  zoom: 1.2;
 }
 
 .selectedarea .selectedcard.flip {
@@ -799,7 +816,7 @@
   background-image: url("../img/trees/tree_dire.jpg");
 }
 
-.card.units.melee.player .img {
+.units.melee.player .img {
   background-image: url("../img/creeps/player_melee.jpg");
 }
 .map .card.units.melee.player .img {

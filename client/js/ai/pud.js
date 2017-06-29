@@ -2,9 +2,6 @@ game.heroesAI.pud = {
   move: {
     default: 'defensive'
   },
-  action: {
-    default: 'cast'
-  },
   play: function (pud) {
     // try to align with advanced enemies and hook to tower
     // hook priority (disbled/stunned,  kotl, cm, negative if tank, negative if in rangeofskill)

@@ -43,7 +43,6 @@ game.turn = {
       card.trigger('turnstart', { target: card });
       if (turn == 'player-turn') card.trigger('playerturnstart', { target: card });
       if (turn == 'enemy-turn') card.trigger('enemyturnstart', { target: card });
-      card.reduceStun();
     });
     game.timeout(400, game.turn.tickTime);
     game.timeout(800, function () {
@@ -89,13 +88,10 @@ game.turn = {
       game.turn.tickTime();
       game.message.text(game.data.ui.turnend);
       game.moves.push(game.currentMoves.join('|'));
-      $('.spot.fountain').find('.card').each(function () {
-        $(this).heal(10);
-      });
       $('.map .card').each(function (i, card) {
         var hero = $(card);
         game.turn.channel(hero);
-        game.turn.buffs(hero);
+        game.buff.turn(hero);
         hero.trigger('turnend', { target: hero });
       });
       if (turn == 'player-turn') {
@@ -119,22 +115,6 @@ game.turn = {
         if (duration === 0) hero.stopChanneling();
       }
     }
-  },
-  buffs: function (hero) {
-    var buffs = hero.find('.buffs > .buff');
-    buffs.each(function (i, buffElement) {
-      var buff = $(buffElement);
-      var duration = buff.data('duration'),
-          data = buff.data('buff');
-      buff.trigger('buffcount', {target: hero, buff: buff});
-      if (duration) {
-        duration -= 1;
-        buff.data('duration', duration);
-      } else if (data && data.temp && data.buffId) {
-        buff.trigger('expire', {target: hero, buff: buff});
-        hero.removeBuff(data.buffId);
-      }
-    });
   },
   noAvailableMoves: function () {
     return $('.map .player.card:not(.towers, .ghost)').length == $('.map .player.card.done:not(.towers, .ghost)').length;

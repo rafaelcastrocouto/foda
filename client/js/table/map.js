@@ -184,6 +184,16 @@ game.map = {
       spot.atRange(game.map.getRangeStr(2), cb);
       spot.atRange(game.map.getRangeStr(4), cb);
     }
+    if (r === 7) {
+      spot.atRange(game.map.getRangeStr(1), cb);
+      spot.atRange(game.map.getRangeStr(3), cb);
+      spot.atRange(game.map.getRangeStr(5), cb);
+    }
+    if (r === 8) {
+      spot.atRange(game.map.getRangeStr(2), cb);
+      spot.atRange(game.map.getRangeStr(4), cb);
+      spot.atRange(game.map.getRangeStr(6), cb);
+    }
   },
   inRange: function (range, cb) {// in range and self
     this.atRange(game.map.getRangeStr(0), cb);
@@ -547,7 +557,7 @@ game.map = {
   clear: function () {
     game.highlight.clearMap();
     game.map.el.removeClass('night');
-    $('.map .spot').removeClass('block playerarea enemyarea fountain jungle cript').addClass('free');
+    $('.map .spot').removeClass('block playerarea enemyarea jungle cript').addClass('free');
   },
   cardsInRange: function (range, cb) {
     this.inRange(range, function (spot) {

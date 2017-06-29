@@ -53,6 +53,9 @@ game.states.campaign = {
     this.createPath(this.et, this.nm, 'et-ru');
     this.createPath(this.em, this.nm, 'em-ru');
     this.createPath(this.eb, this.nm, 'eb-ru');
+    this.createPath(this.et, this.ot, 'et-ru');
+    this.createPath(this.em, this.om, 'em-ru');
+    this.createPath(this.eb, this.ob, 'eb-ru');
     this.buildDesc(game.data.campaign.easy);
   },
   buildDesc: function (data) {
@@ -67,6 +70,7 @@ game.states.campaign = {
     var ch = $('<div>').addClass('campaign-heroes').appendTo(this.desc);
     game.enemy.picks = data.picks;
     localStorage.setItem('enemydeck', data.picks);
+    game.enemy.picks = data.picks;
     for (var i = 0; i < game.enemy.picks.length; i++) {
       var hero = game.enemy.picks[i];
       $('<div>').addClass('heroes '+ hero).attr({title: hero}).append($('<div>').addClass('img')).appendTo(ch);
@@ -85,17 +89,17 @@ game.states.campaign = {
     var s = source.position(), t = target.position();
     var sourcesize = source.width() / 2;
     s.left += (sourcesize - size);
-    s.top += (sourcesize - size) * 1.6;
+    s.top += (sourcesize - size) * 1.2;
     var targetsize = target.width() / 2;
     t.left += (targetsize - size);
-    t.top += (targetsize - size) * 1.6;
+    t.top += (targetsize - size) * 1.2;
     var mx = t.left - s.left, 
         my = t.top - s.top;
     var a = Math.atan2(my, mx);
     var d = Math.pow( Math.pow(mx,2) + Math.pow(my,2) , 1/2);
     var toff = sourcesize + dash;
     d -= toff;
-    var n = Math.floor(d/dash), x, y;
+    var n = Math.floor(d/dash) - 1, x, y;
     for (var i = 0; i < n; i++) {
       x = s.left + (toff * Math.cos(a)) + (i * dash * Math.cos(a));
       y = s.top + (toff * Math.sin(a)) + (i * dash * Math.sin(a));

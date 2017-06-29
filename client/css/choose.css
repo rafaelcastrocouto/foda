@@ -41,7 +41,7 @@
   right: 86px;
 }
 .choose .pickedbox .skills:hover {
-  transform: translate3d(-50%, -65%, 0) scale(1);
+  transform: translate3d(-50%, -67%, 0) scale(1.1);
 }
 
 .choose .slot {

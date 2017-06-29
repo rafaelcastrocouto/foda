@@ -2,9 +2,6 @@ game.heroesAI.cm = {
   move: {
     default: 'defensive'
   },
-  action: {
-    default: 'cast'
-  },
   play: function (cm) {
 
     /*

@@ -250,7 +250,7 @@ noscript .box {
   top: 68%;
   padding: 8px;
 }
-
+.campaign-box.box,
 .resultsbox,
 .loading .box,
 .game-overlay .box,
@@ -277,7 +277,7 @@ noscript .box {
 }
 
 .loadtext .message {
-  margin-left: 8px;
+  margin-left: 12px;
 }
 
 .loadtext .message, .loadtext .progress {
@@ -543,7 +543,7 @@ label input {
   margin: 10px;
   display: block;
   font-size: 18px;
-  width: 240px;
+  width: 260px;
 }
 
 .deck {

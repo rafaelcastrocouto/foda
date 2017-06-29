@@ -1,8 +1,8 @@
 .map {
   z-index: 0;
-  transform: translate(-49.65%,-52.5%) rotateX(34deg) scale3d(.29,.29,.29);
+  transform: translate(-49.6%,-50.2%) rotateX(37deg) scale3d(.3,.3,.3);
   transform-style: preserve-3d;
-  padding: 43% 105% 2%;
+  padding: 0;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -49,22 +49,6 @@
 
 .map .spot.enemyarea:hover {
   background: rgba(255,100,100,0.3);
-}
-
-.map .spot.fountainplayer {
-  background: rgba(180,255,180,0.3);
-}
-
-.map .spot.fountainplayer:hover {
-  background: rgba(180,255,180,0.35);
-}
-
-.map .spot.fountainenemy {
-  background: rgba(255,150,150,0.3);
-}
-
-.map .spot.fountainenemy:hover {
-  background: rgba(255,150,150,0.35);
 }
 
 .map .spot.jungle {
@@ -139,4 +123,8 @@
 }
 .projectile.towers.enemy {
   background: #ff3f00;
+}
+
+.debug .map .ai {
+  box-shadow: 0 0 0 6px white;
 }

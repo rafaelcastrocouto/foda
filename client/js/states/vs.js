@@ -84,7 +84,7 @@ game.states.vs = {
   enemyPicks: function () {
     var picks;
     if (game.mode == 'library' || game.mode == 'tutorial') {
-      return [ 'lina', 'kotl', 'pud', 'ld', 'am' ];
+      return [ 'lina', 'cm', 'pud', 'wk', 'am' ];
     }
     if (game.mode == 'online') {
       picks = game.enemy.picks;
@@ -94,8 +94,8 @@ game.states.vs = {
     if (game.mode == 'single') {
       picks = game.enemy.picks;
       if (!picks || picks.length !== 5) picks = localStorage.getItem('enemydeck').split(',');
-      // picks = ['am']
-      return picks.shuffle();
+      //if (game.debug) picks = ['wk'];
+      return picks;
     }
   },
   toTable: function () {

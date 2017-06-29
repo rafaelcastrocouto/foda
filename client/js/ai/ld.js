@@ -2,9 +2,6 @@ game.heroesAI.ld = {
   move: {
     default: 'offensive'
   },
-  action: {
-    default: 'cast'
-  },
   play: function (card, cardData) {
     cardData['has-instant-attack-buff'] = true;
     card.data('ai', cardData);

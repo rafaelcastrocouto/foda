@@ -11,6 +11,10 @@ game.options = {
     //side
     this.side = $('<input>').attr({type: 'checkbox', name: 'side'});
     $('<label>').appendTo(this.screen).append(this.side).append($('<span>').text(game.data.ui.left));
+    if (localStorage.getItem('left-side') == 'true') {
+      $(document.body).addClass('left-side');
+      this.side.prop('checked', true);
+    }
     //resolution
     this.auto = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', checked: true, value: 'auto'})).append($('<span>').text(game.data.ui.auto));
     this.high = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'high'})).append($('<span>').text(game.data.ui.high + ' 1920x1080'));

@@ -5,6 +5,7 @@ game.skills.kotl = {
       var direction = kotl.getDirectionStr(target);
       var side = kotl.side();
       skill.addClass('channel-on');
+      kotl.selfBuff(skill);
       if (kotl.hasBuff('kotl-ult')) {
         var ghost = kotl.clone().removeClass('selected player').addClass('illuminate-ghost ghost channeling').insertAfter(kotl);
         kotl.data('illuminate-ghost', ghost);
@@ -38,11 +39,11 @@ game.skills.kotl = {
       source.opponentsInLine(target, range, width, function (card) {
         kotl.damage(damage * time, card, skill.data('damage type'));
       }, kotl);
-      source.data('illuminate-start', null);
-      source.data('illuminate-target', null);
-      source.data('illuminate-ghost', null);
-      source.off('turnend.kotl-illuminate');
-      source.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
+      kotl.data('illuminate-start', null);
+      kotl.data('illuminate-target', null);
+      kotl.data('illuminate-ghost', null);
+      kotl.off('turnend.kotl-illuminate');
+      kotl.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
       if (source.hasClass('illuminate-ghost')) source.detach();
       skill.discard();
     }
@@ -145,6 +146,7 @@ game.skills.kotl = {
           var destiny = card.getDirSpot(dir);
           if (destiny && destiny.hasClass('free')) {
             card.place(destiny);
+            card.trigger('moved', {card: card});
           }
         }
       });

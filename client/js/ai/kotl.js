@@ -2,9 +2,6 @@ game.heroesAI.kotl = {
   move: {
     default: 'defensive'
   },
-  action: {
-    default: 'cast'
-  },
   play: function (kotl) {
     /*
     use ult immediately

@@ -78,7 +78,7 @@
     "name": "Butcher",
     "attribute": "Força",
     "range": "Perto",
-    "hp": 70,
+    "hp": 65,
     "mana": 2,
     "damage": 14,
     "armor": 3,

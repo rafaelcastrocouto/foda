@@ -63,7 +63,6 @@ game.skills.pud = {
       game.skills.pud.passive.bonus(buff, source, kills);
     },
     bonus: function (buff, source, kills) {
-      if (!kills) kills = 1;
       var damage = source.data('current damage');
       var bonusDamage = buff.data('damage per kill') * kills;
       source.setDamage(damage + bonusDamage);
@@ -76,7 +75,7 @@ game.skills.pud = {
     kill: function (event, eventdata) {
       var source = eventdata.source;
       var buff = source.getBuff('pud-passive');
-      game.skills.pud.passive.bonus(buff, source);
+      game.skills.pud.passive.bonus(buff, source, 1);
     }
   },
   ult: {

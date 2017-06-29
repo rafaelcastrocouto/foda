@@ -1,4 +1,4 @@
-﻿{
+{
   "start": {
     "name": "Stage 1",
     "img": "tower",
@@ -9,7 +9,7 @@
       "Don't die (bonus)",
       "Kill 3 heroes (bonus)"
     ],
-    "picks": [ "cm", "kotl", "pud", "ld", "am" ]
+    "picks": [ "cm", "pud", "lina", "wk", "am" ]
   },
   "easy": {
     "name": "Stage 2",
@@ -21,7 +21,7 @@
       "Don't die (bonus)",
       "Kill 5 heroes (bonus)"
     ],
-    "picks": [ "nyx", "wk", "ld", "am", "pud" ]
+    "picks": [ "nyx", "wk", "ld", "am", "kotl" ]
 
   }
 }

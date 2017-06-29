@@ -62,9 +62,12 @@ game.highlight = {
   },
   targets: function (event) {
     var skill = this, hero = skill.data('hero');
-    if (!skill.data('source')) skill.data('source', $('.map .source'));
+    var source = skill.data('source');
+    if (!source || !source.length) {
+      source = $('.map .source');
+      skill.data('source', source);
+    }
     if (hero) {
-      var source = skill.data('source');
       if (source.hasClasses('heroes units')) {
         if (skill.data('type') === game.data.ui.passive) {
           game.highlight.passive(source);

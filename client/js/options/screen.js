@@ -41,6 +41,8 @@ game.screen = {
     else $(this).attr('disabled', true);
   },
   toggleSide: function () {
-    $(document.body).toggleClass('left-side', $(this).prop('checked'));
+    var checked = $(this).prop('checked');
+    $(document.body).toggleClass('left-side', checked);
+    localStorage.setItem('left-side', checked);
   }
 };

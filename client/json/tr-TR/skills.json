@@ -178,7 +178,7 @@
       "buffs": {
         "ult": {
           "source": {
-            "duration": 1,
+            "duration": 2,
             "description": "Bırak gitsin! Bırak gitsin!"
           },
           "targets": {
@@ -207,7 +207,11 @@
       "damage": 4,
       "damage type": "Büyü",
       "cards": 1,
-      "description": "Düşmana zarar veren bir ışık gönderir"
+      "description": "Düşmana zarar veren bir ışık gönderir",
+      "buff": {
+        "duration": 3,
+        "description": "Düşmana zarar veren bir ışık gönderir"
+      }
     },
     "leak": {
       "name": "Mana Curse",
@@ -230,8 +234,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 2,
-      "bonus cards": 2,
+      "cards": 1,
+      "bonus cards": 3,
       "description": "Oyuncuya ekstra beceri kartları verir"
     },
     "ult": {
@@ -262,7 +266,7 @@
       "cards": 1,
       "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar 80%. Hedef kanal Kesmeler",
       "buff": {
-        "duration": 3,
+        "duration": 2,
         "miss": 80,
         "description": "Blinded"
       }
@@ -278,7 +282,7 @@
       "cards": 1,
       "description": "Dost kahramana hasar vermeden kendi yanına ışınlar",
       "buff": {
-        "duration": 1,
+        "duration": 2,
         "description": "Recalling"
       }
     }
@@ -290,9 +294,9 @@
       "summon name": "Bear",
       "type": "Aktif",
       "hand": "Sağ",
-      "deck": "Satın Al",
+      "deck": "Yakarma",
       "targets": ["Yer", "Bedava"],
-      "cards": 2,
+      "cards": 1,
       "cast range": "Dövüş",
       "hp": 42,
       "range": "Dövüş",
@@ -335,7 +339,7 @@
       "description": "Ayıyı Bear Druid yanına ışınlar belli bir saniye aralıgında düşman kahramandan hasar almaması gerekir;"
     },
     "rabid": {
-      "name": "Bear Fury",
+      "name": "War Claws",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -350,7 +354,7 @@
       }
     },
     "roar": {
-      "name": "Bear Roar",
+      "name": "Fearful Roar",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -380,7 +384,7 @@
       }
     },
     "cry": {
-      "name": "Battle Roar",
+      "name": "Rage Roar",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Geçici",
@@ -388,7 +392,7 @@
       "cards": 1,
       "description": "Saldırıda zırh ve hasar arttırır",
       "buff": {
-        "duration": 3,
+        "duration": 4,
         "armor bonus": 2,
         "damage bonus": 5,
         "description": "Saldırı zırhı arttı"
@@ -452,9 +456,10 @@
       "duration": 8,
       "damage type": "Fiziksel",
       "cards": 1,
-      "description": "Mix görünmez olur ve bir sonraki saldırıda fazladan hasar bonusu kazanır",
+      "description": "Mix görünmez olur ve bonus hızı ve hasarı kazanıyor",
       "buff": {
-        "duration": 10,
+        "duration": 6,
+        "speed bonus": 1,
         "damage bonus": 20,
         "description": "Görünmez ve saldırı arttı"
       }
@@ -535,11 +540,11 @@
       "buffs": {
         "ult": { 
           "source": {
-            "duration": 1,
+            "duration": 2,
             "description": "Kanallık - Fresh Meat"
           },
           "target": {
-            "duration": 1,
+            "duration": 2,
             "description": "Engeller ve zamanla hasar verir"
           }
         }
@@ -555,7 +560,7 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "cast range": "Kısa",
-      "damage": 14,
+      "damage": 12,
       "damage type": "Büyü",
       "stun": 2,
       "cards": 1,

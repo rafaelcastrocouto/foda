@@ -1,0 +1,155 @@
+game.buff = {
+  extendjQuery: function() {
+    $.fn.extend({
+      selfBuff: game.buff.selfBuff,
+      addStun: game.buff.addStun,
+      addBuff: game.buff.addBuff,
+      hasBuff: game.buff.hasBuff,
+      getBuff: game.buff.getBuff,
+      removeBuff: game.buff.removeBuff
+    });
+  },
+  selfBuff: function(skill, buffs, fxOff) {
+    //console.trace(this, skill, buffs)
+    return this.addBuff(this, skill, buffs, fxOff);
+  },
+  addStun: function(target, skill) {
+    var stun = skill.data('stun');
+    target.stopChanneling();
+    if (target.hasClass('stunned')) {
+      target.removeBuff('stun');
+    } else target.addClass('stunned');
+    this.addBuff(target, {
+      name: 'Stun',
+      buffId: 'stun',
+      className: 'stun',
+      source: this,
+      skill: skill,
+      duration: stun,
+      description: 'Unit is stunned and cannot move, attack or cast'
+    });
+    return this;
+  },
+  addBuff: function(target, skill, buffs, fxOff) {
+    //console.trace(target, skill, buffs)
+    // get buff data
+    var data = skill;
+    if (buffs) {
+      var buffsId = buffs.split('-');
+      data = skill.data('buffs')[buffsId[0]][buffsId[1]];
+    } else if (skill.data && skill.data('buff')) {
+      data = skill.data('buff');
+    }
+    if (!data.buffId)
+      data.buffId = buffs || skill.data('skillId');
+    if (!data.className)
+      data.className = data.buffId;
+    if (!data.name)
+      data.name = skill.data('name');
+    if (!data.source)
+      data.source = this;
+    if (!data.skill)
+      data.skill = skill;
+    if (!data.target)
+      data.target = target;
+    if (!data.description)
+      data.description = skill.data('description');
+    if (data.duration)
+      data.temp = true;
+    // remove duplicated buff
+    target.removeBuff(data.buffId);
+    // create new buff
+    var buff = $('<div>').addClass('buff ' + data.className).data('buff', data).attr({
+      title: data.name + ': ' + data.description
+    });
+    $.each(data, function(item, value) {
+      buff.data(item, value);
+    });
+    $('<div>').appendTo(buff).addClass('img');
+    $('<div>').appendTo(buff).addClass('overlay');
+    if (data.temp) buff.append($('<span>').text(data.duration));
+    // apply buff effects
+    if (!fxOff) {
+      if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
+        target.setHp(target.data('hp') + data['hp bonus']);
+        target.setCurrentHp(target.data('current hp') + data['hp bonus']);
+      }
+      if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
+        target.setDamage(target.data('current damage') + data['damage bonus']);
+      if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
+        target.setArmor(target.data('current armor') + data['armor bonus']);
+      if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
+        target.setResistance(target.data('current resistance') + data['resistance bonus']);
+      if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
+        target.setSpeed(target.data('current speed') + data['speed bonus']);
+      if (data['speed slow'] && typeof (data['speed slow']) == 'number')
+        target.setSpeed(target.data('current speed') - data['speed slow']);
+    }
+    // append buff
+    target.find('.buffs').append(buff);
+    if (target.hasClass('selected')) {
+      target.select();
+    }
+    return buff;
+  },
+  hasBuff: function(buff) {
+    var target = this;
+    return target.find('.buffs .' + buff).length;
+  },
+  getBuff: function(buff) {
+    return this.find('.buffs .' + buff);
+  },
+  removeBuff: function(buffs) {
+    var target = this;
+    $.each(buffs.split(' '), function(i, buffId) {
+      var buff = target.find('.buffs > .' + buffId);
+      if (buff) {
+        var data = buff.data('buff');
+        if (data) {
+          if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
+            target.setHp(target.data('hp') - data['hp bonus']);
+            var hp = target.data('current hp') - data['hp bonus'];
+            if (hp < 1)
+              hp = 1;
+            target.setCurrentHp(hp);
+          }
+          if (data.buffId == 'stun') target.removeClass('stunned');
+          if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
+            target.setDamage(target.data('current damage') - data['damage bonus']);
+          if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
+            target.setArmor(target.data('current armor') - data['armor bonus']);
+          if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
+            target.setResistance(target.data('current resistance') - data['resistance bonus']);
+          if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
+            target.setSpeed(target.data('current speed') - data['speed bonus']);
+          if (data['speed slow'] && typeof (data['speed slow']) == 'number')
+            target.setSpeed(target.data('current speed') + data['speed slow']);
+        }
+        buff.remove();
+      }
+      if (target.hasClass('selected')) {
+        target.select();
+      }
+    });
+    return this;
+  },
+  turn: function (hero) {
+    var buffs = hero.find('.buffs > .buff');
+    buffs.each(function (i, buffElement) {
+      var buff = $(buffElement);
+      var duration = buff.data('duration'),
+          data = buff.data('buff');
+      buff.trigger('buffcount', {target: hero, buff: buff});
+      if (duration > 1) {
+        duration -= 1;
+        buff.data('duration', duration);
+        $('span', buff).text(duration);
+        var s = buff.closest('.card');
+        if (s.hasClass('selected')) s.select();
+      } else if (data && data.temp && data.buffId) {
+        buff.trigger('expire', {target: hero, buff: buff});
+        hero.removeBuff(data.buffId);
+      }
+    });
+  }
+};

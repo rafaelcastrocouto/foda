@@ -3,7 +3,7 @@ game.skills.wk = {
     cast: function (skill, source, target) {
       source.addStun(target, skill);
       source.damage(skill.data('damage'), target, skill.data('damage type'));
-      target.data('wk-dot-count', 2);
+      target.data('wk-dot-count', 3);
       target.on('turnend.wk-stun', this.turnend.bind(this, {
         source: source, 
         target: target, 
@@ -16,9 +16,9 @@ game.skills.wk = {
       var skill = skillData.skill;
       var buff = skill.data('buff');
       var count = target.data('wk-dot-count');
-      if (count >= 0 && count <= 1) source.damage(buff.dot, target, buff['damage type']);
-      if (count === 1) source.addBuff(target, skill);
       target.data('wk-dot-count', count - 1);
+      if (count === 2) source.addBuff(target, skill);
+      if (count >= 0 && count <= 2) source.damage(buff.dot, target, buff['damage type']);
       if (count === 0) target.off('turnend.wk-stun').data('wk-dot-count', null).removeBuff('wk-stun');
     }
   },

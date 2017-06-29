@@ -7,6 +7,7 @@ game.events = {
     });
     game.deck.extendjQuery();
     game.card.extendjQuery();
+    game.buff.extendjQuery();
     game.skill.extendjQuery();
     game.highlight.extendjQuery();
     game.map.extendjQuery();

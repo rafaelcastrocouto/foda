@@ -74,10 +74,11 @@
   background-image: url("../img/skills/kotl/keeper_of_the_light_spirit_form_illuminate.jpg");
 }
 
-.map .card.illuminating:after {
+.map .card.illuminating fieldset:after {
   content: "";
   display: block;
   position: absolute;
+  top: 0; left: 0;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -86,22 +87,22 @@
   animation: illuminating 1s infinite;
 }
 
-.map .illuminating.illumi-left:after {
+.map .illuminating.illumi-left fieldset:after {
   top: calc(50% - 20px);
   left: -15%;
 }
 
-.map .illuminating.illumi-right:after {
+.map .illuminating.illumi-right fieldset:after {
   top: calc(50% - 20px);
   left: 90%;
 }
 
-.map .illuminating.illumi-top:after {
+.map .illuminating.illumi-top fieldset:after {
   top: -10%;
   left: calc(50% - 20px);
 }
 
-.map .illuminating.illumi-bottom:after {
+.map .illuminating.illumi-bottom fieldset:after {
   top: 90%;
   left: calc(50% - 20px);
 }
@@ -116,9 +117,6 @@
   }
 }
 
-.map .casttarget.illuminating:after {
-  border: 0;
-}
 
 .map .casttarget.illuminating:hover:after {
   animation: illuminating 1s infinite;
@@ -216,7 +214,7 @@
   background: #145;
 }
 
-.nyx.heroes .portrait .img {
+.nyx.heroes .img {
   background-image: url("../img/heroes/nyx.jpg");
 }
 

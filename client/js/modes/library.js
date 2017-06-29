@@ -8,7 +8,7 @@ game.library = {
     if (!game.library.skills) {
       game.library.skills = game.deck.build({
         name: 'skills',
-        deckFilter: game.data.ui.buy,
+        deckFilter: [game.data.ui.buy, game.data.ui.summon],
         cb: function (deck) {
           deck.addClass('library').hide().appendTo(game.states.choose.el);
           $.each(deck.data('cards'), function (i, skill) {
@@ -122,6 +122,10 @@ game.library = {
   },
   endEnemyTurn: function () {
     game.turn.end('enemy-turn', game.library.startPlayerTurn);
+  },
+  win: function () {
+    game.states.table.clear();
+    game.states.changeTo('choose');
   },
   clear: function () {
     game.seed = 0;

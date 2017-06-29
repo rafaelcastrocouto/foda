@@ -39,5 +39,48 @@ game.units = {
   },
   clone: function (card) {
     return card.clone().data(card.data());
+  },
+  buy: function (side) {
+    var ranged = game.units.clone(game[side].unitsDeck.children('.ranged'));
+    ranged.appendTo(game[side].skills.sidehand);
+    var melee1 = game.units.clone(game[side].unitsDeck.children('.melee'));
+    melee1.appendTo(game[side].skills.sidehand);
+    var melee2 = game.units.clone(game[side].unitsDeck.children('.melee'));
+    melee2.appendTo(game[side].skills.sidehand);
+    var summon = game.units.clone(game[side].unitsDeck.children('[class*="summon"]'));
+    if (summon) summon.appendTo(game[side].skills.sidehand);
+    if (side == 'player') {
+      ranged.on('mousedown touchstart', game.card.select);
+      melee1.on('mousedown touchstart', game.card.select);
+      melee2.on('mousedown touchstart', game.card.select);
+      if (summon) summon.on('mousedown touchstart', game.card.select);
+    } else {
+      ranged.addClass('flipped');
+      melee1.addClass('flipped');
+      melee2.addClass('flipped');
+      if (summon) summon.addClass('flipped');
+    }
+  },
+  buyCatapult: function (side) {
+    var ranged = game.units.clone(game[side].unitsDeck.children('.ranged'));
+    ranged.appendTo(game[side].skills.sidehand);
+    var melee = game.units.clone(game[side].unitsDeck.children('.melee'));
+    melee.appendTo(game[side].skills.sidehand);
+    var catapult = game.units.clone(game[side].unitsDeck.children('.catapult'));
+    catapult.appendTo(game[side].skills.sidehand);
+    var summon = game.units.clone(game[side].unitsDeck.children('[class*="summon"]'));
+    if (summon) summon.appendTo(game[side].skills.sidehand);
+    if (side == 'player') {
+      ranged.on('mousedown touchstart', game.card.select);
+      melee.on('mousedown touchstart', game.card.select);
+      catapult.on('mousedown touchstart', game.card.select);
+      if (summon) summon.on('mousedown touchstart', game.card.select);
+    }
+    else {
+      ranged.addClass('flipped');
+      melee.addClass('flipped');
+      catapult.addClass('flipped');
+      if (summon) summon.addClass('flipped');
+    }
   }
 };

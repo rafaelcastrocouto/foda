@@ -55,12 +55,12 @@ game.skills.nyx = {
       source.addInvisibility();
     },
     end: function (event, eventdata) {
-      var source = eventdata.source;
-      source.removeBuff('nyx-ult');
+      var nyx = eventdata.source;
+      nyx.removeBuff('nyx-ult');
     },
     expire: function (event, eventdata) {
-      var source = eventdata.source;
-      source.removeInvisibility();
+      var nyx = eventdata.target;
+      nyx.removeInvisibility();
     }
   }
 };

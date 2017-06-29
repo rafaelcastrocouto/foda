@@ -21,8 +21,8 @@ game.deck = {
   },
   createDeck: function (deck, name, cb, filter, multi, deckFilter) {
     if (name === 'heroes') { game.deck.createHeroesDeck(deck, cb, filter); }
+    if (name === 'units') { game.deck.createUnitsDeck(deck, cb, filter); }
     if (name === 'skills') { game.deck.createSkillsDeck(deck, cb, filter, multi, deckFilter); }
-    if (name === 'units') { game.deck.createUnitsDeck(deck, cb, filter, multi, deckFilter); }
   },
   createHeroesDeck: function (deck, cb, filter) {
     var deckData = game.data.heroes,
@@ -92,7 +92,7 @@ game.deck = {
       }
       if (found || !filter) {
         $.each(skills, function (skill, skillData) {
-          if (!deckFilter || (deckFilter && skillData.deck == deckFilter)) {
+          if (!deckFilter || (deckFilter && deckFilter.indexOf(skillData.deck) >= 0 )) {
             var k;
             skillData.hero = hero;
             skillData.skill = skill;

@@ -30,6 +30,7 @@ game.skill = {
           skill.addClass(side);
           if (side == 'player') skill.on('mousedown touchstart', game.card.select);
           else skill.attr({ title: '' }).addClass('flipped');
+          if (skill.data('deck') === game.data.ui.summon) skill.appendTo(game[side].unitsDeck);
           if (skill.data('deck') === game.data.ui.temp) skill.appendTo(game[side].skills.temp);
           if (skill.data('skill') === 'ult') skill.appendTo(game[side].skills.ult);
         }.bind(side));
@@ -142,7 +143,7 @@ game.skill = {
       target.shake();
       if (skill.hasClass('enemy')) {
         game.enemy.hand -= 1;
-      }
+      } else if (skill.hasClass('selected')) skill.unselect();
     }
     return this;
   },

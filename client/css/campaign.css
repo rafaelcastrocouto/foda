@@ -16,8 +16,8 @@
 .campaign-box.box {
   right: 18px;
   transform: none;
-  padding: 8px 16px;
-  width: 270px;
+  padding: 8px;
+  width: 264px;
   left: auto;
   top: 40px;
   height: 400px;
@@ -25,6 +25,7 @@
 
 .campaign-box h2 {
   margin: 6px;
+  font-weight: bold;
 }
 
 .left-side .campaign-box.box {
@@ -51,6 +52,7 @@
 .state .campaign-box p {
   margin: 2px 0;
   font-size: 14px;
+  font-weight: normal;
 }
 
 .campaign-box p.achieve {
@@ -139,8 +141,8 @@
 }
 
 .stages.start {
-  bottom: 30px;
-  left: 30px;
+  bottom: 20px;
+  left: 20px;
   background-image: url(../img/campaign/ico_rad.png);
   width: 110px;
   height: 110px;
@@ -152,7 +154,7 @@
 }
 
 .stages.easy.top {
-  top: 250px;
+  top: 210px;
   left: 30px;
 }
 
@@ -163,12 +165,12 @@
 
 .stages.easy.bot {
   bottom: 30px;
-  left: 255px;
+  left: 300px;
 }
 
 .stages.rune {
   background-image: url(../img/campaign/ico_rune.png);
-  top: 310px;
+  top: 320px;
   left: 360px;
   width: 60px;
   height: 60px;
@@ -182,7 +184,7 @@
 
 .stages.shop {
   background-image: url(../img/campaign/ico_shop.png);
-  top: 300px;
+  top: 290px;
   left: 440px;
   width: 60px;
   height: 60px;
@@ -191,8 +193,8 @@
 
 .stages.normal.mid {
   background-image: url(../img/campaign/ico_medium.png);
-  top: 190px;
-  left: 295px;
+  top: 200px;
+  left: 300px;
 }
 
 .stages.hard {
@@ -216,8 +218,8 @@
 
 .stages.final {
   background-image: url(../img/campaign/ico_dire.png);
-  top: 5px;
-  left: 510px;
+  top: 20px;
+  left: 500px;
 }
 
 .stages.optional {
@@ -227,16 +229,16 @@
 }
 
 .stages.optional.top {
-  top: 290px;
-  left: 95px;
+  top: 30px;
+  left: 45px;
 }
 .stages.optional.mid {
-  top: 380px;
-  left: 215px;
+  top: 360px;
+  left: 265px;
 }
 .stages.optional.bot {
-  bottom: 88px;
-  left: 390px;
+  bottom: 40px;
+  left: 500px;
 }
 
 .campaign-path {

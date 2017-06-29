@@ -70,7 +70,6 @@ game.skills.cm = {
     channelend: function (event, eventdata) {
       var cm = eventdata.source;
       cm.data('cm-ult', null);
-      cm.removeBuff('ult-source');
       cm.removeClass('cm-ult');
     }
   }

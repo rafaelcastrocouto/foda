@@ -13,7 +13,7 @@ game.states.result = {
     var hero = $(this), heroid = hero.data('hero'),
       img = $('<div>').addClass('portrait').append($('<div>').addClass('img')),
       text = $('<span>').text(hero.data('name') + ': ' + hero.data('kills') + ' / ' + hero.data('deaths'));
-    $('<p>').addClass(heroid+' heroes').append(img, text).appendTo(game.states.result.playerResults);
+    $('<p>').addClass(heroid+' heroes').append(text, img).appendTo(game.states.result.playerResults);
   },
   enemyHeroResult: function () {
     var hero = $(this), heroid = hero.data('hero'),

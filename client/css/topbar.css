@@ -35,6 +35,10 @@
   vertical-align: text-bottom;
 }
 
+.loading .loader {
+  border-bottom: 3px solid #666;
+}
+
 .loader.loading {
   visibility: visible;
   animation: rotate 1s linear infinite;

@@ -2,83 +2,94 @@ game.heroesAI.am = {
   move: {
     default: 'smart'
   },
-  action: {
-    default: 'attack'
-  },
-  play: function (card) {
-    var cardData = card.data('ai');
-    var hasBlink = $('.enemydecks .hand .skills.am-blink');
-    //save blinks for escape
-    hasBlink.each(function (i, el) {
-      var skill = $(el);
-      var d = skill.data('ai discard') + 1;
-      card.data('ai discard', d);
-    });
-    if (hasBlink.length) {
+  play: function (card, cardData) {
+    var blink = $('.enemydecks .hand .skills.am-blink');
+    if (!$('.map .enemy.am').length) {
+      blink.each(function (i, el) {
+        var skill = $(el);
+        var d = skill.data('ai discard') + 1;
+        card.data('ai discard', d);
+      });
+    }
+    if (blink.length) {
       cardData['can-cast'] = true;
-      cardData.strats.cast += 7;
-      cardData['can-make-action'] = true;
-    }
-    var towerInBlinkRange = false;
-    var blinkSpots = [];
-    card.inRange(6, function (spot) {
-      var cardInRange = $('.card', spot);
-      if (cardInRange.length && cardInRange.hasClasses('player towers')) {
-        towerInBlinkRange = true;
-      } else {
-        blinkSpots.push(spot);
+      // use blink to attack
+      if (!card.hasClass('done') && !cardData['can-attack'] && card.data('current hp') > 25) {
+        card.around(blink.data('cast range'), function (spot) {
+          if (spot.hasClass('free')) {
+            var targets = 0, p = 10;
+            spot.around(game.data.ui.melee, function (nspot) {
+              var cardInRange = $('.card.player', nspot);
+              if (cardInRange.length) {
+                targets++;
+                if (cardInRange.hasClass('towers')) p += 50;
+                if (nspot.hasClass('enemyarea')) p -= 15;
+                if (cardInRange.data('current hp')) p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+              }
+            });
+            if (targets) {
+              cardData['cast-strats'].push({
+                priority: p - ((targets - 1) * 4),
+                skill: 'blink',
+                target: spot
+              });
+            }
+          }
+        });
       }
-    });
-    var towerFreeNeighbors = [];
-    if (blinkSpots.length && towerInBlinkRange) {
-      game.player.tower.around(2, function (spot) {
-        if (spot.hasClass('free')) towerFreeNeighbors.push(spot);
-      });
-    }
-    var towerBlinkSpots = [];
-    if (blinkSpots.length && towerInBlinkRange && towerFreeNeighbors.length) {
-      for (var i = 0; i < blinkSpots; i++) {
-        var bspot = blinkSpots[i];
-        for (var j = 0; j < towerFreeNeighbors; j++) {
-          var tspot = towerFreeNeighbors[j];
-          if (bspot[0] == tspot[0]) towerBlinkSpots.push(bspot);
-        }
+      //use blink to escape
+      if (cardData['can-be-attacked'] && 
+          card.data('current hp') < 25 &&
+          (card.hasClass('done') || !cardData['can-make-action']) ) {
+        card.around(blink.data('cast range'), function (spot) {
+          if (spot.hasClass('free')) {
+            var targets = 0;
+            if (!spot.hasClass('playerarea')) {
+              spot.around(game.data.ui.melee, function (nspot) {
+                var cardInRange = $('.card.player', nspot);
+                if (cardInRange.length) {
+                  targets++;
+                }
+              });
+              cardData['cast-strats'].push({
+                priority: 20 - targets,
+                skill: 'blink',
+                target: spot
+              });
+            }
+          }
+        });
       }
     }
-    if ((hasBlink.length > 2) && towerBlinkSpots.length) {
-      //use blink to attack the tower
-      cardData.strats.cast += 10;
-      cardData['cast-strats'].push({
-        priority: 15,
-        skill: 'blink',
-        targets: towerBlinkSpots
-      });
-    }
-    var cardInUltRange = [];
-    var hasUlt = $('.enemydecks .hand .skills.am-ult');
-    if (hasUlt.length
+    // ultimate
+    var ult = $('.enemydecks .hand .skills.am-ult');
+    if (ult.length) {
         /*opponent missing cards < N ||*/
         /*N ememies in target range ||*/
-        /*after N turns*/) {
-      card.inRange(2, function (spot) {
-        var cardInRange = $('.card', spot);
-        if (cardInRange.length && cardInRange.hasClasses('enemy')) {
-          cardInUltRange.push(cardInRange);
+        /*after N turns*/
+      cardData['can-cast'] = true;
+      card.opponentsInRange(ult.data('cast range'), function (cardInRange) {
+        var targets = 0;
+        if (!cardInRange.hasClass('towers') && cardInRange.data('mana')) {
+          cardInRange.around(2, function (nspot) {
+            var sectarget = $('.card.player', nspot);
+            if (sectarget.length) {
+              targets++;
+            }
+          });
+          cardData['cast-strats'].push({
+            priority: 50 + (targets * 4),
+            skill: 'ult',
+            target: cardInRange
+          });
         }
       });
-      if (cardInUltRange.length) {
-        cardData['cast-strats'].push({
-          priority: 20,
-          skill: 'ult',
-          targets: cardInUltRange
-        });
-      } 
     }
+    //console.log(cardData['cast-strats'])
     card.data('ai', cardData);
   },
-  defend: function (card) {
+  defend: function (card, cardData) {
     //console.log('defend-from-am');
-    var cardData = card.data('ai');
     var canBlinkTower = false;
     card.opponentsInRange(6, function () {
       if (card.hasClasses('enemy towers')) {

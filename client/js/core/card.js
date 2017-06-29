@@ -9,13 +9,7 @@ game.card = {
       canMove: game.card.canMove,
       move: game.card.move,
       animateMove: game.card.animateMove,
-      selfBuff: game.card.selfBuff,
-      addBuff: game.card.addBuff,
-      hasBuff: game.card.hasBuff,
-      getBuff: game.card.getBuff,
-      removeBuff: game.card.removeBuff,
       stopChanneling: game.card.stopChanneling,
-      addStun: game.card.addStun,
       reduceStun: game.card.reduceStun,
       canAttack: game.card.canAttack,
       attack: game.card.attack,
@@ -46,6 +40,8 @@ game.card = {
     $('<div>').appendTo(portrait).addClass('overlay');
     if (data.attribute) {
       $('<h1>').addClass('attr').appendTo(fieldset).text(data.attribute);
+    } else if (data.deck == game.data.ui.summon) {
+      $('<h1>').addClass('type').appendTo(fieldset).text(game.data.ui.summon);
     } else if (data.type) {
       $('<h1>').addClass('type').appendTo(fieldset).text(data.type);
     }
@@ -66,7 +62,12 @@ game.card = {
         $('<p>').appendTo(desc).text(game.data.ui.damage + ' ' + game.data.ui.bonus + ': ').addClass('dot').append($('<span>').text(data.buff['damage bonus']));
       if (data.buff.dot)
         $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(data.buff.dot));
-
+    }
+    if (data.buff) {
+      if (data.buff['cast damage bonus'])
+        $('<p>').appendTo(desc).text(game.data.ui.damage + ' per Cast: ').addClass('dot').append($('<span>').text(data.buff['cast damage bonus']));
+      if (data.buff['damage per kill'])
+        $('<p>').appendTo(desc).text(game.data.ui.damage + ' per Kill: ').addClass('dot').append($('<span>').text(data.buff['damage per kill']));
     }
     //if (data.hand)
     //  $('<p>').appendTo(desc).text(data.deck + ' (' + data.hand + ')');
@@ -111,10 +112,6 @@ game.card = {
         $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
 
     if (data.buff) {
-      if (data.buff['cast damage bonus'])
-        $('<p>').appendTo(desc).html(game.data.ui.damage + ': ' + data.buff['cast damage bonus'] + ' per Cast');
-      if (data.buff['damage per kill'])
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['damage per kill'] + ' per Kill');
       if (data.buff['hp per kill'])
         $('<p>').appendTo(desc).text(game.data.ui.hp + ': ' + data.buff['hp per kill'] + ' per Kill');
       if (data.buff['cards per turn'])
@@ -276,153 +273,6 @@ game.card = {
       transform: 'translate3d(' + (dx - 50) + '%, ' + (dy - 40) + '%, 100px) rotateX(-30deg)'
     });
   },
-  selfBuff: function(skill, buffs, fxOff) {
-    //console.trace(this, skill, buffs)
-    return this.addBuff(this, skill, buffs, fxOff);
-  },
-  addBuff: function(target, skill, buffs, fxOff) {
-    //console.trace(target, skill, buffs)
-    // get buff data
-    var data = skill;
-    if (buffs) {
-      var buffsId = buffs.split('-');
-      data = skill.data('buffs')[buffsId[0]][buffsId[1]];
-    } else if (skill.data && skill.data('buff')) {
-      data = skill.data('buff');
-    }
-    if (!data.buffId)
-      data.buffId = buffs || skill.data('skillId');
-    if (!data.className)
-      data.className = data.buffId;
-    if (!data.name)
-      data.name = skill.data('name');
-    if (!data.source)
-      data.source = this;
-    if (!data.skill)
-      data.skill = skill;
-    if (!data.target)
-      data.target = target;
-    if (!data.description)
-      data.description = skill.data('description');
-    if (data.duration)
-      data.temp = true;
-    // remove duplicated buff
-    target.removeBuff(data.buffId);
-    // create new buff
-    var buff = $('<div>').addClass('buff ' + data.className).data('buff', data).attr({
-      title: data.name + ': ' + data.description
-    });
-    $.each(data, function(item, value) {
-      buff.data(item, value);
-    });
-    $('<div>').appendTo(buff).addClass('img');
-    $('<div>').appendTo(buff).addClass('overlay');
-    // apply buff effects
-    if (!fxOff) {
-      if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
-        target.setHp(target.data('hp') + data['hp bonus']);
-        target.setCurrentHp(target.data('current hp') + data['hp bonus']);
-      }
-      if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
-        target.setDamage(target.data('current damage') + data['damage bonus']);
-      if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
-        target.setArmor(target.data('current armor') + data['armor bonus']);
-      if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
-        target.setResistance(target.data('current resistance') + data['resistance bonus']);
-      if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
-        target.setSpeed(target.data('current speed') + data['speed bonus']);
-      if (data['speed slow'] && typeof (data['speed slow']) == 'number')
-        target.setSpeed(target.data('current speed') - data['speed slow']);
-    }
-    // append buff
-    target.find('.buffs').append(buff);
-    if (target.hasClass('selected')) {
-      target.select();
-    }
-    return buff;
-  },
-  hasBuff: function(buff) {
-    var target = this;
-    return target.find('.buffs .' + buff).length;
-  },
-  getBuff: function(buff) {
-    return this.find('.buffs .' + buff);
-  },
-  removeBuff: function(buffs) {
-    var target = this;
-    $.each(buffs.split(' '), function(i, buffId) {
-      var buff = target.find('.buffs > .' + buffId);
-      if (buff) {
-        var data = buff.data('buff');
-        if (data) {
-          if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
-            target.setHp(target.data('hp') - data['hp bonus']);
-            var hp = target.data('current hp') - data['hp bonus'];
-            if (hp < 1)
-              hp = 1;
-            target.setCurrentHp(hp);
-          }
-          if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
-            target.setDamage(target.data('current damage') - data['damage bonus']);
-          if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
-            target.setArmor(target.data('current armor') - data['armor bonus']);
-          if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
-            target.setResistance(target.data('current resistance') - data['resistance bonus']);
-          if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
-            target.setSpeed(target.data('current speed') - data['speed bonus']);
-          if (data['speed slow'] && typeof (data['speed slow']) == 'number')
-            target.setSpeed(target.data('current speed') + data['speed slow']);
-        }
-        buff.remove();
-      }
-      if (target.hasClass('selected')) {
-        target.select();
-      }
-    });
-    return this;
-  },
-  addStun: function(target, skill) {
-    var stun = skill.data('stun');
-    if (target.hasClass('stunned')) {
-      var currentstun = target.data('stun');
-      if (!currentstun || stun > currentstun) {
-        target.data('stun', stun);
-      }
-    } else {
-      target.stopChanneling();
-      this.addBuff(target, {
-        name: 'Stun',
-        buffId: 'stun',
-        className: 'stun',
-        source: this,
-        skill: skill,
-        duration: stun,
-        description: 'Unit is stunned and cannot move, attack or cast'
-      });
-      target.addClass('stunned').data('stun', stun);
-      if (target.hasClass('selected')) {
-        target.select();
-      }
-    }
-    return this;
-  },
-  reduceStun: function() {
-    var target = this, currentstun;
-    if (target.hasClass('stunned')) {
-      currentstun = parseInt(target.data('stun') - 1, 10);
-      if (currentstun > 0) {
-        target.data('stun', currentstun - 1);
-      } else {
-        target.trigger('stunend', {
-          target: target
-        }).data('stun', null).removeClass('stunned').removeBuff('stun');
-        if (target.hasClass('selected')) {
-          target.select();
-        }
-      }
-    }
-    return this;
-  },
   stopChanneling: function() {
     if (this.hasClass('channeling')) {
       this.trigger('channelend', this.data('channel event'));
@@ -508,7 +358,9 @@ game.card = {
       source.trigger('attack', evt).trigger('action', evt);
       if (!source.data('critical-attack') && !source.data('miss-attack')) {
         // DAMAGE
-        source.damage(damage, target, game.data.ui.physical);
+        var bonus = source.data('attack bonus') || 0;
+        source.damage(damage + bonus, target, game.data.ui.physical);
+        source.data('attack bonus', 0);
       }
       if (source.data('range') == game.data.ui.melee) {
         source.addClass('melee-attack');
@@ -560,7 +412,7 @@ game.card = {
     var x = this.getX();
     var y = this.getY();
     game.projectile.css({
-      'transform': 'translate3d('+(910 + (x * 210))+'px,'+(440 + (y * 310))+'px, 60px)'
+      'transform': 'translate3d('+(110 + (x * 210))+'px,'+(140 + (y * 310))+'px, 60px)'
     });
 
   },
@@ -689,7 +541,12 @@ game.card = {
       spot.addClass('free');
     }
     if (this.hasClass('heroes')) {
-      if (!spot.hasClass('cript')) game[game.opponent(side)].tower.damage(game.heroDeathDamage, game[side].tower, game.data.ui.pure);
+      if (!spot.hasClass('cript')) {
+        var damage = game.heroDeathDamage;
+        var final = game[side].tower.data('current hp') - damage;
+        if (final < 1) damage += final - 1;
+        game[game.opponent(side)].tower.damage(damage, game[side].tower, game.data.ui.pure);
+      }
       deaths = this.data('deaths') + 1;
       this.data('deaths', deaths);
       this.find('.deaths').text(deaths);
