@@ -356,7 +356,7 @@ game.ai = {
   decideAction: function (strat, card, cardData) {
     var action,
         target;
-    console.log('strat', strat, card, cardData);
+    //console.log('strat', strat, card, cardData);
     if (strat == 'siege') {
       if (cardData['can-attack-tower']) {
         action = 'attack';
@@ -441,7 +441,7 @@ game.ai = {
         action = 'move';
       } else action = false;
     }
-    console.log('action:', action); 
+    //console.log('action:', action); 
     if (action) {
       if (action == 'move' || action == 'advance' || action == 'retreat') {
         target = game.ai.chooseDestiny(card, cardData, action);

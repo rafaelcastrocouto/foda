@@ -25,8 +25,7 @@ game.skills.ld = {
       var skill = source.data('skill-summon');
       if (target.hasClass('towers')) {
         var demolish = source.getBuff('demolish-source');
-        damage = demolish.data('tower bonus');
-        source.damage(damage, target, game.data.ui.pure);
+        source.data('attack bonus', demolish.data('tower bonus'));
       } else {
         var entangle = source.getBuff('entangle-source');
         var chance = entangle.data('chance') / 100;
@@ -45,11 +44,10 @@ game.skills.ld = {
       if (target.hasBuff('entangle-target')) {
         var targetBuff = target.getBuff('entangle-target');
         var source = targetBuff.data('source');
-        source.damage(targetBuff.data('dot'), target);
+        source.damage(targetBuff.data('dot'), target, targetBuff.data('damage type'));
       } else {
         target.removeClass('rooted');
         target.off('turnend.entangle-target');
-        target.removeBuff('entangle-target');
       }
     },
     death: function (event, eventdata) {

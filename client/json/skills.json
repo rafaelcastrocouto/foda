@@ -1,7 +1,7 @@
 {
   "lina": {
     "fire": {
-      "name": "Flames",
+      "name": "Dragon Flames",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -298,7 +298,7 @@
       "targets": ["Spot", "Free"],
       "cards": 1,
       "cast range": "Melee",
-      "hp": 42,
+      "hp": 58,
       "range": "Melee",
       "damage": 8,
       "armor": 3,
@@ -309,8 +309,8 @@
         "demolish": {
           "source": {
             "name": "Demolition",
-            "tower bonus": 4,
-            "description": "Increases the power of the Bear, causing it to deal 4 extra damage to buildings"
+            "tower bonus": 6,
+            "description": "Increases the power of the Bear, causing it to deal 6 extra damage to the tower"
           }
         },
         "entangle": {
@@ -322,7 +322,8 @@
           "target": {
             "name": "Nature Claws",
             "dot": 6,
-            "duration": 1,
+            "damage type": "Physical",
+            "duration": 3,
             "description": "Rooted and receiving damage per second"
           }
         }

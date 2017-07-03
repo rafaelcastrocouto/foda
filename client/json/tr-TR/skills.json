@@ -1,7 +1,7 @@
 {
   "lina": {
     "fire": {
-      "name": "Flames",
+      "name": "Dragon Flames",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -298,7 +298,7 @@
       "targets": ["Yer", "Bedava"],
       "cards": 1,
       "cast range": "Dövüş",
-      "hp": 42,
+      "hp": 58,
       "range": "Dövüş",
       "damage": 8,
       "armor": 3,
@@ -309,8 +309,8 @@
         "demolish": {
           "source": {
             "name": "Demolition",
-            "tower bonus": 4,
-            "description": "Kulenin karşı 4 hasar ayı saldırısı gücünü artırır"
+            "tower bonus": 6,
+            "description": "Kulenin karşı 6 hasar ayı saldırısı gücünü artırır"
           }
         },
         "entangle": {
@@ -322,7 +322,8 @@
           "target": {
             "name": "Nature Claws",
             "dot": 6,
-            "duration": 1,
+            "damage type": "Fiziksel",
+            "duration": 3,
             "description": "Köklü bir her saniye hasar almasına yol açar"
           }
         }

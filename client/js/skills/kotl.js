@@ -7,7 +7,9 @@ game.skills.kotl = {
       skill.addClass('channel-on');
       kotl.selfBuff(skill);
       if (kotl.hasBuff('kotl-ult')) {
-        var ghost = kotl.clone().removeClass('selected player').addClass('illuminate-ghost ghost channeling').insertAfter(kotl);
+        var ghost = kotl.clone().removeClass('selected');
+        ghost.addClass('illuminate-ghost ghost channeling');
+        ghost.insertAfter(kotl);
         kotl.data('illuminate-ghost', ghost);
         ghost.data('illuminate-source', kotl);
         ghost.data('channeling', skill.data('channel'));
@@ -38,7 +40,7 @@ game.skills.kotl = {
       skill.removeClass('channel-on');
       source.opponentsInLine(target, range, width, function (card) {
         kotl.damage(damage * time, card, skill.data('damage type'));
-      }, kotl);
+      });
       kotl.data('illuminate-start', null);
       kotl.data('illuminate-target', null);
       kotl.data('illuminate-ghost', null);

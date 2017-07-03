@@ -1,7 +1,7 @@
 {
   "lina": {
     "fire": {
-      "name": "Chamas",
+      "name": "Chamas do Dragão",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -298,7 +298,7 @@
       "targets": ["Local", "Livre"],
       "cards": 1,
       "cast range": "Perto",
-      "hp": 42,
+      "hp": 58,
       "range": "Perto",
       "damage": 8,
       "armor": 3,
@@ -309,8 +309,8 @@
         "demolish": {
           "source": {
             "name": "Demolidor",
-            "tower bonus": 4,
-            "description": "O Urso causa 4 de dano extra contra a torre"
+            "tower bonus": 6,
+            "description": "O Urso causa 6 de dano extra contra a torre"
           }
         },
         "entangle": {
@@ -322,7 +322,8 @@
           "target": {
             "name": "Garras da Natureza",
             "dot": 6,
-            "duration": 1,
+            "damage type": "Físico",
+            "duration": 3,
             "description": "Preso pelas Garras da Natureza e recebendo dano por turno"
           }
         }
@@ -454,7 +455,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "duration": 8,
-      "damage type": "Physical",
+      "damage type": "Físico",
       "cards": 1,
       "description": "Nyx Assassin fica invisível, mais rápido e o dano do seu próximo ataque é aumentado",
       "buff": {

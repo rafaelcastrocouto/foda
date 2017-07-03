@@ -275,8 +275,8 @@ game.map = {
     }
     return this;
   },
-  opponentsInLine: function (target, range, width, cb, source) {
-    var side = source ? source.side() : this.side();
+  opponentsInLine: function (target, range, width, cb) {
+    var side = this.side();
     var opponent = game.opponent(side);
     this.inLine(target, range, width, function (spot) {
       var card = spot.find('.card.'+opponent);

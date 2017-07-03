@@ -3,28 +3,28 @@ game.heroesAI.am = {
     default: 'smart'
   },
   play: function (card, cardData) {
-    var blink = $('.enemydecks .hand .skills.am-blink');
+    var blinks = $('.enemydecks .hand .skills.am-blink');
     if (!$('.map .enemy.am').length) {
-      blink.each(function (i, el) {
+      blinks.each(function (i, el) {
         var skill = $(el);
         var d = skill.data('ai discard') + 1;
-        card.data('ai discard', d);
+        skill.data('ai discard', d);
       });
     }
-    if (blink.length) {
+    if (blinks.length) {
       cardData['can-cast'] = true;
       // use blink to attack
       if (!card.hasClass('done') && !cardData['can-attack'] && card.data('current hp') > 25) {
-        card.around(blink.data('cast range'), function (spot) {
+        card.around(blinks.first().data('cast range'), function (spot) {
           if (spot.hasClass('free')) {
             var targets = 0, p = 10;
             spot.around(game.data.ui.melee, function (nspot) {
               var cardInRange = $('.card.player', nspot);
               if (cardInRange.length) {
                 targets++;
+                p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
                 if (cardInRange.hasClass('towers')) p += 50;
                 if (nspot.hasClass('enemyarea')) p -= 15;
-                if (cardInRange.data('current hp')) p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
               }
             });
             if (targets) {
@@ -41,7 +41,7 @@ game.heroesAI.am = {
       if (cardData['can-be-attacked'] && 
           card.data('current hp') < 25 &&
           (card.hasClass('done') || !cardData['can-make-action']) ) {
-        card.around(blink.data('cast range'), function (spot) {
+        card.around(blinks.first().data('cast range'), function (spot) {
           if (spot.hasClass('free')) {
             var targets = 0;
             if (!spot.hasClass('playerarea')) {
@@ -61,7 +61,6 @@ game.heroesAI.am = {
         });
       }
     }
-    // ultimate
     var ult = $('.enemydecks .hand .skills.am-ult');
     if (ult.length) {
         /*opponent missing cards < N ||*/
@@ -77,8 +76,9 @@ game.heroesAI.am = {
               targets++;
             }
           });
+          var mana = (cardInRange.data('mana') || 0) * 3;
           cardData['cast-strats'].push({
-            priority: 50 + (targets * 4),
+            priority: 30 + (targets * 4) + mana,
             skill: 'ult',
             target: cardInRange
           });
@@ -99,8 +99,8 @@ game.heroesAI.am = {
     // make ai units near the tower block am path
     if (canBlinkTower) {
       game.enemy.tower.atRange(4, function (spot) {
-        var card = spot.find('.card.'+side);
-        if (card.hasClass('enemy')) {
+        var card = spot.find('.card.enemy');
+        if (card.length) {
           cardData.strats.retreat += 5;
         }
       });
