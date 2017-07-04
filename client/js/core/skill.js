@@ -195,6 +195,7 @@ game.skill = {
       this.trigger('discard', {target: this});
       var side = this.side();
       if (this.data('deck') === game.data.ui.temp) this.appendTo(game[side].skills.temp);
+      else if (this.data('deck') === game.data.ui.summon) this.remove();
       else this.appendTo(game[side].skills.cemitery);
       if (side == 'enemy') {
         this.addClass('flipped').removeClass('showMoves');

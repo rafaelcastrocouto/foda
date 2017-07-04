@@ -6,7 +6,8 @@ game.buff = {
       addBuff: game.buff.addBuff,
       hasBuff: game.buff.hasBuff,
       getBuff: game.buff.getBuff,
-      removeBuff: game.buff.removeBuff
+      removeBuff: game.buff.removeBuff,
+      clearBuffs: game.buff.clearBuffs
     });
   },
   selfBuff: function(skill, buffs, fxOff) {
@@ -99,11 +100,16 @@ game.buff = {
   getBuff: function(buff) {
     return this.find('.buffs .' + buff);
   },
-  removeBuff: function(buffs) {
+  removeBuff: function(buffs, all) {
     var target = this;
-    $.each(buffs.split(' '), function(i, buffId) {
-      var buff = target.find('.buffs > .' + buffId);
-      if (buff) {
+    var b;
+    if (!all) b = buffs.split(' ');
+    else b = $('.buff', target);
+    $.each(b, function(i, buffId) {
+      var buff;
+      if (!all) buff = target.find('.buffs > .' + buffId);
+      else buff = $(buffId);
+      if (buff && buff.data) {
         var data = buff.data('buff');
         if (data) {
           if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
@@ -132,6 +138,9 @@ game.buff = {
       }
     });
     return this;
+  },
+  clearBuffs: function () {
+    this.removeBuff(0,true);
   },
   turn: function (hero) {
     var buffs = hero.find('.buffs > .buff');

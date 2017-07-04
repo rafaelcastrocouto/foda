@@ -534,8 +534,10 @@ game.card = {
   die: function(evt) {
     this.trigger('death', evt);
     this.data('killer', evt.source);
-    this.addClass('dead').removeClass('target done');
     this.unselect();
+    this.stopChanneling();
+    this.clearBuffs();
+    this.addClass('dead').removeClass('target done stunned rooted silenced hexed disabled sleeping cycloned taunted entangled disarmed ai');
     var pos = evt.position, deaths, spot = $('#' + pos), side = this.side();
     if (!spot.hasClass('cript')) {
       spot.addClass('free');

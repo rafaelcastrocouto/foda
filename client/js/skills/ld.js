@@ -55,11 +55,11 @@ game.skills.ld = {
       var killer = eventdata.source;
       var skill = bear.data('summon');
       var ld = bear.data('summoner');
-      killer.damage(skill.data('death damage'), ld, game.data.ui.pure);
-      bear.data('return').discard();
+      if (bear.side() != killer.side()) killer.damage(skill.data('death damage'), ld, game.data.ui.pure);
+      var returnSkill = bear.data('return');
+      returnSkill.discard();
       ld.data('bear', null);
       ld.data('summon', null);
-      bear.detach();
     }
   },
   bearreturn: {

@@ -78,7 +78,11 @@
   }
 }
 
-.map .attacktarget {
+.map .card.player.attacktarget {
+  background: #71ca63;
+}
+
+.map .card.enemy..attacktarget {
   background: tomato;
 }
 
@@ -98,11 +102,15 @@
   height: 50px;
   border: 20px solid transparent;
   border-right: 12px solid orangered;
-  border-bottom: 12px solid #d3420d;
+  border-bottom: 12px solid orangered;
   background: transparent;
   left: 60px;
   top: 50px;
   transform: rotate(45deg) scale(1);
+}
+.map .player.attacktarget:before {
+  border-right: 12px solid #ff7400;
+  border-bottom: 12px solid #ff7400;
 }
 
 .map .attacktarget:hover:before {
@@ -133,8 +141,16 @@
   top: initial;
 }
 
+
+.map .player.attacktarget:after {
+  border-top: 12px solid #ff7400;
+}
+
 .map .attacktarget:hover:after {
   animation: scaleattackafter 1.5s infinite;
+}
+.map .player.attacktarget:hover:after {
+  animation: playerscaleattackafter 1.5s infinite;
 }
 
 @keyframes scaleattackafter {
@@ -153,6 +169,31 @@
     border: 20px solid transparent;
     border-top: 12px solid orangered;
     border-left: 12px solid orangered;
+    transform: rotate(45deg) scale(1);
+    border-radius: 0;
+  }
+
+  50% {
+    transform: translateY(25px) rotate(45deg) scale(1.5);
+  }
+}
+
+@keyframes playerscaleattackafter {
+  0%, 100% {
+    width: 150px;
+    bottom: 30px;
+    left: 30px;
+    transform: rotate(0deg) scale(1);
+    border-radius: 3px;
+  }
+
+  20%, 80% {
+    width: 50px;
+    bottom: 70px;
+    left: 60px;
+    border: 20px solid transparent;
+    border-top: 12px solid #ff7400;
+    border-left: 12px solid #ff7400;
     transform: rotate(45deg) scale(1);
     border-radius: 0;
   }

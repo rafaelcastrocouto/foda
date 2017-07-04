@@ -262,6 +262,10 @@
   box-shadow: 0 0 0 10px palegreen;
 }
 
+.card.player.attacktarget {
+  box-shadow: 0 0 0 10px #ff7400;
+}
+
 .card.enemy.attacktarget {
   box-shadow: 0 0 0 10px red;
 }
