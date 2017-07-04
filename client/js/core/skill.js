@@ -11,7 +11,7 @@ game.skill = {
       summon: game.skill.summon
     });
   },
-  build: function (side, single) {
+  build: function (side, single, cb) {
     game[side].skills = {};
     game[side].skills.hand = $('<div>').appendTo(game.states.table[side]).addClass('deck skills hand');
     game[side].skills.sidehand = $('<div>').appendTo(game.states.table[side]).addClass('deck skills sidehand');
@@ -23,7 +23,7 @@ game.skill = {
       multi: !single,
       filter: game[side].picks,
       cb: function (deck) {
-        var side = this.toString();
+        var side = this.side.toString();
         deck.addClass('available').hide().appendTo(game.states.table[side]);
         $.each(deck.data('cards'), function (i, skill) {
           var side = this.toString();
@@ -35,7 +35,9 @@ game.skill = {
           if (skill.data('skill') === 'ult') skill.appendTo(game[side].skills.ult);
         }.bind(side));
         //deck.shuffleDeck();
-      }.bind(side)
+        game[side].skills.deck = deck;
+        if (this.cb) this.cb();
+      }.bind({side: side, cb: cb})
     });
   },
   calcMana: function (side) {

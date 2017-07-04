@@ -67,12 +67,13 @@ game.library = {
     game.enemy.kills = 0;
     game.turn.build(6);
     game.timeout(400, function () {
-      game.skill.build('player');
       game.skill.build('enemy');
-      $('.map .player.card.'+game.library.hero).select();
-      game.player.buyCreeps(true);
-      game.library.buildHand();
-      game.library.startPlayerTurn();
+      game.skill.build('player', 0, function () {
+        game.player.buyCreeps(true);
+        game.library.buildHand();
+        game.library.startPlayerTurn();
+        $('.map .player.card.'+game.library.hero).select();
+      });
     });
   },
   showIntro: function () {

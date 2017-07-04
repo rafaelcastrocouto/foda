@@ -41,9 +41,10 @@ game.single = {
       game.ai.start();
       game.states.table.el.addClass('turn');
       setTimeout(function () {
-        game.skill.build('player');
         game.skill.build('enemy');
-        game.timeout(400, game.single.beginPlayer);
+        game.skill.build('player', 0, function () {
+          game.timeout(400, game.single.beginPlayer);
+        });
       }, 400);
     }
   },

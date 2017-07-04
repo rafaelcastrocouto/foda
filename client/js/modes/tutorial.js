@@ -110,9 +110,10 @@ game.tutorial = {
       game.tutorial.axe.addClass('up left');
       game.enemy.tower.addClass('blink').on('select', game.tutorial.selected);
       setTimeout(function () {
-        game.skill.build('player');
         game.skill.build('enemy');
-        game.timeout(400, game.tutorial.selectEnemyLesson);
+        game.skill.build('player', 0, function () {
+          game.timeout(400, game.tutorial.selectEnemyLesson);
+        });
       }, 400);
     }
   },

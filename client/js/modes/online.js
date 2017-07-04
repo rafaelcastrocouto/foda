@@ -196,18 +196,18 @@ game.online = {
       game.states.table.skip.show();
       game.turn.build(6);
       game.timeout(400, function () {
-        game.skill.build('player');
         game.skill.build('enemy');
+        game.skill.build('player', 0, function () {
+          if (game.player.type === 'challenger') {
+            game.timeout(1000, game.online.beginEnemy);
+          } else {
+            game.states.table.el.addClass('turn');
+            game.timeout(1000, game.online.beginPlayer);
+          }
+        });
       });
-      if (game.player.type === 'challenger') {
-        game.timeout(1000, game.online.beginEnemy);
-      } else {
-        game.states.table.el.addClass('turn');
-        game.timeout(1000, game.online.beginPlayer);
-      }
     }
   },
-
   startTurn: function (turn) {
     game.turn.counter = game.timeToPlay;
     var t = 1000;

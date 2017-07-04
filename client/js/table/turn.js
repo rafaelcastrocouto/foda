@@ -38,7 +38,7 @@ game.turn = {
         dead.reborn();
       }
     });
-    $('.card').each(function () {
+    $('.table .card').each(function () {
       var card = $(this);
       card.trigger('turnstart', { target: card });
       if (turn == 'player-turn') card.trigger('playerturnstart', { target: card });
