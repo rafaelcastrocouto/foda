@@ -88,9 +88,9 @@ game.skills.wk = {
     },
     turnstart: function (event, eventdata) {
       var wk = eventdata.target;
-      var buff = wk.getBuff('wk-ult');
-      var range = buff.data('range');
-      var skill = buff.data('skill');
+      var buff = game.data.skills.wk.ult.buffs.ult.source;
+      var range = buff.range;
+      var skill = buff.skill;
       var spot = wk.data('wk-ult-spot');
       var side = wk.side();
       wk.reborn(spot);
@@ -100,7 +100,6 @@ game.skills.wk = {
       });
       wk.off(side + 'turnstart.wk-ult');
       wk.off('death.wk-ult');
-      wk.removeBuff('wk-ult');
       wk.data('wk-ult-spot', null);
       if (game.mode == 'library') skill.appendTo(game[side].skills.sidehand);
       else skill.appendTo(game[side].skills.cemitery);
