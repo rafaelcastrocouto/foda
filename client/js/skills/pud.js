@@ -84,6 +84,8 @@ game.skills.pud = {
       source.addBuff(target, skill, 'ult-target');
       source.addClass('pud-ult');
       target.addClass('disabled');
+      target.data('pud-ult-source', source);
+      target.on('death.pud-ult', this.death);
       game.skills.pud.ult.bite(source, target, skill);
       source.on('channel', this.channel);
       source.on('channelend', this.channelend);
@@ -101,13 +103,19 @@ game.skills.pud = {
       source.damage(skill.data('dot'), target, skill.data('damage type'));
       source.heal(skill.data('dot'));
     },
+    death: function (event, eventdata) {
+      var target = eventdata.target;
+      var source = target.data('pud-ult-source');
+      source.stopChanneling();
+    },
     channelend: function (event, eventData) {
       var source = eventData.source;
       var target = eventData.target;
-      var skill = eventData.skill;
       target.removeClass('disabled');
-      source.removeBuff('pud-ult');
+      target.data('pud-ult-source', null);
+      target.off('death.pud-ult');
       target.removeBuff('pud-ult');
+      source.removeBuff('pud-ult');
       source.removeClass('pud-ult');
     }
   }

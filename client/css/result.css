@@ -58,13 +58,13 @@
 
 .result .results .portrait {
   float: right;
-  border: 2px solid white;
+  border: 2px solid #79d480;
   border-radius: 50%;
 }
 
 .result .results.enemy .portrait {
   float: left;
-  border: 2px solid #c33f28;
+  border: 2px solid #c76352;
 }
 .result .results .img {
   width: 36px;

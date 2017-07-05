@@ -71,6 +71,7 @@ game.skills.cm = {
       var cm = eventdata.source;
       cm.data('cm-ult', null);
       cm.removeClass('cm-ult');
+      cm.removeBuff('cm-ult');
     }
   }
 };

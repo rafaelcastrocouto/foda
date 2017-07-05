@@ -45,8 +45,9 @@ game.skills.kotl = {
       kotl.data('illuminate-target', null);
       kotl.data('illuminate-ghost', null);
       kotl.off('turnend.kotl-illuminate');
+      kotl.removeBuff('kotl-illuminate');
       kotl.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
-      if (source.hasClass('illuminate-ghost')) source.detach();
+      if (source.hasClass('illuminate-ghost')) source.remove();
       skill.discard();
     }
   },
