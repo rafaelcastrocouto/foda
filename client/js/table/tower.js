@@ -7,6 +7,7 @@ game.tower = {
       attribute: game.data.ui.building,
       range: game.data.ui.ranged,
       description: game.data.ui.towerDescription,
+      buffsBox: true,
       armor: 4,
       resistance: 100,
       damage: 16,

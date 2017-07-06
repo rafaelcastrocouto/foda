@@ -88,11 +88,11 @@ game.turn = {
       game.turn.tickTime();
       game.message.text(game.data.ui.turnend);
       game.moves.push(game.currentMoves.join('|'));
-      $('.map .card').each(function (i, card) {
-        var hero = $(card);
-        game.turn.channel(hero);
-        game.buff.turn(hero);
-        hero.trigger('turnend', { target: hero });
+      $('.map .card').each(function (i, el) {
+        var card = $(el);
+        game.turn.channel(card);
+        game.buff.turn(card);
+        card.trigger('turnend', { target: card });
       });
       if (turn == 'player-turn') {
         game.states.table.el.removeClass('turn');

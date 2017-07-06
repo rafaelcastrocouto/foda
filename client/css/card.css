@@ -303,7 +303,8 @@
   top: 0;
   right: 0;
   font-size: 150px;
-  animation: slideup 5s cubic-bezier(0.4, 0, 1, 1);
+  animation: slideup 2s cubic-bezier(0.4, 0, 1, 1);
+  transform: translateZ(50px);
   text-shadow:
    5px  0   #ffa,
   -5px  0   #ffa,
@@ -348,7 +349,7 @@
 
 @keyframes slideup {
   0% {
-    top: 0;
+    top: 40px;
     opacity: 0;
   }
 
@@ -361,7 +362,7 @@
   }
 
   100% {
-    top: -200px;
+    top: -140px;
     opacity: 0;
   }
 }
@@ -390,6 +391,7 @@
   pointer-events: auto;
   transition: all 0.1s;
   width: 35px;
+  background: transparent;
 }
 .card .buffs .buff span {
   position: absolute;
@@ -668,6 +670,7 @@
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 2px);
+  transform-style: preserve-3d;
 }
 
 .map .card.invisible {
@@ -693,6 +696,26 @@
   background: #ed8c8c;
   color: white;
 }
+
+.map .card .current .hp span {
+  /* padding: 0; */
+}
+.map .card.towers .current .hp span {
+  width: 19px;
+  height: 20px;
+  line-height: 20px;
+}
+.map .card.towers.player .current .hp span {
+  background: #ccf38b;
+  border: 2px solid #e2f5c2;
+  transform: translate(0, -15px) scale(5);
+}
+.map .card.towers.enemy .current .hp span {
+  background: #e87070;
+  border: 2px solid #ed8c8c;
+  transform: translate(0, -15px) scale(5);
+}
+
 
 .enemy.heroes .portrait .img {
   transform: scaleX(-1);
@@ -785,17 +808,17 @@
 }
 
 .map .card .current .hp span, .card.dragTargetClone.fromMap .current .hp span {
-  transform: translate(5px, -15px) scale(4.5);
+  transform: translate(2px, -15px) scale(4.5);
   padding-right: 1px;
   width: 21px;
 }
 
 /*TOWERS*/
-.card.player.towers .img {
+.player.towers .img {
   background-image: url("../img/towers/tower-player.jpg");
 }
 
-.card.enemy.towers .img {
+.enemy.towers .img {
   background-image: url("../img/towers/tower-enemy.jpg");
 }
 

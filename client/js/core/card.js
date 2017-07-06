@@ -465,15 +465,24 @@ game.card = {
       if (type === 'critical') {
         source.data('critical-attack', true);
         game.audio.play('crit');
-        damageFx = $('<span>').addClass('damaged critical').appendTo(target);
+        damageFx = $('<span>').addClass('damaged critical');
       } else {
-        damageFx = $('<span>').addClass('damaged').appendTo(target);
+        damageFx = $('<span>').addClass('damaged');
       }
-      damageFx.text(finalDamage);
-      game.timeout(5000, function() {
-        this.remove();
+      var delay = 1200;
+      if (!target.data('damaged-timeout')) {
+        damageFx.text(finalDamage).appendTo(target);
+        target.data('damaged-timeout', delay);
+      } else {
+        game.timeout(target.data('damaged-timeout'), function (damageFx, finalDamage, target) {
+          damageFx.text(finalDamage).appendTo(target);
+        }.bind(this, damageFx, finalDamage, target));
+        target.data('damaged-timeout', target.data('damaged-timeout') + delay);
       }
-      .bind(damageFx));
+      game.timeout(delay, function () {
+        target.data('damaged-timeout', target.data('damaged-timeout') - delay);
+      });
+      game.timeout(5000, damageFx.remove.bind(damageFx));
     }
     return this;
   },
@@ -547,17 +556,23 @@ game.card = {
         var damage = game.heroDeathDamage;
         var final = game[side].tower.data('current hp') - damage;
         if (final < 1) damage += final - 1;
-        game[game.opponent(side)].tower.damage(damage, game[side].tower, game.data.ui.pure);
+        if (evt.target.side() != evt.source.side()) 
+          evt.source.damage(damage, game[side].tower, game.data.ui.pure);
+        var duration = game.deadLength;
+        if (game.mode === 'library') duration = 1;
+        this.data('reborn', game.time + duration);
+        game[side].tower.selfBuff({
+          buffId: this.data('hero')+'-death',
+          className: this.data('hero') + ' heroes ' + this.data('hero')+'-death',
+          name: this.data('name'),
+          description: game.data.ui.death,
+          temp: true,
+          duration: duration + 1
+        }, false /*no extra buffs*/, true /*force tower buff*/);
       }
       deaths = this.data('deaths') + 1;
       this.data('deaths', deaths);
       this.find('.deaths').text(deaths);
-      if (!spot.hasClass('cript')) {
-        if (game.mode === 'library') {
-          this.data('reborn', game.time + 1);
-        } else
-          this.data('reborn', game.time + game.deadLength);
-      }
       if (this.hasClass('player')) {
         this.appendTo(game.player.heroesDeck);
       } else if (this.hasClass('enemy')) {
