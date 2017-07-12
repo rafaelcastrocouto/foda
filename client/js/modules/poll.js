@@ -46,5 +46,8 @@ game.poll = {
   close: function () {
     game.overlay.hide();
     game.overlay.empty();
+    setTimeout(function () {
+      game.states.log.box.fadeIn();
+    }, 400);
   }
 };

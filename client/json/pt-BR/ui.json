@@ -179,5 +179,7 @@
   "summoner": "Invocador",
   "today": "Hoje",
   "yesterday": "Ontem",
-  "effect": "Efeito"
+  "effect": "Efeito",
+  "buff": "Buff",
+  "stun": "Stun"
 }

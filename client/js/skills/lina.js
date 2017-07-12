@@ -6,7 +6,7 @@ game.skills.lina = {
       var damage = skill.data('damage');
       source.opponentsInLine(target, range, width, function (card) {
         source.damage(damage, card, skill.data('damage type'));
-      }, source);
+      });
     }
   },
   stun: {
@@ -21,7 +21,7 @@ game.skills.lina = {
         if (card.hasClass('trees')) {
           game.tree.destroy(card);
         }
-      }, source);
+      });
     }
   },
   passive: {

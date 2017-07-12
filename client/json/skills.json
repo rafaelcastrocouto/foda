@@ -1,4 +1,67 @@
 {
+  "cat": {
+    "arrow": {
+      "name": "Sacred Arrow",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 10,
+      "distance damage bonus": 2,
+      "stun": 1,
+      "distance stun bonus": 1,
+      "damage type": "Magical",
+      "cards": 1,
+      "description": "Stuns and damages a single target. The distance will increase the damage and the stun"
+    },
+    "leap": {
+      "name": "Leap",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Range", "Free"],
+      "cast range": "Ranged",
+      "cards": 1,
+      "description": "Jump to the target spot and receive bonus speed",
+      "buff": {
+        "duration": 3,
+        "speed bonus": 1,
+        "description": "Speed increased by 'Leap'"
+      }
+    },
+    "star": {
+      "name": "Starfall",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe range": "Short",
+      "cast range": "Short",
+      "damage": 8,
+      "damage type": "Magical",
+      "cards": 1,
+      "description": "Damages enemies around the Cat Lady. One random enemy will be hit twice"
+    },
+    "ult": {
+      "name": "Cat Shadows",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "cards": 1,
+      "description": "All player heroes become invisible",
+      "buff": {
+        "description": "Hidden by the 'Cat Shadows'",
+        "duration": 4 
+      }
+    }
+  },
+
   "lina": {
     "fire": {
       "name": "Dragon Flames",
@@ -29,7 +92,7 @@
       "stun": 2,
       "damage type": "Magical",
       "cards": 1,
-      "description": "A ball of fire stuns and damages enemies. Can destroy trees"
+      "description": "A ball of fire stuns and damages enemies in target area. Can destroy trees"
     },
     "passive": {
       "name": "Soul on fire",
@@ -38,10 +101,10 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Each cast will increase attack with fire bonus damage",
+      "description": "Each cast will increase attack stacking fire bonus damage. Reset on turn end",
       "buff": {
         "cast damage bonus": 4,
-        "description": "Each cast will increase attack with fire bonus damage"
+        "description": "Each cast will increase attack stacking fire bonus damage. Reset on turn end"
       }
     },
     "ult": {
@@ -65,7 +128,6 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "damage type": "Pure",
       "cards": 1,
       "description": "Every attack has damage bonus equal to target's mana and makes the enemy discard a right hand skill card of that hero",
       "buff": {
@@ -80,7 +142,7 @@
       "targets": ["Spot", "Free"],
       "cast range": "Long",
       "cards": 2,
-      "description": "Teleport Magino to the target spot"
+      "description": "Teleport Magino to the target"
     },
     "shield": {
       "name": "Resistance",
@@ -89,7 +151,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Increases the resistance to magic attacks",
+      "description": "Increases magic resistance",
       "buff": {
         "resistance bonus": 4,
         "description": "Magic resistance increased"
@@ -107,7 +169,7 @@
       "damage": 16,
       "damage type": "Magical",
       "cards": 1,
-      "description": "Damage area over target with bonus damage equal the target mana. Interrupts target channel"
+      "description": "Damage target area with bonus damage equal the target's mana. Interrupts target channel"
     }
   },
 
@@ -139,7 +201,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Give a bonus skill card per turn to the player",
+      "description": "Give a bonus skill card per turn",
       "buff": {
         "description": "Player buys one extra skill card per turn",
         "cards per turn": 1
@@ -208,9 +270,13 @@
       "damage type": "Magical",
       "cards": 1,
       "description": "Channels light to damage enemies in a line",
-      "buff": {
-        "duration": 3,
-        "description": "Channeling light to damage enemies in a line"
+      "buffs": {
+        "illuminate": {
+          "channel": {
+            "duration": 3,
+            "description": "Channeling light to damage enemies in a line"
+          }
+        }
       }
     },
     "leak": {
@@ -236,7 +302,7 @@
       "targets": ["Self"],
       "cards": 1,
       "bonus cards": 3,
-      "description": "Gives the player extra skill cards"
+      "description": "Player gain bonus skill cards"
     },
     "ult": {
       "name": "Astral Form",
@@ -245,9 +311,9 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Becomes one with the light! Gains 'Rescue' and 'Light Blast' and changes 'Light Ball' into an Active skill",
+      "description": "Becomes one with the light! Gains 'Rescue' and 'Light Blast' cards and changes 'Light Ball' into an Active skill that heals allies",
       "buff": {
-        "duration": 10,
+        "duration": 6,
         "description": "Spirit Form"
       }
     },
@@ -304,7 +370,7 @@
       "armor": 3,
       "resistance": 3,
       "death damage": 12,
-      "description": "Summons a powerful Bear with 'Nature claws' and 'Demolition'. Gains 'Return'",
+      "description": "Summons a powerful Bear with 'Nature claws' and 'Demolition'. Deals 12 damage to summoner on death. Gains 'Return' card",
       "buffs": {
         "demolish": {
           "source": {
@@ -377,7 +443,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Bear Druid morphs himself into a raging bear with increased HP and armor. Gains 'Battle Roar'",
+      "description": "Bear Druid morphs himself into a raging bear with increased HP and armor. Gains 'Battle Roar' card",
       "buff": {
         "hp bonus": 9,
         "armor bonus": 2,
@@ -393,7 +459,7 @@
       "cards": 1,
       "description": "Increases the attack and armor of Syllabear and the Spirit Bear",
       "buff": {
-        "duration": 4,
+        "duration": 3,
         "armor bonus": 2,
         "damage bonus": 5,
         "description": "Attack and armor increased"

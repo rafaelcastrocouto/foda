@@ -11,7 +11,6 @@ game.skills.ld = {
         source.addBuff(bear, skill, 'entangle-source');
         bear.on('attack', this.attack);
         bear.on('death', this.death);
-        bear.data('skill-summon', skill);
         bear.data('return', $('.table .'+side+' .temp.skills .ld-bearreturn'));
       }
       bear.data('return').appendTo(game[side].skills.sidehand);
@@ -22,19 +21,17 @@ game.skills.ld = {
     attack: function (event, eventdata) {
       var target = eventdata.target;
       var source = eventdata.source;
-      var skill = source.data('skill-summon');
       if (target.hasClass('towers')) {
         var demolish = source.getBuff('demolish-source');
         source.data('attack bonus', demolish.data('tower bonus'));
-      } else {
+      } else if (target.side() == source.opponent()) {
         var entangle = source.getBuff('entangle-source');
         var chance = entangle.data('chance') / 100;
         if (game.random() < chance) {
           target.addClass('rooted');
           target.on('turnend.entangle-target', game.skills.ld.summon.turnend);
-          var targetBuff = source.addBuff(target, skill, 'entangle-target');
+          var targetBuff = source.addBuff(target, game.data.skills.ld.summon.buffs.entangle.target);
           targetBuff.data('source', source);
-          targetBuff.data('skill', skill);
           target.stopChanneling();
         }
       }

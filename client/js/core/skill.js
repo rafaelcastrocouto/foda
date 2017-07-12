@@ -58,7 +58,7 @@ game.skill = {
     var source = this, targets, duration, channeler, channelDuration,
       hero = skill.data('hero'),
       skillid = skill.data('skill');
-    if (skillid && hero && source.data('hero') === hero) {
+    if (skillid && hero && (source.data('hero') === hero || source.data('summoner').data('hero') === hero)) {
       if (typeof target === 'string') {
         targets = game.data.skills[hero][skillid].targets;
         if (targets.indexOf(game.data.ui.spot) >= 0) {
@@ -97,13 +97,29 @@ game.skill = {
           });
         }
         game.skills[hero][skillid].cast(skill, source, target);
-        game.timeout(300, function () { 
-          //console.trace('castend')
-          this.skill.discard();
-        }.bind({source: source, skill: skill}));
+        if (!skill.hasClass('dragTarget')) game.timeout(400, skill.discard.bind(skill));
+        else skill.discard();
       }
     }
     return this;
+  },
+  animateCast: function (skill, target, event, cb) {
+    game.highlight.clearMap();
+    if (!skill.hasClass('dragTarget')) {
+      if (typeof target === 'string') { target = $('#' + target); }
+      var s = skill.offset();
+      var x = event.clientX - s.left, y = event.clientY - s.top;
+      var fx = x * 1 - 150; var fy = y * 1 - 220;
+      skill.css({transform: 'translate('+fx+'px, '+fy+'px) scale(0.3)'});
+      game.timeout(400, function (cb) {
+        $(this).css({
+          top: '',
+          left: '',
+          transform: ''
+        });
+        if (cb) cb();
+      }.bind(skill, cb));
+    }
   },
   passive: function (target) {
     var skill = this,
@@ -118,11 +134,13 @@ game.skill = {
       game.skills[hero][skillid].passive(skill, target);
       game.audio.play('activate');
       target.shake();
-      game.timeout(300, function () {
-        this.skill.detach();
+      var end = function (target) {
+        this.detach();
         game.highlight.clearMap();
-        if (this.target.side() === 'player') this.target.select();
-      }.bind({target: target, skill: skill}));
+        if (target.side() === 'player') target.select();
+      }.bind(skill, target);
+      if (!skill.hasClass('dragTarget')) game.timeout(400, end);
+      else end();
     }
     return this;
   },
@@ -145,7 +163,11 @@ game.skill = {
       target.shake();
       if (skill.hasClass('enemy')) {
         game.enemy.hand -= 1;
-      } else if (skill.hasClass('selected')) skill.unselect();
+      } else if (skill.hasClass('selected')) {
+        game.timeout(400, function (target) {
+          if (target.side() === 'player') target.select();
+        }.bind(skill, target));
+      }
     }
     return this;
   },
@@ -168,9 +190,9 @@ game.skill = {
     unit.data('current resistance', unit.data('resistance'));
     unit.data('current speed', unit.data('speed'));
     unit.find('fieldset').append($('<div>').addClass('buffs'));
-    game.timeout(300, function () {
-      if (this.source.side() === 'player') this.unit.select();
-    }.bind({source: this, unit: unit}));
+    game.timeout(400, function (unit) {
+      if (this.side() === 'player') unit.select();
+    }.bind(this, unit));
     return unit;
   },
   addInvisibility: function () {
@@ -179,30 +201,28 @@ game.skill = {
       var target = $(this);
       if (eventdata.type !== 'move') {
         target.removeInvisibility();
-      }/* else {
-        var spot = $('#'+eventdata.target);
-        var opponent = target.opponent();
-        if (spot.hasClass(opponent+'area')) target.removeInvisibility();
-      }*/
+      }
     });
   },
   removeInvisibility: function () {
     this.removeClass('invisible').off('action.invisible');
-    this.trigger('invisibilityLoss', {source: this});
+    this.trigger('invisibilityLoss', {target: this});
   },
-  discard: function () {
+  discard: function (source) {
     if (this.hasClass('skills')) {
-      if (this.hasClass('selected')) game.card.unselect();
       game.highlight.clearMap();
+      if (source && source.side() == 'player') source.select();
+      else if (this.hasClass('selected')) game.card.unselect();
       this.trigger('discard', {target: this});
       var side = this.side();
       if (this.data('deck') === game.data.ui.temp) this.appendTo(game[side].skills.temp);
-      else if (this.data('deck') === game.data.ui.summon) this.remove();
-      else this.appendTo(game[side].skills.cemitery);
+      else if (this.data('deck') === game.data.ui.summon) this.detach();
+      else if (!this.data('cancel-discard')) this.appendTo(game[side].skills.cemitery);
+      else this.data('cancel-discard', false);
       if (side == 'enemy') {
-        this.addClass('flipped').removeClass('showMoves');
+        this.addClass('flipped').removeClass('showMoves discardMove');
       }
-    }
+    } else this.detach();
     return this;
   }
 };

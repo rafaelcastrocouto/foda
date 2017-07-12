@@ -13,13 +13,13 @@ game.states.result = {
     var hero = $(this), heroid = hero.data('hero'),
       img = $('<div>').addClass('portrait').append($('<div>').addClass('img')),
       text = $('<span>').text(hero.data('name') + ': ' + hero.data('kills') + ' / ' + hero.data('deaths'));
-    $('<p>').addClass(heroid+' heroes').append(text, img).appendTo(game.states.result.playerResults);
+    $('<p>').data('hero', heroid).addClass(heroid+' heroes').append(text, img).appendTo(game.states.result.playerResults);
   },
   enemyHeroResult: function () {
     var hero = $(this), heroid = hero.data('hero'),
       img = $('<div>').addClass('portrait').append($('<div>').addClass('img')),
       text = $('<span>').text(hero.data('name') + ': ' + hero.data('kills') + ' / ' + hero.data('deaths'));
-    $('<p>').addClass(heroid+' heroes').append(img, text).appendTo(game.states.result.enemyResults);
+    $('<p>').data('hero', heroid).addClass(heroid+' heroes').append(img, text).appendTo(game.states.result.enemyResults);
   },
   start: function (recover) {
     if (recover) {
@@ -35,12 +35,21 @@ game.states.result = {
     if (!game.winner)  game.winner = game.player.name;
     if (game.winner == game.player.name) game.message.text(game.data.ui.win);
     else game.message.text(game.data.ui.lose);
-    
     $(game.player.heroesDeck.data('cards')).each(this.playerHeroResult);
     $(game.enemy.heroesDeck.data('cards')).each(this.enemyHeroResult);
+    var ch = game.states.result.playerResults.children();
+    ch.sort(function (a,b) { 
+      return game.player.picks.indexOf($(a).data('hero')) - game.player.picks.indexOf($(b).data('hero')); 
+    });
+    game.states.result.playerResults.append(ch);
+    ch = game.states.result.enemyResults.children();
+    ch.sort(function (a,b) { 
+      return game.enemy.picks.indexOf($(b).data('hero')) - game.enemy.picks.indexOf($(a).data('hero')); 
+    });
+    game.states.result.enemyResults.append(ch);
     this.title.text(game.winner + ' ' + game.data.ui.victory);
     this.towers.text(game.data.ui.towers + ' HP: ' + game.player.tower.data('current hp') + ' / ' + game.enemy.tower.data('current hp'));
-    this.kd.text(game.data.ui.heroes + ' ' + game.data.ui.kd + ': ' + game.player.kills + ' / ' + game.enemy.kills);
+    this.kd.text(game.data.ui.heroes + ': ' + game.player.kills + ' / ' + game.enemy.kills);
   },
   close: function () {
     if (game.mode == 'single') {

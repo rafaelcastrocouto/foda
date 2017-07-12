@@ -1,26 +1,33 @@
 game.ai = {
   start: function () {
     // remember ai is playing the enemy cards
-    if (game.ai.mode == 'easy') {
-      game.ai.movesLoop = 6; // number of units per turn
-      game.ai.noMovesLoop = 3; // if no action retry N times
-      game.ai.lowChance = 0.3; // eg: if (r > low) choose random target
-      game.ai.highChance = 0.5; // eg: if (r > high)
+    if (game.ai.mode == 'very-easy') {
+      game.ai.movesLoop = 10; // number of units per turn
+      game.ai.maxCount = 2; // max number of plays per card
+      game.ai.lowChance = 0.4; // low chance errors eg: if (r > low) choose random target
+      game.ai.highChance = 0.5; // high chance errors eg: if (r > high)
       game.ai.minP = 4;
     }
+    if (game.ai.mode == 'easy') {
+      game.ai.movesLoop = 12;
+      game.ai.maxCount = 3;
+      game.ai.lowChance = 0.3;
+      game.ai.highChance = 0.4; 
+      game.ai.minP = 5;
+    }
     if (game.ai.mode == 'normal') {
-      game.ai.movesLoop = 10;
-      game.ai.noMovesLoop = 5;
+      game.ai.movesLoop = 15;
+      game.ai.maxCount = 5;
       game.ai.lowChance = 0.1;
-      game.ai.highChance = 0.3;
+      game.ai.highChance = 0.2;
       game.ai.minP = 8;
     }
     if (game.ai.mode == 'hard') {
-      game.ai.movesLoop = 16;
-      game.ai.noMovesLoop = 8;
+      game.ai.movesLoop = 20;
+      game.ai.maxCount = 7;
       game.ai.lowChance = 0.02;
       game.ai.highChance = 0.1;
-      game.ai.minP = 12;
+      game.ai.minP = 10;
     }
   },
   turnStart: function () {
@@ -46,11 +53,12 @@ game.ai = {
   moveRandomCard: function () {
     game.ai.resetData();
     // choose random card
-    var availableCards = $('.map .enemy.card:not(.towers)');
+    var availableCards = $('.map .enemy.card:not(.towers, .ai-max)');
     var chosenCard = availableCards.randomCard();
     var count = chosenCard.data('ai count');
-    if (!count || count < game.ai.noMovesLoop) {
-      chosenCard.data('ai count', chosenCard.data('ai count') + 1);
+    if ((!count || count < game.ai.maxCount) && chosenCard.length) {
+      chosenCard.data('ai count', (chosenCard.data('ai count') || 0) + 1);
+      if (chosenCard.data('ai count') == game.ai.maxCount) chosenCard.addClass('ai-max');
       //chosenCard.addClass('ai');
       // add attack and move data
       $('.map .enemy.card:not(.towers)').each(function (i, el) {
@@ -103,11 +111,7 @@ game.ai = {
   },
   nextMove: function () {
     if (game.ai.currentmovesLoop > 0 && game.turn.counter > 1) {
-      if (game.currentData.moves.length) {
-        game.ai.currentmovesLoop -= 1;
-      } else {
-        game.ai.currentmovesLoop -= (1/game.ai.noMovesLoop);
-      }
+      game.ai.currentmovesLoop -= 1;
       game.ai.moveRandomCard();
     } else {
       game.ai.endTurn();
@@ -118,6 +122,7 @@ game.ai = {
     $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.source').removeClass('source');
+    $('.ai-max').removClass('ai-max');
     $('.enemydecks .hand .skills').each(function (i, el) {
       var card = $(el);
       game.ai.skillsDiscard(card);

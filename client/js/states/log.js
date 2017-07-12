@@ -1,10 +1,10 @@
 game.states.log = {
   remembername: true,
   build: function () {
-    this.box = $('<div>').addClass('box');
+    this.box = $('<div>').addClass('box').hide();
     this.logo = $('<div>').appendTo(this.el).addClass('logo slide');
     this.form = $('<form>').appendTo(this.box).on('submit', function (event) { event.preventDefault(); return false; });
-    this.input = $('<input>').appendTo(this.form).attr({placeholder: game.data.ui.choosename/*game.data.ui.logtype*/, type: 'text', required: 'required', minlength: 3, maxlength: 24, tabindex: 1}).keydown(function (event) { if (event.which === 13) { game.states.log.login(); } });
+    this.input = $('<input>').appendTo(this.form).attr({placeholder: game.data.ui.choosename/*game.data.ui.logtype*/, type: 'text', required: 'required', minlength: 3, maxlength: 24, tabindex: 1}).keydown(function (event) { if (event.which === 13) { game.states.log.login(); return false; } });
     this.button = $('<button>').addClass('button').appendTo(this.form).text(game.data.ui.log).attr({type: 'submit'}).on('mouseup touchend', this.login);
     this.rememberlabel = $('<label>').addClass('remembername').appendTo(this.form).append($('<span>').text(game.data.ui.remember));
     this.remembercheck = $('<input>').attr({type: 'checkbox', name: 'remember', checked: true}).change(this.remember).appendTo(this.rememberlabel);
@@ -61,7 +61,7 @@ game.states.log = {
     game.overlay.show().append(box);
     box.append($('<h1>').text(game.data.ui.warning));
     box.append($('<p>').html(game.data.ui.alphaalert + game.version + '</small>'));
-    game.poll.button = $('<div>').hide().addClass('button voteBt').text(game.data.ui.votenexthero).on('mouseup touchend', function () {
+    game.poll.button = $('<div>').hide().addClass('button voteBt large').text(game.data.ui.votenexthero).on('mouseup touchend', function () {
       game.poll.build();
       if (!game.states.log.input.val()) game.states.log.input.focus();
     });
@@ -84,6 +84,7 @@ game.states.log = {
       game.states.log.button.attr('disabled', true);
       game.chat.set(game.data.ui.joined);
       game.chat.build();
+      game.chat.el.show();
       game.states.log.createBkgDeck();
       game.states.changeTo('menu');
     } else {

@@ -179,5 +179,7 @@
   "summoner": "Haberci",
   "today": "Bugün",
   "yesterday": "Dün",
-  "effect": "Efekt"
+  "effect": "Efekt",
+  "buff": "Buff",
+  "stun": "Stun"
 }

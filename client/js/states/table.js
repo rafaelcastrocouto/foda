@@ -37,22 +37,6 @@ game.states.table = {
       }
     });
   },
-  animateCast: function (skill, target, event, cb) {
-    game.highlight.clearMap();
-    if (typeof target === 'string') { target = $('#' + target); }
-    var s = skill.offset();
-    var x = event.clientX - s.left, y = event.clientY - s.top;
-    var fx = x * 1 - 150; var fy = y * 1 - 220;
-    skill.css({transform: 'translate('+fx+'px, '+fy+'px) scale(0.3)'});
-    game.timeout(400, function () {
-      $(this.skill).css({
-        top: '',
-        left: '',
-        transform: ''
-      });
-      if (cb) cb();
-    }.bind({ skill: skill }));
-  },
   skipClick: function () {
     if (!game.states.table.skip.attr('disabled')) {
       game.states.table.skip.attr('disabled', true);

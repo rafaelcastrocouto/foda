@@ -62,7 +62,7 @@
 .map .spot .debug {
   display: none;
 }
-
+/*
 .debug .map .spot .debug {
   opacity: 0.3;
   display: block;
@@ -71,7 +71,7 @@
   pointer-events: none;
 }
 
-/*
+
 .map canvas.fx {
   pointer-events: none;
   position: absolute;

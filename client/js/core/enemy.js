@@ -243,10 +243,7 @@ game.enemy = {
     var skill = $('.enemydecks .hand .skills.' + s).first();
     if (skill) {
       skill.addClass('discardMove');
-      game.timeout(game.enemy.moveAnimation, function(skill) {
-        skill.removeClass('discardMove').discard();
-      }
-      .bind(this, skill));
+      game.timeout(game.enemy.moveAnimation, skill.discard.bind(skill));
     }
   },
   cardsInHand: function() {

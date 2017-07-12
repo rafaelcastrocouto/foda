@@ -10,14 +10,11 @@ game.buff = {
       clearBuffs: game.buff.clearBuffs
     });
   },
-  selfBuff: function(skill, buffs, towerForce, fxOff) {
-    //console.trace(this, skill, buffs)
-    return this.addBuff(this, skill, buffs, towerForce, fxOff);
-  },
-  addStun: function(target, skill) {
+  addStun: function(target, skill, bonus) {
     if (!target.hasClass('towers')) {
       var stun = skill.data('stun');
       target.stopChanneling();
+      if (bonus) stun += bonus;
       if (target.hasClass('stunned')) {
         target.removeBuff('stun');
       } else target.addClass('stunned');
@@ -32,6 +29,10 @@ game.buff = {
       });
     }
     return this;
+  },
+  selfBuff: function(skill, buffs, towerForce, fxOff) {
+    //console.trace(this, skill, buffs)
+    return this.addBuff(this, skill, buffs, towerForce, fxOff);
   },
   addBuff: function(target, skill, buffs, towerForce, fxOff) {
     //console.trace(target, skill, buffs)

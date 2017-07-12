@@ -95,7 +95,7 @@ game.player = {
       skill.passive(target);
       if (game.mode == 'online')
         game.currentMoves.push('P:' + to + ':' + skillid + ':' + hero);
-      game.states.table.animateCast(skill, target, event);
+      game.skill.animateCast(skill, target, event);
     }
   },
   toggle: function(event) {
@@ -108,13 +108,14 @@ game.player = {
       skill.toggle(target);
       if (game.mode == 'online')
         game.currentMoves.push('T:' + to + ':' + skillid + ':' + hero);
-      game.states.table.animateCast(skill, target, event);
+      game.skill.animateCast(skill, target, event);
     }
   },
   cast: function(event) {
     var target = $(this);
     var skill = game.selectedCard;
     var source = $('.map .source');
+    if (!source.length) source = target;
     var from = source.getPosition();
     var to = target.getPosition();
     var hero = skill.data('hero');
@@ -126,7 +127,7 @@ game.player = {
       }
       if (game.mode == 'online')
         game.currentMoves.push('C:' + from + ':' + to + ':' + skillid + ':' + hero);
-      game.states.table.animateCast(skill, to, event);
+      game.skill.animateCast(skill, to, event);
     }
   },
   stopChanneling: function() {
@@ -141,7 +142,7 @@ game.player = {
     }
     card.select();
   },
-  summonCreep: function() {
+  summonCreep: function(event) {
     var target = $(this);
     var to = target.getPosition();
     var creep = game.selectedCard.data('type');
@@ -149,16 +150,18 @@ game.player = {
       if (game.mode == 'online')
         game.currentMoves.push('S:' + to + ':' + creep);
       game.highlight.clearMap();
-      game.states.table.animateCast(game.selectedCard, target, event, function() {
+      var end = function() {
         this.creep.addClass('done');
-        this.creep.unselect();
         this.creep.place(this.slot);
         this.creep.trigger('summon');
       }
       .bind({
         creep: game.selectedCard,
         slot: target
-      }));
+      });
+      if (!game.selectedCard.hasClass('dragTarget')) {
+        game.skill.animateCast(game.selectedCard, target, event, end);
+      } else end();
     }
   },
   discard: function(skill) {

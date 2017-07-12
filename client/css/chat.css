@@ -2,7 +2,7 @@
   z-index: 19;
   background: rgba(0,0,0,0.7);
   position: absolute;
-  transform: translate3d(0%,0%, 0);
+  transform: translate3d(0%,0%, 1px);
   bottom: 4px;
   left: -10px;
   border-radius: 4px;

@@ -53,7 +53,6 @@ game.tutorial = {
     });
   },
   chooseStart: function () {
-    game.states.choose.selectFirst('force');
     game.states.choose.randombt.show();
     $('.pickbox .card').addClass('hidden').removeClass('selected');
     $('.am, .cm, .pud, .ld, .nyx', '.pickbox').removeClass('hidden');
@@ -128,7 +127,7 @@ game.tutorial = {
     var card = data.card;
     if (card.hasClass('blink')) {
       if (game.tutorial.lesson === 'Enemy')     game.tutorial.selectedTower();
-      if (game.tutorial.lesson === 'Creep')     game.tutorial.selectedCreep();
+      if (game.tutorial.lesson === 'Creep')     game.tutorial.selectedCreep(card);
       if (game.tutorial.lesson === 'Move')      game.tutorial.moveLesson();
       if (game.tutorial.lesson === 'Passive')   game.tutorial.selectedPassive();
       if (game.tutorial.lesson === 'Passive' ||
@@ -158,13 +157,13 @@ game.tutorial = {
     game.tutorial.axebaloon.hide().delay(800).fadeIn('slow');
     game.tutorial.letter(game.data.ui.axecreep);
     game.player.buyCreeps(true);
-    $('.player.units').addClass('blink').on('select', game.tutorial.selected);
+    $('.player .sidehand .card').addClass('blink').on('select', game.tutorial.selected);
   },
-  selectedCreep: function () {
+  selectedCreep: function (card) {
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.audio.play('tutorial/axemove');
-    game.tutorial.letter(game.data.ui.axesummoncreep);
-    $('.player.units').on('summon', game.tutorial.summonedCreep);
+    if (card.hasClass('creep')) game.tutorial.letter(game.data.ui.axesummoncreep);
+    $('.player .sidehand .card, .map .player.ld').on('summon cast', game.tutorial.summonedCreep);
   },
   summonedCreep: function () {
     if (game.tutorial.lesson != 'Move') {

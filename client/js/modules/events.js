@@ -17,7 +17,7 @@ game.events = {
     game.container.on('mousedown touchstart', game.events.hit);
     game.container.on('mousemove', game.events.move);
     game.container.on('touchmove', game.events.touchmove);
-    game.container.on('mouseup touchend', game.events.end);
+    game.container.on('mouseup touchend mouseleave', game.events.end);
     game.container.on('contextmenu', function (event) {
       game.card.unselect();
       game.events.cancel(event);
@@ -43,7 +43,7 @@ game.events = {
           cardOffset = card.offset(), fromMap = '';
       if (card.closest('.map').length) fromMap = ' fromMap';
       game.offset = game.container.offset();
-      game.events.dragging = card;
+      game.events.dragTarget = card;
       game.events.draggingPosition = position;
       game.events.dragClone = card.clone().hide().removeClass('dragTarget').addClass('dragTargetClone ' + game.currentState + fromMap).appendTo(game.container);
       game.events.dragScale = card.getScale();
@@ -60,10 +60,11 @@ game.events = {
   },
   move: function(event) {
     var position = game.events.getCoordinates(event);
-    if (game.events.dragging && 
+    if (game.events.dragTarget && 
         position.left !== game.events.draggingPosition.left &&
         position.top !== game.events.draggingPosition.top) {
-      game.events.dragging.addClass('dragTarget');
+      game.events.dragging = true;
+      game.events.dragTarget.addClass('dragTarget');
       var scale = game.events.dragClone.getScale();
       var scale2 = game.container.getScale();
       if (game.events.dragClone.hasClass('fromMap')) scale = 1;
@@ -79,21 +80,26 @@ game.events = {
       }
     }
   },
-  end: function(event) {
+  end: function(event) { //console.log(event.target )
     var position = game.events.getCoordinates(event), 
         target = $(document.elementFromPoint(position.left, position.top));
     if (!target.closest('.chat').length) $('.chat').removeClass('hover');
-    if (event && event.type === 'touchend') {
-      // fix touchend target
-      target.mouseup();
-      if (event.preventDefault) event.preventDefault();
-      return false;
-    } else if (game.events.dragging) {
-      game.events.dragClone.remove();
-      game.events.dragging.removeClass('dragTarget');
-      game.events.dragging = false;
-      target.addClass('dropped');
-      setTimeout(function () { this.removeClass('dropped'); }.bind(target), 10);
+    if (target && event) {
+      if (event.type === 'touchend') {
+        // fix touchend target
+        target.mouseup();
+        if (event.preventDefault) event.preventDefault();
+        return false;
+      }
+      if (event.type == 'mouseup' || event.type == 'mouseleave') {
+        if (game.events.dragging) {
+          game.events.dragClone.remove();
+          $('.dragTarget').removeClass('dragTarget');
+          $('.drop').removeClass('drop');
+        }
+        game.events.dragging = false;
+        game.events.dragTarget = null;
+      }
     }
   },
   clearEvents: function(name) {

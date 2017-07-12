@@ -111,13 +111,15 @@ game.states.campaign = {
   },
   toChoose: function () {
     if (game.states.campaign.stage == 1) {
+      game.ai.mode = 'very-easy';
       game.enemy.name = 'Stage 1';
-      game.states.changeTo('choose');
     }
     if (game.states.campaign.stage == 2) {
       game.ai.mode = 'hard';
-      game.alert('More stages coming soon!<br>Please tell us about your experience,<br><a href="https://github.com/rafaelcastrocouto/foda/issues/new" target="_blank">feedback at Github</a> ');
+      game.enemy.name = 'Stage 2';
+      game.alert('More stages coming soon! Visit our discord server to leave your feedback');
     }
+    game.states.changeTo('choose');
   },
   backClick: function () {
     game.clear();

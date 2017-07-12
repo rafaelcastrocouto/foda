@@ -1,10 +1,13 @@
 game.skills.cm = {
   slow: {
     cast: function (skill, source, target) {
+      var opponent = source.opponent();
       var range = skill.data('aoe range');
-      target.opponentsInRange(range, function (card) {
-        source.damage(skill.data('damage'), card, skill.data('damage type'));
-        source.addBuff(card, skill);
+      target.inRange(range, function (card) {
+        if (card.hasClass(opponent)) {
+          source.damage(skill.data('damage'), card, skill.data('damage type'));
+          source.addBuff(card, skill);
+        }
       }, source);
     }
   },

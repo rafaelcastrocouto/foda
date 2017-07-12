@@ -4,7 +4,7 @@ game.skills.pud = {
       var range = skill.data('aoe range'),
           hooked = source.firstCardInLine(target, range);
       if (hooked && hooked.hasClasses('heroes units') && !hooked.hasClasses('ghost towers')) {
-        if (hooked.side() !== source.side()) {
+        if (hooked.side() == source.opponent()) {
           source.damage(skill.data('damage'), hooked, skill.data('damage type'));
           hooked.stopChanneling();
         }
@@ -74,8 +74,9 @@ game.skills.pud = {
     },
     kill: function (event, eventdata) {
       var source = eventdata.source;
+      var target = eventdata.target;
       var buff = source.getBuff('pud-passive');
-      game.skills.pud.passive.bonus(buff, source, 1);
+      if (source.side() == target.opponent() && target.hasClass('heroes')) game.skills.pud.passive.bonus(buff, source, 1);
     }
   },
   ult: {

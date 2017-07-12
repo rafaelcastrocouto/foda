@@ -103,17 +103,17 @@ game.card = {
     if (data['bonus cards']) 
       $('<p>').appendTo(desc).text(game.data.ui.bonus + ' ' + game.data.ui.cards + ': ' + data['bonus cards']);
     if (data.type == game.data.ui.channel)
-      $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.channel);
+      $('<p>').appendTo(desc).text(game.data.ui.channel+' '+game.data.ui.duration + ': ' + data.channel);
     if (data.stun) 
-      $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
+      $('<p>').appendTo(desc).text(game.data.ui.stun+' '+game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
     else if (data.buff && data.buff.duration)
-      $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.buff.duration + ' ' + game.data.ui.turns);
+      $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buff.duration + ' ' + game.data.ui.turns);
     else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration)
-        $('<p>').appendTo(desc).text(game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
+        $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
 
     if (data.buff) {
       if (data.buff['hp per kill'])
-        $('<p>').appendTo(desc).text(game.data.ui.hp + ': ' + data.buff['hp per kill'] + ' per Kill');
+        $('<p>').appendTo(desc).text(game.data.ui.hp + ' per Kill: ' + data.buff['hp per kill']);
       if (data.buff['cards per turn'])
         $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + data.buff['cards per turn'] + ' per Turn');
       if (data.buff.chance)
@@ -232,46 +232,42 @@ game.card = {
       card.removeClass('draggable').off('mousedown touchstart');
       game.highlight.clearMap();
       card.stopChanneling();
-      if (!card.hasClass('dropped'))
-        card.animateMove(destiny);
+      card.animateMove(destiny);
       var evt = {
         type: 'move',
         card: card,
         target: to
       };
       card.trigger('move', evt).trigger('action', evt);
-      if (card.hasClass('selected'))
-        card.unselect();
-      game.timeout(300, function() {
-        //         this.card.parent().find('.fx').each(function () {
-        //           $(this).appendTo(this.destiny);
-        //         });
-        this.destiny.removeClass('free');
-        this.card.getSpot().addClass('free');
-        this.card.css({
+      var end = function(card, destiny) {
+        destiny.removeClass('free');
+        card.getSpot().addClass('free');
+        card.css({
           transform: ''
-        }).prependTo(this.destiny).on('mousedown touchstart', game.card.select);
+        }).prependTo(destiny).on('mousedown touchstart', game.card.select);
         card.trigger('moved', evt);
-      }
-      .bind({
-        card: card,
-        destiny: destiny
-      }));
+        if (card.hasClass('selected'))
+          card.select();
+      }.bind(this, card, destiny);
+      if (!this.hasClass('dragTarget')) game.timeout(300, end);
+      else game.timeout(25, end);
     }
     return card;
   },
   animateMove: function(destiny) {
-    var from = this.getPosition();
-    var to = destiny.getPosition();
-    var fx = game.map.getX(from);
-    var fy = game.map.getY(from);
-    var tx = game.map.getX(to);
-    var ty = game.map.getY(to);
-    var dx = (tx - fx) * 100;
-    var dy = (ty - fy) * 100;
-    this.css({
-      transform: 'translate3d(' + (dx - 50) + '%, ' + (dy - 40) + '%, 100px) rotateX(-30deg)'
-    });
+    if (!this.hasClass('dragTarget')) {
+      var from = this.getPosition();
+      var to = destiny.getPosition();
+      var fx = game.map.getX(from);
+      var fy = game.map.getY(from);
+      var tx = game.map.getX(to);
+      var ty = game.map.getY(to);
+      var dx = (tx - fx) * 100;
+      var dy = (ty - fy) * 100;
+      this.css({
+        transform: 'translate3d(' + (dx - 50) + '%, ' + (dy - 40) + '%, 100px) rotateX(-30deg)'
+      });
+    }
   },
   stopChanneling: function() {
     if (this.hasClass('channeling')) {
@@ -469,7 +465,7 @@ game.card = {
       } else {
         damageFx = $('<span>').addClass('damaged');
       }
-      var delay = 1200;
+      var delay = 850;
       if (!target.data('damaged-timeout')) {
         damageFx.text(finalDamage).appendTo(target);
         target.data('damaged-timeout', delay);

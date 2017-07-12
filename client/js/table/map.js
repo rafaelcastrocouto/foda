@@ -245,7 +245,7 @@ game.map = {
       if (card.length) cb(card, cs);
     }, offset);
   },
-  inLine: function (target, range, width, cb, offset) {
+  inLine: function (target, range, width, cb, offset, first) {
     var source = this;
     var direction = source.getDirectionStr(target);
     var x = target.getX(), y = target.getY();
@@ -270,26 +270,29 @@ game.map = {
     for (var i=start.x; i<=end.x; i++) {
       for (var j=start.y; j<=end.y; j++) {
         var spot = game.map.getSpot(i,j);
-        if (spot) cb(spot);
+        if (spot) {
+          cb(spot);
+          if (first) return this;
+        }
       }
     }
     return this;
   },
-  opponentsInLine: function (target, range, width, cb) {
+  opponentsInLine: function (target, range, width, cb, offset, first) {
     var side = this.side();
     var opponent = game.opponent(side);
     this.inLine(target, range, width, function (spot) {
       var card = spot.find('.card.'+opponent);
       if (card.length) cb(card);
-    });
+    }, offset, first);
     return this;
   },
-  alliesInLine: function (target, range, width, cb) {
+  alliesInLine: function (target, range, width, cb, offset, first) {
     var side = this.side();
     this.inLine(target, range, width, function (spot) {
       var card = spot.find('.card.'+side);
       if (card.length) cb(card);
-    });
+    }, offset, first);
     return this;
   },
   inMovementRange: function (speed, cb, filter) {
@@ -565,8 +568,8 @@ game.map = {
       if (card.length) cb(card);
     });
   },
-  opponentsInRange: function (range, cb, source) {
-    var side = source ? source.side() : this.side();
+  opponentsInRange: function (range, cb) {
+    var side = this.side();
     var opponent = game.opponent(side);
     this.inRange(range, function (spot) {
       var card = spot.find('.card.'+opponent);

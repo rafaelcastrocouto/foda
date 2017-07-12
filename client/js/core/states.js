@@ -34,14 +34,14 @@ game.states = {
         if (oldstate.end) oldstate.end();
         if (oldstate.el) oldstate.el.hide();
       }    
-      game.timeout(100, function (state, recover) {
+      game.timeout(200, function (state, recover) {
         game.clearTimeouts();
         game.states.buildState(state);
         var newstate, old = game.currentState;
         newstate = game.states[state];
         if (newstate.el) {
           localStorage.setItem('state', state);
-          newstate.el.fadeIn(400);
+          newstate.el.fadeIn();
         }
         game.currentState = state;
         if (old != 'loading' && old != 'noscript') {

@@ -38,7 +38,7 @@ game.skills.wk = {
       var damage = source.data('current damage');
       var buff = source.getBuff('wk-lifesteal');
       var bonus = buff.data('percentage') / 100;
-      source.heal(damage * bonus);
+      if (target.side() == source.opponent()) source.heal(damage * bonus);
     },
     death: function (event, eventdata) {
       var source = eventdata.target;
@@ -68,7 +68,7 @@ game.skills.wk = {
       var damage = source.data('current damage');
       var chance = buff.data('chance') / 100;
       var bonus = (buff.data('percentage') / 100);
-      if (game.random() < chance) {
+      if (game.random() < chance && target.side() == source.opponent()) {
         source.damage(damage * bonus, target, 'critical');
       }
     }

@@ -65,6 +65,7 @@ game.deck = {
       }
       if (found || !filter) {
         $.each(units, function (unitid, unitdata) {
+          unitdata.deck = game.data.ui.summon;
           unitdata.type = unitid;
           unitdata.speed = 2;
           unitdata.buffsBox = true;

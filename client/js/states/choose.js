@@ -1,7 +1,7 @@
 game.states.choose = {
   size: 200,
   build: function () {
-    this.pickbox = $('<div>').addClass('pickbox').attr('title', game.data.ui.chooseheroes).appendTo(this.el);
+    this.pickbox = $('<div>').addClass('pickbox').appendTo(this.el);
     this.pickedbox = $('<div>').addClass('pickedbox').hide();
     this.slots = this.buildSlots();
     this.counter = $('<p>').addClass('counter').hide().appendTo(this.pickedbox);
@@ -16,10 +16,10 @@ game.states.choose = {
     this.video = $('<iframe>').hide().addClass('video').attr({'allowfullscreen': true, 'frameborder': 0, 'width': 760, 'height': 340}).appendTo(this.pickbox);
   },
   start: function () {
-    $('.choose .buttonbox .button').not('.back').hide();    
+    $('.choose .buttonbox .button').not('.back').hide();
     var hero = localStorage.getItem('choose');
     this.sort();
-    this.selectFirst();
+    if (game.mode != 'library') this.selectFirst();
     if (game.mode && game[game.mode].chooseStart) game[game.mode].chooseStart(hero);
   },
   buildDeck: function (pickDeck) {
@@ -55,16 +55,16 @@ game.states.choose = {
     }
     return slots;
   },
-  select: function (recover) {
+  select: function (force) {
     var card = $(this);
     if (card.hasClass && card.hasClass('card')) {
+      if (game.mode == 'library') game.library.select(card, force);
       $('.choose .selected').removeClass('selected draggable');
       $('.choose .half').removeClass('half');
       card.addClass('selected');
       card.prev().addClass('half');
       card.next().addClass('half');
-      if (game.mode !== 'library' && !card.hasClass('dead')) card.addClass('draggable');
-      else if (game.mode == 'library') game.library.select(card, recover);
+      if (game.mode != 'library') card.addClass('draggable');
       var index = card.siblings(':visible').addBack().index(card);
       if (index === undefined) index = card.index();
       game.states.choose.pickDeck.css('margin-left', index * -1 * game.states.choose.size);

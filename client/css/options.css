@@ -4,9 +4,8 @@
 }
 
 .option-state h1 {
-  font-weight: bold;
   font-size: 24px;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-bottom: 8px;
 }
 
@@ -37,6 +36,7 @@
 
 .option-state label {
   position: relative;
+  font-weight: bold;
 }
 
 .screenresolution label {
@@ -178,7 +178,6 @@ label span {
 .game-overlay .voteBt, .game-overlay .voteBt[disabled]:active {
   background-color: #66bb8c;
   box-shadow: 0 4px 0 #4b8864;
-  width: 240px;
 }
 .game-overlay .voteBt:hover {
   background-color: #72c095;

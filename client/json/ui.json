@@ -32,7 +32,7 @@
   "axebattle": "<b class='battle'>To Battle!</b>",
   "axeselectenemy": "<b>Click</b> on the enemy tower card to select it",
   "axeendturn": "You can always end your turn with the <b>End Turn</b> button",
-  "axeunselect": "<b>Right click</b> or click on the ground to <b>remove selection</b>",
+  "axeunselect": "<b>Right click</b> anywhere or click on the ground to <b>remove selection</b>",
   "axeselectplayer": "Click to <b>select</b> one of your cards on the map now",
   "axesummonselect": "You can summon more creeps or click to <b>select</b> one of your heroes on the map",
   "axemove": "<b>Drag or click</b> on the green arrows to move a card",
@@ -48,7 +48,7 @@
   "axechannel": "<b>Channel</b> skills prevent other actions but may be interrupted",
   "axeend": "Ah! You did it, now you are ready for a real <br><b class='battle'>battle!</b>",
   "axecreep": "Select a unit in your <b>left hand</b>. All cards that have no mana requirements go to your left hand",
-  "axesummoncreep": "Click on a green arrow to <b>summon</b>, remember that the tower will lose 1 HP if that little creep die in battle",
+  "axesummoncreep": "Click on an arrow to <b>summon</b>, remember that the tower will lose 1 HP if a creep die in battle",
   "completedtutorial": "completed the tutorial",
   "online": "Play online",
   "chooselibrary": "Learn every detail of all cards in the game",
@@ -179,5 +179,7 @@
   "summoner": "Summoner",
   "today": "Today",
   "yesterday": "Yesterday",
-  "effect": "Effect"
+  "effect": "Effect",
+  "buff": "Buff",
+  "stun": "Stun"
 }

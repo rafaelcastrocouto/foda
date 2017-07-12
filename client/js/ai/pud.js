@@ -15,17 +15,15 @@ game.heroesAI.pud = {
       var range = hook.data('aoe range');
       var width = hook.data('aoe width');
       card.around(1, function (spot) {
-        var targets = 0, p = cardData['can-attack'] ? 25 : 0;
         card.opponentsInLine(spot, range, width, function (cardInRange) {
-          targets++;
-        });
-        if (targets) {
+          var p = cardData['can-attack'] ? 25 : 5;
+          if (cardInRange.hasClass('channeling')) p += 20;
           cardData['cast-strats'].push({
-            priority: p,
+            priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'hook',
             target: spot
           });
-        }
+        }, 0 /*offset*/, 'first');
       });
     }
     if (rot.length) {

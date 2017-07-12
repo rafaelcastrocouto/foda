@@ -51,8 +51,8 @@ game.options = {
     $('input[name=side]', '.screenresolution').change(game.screen.toggleSide);
     $('input[name=resolution]', '.screenresolution').change(game.screen.changeResolution);
     $('input[name=mute]', '.audioconfig').change(game.audio.mute);
-    $('.volume', '.audioconfig').on('mousedown.volume', game.audio.volumeMouseDown);
-    $('.volume', '.audioconfig').on('mousemove.volume', game.audio.volumeMouseMove);
+    $('.volume', '.audioconfig').on('mousedown.volume touchstart.volume', game.audio.volumeMouseDown);
+    $('.option-state .game-overlay .box').on('mousemove.volume touchmove.volume', game.audio.volumeMouseMove);
   },
   show: function () {
     game.overlay.show();

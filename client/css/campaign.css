@@ -25,7 +25,7 @@
 
 .campaign-box h2 {
   margin: 6px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .left-side .campaign-box.box {
@@ -83,6 +83,7 @@
   height: 90%;
   border-radius: 50%;
   background-size: cover;
+  background-position-x: 50%;
 }
 
 .stages {
@@ -171,15 +172,15 @@
 .stages.rune {
   background-image: url(../img/campaign/ico_rune.png);
   top: 320px;
-  left: 360px;
+  left: 370px;
   width: 60px;
   height: 60px;
 }
 
 .stages.roshan {
   background-image: url(../img/campaign/ico_rosh.png);
-  top: 130px;
-  left: 150px;
+  top: 150px;
+  left: 160px;
 }
 
 .stages.shop {

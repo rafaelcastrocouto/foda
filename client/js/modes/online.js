@@ -30,9 +30,6 @@ game.online = {
       else game.online.found(waiting);
     });
   },
-  chooseStart: function () {
-    game.states.choose.selectFirst();
-  },
   wait: function () {
     game.loader.addClass('loading');
     game.setData('id', game.id);

@@ -97,7 +97,8 @@ game.highlight = {
         if (targets.indexOf(game.data.ui.enemy) >= 0) game.highlight.enemy(source, skill);
         if (targets.indexOf(game.data.ui.sumonner) >= 0) game.highlight.summoner(source, skill);
         if (targets.indexOf(game.data.ui.spot) >= 0) {
-          if (targets.indexOf(game.data.ui.free) >= 0) game.highlight.freeSpots(source, skill);
+          if (targets.indexOf(game.data.ui.range) >= 0) game.highlight.atRange(source, skill, (targets.indexOf(game.data.ui.free) >= 0));
+          else if (targets.indexOf(game.data.ui.free) >= 0) game.highlight.freeSpots(source, skill);
           else {
             var aoe = skill.data('aoe');
             if (aoe === game.data.ui.radial) game.highlight.radial(source, skill);
@@ -126,9 +127,9 @@ game.highlight = {
   ally: function (source, skill) {
     var range = skill.data('cast range');
     if (range === game.data.ui.global) {
-      $('.map .player').not('.towers').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+      $('.map .player').not('.towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
     } else {
-      source.inRange(range, function (neighbor) {
+      source.around(range, function (neighbor) {
         var card = $('.card', neighbor);
         if (card.hasClass('player') && !card.hasClass('towers')) {
           card.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
@@ -183,9 +184,16 @@ game.highlight = {
       } else neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
     });
   },
+  atRange: function (source, skill, free) {
+    var range = skill.data('cast range');
+    source.atRange(range, function (spot) {
+      if (!free || spot.hasClass('free')) spot.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+    });
+  },
   move: function () {
     var card = this, speed;
     if (card.hasClass('player') && card.hasClasses('units heroes') && card.canMove()) {
+      if (card.hasClass('selected')) card.addClass('draggable');
       speed = card.data('current speed');
       if (speed < 1) { return card; }
       if (speed > 3) { speed = 3; }
@@ -200,6 +208,7 @@ game.highlight = {
   attack: function () {
     var source = this, pos, range;
     if (source.hasClass('player') && source.hasClasses('units heroes') && source.canAttack()) {
+      if (source.hasClass('selected')) source.addClass('draggable');
       range = source.data('range');
       source.inRange(range, function (neighbor) {
         var card = $('.card', neighbor);

@@ -55,7 +55,7 @@ game.skills.nyx = {
       source.addInvisibility();
     },
     end: function (event, eventdata) {
-      var nyx = eventdata.source;
+      var nyx = eventdata.target;
       nyx.removeBuff('nyx-ult');
     },
     expire: function (event, eventdata) {

@@ -40,6 +40,11 @@ game.states.vs = {
       filter: game.player.picks,
       cb: function (deck) {
         deck.addClass('vsplayerdeck').appendTo(game.states.vs.playerdeck);
+        var ch = deck.children();
+        ch.sort(function (a,b) { 
+          return game.player.picks.indexOf($(a).data('hero')) - game.player.picks.indexOf($(b).data('hero')); 
+        });
+        deck.append(ch);
       }
     });
     game.skill.calcMana('player');
@@ -60,6 +65,11 @@ game.states.vs = {
       filter: game.enemy.picks,
       cb: function (deck) {
         deck.addClass('vsenemyrdeck').appendTo(game.states.vs.enemydeck);
+        var ch = deck.children();
+        ch.sort(function (a,b) { 
+          return game.enemy.picks.indexOf($(b).data('hero')) - game.enemy.picks.indexOf($(a).data('hero')); 
+        });
+        deck.append(ch);
       }
     });
     game.skill.calcMana('enemy');

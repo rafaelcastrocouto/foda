@@ -5,11 +5,12 @@ game.skills.kotl = {
       var direction = kotl.getDirectionStr(target);
       var side = kotl.side();
       skill.addClass('channel-on');
-      kotl.selfBuff(skill);
+      kotl.selfBuff(skill, 'illuminate-channel');
       if (kotl.hasBuff('kotl-ult')) {
-        var ghost = kotl.clone().removeClass('selected');
+        var ghost = kotl.clone().removeClass('selected heroes');
         ghost.addClass('illuminate-ghost ghost channeling');
         ghost.insertAfter(kotl);
+        kotl.data('deck', game.data.ui.summon);
         kotl.data('illuminate-ghost', ghost);
         ghost.data('illuminate-source', kotl);
         ghost.data('channeling', skill.data('channel'));
@@ -19,15 +20,15 @@ game.skills.kotl = {
       source.data('illuminate', skill);
       source.data('illuminate-target', target);
       source.on('channelend', this.channelend);
-      game.timeout(400, game.skills.kotl.illuminate.sidehand.bind({side: side, skill: skill}));
+      game.timeout(400, game.skills.kotl.illuminate.sidehand.bind(skill, side));
     },
-    sidehand: function () {
-      this.skill.appendTo(game[this.side].skills.sidehand);
+    sidehand: function (side) {
+      this.data('cancel-discard', true);
+      this.appendTo(game[side].skills.sidehand);
     },
     channelend: function (event, eventdata) { 
       var source = $(this);
       var skill = source.data('illuminate');
-      //source.data('illuminate', source.data('illuminate') - 1);
       game.skills.kotl.illuminate.release(skill, source);
     },
     release: function (skill, source) { 
@@ -41,13 +42,18 @@ game.skills.kotl = {
       source.opponentsInLine(target, range, width, function (card) {
         kotl.damage(damage * time, card, skill.data('damage type'));
       });
+      if (source.hasClass('ghost')) {
+        source.alliesInLine(target, range, width, function (card) {
+          card.heal(damage * time);
+        });
+      }
       kotl.data('illuminate-start', null);
       kotl.data('illuminate-target', null);
       kotl.data('illuminate-ghost', null);
       kotl.off('turnend.kotl-illuminate');
       kotl.removeBuff('kotl-illuminate');
       kotl.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
-      if (source.hasClass('illuminate-ghost')) source.remove();
+      if (source.hasClass('ghost')) source.discard();
       skill.discard();
     }
   },
@@ -90,7 +96,7 @@ game.skills.kotl = {
       var side = source.side();
       if (!source.hasBuff('kotl-ult')) {
         var illuminate = $('.table .'+side+' .skills .kotl-illuminate');
-        skill.addClass('on');
+        //skill.addClass('on');
         source.on('turnend.kotl-ult', this.turnend);
         source.addClass('kotl-ult');
         source.data('kotl-ult', skill);

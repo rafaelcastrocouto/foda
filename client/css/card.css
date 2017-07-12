@@ -175,8 +175,8 @@
   width: 14px;
   height: 14px;
   line-height: 14px;
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: -2px;
   display: inline-block;
   border-radius: 50%;
   box-shadow: 0 0 0 3px #ed8c8c;
@@ -373,10 +373,6 @@
   filter: grayscale(0.9);
 }
 
-.card.dead .damaged {
-  display: none;
-}
-
 .card .buffs {
   position: absolute;
   bottom: 3px;
@@ -431,7 +427,7 @@
   top: 50%;
   left: 40px;
   transform: translate3d(-50%, -50%, 0) scale(0.4) rotate(0);
-  margin-right: -140px;
+  margin-right: -130px;
 }
 
 .table .deck .card:hover, .table .deck .card.on:hover {
@@ -655,7 +651,9 @@
   transform: translate3d(-50%, -50%, -1px) rotateY(180deg);
 }
 
-.table .selectedarea .card .damaged, .table .selectedarea .card .heal {
+.table .selectedarea .card .damaged, 
+.table .selectedarea .card .heal,  
+.table .selectedarea .card .missed {
   display: none;
 }
 
@@ -733,37 +731,38 @@
 }
 
 .card.dragTargetClone {
-  transition: transform 0.2s;
+  transition: transform 0.1s;
   position: absolute;
   z-index: 30;
   transform-origin: 0 0;
   pointer-events: none;
+  transform: translateZ(1px);
 }
 
 .card.dragTargetClone.choose {
-  transform: scale(0.75);
+  transform: scale(0.75) translateZ(1px);
 }
 
 .card.dragTargetClone.choose.drop {
-  transform: scale(0.5);
+  transform: scale(0.5) translateZ(1px);
   box-shadow: 0 0 0 5px white;
 }
 
 .card.dragTargetClone.table {
-  transform: scale(0.35);
+  transform: scale(0.35) translateZ(1px);
 }
 
 .card.dragTargetClone.table.drop {
-  transform: scale(0.3);
+  transform: scale(0.3) translateZ(1px);
   box-shadow: 0 0 0 10px white;
 }
 
 .card.skills.dragTargetClone.table {
-  transform: scale(0.5);
+  transform: scale(0.5) translateZ(1px);
 }
 
 .card.skills.dragTargetClone.table.drop {
-  transform: scale(0.3);
+  transform: scale(0.3) translateZ(1px);
   box-shadow: 0 0 0 10px white;
 }
 
@@ -787,6 +786,10 @@
   overflow: hidden;
   border: 3px solid #fff;
   margin-right: -16px;
+}
+
+.map .card.ghost .buff {
+  display: none;
 }
 
 .map .card fieldset, .card.dragTargetClone.fromMap fieldset {

@@ -32,7 +32,7 @@ game.library = {
     var hero = card.data('hero'),
         heroSkills,
         disabled;
-    if (force || hero !== $('.choose .card.selected').data('hero')) {
+    if (hero !== $('.choose .card.selected').data('hero') || force) {
       disabled = card.hasClass('dead');
       $('.slot .card.skills').appendTo(game.library.skills);
       heroSkills = $('.library.skills .card.'+hero);
@@ -41,7 +41,7 @@ game.library = {
         if (disabled) skill.addClass('dead');
         skill.appendTo(this);
       });
-      game.states.choose.pickedbox.hide().fadeIn('slow');
+      game.states.choose.pickedbox.hide().fadeIn();
       $('.slot:empty').hide();
       if (!card.data('disable')) {
         game.library.hero = card.data('hero');
