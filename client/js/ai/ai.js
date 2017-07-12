@@ -122,7 +122,7 @@ game.ai = {
     $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.source').removeClass('source');
-    $('.ai-max').removClass('ai-max');
+    $('.ai-max').removeClass('ai-max');
     $('.enemydecks .hand .skills').each(function (i, el) {
       var card = $(el);
       game.ai.skillsDiscard(card);
