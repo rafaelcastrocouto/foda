@@ -102,7 +102,7 @@
 }
 
 .card .overlay {
-  box-shadow: 0 0 16px rgba(0,0,0,0.6) inset;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4) inset;
   border-radius: 3px;
   position: absolute;
   top: 0;
@@ -114,11 +114,10 @@
 
 .card .portrait .img, .card .portrait .overlay {
   height: 112px;
-}
-
-.card .portrait .overlay {
+  display: block;
   width: 100%;
 }
+
 
 .card fieldset h1 {
   cursor: inherit;
@@ -236,8 +235,9 @@
 }
 
 .card.left-hand.skills,
-.card.skills[class*="summon"] {
-  background: #5bb7b9;
+.card.skills[class*="summon"],
+.card.skills[class*="ult"] {
+  background: #4db2dc;
 }
 
 .states .map .card.player.heroes.selected, .states .map .card.player.towers.selected {

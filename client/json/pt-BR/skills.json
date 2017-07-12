@@ -1,5 +1,18 @@
 {
   "cat": {
+    "star": {
+      "name": "Estrelas Cadentes",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "aoe range": "Médio",
+      "cast range": "Médio",
+      "damage": 8,
+      "damage type": "Mágico",
+      "cards": 1,
+      "description": "Causa dano aos inimigos ao redor da Miau. Um alvo aleatório é atingido duas vezes"
+    },
     "arrow": {
       "name": "Flecha Sagrada",
       "type": "Ativa",
@@ -20,7 +33,7 @@
       "description": "Atordoa e causa dano a uma unidade inimiga. A distância aumenta o dano e a duração do efeito"
     },
     "leap": {
-      "name": "Salto",
+      "name": "Pulo do Gato",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
@@ -34,21 +47,8 @@
         "description": "Velocidade aumentada pelo 'Salto'"
       }
     },
-    "star": {
-      "name": "Estrelas Cadentes",
-      "type": "Ativa",
-      "hand": "Direita",
-      "deck": "Comprar",
-      "targets": ["Próprio"],
-      "aoe range": "Médio",
-      "cast range": "Médio",
-      "damage": 8,
-      "damage type": "Mágico",
-      "cards": 1,
-      "description": "Causa dano aos inimigos ao redor da Miau. Um alvo aleatório é atingido duas vezes"
-    },
     "ult": {
-      "name": "Sombras Gatunas",
+      "name": "Sombras Mortais",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",

@@ -1,7 +1,20 @@
 {
   "cat": {
+    "star": {
+      "name": "Starfall",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe range": "Short",
+      "cast range": "Short",
+      "damage": 8,
+      "damage type": "Magical",
+      "cards": 1,
+      "description": "Damages enemies around the Cat Lady. One random enemy will be hit twice"
+    },
     "arrow": {
-      "name": "Sacred Arrow",
+      "name": "Swift Arrow",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -20,7 +33,7 @@
       "description": "Stuns and damages a single target. The distance will increase the damage and the stun"
     },
     "leap": {
-      "name": "Leap",
+      "name": "Cat Leap",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -34,21 +47,8 @@
         "description": "Speed increased by 'Leap'"
       }
     },
-    "star": {
-      "name": "Starfall",
-      "type": "Active",
-      "hand": "Right",
-      "deck": "Buy",
-      "targets": ["Self"],
-      "aoe range": "Short",
-      "cast range": "Short",
-      "damage": 8,
-      "damage type": "Magical",
-      "cards": 1,
-      "description": "Damages enemies around the Cat Lady. One random enemy will be hit twice"
-    },
     "ult": {
-      "name": "Cat Shadows",
+      "name": "Keen Shadows",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -56,7 +56,7 @@
       "cards": 1,
       "description": "All player heroes become invisible",
       "buff": {
-        "description": "Hidden by the 'Cat Shadows'",
+        "description": "Hidden by the 'Rivet Shadows'",
         "duration": 4 
       }
     }

@@ -1,7 +1,20 @@
 {
   "cat": {
+    "star": {
+      "name": "Starfall",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Ayn?"],
+      "aoe range": "Kısa",
+      "cast range": "Kısa",
+      "damage": 8,
+      "damage type": "Büyü",
+      "cards": 1,
+      "description": "Cat Lady etrafındaki düşmanlara zarar verir. Bir rasgele düşman iki kez vurulacak"
+    },
     "arrow": {
-      "name": "Sacred Arrow",
+      "name": "Swift Arrow",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -20,7 +33,7 @@
       "description": "Bozukluklar ve tek bir hedefe zarar verir. Mesafe, hasarı ve sersemletmeyi artıracaktır"
     },
     "leap": {
-      "name": "Leap",
+      "name": "Cat Leap",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -34,21 +47,8 @@
         "description": "Hız arttı 'Leap'"
       }
     },
-    "star": {
-      "name": "Starfall",
-      "type": "Aktif",
-      "hand": "Sağ",
-      "deck": "Satın Al",
-      "targets": ["Ayn?"],
-      "aoe range": "Kısa",
-      "cast range": "Kısa",
-      "damage": 8,
-      "damage type": "Büyü",
-      "cards": 1,
-      "description": "Cat Lady etrafındaki düşmanlara zarar verir. Bir rasgele düşman iki kez vurulacak"
-    },
     "ult": {
-      "name": "Cat Shadows",
+      "name": "Keen Shadows",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
