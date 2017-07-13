@@ -5,12 +5,14 @@ game.poll = {
   build: function () {
     game.poll.voteBox = game.overlay.children().first().addClass('vote').html('');
     game.poll.title = $('<h2>').text(game.data.ui.votenexthero).appendTo(game.poll.voteBox);
-    var p = $('<p>').appendTo(game.poll.voteBox);
-    //game.poll.lina = $('<label>').appendTo(p).append($('<img>').attr({src:'img/poll/lina.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: 'lina'})).append($('<span>').text('Lina'))).on('mouseup touchend', game.poll.enableVote);
-    game.poll.mirana = $('<label>').appendTo(p).append($('<img>').attr({src:'img/poll/mirana.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: 'mirana'})).append($('<span>').text('Mirana'))).on('mouseup touchend', game.poll.enableVote);
-    game.poll.wind = $('<label>').appendTo(p).append($('<img>').attr({src:'img/poll/wind.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: 'wind'})).append($('<span>').text('Wind'))).on('mouseup touchend', game.poll.enableVote);
+    game.poll.voteList = $('<p>').appendTo(game.poll.voteBox);
+    game.poll.addVote('ench', 'Enchantress');
+    game.poll.addVote('legion', 'Legion');
     game.poll.voteBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).attr({disabled: true}).text(game.data.ui.vote).on('mouseup touchend', game.poll.vote);
     game.poll.closeBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).text(game.data.ui.close).on('mouseup touchend', game.poll.close);
+  },
+  addVote: function (hero, name) {
+    game.poll[hero] = $('<label>').appendTo(game.poll.voteList).append($('<img>').attr({src:'img/poll/'+hero+'.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: hero})).append($('<span>').text(name))).on('mouseup touchend', game.poll.enableVote);
   },
   enableVote: function () {
     var label = $(this);
@@ -33,14 +35,14 @@ game.poll = {
       }, game.poll.voted);
     }
   },
-  voted: function (poll) { //console.log(poll)
+  voted: function (pollResults) { //console.log(poll)
     localStorage.setItem('voted', game.poll.votedHero);
     game.poll[game.poll.votedHero].addClass('vote-send');
     game.poll.title.text(game.data.ui.thanksvote);
-    if (poll.lina) {
-      //$('span', game.poll.lina).after($('<span>').addClass('votes').text(poll.lina));
-      $('span', game.poll.mirana).after($('<span>').addClass('votes').text(poll.mirana));
-      $('span', game.poll.wind).after($('<span>').addClass('votes').text(poll.wind));
+    if (pollResults) {
+      $.each(pollResults, function (i, v) {
+        if (game.poll[i]) $('span', game.poll[i]).after($('<span>').addClass('votes').text(v));
+      });
     }
   },
   close: function () {

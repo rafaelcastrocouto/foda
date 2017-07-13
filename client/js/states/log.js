@@ -22,7 +22,7 @@ game.states.log = {
     if (!game.states.log.alert) {
       game.states.log.alert = true;
       game.states.log.alertBox();
-      //if (!localStorage.getItem('voted')) game.poll.addButton();
+      if (!localStorage.getItem('voted')) game.poll.addButton();
     }
   },
   createBkgDeck: function () {
