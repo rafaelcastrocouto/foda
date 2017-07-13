@@ -29,8 +29,8 @@
     "tactical"
   ],
   "dependencies": {
-    "serve-static": "~1.10.2",
-    "mongodb": "^2.2.7"
+    "mongodb": "^2.2.30",
+    "serve-static": "~1.10.2"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

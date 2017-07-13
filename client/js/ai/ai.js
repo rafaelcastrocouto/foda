@@ -12,7 +12,7 @@ game.ai = {
       game.ai.movesLoop = 12;
       game.ai.maxCount = 3;
       game.ai.lowChance = 0.3;
-      game.ai.highChance = 0.4; 
+      game.ai.highChance = 0.4;
       game.ai.minP = 5;
     }
     if (game.ai.mode == 'normal') {
