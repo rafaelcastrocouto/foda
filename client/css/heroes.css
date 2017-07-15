@@ -345,3 +345,28 @@
 .cat-ult .img, .buffs .buff.cat-ult .img {
   background-image: url("../img/skills/cat/ult.jpg");
 }
+
+
+.wind {
+  background: #8ebb6a;
+}
+
+.wind.heroes .img {
+  background-image: url("../img/heroes/wind.jpg");
+}
+
+.wind-arrow .img {
+  background-image: url("../img/skills/wind/arrow.jpg");
+}
+
+.wind-run .img, .buffs .buff.wind-run .img {
+  background-image: url("../img/skills/wind/run.jpg");
+}
+
+.wind-stun .img {
+  background-image: url("../img/skills/wind/stun.jpg");
+}
+
+.wind-ult .img, .buffs .buff.wind-ult .img {
+  background-image: url("../img/skills/wind/ult.jpg");
+}

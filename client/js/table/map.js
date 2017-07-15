@@ -25,7 +25,8 @@ game.map = {
       cardsInRange: game.map.cardsInRange,
       radialStroke: game.map.radialStroke,
       crossStroke: game.map.crossStroke,
-      linearStroke: game.map.linearStroke
+      linearStroke: game.map.linearStroke,
+      behindTarget: game.map.behindTarget
     });
   },
   lettersStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -245,7 +246,7 @@ game.map = {
       if (card.length) cb(card, cs);
     }, offset);
   },
-  inLine: function (target, range, width, cb, offset, first) {
+  inLine: function (target, range, width, cb, offset) {
     var source = this;
     var direction = source.getDirectionStr(target);
     var x = target.getX(), y = target.getY();
@@ -272,27 +273,26 @@ game.map = {
         var spot = game.map.getSpot(i,j);
         if (spot) {
           cb(spot);
-          if (first) return this;
         }
       }
     }
     return this;
   },
-  opponentsInLine: function (target, range, width, cb, offset, first) {
+  opponentsInLine: function (target, range, width, cb, offset) {
     var side = this.side();
     var opponent = game.opponent(side);
     this.inLine(target, range, width, function (spot) {
       var card = spot.find('.card.'+opponent);
       if (card.length) cb(card);
-    }, offset, first);
+    }, offset);
     return this;
   },
-  alliesInLine: function (target, range, width, cb, offset, first) {
+  alliesInLine: function (target, range, width, cb, offset) {
     var side = this.side();
     this.inLine(target, range, width, function (spot) {
       var card = spot.find('.card.'+side);
       if (card.length) cb(card);
-    }, offset, first);
+    }, offset);
     return this;
   },
   inMovementRange: function (speed, cb, filter) {
@@ -606,6 +606,17 @@ game.map = {
         var card = spot.find('.card');
         if (card.length) return card;
       }
+    }
+  },
+  behindTarget: function (target) {
+    var source = this,
+        dir = source.getDirectionObj(target);
+    dir.x += target.getX(); 
+    dir.y += target.getY();
+    var behind = game.map.getSpot(dir.x, dir.y);
+    if (behind) {
+      var card = behind.children('.card');
+      if (card.length) return card;
     }
   }
 };

@@ -2,15 +2,15 @@ game.skills.cat = {
   arrow: {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
-      var width = skill.data('aoe width');
       var damageBonus = skill.data('distance damage bonus');
       var stunBonus = skill.data('distance stun bonus');
       var damage = skill.data('damage');
-      source.opponentsInLine(target, range, width, function (card) {
-        var distance = Math.abs((source.getX() - card.getX()) || (source.getY() - card.getY()));
-        source.damage(damage + (distance * damageBonus), card, skill.data('damage type'));
-        source.addStun(card, skill, (distance * stunBonus));
-      }, 0 /*offset*/, 'first');
+      var arrowTarget = source.firstCardInLine(target, range);
+      if (arrowTarget.side() == source.opponent()) {
+        var distance = Math.abs((source.getX() - arrowTarget.getX()) || (source.getY() - arrowTarget.getY()));
+        source.damage(damage + (distance * damageBonus), arrowTarget, skill.data('damage type'));
+        source.addStun(arrowTarget, skill, (distance * stunBonus));
+      }
     }
   },
   leap: {

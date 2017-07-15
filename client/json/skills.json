@@ -1,4 +1,63 @@
 {
+
+  "wind": {
+    "stun": {
+      "name": "Rope Shot",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "cast range": "Short",
+      "stun": 4,
+      "cards": 1,
+      "description": "Ties the target to an enemy unit or tree behind it. If no unit or tree is present, the stun duration is halved"
+    },
+    "arrow": {
+      "name": "Power Arrow",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 16,
+      "damage reduction": 2,
+      "damage type": "Magical",
+      "cards": 1,
+      "description": "Damages enemies and destroys trees along its path. For each enemy the arrow hits, its damage is reduced by 2"
+    },
+    "run": {
+      "name": "Wind Runner",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "cards": 1,
+      "description": "Increases the movement speed and adds evasion from all attacks",
+      "buff": {
+        "duration": 3,
+        "miss": 100,
+        "speed bonus": 1,
+        "description": "Movement speed increased and evasion from all attacks"
+      }
+    },
+    "ult": {
+      "name": "Rain of Arrows",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "cast range": "Ranged",
+      "cards": 1,
+      "attacks": 4,
+      "damage reduction": 4,
+      "description": "Attack a target enemy four times in a row. Damage is reduced by four points"
+    }
+  },
+
   "cat": {
     "star": {
       "name": "Starfall",
@@ -30,7 +89,7 @@
       "distance stun bonus": 1,
       "damage type": "Magical",
       "cards": 1,
-      "description": "Stuns and damages a single target. The distance will increase the damage and the stun"
+      "description": "Stuns and damages a single target. The distance will increase the damage and the stun (Max Dmg 18, Max Stun: 5 turns)"
     },
     "leap": {
       "name": "Cat Leap",

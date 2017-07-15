@@ -15,7 +15,8 @@ game.heroesAI.pud = {
       var range = hook.data('aoe range');
       var width = hook.data('aoe width');
       card.around(1, function (spot) {
-        card.opponentsInLine(spot, range, width, function (cardInRange) {
+        var cardInRange = source.firstCardInLine(spot, range);
+        if (cardInRange.side() == card.opponent()) {
           var p = cardData['can-attack'] ? 25 : 5;
           if (cardInRange.hasClass('channeling')) p += 20;
           cardData['cast-strats'].push({
@@ -23,7 +24,7 @@ game.heroesAI.pud = {
             skill: 'hook',
             target: spot
           });
-        }, 0 /*offset*/, 'first');
+        }
       });
     }
     if (rot.length) {

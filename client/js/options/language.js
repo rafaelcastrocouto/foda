@@ -40,7 +40,7 @@ game.language = {
         detectLanguage = game.language.available.indexOf(lang);
     if (detectLanguage >= 0) localStorage.setItem('lang', lang);
     else localStorage.removeItem('lang');
-    swal.close();
+    game.options.backClick();
     game.confirm(function () { location.reload(); });
   }
 };

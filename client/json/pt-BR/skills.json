@@ -1,4 +1,63 @@
 {
+
+  "wind": {
+    "stun": {
+      "name": "Tiro com Corda",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos"],
+      "cast range": "Médio",
+      "stun": 4,
+      "cards": 1,
+      "description": "Prende o alvo a uma unidade inimiga ou a uma árvore detrás do alvo. Se não houver unidade inimiga ou árvore, a duração do efeito é reduzida pela metade"
+    },
+    "arrow": {
+      "name": "Flecha Perfurante",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Local"],
+      "aoe": "Linear",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 16,
+      "damage reduction": 2,
+      "damage type": "Mágico",
+      "cards": 1,
+      "description": "Causa dano e destrói árvores ao longo do caminho. Para cada inimigo, o dano da flecha é reduzido em 2"
+    },
+    "run": {
+      "name": "Pé de Vento",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "cards": 1,
+      "description": "Aumenta o velocidade e esquiva de todos os ataques",
+      "buff": {
+        "duration": 3,
+        "miss": 100,
+        "speed bonus": 1,
+        "description": "Velocidade aumentada e esquiva de todos os ataques"
+      }
+    },
+    "ult": {
+      "name": "Chuva de Flechas",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos"],
+      "cast range": "Distante",
+      "cards": 1,
+      "attacks": 4,
+      "damage reduction": 4,
+      "description": "Ataca um inimigo quatro vezes. O dano é reduzido em quatro pontos"
+    }
+  },
+
   "cat": {
     "star": {
       "name": "Estrelas Cadentes",
@@ -30,7 +89,7 @@
       "distance stun bonus": 1,
       "damage type": "Mágico",
       "cards": 1,
-      "description": "Atordoa e causa dano a uma unidade inimiga. A distância aumenta o dano e a duração do efeito"
+      "description": "Atordoa e causa dano a uma unidade inimiga. A distância aumenta o dano e a duração do efeito (Max Dano 18, Max Stun: 5 turnos)"
     },
     "leap": {
       "name": "Pulo do Gato",

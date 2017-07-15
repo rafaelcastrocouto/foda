@@ -90,9 +90,7 @@ game.buff = {
       }
       // append buff
       target.find('.buffs').append(buff);
-      if (target.hasClass('selected')) {
-        target.select();
-      }
+      target.reselect();
       return buff;
     }
   },
@@ -136,9 +134,7 @@ game.buff = {
         }
         buff.remove();
       }
-      if (target.hasClass('selected')) {
-        target.select();
-      }
+      target.reselect();
     });
     return this;
   },
@@ -157,7 +153,7 @@ game.buff = {
         buff.data('duration', duration);
         $('span', buff).text(duration);
         var s = buff.closest('.card');
-        if (s.hasClass('selected')) s.select();
+        s.reselect();
       } else if (data && data.temp && data.buffId) {
         buff.trigger('expire', {target: card, buff: buff});
         card.removeBuff(data.buffId);

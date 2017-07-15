@@ -82,6 +82,10 @@
   text-transform: uppercase;
   margin: 3px 0 0 10px;
   line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10px;
 }
 
 .card fieldset {

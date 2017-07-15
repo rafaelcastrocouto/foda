@@ -89,7 +89,7 @@ game.highlight = {
   },
   active: function (event, source, skill) {
     var targets = skill.data('targets');
-    if (source.canCast(skill)) {
+    if (source.canCast(skill) && !source.hasClass('nohighlight')) {
       if (skill.hasClass('channel-on')) game.highlight.channelStop(event, skill, source);
       else {
         if (targets.indexOf(game.data.ui.self) >= 0) game.highlight.self(source);
@@ -192,7 +192,7 @@ game.highlight = {
   },
   move: function () {
     var card = this, speed;
-    if (card.hasClass('player') && card.hasClasses('units heroes') && card.canMove()) {
+    if (card.hasClass('player') && card.hasClasses('units heroes') && card.canMove() && !card.hasClass('nohighlight')) {
       if (card.hasClass('selected')) card.addClass('draggable');
       speed = card.data('current speed');
       if (speed < 1) { return card; }
@@ -207,7 +207,7 @@ game.highlight = {
   },
   attack: function () {
     var source = this, pos, range;
-    if (source.hasClass('player') && source.hasClasses('units heroes') && source.canAttack()) {
+    if (source.hasClass('player') && source.hasClasses('units heroes') && source.canAttack() && !source.hasClass('nohighlight')) {
       if (source.hasClass('selected')) source.addClass('draggable');
       range = source.data('range');
       source.inRange(range, function (neighbor) {

@@ -6,6 +6,7 @@ game.card = {
       place: game.card.place,
       select: game.card.select,
       unselect: game.card.unselect,
+      reselect: game.card.reselect,
       canMove: game.card.canMove,
       move: game.card.move,
       animateMove: game.card.animateMove,
@@ -220,6 +221,10 @@ game.card = {
     game.states.table.selectedCard.removeClass('flip');
     game.timeout(200, game.card.clearSelection);
   },
+  reselect: function () {
+    if (this.hasClass('selected')) this.select();
+    if (this.hasClass('source')) game.selectedCard.select();
+  },
   canMove: function() {
     return !this.hasClasses('done static dead stunned rooted entangled disabled sleeping cycloned taunted');
   },
@@ -246,8 +251,7 @@ game.card = {
           transform: ''
         }).prependTo(destiny).on('mousedown touchstart', game.card.select);
         card.trigger('moved', evt);
-        if (card.hasClass('selected'))
-          card.select();
+        card.reselect();
       }.bind(this, card, destiny);
       if (!this.hasClass('dragTarget')) game.timeout(300, end);
       else game.timeout(25, end);
@@ -282,9 +286,7 @@ game.card = {
     damage = parseInt(damage, 10);
     this.find('.current .damage span').text(damage);
     this.data('current damage', damage);
-    if (this.hasClass('selected')) {
-      this.select();
-    }
+    this.reselect();
     return this;
   },
   setCurrentHp: function(hp) {
@@ -293,9 +295,7 @@ game.card = {
     }
     this.find('.current .hp span').text(hp);
     this.data('current hp', hp);
-    if (this.hasClass('selected')) {
-      this.select();
-    }
+    this.reselect();
     return this;
   },
   setHp: function(hp) {
@@ -304,25 +304,19 @@ game.card = {
     }
     this.find('.desc .hp').text(hp);
     this.data('hp', hp);
-    if (this.hasClass('selected')) {
-      this.select();
-    }
+    this.reselect();
     return this;
   },
   setArmor: function(armor) {
     this.find('.desc .armor').text(game.data.ui.armor + ': ' + armor);
     this.data('current armor', armor);
-    if (this.hasClass('selected')) {
-      this.select();
-    }
+    this.reselect();
     return this;
   },
   setResistance: function(res) {
     this.find('.desc .resistance').text(game.data.ui.resistance + ': ' + res);
     this.data('current resistance', res);
-    if (this.hasClass('selected')) {
-      this.select();
-    }
+    this.reselect();
     return this;
   },
   setSpeed: function(speed) {
@@ -336,15 +330,17 @@ game.card = {
     }
     .bind(this), 340);
   },
-  canAttack: function() {
-    return !this.hasClasses('done dead stunned rooted disarmed');
+  canAttack: function(force) {
+    var classes = 'dead stunned rooted disarmed disabled';
+    if (!force) classes += ' done';
+    return !this.hasClasses(classes);
   },
-  attack: function(target) {
+  attack: function(target, force) {
     if (typeof target === 'string') {
       target = $('#' + target + ' .card');
     }
     var source = this, damage = source.data('current damage'), name, from = source.getPosition(), to = target.getPosition();
-    if (damage && from !== to && target.data('current hp') && source.canAttack()) {
+    if (damage && from !== to && target.data('current hp') && source.canAttack(force)) {
       source.stopChanneling();
       var evt = {
         type: 'attack',
@@ -352,6 +348,7 @@ game.card = {
         target: target
       };
       source.trigger('attack', evt).trigger('action', evt);
+      target.trigger('attacked', evt);
       if (!source.data('critical-attack') && !source.data('miss-attack')) {
         // DAMAGE
         var bonus = source.data('attack bonus') || 0;
@@ -523,11 +520,8 @@ game.card = {
       var deaths = target.data('deaths') + 1;
       target.data('deaths', deaths);
       target.find('.deaths').text(deaths);
-      if (target.hasClass('selected')) {
-        target.select();
-      } else if (source.hasClass('selected')) {
-        source.select();
-      }
+      target.reselect();
+      source.reselect();
     }
     evt.position = target.getPosition();
     game.timeout(1000, function() {

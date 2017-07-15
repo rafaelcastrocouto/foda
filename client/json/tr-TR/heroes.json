@@ -1,6 +1,31 @@
 {
 
-    "cat": {
+  "ld":{
+    "name": "Bear Druid",
+    "attribute": "Çeviklik",
+    "range": "Kısa",
+    "hp": 50,
+    "mana": 2,
+    "damage": 15,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Pusher, Carry, Durable"
+  },
+
+  "pud":{
+    "name": "Butcher",
+    "attribute": "Kuvvet",
+    "range": "Meydan",
+    "hp": 65,
+    "mana": 2,
+    "damage": 14,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Initiator, Disabler, Durable",
+    "intro": "hExBCxjiKsI"
+  },
+  
+  "cat": {
     "name": "Cat Lady",
     "attribute": "Çeviklik",
     "range": "Menzilli",
@@ -10,6 +35,18 @@
     "armor": 2,
     "resistance": 2,
     "description": "Initiator, Escape, Nuker"
+  },
+
+  "wk":{
+    "name": "Dead King",
+    "attribute": "Kuvvet",
+    "range": "Meydan",
+    "hp": 60,
+    "mana": 3,
+    "damage": 14,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Carry, Disabler, Durable"
   },
   
   "lina": {
@@ -24,21 +61,8 @@
     "description": "Nuker, Carry, Disabler"
   },
 
-  "am":{
-    "name": "Magino",
-    "attribute": "Çeviklik",
-    "range": "Meydan",
-    "hp": 40,
-    "mana": 3,
-    "damage": 13,
-    "armor": 3,
-    "resistance": 3,
-    "description": "Nuker, Carry, Escape",
-    "intro": "hIySV3k0cqo"
-  },
-
   "cm":{
-    "name": "Ice Maiden",
+    "name": "Ice Mage",
     "attribute": "Zeka",
     "range": "Menzilli",
     "hp": 40,
@@ -62,16 +86,17 @@
     "description": "Support, Nuker, Disabler"
   },
 
-  "ld":{
-    "name": "Bear Druid",
+  "am":{
+    "name": "Magino",
     "attribute": "Çeviklik",
-    "range": "Kısa",
-    "hp": 50,
-    "mana": 2,
-    "damage": 15,
+    "range": "Meydan",
+    "hp": 40,
+    "mana": 3,
+    "damage": 13,
     "armor": 3,
-    "resistance": 2,
-    "description": "Pusher, Carry, Durable"
+    "resistance": 3,
+    "description": "Nuker, Carry, Escape",
+    "intro": "hIySV3k0cqo"
   },
   
   "nyx":{
@@ -83,32 +108,19 @@
     "damage": 12,
     "armor": 3,
     "resistance": 2,
-    "description": "Initiator, Nuker, Disabler, Escape"
+    "description": "Initiator, Disabler, Escape"
   },
-
-  "pud":{
-    "name": "Butcher",
-    "attribute": "Kuvvet",
-    "range": "Meydan",
-    "hp": 65,
-    "mana": 2,
-    "damage": 14,
-    "armor": 3,
+  
+  "wind": {
+    "name": "Wind Elf",
+    "attribute": "Zeka",
+    "range": "Menzilli",
+    "hp": 40,
+    "mana": 4,
+    "damage": 13,
+    "armor": 2,
     "resistance": 2,
-    "description": "Initiator, Nuker, Disabler, Durable",
-    "intro": "hExBCxjiKsI"
-  },
-
-  "wk":{
-    "name": "Dead King",
-    "attribute": "Kuvvet",
-    "range": "Meydan",
-    "hp": 60,
-    "mana": 3,
-    "damage": 14,
-    "armor": 3,
-    "resistance": 2,
-    "description": "Initiator, Carry, Disabler, Durable"
+    "description": "Disabler, Escape, Nuker"
   }
 
 }

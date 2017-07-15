@@ -1,4 +1,63 @@
 {
+
+  "wind": {
+    "stun": {
+      "name": "Rope Shot",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman"],
+      "cast range": "Kısa",
+      "stun": 4,
+      "cards": 1,
+      "description": "Hedefi bir düşman birimine veya arkasındaki ağaca bağlar. Hiçbir birim veya ağaç yoksa, stun süresi yarıya iner"
+    },
+    "arrow": {
+      "name": "Power Arrow",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Yer"],
+      "aoe": "Doğrusal",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 16,
+      "damage reduction": 2,
+      "damage type": "Büyü",
+      "cards": 1,
+      "description": "Düşmana zarar verir ve yol boyunca ağaçları yok eder. Okun vurduğu her düşman için zararı 2 azaltıyor"
+    },
+    "run": {
+      "name": "Wind Runner",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Ayn?"],
+      "cards": 1,
+      "description": "Hareket hızını arttırır ve tüm saldırıları kaçırır",
+      "buff": {
+        "duration": 3,
+        "miss": 100,
+        "speed bonus": 1,
+        "description": "MHareket hızını arttırır ve tüm saldırıları kaçırır"
+      }
+    },
+    "ult": {
+      "name": "Rain of Arrows",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman"],
+      "cast range": "Menzilli",
+      "cards": 1,
+      "attacks": 4,
+      "damage reduction": 4,
+      "description": "Hedef bir düşmana üst üste dört kez saldırın. Hasar dört puan azaldı"
+    }
+  },
+
   "cat": {
     "star": {
       "name": "Starfall",
@@ -11,7 +70,7 @@
       "damage": 8,
       "damage type": "Büyü",
       "cards": 1,
-      "description": "Cat Lady etrafındaki düşmanlara zarar verir. Bir rasgele düşman iki kez vurulacak"
+      "description": "Cat Lady etrafındaki düşmanlara zarar verir. Bir rasgele düşman iki kez vurulacak (Max Dmg 18, Max Stun: 5 turns)"
     },
     "arrow": {
       "name": "Swift Arrow",
