@@ -11,7 +11,7 @@
   "remember": "İsmimi hatırla",
   "welcome": "Hoşgeldiniz",
   "joined": "katıldı",
-  "alphaalert": "Bu oyun yapım aşamasında <b>beta</b> ve hatalar Chrome/Safari da en iyi görüntülenir<br>yakında yeni güncellemeler test için teşekkürler<br><a href='https://github.com/rafaelcastrocouto/foda/blob/gh-pages/PRIVACY.md'>Gizlilik Politikası</a><br><small class='version'> sürüm ",
+  "alphaalert": "Bu oyun yapım aşamasında <b>beta</b> ve hatalar Chrome/Safari da en iyi görüntülenir<br>yakında yeni güncellemeler test için teşekkürler<br><a href='https://github.com/rafaelcastrocouto/dotacard/blob/master/PRIVACY.md'>Gizlilik Politikası</a><br><small class='version'> sürüm ",
   "reconnected": "Tekrar Baglan",
   "logout": "Çıkış Yap",  
   "loading": "Yükleniyor",
