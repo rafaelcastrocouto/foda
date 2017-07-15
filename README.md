@@ -34,6 +34,7 @@ Special thanks to:
 
 [![Powered by Github, Heroku, Grunt and Jquery](https://foda-app.herokuapp.com/client/img/poweredby-banner.jpg)][1]
 
+[![Fight Over Dat Ancient](https://foda-app.herokuapp.com/client/img/banner.jpg)][1]
 
 [1]: http://foda.gq/
 
