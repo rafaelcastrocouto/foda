@@ -12,6 +12,8 @@ In our Wiki page you can ckeck out the [how to play with real cards][7] and much
 
 Please report any [sugestions or issues][8] here at github.
 
+[![Fight Over Dat Ancient](https://foda-app.herokuapp.com/client/img/banner.jpg)][1]
+
 **Local server setup**
 
     npm install
@@ -33,8 +35,6 @@ Special thanks to:
 *Powered by*
 
 [![Powered by Github, Heroku, Grunt and Jquery](https://foda-app.herokuapp.com/client/img/poweredby-banner.jpg)][1]
-
-[![Fight Over Dat Ancient](https://foda-app.herokuapp.com/client/img/banner.jpg)][1]
 
 [1]: http://foda.gq/
 
