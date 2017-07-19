@@ -15,7 +15,7 @@ game.heroesAI.pud = {
       var range = hook.data('aoe range');
       var width = hook.data('aoe width');
       card.around(1, function (spot) {
-        var cardInRange = source.firstCardInLine(spot, range);
+        var cardInRange = card.firstCardInLine(spot, range);
         if (cardInRange.side() == card.opponent()) {
           var p = cardData['can-attack'] ? 25 : 5;
           if (cardInRange.hasClass('channeling')) p += 20;

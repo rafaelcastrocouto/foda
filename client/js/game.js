@@ -18,6 +18,7 @@ var game = {
   heroDeathDamage: 4,
   heroRespawnDamage: 1,
   creepDeathDamage: 1,
+  treeRespawn: 4,
   width: 9,
   height: 5,
   tries: 0,
@@ -26,13 +27,13 @@ var game = {
   timeoutArray: [],
   skills: {},
   data: {},
-  //json {heroes, skills, ui}
+  //json {heroes, skills, ui, units, campaign}
   mode: '',
-  //online, tutorial, campaign
+  //online, tutorial, single, library
   currentData: {},
   // game.currentData.moves should be a clone in online mode
   currentState: 'noscript',
-  //unsupported, load, log, menu, options, choose, table
+  //unsupported, loading, log, menu, campaign, choose, vs, table, results
   heroesAI: {},
   start: function() {
     if (window.JSON && window.localStorage && window.btoa && window.atob && window.XMLHttpRequest) {

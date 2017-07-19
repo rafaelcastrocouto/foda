@@ -24,7 +24,7 @@ game.tree = {
     var spot = tree.parent();
     var position = spot.getPosition();
     spot.addClass('free');
-    tree.data('spot', spot).data('reborn-count',2);
+    tree.data('spot', spot).data('reborn-count',game.treeRespawn);
     tree.appendTo(game.states.table.treeDeck);
     game.player.tower.on('turnend.tree'+position, function () {
       var spot = this.data('spot');
