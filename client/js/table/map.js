@@ -592,7 +592,7 @@ game.map = {
       var x = game.map.getX(source) + (i * dir.x),
           y = game.map.getY(source) + (i * dir.y);
       var spot = game.map.getSpot(x, y);
-      if (spot && spot.hasClass('free')) return spot;
+      if (spot && spot.hasClass('free') && !spot.hasClass('block')) return spot;
     }
   },
   firstCardInLine: function (target, range) {

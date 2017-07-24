@@ -38,7 +38,7 @@ game.skills.wk = {
       var damage = source.data('current damage');
       var buff = source.getBuff('wk-lifesteal');
       var bonus = buff.data('percentage') / 100;
-      if (target.side() == source.opponent()) source.heal(damage * bonus);
+      if (target.side() == source.opponent() && !source.data('miss-attack')) source.heal(damage * bonus);
     },
     death: function (event, eventdata) {
       var source = eventdata.target;
@@ -68,7 +68,7 @@ game.skills.wk = {
       var damage = source.data('current damage');
       var chance = buff.data('chance') / 100;
       var bonus = (buff.data('percentage') / 100);
-      if (game.random() < chance && target.side() == source.opponent()) {
+      if (game.random() < chance && target.side() == source.opponent() && !source.data('miss-attack')) {
         source.damage(damage * bonus, target, 'critical');
       }
     }
@@ -103,6 +103,7 @@ game.skills.wk = {
       wk.data('wk-ult-spot', null);
       if (game.mode == 'library') skill.appendTo(game[side].skills.sidehand);
       else skill.appendTo(game[side].skills.cemitery);
+      if (side == 'enemy') skill.addClass('flipped');
       game.shake();
     }
   }

@@ -14,7 +14,7 @@ var game = {
   ultTurn: 4,
   maxCards: 10,
   creepTurn: 1,
-  catapultTurn: 10,
+  catapultTurn: 8,
   heroDeathDamage: 4,
   heroRespawnDamage: 1,
   creepDeathDamage: 1,

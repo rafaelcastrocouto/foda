@@ -21,18 +21,20 @@ game.skills.ld = {
     attack: function (event, eventdata) {
       var target = eventdata.target;
       var source = eventdata.source;
-      if (target.hasClass('towers')) {
-        var demolish = source.getBuff('demolish-source');
-        source.data('attack bonus', demolish.data('tower bonus'));
-      } else if (target.side() == source.opponent()) {
-        var entangle = source.getBuff('entangle-source');
-        var chance = entangle.data('chance') / 100;
-        if (game.random() < chance) {
-          target.addClass('rooted');
-          target.on('turnend.entangle-target', game.skills.ld.summon.turnend);
-          var targetBuff = source.addBuff(target, game.data.skills.ld.summon.buffs.entangle.target);
-          targetBuff.data('source', source);
-          target.stopChanneling();
+      if (!source.data('miss-attack')) {
+        if (target.hasClass('towers')) {
+          var demolish = source.getBuff('demolish-source');
+          source.data('attack bonus', demolish.data('tower bonus'));
+        } else if (target.side() == source.opponent()) {
+          var entangle = source.getBuff('entangle-source');
+          var chance = entangle.data('chance') / 100;
+          if (game.random() < chance) {
+            target.addClass('rooted');
+            target.on('turnend.entangle-target', game.skills.ld.summon.turnend);
+            var targetBuff = source.addBuff(target, game.data.skills.ld.summon.buffs.entangle.target);
+            targetBuff.data('source', source);
+            target.stopChanneling();
+          }
         }
       }
     },

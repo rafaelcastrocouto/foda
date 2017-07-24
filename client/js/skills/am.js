@@ -11,12 +11,10 @@ game.skills.am = {
       var hero = target.data('hero');
       var opponent = target.side();
       var mana = target.data('mana');
-      if (opponent == source.opponent()) {
-        if (mana) {
-          source.data('attack bonus', mana);
-          $('.'+opponent+' .hand .'+hero).randomCard().discard();
-          game.audio.play('am/burn');
-        }
+      if (opponent == source.opponent() && !source.data('miss-attack') && mana) {
+        source.data('attack bonus', mana);
+        $('.'+opponent+' .hand .'+hero).randomCard().discard();
+        game.audio.play('am/burn');
       }
     }
   },
