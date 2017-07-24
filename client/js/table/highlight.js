@@ -160,7 +160,7 @@ game.highlight = {
   },
   freeSpots: function (source, skill) {
     source.around(skill.data('cast range'), function (neighbor) {
-      if (neighbor.hasClass('free')) {
+      if (neighbor.hasClass('free') && !neighbor.hasClass('block')) {
         neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
       }
     });
@@ -187,7 +187,7 @@ game.highlight = {
   atRange: function (source, skill, free) {
     var range = skill.data('cast range');
     source.atRange(range, function (spot) {
-      if (!free || spot.hasClass('free')) spot.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+      if (!free || (spot.hasClass('free') && !spot.hasClass('block'))) spot.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
     });
   },
   move: function () {
@@ -198,7 +198,7 @@ game.highlight = {
       if (speed < 1) { return card; }
       if (speed > 3) { speed = 3; }
       card.inMovementRange(Math.round(speed), function (neighbor) {
-        if (neighbor.hasClass('free')) { 
+        if (neighbor.hasClass('free') && !neighbor.hasClass('block')) { 
           neighbor.addClass('movearea').on('mouseup.highlight touchend.highlight', game.player.move); 
         }
       });

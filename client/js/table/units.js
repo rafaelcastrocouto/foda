@@ -10,7 +10,7 @@ game.units = {
       cb: function (deck) {
         deck.addClass('neutral units cemitery').hide().appendTo(game.states.table.el);
         $.each(deck.data('cards'), function (i, card) {
-          card.addClass('neutral unit').data('side', 'neutral').on('mousedown touchstart', game.card.select);
+          card.addClass('neutral unit').data('side', 'neutral');
         });
       }
     });
@@ -21,7 +21,7 @@ game.units = {
         //console.log(deck.data('cards'));
         deck.addClass('player units cemitery').hide().appendTo(game.states.table.player);
         $.each(deck.data('cards'), function (i, card) {
-          card.addClass('player unit').data('side', 'player').on('mousedown touchstart', game.card.select);
+          card.addClass('player unit').data('side', 'player');
           card.on('action', game.library.action).on('death', game.library.action);
         });
       }
@@ -32,7 +32,7 @@ game.units = {
       cb: function (deck) {
         deck.addClass('enemy units cemitery').hide().appendTo(game.states.table.enemy);
         $.each(deck.data('cards'), function (i, card) {
-          card.addClass('enemy unit').data('side', 'enemy').on('mousedown touchstart', game.card.select);
+          card.addClass('enemy unit').data('side', 'enemy');
         });
       }
     });
@@ -47,14 +47,15 @@ game.units = {
     melee1.appendTo(game[side].skills.sidehand);
     var melee2 = game.units.clone(game[side].unitsDeck.children('.melee'));
     melee2.appendTo(game[side].skills.sidehand);
+    ranged.on('mousedown touchstart', game.card.select);
+    melee1.on('mousedown touchstart', game.card.select);
+    melee2.on('mousedown touchstart', game.card.select);
     var summon = game.units.clone(game[side].unitsDeck.children('[class*="summon"]'));
-    if (summon) summon.appendTo(game[side].skills.sidehand);
-    if (side == 'player') {
-      ranged.on('mousedown touchstart', game.card.select);
-      melee1.on('mousedown touchstart', game.card.select);
-      melee2.on('mousedown touchstart', game.card.select);
-      if (summon) summon.on('mousedown touchstart', game.card.select);
-    } else {
+    if (summon) {
+      summon.appendTo(game[side].skills.sidehand);
+      summon.on('mousedown touchstart', game.card.select);
+    }
+    if (side != 'player') {
       ranged.addClass('flipped');
       melee1.addClass('flipped');
       melee2.addClass('flipped');

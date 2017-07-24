@@ -94,7 +94,7 @@ game.skills.wk = {
       var spot = wk.data('wk-ult-spot');
       var side = wk.side();
       wk.reborn(spot);
-      spot.removeClass('cript');
+      spot.removeClass('cript block');
       wk.opponentsInRange(range, function (target) {
         wk.addBuff(target, skill, 'ult-targets');
       });

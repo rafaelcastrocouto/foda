@@ -233,7 +233,7 @@ game.card = {
       destiny = $('#' + destiny);
     }
     var card = this, t, d, from = card.getPosition(), to = destiny.getPosition();
-    if (destiny.hasClass('free') && from !== to) {
+    if (destiny.hasClass('free') && !destiny.hasClass('block') && from !== to) {
       card.removeClass('draggable').off('mousedown touchstart');
       game.highlight.clearMap();
       card.stopChanneling();
