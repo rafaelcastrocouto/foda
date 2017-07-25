@@ -1,0 +1,127 @@
+{
+  
+  "ld":{
+    "name": "Bear Druid",
+    "attribute": "проворство",
+    "range": "короткий",
+    "hp": 50,
+    "mana": 2,
+    "damage": 15,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Pusher, Carry, Durable"
+  },
+
+  "pud":{
+    "name": "Butcher",
+    "attribute": "Прочность",
+    "range": "ближний бой",
+    "hp": 65,
+    "mana": 2,
+    "damage": 14,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Initiator, Disabler, Durable",
+    "intro": "hExBCxjiKsI"
+  },
+
+  "cat": {
+    "name": "Cat Lady",
+    "attribute": "проворство",
+    "range": "Дальний бой",
+    "hp": 40,
+    "mana": 3,
+    "damage": 13,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Initiator, Escape, Nuker"
+  },
+
+  "wk":{
+    "name": "Dead King",
+    "attribute": "Прочность",
+    "range": "ближний бой",
+    "hp": 60,
+    "mana": 3,
+    "damage": 14,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Carry, Disabler, Durable"
+  },
+
+  "lina": {
+    "name": "Fire Bender",
+    "attribute": "интеллект",
+    "range": "Дальний бой",
+    "hp": 40,
+    "mana": 4,
+    "damage": 12,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Nuker, Carry, Disabler"
+  },
+
+  "cm":{
+    "name": "Ice Mage",
+    "attribute": "интеллект",
+    "range": "Дальний бой",
+    "hp": 40,
+    "mana": 4,
+    "damage": 12,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Nuker, Support, Disabler",
+    "intro": "um5z4d9SFkI"
+  },
+  
+  "kotl":{
+    "name": "Light Keeper",
+    "attribute": "интеллект",
+    "range": "Дальний бой",
+    "hp": 40,
+    "mana": 4,
+    "damage": 13,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Support, Nuker, Disabler"
+  },
+
+  "am":{
+    "name": "Magino",
+    "attribute": "проворство",
+    "range": "ближний бой",
+    "hp": 40,
+    "mana": 3,
+    "damage": 13,
+    "armor": 3,
+    "resistance": 3,
+    "description": "Nuker, Carry, Escape",
+    "intro": "hIySV3k0cqo"
+  },
+
+  "nyx":{
+    "name": "Mix",
+    "attribute": "проворство",
+    "range": "ближний бой",
+    "hp": 50,
+    "mana": 3,
+    "damage": 12,
+    "armor": 3,
+    "resistance": 2,
+    "description": "Initiator, Disabler, Escape"
+  },
+
+  "wind": {
+    "name": "Wind Elf",
+    "attribute": "интеллект",
+    "range": "Дальний бой",
+    "hp": 40,
+    "mana": 4,
+    "damage": 13,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Disabler, Escape, Nuker"
+  }
+
+}
+

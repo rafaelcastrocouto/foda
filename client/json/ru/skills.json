@@ -1,0 +1,755 @@
+{
+
+  "wind": {
+    "stun": {
+      "name": "Rope Shot",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "короткий",
+      "stun": 4,
+      "cards": 1,
+      "description": "Связывает цель с вражеским юнитом или деревом. Если ни одна единица или дерево не присутствует, продолжительность оглушения уменьшается вдвое"
+    },
+    "arrow": {
+      "name": "Power Arrow",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно"],
+      "aoe": "линейный",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 16,
+      "damage reduction": 2,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Повреждает врагов и уничтожает деревья вдоль его пути. Для каждого врага стрела поражает, его урон уменьшается на 2"
+    },
+    "run": {
+      "name": "Wind Runner",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Увеличивает скорость передвижения и добавляет уклонение от всех атак",
+      "buff": {
+        "duration": 3,
+        "miss": 100,
+        "speed bonus": 1,
+        "description": "Скорость передвижения увеличена и уклонение от всех атак"
+      }
+    },
+    "ult": {
+      "name": "Rain of Arrows",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "Дальний бой",
+      "cards": 1,
+      "attacks": 4,
+      "damage reduction": 4,
+      "description": "Атакуйте цель противника четыре раза подряд. Урон снижается на четыре пункта"
+    }
+  },
+
+  "cat": {
+    "star": {
+      "name": "Starfall",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "aoe range": "короткий",
+      "cast range": "короткий",
+      "damage": 8,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Повреждает врагов вокруг кошачьей леди. Один случайный враг попадет дважды"
+    },
+    "arrow": {
+      "name": "Swift Arrow",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно"],
+      "aoe": "линейный",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 10,
+      "distance damage bonus": 2,
+      "stun": 1,
+      "distance stun bonus": 1,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Оглушает и повреждает одну цель. Расстояние увеличит урон и оглушение (Max Dmg 18, Max Stun: 5 витков)"
+    },
+    "leap": {
+      "name": "Cat Leap",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно", "Range", "Free"],
+      "cast range": "Дальний бой",
+      "cards": 1,
+      "description": "Перейдите в целевое место и получите бонусную скорость",
+      "buff": {
+        "duration": 3,
+        "speed bonus": 1,
+        "description": "Скорость увеличена на «Leap»"
+      }
+    },
+    "ult": {
+      "name": "Keen Shadows",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Все герои героев становятся невидимыми",
+      "buff": {
+        "description": "Скрытый 'Rivet Shadows'",
+        "duration": 4 
+      }
+    }
+  },
+
+  "lina": {
+    "fire": {
+      "name": "Dragon Flames",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно"],
+      "aoe": "линейный",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 1,
+      "aoe range": 3,
+      "damage": 12,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Столбец пламени наносит ущерб врагам в линии"
+    },
+    "stun": {
+      "name": "Fireball",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно", "Я"],
+      "cast range": "Дальний бой",
+      "aoe": "радиальный",
+      "aoe range": "ближний бой",
+      "damage": 10,
+      "stun": 2,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Огненный шар оглушает и наносит урон врагам в целевой зоне. Может уничтожать деревья"
+    },
+    "passive": {
+      "name": "Soul on fire",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Каждый бросок увеличивает урон, наносящий урон огнем. Сброс на конце поворота",
+      "buff": {
+        "cast damage bonus": 4,
+        "description": "Каждый бросок увеличивает урон, наносящий урон огнем. Сброс на конце поворота"
+      }
+    },
+    "ult": {
+      "name": "Zap",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "Дальний бой",
+      "cards": 1,
+      "damage": 30,
+      "damage type": "Волшебный",
+      "description": "Сгоняет молнию в одном вражеском отряде"
+    }
+  },
+
+  "am": {
+    "burn": {
+      "name": "Mana Burn",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Каждая атака имеет бонус урона, равный мане персонажа, и заставляет противника отбрасывать карту рук правой руки этого героя",
+      "buff": {
+        "description": "Увеличение урона от целевого пула маны и заставляет противника сбросить карту рук правой руки этого героя"
+      }
+    },
+    "blink": {
+      "name": "Blink",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно", "Free"],
+      "cast range": "долго",
+      "cards": 2,
+      "description": "Телепорт Маgino к цели"
+    },
+    "shield": {
+      "name": "Resistance",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Увеличивает сопротивление магии",
+      "buff": {
+        "resistance bonus": 4,
+        "description": "Увеличилось сопротивление магии"
+      }
+    },
+    "ult": {
+      "name": "Mana Blast",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "короткий",
+      "aoe": "радиальный",
+      "aoe range": "ближний бой",
+      "damage": 16,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Целевая область повреждения с бонусным уроном равна мане цели. Прерывает целевой канал"
+    }
+  },
+
+  "cm": {
+    "slow": {
+      "name": "Snow Blast",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно", "Я"],
+      "cast range": "Дальний бой",
+      "aoe": "радиальный",
+      "aoe range": "ближний бой",
+      "damage": 10,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Вспышка вредного мороза, который замедляет врагов в целевой зоне",
+      "buff": {
+        "speed slow": 1,
+        "duration": 2,
+        "description": "Замедленный взрыв",
+        "purgeable": true
+      }
+    },
+    "aura": {
+      "name": "Mana Aura",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Дайте бонусную карту навыка за ход",
+      "buff": {
+        "description": "Игрок покупает одну дополнительную карту навыков за ход",
+        "cards per turn": 1
+      }
+    },
+    "freeze": {
+      "name": "Ice Prison",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "Дальний бой",
+      "cards": 1,
+      "description": "Предотвращает движение и атаку, нанося урон с течением времени. Прерывает целевой канал",
+      "buff": {
+        "duration": 2,
+        "dot": 6,
+        "damage type": "Волшебный",
+        "description": "Ледовая тюрьма: обезоружена, укоренена и получает урон с течением времени"
+      }
+    },
+    "ult": {
+      "name": "Ice Storm",
+      "type": "Канал",
+      "channel": 2,
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "aoe": "радиальный",
+      "aoe range": "долго",
+      "stroke range": "долго",
+      "damage": 12,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Направьте бурю ледяных взрывов, наносящих урон врагам вокруг нее",
+      "buffs": {
+        "ult": {
+          "source": {
+            "duration": 2,
+            "description": "Let it go! Let it go!"
+          },
+          "targets": {
+            "duration": 2,
+            "speed slow": 1,
+            "description": "Замедлены и повреждены ледяными взрывами"
+          }
+        }
+      }
+    }
+  },
+
+  "kotl": {
+    "illuminate": {
+      "name": "Light Ball",
+      "type": "Канал",
+      "channel": 3,
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно"],
+      "aoe": "линейный",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 1,
+      "aoe range": 4,
+      "damage": 4,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Световой сигнал канала для повреждения врагов в линии",
+      "buffs": {
+        "illuminate": {
+          "channel": {
+            "duration": 3,
+            "description": "Направляющий свет для повреждения врагов в линииe"
+          }
+        }
+      }
+    },
+    "leak": {
+      "name": "Mana Curse",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "долго",
+      "cards": 1,
+      "description": "Принудительно отбрасывает бросок и на каждом ходу. Оглушает, если у цели больше нет карт навыков",
+      "stun": 2,
+      "buff": {
+        "duration": 4,
+        "description": "Потеряет карту навыков каждый раз, когда это устройство движется"
+      }
+    },
+    "mana": {
+      "name": "Mana Magic",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "bonus cards": 3,
+      "description": "Бонусные карты навыков игрока"
+    },
+    "ult": {
+      "name": "Astral Form",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Становится одним со светом! Карты спасения «Спасения» и «Легкий взрыв» и изменения «Легкий шар» в навык, который исцеляет союзников",
+      "buff": {
+        "duration": 6,
+        "description": "Форма духа"
+      }
+    },
+    "blind": {
+      "name": "Light Blast",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "Временный",
+      "targets": ["пятно", "Я"],
+      "aoe": "радиальный",
+      "damage": 6,
+      "damage type": "Волшебный",
+      "aoe range": "маленький",
+      "cast range": "Дальний бой",
+      "highlight": "out",
+      "cards": 1,
+      "description": "Отбросьте назад и слепые враги, заставляя их пропустить 80% атак. Прерывает целевой канал",
+      "buff": {
+        "duration": 2,
+        "miss": 80,
+        "description": "Ослепленный"
+      }
+    },
+    "recall": {
+      "name": "Rescue",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "Временный",
+      "targets": ["Союзник"],
+      "cast range": "глобальный",
+      "delay": 1,
+      "cards": 1,
+      "description": "Если он невредим после поворота врага, цель телепортируется в свободное место возле Light Keeper",
+      "buff": {
+        "duration": 2,
+        "description": "Быть спасенным"
+      }
+    }
+  },
+
+  "ld": {
+    "summon": {
+      "name": "Summon Bear",
+      "summon name": "медведь",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "Summon",
+      "targets": ["пятно", "Free"],
+      "cards": 1,
+      "cast range": "ближний бой",
+      "hp": 58,
+      "range": "ближний бой",
+      "damage": 8,
+      "armor": 3,
+      "resistance": 3,
+      "death damage": 12,
+      "description": "Призывает мощного Медведя с «когтями природы» и «снос». Наносит 12 урона призывателю при смерти. Карточка «Возврат»",
+      "buffs": {
+        "demolish": {
+          "source": {
+            "name": "Demolition",
+            "tower bonus": 6,
+            "description": "Увеличивает силу медведя, в результате чего он наносит 6 дополнительных повреждений башне"
+          }
+        },
+        "entangle": {
+          "source": {
+            "name": "Nature Claws",
+            "chance": 20,
+            "description": "Атаки имеют 20% -ный шанс вырвать корни с земли, обездвижить атакующую часть противника и наносить 6 урона в секунду. Прерывает целевой канал"
+          },
+          "target": {
+            "name": "Nature Claws",
+            "dot": 6,
+            "damage type": "физическое",
+            "duration": 3,
+            "description": "Урон и получаемый урон в секунду"
+          }
+        }
+      }
+    },
+    "bearreturn": {
+      "name": "Return",
+      "type": "активный",
+      "hand": "Оставил",
+      "deck": "Временный",
+      "targets": ["пятно", "Free"],
+      "cast range": "ближний бой",
+      "cards": 1,
+      "description": "Телепортирует Медведя обратно к Друиду Медведя. Должен быть отброшен, если медведь убит"
+    },
+    "rabid": {
+      "name": "Bear Fury",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Увеличивает скорость атаки и передвижения медведей-друидов и духа медведя",
+      "buff": {
+        "duration": 3,
+        "damage bonus": 3,
+        "speed bonus": 1,
+        "description": "Увеличилась скорость атаки и движения"
+      }
+    },
+    "roar": {
+      "name": "Fearful Roar",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я", "Summon"],
+      "damage": 6,
+      "damage type": "Волшебный",
+      "range": "ближний бой",
+      "aoe": "радиальный",
+      "aoe range": "ближний бой",
+      "stroke range": "ближний бой",
+      "highlight": "top",
+      "cards": 1,
+      "description": "Рев, заставляющий врагов бежать в ужасе. Единица отступает на одно место, если позиция свободна. Прерывает целевые каналы"
+    },
+    "ult": {
+      "name": "Bear Form",
+      "type": "тумблер",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Медведь-друид превращается в бушующего медведя с увеличенным HP и доспехами. Приобретение карты «Боевой рев»",
+      "buff": {
+        "hp bonus": 9,
+        "armor bonus": 2,
+        "description": "Форма медведя активна"
+      }
+    },
+    "cry": {
+      "name": "War Claws",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "Временный",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Увеличивает атаку и доспехи Силлабса и Духа Медведя",
+      "buff": {
+        "duration": 3,
+        "armor bonus": 2,
+        "damage bonus": 5,
+        "description": "Увеличилась атака и доспехи"
+      }
+    }
+  },
+
+  "nyx": {
+    "stun": {
+      "name": "Rock Wave",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно"],
+      "aoe": "линейный",
+      "aoe width": 0,
+      "aoe range": 3,
+      "cast range": 1,
+      "cast width": 0,
+      "cards": 1,
+      "damage type": "Волшебный",
+      "damage": 12,
+      "stun": 2,
+      "description": "Скальные шипы лопнули по прямому пути, ударили врагов, ошеломленные и нанесли урон"
+    },
+    "burn": {
+      "name": "Mind Burn",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "Дальний бой",
+      "multiplier": 4,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Наносит урон вражеской части на 4X, это мана и заставляет вражеского игрока потерять карту этого героя"
+    },
+    "spike": {
+      "name": "Carapace",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "damage type": "чистый",
+      "cards": 1,
+      "stun": 3,
+      "description": "Отразить полученный урон и оглушить источник урона",
+      "buff": {
+        "duration": 2,
+        "armor bonus": 10,
+        "resistance bonus": 10,
+        "description": "Отразить полученный урон и оглушить источник урона"
+      }
+    },
+    "ult": {
+      "name": "Burrow",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "duration": 8,
+      "damage type": "физическое",
+      "cards": 1,
+      "description": "Mix становится невидимым и получает бонусную скорость и урон",
+      "buff": {
+        "duration": 6,
+        "speed bonus": 1,
+        "damage bonus": 20,
+        "description": "Невидимый и атака увеличилась"
+      }
+    }
+  },
+
+  "pud": {
+    "hook": {
+      "name": "Meat Hook",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно"],
+      "aoe": "линейный",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 3,
+      "damage": 14,
+      "highlight": "in",
+      "damage type": "чистый",
+      "cards": 1,
+      "description": "Запускает кровавый крюк, который поймает первый блок, с которым он сталкивается, перетаскивая блок и нанося урон врагу. Прерывает вражеский канал"
+    },
+    "rot": {
+      "name": "Stink",
+      "type": "тумблер",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "aoe": "радиальный",
+      "aoe range": "ближний бой",
+      "stroke range": "ближний бой",
+      "damage": 6,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Облако вони, которое наносит урон и замедляет врагов. Урон нанесен на конец поворота, Мясник также будет поврежден",
+      "buffs": {
+        "rot": {
+          "source": {
+            "description": "Активен"
+          },
+          "targets": {
+            "speed slow": 1,
+            "duration": 1,
+            "description": "Замедление от вонь Мясника"
+          }
+        }
+      }
+    },
+    "passive": {
+      "name": "Meat Armor",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Дает бонус Мясника HP и урон при каждом убийстве и уменьшает магический урон",
+      "buff": {
+        "hp per kill": 4,
+        "damage per kill": 2,
+        "resistance bonus": 2,
+        "description": "HP и атака увеличены на одно убийство и магическое сопротивление бонусов"
+      }
+    },
+    "ult": {
+      "name": "Fresh Meat",
+      "type": "Канал",
+      "channel": 2,
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "ближний бой",
+      "dot": 10,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Отключайте и нанесите урон со временем, исцеляя себя. Прерывает целевой канал",
+      "buffs": {
+        "ult": { 
+          "source": {
+            "duration": 2,
+            "description": "Канал - свежее мясо"
+          },
+          "target": {
+            "duration": 2,
+            "description": "Отключено и получает урон с течением времени"
+          }
+        }
+      }
+    }
+  },
+
+  "wk": {
+    "stun": {
+      "name": "Fire Blast",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "короткий",
+      "damage": 12,
+      "damage type": "Волшебный",
+      "stun": 2,
+      "cards": 1,
+      "description": "Урон и оглушение цели затем замедляется и наносит урон с течением времени",
+      "buff": {
+        "damage type": "Волшебный",
+        "speed slow": 1,
+        "duration": 2,
+        "dot": 6,
+        "description": "Повреждение Огня с течением времени",
+        "purgeable": true
+      }
+    },
+    "lifesteal": {
+      "name": "Vampiric Aura",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Каждая атака будет истощать процент жизни противника",
+      "buff": {
+        "percentage": 30,
+        "description": "Снимайте жизнь при каждой атаке"
+      }
+    },
+    "crit": {
+      "name": "Mortal Strike",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Атаки «Мертвого короля» будут иметь шанс нанести бонус за критический урон",
+      "buff": {
+        "chance": 15,
+        "percentage": 300,
+        "description": "Шанс критического урона"
+      }
+    },
+    "ult": {
+      "name": "Reincarnation",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Dead King вернется на следующий поворот игрока после того, как его убили, замедляя врагов. Пассив отбрасывается",
+      "buffs": {
+        "ult": {
+          "source": {
+            "range": "ближний бой",
+            "description": "Никто не может убить Мертвого Короля!"
+          },
+          "targets": {
+            "duration": 2,
+            "speed slow": 1,
+            "description": "Замедленный возвращением короля!"
+          }
+        }
+      }
+    }
+  }
+
+}
+
