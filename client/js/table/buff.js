@@ -7,7 +7,8 @@ game.buff = {
       hasBuff: game.buff.hasBuff,
       getBuff: game.buff.getBuff,
       removeBuff: game.buff.removeBuff,
-      clearBuffs: game.buff.clearBuffs
+      clearBuffs: game.buff.clearBuffs,
+      purge: game.buff.purge
     });
   },
   addStun: function(target, skill, bonus) {
@@ -35,6 +36,7 @@ game.buff = {
     return this.addBuff(this, skill, buffs, towerForce, fxOff);
   },
   addBuff: function(target, skill, buffs, towerForce, fxOff) {
+    var source = $(this);
     //console.trace(target, skill, buffs)
     if (!target.hasClass('towers') || towerForce) {
       // get buff data
@@ -45,22 +47,17 @@ game.buff = {
       } else if (skill.data && skill.data('buff')) {
         data = skill.data('buff');
       }
-      if (!data.buffId)
-        data.buffId = buffs || skill.data('skillId');
-      if (!data.className)
-        data.className = data.buffId;
-      if (!data.name)
-        data.name = skill.data('name');
-      if (!data.source)
-        data.source = this;
-      if (!data.skill)
-        data.skill = skill;
-      if (!data.target)
-        data.target = target;
-      if (!data.description)
-        data.description = skill.data('description');
-      if (data.duration)
+      if (!data.buffId) data.buffId = buffs || skill.data('skillId');
+      if (!data.className) data.className = data.buffId;
+      if (!data.name) data.name = skill.data('name');
+      if (!data.source) data.source = this;
+      if (!data.skill) data.skill = skill;
+      if (!data.target) data.target = target;
+      if (!data.description) data.description = skill.data('description');
+      if (data.duration) {
+        data.className += ' purgeable ' + source.side();
         data.temp = true;
+      }
       // remove duplicated buff
       target.removeBuff(data.buffId);
       // create new buff
@@ -101,14 +98,15 @@ game.buff = {
   getBuff: function(buff) {
     return this.find('.buffs .' + buff);
   },
-  removeBuff: function(buffs, all) {
+  removeBuff: function(buffs, multi) {
     var target = this;
     var b;
-    if (!all) b = buffs.split(' ');
-    else b = $('.buff', target);
+    if (!multi) b = buffs.split(' ');
+    if (multi == 'all') b = $('.buff', target);
+    if (multi == 'purge') b = $('.buff.purgeable.' + target.opponent(), target);
     $.each(b, function(i, buffId) {
       var buff;
-      if (!all) buff = target.find('.buffs > .' + buffId);
+      if (!multi) buff = target.find('.buffs > .' + buffId);
       else buff = $(buffId);
       if (buff && buff.data) {
         var data = buff.data('buff');
@@ -116,8 +114,7 @@ game.buff = {
           if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
             target.setHp(target.data('hp') - data['hp bonus']);
             var hp = target.data('current hp') - data['hp bonus'];
-            if (hp < 1)
-              hp = 1;
+            if (hp < 1) hp = 1;
             target.setCurrentHp(hp);
           }
           if (data.buffId == 'stun') target.removeClass('stunned');
@@ -139,7 +136,10 @@ game.buff = {
     return this;
   },
   clearBuffs: function () {
-    this.removeBuff(0,true);
+    this.removeBuff(0,'all');
+  },
+  purge: function () {
+    this.removeBuff(0,'purge');
   },
   turn: function (card) {
     var buffs = card.find('.buffs > .buff');

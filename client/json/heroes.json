@@ -1,6 +1,6 @@
 {
   
-  "ld":{
+  "ld": {
     "name": "Bear Druid",
     "attribute": "Agility",
     "range": "Short",
@@ -12,7 +12,7 @@
     "description": "Pusher, Carry, Durable"
   },
 
-  "pud":{
+  "pud": {
     "name": "Butcher",
     "attribute": "Strength",
     "range": "Melee",
@@ -37,7 +37,7 @@
     "description": "Initiator, Escape, Nuker"
   },
 
-  "wk":{
+  "wk": {
     "name": "Dead King",
     "attribute": "Strength",
     "range": "Melee",
@@ -61,7 +61,7 @@
     "description": "Nuker, Carry, Disabler"
   },
 
-  "cm":{
+  "cm": {
     "name": "Ice Mage",
     "attribute": "Intelligence",
     "range": "Ranged",
@@ -74,7 +74,7 @@
     "intro": "um5z4d9SFkI"
   },
   
-  "kotl":{
+  "kotl": {
     "name": "Light Keeper",
     "attribute": "Intelligence",
     "range": "Ranged",
@@ -86,7 +86,7 @@
     "description": "Support, Nuker, Disabler"
   },
 
-  "am":{
+  "am": {
     "name": "Magino",
     "attribute": "Agility",
     "range": "Melee",
@@ -99,7 +99,7 @@
     "intro": "hIySV3k0cqo"
   },
 
-  "nyx":{
+  "nyx": {
     "name": "Mix",
     "attribute": "Agility",
     "range": "Melee",
@@ -109,6 +109,18 @@
     "armor": 3,
     "resistance": 2,
     "description": "Initiator, Disabler, Escape"
+  },
+
+  "com": {
+    "name": "Sashay Commander",
+    "attribute": "Strength",
+    "range": "Melee",
+    "hp": 50,
+    "mana": 2,
+    "damage": 14,
+    "armor": 3,
+    "resistance": 3,
+    "description": "Carry, Durable, Healer"
   },
 
   "wind": {

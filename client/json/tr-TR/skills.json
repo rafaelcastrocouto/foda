@@ -1,4 +1,64 @@
 {
+  "com": {
+    "aoe": {
+      "name": "Let'em come",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Sağ",
+      "targets": ["Yer", "Ayn?"],
+      "cast range": "Menzilli",
+      "aoe": "Radyal",
+      "aoe range": "Dövüş",
+      "cards": 1,
+      "damage": 4,
+      "damage per unit": 1,
+      "damage per hero": 3,
+      "damage type": "Büyü",
+      "description": "Onlara karşı düşman sayıları döndürür, birim başına 1 hasar veya kahraman başına 3 hasar verir"
+    },
+    "heal": {
+      "name": "Horn Blow",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Sağ",
+      "targets": ["Ayn?", "Müttefik"],
+      "cast range": "Ranged",
+      "cards": 1,
+      "description": "Hedef birimi boşaltın ve bonus hasarı ve dönüş başına 8 sağlık kazandırın",
+      "buff": {
+        "duration": 3,
+        "heal": 8,
+        "damage bonus": 6,
+        "description": "Hasar 6 artar ve dönüş başına 8 sağlık iyileşir"
+      }
+    },
+    "counter": {
+      "name": "Counter Attack",
+      "type": "Pasif",
+      "hand": "Sol",
+      "deck": "Sağ",
+      "targets": ["Ayn?"],
+      "cards": 1,
+      "description": "Saldırıya uğradığında, hemen% 75 yaşam döngüsü ile karşı saldırı yapma şansı var",
+      "buff": {
+        "chance": 25,
+        "lifesteal": 75,
+        "description": "Saldırıya uğradığında, hemen% 75 yaşam döngüsü ile karşı saldırı yapma şansı var"
+      }
+    },
+    "ult": {
+      "name": "Challenge",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Sağ",
+      "targets": ["Düşman"],
+      "cast range": "Dövüş",
+      "cards": 1,
+      "attacks": 3,
+      "damage bonus": 4,
+      "description": "Hedef düşmanla üç saldırı değiş tokuşu yapar. Eğer birisi ölürse, katil 4 kalıcı bonus hasarı kazanıyor"
+    }
+  },
 
   "wind": {
     "stun": {
@@ -116,7 +176,7 @@
       "description": "Tüm oyuncu kahramanları görünmezleşti",
       "buff": {
         "description": "'Cat Shadows' tarafından gizlenmiş",
-        "duration": 4 
+        "duration": 2
       }
     }
   },
@@ -710,7 +770,7 @@
       "cards": 1,
       "description": "Her saldırı düşman ömrünün% 30'unu bozar",
       "buff": {
-        "percentage": 30,
+        "lifesteal": 30,
         "description": "Her saldırıda canın artar"
       }
     },

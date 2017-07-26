@@ -331,6 +331,7 @@ game.card = {
     .bind(this), 340);
   },
   canAttack: function(force) {
+    if (force && this.data('current hp') <= 0) return false;
     var classes = 'dead stunned rooted disarmed disabled';
     if (!force) classes += ' done';
     return !this.hasClasses(classes);
@@ -339,22 +340,34 @@ game.card = {
     if (typeof target === 'string') {
       target = $('#' + target + ' .card');
     }
-    var source = this, damage = source.data('current damage'), name, from = source.getPosition(), to = target.getPosition();
+    var source = this;
+    var damage = source.data('current damage'); 
+    var from = source.getPosition(), to = target.getPosition();
+    var name;
     if (damage && from !== to && target.data('current hp') && source.canAttack(force)) {
       source.stopChanneling();
       var evt = {
         type: 'attack',
         source: source,
-        target: target
+        target: target,
+        damage: damage
       };
+      source.trigger('pre-attack', evt);
+      var dmgType = game.data.ui.physical;
+      if (source.data('critical-attack')) {
+        damage *= source.data('critical-attack');
+        dmgType = 'critical';
+      }
+      var bonus = source.data('attack bonus') || 0;
+      damage += bonus;
+      evt.damage = damage;
       source.trigger('attack', evt).trigger('action', evt);
       target.trigger('attacked', evt);
-      if (!source.data('critical-attack') && !source.data('miss-attack')) {
-        // DAMAGE
-        var bonus = source.data('attack bonus') || 0;
-        source.damage(damage + bonus, target, game.data.ui.physical);
-        source.data('attack bonus', 0);
-      }
+      if (!source.data('miss-attack')) source.damage(damage, target, dmgType);
+      //clear bonus
+      source.data('critical-attack', false);
+      source.data('attack bonus', 0);
+      //melee fx
       if (source.data('range') == game.data.ui.melee) {
         source.addClass('melee-attack');
         setTimeout(function() {
@@ -376,8 +389,6 @@ game.card = {
           game.projectile.remove();
         }, 500);
       }
-      if (source.data('critical-attack'))
-        source.data('critical-attack', false);
       if (source.data('miss-attack')) {
         // TEXT FX
         source.data('miss-attack', false);
@@ -392,7 +403,7 @@ game.card = {
       } else {
         if (source.hasClass('towers'))
           name = 'tower';
-        else if (source.hasClass('bear'))
+        else if (source.hasClass('bear') || source.hasClass('units'))
           name = 'bear';
         else
           name = source.data('hero');

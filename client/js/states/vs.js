@@ -22,6 +22,7 @@ game.states.vs = {
       this.buildEnemy();
       this.player.removeClass('slide');
       this.enemy.removeClass('slide');
+      game.units.build();
       var t = 3600;
       if (game.mode == 'library') t = 2000;
       game.timeout(t - 300, function () {
@@ -48,8 +49,11 @@ game.states.vs = {
       }
     });
     game.skill.calcMana('player');
-    this.playerinfo.text('Cards per turn: '+game.player.cardsPerTurn/*+' Max: '+game.player.maxCards*/);
-    if (game.mode == 'library') this.playerinfo.text('Mana: '+game.player.cardsPerTurn);
+    if (game.mode != 'library') this.playerinfo.text('Cards per turn: '+game.player.cardsPerTurn/*+' Max: '+game.player.maxCards*/);
+    else {
+      game.player.cardsPerTurn = 10;
+      this.playerinfo.text('Mana: '+$('.vsplayerdeck .card').data('mana')/*+' Max: '+game.player.maxCards*/);
+    }
   },
   buildEnemy: function () {
     if (!game.enemy.name) {

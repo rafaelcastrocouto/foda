@@ -54,9 +54,9 @@ game.skills.wind = {
       for (var i=0; i < skill.data('attacks'); i++) {
         game.timeout(900 * i, source.attack.bind(source, target, 'force'));
       }
-      game.timeout(3600, function (damage, done) {
+      game.timeout(3600, function (source, damage) {
         source.removeClass('nohighlight').setDamage(damage);
-      }.bind(source, damage));
+      }.bind(this, source, damage));
     }
   }
 };

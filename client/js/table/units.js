@@ -1,8 +1,5 @@
 game.units = {
-  place: function () {
-    var j = 'A2';
-    $('#' + j).addClass('jungle').attr({title: 'Jungle'});
-    $('#' + game.map.mirrorPosition(j)).addClass('jungle').attr({title: 'Jungle'});
+  build: function () {
     game.neutrals = {};
     game.neutrals.unitsDeck = game.deck.build({
       name: 'units',

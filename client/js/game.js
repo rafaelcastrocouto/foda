@@ -12,7 +12,7 @@ var game = {
   dayLength: 12,
   deadLength: 4,
   ultTurn: 4,
-  maxCards: 10,
+  maxSkillCards: 10,
   creepTurn: 1,
   catapultTurn: 8,
   heroDeathDamage: 4,

@@ -370,3 +370,27 @@
 .wind-ult .img, .buffs .buff.wind-ult .img {
   background-image: url("../img/skills/wind/ult.jpg");
 }
+
+.com {
+  background: #a95747;
+}
+
+.com.heroes .img {
+  background-image: url("../img/heroes/com.jpg");
+}
+
+.com-aoe .img {
+  background-image: url("../img/skills/com/aoe.jpg");
+}
+
+.com-heal .img, .buffs .buff.com-heal .img {
+  background-image: url("../img/skills/com/heal.jpg");
+}
+
+.com-counter .img, .buffs .buff.com-counter .img {
+  background-image: url("../img/skills/com/counter.jpg");
+}
+
+.com-ult .img {
+  background-image: url("../img/skills/com/ult.jpg");
+}

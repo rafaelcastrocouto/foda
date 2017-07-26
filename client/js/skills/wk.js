@@ -5,8 +5,8 @@ game.skills.wk = {
       source.damage(skill.data('damage'), target, skill.data('damage type'));
       target.data('wk-dot-count', 3);
       target.on('turnend.wk-stun', this.turnend.bind(this, {
-        source: source, 
-        target: target, 
+        source: source,
+        target: target,
         skill: skill
       }));
     },
@@ -32,13 +32,13 @@ game.skills.wk = {
       source.on('reborn.wk-lifesteal', this.reborn);
       source.data('wk-lifesteal', skill);
     },
-    attack: function (event, eventdata) { 
+    attack: function (event, eventdata) {
       var source = eventdata.source;
       var target = eventdata.target;
-      var damage = source.data('current damage');
+      var damage = eventdata.damage;
       var buff = source.getBuff('wk-lifesteal');
-      var bonus = buff.data('percentage') / 100;
-      if (target.side() == source.opponent() && !source.data('miss-attack')) source.heal(damage * bonus);
+      var lifesteal = buff.data('lifesteal') / 100;
+      if (target.side() == source.opponent() && !source.data('miss-attack')) source.heal(damage * lifesteal);
     },
     death: function (event, eventdata) {
       var source = eventdata.target;
@@ -59,17 +59,17 @@ game.skills.wk = {
   crit: {
     passive: function (skill, source) {
       source.selfBuff(skill);
-      source.on('attack.wk-crit', this.attack);
+      source.on('pre-attack.wk-crit', this.attack);
     },
     attack: function (event, eventdata) {
       var source = eventdata.source;
       var target = eventdata.target;
+      var damage = eventdata.damage;
       var buff = source.getBuff('wk-crit');
-      var damage = source.data('current damage');
       var chance = buff.data('chance') / 100;
-      var bonus = (buff.data('percentage') / 100);
+      var bonus = buff.data('percentage') / 100;
       if (game.random() < chance && target.side() == source.opponent() && !source.data('miss-attack')) {
-        source.damage(damage * bonus, target, 'critical');
+        source.data('critical-attack', bonus);
       }
     }
   },

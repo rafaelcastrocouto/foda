@@ -34,10 +34,10 @@ game.player = {
     }
     card = availableSkills.randomCard();
     if (card.data('hand') === game.data.ui.right) {
-      if (game.player.skills.hand.children().length < game.maxCards) {
+      if (game.player.skills.hand.children().length < game.maxSkillCards) {
         card.appendTo(game.player.skills.hand);
       }
-    } else if (game.player.skills.sidehand.children().length < game.maxCards) {
+    } else if (game.player.skills.sidehand.children().length < game.maxSkillCards) {
       card.appendTo(game.player.skills.sidehand);
     }
   },

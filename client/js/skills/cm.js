@@ -3,12 +3,13 @@ game.skills.cm = {
     cast: function (skill, source, target) {
       var opponent = source.opponent();
       var range = skill.data('aoe range');
-      target.inRange(range, function (card) {
+      target.inRange(range, function (spot) {
+        var card = spot.find('.card');
         if (card.hasClass(opponent)) {
           source.damage(skill.data('damage'), card, skill.data('damage type'));
           source.addBuff(card, skill);
         }
-      }, source);
+      });
     }
   },
   aura: {
@@ -37,16 +38,18 @@ game.skills.cm = {
       var buff = source.addBuff(target, skill);
       source.damage(buff.data('dot'), target, buff.data('damage type'));
       buff.on('buffcount', this.buffcount);
+      buff.on('expire', this.expire);
     },
     buffcount: function (event, eventdata) {
       var target = eventdata.target;
       var buff = eventdata.buff;
       var source = buff.data('source');
-      if (buff.data('duration') !== 2) source.damage(buff.data('dot'), target, buff.data('damage type'));
-      if (buff.data('duration') === 0) {
-        target.removeClass('rooted disarmed');
-        target.off('turnend.cm-freeze');
-      }
+      if (buff.data('duration') !== 2) 
+        source.damage(buff.data('dot'), target, buff.data('damage type'));
+    },
+    expire: function (event, eventdata) {
+      var target = eventdata.target;
+      target.removeClass('rooted disarmed');
     }
   },
   ult: {
@@ -58,7 +61,8 @@ game.skills.cm = {
       source.on('channelend', this.channelend);
     },
     channel: function (event, eventdata) {
-      if ( eventdata.source.data('channeling') === 0) game.skills.cm.ult.damage(event, eventdata);
+      if ( eventdata.source.data('channeling') === 0) 
+        game.skills.cm.ult.damage(event, eventdata);
     },
     damage: function (event, eventdata) {
       game.shake();

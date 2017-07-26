@@ -26,10 +26,10 @@ game.enemy = {
     }
     card = availableSkills.randomCard();
     if (card.data('hand') === game.data.ui.right) {
-      if (game.enemy.skills.hand.children().length < game.maxCards) {
+      if (game.enemy.skills.hand.children().length < game.maxSkillCards) {
         card.appendTo(game.enemy.skills.hand);
       }
-    } else if (game.enemy.skills.sidehand.children().length < game.maxCards) {
+    } else if (game.enemy.skills.sidehand.children().length < game.maxSkillCards) {
       card.appendTo(game.enemy.skills.sidehand);
     }
   },

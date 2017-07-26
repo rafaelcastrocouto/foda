@@ -8,10 +8,10 @@ game.tower = {
       range: game.data.ui.ranged,
       description: game.data.ui.towerDescription,
       buffsBox: true,
-      armor: 4,
+      armor: 10,
       resistance: 100,
-      damage: 16,
-      hp: 42
+      damage: 18,
+      hp: 16
     });
     tower.on('mousedown touchstart', game.card.select);
     tower.place(pos);

@@ -1,5 +1,66 @@
 {
 
+  "com": {
+    "aoe": {
+      "name": "Let'em come",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Self"],
+      "cast range": "Ranged",
+      "aoe": "Radial",
+      "aoe range": "Melee",
+      "cards": 1,
+      "damage": 4,
+      "damage per unit": 1,
+      "damage per hero": 3,
+      "damage type": "Magical",
+      "description": "Turns the enemy numbers against them, dealing 1 damage per unit or 3 per hero"
+    },
+    "heal": {
+      "name": "Horn Blow",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self", "Ally"],
+      "cast range": "Ranged",
+      "cards": 1,
+      "description": "Purge the target unit and grants bonus damage and 8 health per turn",
+      "buff": {
+        "duration": 3,
+        "heal": 8,
+        "damage bonus": 6,
+        "description": "Damage increased by 6 and healing 8 health per turn"
+      }
+    },
+    "counter": {
+      "name": "Counter Attack",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "cards": 1,
+      "description": "When attacked, there is a chance to immediately counterattack with 75% lifesteal",
+      "buff": {
+        "chance": 25,
+        "lifesteal": 75,
+        "description": "When attacked, there is a chance to immediately counterattack with 75% lifesteal"
+      }
+    },
+    "ult": {
+      "name": "Challenge",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "cast range": "Melee",
+      "cards": 1,
+      "attacks": 3,
+      "damage bonus": 4,
+      "description": "Exchanges three attacks with a target enemy. If anyone dies, the killer gains 4 permanent bonus damage"
+    }
+  },
+
   "wind": {
     "stun": {
       "name": "Rope Shot",
@@ -116,7 +177,7 @@
       "description": "All player heroes become invisible",
       "buff": {
         "description": "Hidden by the 'Rivet Shadows'",
-        "duration": 4 
+        "duration": 2
       }
     }
   },
@@ -709,7 +770,7 @@
       "cards": 1,
       "description": "Every attack will drain a percentage of the enemy life",
       "buff": {
-        "percentage": 30,
+        "lifesteal": 30,
         "description": "Drain life on every attack"
       }
     },

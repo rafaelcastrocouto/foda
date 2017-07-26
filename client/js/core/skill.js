@@ -45,9 +45,7 @@ game.skill = {
     $(game[side].picks).each(function (i, name) { 
       game[side].mana += game.data.heroes[name].mana;
     });
-    game[side].maxCards = 10;
     game[side].cardsPerTurn = Math.round(game[side].mana / 5);
-    if (game.mode == 'library') game[side].cardsPerTurn = $('.pickbox .card.'+game.library.hero).data('mana');
   },
   canCast: function (skill) {
     var c = !this.hasClasses('dead stunned silenced hexed disabled sleeping cycloned taunted');
