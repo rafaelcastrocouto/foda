@@ -67,6 +67,7 @@ game.states.table = {
         game.selectedCard &&
         game.selectedCard.hasClass('skills') && 
         game.isPlayerTurn() ) {
+      game.highlight.clearMap();
       game.player.discard(game.selectedCard);
       game.states.table.discard.attr('disabled', true);
     }

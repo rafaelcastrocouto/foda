@@ -15,8 +15,8 @@ game.skills.cat = {
   },
   leap: {
     cast: function (skill, source, target) {
-      source.place(target);
       source.selfBuff(skill);
+      source.place(target).select();
     }
   },
   star: {

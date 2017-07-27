@@ -122,7 +122,7 @@ game.player = {
     var skillid = skill.data('skill');
     if (game.isPlayerTurn() && hero && skillid && from && to) {
       source.cast(skill, to);
-      if (skill.data('targets').indexOf(game.data.ui.summon) >= 0) {
+      if (skill.data('deck') == game.data.ui.summon) {
         target.addClass('done').removeClass('draggable');
       }
       if (game.mode == 'online')
@@ -130,17 +130,11 @@ game.player = {
       game.skill.animateCast(skill, to, event);
     }
   },
-  stopChanneling: function() {
-    var card = $(this);
-    if (card.data('illuminate-ghost'))
-      card.data('illuminate-ghost').stopChanneling();
-    else
-      card.stopChanneling();
+  stopChanneling: function(card) {
     if (game.mode == 'online') {
       var to = card.getPosition();
       game.currentMoves.push('G:' + to);
     }
-    card.select();
   },
   summonCreep: function(event) {
     var target = $(this);

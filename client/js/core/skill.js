@@ -28,8 +28,8 @@ game.skill = {
         $.each(deck.data('cards'), function (i, skill) {
           var side = this.toString();
           skill.addClass(side);
-          if (side == 'player') skill.on('mousedown touchstart', game.card.select);
-          else skill.attr({ title: '' }).addClass('flipped');
+          if (side == 'player' || game.mode == 'library') skill.on('mousedown touchstart', game.card.select);
+          if (side == 'enemy') skill.attr({ title: '' }).addClass('flipped');
           if (skill.data('deck') === game.data.ui.summon) skill.appendTo(game[side].unitsDeck);
           if (skill.data('deck') === game.data.ui.temp) skill.appendTo(game[side].skills.temp);
           if (skill.data('skill') === 'ult') skill.appendTo(game[side].skills.ult);
@@ -64,6 +64,7 @@ game.skill = {
         } else {target = $('#' + target + ' .card'); }
       }
       if (target.length) {
+        game.highlight.clearMap();
         source.stopChanneling();
         var evt = {
           type: 'cast',
@@ -102,7 +103,6 @@ game.skill = {
     return this;
   },
   animateCast: function (skill, target, event, cb) {
-    game.highlight.clearMap();
     if (!skill.hasClass('dragTarget')) {
       if (typeof target === 'string') { target = $('#' + target); }
       var s = skill.offset();
@@ -208,7 +208,6 @@ game.skill = {
   },
   discard: function (source) {
     if (this.hasClass('skills')) {
-      game.highlight.clearMap();
       if (source && source.side() == 'player') source.select();
       else if (this.hasClass('selected')) game.card.unselect();
       this.trigger('discard', {target: this});

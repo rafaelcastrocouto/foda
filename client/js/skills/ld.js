@@ -76,6 +76,7 @@ game.skills.ld = {
         source.addBuff(bear, skill);
         bear.shake();
       }
+      source.select();
     }
   },
   roar: {
@@ -107,6 +108,7 @@ game.skills.ld = {
         this.scare(game.map.getSpot(  x  , y + 1));// bottom
         this.scare(game.map.getSpot(x - 1, y + 1));// bottom left
       }
+      target.select();
     },
     scare: function (spot) {
       if (spot) {
@@ -154,7 +156,7 @@ game.skills.ld = {
         source.addBuff(bear, skill);
         bear.shake();
       }
-      skill.discard();
+      source.select();
     }
   }
 };

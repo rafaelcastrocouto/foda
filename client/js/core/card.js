@@ -170,11 +170,6 @@ game.card = {
       target = $('#' + target);
     this.getSpot().addClass('free');
     this.appendTo(target.removeClass('free'));
-    game.highlight.map();
-    //this.parent().find('.fx').each(function () {
-    //  $(this).appendTo(target);
-    //});
-    //if (this.data('fx') && this.data('fx').canvas) { this.data('fx').canvas.appendTo(target); }
     return this;
   },
   select: function(event) {
@@ -274,13 +269,22 @@ game.card = {
     }
   },
   stopChanneling: function() {
-    if (this.hasClass('channeling')) {
-      this.trigger('channelend', this.data('channel event'));
-      $(this.data('channel skill')).removeClass('channel-on');
-      this.data('channel', null).data('channeling', null).data('channel skill', null).data('channel event', null);
-      this.off('channel').off('channelend');
-      this.removeClass('channeling');
+    var card = $(this);
+    if (card.hasClass('channeling')) {
+      card.trigger('channelend', card.data('channel event'));
+      $(card.data('channel skill')).removeClass('channel-on on');
+      card.data('channel', null).data('channeling', null).data('channel skill', null).data('channel event', null);
+      card.off('channel').off('channelend');
+      card.removeClass('channeling');
+      card.reselect();
     }
+    return this;
+  },
+  activeStopChanneling: function () {
+    var card = $(this);
+    if (card.data('illuminate-ghost')) card = $(card.data('illuminate-ghost'));
+    card.stopChanneling();
+    if (card.side() == 'player') game.player.stopChanneling(card);
   },
   setDamage: function(damage) {
     damage = parseInt(damage, 10);

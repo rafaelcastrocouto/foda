@@ -317,6 +317,7 @@
   /*filter: brightness(1.1);*/
   /*animation: blinkbright 1s infinite;*/
   background: #40c3f7;
+  opacity: 1;
 }
 @keyframes blinkbright {
   0%, 100% {filter: brightness(1);}

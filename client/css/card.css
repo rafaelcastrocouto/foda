@@ -7,22 +7,22 @@
 }
 
 .pickbox .card {
-  margin: 0 -50px;
+  margin: 0px -62px;
   top: 50%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0) translateZ(0) scale(0.4);
-  filter: blur(2.5px);
+  transform: translate3d(-50%, -50%, 0) translateZ(0) scale(0.35);
+  filter: blur(1.5px);
 }
 
 .pickbox .card.selected {
-  margin: 0 22px;
+  margin: 0px 16px;
   transform: translate3d(-50%, -50%, 0) scale(1.1);
   filter: blur(0);
 }
 
 .pickbox .card.half {
   transform: translate3d(-50%, -50%, 0) scale(0.5);
-  filter: blur(1.5px);
+  margin: 0px -50px;
 }
 .pickedbox .card {
   animation: pickedboxslidedown 0.5s;
@@ -523,6 +523,14 @@
   pointer-events: none;
   transform: translate3d(-50%,-50%,0) scale(0.4) rotateY(-180deg);
 }
+.library .table .card.flipped {
+  pointer-events: all;
+  transform: translate3d(-50%,-50%,0) scale(0.4) rotateZ(-180deg);
+}
+.library .table .card.flipped:hover {
+  pointer-events: all;
+  transform: translate3d(-50%,-50%,0) scale(0.5) rotateZ(-180deg);
+}
 
 .skills.card, .units.card {
   transform-style: preserve-3d;
@@ -621,7 +629,7 @@
   top: 50%;
   left: 50%;
   transform-origin: 100% 0%;
-  transform: translate3d(-50%, -50%, 1px);
+  transform: translate3d(-50%, -50%, 1px) !important;
   cursor: default;
   transition: all 0s;
 }
@@ -666,7 +674,7 @@
   margin-right: -100px;
 }
 
-.map .card {
+.states .table .map .card {
   position: absolute;
   z-index: 3;
   top: 50%;
@@ -690,7 +698,9 @@
 }
 
 
-.map .card:hover, .map .card.selected, .map .card.source {
+.states .table .map .card:hover, 
+.states .table .map .card.selected, 
+.states .table .map .card.source {
   transform: translate3d(-50%, -50%, 30px) rotateX(-10deg);
 }
 

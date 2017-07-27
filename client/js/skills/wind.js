@@ -39,7 +39,7 @@ game.skills.wind = {
   run: {
     cast: function (skill, source) {
       source.selfBuff(skill);
-      source.on('attacked.kotl-blind', this.attacked);
+      source.on('attacked.kotl-blind', this.attacked).select();
     },
     attacked: function (event, eventdata) {
       var source = eventdata.source;

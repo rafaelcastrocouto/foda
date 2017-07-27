@@ -54,11 +54,11 @@ game.highlight = {
   source: function () {
     var skill = this;
     var hero = skill.data('hero');
-    if (hero) $('.map .card.player.heroes.' + hero).addClass('source');
+    if (hero) $('.map .card.'+skill.side()+'.heroes.' + hero).addClass('source');
     return skill;
   },
   channelStop: function (event, skill, source) {
-    source.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.stopChanneling);
+    source.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.card.activeStopChanneling);
   },
   targets: function (event) {
     var skill = this, hero = skill.data('hero');
@@ -121,17 +121,17 @@ game.highlight = {
   self: function (source) {
     source.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
   },
-  tower: function () {
-    $('.map .player.tower').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+  tower: function (side) {
+    game[side].tower.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
   },
   ally: function (source, skill) {
     var range = skill.data('cast range');
     if (range === game.data.ui.global) {
-      $('.map .player').not('.towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+      $('.map .card.'+source.side()).not('.towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
     } else {
       source.around(range, function (neighbor) {
         var card = $('.card', neighbor);
-        if (card.hasClass('player') && !card.hasClass('towers')) {
+        if (card.hasClass(source.side()) && !card.hasClass('towers')) {
           card.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
         }
       });
@@ -140,11 +140,11 @@ game.highlight = {
   enemy: function (source, skill) {
     var range = skill.data('cast range');
     if (range === game.data.ui.global) {
-      $('.map .enemy').not('.towers').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+      $('.map .'+source.opponent()).not('.towers').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
     } else {
       source.inRange(range, function (neighbor) {
         var card = $('.card', neighbor);
-        if (card.hasClass('enemy') && !card.hasClass('towers')) {
+        if (card.hasClass(source.opponent()) && !card.hasClass('towers')) {
           card.addClass('casttarget').on('mouseup.highlight touchend.highlightd', game.player.cast);
         }
       });
@@ -192,7 +192,7 @@ game.highlight = {
   },
   move: function () {
     var card = this, speed;
-    if (card.hasClass('player') && card.hasClasses('units heroes') && card.canMove() && !card.hasClass('nohighlight')) {
+    if ((card.hasClass('player') || game.mode == 'library') && card.hasClasses('units heroes') && card.canMove() && !card.hasClass('nohighlight')) {
       if (card.hasClass('selected')) card.addClass('draggable');
       speed = card.data('current speed');
       if (speed < 1) { return card; }
@@ -207,15 +207,15 @@ game.highlight = {
   },
   attack: function () {
     var source = this, pos, range;
-    if (source.hasClass('player') && source.hasClasses('units heroes') && source.canAttack() && !source.hasClass('nohighlight')) {
+    if ((source.hasClass('player') || game.mode == 'library') && source.hasClasses('units heroes') && source.canAttack() && !source.hasClass('nohighlight')) {
       if (source.hasClass('selected')) source.addClass('draggable');
       range = source.data('range');
       source.inRange(range, function (neighbor) {
         var card = $('.card', neighbor);
-        if (card.hasClass('enemy')) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
+        if (card.hasClass(source.opponent()) && !card.hasClass('invisible')) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
         if (card[0] !== source[0] &&
             card.hasAllClasses('player units') && 
-            card.data('current hp') < card.data('hp')/2 ) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
+            card.data('current hp') < Math.floor(card.data('hp')/2) ) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
       });
     }
     return source;
@@ -354,8 +354,9 @@ game.highlight = {
     }
   },
   highlightCreep: function () {
-    game.player.tower.strokeAttack();
-    $('.spot.playerarea.free').addClass('movearea').on('mouseup.highlight touchend.highlight', game.player.summonCreep);
+    var side = game.selectedCard.side();
+    game[side].tower.strokeAttack();
+    $('.spot.'+side+'area.free').addClass('movearea').on('mouseup.highlight touchend.highlight', game.player.summonCreep);
   },
   clearMap: function () {
     game.skill.aoe = null;
