@@ -6,8 +6,9 @@ game.poll = {
     game.poll.voteBox = game.overlay.children().first().addClass('vote').html('');
     game.poll.title = $('<h2>').text(game.data.ui.votenexthero).appendTo(game.poll.voteBox);
     game.poll.voteList = $('<p>').appendTo(game.poll.voteBox);
-    game.poll.addVote('ench', 'Enchantress');
-    game.poll.addVote('legion', 'Legion');
+    game.poll.addVote('axe', 'Axe');
+    game.poll.addVote('veng', 'Venge');
+    game.poll.addVote('puk', 'Puck');
     game.poll.voteBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).attr({disabled: true}).text(game.data.ui.vote).on('mouseup touchend', game.poll.vote);
     game.poll.closeBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).text(game.data.ui.close).on('mouseup touchend', game.poll.close);
   },

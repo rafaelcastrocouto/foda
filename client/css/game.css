@@ -189,7 +189,7 @@ noscript .box {
 }
 
 .game-overlay .log.box.vote {
-  width: auto;
+  width: 640px;
 }
 
 .game-overlay .log.box.vote h2 {
