@@ -17,7 +17,7 @@ game.skills.nyx = {
       var hero = target.data('hero');
       var opponent = target.side();
       $('.'+opponent+' .hand .'+hero).randomCard().discard();
-      var damage = target.data('mana') * skill.data('multiplier');
+      var damage = (target.data('mana') || 1) * skill.data('multiplier');
       var dmgType = skill.data('damage type');
       source.damage(damage, target, dmgType);
     }

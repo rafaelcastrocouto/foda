@@ -71,7 +71,7 @@ game.library = {
       game.skill.build('player', 0, function () {
         game.player.buyCreeps(true);
         game.library.buildHand();
-        game.library.startPlayerTurn();
+        game.library.beginPlayerTurn();
         $('.map .player.card.'+game.library.hero).select();
       });
     });
@@ -81,7 +81,7 @@ game.library = {
         link = game.data.heroes[hero].intro;
     if (link && !$(this).attr('disabled')) game.states.choose.playVideo(link);
   },
-  startPlayerTurn: function () { 
+  beginPlayerTurn: function () { 
     game.turn.beginPlayer(function () {
       game.tower.attack('enemy');
       if (game.player.turn > 1) game.player.buyHand();
@@ -111,18 +111,18 @@ game.library = {
     }
   },
   endPlayerTurn: function () {
-    game.states.table.el.removeClass('turn');
-    game.turn.end('player-turn', game.library.startEnemyTurn);
+    game.turn.end('player-turn', game.library.beginEnemyTurn);
   },
-  startEnemyTurn: function () {
+  beginEnemyTurn: function () {
     game.turn.beginEnemy(function () {
+      game.loader.addClass('loading');
       game.enemy.buyHand();
       game.tower.attack('player');
       game.library.endEnemyTurn();
     });
   },
   endEnemyTurn: function () {
-    game.turn.end('enemy-turn', game.library.startPlayerTurn);
+    game.turn.end('enemy-turn', game.library.beginPlayerTurn);
   },
   win: function () {
     game.states.table.clear();

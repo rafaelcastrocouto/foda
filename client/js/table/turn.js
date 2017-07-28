@@ -17,6 +17,7 @@ game.turn = {
   beginPlayer: function (cb) {
     if (game.currentState == 'table') {
       game.player.turn += 1;
+      game.currentTurnSide = 'player';
       game.message.text(game.data.ui.yourturn);
       game.turn.el.text(game.data.ui.yourturn).addClass('show');
       game.turn.start('player-turn', cb);
@@ -25,8 +26,8 @@ game.turn = {
   beginEnemy: function (cb) {
     if (game.currentState == 'table') {
       game.enemy.turn += 1;
+      game.currentTurnSide = 'enemy';
       game.message.text(game.data.ui.enemyturn);
-      game.loader.addClass('loading');
       game.turn.start('enemy-turn', cb);
     }
   },
@@ -47,18 +48,23 @@ game.turn = {
     game.timeout(400, game.turn.tickTime);
     game.timeout(800, function () {
       game.turn.el.removeClass('show');
-      if (turn == 'player-turn') {
+      if (turn == 'player-turn' || game.mode == 'local') {
         game.timeout(400, function () {
+          if (game.mode == 'local') {
+            game.states.table.el.removeClass('unturn');
+            if (turn == 'player-turn') game.states.table.el.addClass('turn');
+            else game.states.table.el.removeClass('turn');
+          } else game.states.table.el.addClass('turn');
           game.loader.removeClass('loading');
           $('.map .card').removeClass('done');
-          game.states.table.el.addClass('turn');
           game.states.table.skip.attr('disabled', false);
           game.highlight.map();
         });
       }
       if (cb) {
-        if (turn == 'player-turn') cb(turn);
-        else game.timeout(1000, cb.bind(this, turn));
+        var t = 100;
+        if (game.mode == 'local') t = 2000;
+        game.timeout(100, cb.bind(this, turn));
       }
     });
   },
@@ -85,6 +91,7 @@ game.turn = {
   },
   end: function (turn, cb) {
     if (game.currentState == 'table') {
+      game.currentTurnSide = false;
       game.turn.tickTime();
       game.message.text(game.data.ui.turnend);
       game.moves.push(game.currentMoves.join('|'));
@@ -94,9 +101,13 @@ game.turn = {
         game.buff.turn(card);
         card.trigger('turnend', { target: card });
       });
-      if (turn == 'player-turn') {
+      if (turn == 'player-turn' && game.mode !== 'local') {
         game.states.table.el.removeClass('turn');
         game.states.table.skip.attr('disabled', true);
+      }
+      if (game.mode == 'local') {
+        game.states.table.el.removeClass('turn');
+        game.states.table.el.addClass('unturn');
       }
       if (turn == 'enemy-turn' && game.mode !== 'library') { 
         game.turn.el.text(game.data.ui.enemyturn).addClass('show');

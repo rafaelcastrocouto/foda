@@ -32,7 +32,10 @@ game.states.result = {
   update: function () {
     this.clear();
     if (game.mode == 'tutorial') game.tutorial.axe.addClass('show').appendTo(this.el);
-    if (!game.winner)  game.winner = game.player.name;
+    if (!game.winner) {
+      game.winner = game.player.name;
+      if (game.mode == 'local') game.winner = 'Good Game';
+    }
     if (game.winner == game.player.name) game.message.text(game.data.ui.win);
     else game.message.text(game.data.ui.lose);
     $(game.player.heroesDeck.data('cards')).each(this.playerHeroResult);

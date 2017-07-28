@@ -9,7 +9,7 @@ game.poll = {
     game.poll.addVote('axe', 'Axe');
     game.poll.addVote('veng', 'Venge');
     game.poll.addVote('puk', 'Puck');
-    game.poll.voteBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).attr({disabled: true}).text(game.data.ui.vote).on('mouseup touchend', game.poll.vote);
+    game.poll.voteBt = $('<div>').addClass('button highlight').appendTo(game.poll.voteBox).attr({disabled: true}).text(game.data.ui.vote).on('mouseup touchend', game.poll.vote);
     game.poll.closeBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).text(game.data.ui.close).on('mouseup touchend', game.poll.close);
   },
   addVote: function (hero, name) {

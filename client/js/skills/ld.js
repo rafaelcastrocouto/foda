@@ -89,7 +89,7 @@ game.skills.ld = {
       var range = skill.data('aoe range');
       var x = game.map.getX(target);
       var y = game.map.getY(target);
-      if (this.opponent === 'enemy') { //bottom to top to prevent blocking
+      if (this.opponent === 'player') { //bottom to top to prevent blocking
         this.scare(game.map.getSpot(x + 1, y + 1));// bottom right
         this.scare(game.map.getSpot(  x  , y + 1));// bottom
         this.scare(game.map.getSpot(x - 1, y + 1));// bottom left
@@ -98,7 +98,7 @@ game.skills.ld = {
         this.scare(game.map.getSpot(x + 1, y - 1));// top right
         this.scare(game.map.getSpot(  x  , y - 1));// top
         this.scare(game.map.getSpot(x - 1, y - 1));// top left
-      } else { //top to bottom to prevent blocking
+      } else { //top to bottom to prevent blocking)
         this.scare(game.map.getSpot(x + 1, y - 1));// top right
         this.scare(game.map.getSpot(  x  , y - 1));// top
         this.scare(game.map.getSpot(x - 1, y - 1));// top left
@@ -110,10 +110,10 @@ game.skills.ld = {
       }
       target.select();
     },
-    scare: function (spot) {
+    scare: function (spot) { 
       if (spot) {
         var target = spot.find('.card.' + this.opponent);
-        if (target.length) {
+        if (target.length) {// console.log(target)
           var x = game.map.getX(spot),
               y = game.map.getY(spot);
           var ny = 1;

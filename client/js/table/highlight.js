@@ -190,9 +190,14 @@ game.highlight = {
       if (!free || (spot.hasClass('free') && !spot.hasClass('block'))) spot.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
     });
   },
+  isTurn: function (card) {
+    if (game.mode == 'library') return true;
+    var side = card.side();
+    return side == game.currentTurnSide;
+  },
   move: function () {
     var card = this, speed;
-    if ((card.hasClass('player') || game.mode == 'library') && card.hasClasses('units heroes') && card.canMove() && !card.hasClass('nohighlight')) {
+    if (game.highlight.isTurn(card) && card.hasClasses('units heroes') && card.canMove() && !card.hasClass('nohighlight')) {
       if (card.hasClass('selected')) card.addClass('draggable');
       speed = card.data('current speed');
       if (speed < 1) { return card; }
@@ -207,7 +212,7 @@ game.highlight = {
   },
   attack: function () {
     var source = this, pos, range;
-    if ((source.hasClass('player') || game.mode == 'library') && source.hasClasses('units heroes') && source.canAttack() && !source.hasClass('nohighlight')) {
+    if (game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack() && !source.hasClass('nohighlight')) {
       if (source.hasClass('selected')) source.addClass('draggable');
       range = source.data('range');
       source.inRange(range, function (neighbor) {
@@ -274,7 +279,7 @@ game.highlight = {
     game.selectedCard.highlightArrows(spot);
     if (game.skill.aoe === game.data.ui.linear) {
       spot.linearStroke(game.skill.aoerange, game.skill.aoewidth, 'skillhoverstroke');
-      spot.find('.card').crossStroke(game.skill.castrange, game.skill.castwidth, 'skillstroke');
+      //spot.find('.card').crossStroke(game.skill.castrange, game.skill.castwidth, 'skillstroke');
     } else if (game.skill.aoe === game.data.ui.radial) {
       spot.radialStroke(game.skill.aoerange, 'skillhoverstroke');
     }
@@ -300,25 +305,26 @@ game.highlight = {
   highlightArrows: function (spot) {
     var skill = this,
         source = $('.map .source'),
-        range = skill.data('aoe range');
+        range = skill.data('aoe range'),
+        opponent = source.opponent();
     if (this.data('highlight') == 'top') {
       // LD roar
       var summon = source.data('summon');
       if (spot) {
         spot.around(range, function (neighbor) {
           neighbor.addClass('toparrow');
-          $('.card.enemy', neighbor).addClass('toparrow');
+          $('.card.'+opponent, neighbor).addClass('toparrow');
         });
       } else {
         if (game.highlight.possible(summon)) {
           summon.around(range, function (neighbor) {
             neighbor.not(source.parent()).addClass('toparrow');
-            $('.card.enemy', neighbor).addClass('toparrow');
+            $('.card.'+opponent, neighbor).addClass('toparrow');
           });
         }
         source.around(range, function (neighbor) {
           neighbor.addClass('toparrow');
-          $('.card.enemy', neighbor).addClass('toparrow');
+          $('.card.'+opponent, neighbor).addClass('toparrow');
         });
       }
     }
@@ -346,7 +352,7 @@ game.highlight = {
       if (spot) {
         // KOTL blind
         spot.inCross(1, 0, function (neighbor, dir) {
-          var card = $('.card.enemy', neighbor);
+          var card = $('.card.'+opponent, neighbor);
           if (card.length) card.addClass(dir+'arrow');
           else neighbor.addClass(dir+'arrow');
         });

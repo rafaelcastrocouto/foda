@@ -135,7 +135,7 @@ game.online = {
   chooseEnd: function () {
     game.states.choose.disablePick();
     game.states.choose.counter.text(game.data.ui.getready);
-    game.states.choose.playerpicks();
+    game.states.choose.fillPicks('player');
     game.online.sendDeck();
   },
   sendDeck: function () {
@@ -198,7 +198,6 @@ game.online = {
           if (game.player.type === 'challenger') {
             game.timeout(1000, game.online.beginEnemy);
           } else {
-            game.states.table.el.addClass('turn');
             game.timeout(1000, game.online.beginPlayer);
           }
         });
@@ -208,7 +207,10 @@ game.online = {
   startTurn: function (turn) {
     game.turn.counter = game.timeToPlay;
     var t = 1000;
-    if (turn == 'enemy-turn') t = 3000;
+    if (turn == 'enemy-turn') {
+      t = 3000;
+      game.loader.addClass('loading');
+    }
     game.timeout(t, function () { 
       game.turn.count(turn, game.online.countEnd, game.online.preGetTurnData);
     });
@@ -249,7 +251,6 @@ game.online = {
   },
   preEndPlayer: function () {
     game.turn.stopCount();
-    game.states.table.el.removeClass('turn');
     game.online.endPlayerTurn();
   },
   endPlayerTurn: function () {
@@ -324,7 +325,6 @@ game.online = {
   win: function () {
     game.turn.stopCount();
     game.winner = game.player.name;
-    game.states.table.el.removeClass('turn');
     game.online.sendTurnData('over');
     game.states.result.updateOnce = true;
     game.states.changeTo('result');
@@ -341,7 +341,6 @@ game.online = {
   lose: function () {
     game.turn.stopCount();
     game.winner = game.enemy.name;
-    game.states.table.el.removeClass('turn');
     game.loader.removeClass('loading');
     game.states.result.updateOnce = true;
     game.states.changeTo('result');

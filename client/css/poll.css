@@ -4,17 +4,6 @@
   font-size: 84%;
 }
 
-.game-overlay .voteBt, .game-overlay .voteBt[disabled]:active {
-  background-color: #66bb8c;
-  box-shadow: 0 4px 0 #4b8864;
-}
-.game-overlay .voteBt:hover {
-  background-color: #72c095;
-}
-.game-overlay .voteBt:active {
-  box-shadow: 0 1px 0 #4b8864;
-}
-
 .vote {
   overflow: hidden;
 }

@@ -82,6 +82,7 @@ game.states.table = {
     this.buttonbox.show().children().hide();
     this.el.removeClass('turn');
     if (game.turn.el) game.turn.el.removeClass('show');
+    game.states.table.el.removeClass('turn');
     game.clearTimeouts();
   },
   end: function () {

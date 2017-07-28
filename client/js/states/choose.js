@@ -161,13 +161,14 @@ game.states.choose = {
     game.states.choose.selectFirst();
     if (cb) cb();
   },
-  playerpicks: function () {
-    game.player.picks = [];
+  fillPicks: function (side) {
+    if (!side) side = 'player';
+    game[side].picks = [];
     $('.slot').each(function () { 
       var slot = $(this), card = slot.find('.card');
-      game.player.picks[slot.data('slot')] = card.data('hero');
-      if (game.player.picks.length === 5) {
-        localStorage.setItem('mydeck', game.player.picks);
+      game[side].picks[slot.data('slot')] = card.data('hero');
+      if (game[side].picks.length === 5 && side == 'player') {
+        localStorage.setItem('mydeck', game[side].picks);
       }
     });
   },

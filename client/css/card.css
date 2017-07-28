@@ -290,7 +290,8 @@
   box-shadow: 0 0 0 10px dodgerblue;
 }
 
-.card.player.done {
+.card.player.done,
+.local .card.enemy.done {
   background: silver;
 }
 
@@ -523,11 +524,13 @@
   pointer-events: none;
   transform: translate3d(-50%,-50%,0) scale(0.4) rotateY(-180deg);
 }
-.library .table .card.flipped {
+.library .table .card.flipped,
+.local .table .card.flipped {
   pointer-events: all;
   transform: translate3d(-50%,-50%,0) scale(0.4) rotateZ(-180deg);
 }
-.library .table .card.flipped:hover {
+.library .table .card.flipped:hover,
+.local .table .card.flipped:hover {
   pointer-events: all;
   transform: translate3d(-50%,-50%,0) scale(0.5) rotateZ(-180deg);
 }
@@ -566,9 +569,24 @@
   animation: playerbuyslide 2s;
 }
 
-.table .player .sidehand .card {
-  /*flex child*/
+.local .table .playerdecks .card,
+.local .table.unturn .playerdecks .card {
+  transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(180deg);
 }
+.local .table.turn .playerdecks .card {
+  transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(0);
+}
+
+
+
+.local .table.turn .enemydecks .card,
+.local .table.unturn .enemydecks .card {
+  transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(180deg) rotateZ(180deg);
+}
+.local .table .enemydecks .card {
+  transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(0) rotateZ(180deg);
+}
+
 
 .table .player .skills .card.slidedown {
   transform: translate3d(-50%, 15%, 0) scale(0.4);

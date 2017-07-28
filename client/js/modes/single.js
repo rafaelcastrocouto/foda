@@ -20,7 +20,7 @@ game.single = {
     }
   },
   chooseEnd: function () {
-    game.states.choose.playerpicks();
+    game.states.choose.fillPicks('player');
     game.states.changeTo('vs');
   },
   setTable: function () {
@@ -38,7 +38,6 @@ game.single = {
       game.player.kills = 0;
       game.enemy.kills = 0;
       game.ai.start();
-      game.states.table.el.addClass('turn');
       setTimeout(function () {
         game.skill.build('enemy');
         game.skill.build('player', 0, function () {
@@ -79,7 +78,6 @@ game.single = {
     }
   },
   endPlayerTurn: function () {
-    game.states.table.el.removeClass('turn');
     game.turn.end('player-turn', game.single.beginEnemy);
   },
   beginEnemy: function () {
@@ -101,7 +99,6 @@ game.single = {
     game.turn.stopCount();
     game.states.campaign.stage++;
     game.winner = game.player.name;
-    game.states.table.el.removeClass('turn');
     game.states.result.updateOnce = true;
     game.states.changeTo('result');
   },
@@ -111,7 +108,6 @@ game.single = {
   lose: function () {
     game.turn.stopCount();
     game.winner = game.enemy.name;
-    game.states.table.el.removeClass('turn');
     game.loader.removeClass('loading');
     game.states.result.updateOnce = true;
     game.states.changeTo('result');

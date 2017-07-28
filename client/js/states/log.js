@@ -61,7 +61,7 @@ game.states.log = {
     game.overlay.show().append(box);
     box.append($('<h1>').text(game.data.ui.warning));
     box.append($('<p>').html(game.data.ui.alphaalert + game.version + '</small>'));
-    game.poll.button = $('<div>').hide().addClass('button voteBt large').text(game.data.ui.votenexthero).on('mouseup touchend', function () {
+    game.poll.button = $('<div>').hide().addClass('button highlight large').text(game.data.ui.votenexthero).on('mouseup touchend', function () {
       game.poll.build();
       if (!game.states.log.input.val()) game.states.log.input.focus();
     });

@@ -437,7 +437,6 @@ input:focus {
   background-color: #66bb8c;
   box-shadow: 0 4px 0 #4b8864;
 }
-
 .button.highlight:active {
   box-shadow: 0 1px 0 #4b8864;
 }
@@ -446,10 +445,21 @@ input:focus {
   background: #8da7a2;
   box-shadow: 0 4px 0 #6f7d76;
 }
-
 .button.highlight:hover {
   background: #82c19f;
 }
+
+.button.alert, .button.alert[disabled]:active  {
+  background: tomato;
+  box-shadow: 0 4px 0 #df4327;
+}
+.button.alert:active {
+  box-shadow: 0 1px 0 #df4327;
+}
+.button.alert:hover {
+  background: #ff7357;
+}
+
 
 input[type="checkbox"], input[type="radio"] {
   cursor: pointer;

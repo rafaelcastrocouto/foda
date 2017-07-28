@@ -51,6 +51,8 @@
   "axesummoncreep": "Clique na seta verde para <b>invocar</b>, a torre perde 1 de HP quando um creep morre",
   "completedtutorial": "completou o tutorial",
   "online": "Jogo online",
+  "local": "Local",
+  "chooselocal": "Jogue com um amigo na mesma tela",
   "chooselibrary": "Conheça todas as cartas do jogo",
   "library": "Biblioteca",
   "skills": "Habilidades",

@@ -28,7 +28,7 @@ game.skill = {
         $.each(deck.data('cards'), function (i, skill) {
           var side = this.toString();
           skill.addClass(side);
-          if (side == 'player' || game.mode == 'library') skill.on('mousedown touchstart', game.card.select);
+          if (side == 'player' || game.mode == 'library' || game.mode == 'local') skill.on('mousedown touchstart', game.card.select);
           if (side == 'enemy') skill.attr({ title: '' }).addClass('flipped');
           if (skill.data('deck') === game.data.ui.summon) skill.appendTo(game[side].unitsDeck);
           if (skill.data('deck') === game.data.ui.temp) skill.appendTo(game[side].skills.temp);

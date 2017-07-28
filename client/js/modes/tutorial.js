@@ -84,7 +84,7 @@ game.tutorial = {
     }
   },
   chooseEnd: function () {
-    game.states.choose.playerpicks();
+    game.states.choose.fillPicks('player');
     game.states.changeTo('vs');
   },
   setTable: function () {

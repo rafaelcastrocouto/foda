@@ -148,17 +148,6 @@ label span {
   font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
 }
 
-.game-overlay .alert, .game-overlay .alert[disabled]:active  {
-  background: tomato;
-  box-shadow: 0 4px 0 #df4327;
-}
-.game-overlay .alert:active {
-  box-shadow: 0 1px 0 #df4327;
-}
-.game-overlay .alert:hover {
-  background: #ff7357;
-}
-
 .option-state .game-overlay .back {
   min-width: 140px;
   margin-bottom: 0px;

@@ -76,6 +76,7 @@ var game = {
     localStorage.setItem('data', JSON.stringify(game.currentData));
   },
   isPlayerTurn: function() {
+    if (game.mode == 'local') return true;
     return game.states.table.el.hasClass('turn');
   },
   opponent: function(side) {
@@ -117,7 +118,7 @@ var game = {
     }
     .bind(state), 220);
   },
-  validModes: ['tutorial', 'online', 'library', 'single'],
+  validModes: ['tutorial', 'online', 'library', 'single', 'local'],
   setMode: function(mode, recover) {
     if (mode && game[mode] && game[mode].build && game.validModes.indexOf(mode) >= 0) {
       game.mode = mode;
