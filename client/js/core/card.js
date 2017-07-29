@@ -105,12 +105,12 @@ game.card = {
       $('<p>').appendTo(desc).text(game.data.ui.bonus + ' ' + game.data.ui.cards + ': ' + data['bonus cards']);
     if (data.type == game.data.ui.channel)
       $('<p>').appendTo(desc).text(game.data.ui.channel+' '+game.data.ui.duration + ': ' + data.channel);
-    if (data.stun) 
+    if (data.stun && game.language.current != 'ru') 
       $('<p>').appendTo(desc).text(game.data.ui.stun+' '+game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
-    else if (data.buff && data.buff.duration)
+    else if (data.buff && data.buff.duration && game.language.current != 'ru')
       $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buff.duration + ' ' + game.data.ui.turns);
-    else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration)
-        $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
+    else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration && game.language.current != 'ru')
+      $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
 
     if (data.buff) {
       if (data.buff['hp per kill'])
