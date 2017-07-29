@@ -42,7 +42,6 @@ which may have other licenses of their own.
 "Nodejs", Joyent, https://github.com/nodejs/node
 "Serve-static", Douglas Wilson, https://github.com/expressjs/serve-static
 "Grunt", Ben Alman, https://github.com/gruntjs/grunt
-"Promise-polyfill", Taylor Hakes, https://github.com/taylorhakes/promise-polyfill
 
 ----------------------------------------------------------
 
