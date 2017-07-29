@@ -708,13 +708,17 @@
   opacity: 1;
 }
 
-.map .card.enemy.invisible {
+.map .card.enemy.invisible,
+.local .table.turn .map .card.enemy.invisible,
+.local .table .map .card.player.invisible,
+.local .table.unturn .map .card.invisible {
   display: none;
 }
-.map .playerarea .card.enemy.invisible {
+.map .playerarea .card.enemy.invisible,
+.local .map .card.enemy.invisible,
+.local .table.turn .map .card.player.invisible {
   display: inline-block;
 }
-
 
 .states .table .map .card:hover, 
 .states .table .map .card.selected, 
