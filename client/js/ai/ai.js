@@ -145,7 +145,7 @@ game.ai = {
       var enemyarea = $('.spot.free.enemyarea');
       var r = parseInt(Math.random() * enemyarea.length);
       var to = enemyarea.eq(r).getPosition();
-      game.currentData.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
+      if (game.currentData && game.currentData.moves) game.currentData.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
     }
   },
   passives: function (card) {
