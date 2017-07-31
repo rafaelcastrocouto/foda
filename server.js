@@ -124,9 +124,9 @@ http.createServer(function(request, response) {
             var player = JSON.parse(query.data);
             player.points = parseInt(player.points);
             if (player.points > mongo.ranked[0].points) {
-              mongo.ranked.splice(0,1);
               mongo.ranked.push({name: player.name, points: player.points});
               mongo.ranked.sort(function (a,b) { return a.points - b.points; });
+              if (mongo.ranked.legnth > 5) mongo.ranked.splice(0,1);
               mongo.rank = {};
               for (var i=0; i<5; i++) { mongo.rank[mongo.ranked[i].name] = mongo.ranked[i].points; }
               mongo.set('rank', mongo.rank);

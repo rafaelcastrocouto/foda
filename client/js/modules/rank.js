@@ -13,7 +13,7 @@ game.rank = {
       'set': 'rank',
       'data': {
         'name': game.player.name,
-        'points': game.player.points || 0
+        'points': game.player.points
       }
     }, game.rank.update);
   },
