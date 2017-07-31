@@ -1,5 +1,6 @@
 game.ai = {
   start: function () {
+    game.currentData.moves = [];
     // remember ai is playing the enemy cards
     if (game.ai.mode == 'very-easy') {
       game.ai.movesLoop = 10; // number of units per turn
@@ -145,7 +146,7 @@ game.ai = {
       var enemyarea = $('.spot.free.enemyarea');
       var r = parseInt(Math.random() * enemyarea.length);
       var to = enemyarea.eq(r).getPosition();
-      if (game.currentData && game.currentData.moves) game.currentData.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
+      game.currentData.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
     }
   },
   passives: function (card) {
