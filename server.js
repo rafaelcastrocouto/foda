@@ -38,7 +38,7 @@ if (secret !== 'password') {
   mongo.get('poll', function (data) { mongo.poll = data; });
   mongo.get('rank', function (data) { 
     mongo.rank = data;
-    for (var item in data) { mongo.ranked.push({'name': item, 'points': data[item]}); }
+    for (var item in data) { mongo.ranked.push({'name': item, 'points': parseInt(data[item])}); }
     mongo.ranked.sort(function (a,b) { return a.points - b.points; });
   });
 }
@@ -122,6 +122,7 @@ http.createServer(function(request, response) {
         case 'rank':
           if (secret !== 'password' && query.data) {
             var player = JSON.parse(query.data);
+            player.points = parseInt(player.points);
             if (player.points > mongo.ranked[0].points) {
               mongo.ranked.splice(0,1);
               mongo.ranked.push({name: player.name, points: player.points});
