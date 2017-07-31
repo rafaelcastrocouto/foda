@@ -547,17 +547,44 @@ label input {
   margin-bottom: 20px;
 }
 
-.menu .box {
+.menu.box {
   padding: 30px 50px;
+  left: 40%;
 }
 
-.menu .box .button {
-  height: 36px;
-  line-height: 36px;
+.menu.box .button {
+  height: 40px;
+  line-height: 40px;
   margin: 10px;
   display: block;
   font-size: 18px;
-  width: 260px;
+  width: 274px;
+}
+
+.rank.box {
+  transform: translate(215px, -66%);
+  width: 240px;
+  padding: 16px 22px;
+  border-radius: 0 18px 18px 0;
+  opacity: 0.85;
+}
+.rank.box p {
+  margin: 0;
+  width: 100%;
+  height: 28px;
+  border-bottom: 1px solid #ddd;
+}
+.rank.box p:last-child {
+  border: 0;
+}
+.rank.box span {
+  float: left;
+  max-width: 160px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.rank.box span:last-child {
+  float: right;
 }
 
 .deck {

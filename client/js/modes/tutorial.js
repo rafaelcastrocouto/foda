@@ -371,6 +371,8 @@ game.tutorial = {
     game.tutorial.letter(game.data.ui.axeend);
     game.audio.play('tutorial/axeah');
     game.winner = game.player.name;
+    game.player.points += 1;
+    localStorage.setItem('points', game.player.points);
     game.states.result.updateOnce = true;
     game.states.changeTo('result');
   },

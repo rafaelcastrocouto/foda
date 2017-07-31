@@ -1,6 +1,6 @@
 game.states.menu = {
   build: function () {
-    this.menu = $('<div>').appendTo(this.el).addClass('box');
+    this.menu = $('<div>').appendTo(this.el).addClass('menu box');
     //this.title = $('<h1>').appendTo(this.menu).text(game.data.ui.menu);
     this.tutorial = $('<div>').addClass('button highlight').appendTo(this.menu).attr({title: game.data.ui.choosetutorial}).text(game.data.ui.tutorial).on('mouseup touchend', function () {
       game.setMode('tutorial');
@@ -23,6 +23,7 @@ game.states.menu = {
       game.states.changeTo('choose');
     });
     this.credits = $('<a>').addClass('button alert').appendTo(this.menu).attr({title: game.data.ui.choosecredits, href: 'https://github.com/rafaelcastrocouto/dotacard/graphs/contributors', target: '_blank'}).html(game.data.ui.credits+' <span class="external">➔</span>');
+    game.rank.build();
   },
   start: function () {
     game.clear();

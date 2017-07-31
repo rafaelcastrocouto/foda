@@ -20,6 +20,7 @@ game.history = {
     else {
       game.options.opt.show();
       game.states.log.out.show();
+      game.player.points = localStorage.getItem('points') || 0;
       game.player.name = log;
       if (state == 'loading') state = 'log';
       if (state == 'table') state = 'vs';

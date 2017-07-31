@@ -99,6 +99,8 @@ game.single = {
     game.turn.stopCount();
     game.states.campaign.stage++;
     game.winner = game.player.name;
+    game.player.points += 1;
+    localStorage.setItem('points', game.player.points);
     game.states.result.updateOnce = true;
     game.states.changeTo('result');
   },

@@ -31,6 +31,7 @@ game.states.result = {
   },
   update: function () {
     this.clear();
+    game.rank.send();
     if (game.mode == 'tutorial') game.tutorial.axe.addClass('show').appendTo(this.el);
     if (!game.winner) {
       game.winner = game.player.name;

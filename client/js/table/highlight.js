@@ -191,7 +191,7 @@ game.highlight = {
     });
   },
   isTurn: function (card) {
-    if (game.mode == 'library') return true;
+    if (game.mode == 'library' || game.mode == 'tutorial') return true;
     var side = card.side();
     return side == game.currentTurnSide;
   },

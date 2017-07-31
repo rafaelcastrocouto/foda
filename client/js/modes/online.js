@@ -325,6 +325,8 @@ game.online = {
   win: function () {
     game.turn.stopCount();
     game.winner = game.player.name;
+    game.player.points += 10;
+    localStorage.setItem('points', game.player.points);
     game.online.sendTurnData('over');
     game.states.result.updateOnce = true;
     game.states.changeTo('result');

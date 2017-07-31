@@ -30,10 +30,18 @@ var mongo = {
       db.collection('collection').updateOne({ "document": "dotacard" }, { $set: data }, cb);
     });
   },
-  poll: {}
+  poll: {},
+  rank: {}, ranked: []
 };
 
-if (secret !== 'password') mongo.get('poll', function (data) { mongo.poll = data; });
+if (secret !== 'password') {
+  mongo.get('poll', function (data) { mongo.poll = data; });
+  mongo.get('rank', function (data) { 
+    mongo.rank = data;
+    for (var item in data) { mongo.ranked.push({'name': item, 'points': data[item]}); }
+    mongo.ranked.sort(function (a,b) { return a.points - b.points; });
+  });
+}
 
 var clientServer = serveStatic('client', {'index': ['index.html', 'index.htm']});
 var rootServer = serveStatic(__dirname);
@@ -105,11 +113,25 @@ http.createServer(function(request, response) {
           send(response, JSON.stringify({messages: chat}));
           return;
         case 'poll':
-          if (secret !== 'password') {
-            if (typeof(mongo.poll[query.data]) == 'number') mongo.poll[query.data]++;
+          if (secret !== 'password' && typeof(mongo.poll[query.data]) == 'number') {
+            mongo.poll[query.data]++;
             mongo.set('poll', mongo.poll);
           }
           send(response, JSON.stringify(mongo.poll));
+          return;
+        case 'rank':
+          if (secret !== 'password' && query.data) {
+            var player = JSON.parse(query.data);
+            if (player.points > mongo.ranked[0].points) {
+              mongo.ranked.splice(0,1);
+              mongo.ranked.push({name: player.name, points: player.points});
+              mongo.ranked.sort(function (a,b) { return a.points - b.points; });
+              mongo.rank = {};
+              for (var i=0; i<5; i++) { mongo.rank[mongo.ranked[i].name] = mongo.ranked[i].points; }
+              mongo.set('rank', mongo.rank);
+            }
+          }
+          send(response, JSON.stringify(mongo.rank));
           return;
         default: //console.log('set', query.data)
           db.set(query.set, query.data, function(data){
@@ -130,6 +152,9 @@ http.createServer(function(request, response) {
           return;
         case 'waiting':
           send(response, JSON.stringify(waiting));
+          return;
+        case 'rank':
+          send(response, JSON.stringify(mongo.rank));
           return;
         default:
           db.get(query.get, function(data) {
