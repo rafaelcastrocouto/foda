@@ -3,6 +3,11 @@ game.rank = {
     game.rank.el = $('<div>').appendTo(game.states.menu.menu).addClass('rank box');
     game.db({'get': 'rank' }, game.rank.update);
   },
+  start: function () {
+    var p = parseInt(localStorage.getItem('points'));
+    if ( typeof(p) == 'number') game.player.points = p;
+    else game.player.points = 0;
+  },
   send: function () {
     game.db({
       'set': 'rank',

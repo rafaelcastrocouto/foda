@@ -74,7 +74,7 @@ game.states.log = {
         name = game.states.log.input.val();
     if (name && valid) {
       game.player.name = name;
-      game.player.points = localStorage.getItem('points') || 0;
+      game.rank.start();
       if (game.states.log.remembername) {
         localStorage.setItem('name', name);
       } else {
