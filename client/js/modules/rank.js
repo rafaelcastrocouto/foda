@@ -24,6 +24,7 @@ game.rank = {
       ranked.push({name: name, points: points});
     });
     ranked.sort(function (a,b) { return b.points - a.points; });
+    game.rank.results = ranked;
     $.each(ranked, function (i, player) {
       game.rank.el.append($('<p>').html('<span>'+player.name+':</span><span>'+player.points+'</span>'));
     });

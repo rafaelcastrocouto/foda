@@ -121,14 +121,18 @@ http.createServer(function(request, response) {
           return;
         case 'rank':
           if (secret !== 'password' && query.data) {
-            var player = JSON.parse(query.data);
+            var player = JSON.parse(query.data), i;
             player.points = parseInt(player.points);
             if (player.points > mongo.ranked[0].points) {
-              mongo.ranked.push({name: player.name, points: player.points});
-              mongo.ranked.sort(function (a,b) { return a.points - b.points; });
-              if (mongo.ranked.legnth > 5) mongo.ranked.splice(0,1);
-              mongo.rank = {};
-              for (var i=0; i<5; i++) { mongo.rank[mongo.ranked[i].name] = mongo.ranked[i].points; }
+              if (mongo.rank[player.name]) {
+                mongo.rank[player.name] = player.points;
+              } else {
+                mongo.ranked.push({name: player.name, points: player.points});
+                mongo.ranked.sort(function (a,b) { return a.points - b.points; });
+                mongo.ranked = mongo.ranked.slice(1, 6);
+                mongo.rank = {};
+                for (i=0; i<5; i++) { mongo.rank[mongo.ranked[i].name] = mongo.ranked[i].points; }
+              }
               mongo.set('rank', mongo.rank);
             }
           }
