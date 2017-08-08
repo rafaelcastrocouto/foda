@@ -20,9 +20,7 @@ game.rank = {
   update: function (results) {
     game.rank.el.html('');
     var ranked = [];
-    $.each(results, function (name, points) {
-      ranked.push({name: name, points: points});
-    });
+    $.each(results, function (name, points) { ranked.push({name: name, points: points}); });
     ranked.sort(function (a,b) { return b.points - a.points; });
     game.rank.results = ranked;
     $.each(ranked, function (i, player) {

@@ -92,11 +92,9 @@
   margin-right: 0;
 }
 .table .selectedarea {
-  width: 200px;
-  height: 300px;
   position: absolute;
   top: 36px;
-  right: 50px;
+  right: 10px;
   border-radius: 10px;
   perspective: 600px;
   z-index: 5;

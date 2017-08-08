@@ -625,13 +625,12 @@
 }
 
 .selectedarea .selectedcard {
-  width: 200px;
-  height: 300px;
+  width: 240px;
+  height: 360px;
   transition: all 0.2s;
   backface-visibility: hidden;
   transform-style: preserve-3d;
   transform: rotateY(-180deg);
-  zoom: 1.2;
 }
 
 .selectedarea .selectedcard.flip {
@@ -650,6 +649,7 @@
   transform: translate3d(-50%, -50%, 1px) !important;
   cursor: default;
   transition: all 0s;
+  zoom: 1.2;
 }
 
 /*.table .selectedarea .selectedcard.flip .card:hover {
@@ -673,8 +673,8 @@
   background-position: 50%;
   position: absolute;
   padding: 0;
-  width: 200px;
-  height: 300px;
+  width: 240px;
+  height: 360px;
   border-radius: 8px;
   top: 50%;
   left: 50%;

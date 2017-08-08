@@ -561,7 +561,7 @@ label input {
   width: 274px;
 }
 
-.rank.box {
+.menu .rank.box {
   transform: translate(215px, -66%);
   width: 240px;
   padding: 16px 22px;
