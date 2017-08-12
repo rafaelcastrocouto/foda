@@ -121,6 +121,18 @@
     "armor": 2,
     "resistance": 2,
     "description": "Disabler, Escape, Nuker"
+  },
+
+   "venge": {
+    "name": "Venge",
+    "attribute": "Agilidade",
+    "range": "Distante",
+    "hp": 40,
+    "mana": 2,
+    "damage": 14,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Disabler, Escape, Nuker"
   }
 
 }

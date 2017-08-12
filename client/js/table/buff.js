@@ -78,6 +78,8 @@ game.buff = {
           target.setDamage(target.data('current damage') + data['damage bonus']);
         if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
           target.setArmor(target.data('current armor') + data['armor bonus']);
+        if (data['armor reduction'] && typeof (data['armor reduction']) == 'number')
+          target.setArmor(target.data('current armor') - data['armor reduction']);
         if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
           target.setResistance(target.data('current resistance') + data['resistance bonus']);
         if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
@@ -121,7 +123,9 @@ game.buff = {
           if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
             target.setDamage(target.data('current damage') - data['damage bonus']);
           if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
-            target.setArmor(target.data('current armor') - data['armor bonus']);
+            target.setArmor(target.data('current armor') - data['armor bonus']);          
+          if (data['armor reduction'] && typeof (data['armor reduction']) == 'number')
+            target.setArmor(target.data('current armor') + data['armor reduction']);
           if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
             target.setResistance(target.data('current resistance') - data['resistance bonus']);
           if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')

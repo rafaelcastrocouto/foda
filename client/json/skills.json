@@ -810,6 +810,22 @@
         }
       }
     }
-  }
+  },
 
+  "venge": {
+    "stun": {
+      "name": "Magic Missile",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "cast range": "Ranged",
+      "damage": 16,
+      "damage type": "Magical",
+      "stun": 1,
+      "cards": 1,
+      "description": "Damage and stun a target"
+      }
+    }
+  
 }
