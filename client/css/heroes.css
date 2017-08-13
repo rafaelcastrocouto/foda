@@ -394,3 +394,27 @@
 .com-ult .img {
   background-image: url("../img/skills/com/ult.jpg");
 }
+
+.venge {
+  background: #8f5ca3;
+}
+
+.venge.heroes .img {
+  background-image: url("../img/heroes/venge.jpg");
+}
+
+.venge-stun .img {
+  background-image: url("../img/skills/venge/stun.jpg");
+}
+
+.venge-corruption .img, .buffs .buff.venge-corruption .img {
+  background-image: url("../img/skills/venge/corruption.jpg");
+}
+
+.venge-passive .img {
+  background-image: url("../img/skills/venge/passive.jpg");
+}
+
+.venge-ult .img {
+  background-image: url("../img/skills/venge/ult.jpg");
+}
