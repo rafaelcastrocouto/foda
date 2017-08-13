@@ -15,5 +15,28 @@ game.skills.venge = {
         source.addBuff(card, skill);
       });
     }
+  },
+  passive: {
+    passive: function (skill, source) {
+      var side = source.side();
+      $('.map .heroes.'+side).each(function () {
+        var ally = $(this);
+        source.addBuff(ally, skill);
+      });
+
+      /*var range = 2;
+      source.cardsInRange(range, function (card) {
+          source.addBuff(card, skill);
+      });*/    
+    }
+  },
+  ult: {
+    cast: function (skill, source, target) {
+      target.purge();
+      var sourcePosition = source.getPosition();
+      var targetPosition = target.getPosition();
+      source.place(targetPosition).select();
+      target.place(sourcePosition);
+    }
   }
 };
