@@ -810,6 +810,65 @@
         }
       }
     }
-  }
+  },
 
+  "venge": {
+    "stun": {
+      "name": "Magic Missile",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "cast range": "Ranged",
+      "damage": 14,
+      "damage type": "Magical",
+      "stun": 1,
+      "cards": 1,
+      "description": "Damage and stun a target"
+      },
+     "corruption": {
+      "name": "Wave of Terror",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 6,
+      "damage type": "Magical",
+      "cards": 1,
+      "description": "Weakens enemy armor",
+      "buff": {
+            "duration": 3,
+            "armor reduction": 2,
+            "description": "Reduces Armor"
+        }
+     },
+     "passive": {
+      "name": "Vengeance Aura",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "cards": 1,
+      "description": "Increases the physical damage of nearby friendly units",
+      "buff": {
+        "damage bonus": 2,
+        "description": "Attack Bonus"
+      }
+    },
+     "ult":{
+      "name":"Nether Swap",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy", "Ally"],
+      "cast range": 3,
+      "cards": 1,
+      "description": "Instantaneously swaps positions with a target Hero, friend or enemy."
+     }
+   }  
 }

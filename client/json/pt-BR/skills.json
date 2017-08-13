@@ -88,6 +88,7 @@
       "damage type": "Mágico",
       "cards": 1,
       "description": "Causa dano e destrói árvores ao longo do caminho. Para cada inimigo, o dano da flecha é reduzido em 2"
+
     },
     "run": {
       "name": "Pé de Vento",
@@ -810,6 +811,65 @@
         }
       }
     }
-  }
+  },
 
+   "venge": {
+    "stun": {
+      "name": "Míssil Mágico",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos"],
+      "cast range": "Médio",
+      "damage": 14,
+      "damage type": "Mágico",
+      "stun": 1,
+      "cards": 1,
+      "description": "Causa dano e atordoa o alvo"
+      },
+     "corruption": {
+      "name": "Onda Aterrorizante",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Local"],
+      "aoe": "Linear",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 6,
+      "damage type": "Mágico",
+      "cards": 1,
+      "description": "Reduz armadura dos inimigos atingidos",
+      "buff": {
+            "duration": 3,
+            "armor reduction": 2,
+            "description": "Reduz Armadura"
+        }
+     },
+     "passive": {
+      "name": "Aura da Vingança",
+      "type": "Passiva",
+      "hand": "Esquerda",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "cards": 1,
+      "description": "Aumenta o dano causado",
+      "buff": {
+        "damage bonus": 2,
+        "description": "Bonus de Ataque"
+      }
+    },
+     "ult":{
+      "name":"Troca das Profundezas",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos", "Aliados"],
+      "cast range": 3,
+      "cards": 1,
+      "description": "Troca instantaneamente de posição com um herói-alvo, seja aliado ou inimigo"
+     }
+    }
 }
