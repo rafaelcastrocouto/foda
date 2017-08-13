@@ -810,6 +810,66 @@
         }
       }
     }
-  }
+  },
+
+  "venge": {
+    "stun": {
+      "name": "Magic Missile",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman"],
+      "cast range": "Menzilli",
+      "damage": 14,
+      "damage type": "Büyü",
+      "stun": 1,
+      "cards": 1,
+      "description": "Hasar ve şok hedef"
+      },
+     "corruption": {
+      "name": "Wave of Terror",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Yer"],
+      "aoe": "Doğrusal",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 6,
+      "damage type": "Büyü",
+      "cards": 1,
+      "description": "Düşman zırhını zayıflatır",
+      "buff": {
+            "duration": 3,
+            "armor reduction": 2,
+            "description": "Azaltılmış Zırh"
+        }
+     },
+     "passive": {
+      "name": "Vengeance Aura",
+      "type": "Pasif",
+      "hand": "Sol",
+      "deck": "Satın Al",
+      "targets": ["Ayn?"],
+      "cards": 1,
+      "description": "Yakındaki dost birliklerin fiziksel hasarını arttırır",
+      "buff": {
+        "damage bonus": 2,
+        "description": "Saldırı Bonusu"
+      }
+    },
+     "ult":{
+      "name":"Nether Swap",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman", "Müttefik"],
+      "cast range": 3,
+      "cards": 1,
+      "description": "Bir hedef Hero, arkadaş veya düşmanla konumları anında değiştirir"
+     }
+   }
   
 }

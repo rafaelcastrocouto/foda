@@ -809,7 +809,67 @@
         }
       }
     }
-  }
+  },
+
+  "venge": {
+    "stun": {
+      "name": "Magic Missile",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "Дальний бой",
+      "damage": 14,
+      "damage type": "Волшебный",
+      "stun": 1,
+      "cards": 1,
+      "description": "Повреждение и оглушение цели"
+      },
+     "corruption": {
+      "name": "Wave of Terror",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["пятно"],
+      "aoe": "линейный",
+      "cast range": 1,
+      "cast width": 0,
+      "aoe width": 0,
+      "aoe range": 4,
+      "damage": 6,
+      "damage type": "Волшебный",
+      "cards": 1,
+      "description": "Ослабляет броню противника",
+      "buff": {
+            "duration": 3,
+            "armor reduction": 2,
+            "description": "Уменьшенная броня"
+        }
+     },
+     "passive": {
+      "name": "Vengeance Aura",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Увеличивает физический урон близлежащих дружественных подразделений",
+      "buff": {
+        "damage bonus": 2,
+        "description": "Бонус атаки"
+      }
+    },
+     "ult":{
+      "name":"Nether Swap",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг", "Союзник"],
+      "cast range": 3,
+      "cards": 1,
+      "description": "Мгновенно меняет позиции с целевым героем, другом или врагом"
+     }
+   }
 
 }
 

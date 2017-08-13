@@ -844,7 +844,7 @@
       "buff": {
             "duration": 3,
             "armor reduction": 2,
-            "description": "Reduces Armor"
+            "description": "Reduced Armor"
         }
      },
      "passive": {
@@ -868,7 +868,7 @@
       "targets": ["Enemy", "Ally"],
       "cast range": 3,
       "cards": 1,
-      "description": "Instantaneously swaps positions with a target Hero, friend or enemy."
+      "description": "Instantaneously swaps positions with a target Hero, friend or enemy"
      }
-   }  
+   }
 }

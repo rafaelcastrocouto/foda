@@ -813,7 +813,7 @@
     }
   },
 
-   "venge": {
+  "venge": {
     "stun": {
       "name": "Míssil Mágico",
       "type": "Ativa",
@@ -826,8 +826,8 @@
       "stun": 1,
       "cards": 1,
       "description": "Causa dano e atordoa o alvo"
-      },
-     "corruption": {
+    },
+    "corruption": {
       "name": "Onda Aterrorizante",
       "type": "Ativa",
       "hand": "Direita",
@@ -843,12 +843,12 @@
       "cards": 1,
       "description": "Reduz armadura dos inimigos atingidos",
       "buff": {
-            "duration": 3,
-            "armor reduction": 2,
-            "description": "Reduz Armadura"
-        }
-     },
-     "passive": {
+        "duration": 3,
+        "armor reduction": 2,
+        "description": "Reduz Armadura"
+      }
+    },
+    "passive": {
       "name": "Aura da Vingança",
       "type": "Passiva",
       "hand": "Esquerda",
@@ -861,7 +861,7 @@
         "description": "Bonus de Ataque"
       }
     },
-     "ult":{
+    "ult":{
       "name":"Troca das Profundezas",
       "type": "Ativa",
       "hand": "Direita",
@@ -870,6 +870,6 @@
       "cast range": 3,
       "cards": 1,
       "description": "Troca instantaneamente de posição com um herói-alvo, seja aliado ou inimigo"
-     }
     }
+  }
 }
