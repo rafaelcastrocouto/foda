@@ -823,7 +823,7 @@
       "cast range": "Médio",
       "damage": 14,
       "damage type": "Mágico",
-      "stun": 1,
+      "stun": 2,
       "cards": 1,
       "description": "Causa dano e atordoa o alvo"
     },
@@ -848,7 +848,7 @@
         "description": "Reduz Armadura"
       }
     },
-    "passive": {
+    "aura": {
       "name": "Aura da Vingança",
       "type": "Passiva",
       "hand": "Esquerda",
@@ -867,7 +867,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos", "Aliados"],
-      "cast range": 3,
+      "cast range": 4,
       "cards": 1,
       "description": "Troca instantaneamente de posição com um herói-alvo, seja aliado ou inimigo"
     }

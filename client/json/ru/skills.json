@@ -821,11 +821,11 @@
       "cast range": "Дальний бой",
       "damage": 14,
       "damage type": "Волшебный",
-      "stun": 1,
+      "stun": 2,
       "cards": 1,
       "description": "Повреждение и оглушение цели"
-      },
-     "corruption": {
+    },
+    "corruption": {
       "name": "Wave of Terror",
       "type": "активный",
       "hand": "верно",
@@ -841,12 +841,12 @@
       "cards": 1,
       "description": "Ослабляет броню противника",
       "buff": {
-            "duration": 3,
-            "armor reduction": 2,
-            "description": "Уменьшенная броня"
-        }
-     },
-     "passive": {
+        "duration": 3,
+        "armor reduction": 2,
+        "description": "Уменьшенная броня"
+      }
+    },
+    "aura": {
       "name": "Vengeance Aura",
       "type": "пассивный",
       "hand": "Оставил",
@@ -865,7 +865,7 @@
       "hand": "верно",
       "deck": "пока",
       "targets": ["Враг", "Союзник"],
-      "cast range": 3,
+      "cast range": 4,
       "cards": 1,
       "description": "Мгновенно меняет позиции с целевым героем, другом или врагом"
      }

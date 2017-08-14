@@ -411,8 +411,8 @@
   background-image: url("../img/skills/venge/corruption.jpg");
 }
 
-.venge-passive .img {
-  background-image: url("../img/skills/venge/passive.jpg");
+.venge-aura .img, .buffs .buff.venge-aura .img {
+  background-image: url("../img/skills/venge/aura.jpg");
 }
 
 .venge-ult .img {

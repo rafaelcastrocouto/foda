@@ -16,27 +16,43 @@ game.skills.venge = {
       });
     }
   },
-  passive: {
+  aura: {
     passive: function (skill, source) {
+      source.on('death.venge-aura');
+      source.on('reborn.venge-aura');
+      source.data('venge-aura', skill);
       var side = source.side();
       $('.map .heroes.'+side).each(function () {
         var ally = $(this);
         source.addBuff(ally, skill);
       });
-
-      /*var range = 2;
-      source.cardsInRange(range, function (card) {
-          source.addBuff(card, skill);
-      });*/    
+    },
+    death: function (event, eventdata) {
+      var target = eventdata.target;
+      var side = target.side();
+      $('.map .heroes.'+side).each(function () {
+        var ally = $(this);
+        source.removeBuff('venge-aura');
+      });
+    },
+    reborn: function (event, eventdata) {
+      var target = eventdata.target;
+      var side = target.side();
+      var skill = target.data('venge-aura');
+      $('.map .heroes.'+side).each(function () {
+        var ally = $(this);
+        source.addBuff(ally, skill);
+      });
     }
   },
   ult: {
     cast: function (skill, source, target) {
-      target.purge();
+      if (target.side() == source.side()) target.purge();
       var sourcePosition = source.getPosition();
       var targetPosition = target.getPosition();
-      source.place(targetPosition).select();
       target.place(sourcePosition);
+      source.place(targetPosition);
+      game.timeout(200, source.select.bind(source));
     }
   }
 };

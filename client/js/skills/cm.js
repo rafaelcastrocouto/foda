@@ -21,13 +21,13 @@ game.skills.cm = {
       source.selfBuff(skill);
     },
     death: function (event, eventdata) {
-      var cm = eventdata.target;
-      var side = cm.side();
+      var target = eventdata.target;
+      var side = target.side();
       game[side].cardsPerTurn -= 1;
     },
     reborn: function (event, eventdata) {
-      var cm = eventdata.target;
-      var side = cm.side();
+      var target = eventdata.target;
+      var side = target.side();
       game[side].cardsPerTurn += 1;
     }
   },

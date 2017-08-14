@@ -822,11 +822,11 @@
       "cast range": "Ranged",
       "damage": 14,
       "damage type": "Magical",
-      "stun": 1,
+      "stun": 2,
       "cards": 1,
       "description": "Damage and stun a target"
-      },
-     "corruption": {
+    },
+    "corruption": {
       "name": "Wave of Terror",
       "type": "Active",
       "hand": "Right",
@@ -840,14 +840,14 @@
       "damage": 6,
       "damage type": "Magical",
       "cards": 1,
-      "description": "Weakens enemy armor",
+      "description": "Weakens enemy armor by 2 points",
       "buff": {
-            "duration": 3,
-            "armor reduction": 2,
-            "description": "Reduced Armor"
-        }
-     },
-     "passive": {
+        "duration": 3,
+        "armor reduction": 2,
+        "description": "Reduced Armor"
+      }
+    },
+    "aura": {
       "name": "Vengeance Aura",
       "type": "Passive",
       "hand": "Left",
@@ -866,7 +866,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy", "Ally"],
-      "cast range": 3,
+      "cast range": 4,
       "cards": 1,
       "description": "Instantaneously swaps positions with a target Hero, friend or enemy"
      }

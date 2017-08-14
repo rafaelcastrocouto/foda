@@ -822,11 +822,11 @@
       "cast range": "Menzilli",
       "damage": 14,
       "damage type": "Büyü",
-      "stun": 1,
+      "stun": 2,
       "cards": 1,
       "description": "Hasar ve şok hedef"
-      },
-     "corruption": {
+    },
+    "corruption": {
       "name": "Wave of Terror",
       "type": "Aktif",
       "hand": "Sağ",
@@ -842,12 +842,12 @@
       "cards": 1,
       "description": "Düşman zırhını zayıflatır",
       "buff": {
-            "duration": 3,
-            "armor reduction": 2,
-            "description": "Azaltılmış Zırh"
-        }
-     },
-     "passive": {
+        "duration": 3,
+        "armor reduction": 2,
+        "description": "Azaltılmış Zırh"
+      }
+    },
+    "aura": {
       "name": "Vengeance Aura",
       "type": "Pasif",
       "hand": "Sol",
@@ -866,7 +866,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman", "Müttefik"],
-      "cast range": 3,
+      "cast range": 4,
       "cards": 1,
       "description": "Bir hedef Hero, arkadaş veya düşmanla konumları anında değiştirir"
      }

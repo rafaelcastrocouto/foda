@@ -97,7 +97,7 @@ game.local = {
     }
   },
   endPlayer: function () {
-    
+    if (game.selectedCard) game.selectedCard.unselect();
     game.turn.end('player-turn', game.local.beginEnemy);
   },
 
@@ -113,6 +113,7 @@ game.local = {
     });
   },
   endEnemy: function () {
+    if (game.selectedCard) game.selectedCard.unselect();
     game.turn.end('enemy-turn', game.local.beginPlayer);
   },
   

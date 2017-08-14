@@ -45,7 +45,7 @@
     "mana": 3,
     "damage": 14,
     "armor": 3,
-    "resistance": 2,
+    "resistance": 3,
     "description": "Carry, Disabler, Durable"
   },
 
@@ -126,11 +126,11 @@
   "venge": {
     "name": "Venge",
     "attribute": "проворство",
-    "range": "Дальний бой",
-    "hp": 40,
+    "range": "короткий",
+    "hp": 42,
     "mana": 2,
-    "damage": 14,
-    "armor": 2,
+    "damage": 13,
+    "armor": 3,
     "resistance": 2,
     "description": "Disabler, Escape, Nuker"
   }
