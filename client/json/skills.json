@@ -854,7 +854,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "An aura that increases the attack damage of nearby friendly units",
+      "description": "An aura that increases the attack damage of nearby friendly units. If Venge dies, damage bonus will double",
       "buff": {
         "damage bonus": 2,
         "description": "Attack Bonus"

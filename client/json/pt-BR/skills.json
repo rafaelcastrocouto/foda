@@ -855,7 +855,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cards": 1,
-      "description": "Aumenta o dano causado",
+      "description": "Aumenta o dano de toda equipe. Se a Venge morrer, o bônus de dano irá dobrar",
       "buff": {
         "damage bonus": 2,
         "description": "Bonus de Ataque"

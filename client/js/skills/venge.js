@@ -18,8 +18,8 @@ game.skills.venge = {
   },
   aura: {
     passive: function (skill, source) {
-      source.on('death.venge-aura');
-      source.on('reborn.venge-aura');
+      source.on('death.venge-aura', this.death);
+      source.on('reborn.venge-aura', this.reborn);
       source.data('venge-aura', skill);
       var side = source.side();
       $('.table .card.'+side).each(function () {
@@ -30,9 +30,17 @@ game.skills.venge = {
     death: function (event, eventdata) {
       var target = eventdata.target;
       var side = target.side();
+      var skill = target.data('venge-aura');
       $('.table .card.'+side).each(function () {
         var ally = $(this);
-        source.removeBuff('venge-aura');
+        ally.removeBuff('venge-aura');
+      });
+      var buff = skill.data('buff');
+      buff['damage bonus'] *= 2;
+      skill.data('buff', buff);
+      $('.table .card.'+side).each(function () {
+        var ally = $(this);
+        target.addBuff(ally, skill);
       });
     },
     reborn: function (event, eventdata) {
@@ -41,13 +49,21 @@ game.skills.venge = {
       var skill = target.data('venge-aura');
       $('.table .card.'+side).each(function () {
         var ally = $(this);
-        source.addBuff(ally, skill);
+        ally.removeBuff('venge-aura');
+      });
+      var buff = skill.data('buff');
+      buff['damage bonus'] /= 2;
+      skill.data('buff', buff);
+      $('.table .card.'+side).each(function () {
+        var ally = $(this);
+        target.addBuff(ally, skill);
       });
     }
   },
   ult: {
     cast: function (skill, source, target) {
       if (target.side() == source.side()) target.purge();
+      target.stopChanneling();
       var sourcePosition = source.getPosition();
       var targetPosition = target.getPosition();
       target.place(sourcePosition);

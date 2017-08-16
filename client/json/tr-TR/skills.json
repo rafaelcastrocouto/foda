@@ -854,7 +854,7 @@
       "deck": "Satın Al",
       "targets": ["Ayn?"],
       "cards": 1,
-      "description": "Yakındaki dost birliklerin fiziksel hasarını arttırır",
+      "description": "Yakındaki dost birliklerin saldırı hasarını arttıran bir aura. Venge ölürse, hasar bonusu iki katına çıkar.",
       "buff": {
         "damage bonus": 2,
         "description": "Saldırı Bonusu"
