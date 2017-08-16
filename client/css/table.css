@@ -39,7 +39,7 @@
 
 .table .enemy .skills.hand {
   margin-right: 38px;
-  left: 10px;
+  left: 5px;
   width: 340px;
   display: flex;
   justify-content: flex-end;
@@ -54,7 +54,7 @@
 
 .table .enemy .skills.sidehand {
   right: 260px;
-  width: 230px;
+  width: 255px;
   display: flex;
   padding-right: 60px;
 }
@@ -65,8 +65,8 @@
 
 .table .player .skills.sidehand {
   margin-right: 60px;
-  left: 25px;
-  width: 220px;
+  left: 15px;
+  width: 230px;
   display: flex;
   /* flex-direction: row-reverse; */
   justify-content: flex-end;
@@ -80,7 +80,7 @@
   left: auto;
 }
 .table .player .skills.hand {
-  left: 300px;
+  left: 310px;
   width: 360px;
   display: flex;
   margin-right: 60px;

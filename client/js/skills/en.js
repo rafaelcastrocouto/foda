@@ -20,6 +20,7 @@ game.skills.en = {
       if (target.hasAllClasses('spot jungle')) {
         game.units.forestCreep(side, target);
       }
+      target = $('.card', target);
       if (target.hasAllClasses(opponent +' heroes')) {
         source.addBuff(target, skill);
       }

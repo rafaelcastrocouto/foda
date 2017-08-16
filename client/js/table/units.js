@@ -68,13 +68,11 @@ game.units = {
     catapult.appendTo(game[side].skills.sidehand);
     var summon = game.units.clone(game[side].unitsDeck.children('[class*="summon"]'));
     if (summon) summon.appendTo(game[side].skills.sidehand);
-    if (side == 'player') {
-      ranged.on('mousedown touchstart', game.card.select);
-      melee.on('mousedown touchstart', game.card.select);
-      catapult.on('mousedown touchstart', game.card.select);
-      if (summon) summon.on('mousedown touchstart', game.card.select);
-    }
-    else {
+    ranged.on('mousedown touchstart', game.card.select);
+    melee.on('mousedown touchstart', game.card.select);
+    catapult.on('mousedown touchstart', game.card.select);
+    if (summon) summon.on('mousedown touchstart', game.card.select);
+    if (side == 'enemy') {
       ranged.addClass('flipped');
       melee.addClass('flipped');
       catapult.addClass('flipped');
