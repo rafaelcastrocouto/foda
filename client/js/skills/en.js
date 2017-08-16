@@ -19,13 +19,13 @@ game.skills.en = {
       var opponent = source.opponent();
       if (target.hasAllClasses('spot jungle')) {
         game.units.forestCreep(side, target);
-      }
-      target = $('.card', target);
-      if (target.hasAllClasses(opponent +' heroes')) {
-        source.addBuff(target, skill);
-      }
-      if (target.hasAllClasses(opponent +' units')) {
-        target.removeClass(opponent).addClass(side);
+      }else {
+        target = $('.card', target);
+        if (target.hasAllClasses(opponent +' heroes') || target.hasAllClasses(opponent +' ld-summon')) {
+          source.addBuff(target, skill);
+        } else if (target.hasAllClasses(opponent +' units')) {
+          target.removeClass(opponent).addClass(side);
+        }
       }
     }
   },

@@ -21,7 +21,7 @@ game.skills.cat = {
   },
   star: {
     cast: function (skill, source) {
-      var range = skill.data('aoe range'), targets = [];
+      var range = skill.data('cast range'), targets = [];
       source.opponentsInRange(range, function (target) {
         source.damage(skill.data('damage'), target, skill.data('damage type'));
         targets.push(target);

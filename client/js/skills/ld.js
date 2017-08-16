@@ -9,7 +9,7 @@ game.skills.ld = {
         source.data('summon', bear);
         source.addBuff(bear, skill, 'demolish-source');
         source.addBuff(bear, skill, 'entangle-source');
-        bear.on('attack', this.attack);
+        bear.on('pre-attack', this.attack);
         bear.on('death', this.death);
         bear.data('return', $('.table .'+side+' .temp.skills .ld-bearreturn'));
       }
@@ -18,13 +18,13 @@ game.skills.ld = {
       bear.addClass('done');
       bear.place(target);
     },
-    attack: function (event, eventdata) {
+    attack: function (event, eventdata) { 
       var target = eventdata.target;
       var source = eventdata.source;
       if (!source.data('miss-attack')) {
-        if (target.hasClass('towers')) {
+        if (target.hasClass('towers')) { 
           var demolish = source.getBuff('demolish-source');
-          source.data('attack bonus', demolish.data('tower bonus'));
+          eventdata.bonus = demolish.data('tower bonus');
         } else if (target.side() == source.opponent()) {
           var entangle = source.getBuff('entangle-source');
           var chance = entangle.data('chance') / 100;

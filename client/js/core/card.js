@@ -366,9 +366,7 @@ game.card = {
         damage *= source.data('critical-attack');
         dmgType = 'critical';
       }
-      var bonus = source.data('attack bonus') || 0;
-      damage += bonus;
-      bonus = evt.bonus || 0;
+      var bonus = evt.bonus || 0;
       damage += bonus;
       evt.damage = damage;
       source.trigger('attack', evt).trigger('action', evt);
@@ -376,7 +374,7 @@ game.card = {
       if (!source.data('miss-attack')) source.damage(damage, target, dmgType);
       //clear bonus
       source.data('critical-attack', false);
-      source.data('attack bonus', 0);
+      evt.bonus = 0;
       //melee fx
       if (source.data('range') == game.data.ui.melee) {
         source.addClass('melee-attack');
