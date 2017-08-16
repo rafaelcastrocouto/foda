@@ -871,5 +871,70 @@
       "cards": 1,
       "description": "Troca instantaneamente de posição com um herói-alvo, seja aliado ou inimigo"
     }
-  }
+  },
+  
+  "en": {
+    "passive": {
+      "name": "Intocável",
+      "type": "Passiva",
+      "hand": "Esquerda",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "cards": 1,
+      "description": "Inimigos que atacarem terão seu dano reduzido durante o turno",
+      "buffs": {
+        "passive": {
+          "self": {
+            "description": "Não me toque"
+          },
+          "attacker": {
+            "duration": 1,
+            "damage reduction": 4,
+            "description": "Dano reduzido"
+          }
+        }
+      }
+    },
+    "curse": {
+      "name": "Sedução",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos","Mato"],
+      "cast range": "Distante",
+      "cards": 1,
+      "description": "Invoca uma criatura da floresta, toma controle de de uma unidade inimiga ou reduz a velocidade de uma herói inimigo",
+      "buff": {
+        "duration": 2,
+        "speed slow": 1,
+        "description": "Seduzido"
+      }
+    },
+    "heal": {
+      "name": "Fadinhas",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "cast range": "Distante",
+      "max targets": 4,
+      "cards": 1,
+      "description": "Invoca 5 fadinhas para curar o time",
+      "buff": {
+        "heal": 5,
+        "duration": 4,
+        "description": "Fadinha"
+      }
+    },
+     "ult":{
+      "name": "Saudade",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos"],
+      "cast range": "Distante",
+      "cards": 2,
+      "description": "Ataca um inimigo com dano aumentado pelo dobro da distancia"
+     }
+   }
 }

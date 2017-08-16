@@ -25,7 +25,6 @@ game.skills.com = {
       var buff = source.addBuff(target, skill);
       target.heal(buff.data('heal'));
       buff.on('buffcount', this.buffcount);
-      buff.on('expire', this.expire);
       target.select();
     },
     buffcount: function (event, eventdata) {

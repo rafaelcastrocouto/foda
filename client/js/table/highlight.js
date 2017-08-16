@@ -95,6 +95,7 @@ game.highlight = {
         if (targets.indexOf(game.data.ui.self) >= 0) game.highlight.self(source);
         if (targets.indexOf(game.data.ui.ally) >= 0) game.highlight.ally(source, skill);
         if (targets.indexOf(game.data.ui.enemy) >= 0) game.highlight.enemy(source, skill);
+        if (targets.indexOf(game.data.ui.jungle) >= 0) game.highlight.jungle(source, skill);
         if (targets.indexOf(game.data.ui.sumonner) >= 0) game.highlight.summoner(source, skill);
         if (targets.indexOf(game.data.ui.spot) >= 0) {
           if (targets.indexOf(game.data.ui.range) >= 0) game.highlight.atRange(source, skill, (targets.indexOf(game.data.ui.free) >= 0));
@@ -149,6 +150,12 @@ game.highlight = {
         }
       });
     }
+  },
+  jungle: function (source, skill) {
+    var range = skill.data('cast range');
+    source.inRange(range, function (neighbor) {
+      if (neighbor.hasAllClasses('jungle free')) neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+    });
   },
   summoner: function (source, skill) {
     var summoner = source.data(game.data.ui.summoner);

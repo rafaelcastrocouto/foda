@@ -14,9 +14,6 @@ game.states.table = {
     this.skip = $('<div>').hide().appendTo(this.buttonbox).addClass('skip button highlight').attr({disabled: true, title: 'SPACE'}).text(game.data.ui.skip).on('mouseup touchend', this.skipClick);
     this.discard = $('<div>').hide().appendTo(this.buttonbox).addClass('discard button').attr({disabled: true}).text(game.data.ui.discard).on('mouseup touchend', this.discardClick);
     this.el.append(game.camera).append(this.selectedArea).append(this.buttonbox).append(this.player).append(this.enemy);
-    var j = 'A2';
-    $('#' + j).addClass('jungle').attr({title: 'Jungle'});
-    $('#' + game.map.mirrorPosition(j)).addClass('jungle').attr({title: 'Jungle'});
   },
   start: function (recover) {
     if (game.turn.el) {
@@ -27,6 +24,7 @@ game.states.table = {
       game.states.table.setup = true;
       game.tower.place();
       game.tree.place();
+      game.units.forestSpot();
       game[game.mode].setTable();
     }
   },

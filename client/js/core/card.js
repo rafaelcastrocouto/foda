@@ -129,6 +129,9 @@ game.card = {
         $('<p>').appendTo(desc).text(game.data.ui.armor + ' ' + game.data.ui.bonus + ': ' + data.buff['armor bonus']);
       if (data.buff['resistance bonus'])
         $('<p>').appendTo(desc).text(game.data.ui.resistance + ' ' + game.data.ui.bonus + ': ' + data.buff['resistance bonus']);
+      if (data.buff.heal)
+        $('<p>').appendTo(desc).text(game.data.ui.heal + ' ' + game.data.ui.bonus + ': ' + data.buff.heal);
+
     }
     //if (data.cards)      $('<p>').appendTo(desc).text(game.data.ui.cards+': ' + data.cards);
     if (data.description) {
@@ -357,12 +360,15 @@ game.card = {
         damage: damage
       };
       source.trigger('pre-attack', evt);
+      target.trigger('pre-attacked', evt);
       var dmgType = game.data.ui.physical;
       if (source.data('critical-attack')) {
         damage *= source.data('critical-attack');
         dmgType = 'critical';
       }
       var bonus = source.data('attack bonus') || 0;
+      damage += bonus;
+      bonus = evt.bonus || 0;
       damage += bonus;
       evt.damage = damage;
       source.trigger('attack', evt).trigger('action', evt);

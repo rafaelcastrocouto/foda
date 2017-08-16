@@ -76,6 +76,8 @@ game.buff = {
         }
         if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
           target.setDamage(target.data('current damage') + data['damage bonus']);
+        if (data['damage reduction'] && typeof (data['damage reduction']) == 'number')
+          target.setDamage(target.data('current damage') - data['damage reduction']);
         if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
           target.setArmor(target.data('current armor') + data['armor bonus']);
         if (data['armor reduction'] && typeof (data['armor reduction']) == 'number')
@@ -122,6 +124,8 @@ game.buff = {
           if (data.buffId == 'stun') target.removeClass('stunned');
           if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
             target.setDamage(target.data('current damage') - data['damage bonus']);
+          if (data['damage reduction'] && typeof (data['damage reduction']) == 'number')
+            target.setDamage(target.data('current damage') + data['damage reduction']);
           if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
             target.setArmor(target.data('current armor') - data['armor bonus']);          
           if (data['armor reduction'] && typeof (data['armor reduction']) == 'number')

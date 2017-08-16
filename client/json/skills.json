@@ -25,7 +25,7 @@
       "targets": ["Self", "Ally"],
       "cast range": "Ranged",
       "cards": 1,
-      "description": "Purge the target unit and grants bonus damage and 8 health per turn",
+      "description": "Purge the target unit and grants bonus damage and heals",
       "buff": {
         "duration": 3,
         "heal": 8,
@@ -814,7 +814,7 @@
 
   "venge": {
     "stun": {
-      "name": "Magic Missile",
+      "name": "Magic Blast",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -827,7 +827,7 @@
       "description": "Damage and stun a target"
     },
     "corruption": {
-      "name": "Wave of Terror",
+      "name": "Terror Wave",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
@@ -854,21 +854,86 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cards": 1,
-      "description": "Increases the physical damage of nearby friendly units",
+      "description": "An aura that increases the attack damage of nearby friendly units",
       "buff": {
         "damage bonus": 2,
         "description": "Attack Bonus"
       }
     },
      "ult":{
-      "name":"Nether Swap",
+      "name": "In my Shoes",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy", "Ally"],
-      "cast range": 4,
+      "cast range": "Ranged",
       "cards": 1,
       "description": "Instantaneously swaps positions with a target Hero, friend or enemy"
+     }
+   },
+
+  "en": {
+    "passive": {
+      "name": "Untouched",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "cards": 1,
+      "description": "Attacker's will be cursed and suffer reduced damage for the turn",
+      "buffs": {
+        "passive": {
+          "self": {
+            "description": "Can't touch this"
+          },
+          "attacker": {
+            "duration": 1,
+            "damage reduction": 4,
+            "description": "Reduced Damage"
+          }
+        }
+      }
+    },
+    "curse": {
+      "name": "Seduction",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy","Jungle"],
+      "cast range": "Ranged",
+      "cards": 1,
+      "description": "Summon a forest creep, takes control over an enemy unit or slow an enemy hero",
+      "buff": {
+        "duration": 2,
+        "speed slow": 1,
+        "description": "Charmed"
+      }
+    },
+    "heal": {
+      "name": "Healing Wisps",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "cast range": "Ranged",
+      "max targets": 4,
+      "cards": 1,
+      "description": "Invoke 5 Healing Wisps for herself and nearby friendly units",
+      "buff": {
+        "heal": 5,
+        "duration": 4,
+        "description": "Healing Wisp"
+      }
+    },
+     "ult":{
+      "name": "Spear of Missing",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "cast range": "Long",
+      "cards": 2,
+      "description": "Attack a target enemy with bonus damage equal to twice the distance"
      }
    }
 }

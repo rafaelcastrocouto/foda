@@ -22,7 +22,7 @@ game.skills.venge = {
       source.on('reborn.venge-aura');
       source.data('venge-aura', skill);
       var side = source.side();
-      $('.map .heroes.'+side).each(function () {
+      $('.table .card.'+side).each(function () {
         var ally = $(this);
         source.addBuff(ally, skill);
       });
@@ -30,7 +30,7 @@ game.skills.venge = {
     death: function (event, eventdata) {
       var target = eventdata.target;
       var side = target.side();
-      $('.map .heroes.'+side).each(function () {
+      $('.table .card.'+side).each(function () {
         var ally = $(this);
         source.removeBuff('venge-aura');
       });
@@ -39,7 +39,7 @@ game.skills.venge = {
       var target = eventdata.target;
       var side = target.side();
       var skill = target.data('venge-aura');
-      $('.map .heroes.'+side).each(function () {
+      $('.table .card.'+side).each(function () {
         var ally = $(this);
         source.addBuff(ally, skill);
       });

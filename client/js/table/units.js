@@ -80,5 +80,23 @@ game.units = {
       catapult.addClass('flipped');
       if (summon) summon.addClass('flipped');
     }
+  },
+  forestSpot: function () {
+    var j = 'A2';
+    $('#' + j).addClass('jungle').attr({title: 'Jungle'});
+    $('#' + game.map.mirrorPosition(j)).addClass('jungle').attr({title: 'Jungle'});
+  },
+  forestCreep: function (side, target) {
+    var r = Math.floor(game.random() * game.neutrals.unitsDeck.children().length);
+    var randomUnit = $(game.neutrals.unitsDeck.children()[r]);
+    var creep = game.units.clone(randomUnit);
+    creep.removeClass('neutral').addClass(side);
+    creep.appendTo(target);
+    if (side == 'player') {
+      creep.on('mousedown touchstart', game.card.select);
+    }
+    else {
+      crep.addClass('flipped');
+    }
   }
 };

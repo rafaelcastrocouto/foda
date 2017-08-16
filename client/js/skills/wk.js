@@ -25,7 +25,7 @@ game.skills.wk = {
   lifesteal: {
     passive: function (skill, source) {
       var side = source.side();
-      var team = $('.table .card.heroes.'+side);
+      var team = $('.table .card.'+side);
       team.on('attack.wk-lifesteal', this.attack);
       source.addBuff(team, skill);
       source.on('death.wk-lifesteal', this.death);
@@ -43,7 +43,7 @@ game.skills.wk = {
     death: function (event, eventdata) {
       var source = eventdata.target;
       var side = source.side();
-      var team = $('.table .card.heroes.'+side);
+      var team = $('.table .card.'+side);
       team.removeBuff('wk-lifesteal');
       team.off('attack.wk-lifesteal');
     },
@@ -51,7 +51,7 @@ game.skills.wk = {
       var source = eventdata.target;
       var skill = source.data('wk-lifesteal');
       var side = source.side();
-      var team = $('.table .card.heroes.'+side);
+      var team = $('.table .card.'+side);
       source.addBuff(team, skill);
       team.on('attack.wk-lifesteal', this.attack);
     }

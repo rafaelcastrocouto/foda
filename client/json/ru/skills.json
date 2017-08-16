@@ -24,7 +24,7 @@
       "targets": ["Я", "Союзник"],
       "cast range": "Дальний бой",
       "cards": 1,
-      "description": "Очистите целевую единицу и получите бонусный урон и 8 ед. Здоровья за ход",
+      "description": "Очистите целевую единицу и нанесите бонусный урон и исцелите",
       "buff": {
         "duration": 3,
         "heal": 8,
@@ -813,7 +813,7 @@
 
   "venge": {
     "stun": {
-      "name": "Magic Missile",
+      "name": "Magic Blast",
       "type": "активный",
       "hand": "верно",
       "deck": "пока",
@@ -826,7 +826,7 @@
       "description": "Повреждение и оглушение цели"
     },
     "corruption": {
-      "name": "Wave of Terror",
+      "name": "Terror Wave",
       "type": "активный",
       "hand": "верно",
       "deck": "пока",
@@ -860,14 +860,79 @@
       }
     },
      "ult":{
-      "name":"Nether Swap",
+      "name":"In my Shoes",
       "type": "активный",
       "hand": "верно",
       "deck": "пока",
       "targets": ["Враг", "Союзник"],
-      "cast range": 4,
+      "cast range": "Дальний бой",
       "cards": 1,
       "description": "Мгновенно меняет позиции с целевым героем, другом или врагом"
+     }
+   },
+
+  "en": {
+    "passive": {
+      "name": "Untouched",
+      "type": "пассивный",
+      "hand": "Оставил",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cards": 1,
+      "description": "Атакующий будет проклят и получит меньший урон за ход",
+      "buffs": {
+        "passive": {
+          "self": {
+            "description": "Не могу коснуться этого"
+          },
+          "attacker": {
+            "duration": 1,
+            "damage reduction": 4,
+            "description": "Уменьшенный урон"
+          }
+        }
+      }
+    },
+    "curse": {
+      "name": "Seduction",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг","джунгли"],
+      "cast range": "Дальний бой",
+      "cards": 1,
+      "description": "Призвать ледяную ползучесть, взять под контроль вражескую часть или замедлить вражеского героя",
+      "buff": {
+        "duration": 2,
+        "speed slow": 1,
+        "description": "Зачарованные"
+      }
+    },
+    "heal": {
+      "name": "Healing Wisps",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Я"],
+      "cast range": "Дальний бой",
+      "max targets": 4,
+      "cards": 1,
+      "description": "Вызовите 5 «Целебных чисток» для себя и близких дружественных подразделений",
+      "buff": {
+        "heal": 5,
+        "duration": 4,
+        "description": "Исцеление Wisp"
+      }
+    },
+     "ult":{
+      "name": "Spear of Missing",
+      "type": "активный",
+      "hand": "верно",
+      "deck": "пока",
+      "targets": ["Враг"],
+      "cast range": "долго",
+      "cards": 2,
+      "description": "Атакуйте цель противника с бонусным уроном, равным удвоенному расстоянию"
      }
    }
 

@@ -133,6 +133,18 @@
     "armor": 3,
     "resistance": 2,
     "description": "Disabler, Escape, Nuker"
+  },
+  
+  "en": {
+    "name": "Bambi",
+    "attribute": "Inteligência",
+    "range": "Distante",
+    "hp": 40,
+    "mana": 3,
+    "damage": 12,
+    "armor": 2,
+    "resistance": 2,
+    "description": "Jungler, Healer, Durable"
   }
 
 }

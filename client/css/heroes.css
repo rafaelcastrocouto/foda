@@ -1,3 +1,28 @@
+.en {
+  background: #75ce59;
+}
+
+.en.heroes .img {
+  background-image: url("../img/heroes/en.jpg");
+}
+
+.en-passive .img, .buffs .buff.en-passive .img {
+  background-image: url("../img/skills/en/passive.jpg");
+}
+
+.en-curse .img, .buffs .buff.en-curse .img {
+  background-image: url("../img/skills/en/curse.jpg");
+}
+
+.en-heal .img, .buffs .buff.en-heal .img {
+  background-image: url("../img/skills/en/heal.jpg");
+}
+
+.en-ult .img {
+  background-image: url("../img/skills/en/ult.jpg");
+}
+
+
 .am {
   background: #674f80;
 }
@@ -153,7 +178,7 @@
 }
 
 .ld {
-  background: #62a64e;
+  background: #4ea66a;
 }
 
 .ld.heroes .img, .ld-ult.on .img {
@@ -211,7 +236,7 @@
 }
 
 .nyx {
-  background: #145;
+  background: #4c2a45;
 }
 
 .nyx.heroes .img {
@@ -323,7 +348,7 @@
 
 
 .cat {
-  background: #8446e2;
+  background: #9d66f1;
 }
 
 .cat.heroes .img {
@@ -348,7 +373,7 @@
 
 
 .wind {
-  background: #8ebb6a;
+  background: #95b568;
 }
 
 .wind.heroes .img {

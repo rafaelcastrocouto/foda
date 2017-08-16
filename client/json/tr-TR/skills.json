@@ -24,7 +24,7 @@
       "targets": ["Ayn?", "Müttefik"],
       "cast range": "Ranged",
       "cards": 1,
-      "description": "Hedef birimi boşaltın ve bonus hasarı ve dönüş başına 8 sağlık kazandırın",
+      "description": "Hedef birimi temizler ve bonus hasarı verir ve iyileşir",
       "buff": {
         "duration": 3,
         "heal": 8,
@@ -814,7 +814,7 @@
 
   "venge": {
     "stun": {
-      "name": "Magic Missile",
+      "name": "Magic Blast",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -827,7 +827,7 @@
       "description": "Hasar ve şok hedef"
     },
     "corruption": {
-      "name": "Wave of Terror",
+      "name": "Terror Wave",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -861,7 +861,7 @@
       }
     },
      "ult":{
-      "name":"Nether Swap",
+      "name":"In my Shoes",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
@@ -870,6 +870,70 @@
       "cards": 1,
       "description": "Bir hedef Hero, arkadaş veya düşmanla konumları anında değiştirir"
      }
+   },
+
+  "en": {
+    "passive": {
+      "name": "Untouched",
+      "type": "Pasif",
+      "hand": "Sol",
+      "deck": "Satın Al",
+      "targets": ["Ayn?"],
+      "cards": 1,
+      "description": "Saldırı yapanların laneti bozulacak ve dönüş için azaltılmış zarar görülecek",
+      "buffs": {
+        "passive": {
+          "self": {
+            "description": "Buna dokunamıyorum"
+          },
+          "attacker": {
+            "duration": 1,
+            "damage reduction": 4,
+            "description": "Zararın Azaltılması"
+          }
+        }
+      }
+    },
+    "curse": {
+      "name": "Seduction",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman", "orman"],
+      "cast range": "Menzilli",
+      "cards": 1,
+      "description": "Bir orman sürüngenini çağırın, bir düşman birimi üzerinde kontrolü ele geçirir veya bir düşman kahramanını yavaşlatır",
+      "buff": {
+        "duration": 2,
+        "speed slow": 1,
+        "description": "Charmed"
+      }
+    },
+    "heal": {
+      "name": "Healing Wisps",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Ayn?"],
+      "cast range": "Menzilli",
+      "max targets": 4,
+      "cards": 1,
+      "description": "Kendine ve yakınlardaki dost birimler için 5 İyileştirme Wisp'i çağırma",
+      "buff": {
+        "heal": 5,
+        "duration": 4,
+        "description": "Şifa Wisp"
+      }
+    },
+     "ult":{
+      "name": "Spear of Missing",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman"],
+      "cast range": "Uzun",
+      "cards": 2,
+      "description": "Hedef bir düşmana iki katına eşit bonus hasarı uygulayın"
+     }
    }
-  
 }

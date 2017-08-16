@@ -1,0 +1,12 @@
+
+.units {
+  background: #70bf70;
+}
+
+.units.cent .img {
+  background-image: url("../img/units/cent.jpg");
+}
+
+.units.golem .img {
+  background-image: url("../img/units/golem.jpg");
+}

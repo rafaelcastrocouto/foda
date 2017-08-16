@@ -34,8 +34,8 @@
       "name": "Centaur",
       "attribute": "Jungle Creep",
       "range": "Melee",
-      "hp": 28,
-      "damage": 5,
+      "hp": 38,
+      "damage": 6,
       "armor": 2,
       "resistance": 3,
       "description": "Centaur Jungle Creep"
@@ -44,8 +44,8 @@
       "name": "Golem",
       "attribute": "Jungle Creep",
       "range": "Melee",
-      "hp": 24,
-      "damage": 6,
+      "hp": 34,
+      "damage": 7,
       "armor": 4,
       "resistance": 3,
       "description": "Golem Jungle Creep"

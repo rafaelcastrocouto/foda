@@ -59,7 +59,7 @@ game.skill = {
     if (skillid && hero && (source.data('hero') === hero || source.data('summoner').data('hero') === hero)) {
       if (typeof target === 'string') {
         targets = game.data.skills[hero][skillid].targets;
-        if (targets.indexOf(game.data.ui.spot) >= 0) {
+        if (targets.indexOf(game.data.ui.spot) >= 0 || targets.indexOf(game.data.ui.jungle) >= 0) {
           target = $('#' + target);
         } else {target = $('#' + target + ' .card'); }
       }
