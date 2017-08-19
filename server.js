@@ -133,7 +133,7 @@ http.createServer(function(request, response) {
                 mongo.rank = {};
                 for (i=0; i<5; i++) { mongo.rank[mongo.ranked[i].name] = mongo.ranked[i].points; }
               }
-              mongo.set('rank', mongo.rank);
+              if (Object.keys(mongo.rank).length == 5) mongo.set('rank', mongo.rank);
             }
           }
           send(response, JSON.stringify(mongo.rank));

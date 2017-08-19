@@ -57,10 +57,6 @@ game.single = {
     if (turn == 'player-turn') { 
        game.single.endPlayerTurn();
     }
-//     if (turn == 'enemy-turn') {
-//       game.loader.addClass('loading');
-//       game.single.endEnemyTurn();
-//     }
   },
   beginPlayer: function () {
     game.turn.beginPlayer(function () {
@@ -97,7 +93,7 @@ game.single = {
   },
   win: function () {
     game.turn.stopCount();
-    game.states.campaign.stage++;
+    game.states.campaign.nextStage();
     game.winner = game.player.name;
     game.player.points += 1;
     localStorage.setItem('points', game.player.points);

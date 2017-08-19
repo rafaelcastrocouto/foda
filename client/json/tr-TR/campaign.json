@@ -1,27 +1,50 @@
 {
   "start": {
-    "name": "Adım 1",
-    "img": "tower",
-    "title": "Çok basit - Radiant Kulesi",
-    "ai": "easy",
+    "name": "Stage 1",
+    "img": "tree",
+    "title": "Very Easy - Radiant Tower",
+    "ai": "very-easy",
     "desc": [
-      "Düşman kulesini yok et",
-      "Ölmeyin (bonus)",
-      "3 kahramanı öldür (bonus)"
+      "Destroy enemy tower",
+      "Don't die (bonus)",
+      "Kill 2 heroes (bonus)"
     ],
     "picks": [ "cm", "pud", "lina", "wk", "am" ]
   },
   "easy": {
-    "name": "Adım 2",
-    "img": "tree",
-    "title": "Basit - Radiant Jungle",
+    "name": "Stage 2",
+    "img": "tower",
+    "title": "Easy - Radiant Jungle",
     "ai": "easy",
     "desc": [
-      "Düşman kulesini yok et",
-      "Ölmeyin (bonus)",
-      "5 kahramanı öldür (bonus)"
+      "Win before 10 turns",
+      "Deny a unit (bonus)",
+      "Kill 4 heroes (bonus)"
     ],
-    "picks": [ "nyx", "cat", "ld", "am", "kotl" ]
-
+    "picks": [ "nyx", "kotl", "cat", "en", "ld" ]
+  },
+  "opt": {
+    "name": "Optional Stage",
+    "img": "cent",
+    "title": "Optional - Radiant Jungle",
+    "ai": "easy",
+    "desc": [
+      "Win after 20 turns",
+      "Block Spawn (bonus)",
+      "Kill 10 heroes (bonus)"
+    ],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "normal": {
+    "name": "Stage 3",
+    "img": "catap",
+    "title": "Normal - Radiant Jungle",
+    "ai": "normal",
+    "desc": [
+      "Destroy enemy tower",
+      "Don't die (bonus)",
+      "Kill 5 heroes (bonus)"
+    ],
+    "picks": [ "cm", "pud", "lina", "wk", "am" ]
   }
 }

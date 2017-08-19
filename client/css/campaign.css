@@ -44,10 +44,16 @@
 .campaign-img.tower {
   background-image: url("../img/towers/tower-player.jpg");
 }
-
 .campaign-img.tree {
   background-image: url("../img/trees/tree_rad.jpg");
 }
+.campaign-img.cent {
+  background-image: url("../img/units/cent.jpg");
+}
+.campaign-img.catap {
+  background-image: url("../img/creeps/player_catapult.jpg");
+}
+
 
 .state .campaign-box p {
   margin: 2px 0;
@@ -94,6 +100,7 @@
   background-repeat: no-repeat;
   background-position: 50%;
   border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0);
 }
 
 .stages:hover {
@@ -115,10 +122,14 @@
   content: "X";
   font-size: 80px;
   position: relative;
-  top: 40px;
-  left: 30px;
+  top: 24px;
+  left: 18px;
   opacity: 0.5;
   font-family: monospace;
+}
+.stages.done.start:after {
+  top: 40px;
+  left: 30px;
 }
 
 @keyframes stagesblink {
@@ -136,6 +147,12 @@
   background-color: rgba(255,255,225,0.3);
 }
 
+.stages.enabled.blink {
+  border: 1px solid white;
+}
+.stages.enabled.blink:hover {
+  box-shadow: 0 0 0 4px white;
+}
 .stages.enabled:hover {
   box-shadow: 0 0 0 2px white;
   animation: none;

@@ -1,27 +1,50 @@
 {
   "start": {
-    "name": "Этап 1",
-    "img": "tower",
+    "name": "Stage 1",
+    "img": "tree",
     "title": "Very Easy - Radiant Tower",
     "ai": "very-easy",
     "desc": [
-      "Уничтожить вражескую башню",
-      "Не умирайте (бонус)",
-      "Убейте 5 героев (бонус)"
+      "Destroy enemy tower",
+      "Don't die (bonus)",
+      "Kill 2 heroes (bonus)"
     ],
     "picks": [ "cm", "pud", "lina", "wk", "am" ]
   },
   "easy": {
-    "name": "Этап 2",
-    "img": "tree",
-    "title": "Легко - лучистые джунгли",
+    "name": "Stage 2",
+    "img": "tower",
+    "title": "Easy - Radiant Jungle",
     "ai": "easy",
     "desc": [
-      "Уничтожить вражескую башню",
-      "Не умирайте (бонус)",
-      "Убейте 5 героев (бонус)"
+      "Win before 10 turns",
+      "Deny a unit (bonus)",
+      "Kill 4 heroes (bonus)"
     ],
-    "picks": [ "nyx", "cat", "ld", "am", "kotl" ]
-
+    "picks": [ "nyx", "kotl", "cat", "en", "ld" ]
+  },
+  "opt": {
+    "name": "Optional Stage",
+    "img": "cent",
+    "title": "Optional - Radiant Jungle",
+    "ai": "easy",
+    "desc": [
+      "Win after 20 turns",
+      "Block Spawn (bonus)",
+      "Kill 10 heroes (bonus)"
+    ],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "normal": {
+    "name": "Stage 3",
+    "img": "catap",
+    "title": "Normal - Radiant Jungle",
+    "ai": "normal",
+    "desc": [
+      "Destroy enemy tower",
+      "Don't die (bonus)",
+      "Kill 5 heroes (bonus)"
+    ],
+    "picks": [ "cm", "pud", "lina", "wk", "am" ]
   }
 }
