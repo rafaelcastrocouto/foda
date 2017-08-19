@@ -2,21 +2,21 @@ game.states.campaign = {
   build: function () {
     this.map = $('<div>').addClass('campaign-map');
     this.desc = $('<div>').addClass('campaign-box box');
-    this.startStage = $('<div>').addClass('stages start enabled blink').appendTo(this.map);
-    this.et = $('<div>').addClass('stages easy top').appendTo(this.map);
-    this.em = $('<div>').addClass('stages easy mid').appendTo(this.map);
-    this.eb = $('<div>').addClass('stages easy bot').appendTo(this.map);
-    this.ru = $('<div>').addClass('stages rune').appendTo(this.map);
-    this.ro = $('<div>').addClass('stages roshan').appendTo(this.map);
-    this.sh = $('<div>').addClass('stages shop').appendTo(this.map);
-    this.nm = $('<div>').addClass('stages normal mid').appendTo(this.map);
-    this.ht = $('<div>').addClass('stages hard top').appendTo(this.map);
-    this.hm = $('<div>').addClass('stages hard mid').appendTo(this.map);
-    this.hb = $('<div>').addClass('stages hard bot').appendTo(this.map);
-    this.fi = $('<div>').addClass('stages final').appendTo(this.map);
-    this.ot = $('<div>').addClass('stages optional top').appendTo(this.map);
-    this.om = $('<div>').addClass('stages optional mid').appendTo(this.map);
-    this.ob = $('<div>').addClass('stages optional bot').appendTo(this.map);
+    this.st = $('<div>').attr('id','st').addClass('stages start').appendTo(this.map);
+    this.et = $('<div>').attr('id','et').addClass('stages easy top').appendTo(this.map);
+    this.em = $('<div>').attr('id','em').addClass('stages easy mid').appendTo(this.map);
+    this.eb = $('<div>').attr('id','eb').addClass('stages easy bot').appendTo(this.map);
+    this.ru = $('<div>').attr('id','ru').addClass('stages rune').appendTo(this.map);
+    this.ro = $('<div>').attr('id','ro').addClass('stages roshan').appendTo(this.map);
+    this.sh = $('<div>').attr('id','sh').addClass('stages shop').appendTo(this.map);
+    this.nm = $('<div>').attr('id','nm').addClass('stages normal mid').appendTo(this.map);
+    this.ht = $('<div>').attr('id','ht').addClass('stages hard top').appendTo(this.map);
+    this.hm = $('<div>').attr('id','hm').addClass('stages hard mid').appendTo(this.map);
+    this.hb = $('<div>').attr('id','hb').addClass('stages hard bot').appendTo(this.map);
+    this.fi = $('<div>').attr('id','fi').addClass('stages final').appendTo(this.map);
+    this.ot = $('<div>').attr('id','ot').addClass('stages optional top').appendTo(this.map);
+    this.om = $('<div>').attr('id','om').addClass('stages optional mid').appendTo(this.map);
+    this.ob = $('<div>').attr('id','ob').addClass('stages optional bot').appendTo(this.map);
     this.buttonbox = $('<div>').addClass('buttonbox');
     this.back = $('<div>').addClass('back button').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
     this.toChoose = $('<div>').addClass('campaign-play button highlight').text(game.data.ui.battle).on('mouseup touchend', this.toChoose).appendTo(this.buttonbox);
@@ -37,17 +37,19 @@ game.states.campaign = {
   },
   "Stage 1 Click": function () {
     $('.blink').removeClass('blink');
-    game.states.campaign.startStage.addClass('blink');
+    game.states.campaign.st.addClass('blink');
     game.states.campaign.buildDesc(game.data.campaign.start);
   },
   "Stage 2 Click": function () {
+    var target = $(this);
     $('.blink').removeClass('blink');
-    $(this).addClass('blink');
+    target.addClass('blink');
+    game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.easy);
   },
   "Stage 2 Show": function () {
-    this.startStage.removeClass('blink').on('mouseup touchend', this["Stage 1 Click"]).addClass('done');
-    $('.campaign-path').css('opacity', 1);
+    this.st.removeClass('blink').on('mouseup touchend', this["Stage 1 Click"]).addClass('done');
+    $('.campaign-path').css('opacity', 0.6);
     $('.stages.easy').addClass('enabled blink').on('mouseup touchend', this["Stage 2 Click"]);
     this.createPath(this.et, this.nm, 'et-nm');
     this.createPath(this.em, this.nm, 'em-nm');
@@ -58,20 +60,28 @@ game.states.campaign = {
     this.buildDesc(game.data.campaign.easy);
   },
   "Stage 3 Click": function () {
+    var target = $(this);
     $('.blink').removeClass('blink');
-    $(this).addClass('blink');
+    target.addClass('blink');
+    game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.normal);
   },
   "Optional Click": function () {
+    var target = $(this);
     $('.blink').removeClass('blink');
-    $(this).addClass('blink');
+    target.addClass('blink');
+    game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.optional);
   },
   "Stage 3 Show": function () {
-    $('.stages.easy').removeClass('blink');
-    $('.campaign-path').css('opacity', 1);
-    $('.stages.normal').addClass('enabled blink').on('mouseup touchend', this["Stage 3 Click"]);
-    $('.stages.optional').addClass('enabled blink').on('mouseup touchend', this["Optional Click"]);
+    $('.stages.easy').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+    $('#e'+game.states.campaign.lane).addClass('enabled').on('mouseup touchend', this["Stage 2 Click"]);
+    $('#nm').addClass('enabled blink').on('mouseup touchend', this["Stage 3 Click"]);
+    $('.stages.optional').addClass('done');
+    $('#o'+game.states.campaign.lane).removeClass('done').addClass('enabled blink').on('mouseup touchend', this["Optional Click"]);
+    $('.campaign-path.e'+game.states.campaign.lane+'-nm').css('opacity', 0.6);
+    $('.campaign-path.e'+game.states.campaign.lane+'-o'+game.states.campaign.lane).css('opacity', 0.6);
+    $('.campaign-path.st-e'+game.states.campaign.lane).css('opacity',1);
     this.createPath(this.nm, this.ro, 'nm-ro');
     this.createPath(this.nm, this.ru, 'nm-ru');
     this.createPath(this.nm, this.sh, 'nm-sh');
@@ -80,7 +90,6 @@ game.states.campaign = {
     this.createPath(this.nm, this.hb, 'nm-hb');
     this.buildDesc(game.data.campaign.normal);
   },
-  
   buildDesc: function (data) {
     game.states.campaign.stage = data;
     this.desc.html('');
@@ -104,9 +113,9 @@ game.states.campaign = {
   createStartPaths: function () {
     if (!this.pathsCreated) {
       this.pathsCreated = true;
-      this.createPath(this.startStage, this.et, 'et');
-      this.createPath(this.startStage, this.em, 'em');
-      this.createPath(this.startStage, this.eb, 'eb');
+      this.createPath(this.st, this.et, 'st-et');
+      this.createPath(this.st, this.em, 'st-em');
+      this.createPath(this.st, this.eb, 'st-eb');
     }
   },
   createPath: function (source, target, cl) {
@@ -131,6 +140,22 @@ game.states.campaign = {
       $('<div>').addClass('campaign-path '+cl).css({left: x, top: y}).appendTo(game.states.campaign.map);
     }
   },
+  pathHighlight: function (target) {
+    $('.campaign-path').css('opacity', 0.3);
+    if (target.attr('id')[0] == 'e') {
+      $('.campaign-path.st-'+target.attr('id')).css('opacity', 1);
+      game.states.campaign.lane = target.attr('id')[1];
+    }
+    var l = game.states.campaign.lane;
+    if (target.attr('id') == 'nm') {
+      $('.campaign-path.st-e'+l).css('opacity', 1);
+      $('.campaign-path.e'+l+'-nm').css('opacity', 1);
+    }
+    if (target.attr('id')[0] == 'o') {
+      $('.campaign-path.st-e'+l).css('opacity', 1);
+      $('.campaign-path.e'+l+'-o'+l).css('opacity', 1);
+    }
+  },
   clearPaths: function () {
     $('.campaign-path', game.states.campaign.map).hide();
   },
@@ -143,7 +168,7 @@ game.states.campaign = {
   },
   clear: function () {
     $('.stage', game.states.campaign.el).removeClass('enabled');
-    this.startStage.addClass('enabled');
+    this.st.addClass('enabled');
   },
   end: function () {
   }

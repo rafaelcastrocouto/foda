@@ -116,7 +116,9 @@
   display: none;
 }
 .stages.done {
+  opacity: 0.6;
   box-shadow: 0 0 15px 0 rgba(255,255,225,0.7);
+  background-color: rgba(255,255,225,0.3);
 }
 .stages.done:after {
   content: "X";
@@ -130,6 +132,17 @@
 .stages.done.start:after {
   top: 40px;
   left: 30px;
+}
+.stages.done.optional:after {
+  font-size: 60px;
+  top: 16px;
+  left: 13px;
+}
+.stages.done.enabled {
+  opacity: 1;
+}
+.stages.done.enabled:after {
+  color: tomato;
 }
 
 @keyframes stagesblink {
