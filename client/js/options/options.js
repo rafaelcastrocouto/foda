@@ -1,6 +1,6 @@
 game.options = {
   build: function () {
-    this.opt = $('<small>').addClass('opt').hide().text(game.data.ui.options).appendTo(game.topbar).on('mouseup touchend', game.options.show);
+    this.opt = $('<small>').addClass('opt').hide().text(game.data.ui.options + ' ⚙').appendTo(game.topbar).on('mouseup touchend', game.options.show);
     this.box = $('<div>').addClass('box');
     this.title = $('<h1>').appendTo(this.box).text(game.data.ui.options);
     this.row = $('<div>').appendTo(this.box);

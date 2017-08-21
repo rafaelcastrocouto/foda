@@ -101,6 +101,7 @@
   background-position: 50%;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0);
+  opacity: 0.9;
 }
 
 .stages:hover {
@@ -115,9 +116,8 @@
 .stages.blink:after {
   display: none;
 }
-.stages.done {
-  opacity: 0.6;
-  box-shadow: 0 0 15px 0 rgba(255,255,225,0.7);
+.states .stages.done {
+  opacity: 0.4;
   background-color: rgba(255,255,225,0.3);
 }
 .stages.done:after {
@@ -138,10 +138,17 @@
   top: 16px;
   left: 13px;
 }
+.stages.done.shop:after,
+.stages.done.rune:after {
+  font-size: 50px;
+  top: 16px;
+  left: 18px;
+}
 .stages.done.enabled {
   opacity: 1;
 }
 .stages.done.enabled:after {
+  opacity: 0.3;
   color: tomato;
 }
 
@@ -162,6 +169,7 @@
 
 .stages.enabled.blink {
   border: 1px solid white;
+  opacity: 1;
 }
 .stages.enabled.blink:hover {
   box-shadow: 0 0 0 4px white;
@@ -185,7 +193,7 @@
 }
 
 .stages.easy.top {
-  top: 210px;
+  top: 180px;
   left: 30px;
 }
 
@@ -205,21 +213,22 @@
   left: 370px;
   width: 60px;
   height: 60px;
+  opacity: 0.7;
 }
 
 .stages.roshan {
   background-image: url(../img/campaign/ico_rosh.png);
-  top: 150px;
+  top: 140px;
   left: 160px;
+  opacity: 0.7;
 }
 
 .stages.shop {
   background-image: url(../img/campaign/ico_shop.png);
-  top: 290px;
-  left: 440px;
+  top: 250px;
+  left: 120px;
   width: 60px;
   height: 60px;
-  opacity: 1;
 }
 
 .stages.normal.mid {
@@ -238,13 +247,13 @@
 }
 
 .stages.hard.mid {
-  top: 80px;
-  left: 430px;
+  top: 95px;
+  left: 427px;
 }
 
 .stages.hard.bot {
   bottom: 335px;
-  left: 500px;
+  left: 508px;
 }
 
 .stages.final {

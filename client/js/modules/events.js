@@ -80,12 +80,12 @@ game.events = {
       }
     }
   },
-  end: function(event) { //console.log(event.target )
+  end: function(event) { //console.log(event.type)
     var position = game.events.getCoordinates(event), 
         target = $(document.elementFromPoint(position.left, position.top));
     if (!target.closest('.chat').length) $('.chat').removeClass('hover');
-    if (target && event) {
-      if (event.type === 'touchend') {
+    if (event) {
+      if (target && event.type === 'touchend') {
         // fix touchend target
         target.mouseup();
         if (event.preventDefault) event.preventDefault();
@@ -93,10 +93,10 @@ game.events = {
       }
       if (event.type == 'mouseup' || event.type == 'mouseleave') {
         if (game.events.dragging) {
-          game.events.dragClone.remove();
           $('.dragTarget').removeClass('dragTarget');
           $('.drop').removeClass('drop');
         }
+        $('.dragTargetClone').remove();
         game.events.dragging = false;
         game.events.dragTarget = null;
       }

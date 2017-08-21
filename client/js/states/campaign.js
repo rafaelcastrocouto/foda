@@ -1,4 +1,5 @@
 game.states.campaign = {
+  lane: 'm',
   build: function () {
     this.map = $('<div>').addClass('campaign-map');
     this.desc = $('<div>').addClass('campaign-box box');
@@ -31,11 +32,26 @@ game.states.campaign = {
     if (this[this.stage.name + ' Show']) this[this.stage.name + ' Show']();
   },
   nextStage: function () {
+    if (!this.stage) this.stage = game.data.campaign.start;
     if (this.stage.name == 'Stage 1') this.stage = game.data.campaign.easy;
     if (this.stage.name == 'Stage 2') this.stage = game.data.campaign.normal;
-    if (this.stage.name == 'Optional Stage') this.stage = game.data.campaign.optional;
+    if (this.stage.name == 'Stage 3') this.stage = game.data.campaign.hard;
+    if (this.stage.name == 'Stage 4') this.stage = game.data.campaign.last;
+    if (this.stage.name == 'Optional Stage') {
+      $('#o'+game.states.campaign.lane).removeClass('blink enabled').addClass('done').off('mouseup touchend');
+    }
+    if (this.stage.name == 'Roshan Cave') {
+      $('#ro').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+    }
+    if (this.stage.name == 'Secret Shop') {
+      $('#sh').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+    }
+    if (this.stage.name == 'River Rune') {
+      $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+    }
   },
   "Stage 1 Click": function () {
+    $('.campaign-path').css('opacity', 0.3);
     $('.blink').removeClass('blink');
     game.states.campaign.st.addClass('blink');
     game.states.campaign.buildDesc(game.data.campaign.start);
@@ -49,14 +65,17 @@ game.states.campaign = {
   },
   "Stage 2 Show": function () {
     this.st.removeClass('blink').on('mouseup touchend', this["Stage 1 Click"]).addClass('done');
-    $('.campaign-path').css('opacity', 0.6);
+    $('.campaign-path').css('opacity', 0.7);
     $('.stages.easy').addClass('enabled blink').on('mouseup touchend', this["Stage 2 Click"]);
     this.createPath(this.et, this.nm, 'et-nm');
-    this.createPath(this.em, this.nm, 'em-nm');
-    this.createPath(this.eb, this.nm, 'eb-nm');
     this.createPath(this.et, this.ot, 'et-ot');
+    this.createPath(this.et, this.ro, 'et-ro');
+    this.createPath(this.em, this.nm, 'em-nm');
     this.createPath(this.em, this.om, 'em-om');
+    this.createPath(this.em, this.sh, 'em-sh');
+    this.createPath(this.eb, this.nm, 'eb-nm');
     this.createPath(this.eb, this.ob, 'eb-ob');
+    this.createPath(this.eb, this.ru, 'eb-ru');
     this.buildDesc(game.data.campaign.easy);
   },
   "Stage 3 Click": function () {
@@ -77,14 +96,66 @@ game.states.campaign = {
     $('.stages.easy').removeClass('blink enabled').addClass('done').off('mouseup touchend');
     $('#e'+game.states.campaign.lane).addClass('enabled').on('mouseup touchend', this["Stage 2 Click"]);
     $('#nm').addClass('enabled blink').on('mouseup touchend', this["Stage 3 Click"]);
-    $('.stages.optional').addClass('done');
-    $('#o'+game.states.campaign.lane).removeClass('done').addClass('enabled blink').on('mouseup touchend', this["Optional Click"]);
-    $('.campaign-path.e'+game.states.campaign.lane+'-nm').css('opacity', 0.6);
-    $('.campaign-path.e'+game.states.campaign.lane+'-o'+game.states.campaign.lane).css('opacity', 0.6);
+    $('#o'+game.states.campaign.lane).addClass('enabled blink').on('mouseup touchend', this["Optional Click"]);   
+    $('.campaign-path').css('opacity', 0.3);
+    if (game.states.campaign.lane == 't') {
+      $('#ro').addClass('enabled blink').on('mouseup touchend', this["Roshan Cave Click"]);
+      $('.campaign-path.et-ro').css('opacity', 0.7);
+    }
+    if (game.states.campaign.lane == 'm') {
+      $('#sh').addClass('enabled blink').on('mouseup touchend', this["Secret Shop Click"]);
+      $('.campaign-path.em-sh').css('opacity', 0.7);
+    }
+    if (game.states.campaign.lane == 'b') {
+      $('#ru').addClass('enabled blink').on('mouseup touchend', this["River Rune Click"]);
+      $('.campaign-path.eb-ru').css('opacity', 0.7);
+    }
+    $('.campaign-path.e'+game.states.campaign.lane+'-nm').css('opacity', 0.7);
+    $('.campaign-path.e'+game.states.campaign.lane+'-o'+game.states.campaign.lane).css('opacity', 0.7);
     $('.campaign-path.st-e'+game.states.campaign.lane).css('opacity',1);
-    this.createPath(this.nm, this.ro, 'nm-ro');
-    this.createPath(this.nm, this.ru, 'nm-ru');
-    this.createPath(this.nm, this.sh, 'nm-sh');
+    this.createPath(this.nm, this.ht, 'nm-ht');
+    this.createPath(this.nm, this.hm, 'nm-hm');
+    this.createPath(this.nm, this.hb, 'nm-hb');
+    this.buildDesc(game.data.campaign.normal);
+  },
+  "Stage 4 Click": function () {
+    var target = $(this);
+    $('.blink').removeClass('blink');
+    target.addClass('blink');
+    game.states.campaign.pathHighlight(target);
+    game.states.campaign.buildDesc(game.data.campaign.hard);
+  },
+  "Roshan Click": function () {
+    var target = $(this);
+    $('.blink').removeClass('blink');
+    target.addClass('blink');
+    game.states.campaign.pathHighlight(target);
+    game.states.campaign.buildDesc(game.data.campaign.roshan);
+  },
+  "Rune Click": function () {
+    var target = $(this);
+    $('.blink').removeClass('blink');
+    target.addClass('blink');
+    game.states.campaign.pathHighlight(target);
+    game.states.campaign.buildDesc(game.data.campaign.rune);
+  },
+  "Shop Click": function () {
+    var target = $(this);
+    $('.blink').removeClass('blink');
+    target.addClass('blink');
+    game.states.campaign.pathHighlight(target);
+    game.states.campaign.buildDesc(game.data.campaign.shop);
+  },
+  "Stage 4 Show": function () {
+    $('#nm').removeClass('blink').addClass('done');
+    $('.stages.hard').addClass('enabled blink').on('mouseup touchend', this["Stage 4 Click"]);
+    $('.stages.optional, #ro, #ru, #sh').removeClass('blink').addClass('done');
+    $('.campaign-path').css('opacity', 0.3);
+    $('.campaign-path.nm-ht').css('opacity', 0.7);
+    $('.campaign-path.nm-hm').css('opacity', 0.7);
+    $('.campaign-path.nm-hb').css('opacity', 0.7);
+    $('.campaign-path.st-e'+game.states.campaign.lane).css('opacity',1);
+    $('.campaign-path.e'+game.states.campaign.lane+'-nm').css('opacity',1);
     this.createPath(this.nm, this.ht, 'nm-ht');
     this.createPath(this.nm, this.hm, 'nm-hm');
     this.createPath(this.nm, this.hb, 'nm-hb');

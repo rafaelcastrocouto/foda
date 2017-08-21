@@ -1,7 +1,7 @@
 game.rank = {
   build: function () {
     game.rank.el = $('<div>').appendTo(game.states.menu.menu).addClass('rank box');
-    game.db({'get': 'rank' }, game.rank.update);
+    game.rank.update(game.rank.data);
   },
   start: function () {
     var p = parseInt(localStorage.getItem('points'));

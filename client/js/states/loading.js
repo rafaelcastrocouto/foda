@@ -1,6 +1,6 @@
 game.states.loading = {
   updating: 0,
-  totalUpdate: 6, // language + campaign + ui + heroes + skills + package
+  totalUpdate: 7, // rank + language + campaign + ui + heroes + skills + package
   build: function () {
     this.box = $('<div>').addClass('box');   
     this.h2 = $('<p>').appendTo(this.box).addClass('loadtext').html('<span class="loader loading"></span><span class="message">Updating: </span><span class="progress">0%</span>');
@@ -16,6 +16,11 @@ game.states.loading = {
       game.states.loading.json('heroes');
       game.states.loading.json('campaign');
       game.states.loading.json('skills');
+    });
+    game.rank.build();
+    game.db({'get': 'rank' }, function (data) {
+      game.rank.data = data;
+      game.states.loading.updated();
     });
     game.states.loading.progress();
   },
@@ -35,6 +40,7 @@ game.states.loading = {
     game.options.build();
     game.container.append(game.topbar);
     game.states.build( function () {
+      game.rank.build();
       if (game.debug) game.history.recover();
       else game.history.jumpTo('log');
     });
