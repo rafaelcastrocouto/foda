@@ -70,33 +70,25 @@ var clearWait = function () {
 
 http.createServer(function(request, response) {
   setHeaders(request, response);
-  var urlObj = url.parse(request.url, true); // console.log('ulrObj',urlObj);
-  var pathname = urlObj.pathname; // console.log('pathname: '+pathname);
+  var urlObj = url.parse(request.url, true); 
+  var pathname = urlObj.pathname;
   if (pathname[0] === '/') { pathname = pathname.slice(1); }
-//   if (request.headers['x-forwarded-proto'] === 'https') {
-//     response.writeHead(302, {'Location': 'http://dotacard.herokuapp.com/'+(pathname||'') });
-//     response.end();
-//     return;
-//   }
   if (pathname === 'db') {
     response.setHeader('Content-Type', 'application/json');
-    var query = urlObj.query; // console.log('query: '+ (query.set || query.get));
-    if (query.set){ //console.log('set: '+ query.set);
+    var query = urlObj.query;
+    if (query.set){
       switch (query.set) {
         case 'waiting':
           if (waiting.id === 'none'){
-            //console.log('Player' + waiting);
             send(response, JSON.stringify(waiting));
             waiting = query.data;
             waitTimeout = setTimeout(clearWait, waitLimit * 1000);
           } else {
-            //console.log('Online game started');
             send(response, waiting);
             clearWait();
           }
           return;
-        case 'back': //console.log('Choose back click')
-          //console.log(query.data.id, waiting.id)
+        case 'back':
           if (query.data.id == waiting.id) {
             clearWait();
           }
@@ -138,13 +130,13 @@ http.createServer(function(request, response) {
           }
           send(response, JSON.stringify(mongo.rank));
           return;
-        default: //console.log('set', query.data)
+        default:
           db.set(query.set, query.data, function(data){
             send(response, data);
           });
           return;
       }
-    } else if (query.get) { //console.log('get: '+ query.get);
+    } else if (query.get) {
       switch (query.get) {
         case 'server':
           send(response, JSON.stringify({status: 'online'}));
@@ -163,7 +155,7 @@ http.createServer(function(request, response) {
           return;
         default:
           db.get(query.get, function(data) {
-            send(response, data); //console.log('get', data) 
+            send(response, data);
           });
           return;
       }

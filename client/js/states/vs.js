@@ -56,12 +56,10 @@ game.states.vs = {
     }
   },
   buildEnemy: function () {
-    if (!game.enemy.name) {
-      if (game.mode == 'tutorial') game.enemy.name = game.data.ui.tutorial;
-      if (game.mode == 'library') game.enemy.name = game.data.ui.library;
-      if (game.mode == 'single') game.enemy.name = 'Stage ' + (localStorage.getItem('stage') || 1);
-      if (game.mode == 'local') game.enemy.name = 'Challenger';
-    }
+    if (game.mode == 'tutorial') game.enemy.name = game.data.ui.tutorial;
+    if (game.mode == 'library') game.enemy.name = game.data.ui.library;
+    if (game.mode == 'single') game.enemy.name = 'Stage ' + (localStorage.getItem('stage') || 1);
+    if (game.mode == 'local') game.enemy.name = 'Challenger';
     this.enemyname.text(game.enemy.name);
     if (!game.enemy.type) game.enemy.type = 'challenger';
     game.enemy.picks = game.states.vs.enemyPicks();

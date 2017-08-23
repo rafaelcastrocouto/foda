@@ -10,7 +10,7 @@ game.skills.en = {
       var target = eventdata.target;
       var skill = target.data('en-passive');
       var buff = target.addBuff(source, skill, 'passive-attacker');
-      eventdata.bonus = -1 * buff.data('damage reduction');
+      if (buff) eventdata.bonus = -1 * buff.data('damage reduction');
     }
   },
   curse: {
