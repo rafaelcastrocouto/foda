@@ -32,11 +32,13 @@ game.skills.en = {
   heal: {
     cast: function (skill, source) {
       var range = skill.data('cast range'),
+          side = source.side(),
           buff,
           allies = [], targets = [];
       source.on('death', this.death);
-      source.alliesInRange(range, function (target) {
-        allies.push(target);
+      source.around(range, function (spot) {
+        var target = $('.card', spot);
+        if (target.hasClass(side)) allies.push(target);
       });
       if (allies.length) {
         if (allies.length > skill.data('max targets')) {
@@ -49,10 +51,12 @@ game.skills.en = {
         buff = source.selfBuff(skill);
         source.heal(buff.data('heal'));
         buff.on('buffcount', game.skills.en.heal.buffcount);
+        buff.on('expire', game.skills.en.heal.buffcount);
         $(targets).each(function (i, target) {
           buff = source.addBuff(target, skill);
           target.heal(buff.data('heal'));
           buff.on('buffcount', game.skills.en.heal.buffcount);
+          buff.on('expire', game.skills.en.heal.buffcount);
         });
       }
     },

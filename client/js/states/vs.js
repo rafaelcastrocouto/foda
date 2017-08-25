@@ -97,7 +97,7 @@ game.states.vs = {
   enemyPicks: function () {
     var picks;
     if (game.mode == 'library' || game.mode == 'tutorial') {
-      return [ 'lina', 'cm', 'pud', 'wk', 'am' ];
+      return [ 'lina', 'cm', 'wk', 'pud', 'ld' ];
     }
     if (game.mode == 'online') {
       picks = game.enemy.picks;

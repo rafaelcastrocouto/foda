@@ -40,13 +40,13 @@ game.states.campaign = {
     if (this.stage.name == 'Optional Stage') {
       $('#o'+game.states.campaign.lane).removeClass('blink enabled').addClass('done').off('mouseup touchend');
     }
-    if (this.stage.name == 'Roshan Cave') {
+    if (this.stage.name == 'Roshan Stage') {
       $('#ro').removeClass('blink enabled').addClass('done').off('mouseup touchend');
     }
-    if (this.stage.name == 'Secret Shop') {
+    if (this.stage.name == 'Shop Stage') {
       $('#sh').removeClass('blink enabled').addClass('done').off('mouseup touchend');
     }
-    if (this.stage.name == 'River Rune') {
+    if (this.stage.name == 'Rune Stage') {
       $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
     }
   },
@@ -85,7 +85,7 @@ game.states.campaign = {
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.normal);
   },
-  "Optional Click": function () {
+  "Optional Stage Click": function () {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
@@ -125,21 +125,21 @@ game.states.campaign = {
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.hard);
   },
-  "Roshan Click": function () {
+  "Roshan Stage Click": function () {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.roshan);
   },
-  "Rune Click": function () {
+  "Rune Stage Click": function () {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.rune);
   },
-  "Shop Click": function () {
+  "Shop Stage Click": function () {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');

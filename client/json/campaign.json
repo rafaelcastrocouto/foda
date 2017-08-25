@@ -35,11 +35,71 @@
     ],
     "picks": [ "cm", "cat", "venge", "lina", "wind" ]
   },
+  "rune": {
+    "name": "Rune Stage",
+    "img": "cent",
+    "title": "Optional - River Rune",
+    "ai": "easy",
+    "desc": [
+      "Win after 20 turns",
+      "Block Spawn (bonus)",
+      "Kill 10 heroes (bonus)"
+    ],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "optional": {
+    "name": "Shop Stage",
+    "img": "cent",
+    "title": "Optional - Secret Shop",
+    "ai": "easy",
+    "desc": [
+      "Win after 20 turns",
+      "Block Spawn (bonus)",
+      "Kill 10 heroes (bonus)"
+    ],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "optional": {
+    "name": "Roshan Stage",
+    "img": "cent",
+    "title": "Optional - Roshan Cave",
+    "ai": "easy",
+    "desc": [
+      "Win after 20 turns",
+      "Block Spawn (bonus)",
+      "Kill 10 heroes (bonus)"
+    ],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
   "normal": {
     "name": "Stage 3",
     "img": "catap",
-    "title": "Normal - Radiant Jungle",
+    "title": "Normal - Middle Tower",
     "ai": "normal",
+    "desc": [
+      "Destroy enemy tower",
+      "Don't die (bonus)",
+      "Kill 5 heroes (bonus)"
+    ],
+    "picks": [ "cm", "pud", "lina", "wk", "am" ]
+  },
+  "hard": {
+    "name": "Stage 4",
+    "img": "catap",
+    "title": "Hard - Enemy Base",
+    "ai": "hard",
+    "desc": [
+      "Destroy enemy tower",
+      "Don't die (bonus)",
+      "Kill 5 heroes (bonus)"
+    ],
+    "picks": [ "cm", "pud", "lina", "wk", "am" ]
+  },
+  "last": {
+    "name": "Last Stage",
+    "img": "catap",
+    "title": "Very Hard - Enemy Ancient",
+    "ai": "very-hard",
     "desc": [
       "Destroy enemy tower",
       "Don't die (bonus)",
