@@ -47,7 +47,7 @@
     ],
     "picks": [ "cm", "cat", "venge", "lina", "wind" ]
   },
-  "optional": {
+  "shop": {
     "name": "Shop Stage",
     "img": "cent",
     "title": "Optional - Secret Shop",
@@ -59,7 +59,7 @@
     ],
     "picks": [ "cm", "cat", "venge", "lina", "wind" ]
   },
-  "optional": {
+  "roshan": {
     "name": "Roshan Stage",
     "img": "cent",
     "title": "Optional - Roshan Cave",
