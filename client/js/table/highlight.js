@@ -317,21 +317,23 @@ game.highlight = {
     if (this.data('highlight') == 'top') {
       // LD roar
       var summon = source.data('summon');
+      var dir = 'top';
+      if (source.side() == 'enemy') dir = 'bottom';
       if (spot) {
         spot.around(range, function (neighbor) {
-          neighbor.addClass('toparrow');
-          $('.card.'+opponent, neighbor).addClass('toparrow');
+          neighbor.addClass(dir+'arrow');
+          $('.card.'+opponent, neighbor).addClass(dir+'arrow');
         });
       } else {
         if (game.highlight.possible(summon)) {
           summon.around(range, function (neighbor) {
-            neighbor.not(source.parent()).addClass('toparrow');
-            $('.card.'+opponent, neighbor).addClass('toparrow');
+            neighbor.not(source.parent()).addClass(dir+'arrow');
+            $('.card.'+opponent, neighbor).addClass(dir+'arrow');
           });
         }
         source.around(range, function (neighbor) {
-          neighbor.addClass('toparrow');
-          $('.card.'+opponent, neighbor).addClass('toparrow');
+          neighbor.addClass(dir+'arrow');
+          $('.card.'+opponent, neighbor).addClass(dir+'arrow');
         });
       }
     }
