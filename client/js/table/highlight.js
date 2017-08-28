@@ -226,7 +226,7 @@ game.highlight = {
         var card = $('.card', neighbor);
         if (card.hasClass(source.opponent()) && !card.hasClass('invisible')) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
         if (card[0] !== source[0] &&
-            card.hasAllClasses('player units') && 
+            card.hasAllClasses(source.side()+' units') &&
             card.data('current hp') < Math.floor(card.data('hp')/2) ) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
       });
     }
