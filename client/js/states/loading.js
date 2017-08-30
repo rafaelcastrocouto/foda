@@ -17,12 +17,17 @@ game.states.loading = {
       game.states.loading.json('campaign');
       game.states.loading.json('skills');
     });
-    game.rank.build();
-    game.db({'get': 'rank' }, function (data) {
-      game.rank.data = data;
-      game.states.loading.updated();
-    });
+    game.states.loading.rank();
     game.states.loading.progress();
+  },
+  rank: function () {
+    game.db({'get': 'rank' }, function (data) {
+      game.states.loading.updated();
+      var ranked = game.rank.sortData(data);
+      if (ranked.length == 5) {
+        game.rank.data = data;
+      } else setTimeout(10000, game.states.loading.rank);
+    });
   },
   progress: function () {
     var loading = parseInt(game.states.loading.updating / game.states.loading.totalUpdate * 100);

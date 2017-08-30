@@ -34,13 +34,18 @@ var mongo = {
   rank: {}, ranked: []
 };
 
-if (secret !== 'password') {
-  mongo.get('poll', function (data) { mongo.poll = data; });
-  mongo.get('rank', function (data) { 
+var getRank = function () {
+  mongo.get('rank', function (data) {
     mongo.rank = data;
     for (var item in data) { mongo.ranked.push({'name': item, 'points': parseInt(data[item])}); }
     mongo.ranked.sort(function (a,b) { return a.points - b.points; });
+    if (mongo.ranked.length !== 5) setTimeout(10000, getRank);
   });
+};
+
+if (secret !== 'password') {
+  mongo.get('poll', function (data) { mongo.poll = data; });
+  getRank();
 }
 
 var clientServer = serveStatic('client', {'index': ['index.html', 'index.htm']});
