@@ -2,15 +2,29 @@ game.fx = {
   addGif: function (name, target, time) {
     var fx = game.fx[name];
     if (fx) {
-      fx.move_to(0);
-      fx.el.appendTo(target);
-      fx.play();
+      game.fx.reset(fx);
+      fx.appendTo(target);
+      game.fx.play(fx);
+      setTimeout(game.fx.hide.bind(this, fx), 1400);
     }
   },
-  hide: function (name) {
-    var fx = game.fx[name];
-    fx.pause();
-    fx.move_to(0);
-    fx.el.appendTo(game.hidden);
+  play: function (fx) {
+    fx[0].style.animationPlayState = 'running';
+  },
+  pause: function (fx) {
+    fx[0].style.animationPlayState = 'paused';
+  },
+  reset: function (fx) {
+    fx[0].style.animation = 'none';
+    fx[0].offsetHeight = 0;
+    fx[0].style.animation = null;
+  },
+  stop: function (fx) {
+    game.fx.reset(fx);
+    game.fx.pause(fx);
+  },
+  hide: function (fx) {
+    game.fx.stop(fx);
+    fx.appendTo(game.hidden);
   }
 };

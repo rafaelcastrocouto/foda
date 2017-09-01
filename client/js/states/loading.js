@@ -94,19 +94,11 @@ game.states.loading = {
   },
   img: function () {
     var name = 'fireball';
-    var img = $('<img>').attr({src: '/img/fx/'+name+'.gif'}).appendTo(game.hidden);
+    var img = $('<img>').appendTo(game.hidden);
     img.on('load', function () {
-      var gifx = new SuperGif({ 
-        gif: img[0], 
-        on_end: game.fx.hide.bind(this, name)
-      });
-      gifx.load(function () {
-        game.states.loading.updated();
-        gifx.pause();
-        gifx.move_to(0);
-        gifx.el = $(gifx.get_canvas()).addClass(name + ' fx');
-        game.fx[name] = gifx;
-      });
+      game.states.loading.updated();
+      game.fx[name] = $('<div>').addClass(name + ' fx');
     });
+    img.attr({src: '/img/fx/'+name+'.png'});
   }
 };

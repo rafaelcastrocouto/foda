@@ -129,9 +129,19 @@
   box-shadow: 0 0 0 6px white;
 }
 
-.map .fx.fireball {
+
+.map .fx {
   position: absolute;
-  transform: rotateX(-37deg) translate3d(75px,-480px,100px) scale(10);
   image-rendering: pixelated;
   transform-style: preserve-3d;
+}
+.map .fx.fireball {
+  transform: rotateX(-37deg) translate3d(75px,-480px,100px) scale(10);
+  width: 64px;
+  height: 128px;
+  animation: fireball-sprite 1.4s steps(14) infinite;
+  background-image: url('../img/fx/fireball.png');
+}
+@keyframes fireball-sprite {
+  100% { background-position: -896px; }
 }
