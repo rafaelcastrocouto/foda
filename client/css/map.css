@@ -128,3 +128,10 @@
 .debug .map .ai {
   box-shadow: 0 0 0 6px white;
 }
+
+.map .fx.fireball {
+  position: absolute;
+  transform: rotateX(-37deg) translate3d(75px,-480px,100px) scale(10);
+  image-rendering: pixelated;
+  transform-style: preserve-3d;
+}

@@ -11,6 +11,7 @@ game.skills.lina = {
   },
   stun: {
     cast: function (skill, source, target) {
+      game.fx.addGif('fireball', target, 1400);
       var range = skill.data('aoe range');
       var opponent = source.opponent();
       target.cardsInRange(range, function (card) {

@@ -1,6 +1,6 @@
 game.states.loading = {
   updating: 0,
-  totalUpdate: 7, // rank + language + campaign + ui + heroes + skills + package
+  totalUpdate: 8, // rank + language + campaign + ui + heroes + skills + package + fx
   build: function () {
     this.box = $('<div>').addClass('box');   
     this.h2 = $('<p>').appendTo(this.box).addClass('loadtext').html('<span class="loader loading"></span><span class="message">Updating: </span><span class="progress">0%</span>');
@@ -16,18 +16,10 @@ game.states.loading = {
       game.states.loading.json('heroes');
       game.states.loading.json('campaign');
       game.states.loading.json('skills');
+      game.states.loading.img();
     });
     game.states.loading.rank();
     game.states.loading.progress();
-  },
-  rank: function () {
-    game.db({'get': 'rank' }, function (data) {
-      game.states.loading.updated();
-      var ranked = game.rank.sortData(data);
-      if (ranked.length == 5) {
-        game.rank.data = data;
-      } else setTimeout(10000, game.states.loading.rank);
-    });
   },
   progress: function () {
     var loading = parseInt(game.states.loading.updating / game.states.loading.totalUpdate * 100);
@@ -90,5 +82,19 @@ game.states.loading = {
         if (cb) { cb(); }
       }
     });
+  },
+  rank: function () {
+    game.db({'get': 'rank' }, function (data) {
+      game.states.loading.updated();
+      var ranked = game.rank.sortData(data);
+      if (ranked.length == 5) {
+        game.rank.data = data;
+      } else setTimeout(10000, game.states.loading.rank);
+    });
+  },
+  img: function () {
+    var img = new Image();
+    img.addEventListener('load', game.states.loading.updated);
+    img.src = '/img/fx/fireball.gif';
   }
 };
