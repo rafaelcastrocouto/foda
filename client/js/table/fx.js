@@ -1,6 +1,16 @@
 game.fx = {
   addGif: function (name, target, time) {
-    var img = $('<img>').attr({src: '/img/fx/'+name+'.gif'}).addClass(name + ' fx').appendTo(target);
-    setTimeout(img.remove.bind(img), time);
+    var fx = game.fx[name];
+    if (fx) {
+      fx.move_to(0);
+      fx.el.appendTo(target);
+      fx.play();
+    }
+  },
+  hide: function (name) {
+    var fx = game.fx[name];
+    fx.pause();
+    fx.move_to(0);
+    fx.el.appendTo(game.hidden);
   }
 };

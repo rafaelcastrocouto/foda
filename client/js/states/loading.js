@@ -93,8 +93,20 @@ game.states.loading = {
     });
   },
   img: function () {
-    var img = new Image();
-    img.addEventListener('load', game.states.loading.updated);
-    img.src = '/img/fx/fireball.gif';
+    var name = 'fireball';
+    var img = $('<img>').attr({src: '/img/fx/'+name+'.gif'}).appendTo(game.hidden);
+    img.on('load', function () {
+      var gifx = new SuperGif({ 
+        gif: img[0], 
+        on_end: game.fx.hide.bind(this, name)
+      });
+      gifx.load(function () {
+        game.states.loading.updated();
+        gifx.pause();
+        gifx.move_to(0);
+        gifx.el = $(gifx.get_canvas()).addClass(name + ' fx');
+        game.fx[name] = gifx;
+      });
+    });
   }
 };

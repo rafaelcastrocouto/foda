@@ -47,6 +47,7 @@ var game = {
       game.utils();
       game.events.build();
       game.history.build();
+      game.hidden = $('<div>').addClass('hidden').appendTo(game.container);
       game.overlay = $('<div>').addClass('game-overlay').appendTo(game.container);
       game.topbar = $('<div>').addClass('topbar');
       game.topbar.append(game.loader, game.message, game.triesCounter);
