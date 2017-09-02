@@ -71,12 +71,6 @@
   pointer-events: none;
 }
 
-
-.map canvas.fx {
-  pointer-events: none;
-  position: absolute;
-  top: -1000px; left: -1000px;
-}
 */
 .map .spot.cript {
   background: rgba(250,250,250,0.15);
@@ -134,12 +128,13 @@
   position: absolute;
   image-rendering: pixelated;
   transform-style: preserve-3d;
+  pointer-events: none;
 }
 .map .fx.fireball {
   transform: rotateX(-37deg) translate3d(75px,-480px,100px) scale(10);
   width: 64px;
   height: 128px;
-  animation: fireball-sprite 1.4s steps(14) infinite;
+  animation: fireball-sprite 1.4s steps(14) 1;
   background-image: url('../img/fx/fireball.png');
 }
 @keyframes fireball-sprite {

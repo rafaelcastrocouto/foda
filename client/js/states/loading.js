@@ -98,6 +98,9 @@ game.states.loading = {
     img.on('load', function () {
       game.states.loading.updated();
       game.fx[name] = $('<div>').addClass(name + ' fx');
+      game.fx[name].on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () {
+        game.fx.hide(game.fx[name]);
+      });
     });
     img.attr({src: '/img/fx/'+name+'.png'});
   }
