@@ -3,39 +3,38 @@ game.ai = {
     game.currentData.moves = [];
     // remember ai is playing the enemy cards
     if (game.ai.mode == 'very-easy') {
-      game.ai.movesLoop = 10; // number of units per turn
-      game.ai.maxCount = 2; // max number of plays per card
+      game.ai.movesLoop = 8; // number of units per turn
+      game.ai.maxCount = 3; // max number of plays per card
       game.ai.lowChance = 0.4; // low chance errors eg: if (r > low) choose random target
       game.ai.highChance = 0.5; // high chance errors eg: if (r > high)
-      game.ai.minP = 4;
+      game.ai.minP = 4; // minimun priority
     }
     if (game.ai.mode == 'easy') {
-      game.ai.movesLoop = 12;
-      game.ai.maxCount = 3;
+      game.ai.movesLoop = 10;
+      game.ai.maxCount = 4;
       game.ai.lowChance = 0.3;
       game.ai.highChance = 0.4;
       game.ai.minP = 5;
     }
     if (game.ai.mode == 'normal') {
-      game.ai.movesLoop = 15;
-      game.ai.maxCount = 5;
+      game.ai.movesLoop = 12;
+      game.ai.maxCount = 6;
       game.ai.lowChance = 0.1;
       game.ai.highChance = 0.2;
       game.ai.minP = 8;
     }
     if (game.ai.mode == 'hard') {
-      game.ai.movesLoop = 20;
-      game.ai.maxCount = 7;
+      game.ai.movesLoop = 14;
+      game.ai.maxCount = 8;
       game.ai.lowChance = 0.02;
       game.ai.highChance = 0.1;
       game.ai.minP = 10;
     }
   },
   turnStart: function () {
-    //game.message.text(game.data.ui.enemymove);
-    //$('.map .ai').removeClass('ai');
+    game.message.text(game.data.ui.enemymove);
     game.ai.currentmovesLoop = game.ai.movesLoop;
-    if (!game.currentData.moves) game.currentData.moves = [];
+    game.currentData.moves = [];
     // activate all passives, other sidehand skills strats per hero
     $('.enemydecks .sidehand .skills').each(function (i, el) {
       var card = $(el);
@@ -48,8 +47,7 @@ game.ai = {
     });
     // add combo data and strats
     game.ai.comboData();
-    //console.log(game.currentData.moves); debugger
-    game.enemy.startMoving(game.ai.moveRandomCard);
+    game.ai.moveRandomCard();
   },
   moveRandomCard: function () {
     game.ai.resetData();
@@ -60,7 +58,6 @@ game.ai = {
     if ((!count || count < game.ai.maxCount) && chosenCard.length) {
       chosenCard.data('ai count', (chosenCard.data('ai count') || 0) + 1);
       if (chosenCard.data('ai count') == game.ai.maxCount) chosenCard.addClass('ai-max');
-      //chosenCard.addClass('ai');
       // add attack and move data
       $('.map .enemy.card:not(.towers)').each(function (i, el) {
         var card = $(el);
@@ -73,6 +70,7 @@ game.ai = {
             card.data('ai', cardData);
           }
           if (game.heroesAI[hero] && game.heroesAI[hero].play) {
+            // add per hero cast data
             game.heroesAI[hero].play(card, cardData);
           }
         }
@@ -81,11 +79,11 @@ game.ai = {
       $('.map .player.card').each(function (i, el) {
         var card = $(el);
         game.ai.buildData(card, 'player');
-        //per hero defend
         if (card.hasClass('heroes')) {
           var hero = card.data('hero');
           if (game.heroesAI[hero] && game.heroesAI[hero].defend) {
             var cardData = card.data('ai');
+            // add per hero defend data
             game.heroesAI[hero].defend(card, cardData);
           }
         }
@@ -93,10 +91,10 @@ game.ai = {
       var cardData = chosenCard.data('ai');
       // cast strats
       var cast = game.ai.decideCast(chosenCard, cardData);
-      // action strats
       if (!chosenCard.data('ai done') && !cast) {
         var choosen = game.ai.chooseStrat(chosenCard, cardData);
         if (choosen.priority > game.ai.minP) 
+          // action strats
           game.ai.decideAction(choosen.strat, chosenCard, cardData);
       }
     } else {
@@ -107,7 +105,7 @@ game.ai = {
       //console.log(game.currentData.moves)
       game.enemy.autoMove(game.ai.nextMove);
     } else {
-      game.timeout(420, game.ai.nextMove);
+      game.ai.nextMove();
     }
   },
   nextMove: function () {
@@ -119,19 +117,28 @@ game.ai = {
     }
   },
   endTurn: function () {
-    // discard after N turns
     $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.source').removeClass('source');
     $('.ai-max').removeClass('ai-max');
+    $('.map .card').each(function (i, el) {
+      var card = $(el);
+      if (!card.hasClass('towers')) {
+        if (card.side() == 'enemy') game.ai.checkAttack(card);
+        card.data('ai done', false);//.removeClass('ai');
+      }
+    });
+    // discard after N turns
     $('.enemydecks .hand .skills').each(function (i, el) {
       var card = $(el);
       game.ai.skillsDiscard(card);
     });
-    $('.map .card').each(function (i, el) {
-      $(el).data('ai done', false);//.removeClass('ai');
-    });
-    game.single.endEnemyTurn();
+    if (game.currentData.moves.length) {
+      game.enemy.moveEndCallback = game.single.endEnemyTurn;
+      game.currentMoves = game.currentData.moves;
+      game.enemy.autoMoveCount = 0;
+      game.enemy.autoMove();
+    } else game.single.endEnemyTurn();
   },
   resetData: function () {
     // todo: ai.history
@@ -506,12 +513,14 @@ game.ai = {
       move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
       move[2] = game.map.mirrorPosition(target.attr('id'));
       card.data('ai done', true);
+      cardData['can-move'] = false;
     }
     if (action == 'attack') {
       move[0] = 'A';
       move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
       move[2] = game.map.mirrorPosition(target.getSpot().attr('id'));
       card.data('ai done', true);
+      cardData['can-attack'] = false;
     }
     if (action == 'cast') {
       move[0] = 'C';
@@ -522,6 +531,20 @@ game.ai = {
     }
     //console.log(move);
     game.currentData.moves.push(move.join(':'));
+    card.data('ai', cardData);
+  },
+  checkAttack: function (card) { //console.log(card);
+    game.ai.buildData(card, 'enemy');
+    var cardData = card.data('ai');
+    if (cardData['can-attack']) {
+      var target = game.ai.chooseTarget(cardData['attack-targets']);
+      if (target && target.target) {
+        //console.log(card,target.target)
+        game.currentData.moves.push('A:'+
+          game.map.mirrorPosition(card.getSpot().attr('id'))+':'+
+          game.map.mirrorPosition(target.target.getSpot().attr('id')));
+      }
+    }
   },
   skillsDiscard: function (card) {
     // discard counter
