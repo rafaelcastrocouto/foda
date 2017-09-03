@@ -61,6 +61,7 @@ game.skills.kotl = {
     cast: function (skill, source, target) {
       source.addBuff(target, skill);
       target.shake();
+      target.data('kotl-leak', skill);
       target.on('moved.kotl-leak', this.moved);
       game.skills.kotl.leak.discard(target, source, skill);
     },
@@ -70,7 +71,7 @@ game.skills.kotl = {
       if (target.hasBuff('kotl-leak')) {
         var buff = target.getBuff('kotl-leak');
         var source = buff.data('source');
-        var skill = buff.data('skill');
+        var skill = target.data('kotl-leak');
         game.skills.kotl.leak.discard(target, source, skill);
       } else {
         target.off('moved.kotl-leak');
