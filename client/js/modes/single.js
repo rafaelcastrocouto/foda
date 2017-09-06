@@ -84,7 +84,7 @@ game.single = {
       }
       game.enemy.buyHand();
       game.tower.attack('player');
-      game.timeout(1000, game.ai.turnStart);
+      game.timeout(2000, game.ai.turnStart);
     });
   },
   endEnemyTurn: function () {

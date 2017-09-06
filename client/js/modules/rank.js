@@ -24,10 +24,12 @@ game.rank = {
   },
   update: function (data) {
     var ranked = game.rank.sortData(data);
-    game.rank.results = ranked;
-    game.rank.el.html('').show();
-    $.each(ranked, function (i, player) {
-      game.rank.el.append($('<p>').html('<span>'+player.name+':</span><span>'+player.points+'</span>'));
-    });
+    if (ranked.length == 5) {
+      game.rank.results = ranked;
+      game.rank.el.html('').show();
+      $.each(ranked, function (i, player) {
+        game.rank.el.append($('<p>').html('<span>'+player.name+':</span><span>'+player.points+'</span>'));
+      });
+    }
   }
 };

@@ -1,6 +1,6 @@
 {
   "name": "foda",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "rafaelcastrocouto",
   "description": "Fight Over Dat Ancient - Card Game",
   "homepage": "https://foda-app.herokuapp.com/",
@@ -29,7 +29,7 @@
     "tactical"
   ],
   "dependencies": {
-    "mongodb": "^2.2.30",
+    "mongodb": "^2.2.31",
     "serve-static": "~1.10.2"
   },
   "devDependencies": {

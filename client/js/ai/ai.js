@@ -35,19 +35,14 @@ game.ai = {
     game.message.text(game.data.ui.enemymove);
     game.ai.currentmovesLoop = game.ai.movesLoop;
     game.currentData.moves = [];
+    // add combo data and strats
+    game.ai.comboData();
     // activate all passives, other sidehand skills strats per hero
     $('.enemydecks .sidehand .skills').each(function (i, el) {
       var card = $(el);
       game.ai.passives(card);
     });
-    //creep summon
-    $('.enemydecks .sidehand .units').each(function (i, el) {
-      var card = $(el);
-      game.ai.summon(card);
-    });
-    // add combo data and strats
-    game.ai.comboData();
-    game.ai.moveRandomCard();
+    game.ai.autoMove(game.ai.moveRandomCard);
   },
   moveRandomCard: function () {
     game.ai.resetData();
@@ -66,7 +61,7 @@ game.ai = {
           var hero = card.data('hero');
           var cardData = card.data('ai');
           if (game.heroesAI[hero] && cardData.strats[game.heroesAI[hero].move.default]) {
-            cardData.strats[game.heroesAI[hero].move.default] += 20;
+            cardData.strats[game.heroesAI[hero].move.default] += 10;
             card.data('ai', cardData);
           }
           if (game.heroesAI[hero] && game.heroesAI[hero].play) {
@@ -121,6 +116,7 @@ game.ai = {
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.source').removeClass('source');
     $('.ai-max').removeClass('ai-max');
+    //check attack
     $('.map .card').each(function (i, el) {
       var card = $(el);
       if (!card.hasClass('towers')) {
@@ -128,17 +124,25 @@ game.ai = {
         card.data('ai done', false);//.removeClass('ai');
       }
     });
+    //random creep summon
+    $('.enemydecks .sidehand .units').each(function (i, el) {
+      var card = $(el);
+      game.ai.summon(card);
+    });
     // discard after N turns
     $('.enemydecks .hand .skills').each(function (i, el) {
       var card = $(el);
       game.ai.skillsDiscard(card);
     });
+    game.ai.autoMove(game.single.endEnemyTurn);
+  },
+  autoMove: function (cb) {
     if (game.currentData.moves.length) {
-      game.enemy.moveEndCallback = game.single.endEnemyTurn;
+      game.enemy.moveEndCallback = cb;
       game.currentMoves = game.currentData.moves;
       game.enemy.autoMoveCount = 0;
       game.enemy.autoMove();
-    } else game.single.endEnemyTurn();
+    } else cb();
   },
   resetData: function () {
     // todo: ai.history
@@ -188,8 +192,6 @@ game.ai = {
       'cast-strats': [],
       'cast-targets': [],
       'can-make-action': false,
-      'has-self-heal': false,
-      'has-instant-attack-buff': false
     };
     $(game.ai.strats).each(function (i, strat) {
       d.strats[strat] = 1;
@@ -199,35 +201,41 @@ game.ai = {
   buildData: function (card, side) { 
     // console.log('buildData', card[0], card.data('ai'));
     var cardData = card.data('ai');
+    // retreat when hp is low
     if (card.data('current hp') < card.data('hp')/3) {
-      cardData.strats.selfheal += 20;
+      cardData.strats.retreat += 20;
     }
     var range = card.data('range');
     if (range && card.canAttack()) {
       card.opponentsInRange(range, function (opponentCard) {
+        //there is one opponent in range 
         cardData['can-attack'] = true;
-        cardData.strats.attack += 7;
         cardData['can-make-action'] = true;
+        // attack target
+        cardData.strats.attack += 10;
         cardData['attack-targets'].push({
           priority: opponentCard.data('hp') - opponentCard.data('current hp')/4,
           target: opponentCard
         });
+        // retreat if in enemy range
         var opponentData = opponentCard.data('ai');
-        if (card.data('side')=='enemy') //console.log(card[0], opponentCard[0]);
         opponentData['can-be-attacked'] = true;
-        opponentData.strats.retreat += 6;
+        opponentData.strats.retreat += 15;
+        // attack towers
         if ( opponentCard.hasClass('towers') ) {
-          cardData.strats.attack += 20;
+          cardData.strats.attack += 30;
           cardData['can-attack-tower'] = true;
         }
         var hp = opponentCard.data('current hp');
         var damage = card.data('current damage');
         var armor = opponentCard.data('current armor');
         if ( hp <= (damage - armor) ) {
+          // attack if able to kill
           cardData['attack-can-kill'] = true;
-          cardData.strats.attack += 18;
+          cardData.strats.attack += 20;
+          // retreat if can be killed
           opponentData['can-be-killed'] = true;
-          opponentData.strats.retreat += 10;
+          opponentData.strats.retreat += 25;
         }
         opponentCard.data('ai', opponentData);
       });
@@ -298,6 +306,9 @@ game.ai = {
         cardData.strats.defensive += 4;
         cardData = game.ai.spotData(cardData, tl, side, 'retreat', 4);
       }
+    }
+    if (side == 'player') {
+
     }
     card.data('ai', cardData);
     //console.log(cardData);

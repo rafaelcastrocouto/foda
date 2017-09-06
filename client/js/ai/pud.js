@@ -13,7 +13,6 @@ game.heroesAI.pud = {
     if (hook.length) {
       cardData['can-cast'] = true;
       var range = hook.data('aoe range');
-      var width = hook.data('aoe width');
       card.around(1, function (spot) {
         var cardInRange = card.firstCardInLine(spot, range);
         if (cardInRange && cardInRange.side() == card.opponent()) {

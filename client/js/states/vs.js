@@ -113,6 +113,8 @@ game.states.vs = {
     if (game.mode == 'local') return game.enemy.picks;
   },
   toTable: function () {
+    //each hero if (hero has fx)
+    game.states.loading.img();
     game.states.vs.clear();
     game.states.changeTo('table');
   },

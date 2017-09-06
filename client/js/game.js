@@ -26,15 +26,11 @@ var game = {
   id: null,
   timeoutArray: [],
   skills: {},
-  data: {},
-  //json {heroes, skills, ui, units, campaign}
-  mode: '',
-  //online, tutorial, single, library
-  currentData: {},
-  // game.currentData.moves should be a clone in online mode
-  currentState: 'noscript',
-  //unsupported, loading, log, menu, campaign, choose, vs, table, results
-  heroesAI: {},
+  data: {},//json {heroes, skills, ui, units, campaign}
+  mode: '', //online, tutorial, single, library
+  currentData: {}, // game.currentData.moves should be a clone in online mode
+  currentState: 'noscript', //unsupported, loading, log, menu, campaign, choose, vs, table, results
+  heroesAI: {}, // heroes default AI behaviour
   start: function() {
     if (window.JSON && window.localStorage && window.btoa && window.atob && window.XMLHttpRequest) {
       if (!game.debug)
