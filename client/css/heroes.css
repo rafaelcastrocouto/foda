@@ -260,7 +260,7 @@
   background-image: url("../img/skills/nyx/spike.jpg");
 }
 
-.nyx-ult .img, .buffs .buff.nyx-ult .img, .map .nyx.heroes.invisible .portrait .img {
+.nyx-ult .img, .buffs .buff.nyx-ult .img, .map .nyx.heroes.nyx-ult .portrait .img {
   background-image: url("../img/skills/nyx/ult.jpg");
 }
 

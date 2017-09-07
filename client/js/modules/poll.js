@@ -12,7 +12,7 @@ game.poll = {
     game.poll.closeBt = $('<div>').addClass('button').appendTo(game.poll.voteBox).text(game.data.ui.close).on('mouseup touchend', game.poll.close);
   },
   addVote: function (hero, name) {
-    game.poll[hero] = $('<label>').appendTo(game.poll.voteList).append($('<img>').attr({src:'img/poll/'+hero+'.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: hero})).append($('<span>').text(name))).on('mouseup touchend', game.poll.enableVote);
+    game.poll[hero] = $('<label>').appendTo(game.poll.voteList).append($('<img>').attr({src:'img/poll/'+hero+'.jpg'})).append($('<p>').append($('<input>').attr({type: 'radio', name: 'nexthero', value: hero})).append($('<span>').text(name))).on('mouseup touchend', game.poll.enableVote).on('touchstart', function () { $(this).click(); });
   },
   enableVote: function () {
     var label = $(this);

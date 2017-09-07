@@ -12,6 +12,7 @@
   left: 50%;
   transform: translate3d(-50%, -50%, 0) translateZ(0) scale(0.35);
   /* filter: blur(1.5px); */
+  transition: all 0.18s;
 }
 
 .pickbox .card.selected {

@@ -22,7 +22,23 @@ game.states.menu = {
       game.setMode('library');
       game.states.changeTo('choose');
     });
-    this.credits = $('<a>').addClass('button alert').appendTo(this.menu).attr({title: game.data.ui.choosecredits, href: 'https://github.com/rafaelcastrocouto/dotacard/graphs/contributors', target: '_blank'}).html(game.data.ui.credits+' <span class="external">➔</span>');
+    this.credits = $('<a>').addClass('button alert').appendTo(this.menu).attr({title: game.data.ui.choosecredits}).text(game.data.ui.credits).on('mouseup touchend', function () {
+      var box = $('<div>').addClass('credits box');
+      game.overlay.show().append(box);
+      box.append($('<h1>').text(game.data.ui.credits));
+      box.append($('<p>').html([
+        'Author/Dev: <a href="https://github.com/rafaelcastrocouto/foda">rafaelcastrocouto</a>',
+        'Artwork: <a href="https://www.youtube.com/user/dopatwo">Dopatwo</a>',
+        'Audio: <a href="https://www.youtube.com/user/kmmusic">Kevin MacLeod</a>',
+        'Language (TU): <a href="https://github.com/ahmetozalp">Ahmet</a>',
+        'Introduction Videos: <a href="https://www.youtube.com/user/SkylentGames">Skylent</a>',
+        'Hero (Venge): <a href="https://github.com/xinton">Washington</a>',
+        'Contribute: <a href="https://github.com/rafaelcastrocouto/foda">Your name here</a>'].join('<br>')));
+      box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
+        game.overlay.hide();
+        game.overlay.empty();
+      }));
+    });
   },
   start: function () {
     game.clear();

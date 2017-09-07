@@ -53,7 +53,7 @@ game.events = {
       };
     }
   },
-  touchmove:  function(event) {
+  touchmove: function(event) {
     game.events.move.call(this, event);
     if (event.preventDefault) event.preventDefault(); //prevent touch scroll
     return false;

@@ -47,10 +47,22 @@ game.options = {
     if (window.AudioContext) game.audio.rememberVolume();
   },
   events: function () {
-    $('input[name=fullscreen]', '.screenresolution').change(game.screen.toggleFS);
-    $('input[name=side]', '.screenresolution').change(game.screen.toggleSide);
-    $('input[name=resolution]', '.screenresolution').change(game.screen.changeResolution);
-    $('input[name=mute]', '.audioconfig').change(game.audio.mute);
+    //FS
+    $('input[name=fullscreen]', '.screenresolution').on('change', game.screen.toggleFS)
+    .parent().on('touchstart', function () { $(this).click(); });
+    //SIDE
+    $('input[name=side]', '.screenresolution').on('change', game.screen.toggleSide)
+    .parent().on('touchstart', function () { $(this).click(); });
+    //RES
+    $('input[name=resolution]', '.screenresolution').on('change', game.screen.changeResolution)
+    .parent().on('touchstart', function () { $(this).click(); });
+    //Lang
+    game.options.langSelect.on('change', game.language.click)
+    .on('touchstart', function () { $(this).focus(); });
+    //MUTE
+    $('input[name=mute]', '.audioconfig').on('change', game.audio.mute)
+    .parent().on('touchstart', function () { $(this).click(); });
+    //VOL
     $('.volume', '.audioconfig').on('mousedown.volume touchstart.volume', game.audio.volumeMouseDown);
     $('.option-state .game-overlay .box').on('mousemove.volume touchmove.volume', game.audio.volumeMouseMove);
   },

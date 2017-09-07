@@ -41,7 +41,7 @@ game.screen = {
     else $(this).attr('disabled', true);
   },
   toggleSide: function () {
-    var checked = $(this).prop('checked');
+    var checked = $('.screenresolution input[name=side]').prop('checked');
     $(document.body).toggleClass('left-side', checked);
     localStorage.setItem('left-side', checked);
   }

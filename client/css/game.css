@@ -183,6 +183,11 @@ noscript .box {
   font-weight: normal;
 }
 
+.game-overlay .box a {
+  color: #333;
+  text-decoration: underline;
+}
+
 .game-overlay .log.box {
   width: 580px;
   padding: 35px 40px 20px 40px;
@@ -360,6 +365,10 @@ input:focus {
 }
 .game-overlay {
   display: none;
+}
+
+.credits.box {
+  width: 480px;
 }
 
 .game-overlay .box {
