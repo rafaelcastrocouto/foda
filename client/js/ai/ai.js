@@ -5,29 +5,36 @@ game.ai = {
     if (game.ai.mode == 'very-easy') {
       game.ai.movesLoop = 8; // number of units per turn
       game.ai.maxCount = 3; // max number of plays per card
-      game.ai.lowChance = 0.4; // low chance errors eg: if (r > low) choose random target
-      game.ai.highChance = 0.5; // high chance errors eg: if (r > high)
-      game.ai.minP = 4; // minimun priority
+      game.ai.errorChance = 0.4; // low chance errors eg: if (r > low) choose target
+      game.ai.riskChance = 0.5; // high chance errors eg: if (r > high) choose move
+      game.ai.minP = 2; // minimun priority
     }
     if (game.ai.mode == 'easy') {
       game.ai.movesLoop = 10;
       game.ai.maxCount = 4;
-      game.ai.lowChance = 0.3;
-      game.ai.highChance = 0.4;
-      game.ai.minP = 5;
+      game.ai.errorChance = 0.3;
+      game.ai.riskChance = 0.3;
+      game.ai.minP = 4;
     }
     if (game.ai.mode == 'normal') {
       game.ai.movesLoop = 12;
-      game.ai.maxCount = 6;
-      game.ai.lowChance = 0.1;
-      game.ai.highChance = 0.2;
-      game.ai.minP = 8;
+      game.ai.maxCount = 5;
+      game.ai.errorChance = 0.1;
+      game.ai.riskChance = 0.25;
+      game.ai.minP = 6;
     }
     if (game.ai.mode == 'hard') {
       game.ai.movesLoop = 14;
+      game.ai.maxCount = 6;
+      game.ai.errorChance = 0.02;
+      game.ai.riskChance = 0.15;
+      game.ai.minP = 9;
+    }
+    if (game.ai.mode == 'very-hard') {
+      game.ai.movesLoop = 15;
       game.ai.maxCount = 8;
-      game.ai.lowChance = 0.02;
-      game.ai.highChance = 0.1;
+      game.ai.errorChance = 0;
+      game.ai.riskChance = 0.1;
       game.ai.minP = 10;
     }
   },
@@ -88,9 +95,8 @@ game.ai = {
       var cast = game.ai.decideCast(chosenCard, cardData);
       if (!chosenCard.data('ai done') && !cast) {
         var choosen = game.ai.chooseStrat(chosenCard, cardData);
-        if (choosen.priority > game.ai.minP) 
-          // action strats
-          game.ai.decideAction(choosen.strat, chosenCard, cardData);
+        // action strats
+        if (choosen) game.ai.decideAction(choosen.strat, chosenCard, cardData);
       }
     } else {
       game.ai.nextMove();
@@ -124,7 +130,7 @@ game.ai = {
         card.data('ai done', false);//.removeClass('ai');
       }
     });
-    //random creep summon
+    // creep summon
     $('.enemydecks .sidehand .units').each(function (i, el) {
       var card = $(el);
       game.ai.summon(card);
@@ -152,7 +158,7 @@ game.ai = {
     });
   },
   summon: function (card) {
-    if (Math.random() < game.ai.lowChance) {
+    if (Math.random() < game.ai.errorChance) {
       var creep = card.data('type');
       var enemyarea = $('.spot.free.enemyarea');
       var r = parseInt(Math.random() * enemyarea.length);
@@ -353,14 +359,14 @@ game.ai = {
     $(game.ai.strats).each(function (i, strat) {
       strats.push({strat: strat, priority: cardData.strats[strat]});
     });
-    return game.ai.choose(strats, 'priority', game.ai.lowChance);
+    return game.ai.choose(strats, 'priority', game.ai.errorChance);
   },
   decideCast: function (card, cardData) {
     //console.log(cardData['cast-strats'])
     if (cardData['cast-strats'].length) {
-      var cast = game.ai.choose(cardData['cast-strats'], 'priority', game.ai.lowChance);
+      var cast = game.ai.choose(cardData['cast-strats'], 'priority', game.ai.errorChance);
       //console.log('cast-skill', cast);
-      if (cast.priority > game.ai.minP && cast.skill && cast.target) {
+      if (cast && cast.skill && cast.target) {
         game.ai.parseMove(card, cardData, 'cast', cast.target, cast.skill);
         return true;
       }
@@ -475,7 +481,7 @@ game.ai = {
         target = game.ai.chooseTarget(cardData['attack-targets']);
       }
       //console.log('target', target);
-      if (action && target && target.priority > game.ai.minP) {
+      if (action && target && target.target) {
         game.ai.parseMove(card, cardData, action, target.target);
       }
     }
@@ -486,7 +492,7 @@ game.ai = {
     if (action && cardData[action]) destinys = cardData[action];
     //console.log(action, destinys);
     if (destinys.length) {
-      return game.ai.choose(destinys, 'priority', game.ai.highChance);
+      return game.ai.choose(destinys, 'priority', game.ai.riskChance);
     }
   },
   chooseTarget: function (targets) {
@@ -498,23 +504,25 @@ game.ai = {
       });
       if (towers) return towers;
       else {
-        var t = game.ai.choose(targets, 'current hp', game.ai.lowChance, 'low');
+        var t = game.ai.choose(targets, 'current hp', game.ai.errorChance, 'low');
         if (t.target.data('current hp') > 1) return t;
       }
     }
   },
-  choose: function (itens, parameter, chance, i) {
+  choose: function (itens, parameter, chance, invert) {
+    var chosen;
     if (itens.length) {
-      if (itens.length == 1) return itens[0];
-      if (game.debug || Math.random() > chance) {
+      if (itens.length == 1) chosen = itens[0];
+      else {
         itens.sort(function (a, b) {
-          if (i) return a[parameter] - b[parameter];
+          if (invert) return a[parameter] - b[parameter];
           else return b[parameter] - a[parameter];
         });
-        // console.log(itens)
-        return itens[0];
-      } else return itens.random();
+        chosen = itens.smartRandom(game.ai.minP*Math.PI);
+      }
     }
+    //console.log(itens, hosen)
+    if (chosen[parameter] > game.ai.minP) return chosen;
   },
   parseMove: function (card, cardData, action, target, skillId) {
     //console.log(action, target);

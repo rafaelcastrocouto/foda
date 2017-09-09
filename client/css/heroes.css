@@ -2,8 +2,13 @@
   background: #75ce59;
 }
 
+
 .en.heroes .img {
   background-image: url("../img/heroes/en.jpg");
+}
+.map .en.heroes .portrait .img,
+.fromMap.en.heroes .portrait .img {
+  background-position: 20% 0%;
 }
 
 .en-passive .img, .buffs .buff.en-passive .img {

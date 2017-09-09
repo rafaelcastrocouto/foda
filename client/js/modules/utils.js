@@ -7,6 +7,7 @@ game.utils = function () {
   if (!Number.prototype.toRad) { Number.prototype.toRad = function () { return this / 180 * Math.PI; }; }
   if (!Number.prototype.toDeg) { Number.prototype.toDeg = function () { return 180 * this / Math.PI; }; }
   if (!Array.prototype.random) { Array.prototype.random = function () { return this[Math.floor(Math.random() * this.length)]; }; }
+  if (!Array.prototype.smartRandom) { Array.prototype.smartRandom = function (n) { return this[Math.floor(Math.pow(Math.random(),n) * this.length)]; }; }
   if (!Array.prototype.shuffle) { Array.prototype.shuffle = function () {
       //Fisher-Yates (aka Knuth) Shuffle
       if (this.length) {
