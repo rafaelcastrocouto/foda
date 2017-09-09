@@ -127,7 +127,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "cast range": "Ranged",
-      "damage": 8,
+      "damage": 10,
       "damage type": "Magical",
       "cards": 1,
       "description": "Damages enemies around the Cat Lady. One random enemy will be hit twice"

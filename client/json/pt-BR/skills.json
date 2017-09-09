@@ -127,7 +127,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "cast range": "Distante",
-      "damage": 8,
+      "damage": 10,
       "damage type": "Mágico",
       "cards": 1,
       "description": "Causa dano aos inimigos ao redor da Miau. Um alvo aleatório é atingido duas vezes"

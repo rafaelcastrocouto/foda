@@ -126,7 +126,7 @@
       "deck": "Satın Al",
       "targets": ["Ayn?"],
       "cast range": "Menzilli",
-      "damage": 8,
+      "damage": 10,
       "damage type": "Büyü",
       "cards": 1,
       "description": "Cat Lady etrafındaki düşmanlara zarar verir. Bir rasgele düşman iki kez vurulacak (Max Dmg 18, Max Stun: 5 turns)"

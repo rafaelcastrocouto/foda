@@ -18,8 +18,15 @@ game.heroesAI.wk = {
     }
     card.data('ai', cardData);
   },
-  defend: function (wk) {
-    //console.log('defend-from-wk');
+  defend: function (card) {
+    var stun = game.data.skills.wk.stun;
+    card.inRange(stun['cast range'], function (spot) {
+      var spotData = spot.data('ai');
+      spot.priority -= 10;
+      spot['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    card.data('ai', cardData);
     //dont focus if ult buff
   }
 };

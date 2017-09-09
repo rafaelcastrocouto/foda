@@ -11,7 +11,7 @@ game.heroesAI.am = {
         skill.data('ai discard', d);
       });
     }
-    if (blinks.length) {
+    if (blinks.length && card.canCast(blinks)) {
       cardData['can-cast'] = true;
       // use blink to attack
       if (!card.hasClass('done') && !cardData['can-attack'] && card.data('current hp') > 25) {
@@ -62,26 +62,29 @@ game.heroesAI.am = {
       }
     }
     var ult = $('.enemydecks .hand .skills.am-ult');
-    if (ult.length) {
+    if (ult.lengthh && card.canCast(ult)) {
         /*opponent missing cards < N ||*/
         /*N ememies in target range ||*/
         /*after N turns*/
       cardData['can-cast'] = true;
-      card.opponentsInRange(ult.data('cast range'), function (cardInRange) {
-        var targets = 0;
-        if (!cardInRange.hasClass('towers') && cardInRange.data('mana')) {
-          cardInRange.around(2, function (nspot) {
-            var sectarget = $('.card.player', nspot);
-            if (sectarget.length) {
-              targets++;
-            }
-          });
-          var mana = (cardInRange.data('mana') || 0) * 3;
-          cardData['cast-strats'].push({
-            priority: 30 + (targets * 4) + mana,
-            skill: 'ult',
-            target: cardInRange
-          });
+      card.inRange(ult.data('cast range'), function (spot) {
+        var cardInRange = $('.card.player', spot);
+        if (cardInRange.length) {
+          var targets = 0;
+          if (!cardInRange.hasClass('towers') && cardInRange.data('mana')) {
+            cardInRange.around(2, function (nspot) {
+              var sectarget = $('.card.player', nspot);
+              if (sectarget.length) {
+                targets++;
+              }
+            });
+            var mana = (cardInRange.data('mana') || 0) * 3;
+            cardData['cast-strats'].push({
+              priority: 20 + (targets * 8) + mana,
+              skill: 'ult',
+              target: cardInRange
+            });
+          }
         }
       });
     }
@@ -101,11 +104,20 @@ game.heroesAI.am = {
       game.enemy.tower.atRange(4, function (spot) {
         var card = spot.find('.card.enemy');
         if (card.length) {
-          cardData.strats.retreat += 5;
+          cardData.strats.retreat += 1;
         }
       });
     }
-    // todo: defend from ult
+    // prevent clustering 
+    if (game.player.turns > game.ultTurn) {
+      var ult = game.data.skills.am.ult;
+      card.inRange(ult['cast range'], function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 15;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+      });
+    }
     card.data('ai', cardData);
   }
 };
