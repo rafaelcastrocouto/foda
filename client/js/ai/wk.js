@@ -18,7 +18,7 @@ game.heroesAI.wk = {
     }
     card.data('ai', cardData);
   },
-  defend: function (card) {
+  defend: function (card, cardData) {
     var stun = game.data.skills.wk.stun;
     card.inRange(stun['cast range'], function (spot) {
       var spotData = spot.data('ai');

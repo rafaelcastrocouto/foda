@@ -64,7 +64,7 @@ game.heroesAI.cm = {
     }
     card.data('ai', cardData);
   },
-  defend: function (card) {
+  defend: function (card, cardData) {
     // prevent clustering 
     var slow = game.data.skills.cm.slow;
     card.inRange(slow['cast range'], function (spot) {
