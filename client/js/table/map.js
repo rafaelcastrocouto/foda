@@ -569,10 +569,9 @@ game.map = {
     });
   },
   opponentsInRange: function (range, cb) {
-    var side = this.side();
-    var opponent = game.opponent(side);
+    var opponent = this.opponent();
     this.inRange(range, function (spot) {
-      var card = spot.find('.card.'+opponent);
+      var card = $('.card.'+opponent, spot);
       if (card.length) cb(card);
     });
     return this;

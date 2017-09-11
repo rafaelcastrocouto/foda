@@ -58,7 +58,7 @@ game.ai = {
     var chosenCard = availableCards.randomCard();
     var count = chosenCard.data('ai count');
     if ((!count || count < game.ai.maxCount) && chosenCard.length) {
-      chosenCard.data('ai count', (chosenCard.data('ai count') || 0) + 1);
+      chosenCard.data('ai count', (chosenCard.data('ai count') + 1 || 0));
       if (chosenCard.data('ai count') == game.ai.maxCount) chosenCard.addClass('ai-max');
       // add attack and move data
       $('.map .enemy.card:not(.towers)').each(function (i, el) {
@@ -120,6 +120,7 @@ game.ai = {
   endTurn: function () {
     $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
+    $('.card').data('ai count', 0);
     $('.source').removeClass('source');
     $('.ai-max').removeClass('ai-max');
     //check attack
@@ -174,10 +175,10 @@ game.ai = {
     if (card.data('type') == game.data.ui.passive) {
       var skillId = card.data('skill');
       var heroId = card.data('hero');
-      var hero = $('.map .enemy.heroes.'+heroId);
+      var hero = $('.map .enemy.heroes.'+heroId+':not(.dead)');
       if (hero.length) {
         var spotId = hero.getSpot().attr('id');
-        game.currentData.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
+        if (spotId) game.currentData.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
       }
     }
   },
