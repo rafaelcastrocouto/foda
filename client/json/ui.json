@@ -11,7 +11,7 @@
   "remember": "Remember my name",
   "welcome": "Welcome",
   "joined": "joined",
-  "alphaalert": "This game is in <b>beta</b> and bugs may (will) happen<br>Thanks for testing and come back soon for more updates<br>Works best with Chrome and Safari<br><a href='https://github.com/rafaelcastrocouto/foda/blob/master/PRIVACY.md'>Privacy Policy</a><br><small class=\"version\">Version ",
+  "alphaalert": "This game is in <b>beta</b> and bugs may (will) happen<br>Thanks for testing and come back soon for more updates<br>Works best with Chrome and Safari<br><a href='https://github.com/rafaelcastrocouto/foda/blob/master/PRIVACY.md'>Privacy Policy</a><br>Version",
   "reconnected": "reconnected",
   "logout": "Logout",
   "loading": "Loading",

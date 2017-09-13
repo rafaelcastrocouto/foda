@@ -25,7 +25,7 @@ game.states.loading = {
     $('.progress').text(loading + '%');
     if (game.states.loading.updating < game.states.loading.totalUpdate) {
       game.timeout(800, game.states.loading.progress);
-    } else if (game.states.loading.updating === game.states.loading.totalUpdate) {
+    } else if (game.states.loading.updating >= game.states.loading.totalUpdate) {
       game.states.loading.finished();
     }
   },

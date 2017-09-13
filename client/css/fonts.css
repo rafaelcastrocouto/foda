@@ -28,7 +28,7 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   src: local('Sansita One'), local('SansitaOne'), url('../fonts/Sansita-One.woff2') format('woff2'), url('../fonts/Sansita-One.woff') format('woff');
 }
 
-.tutorial .battle, .versus {
+.tutorial .battle, .versus, .log b {
   font-family: "Sansita One";
 }
 
@@ -39,7 +39,7 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   src: local('Brush Stroke Regular Std'), local('Brush Stroke Regular'), url('../fonts/Brush-Stroke-Regular.woff2') format('woff2'), url('../fonts/Brush-Stroke-Regular.woff') format('woff');
 }
 
-.card .damaged, .card .heal, .card .missed, .game-overlay .log.box small {
+.card .damaged, .card .heal, .card .missed, .game-overlay .version {
   font-family: "Brush Stroke";
 }
 

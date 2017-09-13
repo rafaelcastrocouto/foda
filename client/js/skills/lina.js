@@ -6,7 +6,7 @@ game.skills.lina = {
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
       source.opponentsInLine(target, range, width, function (card) {
-        source.damage(damage, card, skill.data('damage type'));
+        game.timeout(900, source.damage.bind(source, damage, card, skill.data('damage type')));
       });
     }
   },
@@ -15,9 +15,10 @@ game.skills.lina = {
       game.fx.add('fireball', target);
       var range = skill.data('aoe range');
       var opponent = source.opponent();
+      var damage = skill.data('damage');
       target.cardsInRange(range, function (card) {
         if (card.hasClass(opponent)) {
-          source.damage(skill.data('damage'), card, skill.data('damage type'));
+          game.timeout(900, source.damage.bind(source, damage, card, skill.data('damage type')));
           source.addStun(card, skill);
         }
         if (card.hasClass('trees')) {

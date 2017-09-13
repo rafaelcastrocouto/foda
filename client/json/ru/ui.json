@@ -11,7 +11,7 @@
   "remember": "Помните мое имя",
   "welcome": "Добро пожаловать",
   "joined": "присоединился",
-  "alphaalert": "Эта игра находится в <b> beta </b>, и ошибки могут (будут) происходить <br> Спасибо за тестирование и скоро вернутся за новыми обновлениями <br> Лучшие работы с Chrome и Safari <br> <a href='https: //github.com/rafaelcastrocouto/foda/blob/master/PRIVACY.md'>Политика конфиденциальности</a><br><small class='version'>Версия ",
+  "alphaalert": "Эта игра находится в <b> beta </b>, и ошибки могут (будут) происходить <br> Спасибо за тестирование и скоро вернутся за новыми обновлениями <br> Лучшие работы с Chrome и Safari <br> <a href='https: //github.com/rafaelcastrocouto/foda/blob/master/PRIVACY.md'>Политика конфиденциальности</a><br>Версия",
   "reconnected": "повторно подключен",
   "logout": "Выход из системы",
   "loading": "Загрузка",
