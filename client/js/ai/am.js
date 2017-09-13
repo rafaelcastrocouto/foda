@@ -104,7 +104,7 @@ game.heroesAI.am = {
       game.enemy.tower.atRange(4, function (spot) {
         var card = spot.find('.card.enemy');
         if (card.length) {
-          cardData.strats.retreat += 1;
+          cardData.strats.retreat += 10;
         }
       });
     }
@@ -113,7 +113,7 @@ game.heroesAI.am = {
       var ult = game.data.skills.am.ult;
       card.inRange(ult['cast range'], function (spot) {
         var spotData = spot.data('ai');
-        spotData.priority -= 15;
+        spotData.priority -= 25;
         spotData['can-be-casted'] = true;
         spot.data('ai', spotData);
       });

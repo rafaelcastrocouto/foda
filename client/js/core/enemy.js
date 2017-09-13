@@ -70,15 +70,10 @@ game.enemy = {
     else
       game.timeout(1000, game.enemy.movesEnd);
   },
-  autoMove: function(ai) {
+  autoMove: function() {
     var from, to, hero, skillid, move;
-    if (ai)
-      move = game.currentData.moves[0].split(':');
-    else {
-      var m = game.currentMoves[game.enemy.autoMoveCount];
-      if (m && m.length)
-        move = m.split(':');
-    }
+    var m = game.currentMoves[game.enemy.autoMoveCount];
+    if (m && m.length) move = m.split(':');
     if (move && move.length) {
       $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
       $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
@@ -126,15 +121,11 @@ game.enemy = {
           game.enemy.stopChanneling(from);
         }
       }
-      if (!ai) {
-        game.enemy.autoMoveCount++;
-        if (game.enemy.autoMoveCount < game.currentMoves.length) {
-          game.timeout(game.enemy.moveAnimation, game.enemy.autoMove);
-        } else
-          game.timeout(1000, game.enemy.movesEnd);
-      } else {
-        game.timeout(game.enemy.moveAnimation, ai);
-      }
+      game.enemy.autoMoveCount++;
+      if (game.enemy.autoMoveCount < game.currentMoves.length) {
+        game.timeout(game.enemy.moveAnimation, game.enemy.autoMove);
+      } else
+        game.timeout(1000, game.enemy.movesEnd);
     }
   },
   movesEnd: function() {
