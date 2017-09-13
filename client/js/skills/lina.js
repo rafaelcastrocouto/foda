@@ -1,6 +1,7 @@
 game.skills.lina = {
   fire: {
     cast: function (skill, source, target) {
+      game.fx.add('fire', target, source);
       var range = skill.data('aoe range');
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
@@ -11,7 +12,7 @@ game.skills.lina = {
   },
   stun: {
     cast: function (skill, source, target) {
-      game.fx.add('fireball', target, 1400);
+      game.fx.add('fireball', target);
       var range = skill.data('aoe range');
       var opponent = source.opponent();
       target.cardsInRange(range, function (card) {

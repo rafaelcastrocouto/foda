@@ -114,7 +114,8 @@ game.states.vs = {
   },
   toTable: function () {
     //each hero if (hero has fx)
-    game.states.loading.img();
+    var fx = ['fireball','fire'];
+    $.each(fx, game.fx.load);
     game.states.vs.clear();
     game.states.changeTo('table');
   },

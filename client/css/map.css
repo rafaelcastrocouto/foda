@@ -140,3 +140,46 @@
 @keyframes fireball-sprite {
   100% { background-position: -896px; }
 }
+.map .fx.fire {
+  transform: translate3d(60px,500px,100px) scale(7);
+  width: 96px;
+  height: 96px;
+  animation: fire-sprite 1.4s steps(15) 1;
+  background-image: url('../img/fx/fire.png');
+}
+@keyframes fire-sprite {
+  100% {
+    transform: translate3d(60px,-400px,100px) scale(7);
+    background-position: -1440px; 
+  }
+}
+.map .fx.fire.bottom {
+  transform: scaleY(-1) translate3d(60px,200px,100px) scale(7);
+  animation: fire-sprite-bottom 1.4s steps(15) 1;
+}
+@keyframes fire-sprite-bottom {
+  100% {
+    transform: scaleY(-1) translate3d(60px,-700px,100px) scale(7);
+    background-position: -1440px; 
+  }
+}
+.map .fx.fire.left {
+  transform: translate3d(200px,160px,100px) rotateZ(-90deg) scale(7);
+  animation: fire-sprite-left 1.4s steps(15) 1;
+}
+@keyframes fire-sprite-left {
+  100% {
+    transform: translate3d(-300px,160px,100px) rotateZ(-90deg) scale(7);
+    background-position: -1440px;
+  }
+}
+.map .fx.fire.right {
+  transform: translate3d(-100px,160px,100px) rotateZ(90deg) scale(7);
+  animation: fire-sprite-right 1.4s steps(15) 1;
+}
+@keyframes fire-sprite-right {
+  100% {
+    transform: translate3d(400px,160px,100px) rotateZ(90deg) scale(7);
+    background-position: -1440px;
+  }
+}

@@ -93,17 +93,5 @@ game.states.loading = {
         setTimeout(game.states.loading.rank, 3000);
       }
     });
-  },
-  img: function () {
-    var name = 'fireball';
-    var img = $('<img>').appendTo(game.hidden);
-    img.on('load', function () {
-      game.states.loading.updated();
-      game.fx[name] = $('<div>').addClass(name + ' fx');
-      game.fx[name].on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () {
-        game.fx.hide(game.fx[name]);
-      });
-    });
-    img.attr({src: '/img/fx/'+name+'.png'});
   }
 };
