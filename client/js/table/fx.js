@@ -1,11 +1,16 @@
 game.fx = {
+  build: function() {
+    //todo: each hero load if (hero has fx)
+    var fx = ['fireball','fire'];
+    $.each(fx, game.fx.load);
+  },
   load: function () {
     var name = this;
     var img = $('<img>').appendTo(game.hidden);
-    img.on('load', game.fx.build.bind(this, name));
+    img.on('load', game.fx.loaded.bind(this, name));
     img.attr({src: '/img/fx/'+name+'.png'});
   },
-  build: function (name) {
+  loaded: function (name) {
     game.fx[name] = $('<div>').addClass(name + ' fx');
     game.fx[name].on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () {
       game.fx.hide(game.fx[name]);

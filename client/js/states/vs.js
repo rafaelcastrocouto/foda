@@ -113,9 +113,7 @@ game.states.vs = {
     if (game.mode == 'local') return game.enemy.picks;
   },
   toTable: function () {
-    //each hero if (hero has fx)
-    var fx = ['fireball','fire'];
-    $.each(fx, game.fx.load);
+    game.fx.build();
     game.states.vs.clear();
     game.states.changeTo('table');
   },

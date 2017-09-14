@@ -125,7 +125,7 @@ game.enemy = {
       if (game.enemy.autoMoveCount < game.currentMoves.length) {
         game.timeout(game.enemy.moveAnimation, game.enemy.autoMove);
       } else
-        game.timeout(1000, game.enemy.movesEnd);
+        game.timeout(game.enemy.moveAnimation, game.enemy.movesEnd);
     }
   },
   movesEnd: function() {

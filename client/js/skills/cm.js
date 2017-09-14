@@ -56,18 +56,17 @@ game.skills.cm = {
     cast: function (skill, source) {
       source.addClass('cm-ult');
       source.selfBuff(skill, 'ult-source');
-      game.skills.cm.ult.damage(0, {source:source,skill:skill});
+      game.skills.cm.ult.damage(source, skill);
       source.on('channel', this.channel);
       source.on('channelend', this.channelend);
     },
     channel: function (event, eventdata) {
-      if ( eventdata.source.data('channeling') === 0) 
-        game.skills.cm.ult.damage(event, eventdata);
-    },
-    damage: function (event, eventdata) {
-      game.shake();
       var cm = eventdata.source;
-      var skill = eventdata.skill;
+      if ( cm.data('channeling') === 0) 
+        game.skills.cm.ult.damage(cm, eventdata.skill);
+    },
+    damage: function (cm, skill) {
+      game.shake();
       var range = skill.data('aoe range');
       cm.opponentsInRange(range, function (target) {
         cm.damage(skill.data('damage'), target, skill.data('damage type'));

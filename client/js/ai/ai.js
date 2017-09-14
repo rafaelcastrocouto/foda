@@ -26,6 +26,7 @@ game.ai = {
     // choose random card
     var availableCards = $('.map .enemy.card:not(.towers, .ai-max, .stunned, .disabled)');
     var chosenCard = availableCards.randomCard();
+    var chosenCardData = chosenCard.data('ai');
     var count = chosenCard.data('ai count');
     if ((!count || count < game.ai.level) && chosenCard.length) {
       chosenCard.data('ai count', (chosenCard.data('ai count') + 1 || 0));
@@ -60,13 +61,12 @@ game.ai = {
           }
         }
       });
-      var cardData = chosenCard.data('ai');
       // cast strats
-      var cast = game.ai.decideCast(chosenCard, cardData);
+      var cast = game.ai.decideCast(chosenCard, chosenCardData);
       if (!chosenCard.data('ai done') && !cast) {
-        var choosen = game.ai.chooseStrat(chosenCard, cardData);
+        var choosen = game.ai.chooseStrat(chosenCard, chosenCardData);
         // action strats
-        if (choosen) game.ai.decideAction(choosen.strat, chosenCard, cardData);
+        if (choosen) game.ai.decideAction(choosen.strat, chosenCard, chosenCardData);
       }
     }
     game.ai.autoMove(game.ai.nextMove);
@@ -80,12 +80,13 @@ game.ai = {
     }
   },
   endTurn: function () {
+    //console.log('ai end turn')
+    game.ai.resetData();
     $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.card').data('ai count', 0);
     $('.source').removeClass('source');
     $('.ai-max').removeClass('ai-max');
-    game.ai.resetData();
     //check attack
     $('.map .card:not(.towers)').each(function (i, el) {
       var card = $(el);
@@ -109,43 +110,10 @@ game.ai = {
     if (game.currentData.moves.length) {
       game.enemy.moveEndCallback = cb;
       game.currentMoves = game.currentData.moves;
+      //console.log(game.currentMoves);
       game.enemy.autoMoveCount = 0;
       game.enemy.autoMove();
     } else cb();
-  },
-  resetData: function () {
-    // todo: ai.history
-    game.currentData.moves = [];
-    $('.map .card').each(function (i, el) {
-      $(el).data('ai', game.ai.newData());
-    });
-    $('.map .spot').each(function (i, el) {
-      $(el).data('ai', game.ai.newSpotData());
-    });
-  },
-  summon: function (card) {
-    var creep = card.data('type');
-    var enemyarea = $('.spot.free.enemyarea');
-    var spots = [];
-    enemyarea.each(function () {
-      var spot =  $(this);
-      var spotData = spot.data('ai');
-      if (!spotData.blocked) spots.push({
-        target: spot,
-        priority: spotData.priority * 2,
-        data: spotData
-      });
-    });
-    //console.log(spots)
-    if (spots.length) {
-      var spot = game.ai.choose(spots);
-      if (spot) {
-        var to = spot.target.getPosition();
-        game.currentData.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
-        spot.data.blocked = true;
-        spot.target.data('ai', spot.data);
-      }
-    }
   },
   passives: function (card) {
     // activate all pasives
@@ -158,6 +126,17 @@ game.ai = {
         if (spotId) game.currentData.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
       }
     }
+  },
+  resetData: function () { 
+    //console.log('reset ai')
+    // todo: ai.history
+    game.currentData.moves = [];
+    $('.map .card').each(function (i, el) {
+      $(el).data('ai', game.ai.newData());
+    });
+    $('.map .spot').each(function (i, el) {
+      $(el).data('ai', game.ai.newSpotData());
+    });
   },
   newData: function () {
     var d = {
@@ -354,9 +333,10 @@ game.ai = {
     //console.log(cardData['cast-strats'])
     if (cardData['cast-strats'].length) {
       var cast = game.ai.choose(cardData['cast-strats']);
-      //console.log('cast-skill', cast);
+      console.log('cast-skill', cast);
       if (cast && cast.skill && cast.target) {
         game.ai.parseMove(card, cardData, 'cast', cast.target, cast.skill);
+        cardData['cast-strats'].erase(cast);
         return true;
       }
     }
@@ -552,6 +532,30 @@ game.ai = {
         game.currentData.moves.push('A:'+
           game.map.mirrorPosition(card.getSpot().attr('id'))+':'+
           game.map.mirrorPosition(target.target.getSpot().attr('id')));
+      }
+    }
+  },
+  summon: function (card) {
+    var creep = card.data('type');
+    var enemyarea = $('.spot.free.enemyarea');
+    var spots = [];
+    enemyarea.each(function () {
+      var spot =  $(this);
+      var spotData = spot.data('ai');
+      if (!spotData.blocked) spots.push({
+        target: spot,
+        priority: spotData.priority * 2,
+        data: spotData
+      });
+    });
+    //console.log(spots)
+    if (spots.length) {
+      var spot = game.ai.choose(spots);
+      if (spot) {
+        var to = spot.target.getPosition();
+        game.currentData.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
+        spot.data.blocked = true;
+        spot.target.data('ai', spot.data);
       }
     }
   },
