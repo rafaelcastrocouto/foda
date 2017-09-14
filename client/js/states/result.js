@@ -33,6 +33,9 @@ game.states.result = {
     this.clear();
     game.rank.send();
     if (game.mode == 'tutorial') game.tutorial.axe.addClass('show').appendTo(this.el);
+    var title = game.winner + ' ' + game.data.ui.victory;
+    if (game.mode == 'single' && game.winner != game.player.name)
+      title = game.data.ui.lose;
     if (!game.winner) {
       game.winner = game.player.name;
       if (game.mode == 'local') game.winner = 'Good Game';
@@ -51,7 +54,7 @@ game.states.result = {
       return game.enemy.picks.indexOf($(b).data('hero')) - game.enemy.picks.indexOf($(a).data('hero')); 
     });
     game.states.result.enemyResults.append(ch);
-    this.title.text(game.winner + ' ' + game.data.ui.victory);
+    this.title.text(title);
     this.towers.text(game.data.ui.towers + ' HP: ' + game.player.tower.data('current hp') + ' / ' + game.enemy.tower.data('current hp'));
     this.kd.text(game.data.ui.heroes + ': ' + game.player.kills + ' / ' + game.enemy.kills);
   },

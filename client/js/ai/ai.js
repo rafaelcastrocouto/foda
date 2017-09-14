@@ -90,13 +90,13 @@ game.ai = {
     //check attack
     $('.map .card:not(.towers)').each(function (i, el) {
       var card = $(el);
-      if (card.side() == 'enemy') game.ai.checkAttack(card);
+      if (card.side() == 'enemy' && !card.hasClass('channeling')) game.ai.checkAttack(card);
       card.data('ai done', false);//.removeClass('ai');
     });
     // creep summon
     $('.enemydecks .sidehand .units').each(function (i, el) {
       var card = $(el);
-      if (Math.random()*10 > game.ai.level) game.ai.summon(card);
+      if (Math.random()*20 > game.ai.level) game.ai.summon(card);
     });
     // discard after N turns
     $('.enemydecks .hand .skills').each(function (i, el) {
@@ -120,7 +120,7 @@ game.ai = {
     if (card.data('type') == game.data.ui.passive) {
       var skillId = card.data('skill');
       var heroId = card.data('hero');
-      var hero = $('.map .enemy.heroes.'+heroId+':not(.dead)');
+      var hero = $('.map .card.enemy.heroes.'+heroId+':not(.dead)');
       if (hero.length) {
         var spotId = hero.getSpot().attr('id');
         if (spotId) game.currentData.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
@@ -333,7 +333,7 @@ game.ai = {
     //console.log(cardData['cast-strats'])
     if (cardData['cast-strats'].length) {
       var cast = game.ai.choose(cardData['cast-strats']);
-      console.log('cast-skill', cast);
+      //console.log('cast-skill', cast);
       if (cast && cast.skill && cast.target) {
         game.ai.parseMove(card, cardData, 'cast', cast.target, cast.skill);
         cardData['cast-strats'].erase(cast);
@@ -544,7 +544,7 @@ game.ai = {
       var spotData = spot.data('ai');
       if (!spotData.blocked) spots.push({
         target: spot,
-        priority: spotData.priority * 2,
+        priority: spotData.priority + 10,
         data: spotData
       });
     });

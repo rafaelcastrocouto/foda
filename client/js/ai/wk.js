@@ -16,6 +16,9 @@ game.heroesAI.wk = {
         }
       });
     }
+    if (card.hasBuff('wk-ult')) {
+      cardData.strats.siege += 25;
+    }
     card.data('ai', cardData);
   },
   defend: function (card, cardData) {
