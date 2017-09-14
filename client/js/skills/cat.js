@@ -6,8 +6,8 @@ game.skills.cat = {
       var stunBonus = skill.data('distance stun bonus');
       var damage = skill.data('damage');
       var arrowTarget = source.firstCardInLine(target, range);
-      if (arrowTarget.side() == source.opponent()) {
-        var distance = Math.abs((source.getX() - arrowTarget.getX()) || (source.getY() - arrowTarget.getY()));
+      if (arrowTarget && arrowTarget.side() == source.opponent()) {
+        var distance = Math.abs((source.getX() - arrowTarget.getX()) || (source.getY() - arrowTarget.getY())) - 1;
         source.damage(damage + (distance * damageBonus), arrowTarget, skill.data('damage type'));
         source.addStun(arrowTarget, skill, (distance * stunBonus));
       }

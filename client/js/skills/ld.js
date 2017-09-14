@@ -9,8 +9,9 @@ game.skills.ld = {
         source.data('summon', bear);
         source.addBuff(bear, skill, 'demolish-source');
         source.addBuff(bear, skill, 'entangle-source');
+        source.on('death', this.death);
         bear.on('pre-attack', this.attack);
-        bear.on('death', this.death);
+        bear.on('death', this.beardeath);
         bear.data('return', $('.table .'+side+' .temp.skills .ld-bearreturn'));
       }
       bear.data('return').appendTo(game[side].skills.sidehand);
@@ -49,7 +50,7 @@ game.skills.ld = {
         target.off('turnend.entangle-target');
       }
     },
-    death: function (event, eventdata) {
+    beardeath: function (event, eventdata) {
       var bear = eventdata.target;
       var killer = eventdata.source;
       var skill = bear.data('summon');
@@ -59,6 +60,13 @@ game.skills.ld = {
       returnSkill.discard();
       ld.data('bear', null);
       ld.data('summon', null);
+    },
+    death: function (event, eventdata) {
+      var ld = eventdata.target;
+      var bear = ld.data('summon');
+      var returnSkill = bear.data('return');
+      returnSkill.discard();
+      bear.discard();
     }
   },
   bearreturn: {

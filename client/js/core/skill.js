@@ -219,7 +219,10 @@ game.skill = {
       if (side == 'enemy') {
         this.addClass('flipped').removeClass('showMoves discardMove');
       }
-    } else this.detach();
+    } else {
+      if (this.closest('.map').length) this.parent().addClass('free');
+      this.detach();
+    }
     return this;
   }
 };

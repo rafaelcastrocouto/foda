@@ -552,7 +552,7 @@ game.card = {
   die: function(evt) {
     this.trigger('death', evt);
     this.data('killer', evt.source);
-    this.unselect();
+    if (this.hasClass('selected')) this.unselect();
     this.stopChanneling();
     this.clearBuffs();
     this.addClass('dead').removeClass('target done stunned rooted silenced hexed disabled sleeping cycloned taunted entangled disarmed ai');

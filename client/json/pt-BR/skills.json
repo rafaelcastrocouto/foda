@@ -8,7 +8,7 @@
       "targets": ["Local", "Próprio"],
       "cast range": "Distante",
       "aoe": "Radial",
-      "aoe range": "Perto",
+      "aoe range": "Curto",
       "cards": 1,
       "damage": 4,
       "damage per unit": 1,
@@ -55,7 +55,7 @@
       "cast range": "Perto",
       "cards": 1,
       "attacks": 3,
-      "damage bonus": 4,
+      "damage bonus": 5,
       "description": "Troca três ataques com o alvo, Se alguém morrer, o assassino ganha 4 pontos permanentes de dano"
     }
   },
@@ -149,7 +149,7 @@
       "distance stun bonus": 1,
       "damage type": "Mágico",
       "cards": 1,
-      "description": "Atordoa e causa dano a uma unidade inimiga. A distância aumenta o dano e a duração do efeito (Max Dano 18, Max Stun: 5 turnos)"
+      "description": "Atordoa e causa dano a uma unidade inimiga. A distância aumenta o dano e a duração do efeito (Max Dano 15, Max Stun: 4 turnos)"
     },
     "leap": {
       "name": "Pulo do Gato",
@@ -206,7 +206,7 @@
       "targets": ["Local", "Próprio"],
       "cast range": "Distante",
       "aoe": "Radial",
-      "aoe range": "Perto",
+      "aoe range": "Curto",
       "damage": 10,
       "stun": 2,
       "damage type": "Mágico",
@@ -338,7 +338,7 @@
       "description": "Congela uma unidade inimiga (disarma e bloqueia o movimento), causa dano por turno e interrompe canalização",
       "buff": {
         "duration": 2,
-        "dot": 6,
+        "dot": 8,
         "damage type": "Mágico",
         "description": "Congelado (disarmado e sem movimento) e recebendo dano por turno"
       }
@@ -707,7 +707,7 @@
       "description": "Reduz o dano mágico e aumenta o HP e o Dano a cada uindade que o Pudge mata",
       "buff": {
         "hp per kill": 4,
-        "damage per kill": 2,
+        "damage per kill": 3,
         "resistance bonus": 2,
         "description": "Dano mágico reduzido e HP e o Dano aumentados por kill"
       }

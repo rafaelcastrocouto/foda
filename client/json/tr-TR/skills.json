@@ -8,7 +8,7 @@
       "targets": ["Yer", "Ayn?"],
       "cast range": "Menzilli",
       "aoe": "Radyal",
-      "aoe range": "Dövüş",
+      "aoe range": "Küçük",
       "cards": 1,
       "damage": 4,
       "damage per unit": 1,
@@ -55,7 +55,7 @@
       "cast range": "Dövüş",
       "cards": 1,
       "attacks": 3,
-      "damage bonus": 4,
+      "damage bonus": 5,
       "description": "Hedef düşmanla üç saldırı değiş tokuşu yapar. Eğer birisi ölürse, katil 4 kalıcı bonus hasarı kazanıyor"
     }
   },
@@ -148,7 +148,7 @@
       "distance stun bonus": 1,
       "damage type": "Büyü",
       "cards": 1,
-      "description": "Bozukluklar ve tek bir hedefe zarar verir. Mesafe, hasarı ve sersemletmeyi artıracaktır"
+      "description": "Bozukluklar ve tek bir hedefe zarar verir. Mesafe, hasarı ve sersemletmeyi artıracaktır (Max Dmg 15, Max Stun: 4 turns)"
     },
     "leap": {
       "name": "Cat Leap",
@@ -205,7 +205,7 @@
       "targets": ["Yer", "Bedava"],
       "cast range": "Menzilli",
       "aoe": "Radyal",
-      "aoe range": "Dövüş",
+      "aoe range": "Küçük",
       "damage": 10,
       "stun": 2,
       "damage type": "Büyü",
@@ -337,7 +337,7 @@
       "description": "Zamanla çevresindekı düşmanlara hasar veren bir buz ile saldırır ve düşman yavaşlar",
       "buff": {
         "duration": 2,
-        "dot": 6,
+        "dot": 8,
         "damage type": "Büyü",
         "description": "Çevresinde bulunan düşmanlara dondurulmuş buz ile hasar verir ve yavaşlatır"
       }
@@ -706,7 +706,7 @@
       "description": "Butcher Bonus, HP ve hasar Her öldürme üzerine verir ve büyü hasarı azaltır",
       "buff": {
         "hp per kill": 4,
-        "damage per kill": 2,
+        "damage per kill": 3,
         "resistance bonus": 2,
         "description": "HP ve saldırı öldürmek ve bonus büyü direnci başına arttı"
       }

@@ -9,7 +9,7 @@
       "targets": ["Spot", "Self"],
       "cast range": "Ranged",
       "aoe": "Radial",
-      "aoe range": "Melee",
+      "aoe range": "Small",
       "cards": 1,
       "damage": 4,
       "damage per unit": 1,
@@ -56,7 +56,7 @@
       "cast range": "Melee",
       "cards": 1,
       "attacks": 3,
-      "damage bonus": 4,
+      "damage bonus": 5,
       "description": "Exchanges three attacks with a target enemy. If anyone dies, the killer gains 4 permanent bonus damage"
     }
   },
@@ -149,7 +149,7 @@
       "distance stun bonus": 1,
       "damage type": "Magical",
       "cards": 1,
-      "description": "Stuns and damages a single target. The distance will increase the damage and the stun (Max Dmg 18, Max Stun: 5 turns)"
+      "description": "Stuns and damages a single target. The distance will increase the damage and the stun (Max Dmg 15, Max Stun: 4 turns)"
     },
     "leap": {
       "name": "Cat Leap",
@@ -206,7 +206,7 @@
       "targets": ["Spot", "Self"],
       "cast range": "Ranged",
       "aoe": "Radial",
-      "aoe range": "Melee",
+      "aoe range": "Small",
       "damage": 10,
       "stun": 2,
       "damage type": "Magical",
@@ -337,7 +337,7 @@
       "description": "Prevents movement and attack while dealing damage over time. Interrupts target channel",
       "buff": {
         "duration": 2,
-        "dot": 6,
+        "dot": 8,
         "damage type": "Magical",
         "description": "Ice Prison: disarmed, rooted and receiving damage over time"
       }
@@ -706,7 +706,7 @@
       "description": "Gives Butcher bonus HP and damage on every kill and reduces magic damage",
       "buff": {
         "hp per kill": 4,
-        "damage per kill": 2,
+        "damage per kill": 3,
         "resistance bonus": 2,
         "description": "HP and attack increased per kill and bonus magic resistance"
       }
