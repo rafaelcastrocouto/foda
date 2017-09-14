@@ -24,7 +24,7 @@ game.ai = {
   moveRandomCard: function () {
     game.ai.resetData();
     // choose random card
-    var availableCards = $('.map .enemy.card:not(.towers, .ai-max, .stunned, .disabled)');
+    var availableCards = $('.map .enemy.card:not(.towers, .ai-max, .stunned, .disabled, .channeling)');
     var chosenCard = availableCards.randomCard();
     var chosenCardData = chosenCard.data('ai');
     var count = chosenCard.data('ai count');

@@ -8,7 +8,7 @@ game.rank = {
     else game.player.points = 0;
   },
   send: function () {
-    game.db({
+    if (!game.debug) game.db({
       'set': 'rank',
       'data': {
         'name': game.player.name,
