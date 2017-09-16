@@ -78,7 +78,7 @@ game.states.choose = {
   disablePick: function () {
     game.states.choose.pickEnabled = false;
   },
-  pick: function () {
+  pick: function (event) {
     var card,
       slot = $(this).closest('.slot'),
       pick = $('.pickbox .card.selected');
@@ -101,7 +101,7 @@ game.states.choose = {
       game.states.choose.select.call(card);
       if (game[game.mode].pick) game[game.mode].pick();
     }
-    return false;
+    if (event.type == 'touchend')return false;
   },
   selectFirst: function (force) {
     var first = game.states.choose.pickDeck.children().first();
