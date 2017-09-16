@@ -147,6 +147,7 @@ var game = {
       game.overlay.hide();
       game.overlay.empty();
       if (cb) cb(true);
+      return false;
     }));
   },
   confirm: function(cb, text) {
@@ -157,10 +158,12 @@ var game = {
       game.overlay.hide();
       game.overlay.empty();
       cb(true);
+      return false;
     }));
     box.append($('<div>').addClass('button').text(game.data.ui.no).on('mouseup touchend', function () {
       game.overlay.hide();
       game.overlay.empty();
+      return false;
     }));
   },
   error: function(cb) {
@@ -172,6 +175,7 @@ var game = {
       game.overlay.hide();
       game.overlay.empty();
       cb(true);
+      return false;
     }));
   },
   reset: function() {

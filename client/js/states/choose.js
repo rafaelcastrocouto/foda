@@ -101,6 +101,7 @@ game.states.choose = {
       game.states.choose.select.call(card);
       if (game[game.mode].pick) game[game.mode].pick();
     }
+    return false;
   },
   selectFirst: function (force) {
     var first = game.states.choose.pickDeck.children().first();
@@ -128,6 +129,7 @@ game.states.choose = {
         }
       }
     }
+    return false;
   },
   remember: function (deck) {
     $('.slot').each(function (i) {
@@ -149,6 +151,7 @@ game.states.choose = {
         game.timeout(1000, game[game.mode].chooseEnd);
       }
     }
+    return false;
   },
   randomFill: function (cb) {
     $('.slot').each(function () {
@@ -194,6 +197,7 @@ game.states.choose = {
     if (!game.states.choose.librarytest.attr('disabled')) {
       game.library.chooseEnd();
     } else game.alert('Sorry but this hero is still under development!');
+    return false;
   },
   backClick: function () {
     if (!$(this).attr('disabled')) {
@@ -206,6 +210,7 @@ game.states.choose = {
         game.states.changeTo('campaign');
       } else game.states.choose.toMenu();
     }
+    return false;
   },
   toMenu: function () {
     game.clear();

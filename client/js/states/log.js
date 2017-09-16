@@ -64,6 +64,7 @@ game.states.log = {
     game.poll.button = $('<div>').hide().addClass('button highlight large').text(game.data.ui.votenexthero).on('mouseup touchend', function () {
       game.poll.build();
       if (!game.states.log.input.val()) game.states.log.input.focus();
+      return false;
     });
     box.append(game.poll.button);
     box.append($('<div>').addClass('button').text(game.data.ui.close).on('mouseup touchend', game.poll.close));
@@ -91,6 +92,7 @@ game.states.log = {
     } else {
       game.states.log.input.focus();
     }
+    return false;
   },
   logout: function () {
     game.confirm(function (confirmed) {
@@ -101,6 +103,7 @@ game.states.log = {
         game.states.changeTo('log');
       }
     });
+    return false;
   },
   remember: function () {
     game.states.log.remembername = !game.states.log.remembername;

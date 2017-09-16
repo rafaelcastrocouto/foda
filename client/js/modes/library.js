@@ -80,6 +80,7 @@ game.library = {
     var hero = game.library.hero,
         link = game.data.heroes[hero].intro;
     if (link && !$(this).attr('disabled')) game.states.choose.playVideo(link);
+    return false;
   },
   beginPlayerTurn: function () { 
     game.turn.beginPlayer(function () {

@@ -71,6 +71,7 @@ game.states.result = {
       game.states.changeTo('menu');
     }
     if (game.mode == 'tutorial') game.chat.set(game.data.ui.completedtutorial);
+    return false;
   },
   clear: function () {
     $('.result .results .heroes').remove();

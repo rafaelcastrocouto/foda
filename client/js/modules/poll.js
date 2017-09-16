@@ -20,7 +20,8 @@ game.poll = {
       $('label', game.poll.voteBox).removeClass('voted');
       label.addClass('voted');
       game.poll.voteBt.attr({disabled: false}).addClass('voteBt');
-    } 
+    }
+    return false;
   },
   vote: function () {
     var label = $(this);
@@ -34,6 +35,7 @@ game.poll = {
         'data': game.poll.votedHero
       }, game.poll.voted);
     }
+    return false;
   },
   voted: function (pollResults) { //console.log(poll)
     localStorage.setItem('voted', game.poll.votedHero);
@@ -51,5 +53,6 @@ game.poll = {
     setTimeout(function () {
       game.states.log.box.fadeIn();
     }, 400);
+    return false;
   }
 };

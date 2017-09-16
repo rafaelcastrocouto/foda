@@ -73,10 +73,12 @@ game.options = {
     game.screen.rememberResolution();
     game.options.events();
     if (window.AudioContext) game.audio.rememberVolume();
+    return false;
   },
   backClick: function () {
     game.overlay.hide();
     game.options.box.detach();
     game.container.removeClass('option-state');
+    return false;
   }
 };

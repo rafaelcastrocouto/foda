@@ -45,6 +45,7 @@ game.states.table = {
       if (game.mode !== 'library') game.turn.el.text(game.data.ui.enemyturn).addClass('show');
       if (game[game.mode].skip) game[game.mode].skip();
     }
+    return false;
   },
   surrenderClick: function () {
     //online && tutorial
@@ -53,12 +54,14 @@ game.states.table = {
         game[game.mode].surrender();
       }
     }, game.data.ui.leave);
+    return false;
   },
   backClick: function () {
     //library only
     game.states.table.clear();
     //game.setMode('library');
     game.states.changeTo('choose');
+    return false;
   },
   discardClick: function () {
     if (!game.states.table.discard.attr('disabled') &&
@@ -69,6 +72,7 @@ game.states.table = {
       game.player.discard(game.selectedCard);
       game.states.table.discard.attr('disabled', true);
     }
+    return false;
   },
   clear: function () {
     this.selectedCard.removeClass('flip');

@@ -37,6 +37,7 @@ game.states.menu = {
       box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
         game.overlay.hide();
         game.overlay.empty();
+        return false;
       }));
     });
   },
