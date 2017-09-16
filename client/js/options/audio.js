@@ -73,14 +73,13 @@ game.audio = {
   },
   loadMusic: function () {
     game.audio.song = 'SneakyAdventure';
-    game.audio.load(game.audio.song, function () {
-      game.audio.play(game.audio.song);
-      setInterval(function () {
-        game.audio.play(game.audio.song);
-      }, game.audio.buffers[game.audio.song].duration * 1000);
-    });
+    game.audio.load(game.audio.song, game.audio.loopSong);
+    game.audio.load('RandomEncounter');
   },
-  play: function (name) {
+  loopSong: function () {
+    game.audio.play(game.audio.song, true);
+  },
+  play: function (name, loop) {
     if (game.audio.context && 
         game.audio.context.createBufferSource &&
         game.audio.buffers[name] &&
@@ -89,12 +88,17 @@ game.audio = {
       //console.log(name, game.audio.buffers[name]);
       audio.buffer = game.audio.buffers[name];
       if (name === game.audio.song) {
+        game.audio.songSource = audio;
         audio.connect(game.audio.musicNode);
       } else {
         audio.connect(game.audio.soundsNode);
       }
+      audio.loop = loop;
       audio.start();
     }
+  },
+  stopSong: function () {
+    if (game.audio.songSource) game.audio.songSource.stop();
   },
   mute: function () {
     var vol = game.audio.unmutedvolume || game.audio.volumeNode.gain.value || game.audio.defaultVolume;
