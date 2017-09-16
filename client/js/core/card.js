@@ -599,9 +599,9 @@ game.card = {
     } else if (this.hasClass('units')) {
       if (!this.hasClass('ld-summon') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
         evt.source.damage(game.creepDeathDamage, game[side].tower, game.data.ui.pure);
-      this.detach();
+      this.appendTo(game.hidden);
     } else {
-      this.detach();
+      this.appendTo(game.hidden);
     }
     return this;
   },

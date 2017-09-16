@@ -77,7 +77,7 @@ game.options = {
   },
   backClick: function () {
     game.overlay.hide();
-    game.options.box.detach();
+    game.options.box.appendTo(game.hidden);
     game.container.removeClass('option-state');
     return false;
   }

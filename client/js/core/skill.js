@@ -133,7 +133,7 @@ game.skill = {
       game.audio.play('activate');
       target.shake();
       var end = function (target) {
-        this.detach();
+        this.appendTo(game.hidden);
         game.highlight.clearMap();
         if (target.side() === 'player') target.select();
       }.bind(skill, target);
@@ -213,7 +213,7 @@ game.skill = {
       this.trigger('discard', {target: this});
       var side = this.side();
       if (this.data('deck') === game.data.ui.temp) this.appendTo(game[side].skills.temp);
-      else if (this.data('deck') === game.data.ui.summon) this.detach();
+      else if (this.data('deck') === game.data.ui.summon) this.appendTo(game.hidden);
       else if (!this.data('cancel-discard')) this.appendTo(game[side].skills.cemitery);
       else this.data('cancel-discard', false);
       if (side == 'enemy') {
@@ -221,7 +221,7 @@ game.skill = {
       }
     } else {
       if (this.closest('.map').length) this.parent().addClass('free');
-      this.detach();
+      this.appendTo(game.hidden);
     }
     return this;
   }

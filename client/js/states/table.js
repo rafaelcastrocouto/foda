@@ -79,8 +79,9 @@ game.states.table = {
     game.states.table.setup = false;
     game.map.clear();
     game.card.clearSelection();
-    $('.table .card').remove();
-    $('.table .deck').remove();
+    $('.deck', game.states.table.el).remove();
+    $('.card', game.states.table.el).remove();
+    $('.card', game.hidden).remove();
     this.buttonbox.show().children().hide();
     this.el.removeClass('turn');
     if (game.turn.el) game.turn.el.removeClass('show');
