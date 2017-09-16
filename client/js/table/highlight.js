@@ -175,7 +175,7 @@ game.highlight = {
   radial: function (source, skill) {
     source.around(skill.data('cast range'), function (neighbor) {
       var card = neighbor.find('.card');
-      if (card.length) {
+      if (card.length && !card.hasClass('invisible')) {
         card.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
       } else neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
     });
@@ -186,7 +186,7 @@ game.highlight = {
         width = skill.data('cast width');
     source.inCross(range, width, function (neighbor) {
       var card = neighbor.find('.card');
-      if (card.length) {
+      if (card.length && !card.hasClass('invisible')) {
         card.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
       } else neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
     });
