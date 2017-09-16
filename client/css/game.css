@@ -591,12 +591,12 @@ label input {
   width: 100%;
   height: 28px;
   border-bottom: 1px solid #ddd;
+  text-align: left;
 }
 .rank.box li:last-child {
   border: 0;
 }
 .rank.box span {
-  float: left;
   max-width: 160px;
   text-overflow: ellipsis;
   overflow: hidden;
