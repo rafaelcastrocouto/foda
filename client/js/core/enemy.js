@@ -168,8 +168,8 @@ game.enemy = {
     }
     skill.addClass('showMoves');
     source.addClass('enemyMoveHighlight');
-    if (target.hasClass('.card'))
-      target.addClass('enemyMoveHighlightTarget');
+    if (target.hasClass('.card')) target.addClass('enemyMoveHighlightTarget');
+    if (game.mode == 'single') skill.data('ai discard', undefined);
     setTimeout(function(skill, target, hero, skillid) {
       //console.log(skill, target, hero, skillid)
       if (game.skills[hero][skillid].cast && skill && source.hasClass('enemy') && source.cast) {

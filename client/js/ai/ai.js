@@ -49,7 +49,7 @@ game.ai = {
         }
       });
       // add defensive data and strats
-      $('.map .player.card:not(.towers)').each(function (i, el) {
+      $('.map .player.card:not(.towers, .dead)').each(function (i, el) {
         var card = $(el);
         game.ai.buildData(card);
         if (card.hasClass('heroes')) {
@@ -237,7 +237,7 @@ game.ai = {
     var spot = card.getSpot();
     if (spot.hasClass(opponent+'area')) {
       cardData['in-tower-attack-range'] = true;
-      cardData.strats.retreat += 10;
+      if (game.player.tower.data('current hp') > 3) cardData.strats.retreat += 10;
     }
     // move strats
     if (card.canMove() && side == 'enemy') {
@@ -289,7 +289,10 @@ game.ai = {
     cardData.strats.move += 2;
     if (spot.hasClass(side+'area')) priority += 10;
     var opponent = game.opponent(side);
-    if (spot.hasClass(opponent+'area')) priority -= 25;
+    if (spot.hasClass(opponent+'area')) {
+      if (game.player.tower.data('current hp') > 3) priority -= 15;
+      else priority += 10;
+    }
     if (destiny == 'advance') cardData.strats.offensive += (priority/2);
     if (destiny == 'retreat') cardData.strats.defensive += (priority/2);
     cardData['can-'+destiny] = true;
@@ -323,6 +326,9 @@ game.ai = {
   },
   chooseStrat: function (card, cardData) {
     // console.log(card);
+    if (game.player.tower.data('current hp') == 1) {
+      return {strat: 'siege'};
+    }
     var strats = [];
     $(game.ai.strats).each(function (i, strat) {
       strats.push({strat: strat, priority: cardData.strats[strat]});
@@ -563,7 +569,7 @@ game.ai = {
     // discard counter
     var n = card.data('ai discard');
     if (n === undefined) {
-      n = 4;
+      n = 5;
     } else if (n > 0) {
       n -= 1;
     } else if (n <= 0) {

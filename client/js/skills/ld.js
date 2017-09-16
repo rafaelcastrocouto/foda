@@ -64,9 +64,11 @@ game.skills.ld = {
     death: function (event, eventdata) {
       var ld = eventdata.target;
       var bear = ld.data('summon');
-      var returnSkill = bear.data('return');
-      returnSkill.discard();
-      bear.discard();
+      if (bear) {
+        var returnSkill = bear.data('return');
+        returnSkill.discard();
+        bear.discard();
+      }
     }
   },
   bearreturn: {

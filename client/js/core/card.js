@@ -543,6 +543,7 @@ game.card = {
       source.reselect();
     }
     evt.position = target.getPosition();
+    target.addClass('dead');
     game.timeout(1000, function() {
       this.source.trigger('kill', this);
       this.target.die(this);
