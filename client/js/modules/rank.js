@@ -1,6 +1,6 @@
 game.rank = {
   build: function () {
-    game.rank.el = $('<div>').appendTo(game.states.menu.menu).addClass('rank box').text('Loading');
+    game.rank.el = $('<ol>').appendTo(game.states.menu.menu).addClass('rank box').text('Loading');
   },
   start: function () {
     var p = parseInt(localStorage.getItem('points'));
@@ -28,7 +28,7 @@ game.rank = {
       game.rank.results = ranked;
       game.rank.el.html('').show();
       $.each(ranked, function (i, player) {
-        game.rank.el.append($('<p>').html('<span>'+player.name+':</span><span>'+player.points+'</span>'));
+        game.rank.el.append($('<li>').html('<span>'+player.name+':</span><span>'+player.points+'</span>'));
       });
     }
   }
