@@ -18,11 +18,11 @@ game.states.vs = {
       //todo: recover online games
       game.states.changeTo('log');
     } else {
-      var song = 'RandomEncounter';
-      if (game.mode !== 'library' && game.audio.buffers[song]) {
+      var vsSong = 'RandomEncounter';
+      if (game.mode !== 'library' && game.audio.buffers[vsSong]) {
         game.audio.stopSong();
-        game.audio.play(song);
-        setTimeout(game.audio.loopSong, game.audio.buffers[song].duration * 1000);
+        game.audio.play(vsSong);
+        setTimeout(game.audio.loopSong, game.audio.buffers[vsSong].duration * 1000);
       }
       this.buildPlayer();
       this.buildEnemy();

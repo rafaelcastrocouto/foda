@@ -73,11 +73,14 @@ game.audio = {
   },
   loadMusic: function () {
     game.audio.song = 'SneakyAdventure';
-    game.audio.load(game.audio.song, game.audio.loopSong);
+    game.audio.load(game.audio.song);
     game.audio.load('RandomEncounter');
   },
   loopSong: function () {
-    game.audio.play(game.audio.song, true);
+    if (!game.audio.loopingSong) {
+      game.audio.loopingSong = true;
+      game.audio.play(game.audio.song, true);
+    }
   },
   play: function (name, loop) {
     if (game.audio.context && 
@@ -98,7 +101,10 @@ game.audio = {
     }
   },
   stopSong: function () {
-    if (game.audio.songSource) game.audio.songSource.stop();
+    if (game.audio.songSource && game.audio.loopingSong) {
+      game.audio.loopingSong = false;
+      game.audio.songSource.stop();
+    }
   },
   mute: function () {
     var vol = game.audio.unmutedvolume || game.audio.volumeNode.gain.value || game.audio.defaultVolume;
