@@ -2,7 +2,7 @@ game.chat = {
   build: function () {
     if (!game.chat.builded) {
       game.chat.builded = true;
-      game.chat.el = $('<div>').addClass('chat').appendTo(game.container).html('<h1>Chat</h1>').hover(game.chat.hover);
+      game.chat.el = $('<div>').addClass('chat').appendTo(document.body).html('<h1>Chat</h1>').hover(game.chat.hover);
       game.chat.dis = $('<div>').appendTo(game.chat.el).addClass('dis hidden');
       game.chat.messages = $('<div>').addClass('messages').appendTo(game.chat.el);
       game.chat.input = $('<input>').appendTo(game.chat.el).attr({type: 'text', maxlength: 36}).keydown(game.chat.keydown);

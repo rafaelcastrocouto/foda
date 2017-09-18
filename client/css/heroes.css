@@ -194,7 +194,7 @@
   background-image: url("../img/skills/ld/ult.jpg");
 }
 
-.map .ld.transformed .img {
+.map .ld.transformed .img, .fromMap.ld.transformed .img {
   background-image: url("../img/skills/ld/ult-form.jpg");
 }
 
@@ -281,7 +281,7 @@
   background-image: url("../img/skills/pud/hook.jpg");
 }
 
-.pud-rot .img, .map .pud-rot .img, .buffs .buff.pud-rot .img {
+.pud-rot .img, .map .pud-rot .img, .buffs .buff.pud-rot .img, .fromMap.pud-rot .img {
   background-image: url("../img/skills/pud/rot.jpg");
 }
 
@@ -298,7 +298,7 @@
   background-position: 80% 90%;
 }
 
-.map .pud-ult.pud-rot .img, .fromMap.pud-ult .img {
+.map .pud-ult.pud-rot .portrait .img, .fromMap.pud-ult.pud-rot .portrait .img {
   background-image: url("../img/skills/pud/dismember-rot.jpg");
 }
 

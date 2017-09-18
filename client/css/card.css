@@ -807,18 +807,20 @@
   display: none;
 }
 
-.map .card h1, .map .card .desc, /*.map .card .buff, */
-.card.dragTargetClone.fromMap h1, .card.dragTargetClone.fromMap .desc, .card.dragTargetClone.fromMap .buff {
+.map .card h1, .map .card .desc,
+.card.dragTargetClone.fromMap h1, .card.dragTargetClone.fromMap .desc {
   display: none;
 }
 
-.map .card .buffs {
+.map .card .buffs,
+.fromMap.card .buffs {
   position: relative;
   top: -28px;
   left: 0px;
 }
 
-.map .card .buff {
+.map .card .buff,
+.fromMap.card .buff {
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid #fff;
