@@ -1,11 +1,15 @@
-.table .playerdecks {
+.table .playerdecks,
+.local .table.turn .playerdecks {
   position: absolute;
   height: 100px;
   width: 724px;
-  bottom: -10px;
+  bottom: -15px;
   perspective: 600px;
 }
 
+.local .table .playerdecks {
+  bottom: 0;
+}
 
 .left-side .table .playerdecks {
   right: 0;
@@ -20,13 +24,20 @@
   position: absolute;
   height: 214px;
   width: 100%;
-  top: 25px;
+  top: 22px;
   transform: translateZ(0);
+  transition: top 0.4s;
   pointer-events: none;
+}
+.local .table.turn .enemydecks {
+  top: 36px;
+}
+.local .table .enemydecks {
+  top: 50px;
 }
 
 .table .enemydecks .deck {
-  top: -104px;
+  top: -115px;
   perspective: 600px;
   transform-style: preserve-3d;
 }
@@ -39,7 +50,7 @@
 
 .table .enemy .skills.hand {
   margin-right: 38px;
-  left: 5px;
+  left: 12px;
   width: 300px;
   display: flex;
   justify-content: flex-end;
@@ -53,8 +64,8 @@
 }
 
 .table .enemy .skills.sidehand {
-  right: 260px;
-  width: 300px;
+  left: 380px;
+  width: 281px;
   display: flex;
   padding-right: 60px;
 }
@@ -65,8 +76,8 @@
 
 .table .player .skills.sidehand {
   margin-right: 60px;
-  left: 50px;
-  width: 240px;
+  left: 14px;
+  width: 280px;
   display: flex;
   justify-content: flex-end;
 }
@@ -79,8 +90,8 @@
   left: auto;
 }
 .table .player .skills.hand {
-  left: 350px;
-  width: 320px;
+  left: 360px;
+  width: 310px;
   display: flex;
   margin-right: 60px;
 }
@@ -92,8 +103,8 @@
 }
 .table .selectedarea {
   position: absolute;
-  top: 36px;
-  right: 10px;
+  top: 27px;
+  right: 6px;
   border-radius: 10px;
   perspective: 600px;
   z-index: 5;
@@ -112,8 +123,8 @@
 
 .table .buttonbox {
   position: absolute;
-  right: 5px;
-  bottom: 10px;
+  right: 0;
+  bottom: 0;
   width: 250px;
 }
 
@@ -126,8 +137,8 @@
   position: absolute;
   top: 45px;
   left: 0;
-  width: 710px;
-  height: 460px;
+  width: 718px;
+  height: 450px;
   perspective: 800px;
   perspective-origin: 57% 50%;
   overflow: hidden;

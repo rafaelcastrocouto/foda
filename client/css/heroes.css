@@ -27,6 +27,9 @@
   background-image: url("../img/skills/en/ult.jpg");
 }
 
+.slot .en.heroes .portrait .img, .map .en.heroes .portrait .img, .fromMap.en.heroes .portrait .img {
+  background-position: 20% 50%;
+}
 
 .am {
   background: #674f80;
@@ -50,6 +53,10 @@
 
 .am-ult .img, .buffs .buff.am-ult .img {
   background-image: url("../img/skills/am/ult.jpg");
+}
+
+.slot .am.heroes .portrait .img, .map .am.heroes .portrait .img, .fromMap.am.heroes .portrait .img {
+  background-position: 40% 50%;
 }
 
 .cm {
@@ -78,6 +85,10 @@
 
 .cm-ult .img, .map .cm-ult .img, .buffs .buff.cm-ult .img {
   background-image: url("../img/skills/cm/ult.jpg");
+}
+
+.slot .cm.heroes .portrait .img, .map .cm.heroes .portrait .img, .fromMap.cm.heroes .portrait .img {
+  background-position: 25% 50%;
 }
 
 .map .cm.heroes.cm-ult .portrait .img {
@@ -293,7 +304,15 @@
   background-image: url("../img/skills/pud/dismember.jpg");
 }
 
-.map .pud-ult .portrait .img, .fromMap.pud-ult .portrait .img {
+.slot .pud.heroes .portrait .img, .map .pud.heroes .portrait .img, .fromMap.pud.heroes .portrait .img {
+  background-position: 25% 50%;
+}
+
+.map .pud-rot.heroes .portrait .img, .fromMap.pud-rot.heroes .portrait .img {
+  background-position: 50% 50%;
+}
+
+.map .pud-ult.heroes .portrait .img, .fromMap.pud-ult.heroes .portrait .img {
   background-size: 300%;
   background-position: 80% 90%;
 }

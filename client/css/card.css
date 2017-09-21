@@ -432,20 +432,25 @@
 .table .deck .card {
   top: 50%;
   left: 40px;
-  transform: translate3d(-50%, -50%, 0) scale(0.4) rotate(0);
+  transform: translate3d(-50%, -50%, 0) scale(0.5) rotate(0);
   margin-right: -130px;
 }
 
-.table .deck .card:hover, .table .deck .card.on:hover {
-  transform: translate(-50%, -50%) scale(0.5);
+.table .deck .card:hover {
+  transform: translate(-50%, -50%) scale(0.6);
+  z-index: 11;
 }
 
 .table .deck .card.on, .table .deck .card.channel-on {
-  transform: translate(-50%, -50%) scale(0.4) rotate(-5deg);
+  transform: translate(-50%, -50%) scale(0.5) rotate(-5deg);
+}
+.table .deck .card.on:hover, .table .deck .card.channel-on:hover {
+  transform: translate(-50%, -50%) scale(0.6) rotate(-5deg);
 }
 
 .table .deck .card.selected {
-  transform: translate(-50%, -50%) scale(0.5) rotate(0);
+  transform: translate(-50%, -50%) scale(0.6) rotate(0);
+  z-index: 11;
 }
 
 .table .enemy .skills .card {
@@ -453,20 +458,20 @@
 }
 
 .table .enemy .skills .card.channel-on {
-  transform: translate3d(-50%,-47%,0) scale(0.4) rotateY(180deg);
+  transform: translate3d(-50%,-47%,0) scale(0.5) rotateY(180deg);
 }
 
 @keyframes enemybuyslide {
   0% {
     left: -2000vw;
     top: 150%;
-    transform: translate(-50%, -50%) rotateY(-180deg) scale(0.5);
+    transform: translate(-50%, -50%) rotateY(-180deg) scale(0.6);
   }
 
   30% {
     left: 40px;
     top: 150%;
-    transform: translate(-50%, -50%) rotateY(-180deg) scale(0.5);
+    transform: translate(-50%, -50%) rotateY(-180deg) scale(0.6);
   }
 
   100% {
@@ -491,13 +496,13 @@
   70% {
     left: 40px;
     top: 185%;
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.6);
   }
 
   100% {
     left: -4000vw;
     top: 185%;
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.6);
   }
 }
 
@@ -517,23 +522,23 @@
   100% {
     left: 40px;
     top: -50%;
-    transform: translate(-50%, -50%) scale(0.5) rotateY(-180deg);
+    transform: translate(-50%, -50%) scale(0.6) rotateY(-180deg);
   }
 }
 
 .states .table .card.flipped {
   pointer-events: none;
-  transform: translate3d(-50%,-50%,0) scale(0.4) rotateY(-180deg);
+  transform: translate3d(-50%,-50%,0) scale(0.5) rotateY(-180deg);
 }
 .library .table .card.flipped,
 .local .table .card.flipped {
   pointer-events: all;
-  transform: translate3d(-50%,-50%,0) scale(0.4) rotateZ(-180deg);
+  transform: translate3d(-50%,-50%,0) scale(0.5) rotateZ(-180deg);
 }
 .library .table .card.flipped:hover,
 .local .table .card.flipped:hover {
   pointer-events: all;
-  transform: translate3d(-50%,-50%,0) scale(0.5) rotateZ(-180deg);
+  transform: translate3d(-50%,-50%,0) scale(0.6) rotateZ(-180deg);
 }
 
 .skills.card, .units.card {
@@ -575,7 +580,7 @@
   transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(180deg);
 }
 .local .table.turn .playerdecks .card {
-  transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(0);
+  transform: translate3d(-50%, -50%, 0) scale(0.5) rotateY(0);
 }
 
 
@@ -585,12 +590,12 @@
   transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(180deg) rotateZ(180deg);
 }
 .local .table .enemydecks .card {
-  transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(0) rotateZ(180deg);
+  transform: translate3d(-50%, -50%, 0) scale(0.5) rotateY(0) rotateZ(180deg);
 }
 
 
 .table .player .skills .card.slidedown {
-  transform: translate3d(-50%, 15%, 0) scale(0.4);
+  transform: translate3d(-50%, 15%, 0) scale(0.5);
 }
 
 .table .player .skills .card.blink {
@@ -601,13 +606,13 @@
   0% {
     left: -1000px;
     top: -50%;
-    transform: translate(-50%, -50%) scale(0.6) rotateY(179deg) rotate(0);
+    transform: translate(-50%, -50%) scale(0.7) rotateY(179deg) rotate(0);
   }
 
   30% {
     left: 40px;
     top: -50%;
-    transform: translate(-50%, -50%) scale(0.6) rotateY(179deg) rotate(0);
+    transform: translate(-50%, -50%) scale(0.7) rotateY(179deg) rotate(0);
   }
 
   100% {
@@ -616,14 +621,6 @@
   }
 }
 
-.table .player.skills.sidehand.deck .card.on {
-  transform: translate(-50%, -50%) scale(0.45);
-}
-
-.table .player.skills.sidehand.deck .card.on:hover, .table .deck.player.skills.hand .card:hover {
-  transform: translate(-50%, -50%) scale(0.5);
-  z-index: 11;
-}
 
 .selectedarea .selectedcard {
   width: 240px;
@@ -743,12 +740,12 @@
 .map .card.towers.player .current .hp span {
   background: #ccf38b;
   border: 2px solid #e2f5c2;
-  transform: translate(0, -15px) scale(5);
+  transform: translate(-15px, -5px) scale(6);
 }
 .map .card.towers.enemy .current .hp span {
   background: #e87070;
   border: 2px solid #ed8c8c;
-  transform: translate(0, -15px) scale(5);
+  transform: translate(-15px, -5px) scale(6);
 }
 
 

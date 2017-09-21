@@ -19,12 +19,12 @@
   padding: 8px;
   width: 264px;
   left: auto;
-  top: 40px;
+  top: 36px;
   height: 400px;
 }
 
 .campaign-box h2 {
-  margin: 6px;
+  margin: 8px;
   /* font-weight: bold; */
 }
 
@@ -64,7 +64,7 @@
 .campaign-box p.achieve {
   text-align: left;
   font-size: 13px;
-  margin: 0;
+  margin: 1px;
   line-height: 24px;
 }
 .campaign-box p.achieve:before {
@@ -296,10 +296,9 @@
 
 .campaign .buttonbox {
   position: absolute;
-  right: 25px;
-  top: 438px;
-  width: 250px;
-  padding: 16px 8px;
+  right: 10px;
+  bottom: 10px;
+  width: 280px;
 }
 
 .left-side .campaign .buttonbox {

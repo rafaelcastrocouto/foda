@@ -1,6 +1,6 @@
 .map {
   z-index: 0;
-  transform: translate(-49.6%,-50.2%) rotateX(37deg) scale3d(.3,.3,.3);
+  transform: translate(-49.6%,-50.5%) rotateX(37deg) scale3d(.31,.31,.31);
   transform-style: preserve-3d;
   padding: 0;
   position: absolute;
