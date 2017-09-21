@@ -164,7 +164,7 @@ game.online = {
         game.triesCounter.text(game.tries += 1);
         if (game.tries >= 10) game.states.choose.back.attr({disabled: false});
         if (game.tries > game.connectionLimit) {
-          game.reset();
+          game.reset('online.js 167: Unable to load enemy deck');
         } else { game.timeout(1000, game.online.loadDeck.bind(this, type)); }
       }
     });
@@ -304,7 +304,7 @@ game.online = {
         game.tries += 1;
         game.triesCounter.text(game.tries);
         if (game.tries > game.connectionLimit) {
-          game.reset();
+          game.reset('online.js 307: Unable to load enemy turn data');
         } else { game.timeout(1000, game.online.getTurnData); }
       }
     });

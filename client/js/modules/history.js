@@ -43,7 +43,7 @@ game.history = {
     game.db({ 'get': 'server' }, function (server) {
       if (server.status === 'online') {
         game.states.changeTo(state, recover);
-      } else { game.reset(); }
+      } else { game.reset('history.js 46: Server offline'); }
     });
   }
 };

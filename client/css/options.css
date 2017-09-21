@@ -150,9 +150,10 @@ label span {
 }
 
 .option-state .game-overlay .back {
-  min-width: 140px;
+  min-width: 200px;
   margin-bottom: 0px;
   margin-top: 30px;
+  margin-right: 40px;
 }
 
 .left-side .option-state .game-overlay .back {

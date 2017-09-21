@@ -166,7 +166,7 @@ var game = {
       return false;
     }));
   },
-  error: function(cb) {
+  error: function(details, cb) {
     var box = $('<div>').addClass('box');
     game.overlay.show().append(box);
     box.append($('<h1>').text(game.data.ui.error));
@@ -174,12 +174,20 @@ var game = {
     box.append($('<div>').addClass('button alert').text(game.data.ui.ok).on('mouseup touchend', function () {
       game.overlay.hide();
       game.overlay.empty();
-      cb(true);
+      if (cb) cb(true);
       return false;
     }));
   },
-  reset: function() {
-    game.error(function(confirmed) {
+  logError: function(details) {
+    if (typeof(details) !== 'string') details = JSON.stringify(details);
+    game.db({
+      'set': 'errors',
+      'data': details
+    });
+  },
+  reset: function(details) {
+    game.logError(details);
+    game.error(details, function(confirmed) {
       if (confirmed) {
         game.clear();
         localStorage.setItem('state', 'menu');

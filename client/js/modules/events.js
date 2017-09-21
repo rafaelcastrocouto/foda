@@ -11,6 +11,14 @@ game.events = {
     game.skill.extendjQuery();
     game.highlight.extendjQuery();
     game.map.extendjQuery();
+    $(window).on('error', function(event) {
+      var err = event.originalEvent;
+      var details = err.message +' '+ err.filename +' '+ err.lineno;
+      game.reset(details);
+    });
+    //$(document).ajaxError(function(event, xhr, settings) {
+    //  if (xhr.status !== 403 && xhr.status!== 404) game.logError(settings.url + ' ' + xhr.status + ': ' + xhr.responseText);
+    //});
     $(window).on('keypress', game.events.keyboard);
     $(window).on('resize', game.screen.resize);
     $(window).on('beforeunload ', game.events.leave);

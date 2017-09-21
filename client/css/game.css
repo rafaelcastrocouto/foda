@@ -189,7 +189,7 @@ noscript .box {
 }
 
 .game-overlay .log.box {
-  width: 580px;
+  width: 600px;
   padding: 35px 40px 20px 40px;
 }
 .game-overlay .log.box b {
@@ -203,7 +203,7 @@ noscript .box {
 }
 
 .game-overlay .log.box.vote {
-  width: 520px;
+  width: 560px;
 }
 
 .game-overlay .log.box.vote h2 {
@@ -478,8 +478,8 @@ input:focus {
   background: #ff7357;
 }
 
-
 input[type="checkbox"], input[type="radio"] {
+  transform: scale(1.3);
   cursor: pointer;
 }
 
@@ -520,11 +520,10 @@ label input {
 
 
 .log .box {
-  padding: 20px;
-  padding-bottom: 8px;
+  padding: 10px;
+  padding-bottom: 6px;
   width: 400px;
   top: 72%;
-  /* background-color: rgba(11, 15, 14, 0.85); */
   z-index: 10;
 }
 
@@ -542,8 +541,15 @@ label input {
   margin-top: 1px;
 }
 
+.log form .button {
+  width: 160px;
+}
+.log form input[type="text"] {
+  width: 180px;
+}
+
 .log .button {
-  width: 110px;
+  width: 200px;
 }
 .log .button.large {
   width: 240px;

@@ -31,7 +31,8 @@ var mongo = {
     });
   },
   poll: {},
-  rank: {}, ranked: []
+  rank: {}, ranked: [],
+  errors: []
 };
 
 var getRank = function () {
@@ -45,6 +46,7 @@ var getRank = function () {
 
 if (secret !== 'password') {
   mongo.get('poll', function (data) { mongo.poll = data; });
+  mongo.get('errors', function (data) { mongo.errors = data; });
   getRank();
 }
 
@@ -134,6 +136,12 @@ http.createServer(function(request, response) {
             }
           }
           send(response, JSON.stringify(mongo.rank));
+          return;
+        case 'errors':
+          if (mongo.errors.length) {
+            mongo.errors.push(query.data);
+            mongo.set('errors', mongo.errors);
+          }
           return;
         default:
           db.set(query.set, query.data, function(data){
