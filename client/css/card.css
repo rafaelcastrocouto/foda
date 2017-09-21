@@ -205,10 +205,10 @@
 
 .card .description {
   font-style: italic;
-  font-size: 10.5px;
+  font-size: 11px;
   margin-top: 4px;
   margin-right: 2px;
-  line-height: 13px;
+  line-height: 14px;
 }
 
 .card.player.towers {

@@ -489,7 +489,7 @@
       "armor": 3,
       "resistance": 3,
       "death damage": 12,
-      "description": "Summons a powerful Bear with 'Nature claws' and 'Demolition'. Deals 12 damage to summoner on death. Gains 'Return' card",
+      "description": "Bear has 'Nature claws' and 'Demolition'. Deals 12 damage on death. Gains 'Return' card",
       "buffs": {
         "demolish": {
           "source": {
