@@ -32,8 +32,8 @@
 }
 
 .slot.available:after {
-  left: 36px;
-  bottom: 40px;
+  left: 44px;
+  bottom: 60px;
 }
 
 .slot.available:before, .map .movearea:before {
@@ -49,7 +49,7 @@
 }
 
 .slot.available:before {
-  left: 50px;
+  left: 60px;
   transform: rotate(45deg) scale(0.25);
   animation: chooseslide 1s infinite;
 }
@@ -60,11 +60,11 @@
 
 @keyframes chooseslide {
   0%, 100% {
-    top: 40px;
+    top: 50px;
   }
 
   50% {
-    top: 55px;
+    top: 65px;
   }
 }
 

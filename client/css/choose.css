@@ -1,13 +1,15 @@
 .choose .counter {
   width: 100%;
-  margin: 160px 0 0;
+  margin: 0;
+  padding: 4px 0 0;
+  clear: both;
 }
 
 .choose .pickbox {
-  width: 800px;
+  width: 920px;
   height: 340px;
   position: absolute;
-  top: 35px;
+  top: 30px;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
@@ -19,17 +21,17 @@
 
 .choose .pickbox .deck {
   position: relative;
-  left: -25px;
+  left: -316px;
   height: 340px;
   transform: translateZ(0);
 }
 
 .choose .pickedbox {
-  height: 190px;
+  height: 210px;
   position: absolute;
-  bottom: 16px;
-  left: 85px;
-  padding: 6px 10px;
+  bottom: 5px;
+  left: 25px;
+  padding: 5px 3px;
   text-align: center;
   border-radius: 4px;
   background: rgba(0,0,0,0.6);
@@ -41,24 +43,24 @@
   right: 86px;
 }
 .choose .pickedbox .skills:hover {
-  transform: translate3d(-50%, -67%, 0) scale(1.1);
+  transform: translate3d(-42%, -68%, 0) scale(1.1);
 }
 
 .choose .slot {
   position: relative;
   border-radius: 4px;
   float: left;
-  width: 100px;
-  height: 150px;
-  margin: 4px 2px;
+  width: 120px;
+  height: 180px;
+  margin: 0 3px;
   background: rgba(255,255,255,0.08);
   cursor: pointer;
 }
 
 .library .choose .slot {
-  width: 120px;
-  height: 180px;
-  margin: 4px 5px;
+  width: 140px;
+  height: 210px;
+  margin: 0 9px;
 }
 
 .choose .slot:hover, .choose .slot.drop {
@@ -74,15 +76,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 760px;
+  width: 920px;
   height: 340px;
 }
 
 .choose .buttonbox {
   position: absolute;
-  right: 72px;
+  right: 12px;
   top: 376px;
-  width: 264px;
+  width: 285px;
   padding: 4px 8px;
 }
 

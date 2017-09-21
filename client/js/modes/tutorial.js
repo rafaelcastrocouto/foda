@@ -54,9 +54,9 @@ game.tutorial = {
   },
   chooseStart: function () {
     game.states.choose.randombt.show();
-    $('.pickbox .card').addClass('hidden').removeClass('selected');
+    $('.pickbox .card').addClass('hidden');
     $('.am, .cm, .pud, .ld, .nyx', '.pickbox').removeClass('hidden');
-    $('.am','.pickbox').addClass('selected').removeClass('half');
+    game.states.choose.selectFirst();
     game.states.choose.counter.show().text(game.data.ui.clickpick);
   },
   pick: function () {

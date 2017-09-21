@@ -29,11 +29,11 @@
   animation: pickedboxslidedown 0.5s;
   top: 50%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0) scale(0.5);
+  transform: translate3d(-50%, -50%, 0) scale(0.6);
 }
 
 .library .pickedbox .card {
-  transform: translate3d(-50%, -50%, 0) scale(0.6);
+  transform: translate3d(-50%, -50%, 0) scale(0.7);
 }
 
 @keyframes pickedboxslidedown {
@@ -211,38 +211,35 @@
   line-height: 14px;
 }
 
-.card.player.towers {
-  background: #25b77c;
-}
-
 .card.player {
-  background: #74c47b;
+  background: #6eb975;
 }
-
-.card.player.units {
-  background: #59955e;
+.card.player.towers {
+  background: #68d691;
 }
 
 .card.enemy.towers {
-  background: #c83b4f;
+  background: #c5432c;
 }
 
 .card.enemy {
   background: #c55f5f;
 }
 
-.card.enemy.units {
-  background: #e3799c;
-}
-
 .card.skills {
   background: #277cd6;
 }
 
-.card.left-hand.skills,
-.card.skills[class*="summon"],
-.card.skills[class*="ult"] {
+.card.left-hand.skills {
   background: #4db2dc;
+}
+
+.card.skills[class*="summon"] {
+  background: #249c6c;
+}
+
+.card.skills[class*="ult"] {
+  background: #8449ef;
 }
 
 .states .map .card.player.heroes.selected, .states .map .card.player.towers.selected {
@@ -738,7 +735,7 @@
   line-height: 20px;
 }
 .map .card.towers.player .current .hp span {
-  background: #ccf38b;
+  background: #a9f38b;
   border: 2px solid #e2f5c2;
   transform: translate(-15px, -5px) scale(6);
 }

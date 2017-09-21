@@ -1,5 +1,5 @@
 game.states.choose = {
-  size: 157,
+  size: 60,
   build: function () {
     this.pickbox = $('<div>').addClass('pickbox').appendTo(this.el);
     this.pickedbox = $('<div>').addClass('pickedbox').hide();
@@ -40,7 +40,7 @@ game.states.choose = {
             }
           });
         });
-        pickDeck.width(game.states.choose.size + $('.card').width() * pickDeck.children().length);
+        pickDeck.width(game.states.choose.size + $('.card').width() * pickDeck.children(':visible').length);
         $('.pickbox .card.dead').each(function (i, card) {
           card.dataset.index += pickDeck.data('cards').length;
           game.states.choose.pickDeck.append(card);
@@ -67,7 +67,9 @@ game.states.choose = {
       if (game.mode != 'library') card.addClass('draggable');
       var index = card.siblings(':visible').addBack().index(card);
       if (index === undefined) index = card.index();
-      game.states.choose.pickDeck.css('margin-left', index * -1 * game.states.choose.size);
+      var size = game.states.choose.size;
+      if (game.mode == 'tutorial') size = 0;
+      game.states.choose.pickDeck.css('margin-left', index * -1 * size);
       if (!card.hasClass('dead')) localStorage.setItem('choose', card.data('hero'));
     }
   },
@@ -104,7 +106,7 @@ game.states.choose = {
     if (event.type == 'touchend')return false;
   },
   selectFirst: function (force) {
-    var first = game.states.choose.pickDeck.children().first();
+    var first = game.states.choose.pickDeck.children(':visible').first();
     this.select.call(first, force);
   },
   selectHero: function (hero, force) {

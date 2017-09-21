@@ -5,7 +5,7 @@
   background: url("../img/bkg/campaign.jpg");
   background-size: cover;
   top: 310px;
-  left: 370px;
+  left: 320px;
   transform: translate(-50%, -50%);
   border-radius: 6px;
 }
@@ -14,10 +14,10 @@
 }
 
 .campaign-box.box {
-  right: 18px;
+  right: 30px;
   transform: none;
   padding: 8px;
-  width: 264px;
+  width: 300px;
   left: auto;
   top: 36px;
   height: 400px;
@@ -25,7 +25,7 @@
 
 .campaign-box h2 {
   margin: 8px;
-  /* font-weight: bold; */
+  font-size: 22px;
 }
 
 .left-side .campaign-box.box {
@@ -296,9 +296,9 @@
 
 .campaign .buttonbox {
   position: absolute;
-  right: 10px;
+  right: 22px;
   bottom: 10px;
-  width: 280px;
+  width: 320px;
 }
 
 .left-side .campaign .buttonbox {
