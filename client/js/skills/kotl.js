@@ -47,6 +47,7 @@ game.skills.kotl = {
           card.heal(damage * time);
         });
       }
+      game.audio.play('kotl/illuminaterelease');
       kotl.data('illuminate-start', null);
       kotl.data('illuminate-target', null);
       kotl.data('illuminate-ghost', null);
@@ -198,6 +199,7 @@ game.skills.kotl = {
       if (destiny) {
         target.stopChanneling();
         target.place(destiny);
+        game.audio.play('kotl/recallend');
         target.data('recall-source', null);
         target.data('recall-skill', null);
         target.off('damage.kotl-recall');

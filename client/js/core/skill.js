@@ -156,7 +156,12 @@ game.skill = {
       target.trigger('toggle', evt);
       game.skills[hero][skillid].toggle(skill, target);
       if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
-        game.audio.play(hero + '/' + skillid);
+        if (skill.is('.ld-ult:not(.on)')) game.audio.play(hero + '/transform');
+        else if (skill.is('.pud-rot:not(.on)')) {
+          game.audio.play('activate');
+          game.audio.sources['pud/rot'].stop();
+        }
+        else game.audio.play(hero + '/' + skillid);
       }
       target.shake();
       if (skill.hasClass('enemy')) {

@@ -52,18 +52,24 @@ game.skills.nyx = {
       var buff = source.selfBuff(skill);
       buff.on('expire', this.expire);
       source.on('invisibilityLoss', this.invisibilityLoss);
+      source.on('attack.nyx-ult', this.attack);
       source.addInvisibility();
       source.addClass('nyx-ult');
+    },
+    attack: function (event, eventdata) {
+      game.audio.play('nyx/ultattack');
     },
     invisibilityLoss: function (event, eventdata) {
       var source = eventdata.target;
       source.removeBuff('nyx-ult');
       source.removeClass('nyx-ult');
+      source.off('attack.nyx-ult');
     },
     expire: function (event, eventdata) {
       var source = eventdata.target;
       source.removeInvisibility();
       source.removeClass('nyx-ult');
+      source.off('attack.nyx-ult');
     }
   }
 };

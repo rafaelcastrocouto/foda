@@ -35,6 +35,7 @@ game.audio = {
     'horn',
     'battle',
     'pick',
+    'move',
     'tower/attack',
     'tutorial/axehere',
     'tutorial/axebattle',
@@ -47,18 +48,50 @@ game.audio = {
     'am/burn',
     'am/blink',
     'am/ult',
+    'cat/attack',
+    'cat/leap',
+    'cat/arrow',
+    'cat/star',
+    'cat/ult',
+    'com/attack',
+    'com/aoe',
+    'com/heal',
+    'com/counter',
+    'com/ult',
+    'com/ultvictory',
     'cm/attack',
     'cm/freeze',
     'cm/slow',
     'cm/ult',
+    'en/attack',
+    'en/curse',
+    'en/heal',
+    'en/ult',
     'ld/attack',
-    'ld/bear',
+    'ld/summon',
+    'ld/roar',
     'ld/cry',
-    'ld/entangle',
     'ld/rabid',
-    'ld/return',
+    'ld/bearreturn',
     'ld/transform',
     'ld/ult',
+    'kotl/attack',
+    'kotl/illuminate',
+    'kotl/illuminaterelease',
+    'kotl/leak',
+    'kotl/mana',
+    'kotl/recall',
+    'kotl/recallend',
+    'kotl/ult',
+    'kotl/blind',
+    'nyx/attack',
+    'nyx/stun',
+    'nyx/burn',
+    'nyx/spike',
+    'nyx/ult',
+    'nyx/ultattack',
+    'bear/attack',
+    'bear/entangle',
     'pud/attack',
     'pud/hook',
     'pud/rot',
@@ -71,6 +104,16 @@ game.audio = {
     'lina/fire',
     'lina/stun',
     'lina/ult',
+    'venge/attack',
+    'venge/corruption',
+    'venge/stun',
+    'venge/ult',
+    'wind/attack',
+    'wind/run',
+    'wind/stun',
+    'wind/stunhit',
+    'wind/arrow',
+    'wind/ult',
     'crit'
   ],
   loadSounds: function () {
@@ -89,7 +132,8 @@ game.audio = {
       game.audio.play(game.audio.song, 'loop', 'music');
     }
   },
-  play: function (name, loop, music) {
+  sources: [],
+  play: function (name, loop, music) { //console.trace(name);
     if (game.audio.context && 
         game.audio.context.createBufferSource &&
         game.audio.buffers[name] &&
@@ -103,6 +147,7 @@ game.audio = {
       } else {
         audio.connect(game.audio.soundsNode);
       }
+      game.audio.sources[name] = audio;
       audio.loop = loop;
       audio.start();
       return audio;

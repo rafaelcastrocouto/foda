@@ -43,7 +43,7 @@ game.skills.wk = {
     death: function (event, eventdata) {
       var source = eventdata.target;
       var side = source.side();
-      var team = $('.table .card.'+side);
+      var team = $('.table .card.'+side+':not(.wk)');
       team.removeBuff('wk-lifesteal');
       team.off('attack.wk-lifesteal');
     },
@@ -93,8 +93,12 @@ game.skills.wk = {
       var skill = buff.skill;
       var spot = wk.data('wk-ult-spot');
       var side = wk.side();
-      wk.reborn(spot);
-      spot.removeClass('cript block');
+      game.audio.play('wk/ult');
+      game.timeout(900, function (wk, spot) { //console.log(wk, spot)
+        game.shake();
+        wk.reborn(spot);
+        spot.removeClass('cript block');
+      }.bind(this, wk, spot));
       wk.opponentsInRange(range, function (target) {
         wk.addBuff(target, skill, 'ult-targets');
       });
@@ -104,7 +108,6 @@ game.skills.wk = {
       if (game.mode == 'library') skill.appendTo(game[side].skills.sidehand);
       else skill.appendTo(game[side].skills.cemitery);
       if (side == 'enemy') skill.addClass('flipped');
-      game.shake();
     }
   }
 };

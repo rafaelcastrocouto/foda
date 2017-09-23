@@ -110,7 +110,7 @@ game.enemy = {
         if (move[0] === 'S') {
           to = game.map.mirrorPosition(move[1]);
           creep = move[2];
-          game.enemy.summonCreep(to, creep);
+          game.enemy.summonCreepMove(to, creep);
         }
         if (move[0] === 'D') {
           skillid = move[1];
@@ -207,10 +207,19 @@ game.enemy = {
     }
     .bind(this, skill, target, hero, skillid));
   },
-  summonCreep: function(to, creep) {
+  summonCreep: function(event) {
+    var target = $(this);
+    var to = target.getPosition();
+    var creep = game.selectedCard.data('type');
+    if (!game.isPlayerTurn() || game.mode == 'library') {
+      game.units.summonCreep(target, to, creep);
+    }
+  },
+  summonCreepMove: function(to, creep) {
     var target = $('#' + to);
     var creepCard = game.enemy.skills.sidehand.children('.' + creep).first();
     if (!game.isPlayerTurn() && target.hasClass('free') && creepCard.length) {
+      game.audio.play('activate');
       creepCard.addClass('showMoves');
       game.timeout(game.enemy.moveAnimation, function() {
         creepCard.removeClass('showMoves flipped').addClass('done').place(target);

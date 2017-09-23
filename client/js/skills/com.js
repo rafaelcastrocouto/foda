@@ -48,6 +48,7 @@ game.skills.com = {
       var lifesteal = buff.data('lifesteal') / 100;
       var chance = buff.data('chance') / 100;
       if ( game.random() < chance && target.side() == source.opponent() ) {
+        game.audio.play('com/counter');
         target.attack(source, 'force');
         target.heal(damage * lifesteal);
       }
@@ -70,6 +71,7 @@ game.skills.com = {
     death: function (event, eventdata) {
       var source = eventdata.source;
       var target = eventdata.target;
+      game.audio.play('com/ultvictory');
       source.setDamage(source.data('current damage') + 2);
     }
   }

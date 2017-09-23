@@ -30,6 +30,7 @@ game.skills.ld = {
           var entangle = source.getBuff('entangle-source');
           var chance = entangle.data('chance') / 100;
           if (game.random() < chance) {
+            game.audio.play('bear/entangle');
             target.addClass('rooted');
             target.on('turnend.entangle-target', game.skills.ld.summon.turnend);
             var targetBuff = source.addBuff(target, game.data.skills.ld.summon.buffs.entangle.target);

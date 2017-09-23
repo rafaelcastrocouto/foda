@@ -235,6 +235,7 @@ game.card = {
       card.removeClass('draggable').off('mousedown touchstart');
       game.highlight.clearMap();
       card.stopChanneling();
+      game.audio.play('move');
       card.animateMove(destiny);
       var evt = {
         type: 'move',
@@ -409,12 +410,9 @@ game.card = {
         }
         .bind(missFx));
       } else {
-        if (source.hasClass('towers'))
-          name = 'tower';
-        else if (source.hasClass('bear') || source.hasClass('units'))
-          name = 'bear';
-        else
-          name = source.data('hero');
+        if (source.hasClass('towers')) name = 'tower';
+        else if (source.hasClasses('bear units transformed')) name = 'bear';
+        else name = source.data('hero');
         game.audio.play(name + '/attack');
       }
     }

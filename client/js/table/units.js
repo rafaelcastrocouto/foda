@@ -96,5 +96,22 @@ game.units = {
     else {
       crep.addClass('flipped');
     }
+  },
+  summonCreep: function(target, to, creep) {
+    if (target.hasClass('free')) {
+      game.audio.play('activate');
+      game.highlight.clearMap();
+      var end = function() {
+        this.creep.addClass('done');
+        this.creep.place(this.target);
+        this.creep.trigger('summon');
+      }.bind({
+        creep: game.selectedCard,
+        target: target
+      });
+      if (!game.selectedCard.hasClass('dragTarget')) {
+        game.skill.animateCast(game.selectedCard, target, event, end);
+      } else end();
+    }
   }
 };

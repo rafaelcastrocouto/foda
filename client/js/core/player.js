@@ -140,22 +140,10 @@ game.player = {
     var target = $(this);
     var to = target.getPosition();
     var creep = game.selectedCard.data('type');
-    if (game.isPlayerTurn() && target.hasClass('free')) {
+    if (game.isPlayerTurn()) {
       if (game.mode == 'online')
         game.currentMoves.push('S:' + to + ':' + creep);
-      game.highlight.clearMap();
-      var end = function() {
-        this.creep.addClass('done');
-        this.creep.place(this.slot);
-        this.creep.trigger('summon');
-      }
-      .bind({
-        creep: game.selectedCard,
-        slot: target
-      });
-      if (!game.selectedCard.hasClass('dragTarget')) {
-        game.skill.animateCast(game.selectedCard, target, event, end);
-      } else end();
+      game.units.summonCreep(target, to, creep);
     }
   },
   discard: function(skill) {

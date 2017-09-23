@@ -62,8 +62,10 @@ game.skills.cm = {
     },
     channel: function (event, eventdata) {
       var cm = eventdata.source;
-      if ( cm.data('channeling') === 0) 
+      if ( cm.data('channeling') === 0) {
+        game.audio.play('cm/ult');
         game.skills.cm.ult.damage(cm, eventdata.skill);
+      }
     },
     damage: function (cm, skill) {
       game.shake();

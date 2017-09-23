@@ -32,7 +32,7 @@ game.highlight = {
       }
       if (game.selectedCard.hasClass('skills')) {
         game.selectedCard.highlightSource();
-        if (!game.selectedCard.hasAllClasses('channel-on')) game.selectedCard.strokeSkill();
+        if (!game.selectedCard.hasClass('channel-on')) game.selectedCard.strokeSkill();
         if (game.isPlayerTurn()) {
           game.selectedCard.highlightArrows();
           game.selectedCard.highlightTargets(event);
@@ -371,7 +371,7 @@ game.highlight = {
   highlightCreep: function () {
     var side = game.selectedCard.side();
     game[side].tower.strokeAttack();
-    $('.spot.'+side+'area.free').addClass('movearea').on('mouseup.highlight touchend.highlight', game.player.summonCreep);
+    $('.spot.'+side+'area.free').addClass('movearea').on('mouseup.highlight touchend.highlight', game[side].summonCreep);
   },
   clearMap: function () {
     game.skill.aoe = null;
