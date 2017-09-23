@@ -1,7 +1,7 @@
 game.skills.lina = {
   fire: {
     cast: function (skill, source, target) {
-      game.fx.add('fire', target, source);
+      game.fx.add('fire', source, target, 'linear');
       var range = skill.data('aoe range');
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
@@ -12,7 +12,7 @@ game.skills.lina = {
   },
   stun: {
     cast: function (skill, source, target) {
-      game.fx.add('fireball', target);
+      game.fx.add('stun', source, target);
       var range = skill.data('aoe range');
       var opponent = source.opponent();
       var damage = skill.data('damage');
@@ -52,7 +52,8 @@ game.skills.lina = {
   },
   ult: {
     cast: function (skill, source, target) {
-      source.damage(skill.data('damage'), target, skill.data('damage type'));
+      game.fx.add('ult', source, target, 'rotate');
+      game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
     }
   }
 };

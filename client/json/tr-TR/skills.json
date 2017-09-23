@@ -195,6 +195,7 @@
       "damage": 12,
       "damage type": "Büyü",
       "cards": 1,
+      "fx": ["fire"],
       "description": "Ateşten oluşan bir sütun düşmanları bir çizgide hasara uğratır"
     },
     "stun": {
@@ -210,6 +211,7 @@
       "stun": 2,
       "damage type": "Büyü",
       "cards": 1,
+      "fx": ["stun"],
       "description": "Ateş topu düşmanları şaşırtıyor ve düşmanlarına zarar veriyor. Ağaçları yok edebilir miyim"
     },
     "passive": {
@@ -235,6 +237,7 @@
       "cards": 1,
       "damage": 30,
       "damage type": "Büyü",
+      "fx": ["ult-close", "ult-far"],
       "description": "Tek bir düşman biriminde yıldırım çarpması sonucu patlar"
     }
   },

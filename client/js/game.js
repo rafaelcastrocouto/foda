@@ -179,11 +179,13 @@ var game = {
     }));
   },
   logError: function(details) {
-    if (typeof(details) !== 'string') details = JSON.stringify(details);
-    game.db({
-      'set': 'errors',
-      'data': details
-    });
+    if (!game.debug) {
+      if (typeof(details) !== 'string') details = JSON.stringify(details);
+      game.db({
+        'set': 'errors',
+        'data': details
+      });
+    }
   },
   reset: function(details) {
     game.logError(details);

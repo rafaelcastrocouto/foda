@@ -130,56 +130,136 @@
   transform-style: preserve-3d;
   pointer-events: none;
 }
-.map .fx.fireball {
+.map .fx-lina.stun {
   transform: rotateX(-37deg) translate3d(75px,-480px,100px) scale(10);
   width: 64px;
   height: 128px;
-  animation: fireball-sprite 1.4s steps(14) 1;
-  background-image: url('../img/fx/fireball.png');
+  animation: lina-stun-sprite 1.4s steps(14) 1;
+  background-image: url('../img/fx/lina/stun.png');
 }
-@keyframes fireball-sprite {
+@keyframes lina-stun-sprite {
   100% { background-position: -896px; }
 }
-.map .fx.fire {
+
+.map .fx-lina.fire {
   transform: translate3d(60px,500px,100px) scale(7);
   width: 96px;
   height: 96px;
-  animation: fire-sprite 1.4s steps(15) 1;
-  background-image: url('../img/fx/fire.png');
+  animation: lina-fire-sprite 1.4s steps(15) 1;
+  background-image: url('../img/fx/lina/fire.png');
 }
-@keyframes fire-sprite {
+@keyframes lina-fire-sprite {
   100% {
     transform: translate3d(60px,-400px,100px) scale(7);
     background-position: -1440px; 
   }
 }
-.map .fx.fire.bottom {
+.map .fx-lina.fire.bottom {
   transform: scaleY(-1) translate3d(60px,200px,100px) scale(7);
-  animation: fire-sprite-bottom 1.4s steps(15) 1;
+  animation: lina-fire-sprite-bottom 1.4s steps(15) 1;
 }
-@keyframes fire-sprite-bottom {
+@keyframes lina-fire-sprite-bottom {
   100% {
     transform: scaleY(-1) translate3d(60px,-700px,100px) scale(7);
     background-position: -1440px; 
   }
 }
-.map .fx.fire.left {
+.map .fx-lina.fire.left {
   transform: translate3d(200px,160px,100px) rotateZ(-90deg) scale(7);
-  animation: fire-sprite-left 1.4s steps(15) 1;
+  animation: lina-fire-sprite-left 1.4s steps(15) 1;
 }
-@keyframes fire-sprite-left {
+@keyframes lina-fire-sprite-left {
   100% {
     transform: translate3d(-300px,160px,100px) rotateZ(-90deg) scale(7);
     background-position: -1440px;
   }
 }
-.map .fx.fire.right {
+.map .fx-lina.fire.right {
   transform: translate3d(-100px,160px,100px) rotateZ(90deg) scale(7);
-  animation: fire-sprite-right 1.4s steps(15) 1;
+  animation: lina-fire-sprite-right 1.4s steps(15) 1;
 }
-@keyframes fire-sprite-right {
+@keyframes lina-fire-sprite-right {
   100% {
     transform: translate3d(400px,160px,100px) rotateZ(90deg) scale(7);
     background-position: -1440px;
   }
+}
+
+.map .fx-lina.ult,
+.map .fx-lina.ult {
+  transform: translate3d(0,0,100px) scale(18);
+  width: 21px;
+  height: 34px;
+  animation: lina-ult-sprite 1.8s steps(19) 1;
+}
+@keyframes lina-ult-sprite {
+  100% {
+    background-position: -400px;
+  }
+}
+.map .fx-lina.ult-close {
+  background-image: url('../img/fx/lina/ult-close.png');
+}
+.map .fx-lina.ult-far {
+  background-image: url('../img/fx/lina/ult-far.png');
+}
+.map .fx-lina.ult.r01 {
+  transform: translate3d(85px,0,160px) scale(22);
+}
+.map .fx-lina.ult.r-11 {
+  transform: translate3d(35px,-20px,100px) scale(24) rotate(36deg);
+}
+.map .fx-lina.ult.r11 {
+  transform: translate3d(135px,-20px,100px) scale(24) rotate(-36deg);
+}
+.map .fx-lina.ult.r10 {
+  transform: translate3d(90px,-85px,100px) scale(20) rotate(-90deg);
+}
+.map .fx-lina.ult.r-10 {
+  transform: translate3d(105px,-85px,100px) scale(20) rotate(90deg);
+}
+.map .fx-lina.ult.r-1-1 {
+  transform: translate3d(80px,-175px,100px) scale(24) rotate(136deg);
+}
+.map .fx-lina.ult.r1-1 {
+  transform: translate3d(130px,-165px,100px) scale(24) rotate(-136deg);
+}
+.map .fx-lina.ult.r0-1 {
+  transform: translate3d(105px,-145px,100px) scale(22) rotate(180deg);
+}
+.map .fx-lina.ult.r02 {
+  transform: translate3d(85px,245px,100px) scale(22);
+}
+.map .fx-lina.ult.r-12 {
+  transform: translate3d(-35px,235px,100px) scale(24) rotate(20deg);
+}
+.map .fx-lina.ult.r12 {
+  transform: translate3d(205px,235px,100px) scale(24) rotate(-20deg);
+}
+.map .fx-lina.ult.r-21 {
+  transform: translate3d(-145px,65px,100px) scale(20) rotate(54deg);
+}
+.map .fx-lina.ult.r21 {
+  transform: translate3d(335px,65px,100px) scale(20) rotate(-54deg);
+}
+.map .fx-lina.ult.r-20 {
+  transform: translate3d(-125px,-85px,100px) scale(18) rotate(90deg);
+}
+.map .fx-lina.ult.r20 {
+  transform: translate3d(315px,-85px,100px) scale(18) rotate(-90deg);
+}
+.map .fx-lina.ult.r-2-1 {
+  transform: translate3d(-115px,-265px,100px) scale(20) rotate(120deg);
+}
+.map .fx-lina.ult.r2-1 {
+  transform: translate3d(315px,-265px,100px) scale(20) rotate(-120deg);
+}
+.map .fx-lina.ult.r-1-2 {
+  transform: translate3d(-15px,-445px,100px) scale(24) rotate(160deg);
+}
+.map .fx-lina.ult.r1-2 {
+  transform: translate3d(215px,-445px,100px) scale(24) rotate(-160deg);
+}
+.map .fx-lina.ult.r0-2 {
+  transform: translate3d(105px,-445px,100px) scale(24) rotate(180deg);
 }
