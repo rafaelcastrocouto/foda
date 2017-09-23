@@ -212,8 +212,8 @@ game.card = {
     card.trigger('select', {
       card: card
     });
-    if (!card.hasClasses('done enemy trees towers'))
-      card.addClass('draggable');
+    if (!card.hasClasses('done trees towers'))
+      if (game.mode == 'library' || game.mode == 'local' || !card.hasClass('enemy')) card.addClass('draggable');
   },
   unselect: function() {
     game.states.table.selectedCard.removeClass('flip');

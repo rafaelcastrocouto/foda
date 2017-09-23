@@ -48,12 +48,13 @@ game.events = {
         card = target.closest('.card');
     if (card && card.hasClass('draggable')) {
       var position = game.events.getCoordinates(event),
-          cardOffset = card.offset(), fromMap = '';
-      if (card.closest('.map').length) fromMap = ' fromMap';
+          cardOffset = card.offset(), cl = '';
+      if (card.closest('.map').length) cl = ' fromMap';
+      if (card.closest('.hand').length || card.closest('.sidehand').length) cl += ' fromHand';
       game.offset = game.container.offset();
       game.events.dragTarget = card;
       game.events.draggingPosition = position;
-      game.events.dragClone = card.clone().hide().removeClass('dragTarget').addClass('dragTargetClone ' + game.currentState + fromMap).appendTo(game.container);
+      game.events.dragClone = card.clone().hide().removeClass('dragTarget').addClass('dragTargetClone ' + game.currentState + cl).appendTo(game.container);
       game.events.dragScale = card.getScale();
       game.events.dragOffset = {
         'left': (position.left - cardOffset.left) / game.events.dragScale,

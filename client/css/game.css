@@ -616,7 +616,7 @@ label input {
 
 /*BUFFS*/
 .table .buffs .buff.stun .img {
-  background-image: url("../img/skills/stun.jpg");
+  background-image: url("../img/skills/stun.gif");
   background-size: 100%;
 }
 

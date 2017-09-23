@@ -59,6 +59,14 @@
   background: rgba(255,255,100,0.25);
 }
 
+.map .card.player.done,
+.map .card.enemy.done,
+.map .card.stunned,
+.map .card.disabled {
+  background: silver;
+}
+
+
 .map .spot .debug {
   display: none;
 }
@@ -70,7 +78,6 @@
   transform: translate3d(10px, 30px, 10px);
   pointer-events: none;
 }
-
 */
 .map .spot.cript {
   background: rgba(250,250,250,0.15);

@@ -288,11 +288,6 @@
   box-shadow: 0 0 0 10px dodgerblue;
 }
 
-.card.player.done,
-.local .card.enemy.done {
-  background: silver;
-}
-
 .card.player.done .img {
   filter: saturate(0.7);
   -webkit-filter: saturate(0.7);
@@ -783,18 +778,22 @@
   transform: scale(0.35) translateZ(1px);
 }
 
-.card.dragTargetClone.table.drop {
+.card.dragTargetClone.table.drop,
+.card.dragTargetClone.table.drop.fromHand,
+.card.dragTargetClone.table.drop.fromMap {
   transform: scale(0.3) translateZ(1px);
   box-shadow: 0 0 0 10px white;
 }
 
-.card.skills.dragTargetClone.table {
-  transform: scale(0.5) translateZ(1px);
+.card.dragTargetClone.table.fromHand {
+  transform: scale(0.45) translateZ(1px);
 }
 
-.card.skills.dragTargetClone.table.drop {
-  transform: scale(0.3) translateZ(1px);
-  box-shadow: 0 0 0 10px white;
+.local .card.dragTargetClone.enemy.fromHand.table {
+  transform: rotate(180deg) translate3d(-40%, -40%, 1px) scale(0.4);
+}
+.local .card.dragTargetClone.drop.enemy.fromHand.table {
+  transform: rotate(180deg) translate3d(-35%, -40%, 1px) scale(0.3);
 }
 
 .map .card legend, .card.dragTargetClone.fromMap legend {
