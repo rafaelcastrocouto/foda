@@ -181,6 +181,7 @@ noscript .box {
 .box p, .box label {
   display: block;
   font-weight: normal;
+  margin-bottom: 4px;
 }
 
 .game-overlay .box a {
@@ -585,10 +586,12 @@ label input {
 
 .menu .rank.box {
   transform: translate(215px, -66%);
-  width: 250px;
-  padding: 15px 20px 15px 35px;
+  width: 260px;
+  padding: 15px;
   border-radius: 0 18px 18px 0;
   opacity: 0.85;
+  counter-reset: item;
+  list-style-type: none;
 }
 .rank.box li {
   margin: 0;
@@ -596,6 +599,15 @@ label input {
   height: 28px;
   border-bottom: 1px solid #ddd;
   text-align: left;
+  font-weight: normal;
+}
+.rank.box li:before {
+  counter-increment: item;
+  content: counter(item) " ";
+  display: inline-block;
+  line-height: 28px;
+  vertical-align: top;
+  margin-right: 4px;
 }
 .rank.box li:last-child {
   border: 0;
@@ -604,10 +616,12 @@ label input {
   max-width: 160px;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-weight: normal;
+  margin-left: 8px;
+  display: inline-block;
 }
 .rank.box span:last-child {
   float: right;
+  max-width: 40px;
 }
 
 .deck {

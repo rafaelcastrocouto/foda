@@ -50,6 +50,7 @@ game.local = {
   setTable: function () {
     game.player.placeHeroes();
     game.enemy.placeHeroes();
+    game.audio.play('horn');
     game.message.text(game.data.ui.battle);
     game.states.table.surrender.show();
     game.states.table.skip.attr('disabled', true).show();

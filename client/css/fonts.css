@@ -5,7 +5,7 @@
   src: local('Open Sans'), local('OpenSans'), url(../fonts/Open-Sans.woff2) format('woff2'), url(../fonts/Open-Sans.woff) format('woff');
 }
 
-body, p, noscript, .card h1 {
+body, p, noscript, .card h1, .rank span {
   line-height: 28px;
   font-family: "Open Sans", "open sans", "Droid Sans", "Lucida Sans Unicode", "Lucida Grande", 'Segoe UI', Tahoma, Verdana, Arial, Helvetica, sans-serif;
 }
@@ -28,7 +28,7 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   src: local('Sansita One'), local('SansitaOne'), url('../fonts/Sansita-One.woff2') format('woff2'), url('../fonts/Sansita-One.woff') format('woff');
 }
 
-.tutorial .battle, .versus, .log b {
+.tutorial .battle, .versus, .log b, .rank li {
   font-family: "Sansita One";
 }
 

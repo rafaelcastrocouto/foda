@@ -25,6 +25,7 @@ game.single = {
   },
   setTable: function () {
     if (!game.single.started) {
+      game.audio.play('horn');
       game.single.started = true;
       game.states.table.enableUnselect();
       game.message.text(game.data.ui.battle);

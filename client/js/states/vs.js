@@ -21,7 +21,7 @@ game.states.vs = {
       var vsSong = 'RandomEncounter';
       if (game.mode !== 'library' && game.audio.buffers[vsSong]) {
         game.audio.stopSong();
-        game.audio.play(vsSong);
+        game.audio.play(vsSong, false, 'music');
         setTimeout(game.audio.loopSong, game.audio.buffers[vsSong].duration * 1000);
       }
       this.buildPlayer();
