@@ -47,7 +47,7 @@ game.buff = {
       } else if (skill.data && skill.data('buff')) {
         data = skill.data('buff');
       }
-      if (!data.buffId) data.buffId = buffs || skill.data('skillId');
+      if (!data.buffId) data.buffId = buffs || data.skillId || skill.data('skillId');
       if (!data.className) data.className = data.buffId;
       if (!data.name) data.name = skill.data('name');
       if (!data.source) data.source = this;
@@ -106,7 +106,7 @@ game.buff = {
     var target = this;
     var b;
     if (!multi) b = buffs.split(' ');
-    if (multi == 'all') b = $('.buff', target);
+    if (multi == 'all') b = $('.buff:not([class*=aura])', target);
     if (multi == 'purge') b = $('.buff.purgeable.' + target.opponent(), target);
     $.each(b, function(i, buffId) {
       var buff;

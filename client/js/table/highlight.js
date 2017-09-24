@@ -262,7 +262,7 @@ game.highlight = {
       } else if (game.skill.castrange) {
         source.radialStroke(game.skill.castrange, 'skillstroke');
       }
-      if (skill.data('targets').indexOf(game.data.ui.summon) > 0) {
+      if (skill.data('targets') && skill.data('targets').indexOf(game.data.ui.summon) > 0) {
         var summon = source.data('summon');
         if (game.highlight.possible(summon)) {
           game.skill.summonHover = true;

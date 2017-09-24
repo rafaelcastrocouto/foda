@@ -130,6 +130,32 @@ game.skill = {
         target: target
       });
       game.skills[hero][skillid].passive(skill, target);
+      if (skillid == 'aura') {
+        var side = target.side();
+        var team = $('.table .card.'+side+':not(.skills)');
+        $.each(team, function (i, card) {
+          target.addBuff($(card), skill);
+        });
+        target.on('death.'+hero+'-aura',  function (event, eventdata) {
+          var target = eventdata.target;
+          var side = target.side();
+          var team = $('.table .card.'+side+':not(.skills)');
+          $.each(team, function (i, card) {
+            $(card).removeBuff(hero+'-aura');
+          });
+        });
+        target.on('reborn.'+hero+'-aura', function (event, eventdata) {
+          var target = eventdata.target;
+          var skill = game.data.skills[hero].aura;
+          var side = target.side();
+          var team = $('.table .card.'+side+':not(.skills)');
+          game.timeout(400, function () {
+            $.each(team, function (i, card) {
+              target.addBuff($(card), skill.buff);
+            });
+          });
+        });
+      }
       game.audio.play('activate');
       target.shake();
       var end = function (target) {

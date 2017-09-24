@@ -12,7 +12,7 @@ game.skills.cm = {
       });
     }
   },
-  aura: {
+  passive: {
     passive: function (skill, source) {
       var side = source.side();
       game[side].cardsPerTurn += 1;

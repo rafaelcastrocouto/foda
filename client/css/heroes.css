@@ -75,8 +75,8 @@
   background-image: url("../img/skills/cm/slow.jpg");
 }
 
-.cm-aura .img, .buffs .buff.cm-aura .img {
-  background-image: url("../img/skills/cm/aura.jpg");
+.cm-passive .img, .buffs .buff.cm-passive .img {
+  background-image: url("../img/skills/cm/passive.jpg");
 }
 
 .cm-freeze .img, .buffs .buff.cm-freeze .img {
@@ -333,8 +333,8 @@
   background-image: url("../img/skills/wk/stun.jpg");
 }
 
-.wk-lifesteal .img, .buffs .buff.wk-lifesteal .img {
-  background-image: url("../img/skills/wk/lifesteal.jpg");
+.wk-aura .img, .buffs .buff.wk-aura .img {
+  background-image: url("../img/skills/wk/aura.jpg");
 }
 
 .wk-crit .img, .buffs .buff.wk-crit .img {

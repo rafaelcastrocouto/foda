@@ -316,7 +316,7 @@
         "purgeable": true
       }
     },
-    "aura": {
+    "passive": {
       "name": "Mana Aura",
       "type": "Pasif",
       "hand": "Sol",
@@ -763,7 +763,7 @@
         "purgeable": true
       }
     },
-    "lifesteal": {
+    "aura": {
       "name": "Vampiric Aura",
       "type": "Pasif",
       "hand": "Sol",

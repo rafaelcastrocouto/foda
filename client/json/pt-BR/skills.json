@@ -317,7 +317,7 @@
         "purgeable": true
       }
     },
-    "aura": {
+    "passive": {
       "name": "Aura de Mana",
       "type": "Passiva",
       "hand": "Esquerda",
@@ -764,7 +764,7 @@
         "purgeable": true
       }
     },
-    "lifesteal": {
+    "aura": {
       "name": "Aura Vampírica",
       "type": "Passiva",
       "hand": "Esquerda",

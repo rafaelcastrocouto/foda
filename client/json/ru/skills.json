@@ -315,7 +315,7 @@
         "purgeable": true
       }
     },
-    "aura": {
+    "passive": {
       "name": "Mana Aura",
       "type": "пассивный",
       "hand": "Оставил",
@@ -762,7 +762,7 @@
         "purgeable": true
       }
     },
-    "lifesteal": {
+    "aura": {
       "name": "Vampiric Aura",
       "type": "пассивный",
       "hand": "Оставил",

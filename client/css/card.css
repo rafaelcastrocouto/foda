@@ -881,7 +881,7 @@
 .units.melee.player .img {
   background-image: url("../img/creeps/player_melee.jpg");
 }
-.map .card.units.melee.player .img {
+.map .card.units.melee.player .portrait .img {
   background-position: 75% 75%;
   background-size: 360%;
 }

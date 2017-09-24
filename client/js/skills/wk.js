@@ -22,38 +22,22 @@ game.skills.wk = {
       if (count === 0) target.off('turnend.wk-stun').data('wk-dot-count', null).removeBuff('wk-stun');
     }
   },
-  lifesteal: {
+  aura: {
     passive: function (skill, source) {
       var side = source.side();
-      var team = $('.table .card.'+side);
-      team.on('attack.wk-lifesteal', this.attack);
-      source.addBuff(team, skill);
-      source.on('death.wk-lifesteal', this.death);
-      source.on('reborn.wk-lifesteal', this.reborn);
-      source.data('wk-lifesteal', skill);
+      var team = $('.table .card.'+side+':not(.skills)');
+      team.on('attack.wk-aura', this.attack);
     },
     attack: function (event, eventdata) {
       var source = eventdata.source;
       var target = eventdata.target;
       var damage = eventdata.damage;
-      var buff = source.getBuff('wk-lifesteal');
-      var lifesteal = buff.data('lifesteal') / 100;
-      if (target.side() == source.opponent() && !source.data('miss-attack')) source.heal(damage * lifesteal);
-    },
-    death: function (event, eventdata) {
-      var source = eventdata.target;
-      var side = source.side();
-      var team = $('.table .card.'+side+':not(.wk)');
-      team.removeBuff('wk-lifesteal');
-      team.off('attack.wk-lifesteal');
-    },
-    reborn: function (event, eventdata) {
-      var source = eventdata.target;
-      var skill = source.data('wk-lifesteal');
-      var side = source.side();
-      var team = $('.table .card.'+side);
-      source.addBuff(team, skill);
-      team.on('attack.wk-lifesteal', this.attack);
+      var buff = source.hasBuff('wk-aura');
+      if (buff) {
+        var lifesteal = game.data.skills.wk.aura.buff.lifesteal / 100;
+        if (target.side() == source.opponent() && !source.data('miss-attack')) 
+          source.heal(damage * lifesteal);
+      }
     }
   },
   crit: {

@@ -567,7 +567,7 @@ game.card = {
         if (evt.target.side() != evt.source.side()) 
           evt.source.damage(damage, game[side].tower, game.data.ui.pure);
         var duration = game.deadLength;
-        if (game.mode === 'library') duration = 1;
+        if (game.mode === 'library') duration = 0;
         this.data('reborn', game.time + duration);
         game[side].tower.selfBuff({
           buffId: this.data('hero')+'-death',
