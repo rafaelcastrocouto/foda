@@ -28,7 +28,8 @@ game.states.vs = {
       this.buildEnemy();
       this.player.removeClass('slide');
       this.enemy.removeClass('slide');
-      game.units.build();
+      game.units.build('player');
+      game.units.build('enemy');
       var t = 3600;
       if (game.mode == 'library') t = 2000;
       game.timeout(t - 300, function () {

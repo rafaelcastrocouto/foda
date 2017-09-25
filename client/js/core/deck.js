@@ -66,12 +66,14 @@ game.deck = {
       if (found || !filter) {
         $.each(units, function (unitid, unitdata) {
           unitdata.deck = game.data.ui.summon;
-          unitdata.type = unitid;
+          unitdata.id = unitid;
+          unitdata.type = unittype;
           unitdata.speed = 2;
           unitdata.buffsBox = true;
           unitdata.className = [
             unitid,
-            'units'
+            'units',
+            unittype
           ].join(' ');
           card = game.card.build(unitdata).appendTo(deck);
           cards.push(card);

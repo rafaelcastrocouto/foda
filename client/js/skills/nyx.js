@@ -31,14 +31,17 @@ game.skills.nyx = {
       buff.on('expire', this.expire);
     },
     damage: function (event, eventdata) {
-      var nyx = eventdata.target;
-      var skill = nyx.data('nyx-spike');
-      var dmgType = skill.data('damage type');
-      var attacker = eventdata.source;
-      if (!attacker.hasClass('towers')) {
-        nyx.damage(eventdata.originalDamage, attacker, dmgType);
+      game.timeout(900, function (eventdata) {
+        var nyx = eventdata.target;
+        var skill = nyx.data('nyx-spike');
+        var dmgType = skill.data('damage type');
+        var attacker = eventdata.source;
+        var damage = eventdata.originalDamage;
+          if (!attacker.hasClass('towers')) {
+        nyx.damage(damage, attacker, dmgType);
         nyx.addStun(attacker, skill);
-      }
+        }
+      }.bind(this, eventdata));
     },
     expire: function (event, eventdata) {
       var target = eventdata.target;

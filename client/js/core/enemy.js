@@ -4,7 +4,7 @@ game.enemy = {
       name: 'heroes',
       filter: game.enemy.picks,
       cb: function(deck) {
-        deck.addClass('enemy').hide().appendTo(game.states.table.enemy);
+        deck.addClass('cemitery enemy').hide().appendTo(game.states.table.enemy);
         var x = 2;
         var y = 4;
         $.each(deck.data('cards'), function(i, card) {

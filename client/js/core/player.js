@@ -4,7 +4,7 @@ game.player = {
       name: 'heroes',
       filter: game.player.picks,
       cb: function(deck) {
-        deck.addClass('player').appendTo(game.states.table.player).hide();
+        deck.addClass('cemitery player').appendTo(game.states.table.player).hide();
         if (game.mode == 'library') {
           var card = deck.data('cards')[0];
           card.addClass('player').on('mousedown touchstart', game.card.select);

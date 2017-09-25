@@ -450,7 +450,11 @@
 }
 
 .table .enemy .skills .card.channel-on {
-  transform: translate3d(-50%,-47%,0) scale(0.5) rotateY(180deg);
+  transform: translate3d(-50%,-47%,0) scale(0.5) rotateY(185deg);
+}
+
+.local .table .enemy .skills .card.channel-on {
+  transform: translate3d(-50%, -50%, 0) scale(0.5) rotateY(0deg) rotateZ(185deg);
 }
 
 @keyframes enemybuyslide {

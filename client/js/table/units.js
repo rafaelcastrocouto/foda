@@ -1,48 +1,26 @@
 game.units = {
-  build: function () {
-    game.neutrals = {};
-    game.neutrals.unitsDeck = game.deck.build({
+  build: function (side) {
+    game[side].unitsDeck = game.deck.build({
       name: 'units',
-      filter: ['forest'],
-      cb: function (deck) {
-        deck.addClass('neutral units cemitery').hide().appendTo(game.states.table.el);
-        $.each(deck.data('cards'), function (i, card) {
-          card.addClass('neutral unit').data('side', 'neutral');
-        });
-      }
-    });
-    game.player.unitsDeck = game.deck.build({
-      name: 'units',
-      filter: ['creeps'],
       cb: function (deck) {
         //console.log(deck.data('cards'));
-        deck.addClass('player units cemitery').hide().appendTo(game.states.table.player);
+        deck.addClass(side+' units cemitery').hide().appendTo(game.states.table[side]);
         $.each(deck.data('cards'), function (i, card) {
-          card.addClass('player unit').data('side', 'player');
-          card.on('action', game.library.action).on('death', game.library.action);
-        });
-      }
-    });
-    game.enemy.unitsDeck = game.deck.build({
-      name: 'units',
-      filter: ['creeps'],
-      cb: function (deck) {
-        deck.addClass('enemy units cemitery').hide().appendTo(game.states.table.enemy);
-        $.each(deck.data('cards'), function (i, card) {
-          card.addClass('enemy unit').data('side', 'enemy');
+          card.addClass(side+' unit').data('side', side);
         });
       }
     });
   },
-  clone: function (card) {
+  clone: function (cardEl) {
+    var card = $(cardEl);
     return card.clone().data(card.data());
   },
   buy: function (side) {
-    var ranged = game.units.clone(game[side].unitsDeck.children('.ranged'));
+    var ranged = game.units.clone(game[side].unitsDeck.children('.creeps.ranged'));
     ranged.appendTo(game[side].skills.sidehand);
-    var melee1 = game.units.clone(game[side].unitsDeck.children('.melee'));
+    var melee1 = game.units.clone(game[side].unitsDeck.children('.creeps.melee'));
     melee1.appendTo(game[side].skills.sidehand);
-    var melee2 = game.units.clone(game[side].unitsDeck.children('.melee'));
+    var melee2 = game.units.clone(game[side].unitsDeck.children('.creeps.melee'));
     melee2.appendTo(game[side].skills.sidehand);
     ranged.on('mousedown touchstart', game.card.select);
     melee1.on('mousedown touchstart', game.card.select);
@@ -60,11 +38,11 @@ game.units = {
     }
   },
   buyCatapult: function (side) {
-    var ranged = game.units.clone(game[side].unitsDeck.children('.ranged'));
+    var ranged = game.units.clone(game[side].unitsDeck.children('.creeps.ranged'));
     ranged.appendTo(game[side].skills.sidehand);
-    var melee = game.units.clone(game[side].unitsDeck.children('.melee'));
+    var melee = game.units.clone(game[side].unitsDeck.children('.creeps.melee'));
     melee.appendTo(game[side].skills.sidehand);
-    var catapult = game.units.clone(game[side].unitsDeck.children('.catapult'));
+    var catapult = game.units.clone(game[side].unitsDeck.children('.creeps.catapult'));
     catapult.appendTo(game[side].skills.sidehand);
     var summon = game.units.clone(game[side].unitsDeck.children('[class*="summon"]'));
     if (summon) summon.appendTo(game[side].skills.sidehand);
@@ -80,15 +58,15 @@ game.units = {
     }
   },
   forestSpot: function () {
-    var j = 'A2';
-    $('#' + j).addClass('jungle').attr({title: 'Jungle'});
-    $('#' + game.map.mirrorPosition(j)).addClass('jungle').attr({title: 'Jungle'});
+    var spot = 'A2';
+    $('#' + spot).addClass('jungle').attr({title: 'Jungle'});
+    $('#' + game.map.mirrorPosition(spot)).addClass('jungle').attr({title: 'Jungle'});
   },
   forestCreep: function (side, target) {
-    var r = Math.floor(game.random() * game.neutrals.unitsDeck.children().length);
-    var randomUnit = $(game.neutrals.unitsDeck.children()[r]);
-    var creep = game.units.clone(randomUnit);
-    creep.removeClass('neutral').addClass(side);
+    var forestCreeps = game[side].unitsDeck.children('.forest');
+    var r = Math.floor(game.random() * forestCreeps.length);
+    var creep = game.units.clone(forestCreeps[r]);
+    creep.addClass(side);
     creep.appendTo(target);
     if (side == 'player') {
       creep.on('mousedown touchstart', game.card.select);
