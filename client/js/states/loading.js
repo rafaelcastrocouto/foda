@@ -20,16 +20,16 @@ game.states.loading = {
     game.states.loading.rank();
     game.states.loading.progress();
   },
+  updated: function () { //console.trace(this)
+    game.states.loading.updating += 1;
+    game.states.loading.progress();
+  },
   progress: function () {
     var loading = parseInt(game.states.loading.updating / game.states.loading.totalUpdate * 100);
     $('.progress').text(loading + '%');
     if (game.states.loading.updating >= game.states.loading.totalUpdate) {
       game.states.loading.finished();
-    } else game.timeout(1000, game.states.loading.progress);
-  },
-  updated: function () { //console.trace(this)
-    game.states.loading.updating += 1;
-    game.states.loading.progress();
+    }
   },
   finished: function () {
     game.options.build();
