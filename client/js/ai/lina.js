@@ -53,8 +53,10 @@ game.heroesAI.lina = {
       cardData['can-cast'] = true;
       card.opponentsInRange(ult.data('cast range'), function (cardInRange) {
         if (cardInRange.length) {
+          var p = (50 - cardInRange.data('current hp'))/4;
+          if (cardInRange.hasClass('units')) p -= 25;
           cardData['cast-strats'].push({
-            priority: (50 - cardInRange.data('current hp'))/4,
+            priority: p,
             skill: 'ult',
             target: cardInRange
           });
