@@ -196,7 +196,6 @@
       "damage": 12,
       "damage type": "Magical",
       "cards": 1,
-      "fx": ["fire"],
       "description": "A column of flames damages enemies in a line"
     },
     "stun": {
@@ -212,7 +211,6 @@
       "stun": 2,
       "damage type": "Magical",
       "cards": 1,
-      "fx": ["stun"],
       "description": "A ball of fire stuns and damages enemies in target area. Can destroy trees"
     },
     "passive": {
@@ -238,7 +236,6 @@
       "cards": 1,
       "damage": 30,
       "damage type": "Magical",
-      "fx": ["ult-close", "ult-far"],
       "description": "Fires off a bolt of lightning at a single enemy unit"
     }
   },

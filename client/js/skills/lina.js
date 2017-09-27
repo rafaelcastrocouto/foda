@@ -38,6 +38,7 @@ game.skills.lina = {
       var bonus = buff.data('cast damage bonus') || 0;
       if (!$('span', buff).length) buff.append($('<span>').text(bonus));
       else $('span', buff).text(bonus + Number($('span', buff).text()));
+      game.fx.add('passive', source);
       source.setDamage(source.data('current damage') + bonus);
       source.on('turnend.passive', game.skills.lina.passive.turnend);
     },
@@ -48,6 +49,7 @@ game.skills.lina = {
       source.setDamage(source.data('current damage') - bonus);
       source.off('turnend.passive');
       $('span', buff).remove();
+      game.fx.stop('lina', 'passive');
     }
   },
   ult: {

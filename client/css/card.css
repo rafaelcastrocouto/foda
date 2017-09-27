@@ -386,6 +386,7 @@
   transition: all 0.1s;
   width: 35px;
   background: transparent;
+  z-index: 2;
 }
 .card .buffs .buff span {
   position: absolute;

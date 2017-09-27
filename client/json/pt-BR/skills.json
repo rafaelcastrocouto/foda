@@ -196,7 +196,6 @@
       "damage": 12,
       "damage type": "Mágico",
       "cards": 1,
-      "fx": ["fire"],
       "description": "Uma coluna de fogo causa dano em linha"
     },
     "stun": {
@@ -212,7 +211,6 @@
       "stun": 2,
       "damage type": "Mágico",
       "cards": 1,
-      "fx": ["stun"],
       "description": "Uma bola de fogo atordoa e causa dano em área. Pode destruir árvores"
     },
     "passive": {
@@ -238,7 +236,6 @@
       "cards": 1,
       "damage": 30,
       "damage type": "Mágico",
-      "fx": ["ult-close", "ult-far"],
       "description": "Manda um relâmpago em uma unidade inimiga"
     }
   },

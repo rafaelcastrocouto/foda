@@ -17,9 +17,15 @@ game.skills.wk = {
       var buff = skill.data('buff');
       var count = target.data('wk-dot-count');
       target.data('wk-dot-count', count - 1);
-      if (count === 2) source.addBuff(target, skill);
+      if (count === 2) {
+        source.addBuff(target, skill);
+        game.fx.add('stun', source, target);
+      }
       if (count >= 0 && count <= 2) source.damage(buff.dot, target, buff['damage type']);
-      if (count === 0) target.off('turnend.wk-stun').data('wk-dot-count', null).removeBuff('wk-stun');
+      if (count === 0) {
+        target.off('turnend.wk-stun').data('wk-dot-count', null).removeBuff('wk-stun');
+        game.fx.stop('wk', 'stun');
+      }
     }
   },
   aura: {
