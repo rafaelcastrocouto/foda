@@ -13,7 +13,7 @@ game.events = {
     game.map.extendjQuery();
     $(window).on('error', function(event) {
       var err = event.originalEvent;
-      var details = err.message +' '+ err.filename +' '+ err.lineno;
+      var details = err.message +' '+ err.filename +' '+ err.lineno +':'+err.colno;
       game.reset(details);
     });
     //$(document).ajaxError(function(event, xhr, settings) {

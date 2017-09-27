@@ -56,7 +56,7 @@ game.skill = {
     var source = this, targets, duration, channeler, channelDuration,
       hero = skill.data('hero'),
       skillid = skill.data('skill');
-    if (skillid && hero && (source.data('hero') === hero || source.data('summoner').data('hero') === hero)) {
+    if (skillid && hero) {
       if (typeof target === 'string') {
         targets = game.data.skills[hero][skillid].targets;
         if (targets.indexOf(game.data.ui.spot) >= 0 || targets.indexOf(game.data.ui.jungle) >= 0) {
@@ -124,7 +124,7 @@ game.skill = {
       hero = skill.data('hero'),
       skillid = skill.data('skill');
     if (typeof(target) === 'string') target = $('#' + target + ' .card');
-    if (skillid && hero && target.data('hero') === hero) {
+    if (skillid && hero) {
       target.trigger('passive', {
         skill: skill,
         target: target
@@ -173,7 +173,7 @@ game.skill = {
       hero = skill.data('hero'),
       skillid = skill.data('skill');
     if (typeof target === 'string') { target = $('#' + target + ' .card'); }
-    if (skillid && hero && target.data('hero') === hero) {
+    if (skillid && hero) {
       var evt = {
         type: 'toggle',
         skill: skill,
