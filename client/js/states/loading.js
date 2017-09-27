@@ -1,6 +1,6 @@
 game.states.loading = {
   updating: 0,
-  totalUpdate: 7, // rank + language + campaign + ui + heroes + skills + package
+  totalUpdate: 7, // rank + language + ui + heroes + skills + campaign + package
   build: function () {
     this.box = $('<div>').addClass('box');   
     this.h2 = $('<p>').appendTo(this.box).addClass('loadtext').html('<span class="loader loading"></span><span class="message">Updating: </span><span class="progress">0%</span>');
@@ -10,12 +10,12 @@ game.states.loading = {
     game.states.loading.ping();
     game.states.loading.package();
     if (window.AudioContext) game.audio.build();
-    game.language.load(function () {
+    game.language.load(function loadLanguage() { //console.log('lang', game.states.loading.updating)
       game.states.loading.updated();
-      game.states.loading.json('ui');
-      game.states.loading.json('heroes');
-      game.states.loading.json('campaign');
-      game.states.loading.json('skills');
+      game.states.loading.json('ui', game.states.loading.updated);
+      game.states.loading.json('heroes', game.states.loading.updated);
+      game.states.loading.json('campaign', game.states.loading.updated);
+      game.states.loading.json('skills', game.states.loading.updated);
     });
     game.states.loading.rank();
     game.states.loading.progress();
@@ -23,14 +23,13 @@ game.states.loading = {
   progress: function () {
     var loading = parseInt(game.states.loading.updating / game.states.loading.totalUpdate * 100);
     $('.progress').text(loading + '%');
-    if (game.states.loading.updating < game.states.loading.totalUpdate) {
-      game.timeout(800, game.states.loading.progress);
-    } else if (game.states.loading.updating >= game.states.loading.totalUpdate) {
+    if (game.states.loading.updating >= game.states.loading.totalUpdate) {
       game.states.loading.finished();
-    }
+    } else game.timeout(1000, game.states.loading.progress);
   },
-  updated: function () {
+  updated: function () { //console.trace(this)
     game.states.loading.updating += 1;
+    game.states.loading.progress();
   },
   finished: function () {
     game.options.build();
@@ -38,15 +37,14 @@ game.states.loading = {
     game.states.build( function () {
       game.rank.build();
       if (game.debug) game.history.recover();
-      else game.history.jumpTo('log');
+      else game.timeout(500, game.history.jumpTo.bind(this, 'log'));
     });
   },
   json: function (name, cb) {
     $.ajax({
       type: 'GET',
       url: game.dynamicHost + 'json/' + game.language.dir + name + '.json',
-      complete: function (response) {
-        game.states.loading.updated();
+      complete: function (response) { //console.log(name, response, game.states.loading.updating)
         var data = JSON.parse(response.responseText);
         game.data[name] = data;
         if (cb) {
@@ -84,7 +82,8 @@ game.states.loading = {
   },
   rank: function () {
     game.db({'get': 'rank' }, function (data) {
-      game.states.loading.updated();
+      if (!game.rank.db) game.states.loading.updated(); //console.log('rank', game.states.loading.updating)
+      game.rank.db = true;
       var ranked = game.rank.sortData(data);
       if (ranked.length == 5) {
         game.rank.data = data;
