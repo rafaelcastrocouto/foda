@@ -1,0 +1,81 @@
+{
+  
+  "ld": {
+    "name": "Druida del oso",
+    "attribute": "Agilidad",
+    "description": "Empujador, llevar, duradero"
+  },
+
+  "pud": {
+    "name": "Carnicero",
+    "attribute": "Fuerza",
+    "description": "Iniciador, Disabler, Durable"
+  },
+
+  "cat": {
+    "name": "Señora del gato",
+    "attribute": "Agilidad",
+    "description": "Iniciador, Escape, Nuker"
+  },
+
+  "wk": {
+    "name": "Rey muerto",
+    "attribute": "Fuerza",
+    "description": "Carry, Disabler, Durable"
+  },
+
+  "lina": {
+    "name": "Doblador de fuego",
+    "attribute": "Inteligencia",
+    "description": "Nuker, Carry, Disabler"
+  },
+
+  "cm": {
+    "name": "Mago del hielo",
+    "attribute": "Inteligencia",
+    "description": "Nuker, Apoyo, Disabler"
+  },
+  
+  "kotl": {
+    "name": "Guardián de la luz",
+    "attribute": "Inteligencia",
+    "description": "Apoyo, Nuker, Disabler"
+  },
+
+  "am": {
+    "name": "Magino",
+    "attribute": "Agilidad",
+    "description": "Nuker, Llevar, Escape"
+  },
+
+  "nyx": {
+    "name": "Mezcla",
+    "attribute": "Agilidad",
+    "description": "Iniciador, Disabler, Escape"
+  },
+
+  "com": {
+    "name": "Sashay Comandante",
+    "attribute": "Fuerza",
+    "description": "Llevar, Duradero, Sanador"
+  },
+
+  "wind": {
+    "name": "Elfo del viento",
+    "attribute": "Inteligencia",
+    "description": "Disabler, Escape, Nuker"
+  },
+
+  "venge": {
+    "name": "Venganza",
+    "attribute": "Agilidad",
+    "description": "Disabler, Escape, Nuker"
+  },
+  
+  "en": {
+    "name": "Bambi",
+    "attribute": "Inteligencia",
+    "description": "Jungler, curador, duradero"
+  }
+
+}

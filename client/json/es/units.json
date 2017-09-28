@@ -1,0 +1,28 @@
+{
+  "creeps":{
+    "melee": {
+      "name": "Melee Creep",
+      "attribute": "Creeps"
+    },
+    "ranged": {
+      "name": "Ranged Creep",
+      "attribute": "Creeps"
+    },
+    "catapult": {
+      "name": "Catapult",
+      "attribute": "Creeps"
+    }
+  },
+  "forest":{
+    "cent": {
+      "name": "Centaur",
+      "attribute": "Jungle Creep",
+      "description": "Centaur Jungle Creep"
+     },
+    "golem": {
+      "name": "Golem",
+      "attribute": "Jungle Creep",
+      "description": "Golem Jungle Creep"
+    }
+  }
+}

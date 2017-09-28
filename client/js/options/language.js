@@ -1,7 +1,7 @@
 game.language = {
   current: 'en-US',
-  available: ['en-US', 'pt-BR', 'tr-TR', 'ru'],
-  names: ['English US', 'Português BR', 'Türk TR', 'русский RU'],
+  available: ['en-US', 'pt-BR', 'es', 'tr-TR', 'ru'],
+  names: ['English US', 'Português BR', 'Español ES', 'Türk TR', 'русский RU'],
   dir: '',
   load: function (cb) {
     var lang = localStorage.getItem('lang');
