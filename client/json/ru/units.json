@@ -2,52 +2,26 @@
   "creeps":{
     "melee": {
       "name": "ближний бой Крипов",
-      "attribute": "Крипов",
-      "range": "ближний бой",
-      "hp": 30,
-      "damage": 18,
-      "armor": 2,
-      "resistance": 1
+      "attribute": "Крипов"
     },
     "ranged": {
       "name": "Дальний бой Крипов",
-      "attribute": "Крипов",
-      "range": "Дальний бой",
-      "hp": 26,
-      "damage": 14,
-      "armor": 1,
-      "mana": 4,
-      "resistance": 2
+      "attribute": "Крипов"
     },
     "catapult": {
       "name": "катапульта",
-      "attribute": "Крипов",
-      "range": "далеко",
-      "hp": 32,
-      "damage": 14,
-      "armor": 4,
-      "resistance": 6
+      "attribute": "Крипов"
     }
   },
   "forest":{
     "cent": {
       "name": "Centaur",
       "attribute": "Джунгли ползучести",
-      "range": "ближний бой",
-      "hp": 38,
-      "damage": 6,
-      "armor": 2,
-      "resistance": 3,
       "description": "Кентавр Джунгли ползучести"
      },
     "golem": {
       "name": "Golem",
       "attribute": "Джунгли ползучести",
-      "range": "ближний бой",
-      "hp": 34,
-      "damage": 7,
-      "armor": 4,
-      "resistance": 3,
       "description": "Голема Джунгли ползучести"
     }
   }

@@ -44,6 +44,7 @@ game.deck = {
           heroid,
           'heroes'
         ].join(' ');
+        Object.assign(herodata, game.data.values.heroes[heroid]);
         card = game.card.build(herodata).appendTo(deck);
         cards.push(card);
       }
@@ -75,6 +76,7 @@ game.deck = {
             'units',
             unittype
           ].join(' ');
+          Object.assign(unitdata, game.data.values.units[unittype][unitid]);
           card = game.card.build(unitdata).appendTo(deck);
           cards.push(card);
         });
@@ -105,14 +107,17 @@ game.deck = {
               'skills',
               hero
             ].join(' ');
+            Object.assign(skillData, game.data.values.skills[hero][skill]);
             if (skillData.buff) {
               skillData.buff.buffId = hero + '-' + skill;
               skillData.buff.className = hero + '-' + skill;
+              Object.assign(skillData.buff, game.data.values.skills[hero][skill].buffdata);
             }
             if (skillData.buffs) for (var buffs in skillData.buffs) {
               for (var buff in skillData.buffs[buffs]) {
                 skillData.buffs[buffs][buff].buffId = hero +'-'+ skill +'.'+ buffs +'-'+ buff;
                 skillData.buffs[buffs][buff].className = hero +'-'+ skill +' '+ buffs +'-'+ buff;
+                Object.assign(skillData.buffs[buffs][buff], game.data.values.skills[hero][skill].buffsdata[buffs][buff]);
               }
             }
             if (multi) {

@@ -542,19 +542,21 @@ game.map = {
     if (range === game.data.ui.short)  { r = 3; }
     if (range === game.data.ui.ranged) { r = 4; }
     if (range === game.data.ui.long)   { r = 5; }
-    if (range === game.data.ui.far)   { r = 6; }
-    if (range === game.data.ui.max)   { r = 7; }
+    if (range === game.data.ui.far)    { r = 6; }
+    if (range === game.data.ui.max)    { r = 7; }
+    if (range === game.data.ui.global) { r = 999; }
     return r;
   },
   getRangeStr: function (r) {
     var range = '';
-    if (r === 1) { range = game.data.ui.small; }
-    if (r === 2) { range = game.data.ui.melee; }
-    if (r === 3) { range = game.data.ui.short; }
-    if (r === 4) { range = game.data.ui.ranged; }
-    if (r === 5) { range = game.data.ui.long; }
-    if (r === 6) { range = game.data.ui.far; }
-    if (r === 7) { range = game.data.ui.max; }
+    if (r === 1)   { range = game.data.ui.small; }
+    if (r === 2)   { range = game.data.ui.melee; }
+    if (r === 3)   { range = game.data.ui.short; }
+    if (r === 4)   { range = game.data.ui.ranged; }
+    if (r === 5)   { range = game.data.ui.long; }
+    if (r === 6)   { range = game.data.ui.far; }
+    if (r === 7)   { range = game.data.ui.max; }
+    if (r === 999) { range = game.data.ui.global; }
     return range;
   },
   clear: function () {

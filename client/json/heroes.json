@@ -3,159 +3,78 @@
   "ld": {
     "name": "Bear Druid",
     "attribute": "Agility",
-    "range": "Short",
-    "hp": 50,
-    "mana": 2,
-    "damage": 15,
-    "armor": 3,
-    "resistance": 2,
     "description": "Pusher, Carry, Durable"
   },
 
   "pud": {
     "name": "Butcher",
     "attribute": "Strength",
-    "range": "Melee",
-    "hp": 65,
-    "mana": 2,
-    "damage": 14,
-    "armor": 3,
-    "resistance": 2,
-    "description": "Initiator, Disabler, Durable",
-    "intro": "hExBCxjiKsI"
+    "description": "Initiator, Disabler, Durable"
   },
 
   "cat": {
     "name": "Cat Lady",
     "attribute": "Agility",
-    "range": "Ranged",
-    "hp": 40,
-    "mana": 3,
-    "damage": 13,
-    "armor": 3,
-    "resistance": 2,
     "description": "Initiator, Escape, Nuker"
   },
 
   "wk": {
     "name": "Dead King",
     "attribute": "Strength",
-    "range": "Melee",
-    "hp": 60,
-    "mana": 3,
-    "damage": 14,
-    "armor": 3,
-    "resistance": 3,
     "description": "Carry, Disabler, Durable"
   },
 
   "lina": {
     "name": "Fire Bender",
     "attribute": "Intelligence",
-    "range": "Ranged",
-    "hp": 40,
-    "mana": 4,
-    "damage": 12,
-    "armor": 2,
-    "resistance": 2,
     "description": "Nuker, Carry, Disabler"
   },
 
   "cm": {
     "name": "Ice Mage",
     "attribute": "Intelligence",
-    "range": "Ranged",
-    "hp": 40,
-    "mana": 4,
-    "damage": 12,
-    "armor": 2,
-    "resistance": 2,
-    "description": "Nuker, Support, Disabler",
-    "intro": "um5z4d9SFkI"
+    "description": "Nuker, Support, Disabler"
   },
   
   "kotl": {
     "name": "Light Keeper",
     "attribute": "Intelligence",
-    "range": "Ranged",
-    "hp": 40,
-    "mana": 4,
-    "damage": 13,
-    "armor": 2,
-    "resistance": 2,
     "description": "Support, Nuker, Disabler"
   },
 
   "am": {
     "name": "Magino",
     "attribute": "Agility",
-    "range": "Melee",
-    "hp": 40,
-    "mana": 3,
-    "damage": 13,
-    "armor": 3,
-    "resistance": 3,
-    "description": "Nuker, Carry, Escape",
-    "intro": "hIySV3k0cqo"
+    "description": "Nuker, Carry, Escape"
   },
 
   "nyx": {
     "name": "Mix",
     "attribute": "Agility",
-    "range": "Melee",
-    "hp": 50,
-    "mana": 3,
-    "damage": 12,
-    "armor": 3,
-    "resistance": 2,
     "description": "Initiator, Disabler, Escape"
   },
 
   "com": {
     "name": "Sashay Commander",
     "attribute": "Strength",
-    "range": "Melee",
-    "hp": 50,
-    "mana": 2,
-    "damage": 14,
-    "armor": 3,
-    "resistance": 3,
     "description": "Carry, Durable, Healer"
   },
 
   "wind": {
     "name": "Wind Elf",
     "attribute": "Intelligence",
-    "range": "Ranged",
-    "hp": 40,
-    "mana": 4,
-    "damage": 13,
-    "armor": 2,
-    "resistance": 2,
     "description": "Disabler, Escape, Nuker"
   },
 
   "venge": {
     "name": "Venge",
     "attribute": "Agility",
-    "range": "Short",
-    "hp": 42,
-    "mana": 2,
-    "damage": 13,
-    "armor": 3,
-    "resistance": 2,
     "description": "Disabler, Escape, Nuker"
   },
   
   "en": {
     "name": "Bambi",
     "attribute": "Intelligence",
-    "range": "Ranged",
-    "hp": 40,
-    "mana": 3,
-    "damage": 12,
-    "armor": 2,
-    "resistance": 2,
     "description": "Jungler, Healer, Durable"
   }
 

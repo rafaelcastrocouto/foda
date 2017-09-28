@@ -460,7 +460,7 @@
 
 @keyframes enemybuyslide {
   0% {
-    left: -2000vw;
+    left: -500vw;
     top: 150%;
     transform: translate(-50%, -50%) rotateY(-180deg) scale(0.6);
   }
@@ -478,7 +478,7 @@
 }
 
 .table .enemy .skills .card.showMoves {
-  left: -1000px;
+  left: 500vw;
   top: 150%;
   pointer-events: none;
   animation: enemyshowslide 2.1s;
@@ -492,13 +492,13 @@
 
   70% {
     left: 40px;
-    top: 185%;
+    top: 200%;
     transform: translate(-50%, -50%) scale(0.6);
   }
 
   100% {
-    left: -4000vw;
-    top: 185%;
+    left: 500vw;
+    top: 200%;
     transform: translate(-50%, -50%) scale(0.6);
   }
 }

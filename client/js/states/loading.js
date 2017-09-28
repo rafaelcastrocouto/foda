@@ -1,6 +1,6 @@
 game.states.loading = {
   updating: 0,
-  totalUpdate: 7, // rank + language + ui + heroes + skills + campaign + package
+  totalUpdate: 8, // values + language + ui + heroes + skills + campaign + package + rank
   build: function () {
     this.box = $('<div>').addClass('box');   
     this.h2 = $('<p>').appendTo(this.box).addClass('loadtext').html('<span class="loader loading"></span><span class="message">Updating: </span><span class="progress">0%</span>');
@@ -12,10 +12,11 @@ game.states.loading = {
     if (window.AudioContext) game.audio.build();
     game.language.load(function loadLanguage() { //console.log('lang', game.states.loading.updating)
       game.states.loading.updated();
-      game.states.loading.json('ui', game.states.loading.updated);
-      game.states.loading.json('heroes', game.states.loading.updated);
+      game.states.loading.json('values', game.states.loading.updated);
       game.states.loading.json('campaign', game.states.loading.updated);
-      game.states.loading.json('skills', game.states.loading.updated);
+      game.states.loading.json('ui', game.states.loading.updated, true);
+      game.states.loading.json('heroes', game.states.loading.updated, true);
+      game.states.loading.json('skills', game.states.loading.updated, true);
     });
     game.states.loading.rank();
     game.states.loading.progress();
@@ -40,10 +41,12 @@ game.states.loading = {
       else game.timeout(500, game.history.jumpTo.bind(this, 'log'));
     });
   },
-  json: function (name, cb) {
+  json: function (name, cb, translate) {
+    var u = game.dynamicHost + 'json/' + name + '.json';
+    if (translate) u = game.dynamicHost + 'json/' + game.language.dir + name + '.json';
     $.ajax({
       type: 'GET',
-      url: game.dynamicHost + 'json/' + game.language.dir + name + '.json',
+      url: u,
       complete: function (response) { //console.log(name, response, game.states.loading.updating)
         var data = JSON.parse(response.responseText);
         game.data[name] = data;

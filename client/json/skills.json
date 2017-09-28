@@ -1,5 +1,4 @@
 {
-
   "com": {
     "aoe": {
       "name": "Let'em come",
@@ -7,13 +6,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Self"],
-      "cast range": "Ranged",
       "aoe": "Radial",
-      "aoe range": "Small",
-      "cards": 1,
-      "damage": 4,
-      "damage per unit": 1,
-      "damage per hero": 3,
       "damage type": "Magical",
       "description": "Turns the enemy numbers against them, dealing 1 damage per unit or 3 per hero"
     },
@@ -23,13 +16,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self", "Ally"],
-      "cast range": "Ranged",
-      "cards": 1,
       "description": "Purge the target unit and grants bonus damage and heals",
       "buff": {
-        "duration": 3,
-        "heal": 8,
-        "damage bonus": 6,
         "description": "Damage increased by 6 and healing 8 health per turn"
       }
     },
@@ -39,11 +27,8 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "When attacked, there is a chance to immediately counterattack with 75% lifesteal",
       "buff": {
-        "chance": 25,
-        "lifesteal": 75,
         "description": "When attacked, there is a chance to immediately counterattack with 75% lifesteal"
       }
     },
@@ -53,10 +38,6 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Melee",
-      "cards": 1,
-      "attacks": 3,
-      "damage bonus": 5,
       "description": "Exchanges three attacks with a target enemy. If anyone dies, the killer gains 4 permanent bonus damage"
     }
   },
@@ -68,9 +49,6 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Short",
-      "stun": 4,
-      "cards": 1,
       "description": "Ties the target to an enemy unit or tree behind it. If no unit or tree is present, the stun duration is halved"
     },
     "arrow": {
@@ -80,14 +58,7 @@
       "deck": "Buy",
       "targets": ["Spot"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 16,
-      "damage reduction": 2,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Damages enemies and destroys trees along its path. For each enemy the arrow hits, its damage is reduced by 2"
     },
     "run": {
@@ -96,12 +67,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Increases the movement speed and adds evasion from all attacks",
       "buff": {
-        "duration": 3,
-        "miss": 100,
-        "speed bonus": 1,
         "description": "Movement speed increased and evasion from all attacks"
       }
     },
@@ -111,10 +78,6 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Ranged",
-      "cards": 1,
-      "attacks": 4,
-      "damage reduction": 4,
       "description": "Attack a target enemy four times in a row. Damage is reduced by four points"
     }
   },
@@ -126,10 +89,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cast range": "Ranged",
-      "damage": 10,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Damages enemies around the Cat Lady. One random enemy will be hit twice"
     },
     "arrow": {
@@ -139,16 +99,7 @@
       "deck": "Buy",
       "targets": ["Spot"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 10,
-      "distance damage bonus": 2,
-      "stun": 1,
-      "distance stun bonus": 1,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Stuns and damages a single target. The distance will increase the damage and the stun (Max Dmg 15, Max Stun: 4 turns)"
     },
     "leap": {
@@ -157,12 +108,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Range", "Free"],
-      "cast range": "Ranged",
-      "cards": 1,
       "description": "Jump to the target spot and receive bonus speed",
       "buff": {
-        "duration": 3,
-        "speed bonus": 1,
         "description": "Speed increased by 'Leap'"
       }
     },
@@ -172,11 +119,9 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "All player heroes become invisible",
       "buff": {
-        "description": "Hidden by the 'Rivet Shadows'",
-        "duration": 2
+        "description": "Hidden by the 'Rivet Shadows'"
       }
     }
   },
@@ -189,13 +134,7 @@
       "deck": "Buy",
       "targets": ["Spot"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 1,
-      "aoe range": 3,
-      "damage": 12,
       "damage type": "Magical",
-      "cards": 1,
       "description": "A column of flames damages enemies in a line"
     },
     "stun": {
@@ -204,13 +143,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Self"],
-      "cast range": "Ranged",
       "aoe": "Radial",
-      "aoe range": "Small",
-      "damage": 10,
-      "stun": 2,
       "damage type": "Magical",
-      "cards": 1,
       "description": "A ball of fire stuns and damages enemies in target area. Can destroy trees"
     },
     "passive": {
@@ -219,10 +153,8 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Each cast will increase attack stacking fire bonus damage. Reset on turn end",
       "buff": {
-        "cast damage bonus": 4,
         "description": "Each cast will increase attack stacking fire bonus damage. Reset on turn end"
       }
     },
@@ -232,9 +164,6 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Ranged",
-      "cards": 1,
-      "damage": 30,
       "damage type": "Magical",
       "description": "Fires off a bolt of lightning at a single enemy unit"
     }
@@ -247,7 +176,6 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Every attack has damage bonus equal to target's mana and makes the enemy discard a right hand skill card of that hero",
       "buff": {
         "description": "Damage increased by the target's mana and makes the enemy discard a right hand skill card of that hero"
@@ -259,8 +187,6 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Free"],
-      "cast range": "Long",
-      "cards": 2,
       "description": "Teleport Magino to the target"
     },
     "shield": {
@@ -269,10 +195,8 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Increases magic resistance",
       "buff": {
-        "resistance bonus": 4,
         "description": "Magic resistance increased"
       }
     },
@@ -282,12 +206,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Short",
       "aoe": "Radial",
-      "aoe range": "Melee",
-      "damage": 16,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Damage target area with bonus damage equal the target's mana. Interrupts target channel"
     }
   },
@@ -299,18 +219,11 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Self"],
-      "cast range": "Ranged",
       "aoe": "Radial",
-      "aoe range": "Melee",
-      "damage": 10,
       "damage type": "Magical",
-      "cards": 1,
       "description": "A burst of damaging frost that slows enemies in the target area",
       "buff": {
-        "speed slow": 1,
-        "duration": 2,
-        "description": "Slowed by Snow Blast",
-        "purgeable": true
+        "description": "Slowed by Snow Blast"
       }
     },
     "passive": {
@@ -319,11 +232,9 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Give a bonus skill card per turn",
       "buff": {
-        "description": "Player buys one extra skill card per turn",
-        "cards per turn": 1
+        "description": "Player buys one extra skill card per turn"
       }
     },
     "freeze": {
@@ -332,12 +243,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Ranged",
-      "cards": 1,
       "description": "Prevents movement and attack while dealing damage over time. Interrupts target channel",
       "buff": {
-        "duration": 2,
-        "dot": 8,
         "damage type": "Magical",
         "description": "Ice Prison: disarmed, rooted and receiving damage over time"
       }
@@ -345,26 +252,18 @@
     "ult": {
       "name": "Ice Storm",
       "type": "Channel",
-      "channel": 2,
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
       "aoe": "Radial",
-      "aoe range": "Long",
-      "stroke range": "Long",
-      "damage": 12,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Channels a storm of icy explosions that deals damage to enemies around her",
       "buffs": {
         "ult": {
           "source": {
-            "duration": 2,
             "description": "Let it go! Let it go!"
           },
           "targets": {
-            "duration": 2,
-            "speed slow": 1,
             "description": "Slowed and damaged by icy explosions"
           }
         }
@@ -376,23 +275,15 @@
     "illuminate": {
       "name": "Light Ball",
       "type": "Channel",
-      "channel": 3,
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 1,
-      "aoe range": 4,
-      "damage": 4,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Channels light to damage enemies in a line",
       "buffs": {
         "illuminate": {
           "channel": {
-            "duration": 3,
             "description": "Channeling light to damage enemies in a line"
           }
         }
@@ -404,12 +295,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Long",
-      "cards": 1,
       "description": "Forces a discard on cast and on every move. Stuns if target has no more skill cards",
-      "stun": 2,
       "buff": {
-        "duration": 4,
         "description": "Loses a skill card everytime this unit moves"
       }
     },
@@ -419,8 +306,6 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
-      "bonus cards": 3,
       "description": "Player gain bonus skill cards"
     },
     "ult": {
@@ -429,10 +314,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Becomes one with the light! Gains 'Rescue' and 'Light Blast' cards and changes 'Light Ball' into an Active skill that heals allies",
       "buff": {
-        "duration": 6,
         "description": "Spirit Form"
       }
     },
@@ -443,16 +326,9 @@
       "deck": "Temporary",
       "targets": ["Spot", "Self"],
       "aoe": "Radial",
-      "damage": 6,
       "damage type": "Magical",
-      "aoe range": "Small",
-      "cast range": "Ranged",
-      "highlight": "out",
-      "cards": 1,
       "description": "Knock back and blind enemies, causing them to miss 80% attacks. Interrupts target channel",
       "buff": {
-        "duration": 2,
-        "miss": 80,
         "description": "Blinded"
       }
     },
@@ -462,12 +338,8 @@
       "hand": "Right",
       "deck": "Temporary",
       "targets": ["Ally"],
-      "cast range": "Global",
-      "delay": 1,
-      "cards": 1,
       "description": "If unharmed after enemy turn, target is teleported to a free spot near Light Keeper",
       "buff": {
-        "duration": 2,
         "description": "Being rescued"
       }
     }
@@ -481,34 +353,22 @@
       "hand": "Right",
       "deck": "Summon",
       "targets": ["Spot", "Free"],
-      "cards": 1,
-      "cast range": "Melee",
-      "hp": 58,
-      "range": "Melee",
-      "damage": 8,
-      "armor": 3,
-      "resistance": 3,
-      "death damage": 12,
       "description": "Bear has 'Nature claws' and 'Demolition'. Deals 12 damage on death. Gains 'Return' card",
       "buffs": {
         "demolish": {
           "source": {
             "name": "Demolition",
-            "tower bonus": 6,
             "description": "Increases the power of the Bear, causing it to deal 6 extra damage to the tower"
           }
         },
         "entangle": {
           "source": {
             "name": "Nature Claws",
-            "chance": 20,
             "description": "Attacks have a 20% chance to cause roots to burst from the ground, immobilizing the attacked enemy unit, and dealing 6 damage per second. Interrupts target channel"
           },
           "target": {
             "name": "Nature Claws",
-            "dot": 6,
             "damage type": "Physical",
-            "duration": 3,
             "description": "Rooted and receiving damage per second"
           }
         }
@@ -520,8 +380,6 @@
       "hand": "Left",
       "deck": "Temporary",
       "targets": ["Spot", "Free"],
-      "cast range": "Melee",
-      "cards": 1,
       "description": "Teleports the Bear back to the Bear Druid. Must be discarded if the bear is killed"
     },
     "rabid": {
@@ -530,12 +388,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Increases the attack and movement speed of Bear Druid and the Spirit Bear",
       "buff": {
-        "duration": 3,
-        "damage bonus": 3,
-        "speed bonus": 1,
         "description": "Attack and movement speed increased"
       }
     },
@@ -545,14 +399,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self", "Summon"],
-      "damage": 6,
       "damage type": "Magical",
-      "range": "Melee",
-      "aoe": "Radial",
-      "aoe range": "Melee",
-      "stroke range": "Melee",
-      "highlight": "top",
-      "cards": 1,
       "description": "Roars causing enemies to flee in terror. Unit retreats one spot if the position is free. Interrupts targets channel"
     },
     "ult": {
@@ -561,11 +408,8 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Bear Druid morphs himself into a raging bear with increased HP and armor. Gains 'Battle Roar' card",
       "buff": {
-        "hp bonus": 9,
-        "armor bonus": 2,
         "description": "Bear form active"
       }
     },
@@ -575,12 +419,8 @@
       "hand": "Right",
       "deck": "Temporary",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Increases the attack and armor of Syllabear and the Spirit Bear",
       "buff": {
-        "duration": 3,
-        "armor bonus": 2,
-        "damage bonus": 5,
         "description": "Attack and armor increased"
       }
     }
@@ -594,14 +434,7 @@
       "deck": "Buy",
       "targets": ["Spot"],
       "aoe": "Linear",
-      "aoe width": 0,
-      "aoe range": 3,
-      "cast range": 1,
-      "cast width": 0,
-      "cards": 1,
       "damage type": "Magical",
-      "damage": 12,
-      "stun": 2,
       "description": "Rock spikes burst along a straight path, hitted enemies are stunned and take damage"
     },
     "burn": {
@@ -610,10 +443,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Ranged",
-      "multiplier": 4,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Damages an enemy unit by 4X it's mana and makes enemy player lose a card of that hero"
     },
     "spike": {
@@ -623,13 +453,8 @@
       "deck": "Buy",
       "targets": ["Self"],
       "damage type": "Pure",
-      "cards": 1,
-      "stun": 3,
       "description": "Reflect damage received and stun the source of damage",
       "buff": {
-        "duration": 2,
-        "armor bonus": 10,
-        "resistance bonus": 10,
         "description": "Reflect damage received and stun the source of damage"
       }
     },
@@ -639,14 +464,9 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "duration": 8,
       "damage type": "Physical",
-      "cards": 1,
       "description": "Mix becomes invisible and gains bonus speed and damage",
       "buff": {
-        "duration": 6,
-        "speed bonus": 1,
-        "damage bonus": 20,
         "description": "Invisible and attack increased"
       }
     }
@@ -660,14 +480,7 @@
       "deck": "Buy",
       "targets": ["Spot"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 3,
-      "damage": 14,
-      "highlight": "in",
       "damage type": "Pure",
-      "cards": 1,
       "description": "Launches a bloody hook that will snag the first unit it encounters, dragging the unit and dealing damage if enemy. Interrupts enemy channel"
     },
     "rot": {
@@ -677,11 +490,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "aoe": "Radial",
-      "aoe range": "Melee",
-      "stroke range": "Melee",
-      "damage": 6,
       "damage type": "Magical",
-      "cards": 1,
       "description": "A stink cloud that deals damage and slows enemies. Damage is dealt at the turn end, Butcher will also be damaged",
       "buffs": {
         "rot": {
@@ -689,8 +498,6 @@
             "description": "Stink is active"
           },
           "targets": {
-            "speed slow": 1,
-            "duration": 1,
             "description": "Slowed by Butcher's Stink"
           }
         }
@@ -702,35 +509,25 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Gives Butcher bonus HP and damage on every kill and reduces magic damage",
       "buff": {
-        "hp per kill": 4,
-        "damage per kill": 3,
-        "resistance bonus": 2,
         "description": "HP and attack increased per kill and bonus magic resistance"
       }
     },
     "ult": {
       "name": "Fresh Meat",
       "type": "Channel",
-      "channel": 2,
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Melee",
-      "dot": 10,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Disable and deals damage over time while healing himself. Interrupts target channel",
       "buffs": {
         "ult": { 
           "source": {
-            "duration": 2,
             "description": "Channeling - Fresh Meat"
           },
           "target": {
-            "duration": 2,
             "description": "Disabled and receiving damage over time"
           }
         }
@@ -745,19 +542,11 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Short",
-      "damage": 12,
       "damage type": "Magical",
-      "stun": 2,
-      "cards": 1,
       "description": "Damage and stun a target then slows and deals damage over time",
       "buff": {
         "damage type": "Magical",
-        "speed slow": 1,
-        "duration": 2,
-        "dot": 6,
-        "description": "Fire Blast damage over time",
-        "purgeable": true
+        "description": "Fire Blast damage over time"
       }
     },
     "aura": {
@@ -766,10 +555,8 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Every attack will drain a percentage of the enemy life",
       "buff": {
-        "lifesteal": 30,
         "description": "Drain life on every attack"
       }
     },
@@ -779,11 +566,8 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Dead King attacks will have a chance of inflicting critical damage bonus",
       "buff": {
-        "chance": 15,
-        "percentage": 300,
         "description": "Chance of critical damage"
       }
     },
@@ -793,17 +577,13 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Dead King will come back on next player turn after being killed slowing enemies around. The passive is discarded",
       "buffs": {
         "ult": {
           "source": {
-            "range": "Melee",
             "description": "No one can kill the Dead King!"
           },
           "targets": {
-            "duration": 2,
-            "speed slow": 1,
             "description": "Slowed by the return of the King!"
           }
         }
@@ -818,11 +598,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Ranged",
-      "damage": 14,
       "damage type": "Magical",
-      "stun": 2,
-      "cards": 1,
       "description": "Damage and stun a target"
     },
     "corruption": {
@@ -832,17 +608,9 @@
       "deck": "Buy",
       "targets": ["Spot"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 6,
       "damage type": "Magical",
-      "cards": 1,
       "description": "Weakens enemy armor by 2 points",
       "buff": {
-        "duration": 3,
-        "armor reduction": 2,
         "description": "Reduced Armor"
       }
     },
@@ -852,10 +620,8 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "An aura that increases the attack damage of nearby friendly units. If Venge dies, damage bonus will double",
       "buff": {
-        "damage bonus": 2,
         "description": "Attack Bonus"
       }
     },
@@ -865,8 +631,6 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy", "Ally"],
-      "cast range": "Ranged",
-      "cards": 1,
       "description": "Instantaneously swaps positions with a target Hero, friend or enemy"
      }
    },
@@ -878,7 +642,6 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "cards": 1,
       "description": "Attacker's will be cursed and suffer reduced damage for the turn",
       "buffs": {
         "passive": {
@@ -886,8 +649,6 @@
             "description": "Can't touch this"
           },
           "attacker": {
-            "duration": 1,
-            "damage reduction": 4,
             "description": "Reduced Damage"
           }
         }
@@ -899,12 +660,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy","Jungle"],
-      "cast range": "Ranged",
-      "cards": 1,
       "description": "Summon a forest creep, takes control over an enemy unit or slow an enemy hero",
       "buff": {
-        "duration": 2,
-        "speed slow": 1,
         "description": "Charmed"
       }
     },
@@ -914,13 +671,8 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "cast range": "Ranged",
-      "max targets": 4,
-      "cards": 1,
       "description": "Invoke 5 Healing Wisps for herself and nearby friendly units",
       "buff": {
-        "heal": 5,
-        "duration": 4,
         "description": "Healing Wisp"
       }
     },
@@ -930,8 +682,6 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "cast range": "Long",
-      "cards": 2,
       "description": "Attack a target enemy with bonus damage equal to twice the distance"
      }
    }

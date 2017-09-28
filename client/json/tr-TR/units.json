@@ -2,52 +2,26 @@
   "creeps":{
     "melee": {
       "name": "Meydan Creep",
-      "attribute": "Creeps",
-      "range": "Meydan",
-      "hp": 30,
-      "damage": 18,
-      "armor": 2,
-      "resistance": 1
+      "attribute": "Creeps"
     },
     "ranged": {
       "name": "Menzilli Creep",
-      "attribute": "Creeps",
-      "range": "Menzilli",
-      "hp": 26,
-      "damage": 14,
-      "armor": 1,
-      "mana": 4,
-      "resistance": 2
+      "attribute": "Creeps"
     },
     "catapult": {
       "name": "Catapult",
-      "attribute": "Creeps",
-      "range": "Far",
-      "hp": 32,
-      "damage": 14,
-      "armor": 4,
-      "resistance": 6
+      "attribute": "Creeps"
     }
   },
   "forest":{
     "cent": {
       "name": "Centaur",
       "attribute": "Jungle Creep",
-      "range": "Meydan",
-      "hp": 38,
-      "damage": 6,
-      "armor": 2,
-      "resistance": 3,
       "description": "Centaur Jungle Creep"
      },
     "golem": {
       "name": "Golem",
       "attribute": "Jungle Creep",
-      "range": "Meydan",
-      "hp": 34,
-      "damage": 7,
-      "armor": 4,
-      "resistance": 3,
       "description": "Golem Jungle Creep"
     }
   }

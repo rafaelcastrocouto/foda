@@ -6,13 +6,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local", "Próprio"],
-      "cast range": "Distante",
       "aoe": "Radial",
-      "aoe range": "Curto",
-      "cards": 1,
-      "damage": 4,
-      "damage per unit": 1,
-      "damage per hero": 3,
       "damage type": "Mágico",
       "description": "Dano em área aumentado em 1 por unidade or 3 por herói inimigo"
     },
@@ -22,13 +16,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio", "Aliados"],
-      "cast range": "Distante",
-      "cards": 1,
       "description": "Purga o alvo e aumenta seu dano em 6 e cura 8 pontos por turno",
       "buff": {
-        "duration": 3,
-        "heal": 8,
-        "damage bonus": 6,
         "description": "Dano aumentado em 6 e curando 8 pontos por turno"
       }
     },
@@ -38,11 +27,8 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Quando atacada, há uma chance de contra atacar imediatamente com 75% de roubo de vida",
       "buff": {
-        "chance": 25,
-        "lifesteal": 75,
         "description": "Quando atacada, há uma chance de contra atacar imediatamente com 75% de roubo de vida"
       }
     },
@@ -52,10 +38,6 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Perto",
-      "cards": 1,
-      "attacks": 3,
-      "damage bonus": 5,
       "description": "Troca três ataques com o alvo, Se alguém morrer, o assassino ganha 4 pontos permanentes de dano"
     }
   },
@@ -67,9 +49,6 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Médio",
-      "stun": 4,
-      "cards": 1,
       "description": "Prende o alvo a uma unidade inimiga ou a uma árvore detrás do alvo. Se não houver unidade inimiga ou árvore, a duração do efeito é reduzida pela metade"
     },
     "arrow": {
@@ -79,16 +58,8 @@
       "deck": "Comprar",
       "targets": ["Local"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 16,
-      "damage reduction": 2,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Causa dano e destrói árvores ao longo do caminho. Para cada inimigo, o dano da flecha é reduzido em 2"
-
     },
     "run": {
       "name": "Pé de Vento",
@@ -96,12 +67,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Aumenta o velocidade e esquiva de todos os ataques",
       "buff": {
-        "duration": 3,
-        "miss": 100,
-        "speed bonus": 1,
         "description": "Velocidade aumentada e esquiva de todos os ataques"
       }
     },
@@ -111,10 +78,6 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Distante",
-      "cards": 1,
-      "attacks": 4,
-      "damage reduction": 4,
       "description": "Ataca um inimigo quatro vezes. O dano é reduzido em quatro pontos"
     }
   },
@@ -126,10 +89,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cast range": "Distante",
-      "damage": 10,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Causa dano aos inimigos ao redor da Miau. Um alvo aleatório é atingido duas vezes"
     },
     "arrow": {
@@ -139,16 +99,7 @@
       "deck": "Comprar",
       "targets": ["Local"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 10,
-      "distance damage bonus": 2,
-      "stun": 1,
-      "distance stun bonus": 1,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Atordoa e causa dano a uma unidade inimiga. A distância aumenta o dano e a duração do efeito (Max Dano 15, Max Stun: 4 turnos)"
     },
     "leap": {
@@ -157,12 +108,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local", "Alcançe", "Livre"],
-      "cast range": "Distante",
-      "cards": 1,
       "description": "Salta para o alvo e ganha bonus de velocidade",
       "buff": {
-        "duration": 3,
-        "speed bonus": 1,
         "description": "Velocidade aumentada pelo 'Salto'"
       }
     },
@@ -172,11 +119,9 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Todos os heróis do jogador se tornam invisíveis",
       "buff": {
-        "description": "Escondido pelas 'Sombras Gatunas'",
-        "duration": 2
+        "description": "Escondido pelas 'Sombras Gatunas'"
       }
     }
   },
@@ -189,13 +134,7 @@
       "deck": "Comprar",
       "targets": ["Local"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 1,
-      "aoe range": 3,
-      "damage": 12,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Uma coluna de fogo causa dano em linha"
     },
     "stun": {
@@ -204,13 +143,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local", "Próprio"],
-      "cast range": "Distante",
       "aoe": "Radial",
-      "aoe range": "Curto",
-      "damage": 10,
-      "stun": 2,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Uma bola de fogo atordoa e causa dano em área. Pode destruir árvores"
     },
     "passive": {
@@ -219,10 +153,8 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Após usar uma habilidade o ataque ganha bonus de fogo",
       "buff": {
-        "cast damage bonus": 4,
         "description": "Após usar uma habilidade o ataque ganha bonus de fogo"
       }
     },
@@ -232,9 +164,6 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Distante",
-      "cards": 1,
-      "damage": 30,
       "damage type": "Mágico",
       "description": "Manda um relâmpago em uma unidade inimiga"
     }
@@ -247,8 +176,6 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "damage type": "Puro",
-      "cards": 1,
       "description": "Ataques recebem bonus de dano igual ao valor de mana do alvo e obriga o oponente descartar uma habilidade do alvo na mão direita",
       "buff": {
         "description": "Ataque com bonus de dano igual ao valor de mana do alvo e obriga o oponente descartar uma habilidade do alvo na mão direita"
@@ -260,8 +187,6 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local", "Livre"],
-      "cast range": "Longe",
-      "cards": 2,
       "description": "Teleporta para o destino imediatamente"
     },
     "shield": {
@@ -270,10 +195,8 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Aumenta a resistência a danos mágicos",
       "buff": {
-        "resistance bonus": 4,
         "description": "Resistência mágica aumentada"
       }
     },
@@ -283,12 +206,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Médio",
       "aoe": "Radial",
-      "aoe range": "Perto",
-      "damage": 16,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Causa dano em área na posição de uma unidade inimiga. O bonus de dano é igual ao mana do alvo"
     }
   },
@@ -300,18 +219,11 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local", "Próprio"],
-      "cast range": "Distante",
       "aoe": "Radial",
-      "aoe range": "Perto",
-      "damage": 10,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Uma explosão de gelo que causa dano em area e diminui a velocidade dos inimigos",
       "buff": {
-        "speed slow": 1,
-        "duration": 2,
-        "description": "Movimento restrito pela explosão cristalina",
-        "purgeable": true
+        "description": "Movimento restrito pela explosão cristalina"
       }
     },
     "passive": {
@@ -320,11 +232,9 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "O jogador compra uma carta de habilidade a mais por turno",
       "buff": {
-        "description": "Uma carta de habilidade bonus por turno",
-        "cards per turn": 1
+        "description": "Uma carta de habilidade bonus por turno"
       }
     },
     "freeze": {
@@ -333,12 +243,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Distante",
-      "cards": 1,
       "description": "Congela uma unidade inimiga (disarma e bloqueia o movimento), causa dano por turno e interrompe canalização",
       "buff": {
-        "duration": 2,
-        "dot": 8,
         "damage type": "Mágico",
         "description": "Congelado (disarmado e sem movimento) e recebendo dano por turno"
       }
@@ -346,26 +252,18 @@
     "ult": {
       "name": "Tempestade de Gelo",
       "type": "Canalização",
-      "channel": 2,
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
       "aoe": "Radial",
-      "aoe range": "Longe",
-      "stroke range": "Longe",
-      "damage": 12,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Canaliza uma tempestade de neve ao seu redor cauzando dano em área",
       "buffs": {
         "ult": {
           "source": {
-            "duration": 2,
             "description": "Let it go! Let it go!"
           },
           "targets": {
-            "duration": 2,
-            "speed slow": 1,
             "description": "Movimento restrito pelo campo congelante"
           }
         }
@@ -377,23 +275,15 @@
     "illuminate": {
       "name": "Bola de Luz",
       "type": "Canalização",
-      "channel": 3,
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Local"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 1,
-      "aoe range": 4,
-      "damage": 4,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Canaliza luz causando dano em área",
       "buffs": {
         "illuminate": {
           "channel": {
-            "duration": 3,
             "description": "Canaliza luz causando dano em área"
           }
         }
@@ -405,12 +295,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Longe",
-      "cards": 1,
       "description": "Amaldiçoa uma unidade inimiga obrigando o inimigo a descartar uma carta de habilidade (direita) a cada movimento, caso o inimigo não tenha mais cartas a unidade é atordoada",
-      "stun": 2,
       "buff": {
-        "duration": 4,
         "description": "Perde uma carta de habilidade (direita) a cada movimento"
       }
     },
@@ -420,8 +306,6 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
-      "bonus cards": 3,
       "description": "O jogador compra cartas de habilidade"
     },
     "ult": {
@@ -430,10 +314,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Light Keeper se torna um com a luz! Recebe 'Resgate' e 'Luz Cegante' e a Bola de Luz passa a ser Ativa",
       "buff": {
-        "duration": 6,
         "description": "Forma Espiritual"
       }
     },
@@ -444,16 +326,9 @@
       "deck": "Temporária",
       "targets": ["Local", "Próprio"],
       "aoe": "Radial",
-      "damage": 6,
       "damage type": "Mágico",
-      "aoe range": "Curto",
-      "cast range": "Distante",
-      "highlight": "out",
-      "cards": 1,
       "description": "Uma luz cegante arremessa as unidades inimigas, fazendo com que errem 80% dos ataques. Interrompe canalização",
       "buff": {
-        "duration": 2,
-        "miss": 80,
         "description": "Blinded"
       }
     },
@@ -463,12 +338,8 @@
       "hand": "Direita",
       "deck": "Temporária",
       "targets": ["Aliados"],
-      "cast range": "Global",
-      "delay": 1,
-      "cards": 1,
       "description": "Caso não sofra dano por um turno, teletransporta o herói alvo para a sua posição",
       "buff": {
-        "duration": 2,
         "description": "Recalling"
       }
     }
@@ -482,34 +353,22 @@
       "hand": "Direita",
       "deck": "Invocação",
       "targets": ["Local", "Livre"],
-      "cards": 1,
-      "cast range": "Perto",
-      "hp": 58,
-      "range": "Perto",
-      "damage": 8,
-      "armor": 3,
-      "resistance": 3,
-      "death damage": 12,
       "description": "O jogador compra uma carta temporária 'Retornar'",
       "buffs": {
         "demolish": {
           "source": {
             "name": "Demolidor",
-            "tower bonus": 6,
             "description": "O Urso causa 6 de dano extra contra a torre"
           }
         },
         "entangle": {
           "source": {
             "name": "Garras da Natureza",
-            "chance": 20,
             "description": "Os ataques do Urso têm chance de fazer com que raízes prendam o inimigo, imobilizando e causando 6 de dano por turno. Interrompe canalização"
           },
           "target": {
             "name": "Garras da Natureza",
-            "dot": 6,
             "damage type": "Físico",
-            "duration": 3,
             "description": "Preso pelas Garras da Natureza e recebendo dano por turno"
           }
         }
@@ -521,8 +380,6 @@
       "hand": "Esquerda",
       "deck": "Temporária",
       "targets": ["Local", "Livre"],
-      "cast range": "Perto",
-      "cards": 1,
       "description": "Teleporta o Urso de volta para o Druida. Esta carta deve ser descartada quando o Espírito Urso morre"
     },
     "rabid": {
@@ -531,12 +388,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Aumenta o ataque e o movimento do Druida e do Urso",
       "buff": {
-        "duration": 3,
-        "damage bonus": 3,
-        "speed bonus": 1,
         "description": "Bonus de ataque e o movimento"
       }
     },
@@ -546,14 +399,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio", "Invocação"],
-      "damage": 6,
       "damage type": "Magical",
-      "range": "Perto",
-      "aoe": "Radial",
-      "aoe range": "Perto",
-      "stroke range": "Perto",
-      "highlight": "top",
-      "cards": 1,
       "description": "Ruge de forma tão feroz que os inimigos fogem de medo. Interrompe canalização"
     },
     "ult": {
@@ -562,11 +408,8 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "O Duida se tranforma em um urso furioso com bonus de HP e armadura. Recebe 'Grito de Guerra'",
       "buff": {
-        "hp bonus": 9,
-        "armor bonus": 2,
         "description": "Forma Real"
       }
     },
@@ -576,12 +419,8 @@
       "hand": "Direita",
       "deck": "Temporária",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Aumenta o ataque e a armadura do Druida e do Urso",
       "buff": {
-        "duration": 3,
-        "armor bonus": 2,
-        "damage bonus": 5,
         "description": "Bonus de ataque e a armadura"
       }
     }
@@ -595,14 +434,7 @@
       "deck": "Comprar",
       "targets": ["Local"],
       "aoe": "Linear",
-      "aoe width": 0,
-      "aoe range": 3,
-      "cast range": 1,
-      "cast width": 0,
-      "cards": 1,
       "damage type": "Mágico",
-      "damage": 12,
-      "stun": 2,
       "description": "Espinhos rochosos emergem da terra, unidades inimigas atingidas são atordoadas e recebem dano"
     },
     "burn": {
@@ -611,10 +443,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Distante",
-      "multiplier": 4,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Causa dano igual ao mana do alvo multiplicado por 4 e obriga o oponente a descartar uma habilidade do alvo"
     },
     "spike": {
@@ -624,13 +453,8 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "damage type": "Puro",
-      "cards": 1,
-      "stun": 3,
       "description": "Bonus de armadura e resistência e reflete e o dano recebido e atordoa o atacante",
       "buff": {
-        "duration": 2,
-        "armor bonus": 10,
-        "resistance bonus": 10,
         "description": "Bonus de armadura e resistência e reflete e o dano recebido e atordoa o atacante"
       }
     },
@@ -640,14 +464,9 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "duration": 8,
       "damage type": "Físico",
-      "cards": 1,
       "description": "Nyx Assassin fica invisível, mais rápido e o dano do seu próximo ataque é aumentado",
       "buff": {
-        "duration": 6,
-        "speed bonus": 1,
-        "damage bonus": 20,
         "description": "Invisível e com bonus de ataque e velocidade"
       }
     }
@@ -661,14 +480,7 @@
       "deck": "Comprar",
       "targets": ["Local"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 3,
-      "damage": 14,
-      "highlight": "in",
       "damage type": "Puro",
-      "cards": 1,
       "description": "Lança um gancho que agarra a primeira unidade que encontrar, arrastando-a de volta e causando dano caso seja uma unidade inimiga"
     },
     "rot": {
@@ -678,11 +490,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "aoe": "Radial",
-      "aoe range": "Perto",
-      "stroke range": "Perto",
-      "damage": 6,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "O odor do Açougueiro causa dano as unidades inimigas e ao próprio Pudge. O dano acontece somente no fim do turno",
       "buffs": {
         "rot": {
@@ -690,8 +498,6 @@
             "description": "Emanando cheiro fétido"
           },
           "targets": {
-            "speed slow": 1,
-            "duration": 1,
             "description": "Movimento restrito pela cheiro do Açougueiro"
           }
         }
@@ -703,35 +509,25 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Reduz o dano mágico e aumenta o HP e o Dano a cada uindade que o Pudge mata",
       "buff": {
-        "hp per kill": 4,
-        "damage per kill": 3,
-        "resistance bonus": 2,
         "description": "Dano mágico reduzido e HP e o Dano aumentados por kill"
       }
     },
     "ult": {
       "name": "Carne Fresca",
       "type": "Canalização",
-      "channel": 2,
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Perto",
-      "dot": 10,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Pudge devora a vida de uma unidade inimiga, desativando o alvo e causando dano por turno. Interrompe canalização",
       "buffs": {
         "ult": { 
           "source": {
-            "duration": 2,
             "description": "Desmembrando - Canalizando"
           },
           "target": {
-            "duration": 2,
             "description": "Desativado e recebendo dano por turno"
           }
         }
@@ -746,19 +542,11 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Médio",
-      "damage": 12,
       "damage type": "Mágico",
-      "stun": 2,
-      "cards": 1,
       "description": "Atordoa depois diminui a velocidade e causa dano por turno",
       "buff": {
         "damage type": "Mágico",
-        "speed slow": 1,
-        "duration": 2,
-        "dot": 6,
-        "description": "Dano por turno da Explosão Maldita",
-        "purgeable": true
+        "description": "Dano por turno da Explosão Maldita"
       }
     },
     "aura": {
@@ -767,10 +555,8 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Drena a vida dos inimigos a cada ataque",
       "buff": {
-        "lifesteal": 30,
         "description": "Drena vida a cada ataque"
       }
     },
@@ -780,11 +566,8 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Os ataques do Wraith King têm chance de causar dano crítico",
       "buff": {
-        "chance": 15,
-        "percentage": 300,
         "description": "Chance de dano crítico"
       }
     },
@@ -794,17 +577,13 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Dead King volta à vida após ser assassinado retardando os inimigos ao ser redor. A carta é devolvida ao cemiterioz",
       "buffs": {
         "ult": {
           "source": {
-            "range": "Perto",
             "description": "Ninguém pode matar o Rei!"
           },
           "targets": {
-            "duration": 2,
-            "speed slow": 1,
             "description": "Movimento restrito pela Reencarnação"
           }
         }
@@ -819,11 +598,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Médio",
-      "damage": 14,
       "damage type": "Mágico",
-      "stun": 2,
-      "cards": 1,
       "description": "Causa dano e atordoa o alvo"
     },
     "corruption": {
@@ -833,17 +608,9 @@
       "deck": "Comprar",
       "targets": ["Local"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 6,
       "damage type": "Mágico",
-      "cards": 1,
       "description": "Reduz armadura dos inimigos atingidos",
       "buff": {
-        "duration": 3,
-        "armor reduction": 2,
         "description": "Reduz Armadura"
       }
     },
@@ -853,10 +620,8 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Aumenta o dano de toda equipe. Se a Venge morrer, o bônus de dano irá dobrar",
       "buff": {
-        "damage bonus": 2,
         "description": "Bonus de Ataque"
       }
     },
@@ -866,8 +631,6 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos", "Aliados"],
-      "cast range": 4,
-      "cards": 1,
       "description": "Troca instantaneamente de posição com um herói-alvo, seja aliado ou inimigo"
     }
   },
@@ -879,7 +642,6 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cards": 1,
       "description": "Inimigos que atacarem terão seu dano reduzido durante o turno",
       "buffs": {
         "passive": {
@@ -887,8 +649,6 @@
             "description": "Não me toque"
           },
           "attacker": {
-            "duration": 1,
-            "damage reduction": 4,
             "description": "Dano reduzido"
           }
         }
@@ -900,12 +660,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos","Mato"],
-      "cast range": "Distante",
-      "cards": 1,
       "description": "Invoca uma criatura da floresta, toma controle de de uma unidade inimiga ou reduz a velocidade de uma herói inimigo",
       "buff": {
-        "duration": 2,
-        "speed slow": 1,
         "description": "Seduzido"
       }
     },
@@ -915,13 +671,8 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "cast range": "Distante",
-      "max targets": 4,
-      "cards": 1,
       "description": "Invoca 5 fadinhas para curar o time",
       "buff": {
-        "heal": 5,
-        "duration": 4,
         "description": "Fadinha"
       }
     },
@@ -931,8 +682,6 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "cast range": "Distante",
-      "cards": 2,
       "description": "Ataca um inimigo com dano aumentado pelo dobro da distancia"
      }
    }

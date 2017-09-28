@@ -6,13 +6,7 @@
       "hand": "Sağ",
       "deck": "Sağ",
       "targets": ["Yer", "Ayn?"],
-      "cast range": "Menzilli",
       "aoe": "Radyal",
-      "aoe range": "Küçük",
-      "cards": 1,
-      "damage": 4,
-      "damage per unit": 1,
-      "damage per hero": 3,
       "damage type": "Büyü",
       "description": "Onlara karşı düşman sayıları döndürür, birim başına 1 hasar veya kahraman başına 3 hasar verir"
     },
@@ -22,13 +16,8 @@
       "hand": "Sağ",
       "deck": "Sağ",
       "targets": ["Ayn?", "Müttefik"],
-      "cast range": "Ranged",
-      "cards": 1,
       "description": "Hedef birimi temizler ve bonus hasarı verir ve iyileşir",
       "buff": {
-        "duration": 3,
-        "heal": 8,
-        "damage bonus": 6,
         "description": "Hasar 6 artar ve dönüş başına 8 sağlık iyileşir"
       }
     },
@@ -38,11 +27,8 @@
       "hand": "Sol",
       "deck": "Sağ",
       "targets": ["Ayn?"],
-      "cards": 1,
       "description": "Saldırıya uğradığında, hemen% 75 yaşam döngüsü ile karşı saldırı yapma şansı var",
       "buff": {
-        "chance": 25,
-        "lifesteal": 75,
         "description": "Saldırıya uğradığında, hemen% 75 yaşam döngüsü ile karşı saldırı yapma şansı var"
       }
     },
@@ -52,10 +38,6 @@
       "hand": "Sağ",
       "deck": "Sağ",
       "targets": ["Düşman"],
-      "cast range": "Dövüş",
-      "cards": 1,
-      "attacks": 3,
-      "damage bonus": 5,
       "description": "Hedef düşmanla üç saldırı değiş tokuşu yapar. Eğer birisi ölürse, katil 4 kalıcı bonus hasarı kazanıyor"
     }
   },
@@ -67,9 +49,6 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Kısa",
-      "stun": 4,
-      "cards": 1,
       "description": "Hedefi bir düşman birimine veya arkasındaki ağaca bağlar. Hiçbir birim veya ağaç yoksa, stun süresi yarıya iner"
     },
     "arrow": {
@@ -79,14 +58,7 @@
       "deck": "Satın Al",
       "targets": ["Yer"],
       "aoe": "Doğrusal",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 16,
-      "damage reduction": 2,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Düşmana zarar verir ve yol boyunca ağaçları yok eder. Okun vurduğu her düşman için zararı 2 azaltıyor"
     },
     "run": {
@@ -95,12 +67,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Ayn?"],
-      "cards": 1,
       "description": "Hareket hızını arttırır ve tüm saldırıları kaçırır",
       "buff": {
-        "duration": 3,
-        "miss": 100,
-        "speed bonus": 1,
         "description": "MHareket hızını arttırır ve tüm saldırıları kaçırır"
       }
     },
@@ -110,10 +78,6 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Menzilli",
-      "cards": 1,
-      "attacks": 4,
-      "damage reduction": 4,
       "description": "Hedef bir düşmana üst üste dört kez saldırın. Hasar dört puan azaldı"
     }
   },
@@ -125,10 +89,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Ayn?"],
-      "cast range": "Menzilli",
-      "damage": 10,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Cat Lady etrafındaki düşmanlara zarar verir. Bir rasgele düşman iki kez vurulacak (Max Dmg 18, Max Stun: 5 turns)"
     },
     "arrow": {
@@ -138,16 +99,7 @@
       "deck": "Satın Al",
       "targets": ["Yer"],
       "aoe": "Doğrusal",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 10,
-      "distance damage bonus": 2,
-      "stun": 1,
-      "distance stun bonus": 1,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Bozukluklar ve tek bir hedefe zarar verir. Mesafe, hasarı ve sersemletmeyi artıracaktır (Max Dmg 15, Max Stun: 4 turns)"
     },
     "leap": {
@@ -156,12 +108,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer", "Menzil", "Bedava"],
-      "cast range": "Menzilli",
-      "cards": 1,
       "description": "Hedef noktaya atlayın ve bonus hızı elde edin",
       "buff": {
-        "duration": 3,
-        "speed bonus": 1,
         "description": "Hız arttı 'Leap'"
       }
     },
@@ -171,11 +119,9 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Ayn?"],
-      "cards": 1,
       "description": "Tüm oyuncu kahramanları görünmezleşti",
       "buff": {
-        "description": "'Cat Shadows' tarafından gizlenmiş",
-        "duration": 2
+        "description": "'Cat Shadows' tarafından gizlenmiş"
       }
     }
   },
@@ -188,13 +134,7 @@
       "deck": "Satın Al",
       "targets": ["Yer"],
       "aoe": "Linear",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 1,
-      "aoe range": 3,
-      "damage": 12,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Ateşten oluşan bir sütun düşmanları bir çizgide hasara uğratır"
     },
     "stun": {
@@ -203,13 +143,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer", "Bedava"],
-      "cast range": "Menzilli",
       "aoe": "Radyal",
-      "aoe range": "Küçük",
-      "damage": 10,
-      "stun": 2,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Ateş topu düşmanları şaşırtıyor ve düşmanlarına zarar veriyor. Ağaçları yok edebilir miyim"
     },
     "passive": {
@@ -218,10 +153,8 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["Aynı"],
-      "cards": 1,
       "description": "Dökümden sonra her saldırıda yangın bonus hasarı olur",
       "buff": {
-        "cast damage bonus": 4,
         "description": "Dökümden sonra her saldırıda yangın bonus hasarı olur"
       }
     },
@@ -231,9 +164,6 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Menzilli",
-      "cards": 1,
-      "damage": 30,
       "damage type": "Büyü",
       "description": "Tek bir düşman biriminde yıldırım çarpması sonucu patlar"
     }
@@ -246,8 +176,6 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["Aynı"],
-      "damage type": "Saf",
-      "cards": 1,
       "description": "Her saldırı hedefin mana eşit hasar bonusu vardır ve düşman o kahraman bir sağ beceri kartı atmak yapar",
       "buff": {
         "description": "Hasar hedefin mana artarak düşman o kahraman bir sağ beceri kartı atmak yapar"
@@ -259,8 +187,6 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer", "Bedava"],
-      "cast range": "Uzun",
-      "cards": 2,
       "description": "Hedeflenen noktaya ışınlanır"
     },
     "shield": {
@@ -269,10 +195,8 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["Aynı"],
-      "cards": 1,
       "description": "Magino'in büyü hasarına karşı direncini arttırır.",
       "buff": {
-        "resistance bonus": 4,
         "description": "Büyü Hasarı Direncini Arttırır"
       }
     },
@@ -282,12 +206,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Kısa",
       "aoe": "Radyal",
-      "aoe range": "Dövüş",
-      "damage": 16,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Zarar verici hedef hasar alanı, hedef manaya eşittir. Hedef kanala müdahale eder"
     }
   },
@@ -299,18 +219,11 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer", "AynÄ"],
-      "cast range": "Menzilli",
       "aoe": "Radyal",
-      "aoe range": "Dövüş",
-      "damage": 10,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Hedef alınan düşmanı yavaşlatır ve hasar almasına yol açar",
       "buff": {
-        "speed slow": 1,
-        "duration": 2,
-        "description": "Hasar verir ve bikaç saniye boyunca yavaşlarsın",
-        "purgeable": true
+        "description": "Hasar verir ve bikaç saniye boyunca yavaşlarsın"
       }
     },
     "passive": {
@@ -319,11 +232,9 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["Aynı"],
-      "cards": 1,
       "description": "Dost kahramanların manasını bonus olarak beceri kartı verir",
       "buff": {
-        "description": "Oyunculara fazladan beceri kartı verir",
-        "cards per turn": 1
+        "description": "Oyunculara fazladan beceri kartı verir"
       }
     },
     "freeze": {
@@ -332,12 +243,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Menzilli",
-      "cards": 1,
       "description": "Zamanla çevresindekı düşmanlara hasar veren bir buz ile saldırır ve düşman yavaşlar",
       "buff": {
-        "duration": 2,
-        "dot": 8,
         "damage type": "Büyü",
         "description": "Çevresinde bulunan düşmanlara dondurulmuş buz ile hasar verir ve yavaşlatır"
       }
@@ -345,26 +252,18 @@
     "ult": {
       "name": "Ice Storm",
       "type": "Channel",
-      "channel": 2,
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Aynı"],
       "aoe": "Radyal",
-      "aoe range": "Uzun",
-      "stroke range": "Uzun",
-      "damage": 12,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Etrafındakı düşmanları buzlu hasar veren bir patlama yaratır",
       "buffs": {
         "ult": {
           "source": {
-            "duration": 2,
             "description": "Bırak gitsin! Bırak gitsin!"
           },
           "targets": {
-            "duration": 2,
-            "speed slow": 1,
             "description": "Yavaşladı ve buzlu patlama ile hasar alıyor"
           }
         }
@@ -376,23 +275,15 @@
     "illuminate": {
       "name": "Light Ball",
       "type": "Kanal",
-      "channel": 3,
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Yer"],
       "aoe": "Doğrusal",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 1,
-      "aoe range": 4,
-      "damage": 4,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Düşmana zarar veren bir ışık gönderir",
       "buffs": {
         "illuminate": {
           "channel": {
-            "duration": 3,
             "description": "Düşmana zarar veren bir ışık gönderir"
           }
         }
@@ -404,12 +295,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Uzun",
-      "cards": 1,
       "description": "Bu kahraman artık kart yoksa her hareket bir beceri kart kaybı kullanarak bir hedef kartı açar",
-      "stun": 2,
       "buff": {
-        "duration": 4,
         "description": "Bir kartı her zaman kaybeder bu birim hareket"
       }
     },
@@ -419,8 +306,6 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 1,
-      "bonus cards": 3,
       "description": "Oyuncuya ekstra beceri kartları verir"
     },
     "ult": {
@@ -429,10 +314,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 1,
       "description": "Işık ile bir olur! Satın kartı 'Light Blast' ve 'Rescue'. 'Light Ball' nu Aktif bir beceriye dönüştürür",
       "buff": {
-        "duration": 6,
         "description": "Spirit Form"
       }
     },
@@ -443,16 +326,9 @@
       "deck": "Geçici",
       "targets": ["Yer", "AynÄ"],
       "aoe": "Radyal",
-      "damage": 6,
       "damage type": "Büyü",
-      "aoe range": "Küçük",
-      "cast range": "Menzilli",
-      "highlight": "out",
-      "cards": 1,
       "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar 80%. Hedef kanal Kesmeler",
       "buff": {
-        "duration": 2,
-        "miss": 80,
         "description": "Blinded"
       }
     },
@@ -462,12 +338,8 @@
       "hand": "Sağ",
       "deck": "Geçici",
       "targets": ["Müttefik"],
-      "cast range": "Global",
-      "delay": 1,
-      "cards": 1,
       "description": "Dost kahramana hasar vermeden kendi yanına ışınlar",
       "buff": {
-        "duration": 2,
         "description": "Recalling"
       }
     }
@@ -481,34 +353,22 @@
       "hand": "Sağ",
       "deck": "Yakarma",
       "targets": ["Yer", "Bedava"],
-      "cards": 1,
-      "cast range": "Dövüş",
-      "hp": 58,
-      "range": "Dövüş",
-      "damage": 8,
-      "armor": 3,
-      "resistance": 3,
-      "death damage": 12,
       "description": "Güçlü bir ayı çagırır ve bir Dönüş beceri kartı alırsınız",
       "buffs": {
         "demolish": {
           "source": {
             "name": "Demolition",
-            "tower bonus": 6,
             "description": "Kulenin karşı 6 hasar ayı saldırısı gücünü artırır"
           }
         },
         "entangle": {
           "source": {
             "name": "Nature Claws",
-            "chance": 20,
             "description": "Sabitler düşman saldırı birimleri ve 6 hasar her fırsatta neden olur. Hedef kanal Kesmeler"
           },
           "target": {
             "name": "Nature Claws",
-            "dot": 6,
             "damage type": "Fiziksel",
-            "duration": 3,
             "description": "Köklü bir her saniye hasar almasına yol açar"
           }
         }
@@ -520,8 +380,6 @@
       "hand": "Sol",
       "deck": "Geçici",
       "targets": ["Yer", "Bedava"],
-      "cast range": "Dövüş",
-      "cards": 1,
       "description": "Ayıyı Bear Druid yanına ışınlar belli bir saniye aralıgında düşman kahramandan hasar almaması gerekir;"
     },
     "rabid": {
@@ -530,12 +388,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 1,
       "description": "Bear Druid ve Ruh Bear saldırı ve hareket hızını artırır",
       "buff": {
-        "duration": 3,
-        "damage bonus": 3,
-        "speed bonus": 1,
         "description": "Saldırı ve hareket hızı artışı sağlar"
       }
     },
@@ -545,14 +399,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Dövüş", "Yakarma"],
-      "damage": 6,
       "damage type": "Magical",
-      "range": "Dövüş",
-      "aoe": "Radyal",
-      "aoe range": "Dövüş",
-      "stroke range": "Dövüş",
-      "highlight": "top",
-      "cards": 1,
       "description": "Düşmanları geri gitmesi için ayı güçlü bir bagırmaya yol açar"
     },
     "ult": {
@@ -561,11 +408,8 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 1,
       "description": "Bear Druid arttırılmış HP ve zırh'ı ile Şiddetli bir ayı içine kendini dönüştürür. Ayrıca 'Battle Roar' beceri kartı kazanır",
       "buff": {
-        "hp bonus": 9,
-        "armor bonus": 2,
         "description": "Ayı formu aktif"
       }
     },
@@ -575,12 +419,8 @@
       "hand": "Sağ",
       "deck": "Geçici",
       "targets": ["AynÄ"],
-      "cards": 1,
       "description": "Saldırıda zırh ve hasar arttırır",
       "buff": {
-        "duration": 3,
-        "armor bonus": 2,
-        "damage bonus": 5,
         "description": "Saldırı zırhı arttı"
       }
     }
@@ -594,14 +434,7 @@
       "deck": "Satın Al",
       "targets": ["Yer"],
       "aoe": "Doğrusal",
-      "aoe width": 0,
-      "aoe range": 3,
-      "cast range": 1,
-      "cast width": 0,
-      "cards": 1,
       "damage type": "Büyü",
-      "damage": 12,
-      "stun": 2,
       "description": "Sivri bir kaya ile düşmana yerden patlama verir, düşman uyur ve hasar alır"
     },
     "burn": {
@@ -610,10 +443,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Menzilli",
-      "multiplier": 4,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Kalan mana 4X çarpanı ile düşmanın manasını yakar ve düşman kart kaybesine yol açar"
     },
     "spike": {
@@ -623,13 +453,8 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "damage type": "Saf",
-      "cards": 1,
-      "stun": 3,
       "description": "Bonus zırh, ikramiye direnci. Alınan hasarı yansıtır ve kaynağını sersemletir",
       "buff": {
-        "duration": 2,
-        "armor bonus": 10,
-        "resistance bonus": 10,
         "description": "Bonus zırh, ikramiye direnci. Alınan hasarı yansıtır ve kaynağını sersemletir"
       }
     },
@@ -639,14 +464,9 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "duration": 8,
       "damage type": "Fiziksel",
-      "cards": 1,
       "description": "Mix görünmez olur ve bonus hızı ve hasarı kazanıyor",
       "buff": {
-        "duration": 6,
-        "speed bonus": 1,
-        "damage bonus": 20,
         "description": "Görünmez ve saldırı arttı"
       }
     }
@@ -660,14 +480,7 @@
       "deck": "Satın Al",
       "targets": ["Yer"],
       "aoe": "Doğrusal",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 3,
-      "damage": 14,
-      "highlight": "in",
       "damage type": "Saf",
-      "cards": 1,
       "description": "Butcher düşman veya dost birimi yanına çeker. Çekilen birim dost ise hasar vermez düşman ise belli bir hasara urar"
     },
     "rot": {
@@ -677,20 +490,14 @@
       "deck": "Satın Al",
       "targets": ["AynÄ"],
       "aoe": "Radyal",
-      "aoe range": "Dövüş",
-      "stroke range": "Dövüş",
-      "damage": 6,
       "damage type": "Büyü",
-      "cards": 1,
-      "description": "Düşmana ve kendine hasar veren bir koku yayar ve düşmanı yavaşlatır.",
+      "description": "Düşmana ve kendine hasar veren bir koku yayar ve düşmanı yavaşlatır",
       "buffs": {
         "rot": {
           "source": {
             "description": "Stink Aktif"
           },
           "targets": {
-            "speed slow": 1,
-            "duration": 1,
             "description": "Stink yavaşladı"
           }
         }
@@ -702,35 +509,25 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 1,
       "description": "Butcher Bonus, HP ve hasar Her öldürme üzerine verir ve büyü hasarı azaltır",
       "buff": {
-        "hp per kill": 4,
-        "damage per kill": 3,
-        "resistance bonus": 2,
         "description": "HP ve saldırı öldürmek ve bonus büyü direnci başına arttı"
       }
     },
     "ult": {
       "name": "Fresh Meat",
       "type": "Kanal",
-      "channel": 2,
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Dövüş",
-      "dot": 10,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Butcher düşman birimi belli bir saniye devre dışı bırakarak onu kesmesini saglar zamanla hasar alır düşman",
       "buffs": {
         "ult": { 
           "source": {
-            "duration": 2,
             "description": "Kanallık - Fresh Meat"
           },
           "target": {
-            "duration": 2,
             "description": "Engeller ve zamanla hasar verir"
           }
         }
@@ -745,19 +542,11 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Kısa",
-      "damage": 12,
       "damage type": "Büyü",
-      "stun": 2,
-      "cards": 1,
       "description": "Hasar ve sonra yavaşlatır bir hedef şaşırtmaya ve zamanla fırsatlar",
       "buff": {
         "damage type": "Büyü",
-        "speed slow": 1,
-        "duration": 2,
-        "dot": 6,
-        "description": "Zamanla hasar verir",
-        "purgeable": true
+        "description": "Zamanla hasar verir"
       }
     },
     "aura": {
@@ -766,10 +555,8 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 1,
       "description": "Her saldırı düşman ömrünün% 30'unu bozar",
       "buff": {
-        "lifesteal": 30,
         "description": "Her saldırıda canın artar"
       }
     },
@@ -779,11 +566,8 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 1,
       "description": "Dead King saldırıları, kritik hasar bonusuna% 15 şans verecek",
       "buff": {
-        "chance": 15,
-        "percentage": 300,
         "description": "Kritik Hasar Şansı"
       }
     },
@@ -793,17 +577,13 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "cards": 1,
       "description": "Dead King, düşmanlarını yavaşlatan öldürdükten sonra bir sonraki oyuncuya dönecek. Pasif beceri kartı atılır",
       "buffs": {
         "ult": {
           "source": {
-            "range": "Dövüş",
             "description": "Kimse Dead King'i Öldüremez!"
           },
           "targets": {
-            "duration": 2,
-            "speed slow": 1,
             "description": "Kralın dönüşü düşmanı yavaşlatır"
           }
         }
@@ -818,11 +598,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Menzilli",
-      "damage": 14,
       "damage type": "Büyü",
-      "stun": 2,
-      "cards": 1,
       "description": "Hasar ve şok hedef"
     },
     "corruption": {
@@ -832,17 +608,9 @@
       "deck": "Satın Al",
       "targets": ["Yer"],
       "aoe": "Doğrusal",
-      "cast range": 1,
-      "cast width": 0,
-      "aoe width": 0,
-      "aoe range": 4,
-      "damage": 6,
       "damage type": "Büyü",
-      "cards": 1,
       "description": "Düşman zırhını zayıflatır",
       "buff": {
-        "duration": 3,
-        "armor reduction": 2,
         "description": "Azaltılmış Zırh"
       }
     },
@@ -852,10 +620,8 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["Ayn?"],
-      "cards": 1,
       "description": "Yakındaki dost birliklerin saldırı hasarını arttıran bir aura. Venge ölürse, hasar bonusu iki katına çıkar.",
       "buff": {
-        "damage bonus": 2,
         "description": "Saldırı Bonusu"
       }
     },
@@ -865,8 +631,6 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman", "Müttefik"],
-      "cast range": 4,
-      "cards": 1,
       "description": "Bir hedef Hero, arkadaş veya düşmanla konumları anında değiştirir"
      }
    },
@@ -878,7 +642,6 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["Ayn?"],
-      "cards": 1,
       "description": "Saldırı yapanların laneti bozulacak ve dönüş için azaltılmış zarar görülecek",
       "buffs": {
         "passive": {
@@ -886,8 +649,6 @@
             "description": "Buna dokunamıyorum"
           },
           "attacker": {
-            "duration": 1,
-            "damage reduction": 4,
             "description": "Zararın Azaltılması"
           }
         }
@@ -899,12 +660,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman", "orman"],
-      "cast range": "Menzilli",
-      "cards": 1,
       "description": "Bir orman sürüngenini çağırın, bir düşman birimi üzerinde kontrolü ele geçirir veya bir düşman kahramanını yavaşlatır",
       "buff": {
-        "duration": 2,
-        "speed slow": 1,
         "description": "Charmed"
       }
     },
@@ -914,13 +671,8 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Ayn?"],
-      "cast range": "Menzilli",
-      "max targets": 4,
-      "cards": 1,
       "description": "Kendine ve yakınlardaki dost birimler için 5 İyileştirme Wisp'i çağırma",
       "buff": {
-        "heal": 5,
-        "duration": 4,
         "description": "Şifa Wisp"
       }
     },
@@ -930,8 +682,6 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "cast range": "Uzun",
-      "cards": 2,
       "description": "Hedef bir düşmana iki katına eşit bonus hasarı uygulayın"
      }
    }
