@@ -454,7 +454,8 @@
   transform: translate3d(-50%,-47%,0) scale(0.5) rotateY(185deg);
 }
 
-.local .table .enemy .skills .card.channel-on {
+.local .table .enemy .skills .card.channel-on,
+.library .table .enemy .skills .card.channel-on {
   transform: translate3d(-50%, -50%, 0) scale(0.5) rotateY(0deg) rotateZ(185deg);
 }
 
@@ -794,10 +795,12 @@
   transform: scale(0.45) translateZ(1px);
 }
 
-.local .card.dragTargetClone.enemy.fromHand.table {
+.local .card.dragTargetClone.enemy.fromHand.table,
+.library .card.dragTargetClone.enemy.fromHand.table {
   transform: rotate(180deg) translate3d(-40%, -40%, 1px) scale(0.4);
 }
-.local .card.dragTargetClone.drop.enemy.fromHand.table {
+.local .card.dragTargetClone.drop.enemy.fromHand.table,
+.library .card.dragTargetClone.drop.enemy.fromHand.table {
   transform: rotate(180deg) translate3d(-35%, -40%, 1px) scale(0.3);
 }
 

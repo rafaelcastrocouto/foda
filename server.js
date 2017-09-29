@@ -27,12 +27,12 @@ var mongo = {
     });
   },
   set: function(name, val, cb) { var data = {}; data[name] = val; mongo.connect(function(db) {
-      db.collection('collection').updateOne({ "document": "dotacard" }, { $set: data }, cb);
+      db.collection('collection').updateOne({ 'document': 'dotacard' }, { $set: data }, cb);
     });
   },
   poll: {},
   rank: {}, ranked: [],
-  errors: []
+  errors: ['Error Log']
 };
 
 var getRank = function () {
@@ -46,8 +46,8 @@ var getRank = function () {
 
 if (secret !== 'password') {
   mongo.get('poll', function (data) { mongo.poll = data; });
-  mongo.get('errors', function (data) { mongo.errors = data; });
   getRank();
+  mongo.set('errors', mongo.errors);
 }
 
 var clientServer = serveStatic('client', {'index': ['index.html', 'index.htm']});

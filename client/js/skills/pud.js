@@ -71,6 +71,9 @@ game.skills.pud = {
       source.setHp(hp + bonusHp);
       hp = source.data('current hp');
       source.setCurrentHp(hp + bonusHp);
+      if (!$('span', buff).length) buff.append($('<span>').text(kills));
+      else $('span', buff).text(kills + Number($('span', buff).text()));
+      source.reselect();
     },
     kill: function (event, eventdata) {
       var source = eventdata.source;

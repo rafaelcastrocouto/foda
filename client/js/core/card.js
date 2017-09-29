@@ -411,6 +411,7 @@ game.card = {
         .bind(missFx));
       } else {
         if (source.hasClass('towers')) name = 'tower';
+        else if (source.hasAllClasses('units ranged')) name = 'cm';
         else if (source.hasClasses('bear units transformed')) name = 'bear';
         else name = source.data('hero');
         game.audio.play(name + '/attack');
@@ -424,7 +425,6 @@ game.card = {
     game.projectile.css({
       'transform': 'translate3d('+(110 + (x * 210))+'px,'+(140 + (y * 310))+'px, 60px)'
     });
-
   },
   damage: function(damage, target, type) {
     var source = this, evt, x, y, position, spot, resistance, armor, hp, finalDamage = damage;
