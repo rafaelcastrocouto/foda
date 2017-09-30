@@ -103,8 +103,11 @@ game.states.vs = {
   },
   enemyPicks: function () {
     var picks;
-    if (game.mode == 'library' || game.mode == 'tutorial') {
-      return [ 'lina', 'cm', 'wk', 'pud', 'ld' ];
+    if (game.mode == 'library') {
+      return [ 'lina', 'am', 'en', 'com', 'cat' ];
+    }
+    if (game.mode == 'tutorial') {
+      return [ 'ld', 'cm', 'wk', 'pud', 'am' ];
     }
     if (game.mode == 'online') {
       picks = game.enemy.picks;
