@@ -78,14 +78,18 @@ game.card = {
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data['damage type']);
     else if (data.buff && data.buff['damage type'])
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['damage type']);
-    if (data.aoe)
-      $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + data['aoe range']+')');
+    if (data['cast range']) {
+      if (typeof (data['cast range']) == 'string')
+        $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + data['cast range']);
+      else if (data['cast range'] > 1) 
+        $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + game.map.getRangeStr(data['cast range']));
+    }
+    if (data.aoe) {
+      if (typeof(data['aoe width']) == 'number') $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + data['aoe range']+'/' + ((data['aoe width']*2)+1) + ')');
+      else $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + game.map.getRangeStr(data['aoe range']) +')');
+    }
     if (data.range)
       $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range);
-    if (data['cast range']) {
-      if (typeof (data['cast range']) == 'string' || data['cast range'] > 1)
-        $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + data['cast range']);
-    }
     if (data.armor) {
       $('<p>').appendTo(desc).text(game.data.ui.armor + ': ' + data.armor).addClass('armor');
       data['current armor'] = data.armor;
@@ -104,12 +108,14 @@ game.card = {
     if (data['bonus cards']) 
       $('<p>').appendTo(desc).text(game.data.ui.bonus + ' ' + game.data.ui.cards + ': ' + data['bonus cards']);
     if (data.type == game.data.ui.channel)
-      $('<p>').appendTo(desc).text(game.data.ui.channel+' '+game.data.ui.duration + ': ' + data.channel);
-    if (data.stun && game.language.current != 'ru') 
+      $('<p>').appendTo(desc).text(game.data.ui.channel+' '+game.data.ui.duration + ': ' + data.channel + ' '+ game.data.ui.turns);
+    if (data.stun) 
       $('<p>').appendTo(desc).text(game.data.ui.stun+' '+game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
-    else if (data.buff && data.buff.duration && game.language.current != 'ru')
+    if (data.buff && data.buff.duration)
       $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buff.duration + ' ' + game.data.ui.turns);
-    else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration && game.language.current != 'ru')
+    else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration)
+      $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
+    else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration)
       $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
 
     if (data.buff) {
@@ -121,6 +127,8 @@ game.card = {
         $('<p>').appendTo(desc).text(game.data.ui.chance + ': ' + data.buff.chance + '%');
       if (data.buff.percentage)
         $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + data.buff.percentage + '%');
+      if (data.buff.lifesteal)
+        $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + data.buff.lifesteal + '%');
       if (data.buff.multiplier)
         $('<p>').appendTo(desc).text(game.data.ui.multiplier + ': ' + data.buff.multiplier + 'X');
       if (data.buff['hp bonus'])
@@ -131,7 +139,6 @@ game.card = {
         $('<p>').appendTo(desc).text(game.data.ui.resistance + ' ' + game.data.ui.bonus + ': ' + data.buff['resistance bonus']);
       if (data.buff.heal)
         $('<p>').appendTo(desc).text(game.data.ui.heal + ' ' + game.data.ui.bonus + ': ' + data.buff.heal);
-
     }
     //if (data.cards)      $('<p>').appendTo(desc).text(game.data.ui.cards+': ' + data.cards);
     if (data.description) {

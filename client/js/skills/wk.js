@@ -57,7 +57,7 @@ game.skills.wk = {
       var damage = eventdata.damage;
       var buff = source.getBuff('wk-crit');
       var chance = buff.data('chance') / 100;
-      var bonus = buff.data('percentage') / 100;
+      var bonus = buff.data('multiplier');
       if (game.random() < chance && target.side() == source.opponent() && !source.data('miss-attack')) {
         source.data('critical-attack', bonus);
       }

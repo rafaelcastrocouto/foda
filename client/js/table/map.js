@@ -167,30 +167,30 @@ game.map = {
       }
     }
   },
-  around: function (range, cb) { // in range not self
-    var spot = this;
+  around: function (r, cb) { // in range not self
+    var spot = this, range = r;
+    if ( typeof(r) == 'string' ) range = game.map.getRangeInt(r);
     spot.atRange(range, cb);
-    var r = game.map.getRangeInt(range);
-    if (r === 3) { 
+    if (range === 3) { 
       spot.atRange(game.map.getRangeStr(1), cb); 
     }
-    if (r === 4) { 
+    if (range === 4) { 
       spot.atRange(game.map.getRangeStr(2), cb); 
     }
-    if (r === 5) {
+    if (range === 5) {
       spot.atRange(game.map.getRangeStr(1), cb);
       spot.atRange(game.map.getRangeStr(3), cb);
     }
-    if (r === 6) {
+    if (range === 6) {
       spot.atRange(game.map.getRangeStr(2), cb);
       spot.atRange(game.map.getRangeStr(4), cb);
     }
-    if (r === 7) {
+    if (range === 7) {
       spot.atRange(game.map.getRangeStr(1), cb);
       spot.atRange(game.map.getRangeStr(3), cb);
       spot.atRange(game.map.getRangeStr(5), cb);
     }
-    if (r === 8) {
+    if (range === 8) {
       spot.atRange(game.map.getRangeStr(2), cb);
       spot.atRange(game.map.getRangeStr(4), cb);
       spot.atRange(game.map.getRangeStr(6), cb);

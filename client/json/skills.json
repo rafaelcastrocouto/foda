@@ -90,7 +90,7 @@
       "deck": "Buy",
       "targets": ["Self"],
       "damage type": "Magical",
-      "description": "Damages enemies around the Cat Lady. One random enemy will be hit twice"
+      "description": "Damages all enemies around the Cat Lady. One random enemy will be hit twice"
     },
     "arrow": {
       "name": "Swift Arrow",
@@ -119,7 +119,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "description": "All player heroes become invisible",
+      "description": "All player heroes will become invisible",
       "buff": {
         "description": "Hidden by the 'Rivet Shadows'"
       }
@@ -187,7 +187,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Spot", "Free"],
-      "description": "Teleport Magino to the target"
+      "description": "Teleport to the target spot"
     },
     "shield": {
       "name": "Resistance",

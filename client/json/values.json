@@ -550,7 +550,7 @@
         "cards": 1,
         "buffdata": {
           "chance": 15,
-          "percentage": 300
+          "multiplier": 3
         }
       },
       "ult": {
