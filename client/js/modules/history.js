@@ -29,12 +29,16 @@ game.history = {
         game.chat.build();
         game.chat.set(game.data.ui.reconnected);
       }
-      if (mode) game.setMode(mode, recovering);
-      if (mode == 'online') {
-        game.currentData = JSON.parse(game.history.data);
-        game.setId(game.currentData.id);
+      if (game.debug) {
+        if (mode) game.setMode(mode, recovering);
+        if (mode == 'online') {
+          game.currentData = JSON.parse(game.history.data);
+          game.setId(game.currentData.id);
+        }
+        game.history.jumpTo(state, recovering);
+      } else {
+        game.history.jumpTo('menu', recovering);
       }
-      game.history.jumpTo(state, recovering);
     }
   },
   jumpTo: function (state, recover) {

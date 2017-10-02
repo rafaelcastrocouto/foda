@@ -37,8 +37,7 @@ game.states.loading = {
     game.container.append(game.topbar);
     game.states.build( function () {
       game.rank.build();
-      if (game.debug) game.history.recover();
-      else game.timeout(500, game.history.jumpTo.bind(this, 'log'));
+      game.timeout(500, game.history.recover);
     });
   },
   json: function (name, cb, translate) {
