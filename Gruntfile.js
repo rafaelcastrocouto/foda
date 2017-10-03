@@ -31,8 +31,7 @@ module.exports = function(grunt) {
     },
     'uglify': {
       options: {
-        banner: '// <%= pkg.name %> grunt <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %> */\n',
-        mangle: false
+        banner: '// <%= pkg.name %> grunt <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %> */\n'
       },
       target: {
         files: [{

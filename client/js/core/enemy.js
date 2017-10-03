@@ -115,7 +115,8 @@ game.enemy = {
         if (move[0] === 'D') {
           skillid = move[1];
           hero = move[2];
-          game.enemy.discard(hero, skillid);
+          game.enemy.discardMove(hero, skillid);
+          game.enemy.moveAnimation = 600;
         }
         if (move[0] === 'G') {
           game.enemy.stopChanneling(from);
@@ -211,14 +212,14 @@ game.enemy = {
     var target = $(this);
     var to = target.getPosition();
     var creep = game.selectedCard.data('type');
-    if (!game.isPlayerTurn() || game.mode == 'library') {
+    if (game.currentTurnSide == 'enemy' || game.mode == 'library') {
       game.units.summonCreep(target, to, creep);
     }
   },
   summonCreepMove: function(to, creep) {
     var target = $('#' + to);
     var creepCard = game.enemy.skills.sidehand.children('.' + creep).first();
-    if (!game.isPlayerTurn() && target.hasClass('free') && creepCard.length) {
+    if (target.hasClass('free') && creepCard.length) {
       game.audio.play('activate');
       creepCard.addClass('showMoves');
       game.timeout(game.enemy.moveAnimation, function() {
@@ -238,7 +239,15 @@ game.enemy = {
       card.stopChanneling();
     }
   },
-  discard: function(hero, skillid) {
+  discard: function(skill) {
+    game.states.table.discard.attr('disabled', true);
+    skill.addClass('discardMove');
+    game.timeout(200, function() {
+      this.removeClass('discardMove');
+      this.discard();
+    }.bind(skill));
+  },
+  discardMove: function(hero, skillid) {
     var s = hero + '-' + skillid;
     var skill = $('.enemydecks .hand .skills.' + s).first();
     if (skill) {

@@ -38,12 +38,13 @@ game.states.table = {
     });
   },
   skipClick: function () {
-    if (!game.states.table.skip.attr('disabled')) {
+    if (!game.states.table.skip.attr('disabled') && game.canPlay()) {
       game.states.table.skip.attr('disabled', true);
       game.turn.stopCount();
       game.highlight.clearMap();
       if (game.mode !== 'library') game.turn.el.text(game.data.ui.enemyturn).addClass('show');
       if (game[game.mode].skip) game[game.mode].skip();
+      if (game.selectedCard) game.selectedCard.reselect();
     }
     return false;
   },
@@ -67,9 +68,9 @@ game.states.table = {
     if (!game.states.table.discard.attr('disabled') &&
         game.selectedCard &&
         game.selectedCard.hasClass('skills') && 
-        game.isPlayerTurn() ) {
+        game.canPlay() ) {
       game.highlight.clearMap();
-      game.player.discard(game.selectedCard);
+      game[game.selectedCard.side()].discard(game.selectedCard);
       game.states.table.discard.attr('disabled', true);
     }
     return false;

@@ -68,12 +68,8 @@ game.units = {
     var creep = game.units.clone(forestCreeps[r]);
     creep.addClass(side);
     creep.appendTo(target);
-    if (side == 'player') {
-      creep.on('mousedown touchstart', game.card.select);
-    }
-    else {
-      crep.addClass('flipped');
-    }
+    if (game.canPlay()) creep.on('mousedown touchstart', game.card.select);
+    if (side == 'enemy') crep.addClass('flipped');
   },
   summonCreep: function(target, to, creep) {
     if (target.hasClass('free')) {

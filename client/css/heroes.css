@@ -1,5 +1,5 @@
 .en {
-  background: #75ce59;
+  background: #3e8d1f;
 }
 
 
@@ -32,7 +32,7 @@
 }
 
 .am {
-  background: #674f80;
+  background: #544677;
 }
 
 .am.heroes .img {
@@ -194,7 +194,7 @@
 }
 
 .ld {
-  background: #4ea66a;
+  background: #268e84;
 }
 
 .ld.heroes .img, .ld-ult.on .img {
@@ -252,7 +252,7 @@
 }
 
 .nyx {
-  background: #4c2a45;
+  background: #4e2846;
 }
 
 .nyx.heroes .img {
@@ -322,7 +322,7 @@
 }
 
 .wk {
-  background: #6d9c84;
+  background: #326f73;
 }
 
 .wk.heroes .img {
@@ -372,7 +372,7 @@
 
 
 .cat {
-  background: #9d66f1;
+  background: #5a4c8b;
 }
 
 .cat.heroes .img {
@@ -397,7 +397,7 @@
 
 
 .wind {
-  background: #95b568;
+  background: #53946f;
 }
 
 .wind.heroes .img {
@@ -445,7 +445,7 @@
 }
 
 .venge {
-  background: #8f5ca3;
+  background: #e557c4;
 }
 
 .venge.heroes .img {

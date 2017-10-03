@@ -64,7 +64,6 @@ game.skill = {
         } else {target = $('#' + target + ' .card'); }
       }
       if (target.length) {
-        game.highlight.clearMap();
         source.stopChanneling();
         var evt = {
           type: 'cast',
@@ -96,8 +95,8 @@ game.skill = {
           });
         }
         game.skills[hero][skillid].cast(skill, source, target);
-        if (!skill.hasClass('dragTarget')) game.timeout(400, skill.discard.bind(skill));
-        else skill.discard();
+        if (!skill.hasClass('dragTarget')) game.timeout(400, skill.discard.bind(skill, source));
+        else skill.discard(source);
       }
     }
     return this;
@@ -161,7 +160,7 @@ game.skill = {
       var end = function (target) {
         this.appendTo(game.hidden);
         game.highlight.clearMap();
-        if (target.side() === 'player') target.select();
+        if (game.canPlay()) target.select();
       }.bind(skill, target);
       if (!skill.hasClass('dragTarget')) game.timeout(400, end);
       else end();
@@ -239,7 +238,7 @@ game.skill = {
   },
   discard: function (source) {
     if (this.hasClass('skills')) {
-      if (source && source.side() == 'player') source.select();
+      if (source && game.canPlay()) source.select();
       else if (this.hasClass('selected')) game.card.unselect();
       this.trigger('discard', {target: this});
       var side = this.side();

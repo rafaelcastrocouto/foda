@@ -1,6 +1,6 @@
 game.audio = {
   defaultVolume: 0.5,
-  defaultSound: 0.25,
+  defaultSounds: 0.25,
   defaultMusic: 0.5,
   build: function () {
     game.audio.context = new AudioContext();
@@ -10,9 +10,9 @@ game.audio = {
     game.audio.soundsNode.connect(game.audio.volumeNode);
     game.audio.musicNode = game.audio.context.createGain();
     game.audio.musicNode.connect(game.audio.volumeNode);
-    game.audio.volumeNode.gain.value = game.audio.defaultVolume;
-    game.audio.soundsNode.gain.value = game.audio.defaultSound;
-    game.audio.musicNode.gain.value = game.audio.defaultMusic;
+    game.audio.setVolume('volume', game.audio.defaultVolume);
+    game.audio.setVolume('sounds', game.audio.defaultSounds);
+    game.audio.setVolume('music', game.audio.defaultMusic);
     game.audio.loadMusic();
     game.audio.loadSounds();
   },
@@ -182,7 +182,8 @@ game.audio = {
     }
     if (vol > 1) { vol = 1; }
     if (game.audio[target + 'Node']) {
-      game.audio[target + 'Node'].gain.value = vol;
+      //game.audio[target + 'Node'].gain.value = vol;
+      game.audio[target + 'Node'].gain.setTargetAtTime(vol, game.audio.context.currentTime + 1, 0.5);
       game.options[target + 'control'].css('transform', 'scale(' + vol + ')');
       localStorage.setItem(target, vol);
     }

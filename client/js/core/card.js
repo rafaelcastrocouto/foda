@@ -241,6 +241,7 @@ game.card = {
     if (destiny.hasClass('free') && !destiny.hasClass('block') && from !== to) {
       card.removeClass('draggable').off('mousedown touchstart');
       game.highlight.clearMap();
+      if (game.selectedCard) game.selectedCard.reselect();
       card.stopChanneling();
       game.audio.play('move');
       card.animateMove(destiny);
@@ -340,10 +341,7 @@ game.card = {
   },
   shake: function() {
     this.addClass('shake');
-    setTimeout(function() {
-      this.removeClass('shake');
-    }
-    .bind(this), 340);
+    game.timeout(340, this.removeClass.bind(this, 'shake'));
   },
   canAttack: function(force) {
     if (force && this.data('current hp') <= 0) return false;
@@ -383,40 +381,33 @@ game.card = {
       //clear bonus
       source.data('critical-attack', false);
       evt.bonus = 0;
+      if (game.selectedCard) game.timeout(10, game.selectedCard.reselect.bind(game.selectedCard));
       //melee fx
       if (source.data('range') == game.data.ui.melee) {
         source.addClass('melee-attack');
-        setTimeout(function() {
-          this.removeClass('melee-attack');
-        }
-        .bind(source), 240);
+        game.timeout(240, source.removeClass.bind(source, 'melee-attack'));
       }
+      //ranged fx
       if (source.data('range') == game.data.ui.ranged || source.data('range') == game.data.ui.short) {
         // launch projectile
         var cl = source.data('hero');
-        if (source.hasClass('towers')) {
-          cl = 'towers ' + source.side();
-        }
+        if (source.hasClass('towers')) cl = 'towers ' + source.side();
         game.projectile = $('<div>').addClass('projectile ' + cl);
         game.projectile.appendTo(game.map.el);
         game.card.projectile.apply(source);
-        setTimeout(game.card.projectile.bind(target), 50);
-        setTimeout(function() {
-          game.projectile.remove();
-        }, 500);
+        game.timeout(50, game.card.projectile.bind(target));
+        game.timeout(500,game.projectile.remove.bind(game.projectile));
       }
+      // miss fx
       if (source.data('miss-attack')) {
-        // TEXT FX
         source.data('miss-attack', false);
         var missFx = target.find('.missed');
         if (!missFx.length) {
           missFx = $('<span>').text(game.data.ui.miss).addClass('missed').appendTo(target);
         }
-        game.timeout(5000, function() {
-          this.remove();
-        }
-        .bind(missFx));
+        game.timeout(5000, missFx.remove.bind(missFx));
       } else {
+        // audio
         if (source.hasClass('towers')) name = 'tower';
         else if (source.hasAllClasses('units ranged')) name = 'cm';
         else if (source.hasClasses('bear units transformed')) name = 'bear';

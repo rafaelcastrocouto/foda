@@ -65,7 +65,7 @@ game.player = {
     var card = game.selectedCard;
     var from = card.getPosition();
     var to = spot.getPosition();
-    if (game.isPlayerTurn() && spot.hasClass('free') && from !== to && !card.hasClass('done')) {
+    if (game.canPlay() && spot.hasClass('free') && from !== to && !card.hasClass('done')) {
       card.move(to);
       card.removeClass('draggable').addClass('done');
       if (game.mode == 'online')
@@ -77,12 +77,11 @@ game.player = {
     var source = game.selectedCard;
     var from = source.getPosition();
     var to = target.getPosition();
-    if (game.isPlayerTurn() && source.data('damage') && from !== to && !source.hasClass('done') && target.data('current hp')) {
+    if (game.canPlay() && source.data('damage') && from !== to && !source.hasClass('done') && target.data('current hp')) {
       source.attack(target);
       source.addClass('done').removeClass('draggable');
       if (game.mode == 'online')
         game.currentMoves.push('A:' + from + ':' + to);
-      game.highlight.clearMap();
     }
   },
   passive: function(event) {
@@ -91,7 +90,7 @@ game.player = {
     var hero = skill.data('hero');
     var skillid = skill.data('skill');
     var to = target.getPosition();
-    if (game.isPlayerTurn() && hero && skillid) {
+    if (game.canPlay() && hero && skillid) {
       skill.passive(target);
       if (game.mode == 'online')
         game.currentMoves.push('P:' + to + ':' + skillid + ':' + hero);
@@ -104,7 +103,7 @@ game.player = {
     var hero = skill.data('hero');
     var skillid = skill.data('skill');
     var to = target.getPosition();
-    if (game.isPlayerTurn() && hero && skillid) {
+    if (game.canPlay() && hero && skillid) {
       skill.toggle(target);
       if (game.mode == 'online')
         game.currentMoves.push('T:' + to + ':' + skillid + ':' + hero);
@@ -120,7 +119,7 @@ game.player = {
     var to = target.getPosition();
     var hero = skill.data('hero');
     var skillid = skill.data('skill');
-    if (game.isPlayerTurn() && hero && skillid && from && to) {
+    if (game.canPlay() && hero && skillid && from && to) {
       source.cast(skill, to);
       if (skill.data('deck') == game.data.ui.summon) {
         target.addClass('done').removeClass('draggable');
@@ -140,7 +139,7 @@ game.player = {
     var target = $(this);
     var to = target.getPosition();
     var creep = game.selectedCard.data('type');
-    if (game.isPlayerTurn()) {
+    if (game.canPlay()) {
       if (game.mode == 'online')
         game.currentMoves.push('S:' + to + ':' + creep);
       game.units.summonCreep(target, to, creep);
@@ -152,10 +151,10 @@ game.player = {
     game.currentMoves.push('D:' + skillid + ':' + hero);
     game.states.table.discard.attr('disabled', true);
     skill.addClass('slidedown');
-    setTimeout(function() {
-      this.removeClass('slidedown').discard();
-    }
-    .bind(skill), 200);
+    game.timeout(200, function() {
+      this.removeClass('slidedown');
+      this.discard();
+    }.bind(skill));
   },
   cardsInHand: function() {
     return game.player.skills.hand.children().length;

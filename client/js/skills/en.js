@@ -33,7 +33,7 @@ game.skills.en = {
     cast: function (skill, source) {
       var range = skill.data('cast range'),
           side = source.side(),
-          buff,
+          buff = source.selfBuff(skill),
           allies = [], targets = [];
       source.on('death', this.death);
       source.around(range, function (spot) {
@@ -48,7 +48,6 @@ game.skills.en = {
             targets.push(randomAlly);
           }
         } else targets = allies;
-        buff = source.selfBuff(skill);
         source.heal(buff.data('heal'));
         buff.on('buffcount', game.skills.en.heal.buffcount);
         buff.on('expire', game.skills.en.heal.buffcount);

@@ -245,9 +245,7 @@ game.online = {
     });
   },
   skip: function () {
-    if ( game.isPlayerTurn() ) {
-      game.online.preEndPlayer();
-    }
+    game.online.preEndPlayer();
   },
   preEndPlayer: function () {
     game.turn.stopCount();

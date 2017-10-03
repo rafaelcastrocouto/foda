@@ -70,9 +70,7 @@ game.single = {
     });
   },
   skip: function () {
-    if ( game.isPlayerTurn() ) {
-      game.single.endPlayerTurn();
-    }
+    game.single.endPlayerTurn();
   },
   endPlayerTurn: function () {
     game.turn.end('player-turn', game.single.beginEnemy);

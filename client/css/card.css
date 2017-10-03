@@ -508,7 +508,7 @@
   left: -1000px;
   top: 150%;
   pointer-events: none;
-  animation: enemydiscardslide 2.1s;
+  animation: enemydiscardslide 0.6s;
 }
 
 @keyframes enemydiscardslide {
@@ -524,6 +524,23 @@
   }
 }
 
+.local .table .enemy .skills .card.discardMove,
+.table .table .enemy .skills .card.discardMove {
+  animation: enemyshowdiscardslide 0.6s;
+}
+
+@keyframes enemyshowdiscardslide {
+  0% {
+    left: 40px;
+    top: 50%;
+  }
+
+  100% {
+    left: 40px;
+    top: -50%;
+    transform: translate(-50%, -50%) scale(0.6) rotateZ(-180deg);
+  }
+}
 .states .table .card.flipped {
   pointer-events: none;
   transform: translate3d(-50%,-50%,0) scale(0.5) rotateY(-180deg);
@@ -534,7 +551,8 @@
   transform: translate3d(-50%,-50%,0) scale(0.5) rotateZ(-180deg);
 }
 .library .table .card.flipped:hover,
-.local .table .card.flipped:hover {
+.local .table .card.flipped:hover,
+.local .table .card.flipped.selected {
   pointer-events: all;
   transform: translate3d(-50%,-50%,0) scale(0.6) rotateZ(-180deg);
 }

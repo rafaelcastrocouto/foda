@@ -107,7 +107,7 @@ game.library = {
     });*/
   },
   skip: function () {
-    if ( game.isPlayerTurn() ) {
+    if ( game.currentTurnSide == 'player' ) {
       game.library.endPlayerTurn();
     }
   },

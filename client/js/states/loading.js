@@ -9,7 +9,6 @@ game.states.loading = {
   start: function () {
     game.states.loading.ping();
     game.states.loading.package();
-    if (window.AudioContext) game.audio.build();
     game.language.load(function loadLanguage() { //console.log('lang', game.states.loading.updating)
       game.states.loading.updated();
       game.states.loading.json('values', game.states.loading.updated);
@@ -37,6 +36,7 @@ game.states.loading = {
     game.container.append(game.topbar);
     game.states.build( function () {
       game.rank.build();
+      if (window.AudioContext) game.audio.build();
       game.timeout(500, game.history.recover);
     });
   },

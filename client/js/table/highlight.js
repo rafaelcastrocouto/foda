@@ -17,7 +17,7 @@ game.highlight = {
     if (game.selectedCard) {
       if (game.selectedCard.hasClasses('heroes units')) {
         game.selectedCard.strokeAttack();
-        if (game.isPlayerTurn()) {
+        if (game.canPlay()) {
           if (game.mode == 'tutorial') {
             if (game.tutorial.lesson == 'Move') {
               game.selectedCard.highlightMove();
@@ -33,13 +33,13 @@ game.highlight = {
       if (game.selectedCard.hasClass('skills')) {
         game.selectedCard.highlightSource();
         if (!game.selectedCard.hasClass('channel-on')) game.selectedCard.strokeSkill();
-        if (game.isPlayerTurn()) {
+        if (game.canPlay()) {
           game.selectedCard.highlightArrows();
           game.selectedCard.highlightTargets(event);
         }
         if (game.selectedCard.closest('.hand').length &&
             (game.mode != 'tutorial' || game.mode != 'library') &&
-            game.isPlayerTurn()) {
+            game.canPlay()) {
           game.states.table.discard.attr('disabled', false);
         }
       }
@@ -47,7 +47,8 @@ game.highlight = {
         game.selectedCard.strokeAttack();
       }
       if (game.selectedCard.hasClass('units') && game.selectedCard.parent().is('.sidehand')) {
-        game.selectedCard.highlightCreep();
+        game[game.selectedCard.side()].tower.strokeAttack();
+        if (game.canPlay()) game.selectedCard.highlightCreep();
       }
     }
   },
