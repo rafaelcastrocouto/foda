@@ -38,7 +38,7 @@ game.skills.en = {
       source.on('death', this.death);
       source.around(range, function (spot) {
         var target = $('.card', spot);
-        if (target.hasClass(side)) allies.push(target);
+        if (target.hasClass(side) && !target.hasClass('towers')) allies.push(target);
       });
       if (allies.length) {
         if (allies.length > skill.data('max targets')) {
@@ -46,12 +46,14 @@ game.skills.en = {
             var r = Math.floor(game.random() * allies.length);
             var randomAlly = allies[r];
             targets.push(randomAlly);
+            allies.erase(randomAlly);
           }
         } else targets = allies;
         source.heal(buff.data('heal'));
         buff.on('buffcount', game.skills.en.heal.buffcount);
         buff.on('expire', game.skills.en.heal.buffcount);
         $(targets).each(function (i, target) {
+          //console.log(target, skill);
           buff = source.addBuff(target, skill);
           target.heal(buff.data('heal'));
           buff.on('buffcount', game.skills.en.heal.buffcount);

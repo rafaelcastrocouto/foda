@@ -5,14 +5,12 @@ game.audio = {
   build: function () {
     game.audio.context = new AudioContext();
     game.audio.volumeNode = game.audio.context.createGain();
-    game.audio.volumeNode.connect(game.audio.context.destination);
     game.audio.soundsNode = game.audio.context.createGain();
-    game.audio.soundsNode.connect(game.audio.volumeNode);
     game.audio.musicNode = game.audio.context.createGain();
+    game.audio.rememberVolume();
+    game.audio.soundsNode.connect(game.audio.volumeNode);
     game.audio.musicNode.connect(game.audio.volumeNode);
-    game.audio.setVolume('volume', game.audio.defaultVolume);
-    game.audio.setVolume('sounds', game.audio.defaultSounds);
-    game.audio.setVolume('music', game.audio.defaultMusic);
+    game.audio.volumeNode.connect(game.audio.context.destination);
     game.audio.loadMusic();
     game.audio.loadSounds();
   },
@@ -134,7 +132,7 @@ game.audio = {
   },
   sources: [],
   play: function (name, loop, music) { //console.trace(name);
-    if (game.audio.context && 
+    if (game.audio.context &&
         game.audio.context.createBufferSource &&
         game.audio.buffers[name] &&
         game.audio.buffers[name].duration) {
@@ -168,7 +166,7 @@ game.audio = {
     if (v === undefined || v === null) {
       v = game.audio.defaultVolume;
       if (target == 'music') v = game.audio.defaultMusic;
-      if (target == 'sound') v = game.audio.defaultSound;
+      if (target == 'sounds') v = game.audio.defaultSounds;
     }
     var vol = parseFloat(v);
     if (vol <= 0) {
@@ -183,7 +181,7 @@ game.audio = {
     if (vol > 1) { vol = 1; }
     if (game.audio[target + 'Node']) {
       //game.audio[target + 'Node'].gain.value = vol;
-      game.audio[target + 'Node'].gain.setTargetAtTime(vol, game.audio.context.currentTime + 1, 0.5);
+      game.audio[target + 'Node'].gain.setTargetAtTime(vol, game.audio.context.currentTime + 1, 0.01);
       game.options[target + 'control'].css('transform', 'scale(' + vol + ')');
       localStorage.setItem(target, vol);
     }
@@ -193,7 +191,7 @@ game.audio = {
     game.audio.setVolume('volume', volume);
     var music = localStorage.getItem('music') || game.audio.defaultMusic;
     game.audio.setVolume('music', music);
-    var sounds = localStorage.getItem('sounds') || game.audio.defaultSound;
+    var sounds = localStorage.getItem('sounds') || game.audio.defaultSounds;
     game.audio.setVolume('sounds', sounds);
   },
   volumeMouseDown: function (event) {
