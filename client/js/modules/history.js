@@ -13,7 +13,7 @@ game.history = {
         valid = game.states.validState(state),
         log = localStorage.getItem('log'),
         logged = (localStorage.getItem('logged') === 'true');
-    var delay = 1000 * 60 * 60 * 2; // 2 hours
+    var delay = 1000 * 60 * 60 * 24 * 3; // 3 days
     var recent = (new Date().valueOf() - game.history.last) < delay; 
     var recovering = logged && log && valid && recent;
     if (!recovering) game.history.jumpTo('log');

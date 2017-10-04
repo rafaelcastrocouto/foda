@@ -545,14 +545,14 @@
   pointer-events: none;
   transform: translate3d(-50%,-50%,0) scale(0.5) rotateY(-180deg);
 }
-.library .table .card.flipped,
-.local .table .card.flipped {
+.library .table .enemydecks .card,
+.local .table .enemydecks .card {
   pointer-events: all;
   transform: translate3d(-50%,-50%,0) scale(0.5) rotateZ(-180deg);
 }
-.library .table .card.flipped:hover,
-.local .table .card.flipped:hover,
-.local .table .card.flipped.selected {
+.library .table .enemydecks .card:hover,
+.local .table .enemydecks .card:hover,
+.local .table .enemydecks .card.selected {
   pointer-events: all;
   transform: translate3d(-50%,-50%,0) scale(0.6) rotateZ(-180deg);
 }

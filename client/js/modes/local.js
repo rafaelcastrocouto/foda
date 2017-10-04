@@ -117,11 +117,9 @@ game.local = {
     if (game.selectedCard) game.selectedCard.unselect();
     game.turn.end('enemy-turn', game.local.beginPlayer);
   },
-  
   win: function () {
     game.turn.stopCount();
     game.winner = game.player.name;
-    game.states.result.updateOnce = true;
     game.states.changeTo('result');
   },
   surrender: function () {
@@ -131,7 +129,6 @@ game.local = {
   lose: function () {
     game.turn.stopCount();
     game.winner = game.enemy.name;
-    game.states.result.updateOnce = true;
     game.states.changeTo('result');
   },
   clear: function () {

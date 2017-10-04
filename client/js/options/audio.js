@@ -49,6 +49,7 @@ game.audio = {
     'cat/attack',
     'cat/leap',
     'cat/arrow',
+    'cat/arrowhit',
     'cat/star',
     'cat/ult',
     'com/attack',

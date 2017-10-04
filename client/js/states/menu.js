@@ -2,7 +2,7 @@ game.states.menu = {
   build: function () {
     this.menu = $('<div>').appendTo(this.el).addClass('menu box');
     //this.title = $('<h1>').appendTo(this.menu).text(game.data.ui.menu);
-    this.tutorial = $('<div>').addClass('button highlight').appendTo(this.menu).attr({title: game.data.ui.choosetutorial}).text(game.data.ui.tutorial).on('mouseup touchend', function () {
+    this.tutorial = $('<div>').addClass('button').appendTo(this.menu).attr({title: game.data.ui.choosetutorial}).text(game.data.ui.tutorial).on('mouseup touchend', function () {
       game.setMode('tutorial');
       game.states.changeTo('choose');
     });
@@ -14,6 +14,9 @@ game.states.menu = {
       game.setMode('online');
       game.states.changeTo('choose');
     });
+    if (!localStorage.getItem('tutorial')) this.tutorial.addClass('highlight');
+    else if (!localStorage.getItem('campaign')) this.campaign.addClass('highlight');
+    else this.online.addClass('highlight');
     this.local = $('<div>').addClass('button').appendTo(this.menu).attr({ title: game.data.ui.chooselocal}).text(game.data.ui.local).on('mouseup touchend', function () {
       game.setMode('local');
       game.states.changeTo('choose');

@@ -8,7 +8,8 @@ game.skills.cat = {
       var arrowTarget = source.firstCardInLine(target, range);
       if (arrowTarget && arrowTarget.side() == source.opponent()) {
         var distance = Math.abs((source.getX() - arrowTarget.getX()) || (source.getY() - arrowTarget.getY())) - 1;
-        game.timeout(1100, function () {
+        game.timeout(900, function () {
+          game.audio.play('cat/arrowhit');
           source.addStun(arrowTarget, skill, (distance * stunBonus));
           source.damage(damage + (distance * damageBonus), arrowTarget, skill.data('damage type'));
         });

@@ -22,11 +22,9 @@ game.states.result = {
     $('<p>').data('hero', heroid).addClass(heroid+' heroes').append(img, text).appendTo(game.states.result.enemyResults);
   },
   start: function (recover) {
+    this.update();
     if (recover) {
       this.close();
-    } else if (this.updateOnce) {
-      this.updateOnce = false;
-      this.update();
     }
   },
   update: function () {

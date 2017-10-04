@@ -96,7 +96,6 @@ game.single = {
     game.winner = game.player.name;
     game.player.points += 1;
     localStorage.setItem('points', game.player.points);
-    game.states.result.updateOnce = true;
     game.states.changeTo('result');
   },
   surrender: function () {
@@ -106,7 +105,6 @@ game.single = {
     game.turn.stopCount();
     game.winner = game.enemy.name;
     game.loader.removeClass('loading');
-    game.states.result.updateOnce = true;
     game.states.changeTo('result');
   },
   clear: function () {

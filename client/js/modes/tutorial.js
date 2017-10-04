@@ -373,7 +373,7 @@ game.tutorial = {
     game.winner = game.player.name;
     game.player.points += 1;
     localStorage.setItem('points', game.player.points);
-    game.states.result.updateOnce = true;
+    localStorage.setItem('tutorial', 1);
     game.states.changeTo('result');
   },
   clear: function () {

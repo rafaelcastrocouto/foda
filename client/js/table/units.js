@@ -30,7 +30,7 @@ game.units = {
       summon.appendTo(game[side].skills.sidehand);
       summon.on('mousedown touchstart', game.card.select);
     }
-    if (side != 'player') {
+    if (!(side == 'player' || game.mode == 'library' || game.mode == 'local')) {
       ranged.addClass('flipped');
       melee1.addClass('flipped');
       melee2.addClass('flipped');

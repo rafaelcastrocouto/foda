@@ -430,7 +430,7 @@ game.card = {
   },
   damage: function(damage, target, type) {
     var source = this, evt, x, y, position, spot, resistance, armor, hp, finalDamage = damage;
-    if (damage > 0) {
+    if (damage > 0 && !target.hasClass('dead')) {
       if (!type) {
         type = game.data.ui.physical;
       }
@@ -529,6 +529,7 @@ game.card = {
   kill: function(evt) {
     var target = evt.target;
     var source = evt.source;
+    var spot = target.parent();
     target.setCurrentHp(0);
     if (source.hasClass('heroes') && target.hasClass('heroes')) {
       game[source.side()].kills += 1;
@@ -544,7 +545,8 @@ game.card = {
     }
     evt.position = target.getPosition();
     target.addClass('dead');
-    game.timeout(1000, function() {
+    if (!spot.hasClass('cript')) spot.addClass('free');
+    game.timeout(900, function() {
       this.source.trigger('kill', this);
       this.target.die(this);
     }
