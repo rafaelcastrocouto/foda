@@ -33,7 +33,7 @@ game.skills.wind = {
       var damageNerf = skill.data('damage reduction');
       var finalDmg = damage - (damageNerf * (targets.length - 1));
       $(targets).each(function () {
-        source.damage(finalDmg, this, skill.data('damage type'));
+        game.timeout(900, source.damage.bind(source, finalDmg, this, skill.data('damage type')));
       });
     }
   },
