@@ -588,7 +588,7 @@
 }
 
 .table .player .skills .card {
-  animation: playerbuyslide 2s;
+  animation: playerbuyslide 1.2s;
 }
 
 .local .table .playerdecks .card,
@@ -597,6 +597,11 @@
 }
 .local .table.turn .playerdecks .card {
   transform: translate3d(-50%, -50%, 0) scale(0.5) rotateY(0);
+}
+
+.local .table.turn .playerdecks .card:hover,
+.local .table.turn .playerdecks .card.selected {
+  transform: translate3d(-50%, -50%, 0) scale(0.6) rotateY(0);
 }
 
 
@@ -615,7 +620,7 @@
 }
 
 .table .player .skills .card.blink {
-  animation: playerbuyslide 2s, cardblink 1s infinite;
+  animation: playerbuyslide 1.2s, cardblink 1s infinite;
 }
 
 @keyframes playerbuyslide {
@@ -915,7 +920,7 @@
 .units.melee.enemy .img {
   background-image: url("../img/creeps/enemy_melee.jpg");
 }
-.map .card.units.melee.enemy .img {
+.map .card.units.melee.enemy .portrait .img {
   background-position: 15% 30%;
   background-size: 400%;
 }

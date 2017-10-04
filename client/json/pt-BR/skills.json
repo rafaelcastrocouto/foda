@@ -398,6 +398,7 @@
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
+      "aoe": "Radial",
       "targets": ["Próprio", "Invocação"],
       "damage type": "Magical",
       "description": "Ruge de forma tão feroz que os inimigos fogem de medo. Interrompe canalização"

@@ -398,6 +398,7 @@
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
+      "aoe": "Radyal",
       "targets": ["Dövüş", "Yakarma"],
       "damage type": "Magical",
       "description": "Düşmanları geri gitmesi için ayı güçlü bir bagırmaya yol açar"

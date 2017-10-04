@@ -90,7 +90,7 @@ game.highlight = {
   },
   active: function (event, source, skill) {
     var targets = skill.data('targets');
-    if (source.canCast(skill) && !source.hasClass('nohighlight')) {
+    if (source.canCast(skill)) {
       if (skill.hasClass('channel-on')) game.highlight.channelStop(event, skill, source);
       else {
         if (targets.indexOf(game.data.ui.self) >= 0) game.highlight.self(source);

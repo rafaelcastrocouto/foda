@@ -399,6 +399,7 @@
       "hand": "Derecha",
       "deck": "Comprar",
       "targets": "Yo",
+      "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Los rugidos hacen que los enemigos huyan aterrorizados. La unidad retira un punto si la posición es libre. Interrumpe el canal de destinos"
     },

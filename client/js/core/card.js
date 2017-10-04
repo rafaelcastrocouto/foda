@@ -186,7 +186,7 @@ game.card = {
     // console.trace('card select', event);
     var card = $(this).closest('.card');
     var forceSelection = !event;
-    if (card) {
+    if (card && !game.lockSelection) {
       if (forceSelection)
         game.card.setSelection(card);
       else if (!card.hasClasses('selected attacktarget casttarget dead')) {
@@ -228,7 +228,6 @@ game.card = {
   },
   reselect: function () {
     if (this.hasClass('selected')) this.select();
-    if (this.hasClass('source')) game.selectedCard.select();
   },
   canMove: function() {
     return !this.hasClasses('done static dead stunned rooted entangled disabled sleeping cycloned taunted');
@@ -251,7 +250,9 @@ game.card = {
         target: to
       };
       card.trigger('move', evt).trigger('action', evt);
+      game.lockSelection = true;
       var end = function(card, destiny) {
+        game.lockSelection = false;
         destiny.removeClass('free');
         card.getSpot().addClass('free');
         card.css({

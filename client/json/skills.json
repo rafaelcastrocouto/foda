@@ -398,6 +398,7 @@
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
+      "aoe": "Radial",
       "targets": ["Self", "Summon"],
       "damage type": "Magical",
       "description": "Roars causing enemies to flee in terror. Unit retreats one spot if the position is free. Interrupts targets channel"
