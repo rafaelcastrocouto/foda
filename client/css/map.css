@@ -109,15 +109,26 @@
 .projectile.cm {
   background: #bdfeff;
 }
+.projectile.en {
+  background: #60e06c;
+}
+.projectile.en.ult {
+  box-shadow: 0 0 18px 12px white;
+}
 .projectile.ld {
   background: tan;
 }
 .projectile.kotl {
-  background: white;
-  box-shadow: 0 0 18px 6px white;
+  box-shadow: 0 0 18px 12px white;
 }
 .projectile.lina {
   background: orange;
+}
+.projectile.wind {
+  background: #6a838a;
+}
+.projectile.catapult {
+  background: #7d5d3f;
 }
 .projectile.towers.player {
   background: #6cffb7;

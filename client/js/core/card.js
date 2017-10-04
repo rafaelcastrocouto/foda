@@ -349,7 +349,7 @@ game.card = {
     if (!force) classes += ' done';
     return !this.hasClasses(classes);
   },
-  attack: function(target, force) {
+  attack: function(target, force, ult) {
     if (typeof target === 'string') {
       target = $('#' + target + ' .card');
     }
@@ -388,10 +388,12 @@ game.card = {
         game.timeout(240, source.removeClass.bind(source, 'melee-attack'));
       }
       //ranged fx
-      if (source.data('range') == game.data.ui.ranged || source.data('range') == game.data.ui.short) {
+      if (source.data('range') > 2) {
         // launch projectile
         var cl = source.data('hero');
         if (source.hasClass('towers')) cl = 'towers ' + source.side();
+        if (source.hasClass('units')) cl = 'units ' + source.data('id');
+        if (ult) cl += ' ult';
         game.projectile = $('<div>').addClass('projectile ' + cl);
         game.projectile.appendTo(game.map.el);
         game.card.projectile.apply(source);
@@ -409,7 +411,8 @@ game.card = {
       } else {
         // audio
         if (source.hasClass('towers')) name = 'tower';
-        else if (source.hasAllClasses('units ranged')) name = 'cm';
+        else if (source.hasAllClasses('units ranged')) name = 'wind';
+        else if (source.hasAllClasses('units catapult')) name = 'ld';
         else if (source.hasClasses('bear units transformed')) name = 'bear';
         else name = source.data('hero');
         game.audio.play(name + '/attack');

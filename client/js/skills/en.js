@@ -82,7 +82,7 @@ game.skills.en = {
       var y = Math.abs(source.getY() - target.getY());
       var bonus = (x + y) * 2;
       source.setDamage(damage + bonus).addClass('nohighlight');
-      source.attack(target, 'force');
+      source.attack(target, 'force', 'ult');
       game.timeout(200, function (source, damage) {
         source.removeClass('nohighlight').setDamage(damage);
       }.bind(this, source, damage));
