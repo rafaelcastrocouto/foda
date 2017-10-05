@@ -110,6 +110,8 @@ game.events = {
         game.events.dragTarget = null;
       }
     }
+    if (event.preventDefault) event.preventDefault();
+    return false;
   },
   clearEvents: function(name) {
     var events = 'mousedown mouseup touchstart touchend mouseover mouseleave';

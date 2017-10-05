@@ -18,8 +18,8 @@ game.skills.wk = {
       var count = target.data('wk-dot-count');
       target.data('wk-dot-count', count - 1);
       if (count === 2) {
-        source.addBuff(target, skill);
-        game.fx.add('stun', source, target);
+        buff = source.addBuff(target, skill);
+        game.fx.add('stun', source, buff);
       }
       if (count >= 0 && count <= 2) source.damage(buff.dot, target, buff['damage type']);
       if (count === 0) {

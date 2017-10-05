@@ -377,7 +377,7 @@
   left: 3px;
   display: flex;
   height: 34px;
-  width: 176px;
+  width: 160px;
 }
 
 .card .buffs .buff {
@@ -387,6 +387,7 @@
   width: 35px;
   background: transparent;
   z-index: 2;
+  position: relative;
 }
 .card .buffs .buff span {
   position: absolute;
@@ -398,17 +399,13 @@
   text-shadow: 0 0 1px black, 0 0 2px black;
 }
 
-.card .buffs .buff:last-child {
-  margin-right: 20px;
-}
-
 .selectedarea .card .buffs .buff:hover {
   transform: scale(2.5);
   z-index: 10;
 }
 
 .selectedarea .card .buffs .buff:hover .img {
-  border-radius: 6px;
+  border-radius: 3px;
   border: 1px solid white;
 }
 .selectedarea .card .buffs .buff:hover .overlay {
@@ -417,11 +414,14 @@
 .card .buffs .buff .img , .card .buffs .buff .overlay {
   border-radius: 50%;
   box-shadow: 0 0 8px rgba(0,0,0,0.5) inset;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   position: absolute;
+  border: 1px solid #fff;
 }
-
+.map .card .buffs .buff , .fromMap .card .buffs .buff {
+  transform: scale(1.4);
+}
 .table .deck .card {
   top: 50%;
   left: 40px;
@@ -841,14 +841,6 @@
   position: relative;
   top: -28px;
   left: 0px;
-}
-
-.map .card .buff,
-.fromMap.card .buff {
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #fff;
-  margin-right: -16px;
 }
 
 .map .card.ghost .buff {

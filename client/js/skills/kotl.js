@@ -56,6 +56,8 @@ game.skills.kotl = {
       kotl.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
       if (source.hasClass('ghost')) source.discard();
       skill.discard();
+      var audio = game.audio.sources['kotl/illuminate'];
+      if (audio) audio.stop();
     }
   },
   leak: {

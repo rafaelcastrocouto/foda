@@ -74,6 +74,7 @@ game.fx = {
       }
       fx.appendTo(target);
       game.fx.play(fx);
+      target.closest('.card').reselect();
     }
   },
   play: function(fx) {

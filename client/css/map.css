@@ -145,8 +145,10 @@
 }
 
 
-.map .fx {
+.fx {
   position: absolute;
+  top: 0;
+  left: 0;
   image-rendering: pixelated;
   transform-style: preserve-3d;
   pointer-events: none;
@@ -163,16 +165,14 @@
 }
 
 .fx-lina.passive {
-  transform: translate(8px,-56px) scale(1.2);
+  transform: translate(0px,-18px) scale(1.2);
   width: 34px;
   height: 50px;
   animation: lina-passive-sprite 0.7s steps(8) infinite;
   background-image: url('../img/fx/lina/passive.png');
-  z-index: 1;
+  z-index: -1;
 }
-.map .fx-lina.passive {
-  transform: translate(9px,-68px) scale(1.5);
-}
+
 @keyframes lina-passive-sprite {
   100% { background-position: -272px; }
 }
@@ -300,19 +300,15 @@
   transform: translate3d(90px,-480px,100px) scale(9) rotate(180deg);
 }
 
-
-
 .fx-wk.stun {
-  transform: translate(8px,-56px) scale(1.2);
+  transform: scaleX(-1) translate(0px,-18px) scale(1.2);
   width: 34px;
   height: 50px;
   animation: wk-stun-sprite 0.7s steps(8) infinite;
   background-image: url('../img/fx/wk/stun.png');
-  z-index: 1;
+  z-index: -1;
 }
-.map .fx-wk.stun {
-  transform: translate(9px,-68px) scale(1.5);
-}
+
 @keyframes wk-stun-sprite {
   100% { background-position: -272px; }
 }
