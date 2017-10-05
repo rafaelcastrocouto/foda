@@ -43,11 +43,11 @@ game.history = {
   },
   jumpTo: function (state, recover) {
     localStorage.setItem('last-activity', new Date().valueOf());
-    if (!recover && game.history.state !== 'choose') game.clear();
-    game.db({ 'get': 'server' }, function (server) {
-      if (server.status === 'online') {
+    //if (!recover && game.history.state !== 'choose') game.clear();
+    //game.db({ 'get': 'server' }, function (server) {
+      //if (server.status === 'online') {
         game.states.changeTo(state, recover);
-      } else { game.reset('history.js 46: Server offline'); }
-    });
+      //} else { game.reset('history.js 46: Server offline'); }
+    //});
   }
 };
