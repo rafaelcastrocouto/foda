@@ -1,8 +1,10 @@
 game.skills.wind = {
   stun: {
     cast: function (skill, source, target) {
+      source.shake();
       var secTarget = source.behindTarget(target);
       if (secTarget) {
+        secTarget.shake();
         game.audio.play('wind/stunhit');
         if (secTarget.side() == source.opponent()) {
           source.addStun(target, skill);

@@ -132,7 +132,7 @@ game.skills.ld = {
           var upSpot = game.map.getSpot(x, y + ny);
           if (upSpot && upSpot.hasClass('free')) {
             target.stopChanneling();
-            target.place(upSpot);
+            target.move(upSpot);
             target.shake();
           }
         }

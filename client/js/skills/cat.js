@@ -10,6 +10,7 @@ game.skills.cat = {
         var distance = Math.abs((source.getX() - arrowTarget.getX()) || (source.getY() - arrowTarget.getY())) - 1;
         game.timeout(900, function () {
           game.audio.play('cat/arrowhit');
+          arrowTarget.shake();
           source.addStun(arrowTarget, skill, (distance * stunBonus));
           source.damage(damage + (distance * damageBonus), arrowTarget, skill.data('damage type'));
         });
@@ -19,7 +20,7 @@ game.skills.cat = {
   leap: {
     cast: function (skill, source, target) {
       source.selfBuff(skill);
-      source.place(target).select();
+      source.move(target);
     }
   },
   star: {
@@ -27,11 +28,15 @@ game.skills.cat = {
       var range = skill.data('cast range'), targets = [];
       source.opponentsInRange(range, function (target) {
         source.damage(skill.data('damage'), target, skill.data('damage type'));
+        target.shake();
         targets.push(target);
       });
       if (targets.length) {
-        var twiceTarget = targets[Math.floor(game.random() * targets.length)];
-        source.damage(skill.data('damage'), twiceTarget, skill.data('damage type'));
+        var target = targets[Math.floor(game.random() * targets.length)];
+        game.timeout(900, function (source, target, skill) {
+          source.damage(skill.data('damage'), target, skill.data('damage type'));
+          target.shake();
+        }.bind(this, source, target, skill));
       }
     }
   },

@@ -113,7 +113,7 @@ var game = {
     setTimeout(function() {
       this.removeClass('shake');
     }
-    .bind(state), 220);
+    .bind(state), 320);
   },
   validModes: ['tutorial', 'online', 'library', 'single', 'local'],
   setMode: function(mode, recover) {

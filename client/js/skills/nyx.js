@@ -39,6 +39,7 @@ game.skills.nyx = {
         var damage = eventdata.originalDamage;
           if (!attacker.hasClass('towers')) {
         nyx.damage(damage, attacker, dmgType);
+        attacker.shake();
         nyx.addStun(attacker, skill);
         }
       }.bind(this, eventdata));

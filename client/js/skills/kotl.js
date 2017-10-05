@@ -156,8 +156,7 @@ game.skills.kotl = {
           game.skills.kotl.blind.target(skill, source, card);
           var destiny = card.getDirSpot(dir);
           if (destiny && destiny.hasClass('free')) {
-            card.place(destiny);
-            card.trigger('moved', {card: card});
+            card.move(destiny);
           }
         }
       });

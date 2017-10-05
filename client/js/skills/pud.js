@@ -8,7 +8,10 @@ game.skills.pud = {
           source.damage(skill.data('damage'), hooked, skill.data('damage type'));
           hooked.stopChanneling();
         }
-        if (target.getPosition() != hooked.getPosition()) hooked.move(target);
+        if (target.getPosition() != hooked.getPosition()) {
+          hooked.move(target);
+          hooked.shake();
+        }
       }
     }
   },

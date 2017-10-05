@@ -342,7 +342,7 @@ game.card = {
   },
   shake: function() {
     this.addClass('shake');
-    game.timeout(340, this.removeClass.bind(this, 'shake'));
+    game.timeout(380, this.removeClass.bind(this, 'shake'));
   },
   canAttack: function(force) {
     if (force && this.data('current hp') <= 0) return false;
