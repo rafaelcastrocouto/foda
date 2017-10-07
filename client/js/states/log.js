@@ -36,24 +36,6 @@ game.states.log = {
       $('.pickbox .card.ld').clone().appendTo(div);
       game.states.el.prepend(div).addClass('iddle');
       game.bkgDeck = div;
-      $(window).on('mousemove', game.states.log.move);
-    }
-  },
-  scale: 0.01,
-  move: function (event) {
-    clearTimeout(game.iddleTimeout);
-    if (game.currentState == 'log' ||
-        game.currentState == 'menu' ||
-        game.currentState == 'options' ||
-        game.currentState == 'vs') {
-      var s = game.states.log.scale;
-      var p = { x: event.clientX, y: event.clientY };
-      var w = { x: window.innerWidth, y: window.innerHeight };
-      var offmiddle = { x: p.x - (w.x/2), y: p.y - (w.y/2) };
-      var v = { x: 50 + (offmiddle.x * s), y: 50 + (offmiddle.y * s) };
-      var str = ''+ v.x + '% ' + v.y + '%';
-      game.states.el.removeClass('iddle').css('perspective-origin', str);
-      game.iddleTimeout = setTimeout(function () { game.states.el.addClass('iddle'); }, 3000);
     }
   },
   alertBox: function () {
