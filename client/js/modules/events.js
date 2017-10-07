@@ -14,7 +14,7 @@ game.events = {
     $(window).on('error', function(event) {
       var err = event.originalEvent;
       var details = err.message +' '+ err.filename +' '+ err.lineno +':'+err.colno;
-      game.reset(details);
+      //game.reset(details);
     });
     //$(document).ajaxError(function(event, xhr, settings) {
     //  if (xhr.status !== 403 && xhr.status!== 404) game.logError(settings.url + ' ' + xhr.status + ': ' + xhr.responseText);
@@ -25,11 +25,9 @@ game.events = {
     game.container.on('mousedown touchstart', game.events.hit);
     game.container.on('mousemove', game.events.move);
     game.container.on('touchmove', game.events.touchmove);
-    game.container.on('mouseup touchend mouseleave', game.events.end);
-    game.container.on('contextmenu', function (event) {
-      game.card.unselect();
-      game.events.cancel(event);
-    });
+    game.container.on('touchend', game.events.touchend);
+    game.container.on('mouseup mouseleave', game.events.end);
+    game.container.on('contextmenu', game.events.rightclick);
   },
   getCoordinates: function(event) {
     var position = {
@@ -45,7 +43,8 @@ game.events = {
   },
   hit: function(event) { //console.trace('hit');
     var target = $(event.target), 
-        card = target.closest('.card');
+        card = target.closest('.card'); 
+    //console.log(target, card);
     if (card && card.hasClass('draggable')) {
       var position = game.events.getCoordinates(event),
           cardOffset = card.offset(), cl = '';
@@ -62,7 +61,7 @@ game.events = {
       };
     }
   },
-  touchmove: function(event) {
+  touchmove: function(event) {// console.trace('touchmove');
     game.events.move.call(this, event);
     if (event.preventDefault) event.preventDefault(); //prevent touch scroll
     return false;
@@ -89,29 +88,26 @@ game.events = {
       }
     }
   },
-  end: function(event) { //console.log(event.type)
+  touchend: function(event) {
     var position = game.events.getCoordinates(event), 
         target = $(document.elementFromPoint(position.left, position.top));
-    if (!target.closest('.chat').length) $('.chat').removeClass('hover');
-    if (event) {
-      if (target && event.type === 'touchend') {
-        // fix touchend target
-        target.mouseup();
-        if (event.preventDefault) event.preventDefault();
-        return false;
-      }
-      if (event.type == 'mouseup' || event.type == 'mouseleave') {
-        if (game.events.dragging) {
-          $('.dragTarget').removeClass('dragTarget');
-          $('.drop').removeClass('drop');
-        }
-        $('.dragTargetClone').remove();
-        game.events.dragging = false;
-        game.events.dragTarget = null;
-      }
+    if (!target.is('input, label *, select, form *, .options *')) {
+      // fix touchend target
+      target.mouseup();
+      if (event.preventDefault) event.preventDefault();
+      return false;
     }
-    if (event.preventDefault) event.preventDefault();
-    return false;
+  },
+  end: function(event) { //console.log(event.type)
+        target = $(event.target);
+    if (!target.closest('.chat').length) $('.chat').removeClass('hover');
+    if (game.events.dragging) {
+      $('.dragTarget').removeClass('dragTarget');
+      $('.drop').removeClass('drop');
+    }
+    $('.dragTargetClone').remove();
+    game.events.dragging = false;
+    game.events.dragTarget = null;
   },
   clearEvents: function(name) {
     var events = 'mousedown mouseup touchstart touchend mouseover mouseleave';
@@ -146,5 +142,9 @@ game.events = {
     }
     // enter: chat
     if (event.keyCode == 13) $('.chat').toggleClass('hover');
+  },
+  rightclick: function (event) {
+    game.card.unselect();
+    game.events.cancel(event);
   }
 };
