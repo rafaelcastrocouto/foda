@@ -108,9 +108,32 @@
   top: 50px;
   transform: rotate(45deg) scale(1);
 }
-.map .player.attacktarget:before {
-  border-right: 12px solid #ff7400;
-  border-bottom: 12px solid #ff7400;
+.card.player.attacktarget,
+.local .turn .card.player.attacktarget,
+.local .unturn .card.enemy.attacktarget {
+  box-shadow: 0 0 0 10px #ffe100;
+}
+.map .player.attacktarget:before,
+.local .turn .map .player.attacktarget:before,
+.local .unturn .map .enemy.attacktarget:before {
+  border-right: 12px solid #ffe100;
+  border-bottom: 12px solid #ffe100;
+}
+.map .player.attacktarget:after,
+.local .turn .map .player.attacktarget:after,
+.local .unturn .map .enemy.attacktarget:after {
+  border-top: 12px solid #ffe100;
+}
+
+.local .card.player.attacktarget {
+  box-shadow: 0 0 0 10px orangered;
+}
+.local .map .player.attacktarget:before {
+  border-right: 12px solid orangered;
+  border-bottom: 12px solid orangered;
+}
+.local .map .player.attacktarget:after {
+  border-top: 12px solid orangered;
 }
 
 .map .attacktarget:hover:before {
@@ -139,11 +162,6 @@
   transition: all 0.5s;
   border-radius: 6px;
   top: initial;
-}
-
-
-.map .player.attacktarget:after {
-  border-top: 12px solid #ff7400;
 }
 
 .map .attacktarget:hover:after {

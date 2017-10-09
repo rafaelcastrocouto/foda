@@ -228,7 +228,7 @@
   transform: translate3d(0,0,100px) scale(18);
   width: 57px;
   height: 91px;
-  animation: lina-ult-sprite 1.8s steps(19) infinite;
+  animation: lina-ult-sprite 1.8s steps(19) 1;
 }
 @keyframes lina-ult-sprite {
   100% {

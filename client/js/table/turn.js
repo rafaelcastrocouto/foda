@@ -51,9 +51,8 @@ game.turn = {
       if (turn == 'player-turn' || game.mode == 'local') {
         game.timeout(400, function () {
           if (game.mode == 'local') {
-            game.states.table.el.removeClass('unturn');
-            if (turn == 'player-turn') game.states.table.el.addClass('turn');
-            else game.states.table.el.removeClass('turn');
+            if (turn == 'player-turn') game.states.table.el.removeClass('unturn').addClass('turn');
+            else game.states.table.el.removeClass('turn').addClass('unturn');
           } else game.states.table.el.addClass('turn');
           game.loader.removeClass('loading');
           $('.map .card').removeClass('done');
@@ -107,7 +106,7 @@ game.turn = {
         game.states.table.el.removeClass('turn');
         game.states.table.skip.attr('disabled', true);
       }
-      if (game.mode == 'local') {
+      if (turn == 'player-turn' && game.mode == 'local') {
         game.states.table.el.removeClass('turn');
         game.states.table.el.addClass('unturn');
       }

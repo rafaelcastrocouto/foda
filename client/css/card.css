@@ -264,10 +264,6 @@
   box-shadow: 0 0 0 10px palegreen;
 }
 
-.card.player.attacktarget {
-  box-shadow: 0 0 0 10px #ff7400;
-}
-
 .card.enemy.attacktarget {
   box-shadow: 0 0 0 10px red;
 }
@@ -604,10 +600,7 @@
   transform: translate3d(-50%, -50%, 0) scale(0.6) rotateY(0);
 }
 
-
-
-.local .table.turn .enemydecks .card,
-.local .table.unturn .enemydecks .card {
+.local .table.turn .enemydecks .card {
   transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(180deg) rotateZ(180deg);
 }
 .local .table .enemydecks .card {
