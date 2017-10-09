@@ -17,12 +17,22 @@
     "cent": {
       "name": "Centaur",
       "attribute": "Jungle Creep",
-      "description": "Centaur Jungle Creep"
+      "description": "Centaur Jungle Creep with Radial Area of Effect stun skill"
      },
     "golem": {
       "name": "Golem",
       "attribute": "Jungle Creep",
-      "description": "Golem Jungle Creep"
+      "description": "Golem Jungle Creep with target unit stun skill"
+    },
+    "tomato": {
+      "name": "Tomato",
+      "attribute": "Jungle Creep",
+      "description": "Tomato Jungle Creep with Radial Area of Effect damage skill"
+    },
+    "satyr": {
+      "name": "Satyr",
+      "attribute": "Jungle Creep",
+      "description": "Tomato Jungle Creep with Linear Area of Effect damage skill"
     }
   }
 }

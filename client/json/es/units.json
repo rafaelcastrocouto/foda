@@ -1,28 +1,38 @@
 {
   "creeps":{
     "melee": {
-      "name": "Melee Creep",
-      "attribute": "Creeps"
+      "name": "Unidad Básica",
+      "attribute": "Unidad"
     },
     "ranged": {
-      "name": "Ranged Creep",
-      "attribute": "Creeps"
+      "name": "Unidad Auxiliar",
+      "attribute": "Unidad"
     },
     "catapult": {
-      "name": "Catapult",
-      "attribute": "Creeps"
+      "name": "Catapulta",
+      "attribute": "Unidad"
     }
   },
   "forest":{
     "cent": {
-      "name": "Centaur",
-      "attribute": "Jungle Creep",
-      "description": "Centaur Jungle Creep"
+      "name": "Centauro",
+      "attribute": "Unidad da Floresta",
+      "description": "Centauro com habilidade radial com dano en área y atordoamento"
      },
     "golem": {
       "name": "Golem",
-      "attribute": "Jungle Creep",
-      "description": "Golem Jungle Creep"
+      "attribute": "Unidad da Floresta",
+      "description": "Golem con habilidad de atordoar a un objetivo"
+    },
+    "tomato": {
+      "name": "Tomate",
+      "attribute": "Unidad da Floresta",
+      "description": "Tomate con habilidad de dano radial en área"
+    },
+    "satyr": {
+      "name": "Sátiro",
+      "attribute": "Unidad da Floresta",
+      "description": "Sátiro com habilidad lineal com dano em área"
     }
   }
 }

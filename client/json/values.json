@@ -671,13 +671,27 @@
         "hp": 38,
         "damage": 6,
         "armor": 2,
-        "resistance": 3
+        "resistance": 2
        },
       "golem": {
         "range": 2,
         "hp": 34,
         "damage": 7,
         "armor": 4,
+        "resistance": 3
+      },
+      "tomato": {
+        "range": 2,
+        "hp": 36,
+        "damage": 8,
+        "armor": 3,
+        "resistance": 2
+      },
+      "satyr": {
+        "range": 2,
+        "hp": 32,
+        "damage": 6,
+        "armor": 2,
         "resistance": 3
       }
     }

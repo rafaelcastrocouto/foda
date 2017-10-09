@@ -1,28 +1,38 @@
 {
   "creeps":{
     "melee": {
-      "name": "Meydan Creep",
-      "attribute": "Creeps"
+      "name": "Temel Birim",
+      "attribute": "Birimler"
     },
     "ranged": {
-      "name": "Menzilli Creep",
-      "attribute": "Creeps"
+      "name": "Yardımcı Birim",
+      "attribute": "Birimler"
     },
     "catapult": {
-      "name": "Catapult",
-      "attribute": "Creeps"
+      "name": "Mancınık",
+      "attribute": "Birimler"
     }
   },
   "forest":{
     "cent": {
       "name": "Centaur",
-      "attribute": "Jungle Creep",
-      "description": "Centaur Jungle Creep"
+      "attribute": "Orman Birimi",
+      "description": "Radiant yeteneği ile alan hasarı ve çarpıcı Centaur"
      },
     "golem": {
-      "name": "Golem",
-      "attribute": "Jungle Creep",
-      "description": "Golem Jungle Creep"
+      "name": "Taş",
+      "attribute": "Orman Birimi",
+      "description": "Taş, bir hedefi şok ederek"
+    },
+    "tomato": {
+      "name": "Domates",
+      "attribute": "Orman Birimi",
+      "description": "Alana radyal hasar kabiliyetine sahip Domates"
+    },
+    "satyr": {
+      "name": "Satyr",
+      "attribute": "Orman Birimi",
+      "description": "Doğrusal beceri ve alan hasarlı Satyr"
     }
   }
 }

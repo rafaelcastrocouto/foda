@@ -10,3 +10,11 @@
 .units.golem .img {
   background-image: url("../img/units/golem.jpg");
 }
+
+.units.tomato .img {
+  background-image: url("../img/units/tomato.jpg");
+}
+
+.units.satyr .img {
+  background-image: url("../img/units/satyr.jpg");
+}
