@@ -27,7 +27,7 @@ game.history = {
       if (state !== 'log') {
         game.states.log.createBkgDeck();
         game.chat.build();
-        game.chat.set(game.data.ui.reconnected);
+        setTimeout(game.chat.set.bind(game.chat, game.data.ui.reconnected), 200);
       }
       if (game.debug) {
         if (mode) game.setMode(mode, recovering);

@@ -13,7 +13,7 @@ game.ai = {
     game.ai.currentmovesLoop = game.ai.level*2;
     game.currentData.moves = [];
     // add combo data and strats
-    game.ai.comboData();
+    //game.ai.comboData();
     // activate all passives, other sidehand skills strats per hero
     $('.enemydecks .sidehand .skills').each(function (i, el) {
       var card = $(el);
@@ -190,7 +190,7 @@ game.ai = {
           spotData['can-be-attacked'] = true;
           spot.data('ai', spotData);
         }
-        var opponentCard = $('.card.'+opponent, spot);
+        var opponentCard = $('.card.'+opponent+':not(.invisible, .dead, .ghost)', spot);
         if (opponentCard.length) {
           //there is one opponent in range 
           cardData['can-attack'] = true;
@@ -305,10 +305,10 @@ game.ai = {
     cardData[destiny].push(o);
     return cardData;
   },
-  comboData: function () {
+  /*comboData: function () {
     var combos = [];
     $('.map .enemy.card:not(.towers)').each(function (i, el) {
-      /*
+      
       var card = $(el);
       var cardData = card.data('ai');
 
@@ -321,9 +321,9 @@ game.ai = {
       }
 
       cardData.strats.combo += 10;
-      */
+      
     });
-  },
+  },*/
   chooseStrat: function (card, cardData) {
     // console.log(card);
     if (game.player.tower.data('current hp') == 1) {
