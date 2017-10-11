@@ -7,8 +7,8 @@ game.heroesAI.nyx = {
     var stun = $('.enemydecks .hand .skills.nyx-stun');
     var burn = $('.enemydecks .hand .skills.nyx-burn');
     var ult = $('.enemydecks .hand .skills.nyx-ult');
-    if (!$('.map .enemy.lina').length) {
-     fire.data('ai discard', fire.data('ai discard') + 1);
+    if (!$('.map .enemy.nyx').length) {
+     burn.data('ai discard', burn.data('ai discard') + 1);
      stun.data('ai discard', stun.data('ai discard') + 1);
      spike.data('ai discard', spike.data('ai discard') + 1);
     }

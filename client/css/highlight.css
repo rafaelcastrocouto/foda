@@ -79,14 +79,21 @@
 }
 
 .map .card.player.attacktarget {
-  background: #71ca63;
+  background: #8bd85e;
 }
 
-.map .card.enemy..attacktarget {
+.map .card.enemy.attacktarget {
   background: tomato;
 }
+.map .card.casttarget {
+  background: #80bfff;
+}
+.map .row .spot.targetarea {
+  background: rgba(128, 191, 255, 0.25);
+}
 
-.map .attacktarget fieldset {
+.map .attacktarget fieldset,
+.map .casttarget fieldset {
   opacity: 0.7;
 }
 
@@ -108,24 +115,21 @@
   top: 50px;
   transform: rotate(45deg) scale(1);
 }
-.card.player.attacktarget,
-.local .turn .card.player.attacktarget,
-.local .unturn .card.enemy.attacktarget {
+.table.player .map .card.player.attacktarget,
+.table.enemy .map .card.enemy.attacktarget {
   box-shadow: 0 0 0 10px #ffe100;
 }
-.map .player.attacktarget:before,
-.local .turn .map .player.attacktarget:before,
-.local .unturn .map .enemy.attacktarget:before {
+.table.player .map .player.attacktarget:before,
+.table.enemy .map .enemy.attacktarget:before {
   border-right: 12px solid #ffe100;
   border-bottom: 12px solid #ffe100;
 }
-.map .player.attacktarget:after,
-.local .turn .map .player.attacktarget:after,
-.local .unturn .map .enemy.attacktarget:after {
+.table.player .map .player.attacktarget:after,
+.table.enemy .map .enemy.attacktarget:after {
   border-top: 12px solid #ffe100;
 }
-.local .turn .map .player.attacktarget:hover:after,
-.local .unturn .map .enemy.attacktarget:hover:after {
+.table.player .map .player.attacktarget:hover:after,
+.table.enemy .map .enemy.attacktarget:hover:after {
   animation: playerscaleattackafter 1.5s infinite;
 }
 @keyframes playerscaleattackafter {
@@ -153,19 +157,18 @@
   }
 }
 
-
-.local .card.player.attacktarget {
+.map .card.attacktarget {
   box-shadow: 0 0 0 10px orangered;
 }
-.local .map .player.attacktarget:before {
+.map .card.attacktarget:before {
   border-right: 12px solid orangered;
   border-bottom: 12px solid orangered;
 }
-.local .map .player.attacktarget:after {
+.map .card.attacktarget:after {
   border-top: 12px solid orangered;
 }
 
-.map .attacktarget:hover:before {
+.map .card.attacktarget:hover:before {
   animation: scaleattackbefore 1.5s infinite;
 }
 
