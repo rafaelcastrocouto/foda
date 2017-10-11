@@ -2,8 +2,7 @@ game.units = {
   build: function (side) {
     game[side].unitsDeck = game.deck.build({
       name: 'units',
-      cb: function (deck) {
-        //console.log(deck.data('cards'));
+      cb: function (deck) {  //console.log(deck.data('cards'));
         deck.addClass(side+' units cemitery').hide().appendTo(game.states.table[side]);
         $.each(deck.data('cards'), function (i, card) {
           card.addClass(side+' unit').data('side', side);

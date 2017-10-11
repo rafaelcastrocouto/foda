@@ -1,18 +1,19 @@
 game.states.loading = {
   updating: 0,
-  totalUpdate: 8, // values + language + ui + heroes + skills + campaign + package + rank
+  totalUpdate: 9, // values + language + ui + heroes + skills + units + campaign + package + rank
   build: function () {
     this.box = $('<div>').addClass('box');   
     this.h2 = $('<p>').appendTo(this.box).addClass('loadtext').html('<span class="loader loading"></span><span class="message">Updating: </span><span class="progress">0%</span>');
     this.el.append(this.box);
   },
   start: function () {
-    game.states.loading.ping();
+    if (game.debug) game.states.loading.ping();
     game.states.loading.package();
     game.language.load(function loadLanguage() { //console.log('lang', game.states.loading.updating)
       game.states.loading.updated();
       game.states.loading.json('values', game.states.loading.updated);
       game.states.loading.json('campaign', game.states.loading.updated);
+      game.states.loading.json('units', game.states.loading.updated, true);
       game.states.loading.json('ui', game.states.loading.updated, true);
       game.states.loading.json('heroes', game.states.loading.updated, true);
       game.states.loading.json('skills', game.states.loading.updated, true);
@@ -37,7 +38,7 @@ game.states.loading = {
     game.states.build( function () {
       game.rank.build();
       if (window.AudioContext) game.audio.build();
-      game.timeout(500, game.history.recover);
+      game.timeout(400, game.history.recover);
     });
   },
   json: function (name, cb, translate) {

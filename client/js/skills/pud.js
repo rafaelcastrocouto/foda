@@ -68,15 +68,17 @@ game.skills.pud = {
     bonus: function (buff, source, kills) {
       var damage = source.data('current damage');
       var bonusDamage = buff.data('damage per kill') * kills;
-      source.setDamage(damage + bonusDamage);
       var hp = source.data('hp');
       var bonusHp = buff.data('hp per kill') * kills;
-      source.setHp(hp + bonusHp);
-      hp = source.data('current hp');
-      source.setCurrentHp(hp + bonusHp);
-      if (!$('span', buff).length) buff.append($('<span>').text(kills));
-      else $('span', buff).text(kills + Number($('span', buff).text()));
-      source.reselect();
+      if (damage && bonusDamage && hp && bonusHp) {
+        source.setDamage(damage + bonusDamage);
+        source.setHp(hp + bonusHp);
+        hp = source.data('current hp');
+        source.setCurrentHp(hp + bonusHp);
+        if (!$('span', buff).length) buff.append($('<span>').text(kills));
+        else $('span', buff).text(kills + Number($('span', buff).text()));
+        source.reselect();
+      }
     },
     kill: function (event, eventdata) {
       var source = eventdata.source;
