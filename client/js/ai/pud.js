@@ -54,6 +54,7 @@ game.heroesAI.pud = {
     if (ult.length) {
       p = cardData['can-attack'] ? 0 : 50;
       card.opponentsInRange(rot.data('aoe range'), function (cardInRange) {
+        if (!cardInRange.hasClasses('invisible ghost dead towers'))
         cardData['cast-strats'].push({
           priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
           skill: 'ult',

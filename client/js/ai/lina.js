@@ -52,7 +52,7 @@ game.heroesAI.lina = {
     if (ult.length) {
       cardData['can-cast'] = true;
       card.opponentsInRange(ult.data('cast range'), function (cardInRange) {
-        if (cardInRange.length) {
+        if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           var p = (50 - cardInRange.data('current hp'))/4;
           if (cardInRange.hasClass('units')) p -= 25;
           cardData['cast-strats'].push({

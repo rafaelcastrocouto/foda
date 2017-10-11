@@ -46,7 +46,7 @@ game.heroesAI.nyx = {
     if (burn.length) {
       cardData['can-cast'] = true;
       card.opponentsInRange(burn.data('cast range'), function (cardInRange) {
-        if (cardInRange.length) {
+        if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           cardData['cast-strats'].push({
             priority: cardInRange.data('mana'),
             skill: 'burn',

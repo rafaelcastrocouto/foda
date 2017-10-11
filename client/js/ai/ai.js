@@ -24,7 +24,7 @@ game.ai = {
   moveRandomCard: function () {
     game.ai.resetData();
     // choose random card
-    var availableCards = $('.map .enemy.card:not(.towers, .ai-max, .stunned, .disabled, .channeling)');
+    var availableCards = $('.map .enemy.card:not(.towers, .dead, .ai-max, .stunned, .disabled, .channeling, .ghost)');
     var chosenCard = availableCards.randomCard();
     var chosenCardData = chosenCard.data('ai');
     var count = chosenCard.data('ai count');
@@ -32,7 +32,7 @@ game.ai = {
       chosenCard.data('ai count', (chosenCard.data('ai count') + 1 || 0));
       if (chosenCard.data('ai count') >= game.ai.level) chosenCard.addClass('ai-max');
       // add attack and move data
-      $('.map .enemy.card:not(.towers)').each(function (i, el) {
+      $('.map .enemy.card:not(.towers, .dead, .ghost)').each(function (i, el) {
         var card = $(el);
         game.ai.buildData(card);
         if (card.hasClass('heroes')) {
@@ -49,7 +49,7 @@ game.ai = {
         }
       });
       // add defensive data and strats
-      $('.map .player.card:not(.towers, .dead)').each(function (i, el) {
+      $('.map .player.card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
         var card = $(el);
         game.ai.buildData(card);
         if (card.hasClass('heroes')) {
@@ -88,7 +88,7 @@ game.ai = {
     $('.source').removeClass('source');
     $('.ai-max').removeClass('ai-max');
     //check attack
-    $('.map .card:not(.towers)').each(function (i, el) {
+    $('.map .card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
       var card = $(el);
       if (card.side() == 'enemy' && !card.hasClass('channeling')) game.ai.checkAttack(card);
       card.data('ai done', false);//.removeClass('ai');
@@ -120,7 +120,7 @@ game.ai = {
     if (card.data('type') == game.data.ui.passive) {
       var skillId = card.data('skill');
       var heroId = card.data('hero');
-      var hero = $('.map .card.enemy.heroes.'+heroId+':not(.dead)');
+      var hero = $('.map .card.enemy.heroes.'+heroId+':not(.dead, .ghost)');
       if (hero.length) {
         var spotId = hero.getSpot().attr('id');
         if (spotId) game.currentData.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
@@ -131,7 +131,7 @@ game.ai = {
     //console.log('reset ai')
     // todo: ai.history
     game.currentData.moves = [];
-    $('.map .card').each(function (i, el) {
+    $('.map .card:not(.dead, .ghost)').each(function (i, el) {
       $(el).data('ai', game.ai.newData());
     });
     $('.map .spot').each(function (i, el) {

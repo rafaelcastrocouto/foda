@@ -38,7 +38,7 @@ game.heroesAI.cm = {
     if (freeze.length && card.canCast(freeze)) {
       cardData['can-cast'] = true;
       card.inRange(freeze.data('cast range'), function (spot) {
-        var cardInRange = $('.card.player', spot);
+        var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
           cardData['cast-strats'].push({
             priority: parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),

@@ -62,13 +62,13 @@ game.heroesAI.am = {
       }
     }
     var ult = $('.enemydecks .hand .skills.am-ult');
-    if (ult.lengthh && card.canCast(ult)) {
+    if (ult.length && card.canCast(ult)) {
         /*opponent missing cards < N ||*/
         /*N ememies in target range ||*/
         /*after N turns*/
       cardData['can-cast'] = true;
       card.inRange(ult.data('cast range'), function (spot) {
-        var cardInRange = $('.card.player', spot);
+        var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
           var targets = 0;
           if (!cardInRange.hasClass('towers') && cardInRange.data('mana')) {

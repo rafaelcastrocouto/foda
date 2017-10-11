@@ -149,6 +149,7 @@
   image-rendering: pixelated;
   transform-style: preserve-3d;
   pointer-events: none;
+  transition: 0 all;
 }
 
 .buffs .fx {
@@ -170,7 +171,7 @@
   transform: translate(0px,-18px) scale(1.2);
   width: 34px;
   height: 50px;
-  animation: lina-passive-sprite 0.7s steps(8) infinite;
+  animation: lina-passive-sprite 0.8s steps(8) infinite;
   background-image: url('../img/fx/lina/passive.png');
   z-index: -1;
 }
@@ -183,7 +184,7 @@
   transform: translate3d(60px,500px,100px) scale(7);
   width: 96px;
   height: 96px;
-  animation: lina-fire-sprite 1.4s steps(15) 1;
+  animation: lina-fire-sprite 1.5s steps(15) 1;
   background-image: url('../img/fx/lina/fire.png');
 }
 @keyframes lina-fire-sprite {
@@ -194,7 +195,7 @@
 }
 .map .fx-lina.fire.bottom {
   transform: scaleY(-1) translate3d(60px,200px,100px) scale(7);
-  animation: lina-fire-sprite-bottom 1.4s steps(15) 1;
+  animation: lina-fire-sprite-bottom 1.5s steps(15) 1;
 }
 @keyframes lina-fire-sprite-bottom {
   100% {
@@ -204,7 +205,7 @@
 }
 .map .fx-lina.fire.left {
   transform: translate3d(200px,160px,100px) rotateZ(-90deg) scale(7);
-  animation: lina-fire-sprite-left 1.4s steps(15) 1;
+  animation: lina-fire-sprite-left 1.5s steps(15) 1;
 }
 @keyframes lina-fire-sprite-left {
   100% {
@@ -214,7 +215,7 @@
 }
 .map .fx-lina.fire.right {
   transform: translate3d(-100px,160px,100px) rotateZ(90deg) scale(7);
-  animation: lina-fire-sprite-right 1.4s steps(15) 1;
+  animation: lina-fire-sprite-right 1.5s steps(15) 1;
 }
 @keyframes lina-fire-sprite-right {
   100% {
@@ -228,7 +229,7 @@
   transform: translate3d(0,0,100px) scale(18);
   width: 57px;
   height: 91px;
-  animation: lina-ult-sprite 1.8s steps(19) 1;
+  animation: lina-ult-sprite 1.9s steps(19) 1;
 }
 @keyframes lina-ult-sprite {
   100% {
@@ -306,7 +307,7 @@
   transform: scaleX(-1) translate(0px,-18px) scale(1.2);
   width: 34px;
   height: 50px;
-  animation: wk-stun-sprite 0.7s steps(8) infinite;
+  animation: wk-stun-sprite 0.8s steps(8) infinite;
   background-image: url('../img/fx/wk/stun.png');
   z-index: -1;
 }
