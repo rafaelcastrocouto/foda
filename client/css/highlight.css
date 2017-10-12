@@ -525,17 +525,30 @@
   transform: translate(-10px, 60px) rotate(-45deg) scale(0.6);
 }
 
+.map .player.toparrow:after {
+  transform: translateY(70px) rotate(-135deg) scale(1);
+}
+.map .player.bottomarrow:after {
+  transform: translateY(40px) rotate(45deg) scale(1);
+}
+.map .player.leftarrow:after {
+  transform: translate(20px, 60px) rotate(135deg) scale(1);
+}
+.map .player.rightarrow:after {
+  transform: translate(-20px, 60px) rotate(-45deg) scale(1);
+}
+
 .map .enemy.toparrow:after {
-  transform: translateY(60px) rotate(-135deg) scale(0.9);
+  transform: translateY(70px) rotate(-135deg) scale(1);
 }
 .map .enemy.bottomarrow:after {
-  transform: translateY(35px) rotate(45deg) scale(1.1);
+  transform: translateY(40px) rotate(45deg) scale(1);
 }
 .map .enemy.leftarrow:after {
-  transform: translate(10px, 60px) rotate(135deg) scale(0.9);
+  transform: translate(20px, 60px) rotate(135deg) scale(1);
 }
 .map .enemy.rightarrow:after {
-  transform: translateY(60px) rotate(-45deg) scale(0.9);
+  transform: translate(-20px, 60px) rotate(-45deg) scale(1);
 }
 
 .map .casttarget.toparrow:hover:after,
