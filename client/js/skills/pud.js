@@ -4,13 +4,14 @@ game.skills.pud = {
       var range = skill.data('aoe range'),
           hooked = source.firstCardInLine(target, range);
       if (hooked && hooked.hasClasses('heroes units') && !hooked.hasClasses('ghost towers')) {
+        hooked.shake();
         if (hooked.side() == source.opponent()) {
           source.damage(skill.data('damage'), hooked, skill.data('damage type'));
           hooked.stopChanneling();
         }
-        if (target.getPosition() != hooked.getPosition()) {
-          hooked.move(target);
-          hooked.shake();
+        var targetSpot = source.firstFreeSpotInLine(target, range);
+        if (targetSpot.getPosition() != hooked.getPosition()) {
+          hooked.move(targetSpot);
         }
       }
     }

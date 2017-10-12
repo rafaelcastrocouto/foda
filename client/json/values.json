@@ -162,10 +162,10 @@
         "cards": 1
       },
       "arrow": {
-        "cast range": 1,
+        "cast range": 4,
         "cast width": 0,
-        "aoe width": 0,
         "aoe range": 4,
+        "aoe width": 0,
         "damage": 16,
         "damage reduction": 2,
         "cards": 1
@@ -193,10 +193,10 @@
         "cards": 1
       },
       "arrow": {
-        "cast range": 1,
+        "cast range": 4,
         "cast width": 0,
-        "aoe width": 0,
         "aoe range": 4,
+        "aoe width": 0,
         "damage": 10,
         "distance damage bonus": 2,
         "stun": 1,
@@ -223,8 +223,8 @@
       "fire": {
         "cast range": 1,
         "cast width": 0,
-        "aoe width": 1,
         "aoe range": 3,
+        "aoe width": 1,
         "damage": 12,
         "cards": 1
       },
@@ -445,8 +445,8 @@
       "stun": {
         "aoe width": 0,
         "aoe range": 3,
-        "cast range": 1,
         "cast width": 0,
+        "cast range": 3,
         "cards": 1,
         "damage": 12,
         "stun": 2
@@ -478,10 +478,10 @@
 
     "pud": {
       "hook": {
-        "cast range": 1,
+        "cast range": 3,
         "cast width": 0,
-        "aoe width": 0,
         "aoe range": 3,
+        "aoe width": 0,
         "damage": 14,
         "highlight": "in",
         "cards": 1
@@ -578,10 +578,10 @@
         "cards": 1
       },
       "corruption": {
-        "cast range": 1,
+        "cast range": 4,
         "cast width": 0,
-        "aoe width": 0,
         "aoe range": 4,
+        "aoe width": 0,
         "damage": 6,
         "cards": 1,
         "buffdata": {

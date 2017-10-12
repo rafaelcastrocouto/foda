@@ -234,7 +234,7 @@
   0%, 100% {background: rgba(200,200,255,0.1);}
   50% {background: rgba(200,200,255,0.3);}
 }*/
-.map .spot.targetarea.drop, .map .spot.targetarea:hover {
+.map .row .spot.targetarea.drop, .map .row .spot.targetarea:hover {
   background: rgba(200,200,255,0.2);
 }
 
@@ -513,27 +513,55 @@
 }
 
 .map .toparrow:after {
-  transform: translateY(40px) rotate(-135deg) scale(0.6);
+  transform: translateY(70px) rotate(-135deg) scale(0.6);
 }
 .map .bottomarrow:after {
-  transform: translateY(80px) rotate(45deg) scale(0.6);
+  transform: translateY(50px) rotate(45deg) scale(0.6);
 }
 .map .leftarrow:after {
-  transform: translate(-20px, 60px) rotate(135deg) scale(0.6);
+  transform: translate(10px, 60px) rotate(135deg) scale(0.6);
 }
 .map .rightarrow:after {
-  transform: translate(20px, 60px) rotate(-45deg) scale(0.6);
+  transform: translate(-10px, 60px) rotate(-45deg) scale(0.6);
 }
 
 .map .enemy.toparrow:after {
   transform: translateY(60px) rotate(-135deg) scale(0.9);
 }
 .map .enemy.bottomarrow:after {
-  transform: translateY(50px) rotate(45deg) scale(1.1);
+  transform: translateY(35px) rotate(45deg) scale(1.1);
 }
 .map .enemy.leftarrow:after {
   transform: translate(10px, 60px) rotate(135deg) scale(0.9);
 }
 .map .enemy.rightarrow:after {
   transform: translateY(60px) rotate(-45deg) scale(0.9);
+}
+
+.map .casttarget.toparrow:hover:after,
+.map .casttarget.bottomarrow:hover:after,
+.map .casttarget.leftarrow:hover:after,
+.map .casttarget.rightarrow:hover:after {
+  animation: scalecastafter 1.5s infinite;
+}
+.map .casttarget.toparrow:hover:before,
+.map .casttarget.bottomarrow:hover:before,
+.map .casttarget.leftarrow:hover:before,
+.map .casttarget.rightarrow:hover:before {
+  display: block;
+  animation: scalecastbefore 1.5s infinite;
+}
+.map .targetarea.toparrow:hover:after,
+.map .targetarea.bottomarrow:hover:after,
+.map .targetarea.leftarrow:hover:after,
+.map .targetarea.rightarrow:hover:after {
+  animation: scalespotbefore 1.5s infinite;
+}
+.map .targetarea.toparrow:hover:before,
+.map .targetarea.bottomarrow:hover:before,
+.map .targetarea.leftarrow:hover:before,
+.map .targetarea.rightarrow:hover:before {
+  display: block;
+  top: auto; 
+  animation: scalespotafter 1.5s infinite;
 }

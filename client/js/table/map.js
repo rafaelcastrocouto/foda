@@ -19,6 +19,7 @@ game.map = {
       inLine: game.map.inLine,
       alliesInLine: game.map.alliesInLine,
       opponentsInLine: game.map.opponentsInLine,
+      firstSpotInLine: game.map.firstSpotInLine,
       firstFreeSpotInLine: game.map.firstFreeSpotInLine,
       firstCardInLine: game.map.firstCardInLine,
       getPosition: game.map.getPosition,
@@ -585,6 +586,16 @@ game.map = {
       if (card.length) cb(card);
     });
     return this;
+  },
+  firstSpotInLine: function (target, range) {
+    var source = this,
+        dir = source.getDirectionObj(target);
+    for (var i = 1; i <= range; i += 1) {
+      var x = game.map.getX(source) + (i * dir.x),
+          y = game.map.getY(source) + (i * dir.y);
+      var spot = game.map.getSpot(x, y);
+      if (spot) return spot;
+    }
   },
   firstFreeSpotInLine: function (target, range) {
     var source = this,

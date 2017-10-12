@@ -340,23 +340,25 @@ game.highlight = {
     }
     if (this.data('highlight') == 'in') {
       var width = skill.data('aoe width');
+      // PUD hook
       if (spot) {
-        // PUD hook
         var linedir = game.map.invertDirection(source.getDirectionStr(spot));
-        source.inLine(spot, range, width, function (neighbor) {
-          var card = $('.card', neighbor);
-          if (card.length) card.addClass(linedir+'arrow');
-          else neighbor.addClass(linedir+'arrow');
-        }, 1);
-      } else {
-        // MAG ult
+        var targetSpot =  source.firstSpotInLine(spot, range);
+        if (targetSpot && linedir) {
+          source.inLine(targetSpot, range, width, function (neighbor) {
+            var card = $('.card', neighbor);
+            if (card.length) card.addClass(linedir+'arrow');
+            else neighbor.addClass(linedir+'arrow');
+          });
+        }
+      }/* else {
         source.inCross(range, width, function (neighbor, dir) {
           var invdir = game.map.invertDirection(dir);
           var card = $('.card', neighbor);
           if (card.length) card.addClass(invdir+'arrow');
           else neighbor.addClass(invdir+'arrow');
-        }, 1);
-      }
+        });
+      }*/
     }
     if (this.data('highlight') == 'out') {
       if (spot) {
