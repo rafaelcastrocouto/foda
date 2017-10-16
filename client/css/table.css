@@ -58,9 +58,9 @@
 
 
 .left-side .table .enemy .skills.hand {
-  left: 570px;
-  justify-content: flex-start;
-  margin-right: 0;
+  left: 600px;
+  /* justify-content: flex-start; */
+  /* margin-right: 0; */
 }
 
 .table .enemy .skills.sidehand {
@@ -70,8 +70,9 @@
   padding-right: 60px;
 }
 .left-side .table .enemy .skills.sidehand {
-  right: 410px;
-  justify-content: flex-end;
+  right: 388px;
+  /* justify-content: flex-end; */
+  left: auto;
 }
 
 .table .player .skills.sidehand {
@@ -83,10 +84,10 @@
 }
 
 .left-side .table .player .skills.sidehand {
-  right: 60px;
-  justify-content: flex-start;
-  margin-right: 0;
-  margin-left: 20px;
+  right: 2px;
+  /* justify-content: flex-start; */
+  /* margin-right: 0; */
+  /* margin-left: 20px; */
   left: auto;
 }
 .table .player .skills.hand {
@@ -97,9 +98,9 @@
 }
 
 .left-side .table .player .skills.hand {
-  left: 40px;
-  justify-content: flex-end;
-  margin-right: 0;
+  left: 16px;
+  /* justify-content: flex-end; */
+  /* margin-right: 0; */
 }
 .table .selectedarea {
   position: absolute;

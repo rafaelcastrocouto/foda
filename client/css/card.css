@@ -541,14 +541,13 @@
   pointer-events: none;
   transform: translate3d(-50%,-50%,0) scale(0.5) rotateY(-180deg);
 }
-.library .table .enemydecks .card,
-.local .table .enemydecks .card {
+.library .table .enemydecks .card, .local .table.unturn .enemydecks .card {
   pointer-events: all;
   transform: translate3d(-50%,-50%,0) scale(0.5) rotateZ(-180deg);
 }
 .library .table .enemydecks .card:hover,
-.local .table .enemydecks .card:hover,
-.local .table .enemydecks .card.selected {
+.local .table.unturn .enemydecks .card:hover,
+.local .table.unturn .enemydecks .card.selected {
   pointer-events: all;
   transform: translate3d(-50%,-50%,0) scale(0.6) rotateZ(-180deg);
 }
@@ -600,10 +599,10 @@
   transform: translate3d(-50%, -50%, 0) scale(0.6) rotateY(0);
 }
 
-.local .table.turn .enemydecks .card {
+.local .table .enemydecks .card {
   transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(180deg) rotateZ(180deg);
 }
-.local .table .enemydecks .card {
+.local .table.unturn .enemydecks .card {
   transform: translate3d(-50%, -50%, 0) scale(0.5) rotateY(0) rotateZ(180deg);
 }
 

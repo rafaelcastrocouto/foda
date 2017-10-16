@@ -40,7 +40,7 @@
 
 .left-side .choose .pickedbox {
   left: auto;
-  right: 86px;
+  right: 26px;
 }
 .choose .pickedbox .skills:hover {
   transform: translate3d(-42%, -68%, 0) scale(1.1);
@@ -89,7 +89,7 @@
 }
 
 .left-side .choose .buttonbox {
-  left: 74px;
+  left: 12px;
   right: auto;
 }
 

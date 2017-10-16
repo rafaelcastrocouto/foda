@@ -59,11 +59,6 @@ noscript {
   display: block;
 }
 
-noscript .box {
-  top: 70%;
-  padding: 20px 40px;
-}
-
 .game-container {
   position: absolute;
   width: 970px;
@@ -177,6 +172,23 @@ noscript .box {
   border-radius: 5px;
   background-color: rgba(11, 15, 14, 0.75);
 }
+.notfound .box,
+.campaign-box.box,
+.resultsbox,
+.loading .box,
+.game-overlay .box,
+.log .box,
+.menu .box {
+  background-color: #F9F9F9;
+  color: #333;
+  font-weight: bold;
+  box-shadow: inset 0 20px 30px #d2d2d2, 0 0 0 6px #fff;
+  border-radius: 18px;
+}
+noscript .box {
+  top: 70%;
+  padding: 20px 40px;
+}
 
 .box p, .box label {
   display: block;
@@ -257,31 +269,20 @@ noscript .box {
   }
 }
 
-.loading .box {
+.loading .box, 
+.notfound .box {
   width: 250px;
   top: 68%;
   padding: 8px;
 }
-.campaign-box.box,
-.resultsbox,
-.loading .box,
-.game-overlay .box,
-.log .box,
-.menu .box {
-  background-color: #F9F9F9;
-  color: #333;
-  font-weight: bold;
-  box-shadow: inset 0 20px 30px #d2d2d2, 0 0 0 6px #fff;
-  border-radius: 18px;
-}
-.notfound .box {
-  width: 500px;
-  top: 92%;
-  padding: 5px;
-}
 
-.notfound .box p {
-  margin: 0;
+.notfound .box {
+  width: auto;
+  padding: 8px 40px;
+}
+.notfound .box a {
+  color: #333;
+  text-decoration: underline;
 }
 
 .box .loadtext {

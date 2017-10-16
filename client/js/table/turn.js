@@ -51,9 +51,10 @@ game.turn = {
       if (turn == 'player-turn' || game.mode == 'local') {
         game.timeout(400, function () {
           if (game.mode == 'local') {
-            if (turn == 'player-turn') game.states.table.el.removeClass('unturn').addClass('turn');
-            else game.states.table.el.removeClass('turn').addClass('unturn');
-          } else game.states.table.el.addClass('turn');
+            if (turn == 'player-turn') game.states.table.el.addClass('turn');
+            else game.states.table.el.addClass('unturn');
+          } else //other game modes
+            game.states.table.el.addClass('turn');
           game.loader.removeClass('loading');
           $('.map .card').removeClass('done');
           game.states.table.skip.attr('disabled', false);
@@ -106,11 +107,11 @@ game.turn = {
         game.states.table.el.removeClass('turn');
         game.states.table.skip.attr('disabled', true);
       }
-      if (turn == 'player-turn' && game.mode == 'local') {
-        game.states.table.el.removeClass('turn');
-        game.states.table.el.addClass('unturn');
+      if (game.mode == 'local') {
+        game.states.table.el.removeClass('turn unturn');
       }
       if (turn == 'enemy-turn' && game.mode !== 'library') { 
+        game.states.table.el.removeClass('unturn');
         game.turn.el.text(game.data.ui.enemyturn).addClass('show');
         game.timeout(800, function () { game.turn.el.removeClass('show'); });
       }
