@@ -47,6 +47,7 @@ game.skills.kotl = {
           card.heal(damage * time);
         });
       }
+      game.audio.stop('kotl/illuminate');
       game.audio.play('kotl/illuminaterelease');
       kotl.data('illuminate-start', null);
       kotl.data('illuminate-target', null);
@@ -56,8 +57,6 @@ game.skills.kotl = {
       kotl.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
       if (source.hasClass('ghost')) source.discard();
       skill.discard();
-      var audio = game.audio.sources['kotl/illuminate'];
-      if (audio) audio.stop();
     }
   },
   leak: {

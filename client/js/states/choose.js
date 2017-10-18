@@ -17,6 +17,7 @@ game.states.choose = {
   },
   start: function () {
     $('.choose .buttonbox .button').not('.back').hide();
+    game.audio.loopSong('SneakyAdventure');
     var hero = localStorage.getItem('choose');
     this.sort();
     if (game.mode != 'library') this.selectFirst();

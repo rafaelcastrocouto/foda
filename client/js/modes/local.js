@@ -62,7 +62,7 @@ game.local = {
     game.timeout(400, function () {
       game.skill.build('enemy');
       game.skill.build('player', 0, function () {
-        game.timeout(400, game.local.beginPlayer);
+        game.timeout(1000, game.local.beginPlayer);
       });
     });
   },

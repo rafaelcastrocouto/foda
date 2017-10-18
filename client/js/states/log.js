@@ -79,6 +79,7 @@ game.states.log = {
   logout: function () {
     game.confirm(function (confirmed) {
       if (confirmed) {
+        game.audio.stopSong();
         localStorage.setItem('logged', 'false');
         game.clear();
         game.chat.el.hide();

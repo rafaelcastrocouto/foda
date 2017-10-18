@@ -108,12 +108,12 @@ game.tutorial = {
       game.message.text(game.data.ui.yourturncount + ' ' + game.tutorial.moveCountValue);
       game.tutorial.axe.addClass('up left');
       game.enemy.tower.addClass('blink').on('select', game.tutorial.selected);
-      setTimeout(function () {
+      game.timeout(400, function () {
         game.skill.build('enemy');
         game.skill.build('player', 0, function () {
-          game.timeout(400, game.tutorial.selectEnemyLesson);
+          game.timeout(1000, game.tutorial.selectEnemyLesson);
         });
-      }, 400);
+      });
     }
   },
   selectEnemyLesson: function () {

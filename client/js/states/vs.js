@@ -18,11 +18,11 @@ game.states.vs = {
       //todo: recover online games
       game.states.changeTo('log');
     } else {
-      var vsSong = 'RandomEncounter';
-      if (game.mode !== 'library' && game.audio.buffers[vsSong]) {
-        game.audio.stopSong();
-        game.audio.play(vsSong, false, 'music');
-        setTimeout(game.audio.loopSong, game.audio.buffers[vsSong].duration * 1000);
+      game.audio.stopSong();
+      if (game.mode !== 'library') {
+        game.audio.play('RandomEncounter', /*loop*/false, 'music', game.states.table.music);
+      } else {
+        setTimeout(game.states.table.music, 1600);
       }
       this.buildPlayer();
       this.buildEnemy();
@@ -30,8 +30,8 @@ game.states.vs = {
       this.enemy.removeClass('slide');
       game.units.build('player');
       game.units.build('enemy');
-      var t = 3600;
-      if (game.mode == 'library') t = 2000;
+      var t = 4600;
+      if (game.mode == 'library') t = 1800;
       game.timeout(t - 300, function () {
         this.player.addClass('slide');
         this.enemy.addClass('slide');

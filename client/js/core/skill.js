@@ -185,8 +185,8 @@ game.skill = {
       if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
         if (skill.is('.ld-ult:not(.on)')) game.audio.play(hero + '/transform');
         else if (skill.is('.pud-rot:not(.on)')) {
+          game.audio.stop('pud/rot');
           game.audio.play('activate');
-          game.audio.sources['pud/rot'].stop();
         }
         else game.audio.play(hero + '/' + skillid);
       }

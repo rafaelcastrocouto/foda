@@ -28,6 +28,10 @@ game.states.table = {
       game[game.mode].setTable();
     }
   },
+  music: function () {
+    if (game.mode == 'library') game.audio.loopSong('Perspectives');
+    else game.audio.loopSong('DeathandAxes');
+  },
   enableUnselect: function () {
     game.states.table.el.on('mousedown touchstart', function (event) { 
       var target = $(event.target); 
@@ -59,6 +63,7 @@ game.states.table = {
   },
   backClick: function () {
     //library only
+    game.audio.stopSong();
     game.states.table.clear();
     //game.setMode('library');
     game.states.changeTo('choose');

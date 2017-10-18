@@ -120,40 +120,62 @@ game.audio = {
       game.audio.load(b);
     });
   },
+  musics: [
+    'RandomEncounter',
+    'Perspectives',
+    'DeathandAxes'
+  ],
   loadMusic: function () {
+    $(game.audio.musics).each(function (a, b) {
+      game.audio.load('music/'+b);
+    });
     game.audio.song = 'SneakyAdventure';
-    game.audio.load(game.audio.song);
-    game.audio.load('RandomEncounter');
+    game.audio.load('music/'+game.audio.song, function () {
+      if (game.currentState != 'loading' &&
+          game.currentState != 'table' &&
+          game.currentState != 'vs' &&
+          game.currentState != 'log') game.audio.loopSong();
+    });
   },
-  loopSong: function () {
-    if (!game.audio.loopingSong) {
-      game.audio.loopingSong = true;
-      game.audio.play(game.audio.song, 'loop', 'music');
+  loopSong: function (song) {
+    if ((song && song !== game.audio.song) || !game.audio.loopingSong) {
+      if (song) game.audio.song = song;
+      game.audio.play(song || game.audio.song, /*loop*/true, 'music');
     }
   },
   sources: [],
-  play: function (name, loop, music) { //console.trace(name);
+  play: function (name, loop, music, cb) { //console.trace(name);
+    if (music) {console.log(name);
+      name = 'music/'+name;
+      console.log(game.audio.buffers[name]);
+    }
     if (game.audio.context &&
         game.audio.context.createBufferSource &&
         game.audio.buffers[name] &&
-        game.audio.buffers[name].duration) {
+        game.audio.buffers[name].duration) {console.log(name);
       var audio = game.audio.context.createBufferSource();
       //console.log(name, game.audio.buffers[name]);
       audio.buffer = game.audio.buffers[name];
       if (music) {
-        if (name === game.audio.song) game.audio.songSource = audio;
+        game.audio.songSource = audio;
         audio.connect(game.audio.musicNode);
+        if (loop) game.audio.loopingSong = true;
       } else {
         audio.connect(game.audio.soundsNode);
       }
       game.audio.sources[name] = audio;
       audio.loop = loop;
       audio.start();
+      if (cb) setTimeout(cb, game.audio.buffers[name].duration * 1000);
       return audio;
     }
   },
+  stop: function (str) {
+    var audio = game.audio.sources[str];
+    if (audio) audio.stop();
+  },
   stopSong: function () {
-    if (game.audio.songSource && game.audio.loopingSong) {
+    if (game.audio.songSource) {
       game.audio.loopingSong = false;
       game.audio.songSource.stop();
     }

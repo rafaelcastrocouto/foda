@@ -2,11 +2,11 @@
   cursor: pointer;
   /*animation: 1s blinkmovearea infinite;*/
 }
+
 /*@keyframes blinkmovearea {
   0%, 100% {background: rgba(200,255,230,0.05);}
   50% {background: rgba(200,255,230,0.15);}
 }*/
-
 .map .spot.movearea.drop, .states .map .spot.movearea:hover {
   /*background: rgba(100,255,100,0.2);*/
 }
@@ -85,15 +85,16 @@
 .map .card.enemy.attacktarget {
   background: tomato;
 }
+
 .map .card.casttarget {
   background: #80bfff;
 }
+
 .map .row .spot.targetarea {
   background: rgba(128, 191, 255, 0.25);
 }
 
-.map .attacktarget fieldset,
-.map .casttarget fieldset {
+.map .attacktarget fieldset, .map .casttarget fieldset {
   opacity: 0.7;
 }
 
@@ -115,23 +116,24 @@
   top: 50px;
   transform: rotate(45deg) scale(1);
 }
-.table.player .map .card.player.attacktarget,
-.table.enemy .map .card.enemy.attacktarget {
+
+.table.player .map .card.player.attacktarget, .table.enemy .map .card.enemy.attacktarget {
   box-shadow: 0 0 0 10px #ffe100;
 }
-.table.player .map .player.attacktarget:before,
-.table.enemy .map .enemy.attacktarget:before {
+
+.table.player .map .player.attacktarget:before, .table.enemy .map .enemy.attacktarget:before {
   border-right: 12px solid #ffe100;
   border-bottom: 12px solid #ffe100;
 }
-.table.player .map .player.attacktarget:after,
-.table.enemy .map .enemy.attacktarget:after {
+
+.table.player .map .player.attacktarget:after, .table.enemy .map .enemy.attacktarget:after {
   border-top: 12px solid #ffe100;
 }
-.table.player .map .player.attacktarget:hover:after,
-.table.enemy .map .enemy.attacktarget:hover:after {
+
+.table.player .map .player.attacktarget:hover:after, .table.enemy .map .enemy.attacktarget:hover:after {
   animation: playerscaleattackafter 1.5s infinite;
 }
+
 @keyframes playerscaleattackafter {
   0%, 100% {
     width: 150px;
@@ -160,10 +162,12 @@
 .map .card.attacktarget {
   box-shadow: 0 0 0 10px orangered;
 }
+
 .map .card.attacktarget:before {
   border-right: 12px solid orangered;
   border-bottom: 12px solid orangered;
 }
+
 .map .card.attacktarget:after {
   border-top: 12px solid orangered;
 }
@@ -229,7 +233,9 @@
   cursor: pointer;
   /*background: rgba(200,200,255,0.2);
   animation: 1s blinktargetarea infinite;*/
-}/*
+}
+
+/*
 @keyframes blinktargetarea {
   0%, 100% {background: rgba(200,200,255,0.1);}
   50% {background: rgba(200,200,255,0.3);}
@@ -341,9 +347,15 @@
   background: #40c3f7;
   opacity: 1;
 }
+
 @keyframes blinkbright {
-  0%, 100% {filter: brightness(1);}
-  50% {filter: brightness(1.2);}
+  0%, 100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.2);
+  }
 }
 
 .map .casttarget:after, .map .casttarget:before {
@@ -507,7 +519,8 @@
   left: 60px;
   top: 50px;
 }
-.map .enemy.toparrow:after, .map .enemy.bottomarrow:after, .map .enemy.leftarrow:after, .map .enemy.rightarrow:after {
+
+.player .map .enemy.toparrow:after, .player .map .enemy.bottomarrow:after, .player .map .enemy.leftarrow:after, .player .map .enemy.rightarrow:after, .enemy .map .player.toparrow:after, .enemy .map .player.bottomarrow:after, .enemy .map .player.leftarrow:after, .enemy .map .player.rightarrow:after {
   border-right: 12px solid #ff1f0a;
   border-bottom: 12px solid #ff1f0a;
 }
@@ -515,66 +528,66 @@
 .map .toparrow:after {
   transform: translateY(70px) rotate(-135deg) scale(0.6);
 }
+
 .map .bottomarrow:after {
   transform: translateY(50px) rotate(45deg) scale(0.6);
 }
+
 .map .leftarrow:after {
   transform: translate(10px, 60px) rotate(135deg) scale(0.6);
 }
+
 .map .rightarrow:after {
   transform: translate(-10px, 60px) rotate(-45deg) scale(0.6);
 }
 
-.map .player.toparrow:after {
+.player .map .player.toparrow:after, .enemy .map .enemy.toparrow:after {
   transform: translateY(70px) rotate(-135deg) scale(1);
 }
-.map .player.bottomarrow:after {
+
+.player .map .player.bottomarrow:after, .enemy .map .enemy.bottomarrow:after {
   transform: translateY(40px) rotate(45deg) scale(1);
 }
-.map .player.leftarrow:after {
+
+.player .map .player.leftarrow:after, .enemy .map .enemy.leftarrow:after {
   transform: translate(20px, 60px) rotate(135deg) scale(1);
 }
-.map .player.rightarrow:after {
+
+.player .map .player.rightarrow:after, .enemy .map .enemy.rightarrow:after {
   transform: translate(-20px, 60px) rotate(-45deg) scale(1);
 }
 
-.map .enemy.toparrow:after {
+.player .map .enemy.toparrow:after, .enemy .map .player.toparrow:after {
   transform: translateY(70px) rotate(-135deg) scale(1);
 }
-.map .enemy.bottomarrow:after {
+
+.player .map .enemy.bottomarrow:after, .enemy .map .player.bottomarrow:after {
   transform: translateY(40px) rotate(45deg) scale(1);
 }
-.map .enemy.leftarrow:after {
+
+.player .map .enemy.leftarrow:after, .enemy .map .player.leftarrow:after {
   transform: translate(20px, 60px) rotate(135deg) scale(1);
 }
-.map .enemy.rightarrow:after {
+
+.player .map .enemy.rightarrow:after, .enemy .map .player.rightarrow:after {
   transform: translate(-20px, 60px) rotate(-45deg) scale(1);
 }
 
-.map .casttarget.toparrow:hover:after,
-.map .casttarget.bottomarrow:hover:after,
-.map .casttarget.leftarrow:hover:after,
-.map .casttarget.rightarrow:hover:after {
+.map .casttarget.toparrow:hover:after, .map .casttarget.bottomarrow:hover:after, .map .casttarget.leftarrow:hover:after, .map .casttarget.rightarrow:hover:after {
   animation: scalecastafter 1.5s infinite;
 }
-.map .casttarget.toparrow:hover:before,
-.map .casttarget.bottomarrow:hover:before,
-.map .casttarget.leftarrow:hover:before,
-.map .casttarget.rightarrow:hover:before {
+
+.map .casttarget.toparrow:hover:before, .map .casttarget.bottomarrow:hover:before, .map .casttarget.leftarrow:hover:before, .map .casttarget.rightarrow:hover:before {
   display: block;
   animation: scalecastbefore 1.5s infinite;
 }
-.map .targetarea.toparrow:hover:after,
-.map .targetarea.bottomarrow:hover:after,
-.map .targetarea.leftarrow:hover:after,
-.map .targetarea.rightarrow:hover:after {
+
+.map .targetarea.toparrow:hover:after, .map .targetarea.bottomarrow:hover:after, .map .targetarea.leftarrow:hover:after, .map .targetarea.rightarrow:hover:after {
   animation: scalespotbefore 1.5s infinite;
 }
-.map .targetarea.toparrow:hover:before,
-.map .targetarea.bottomarrow:hover:before,
-.map .targetarea.leftarrow:hover:before,
-.map .targetarea.rightarrow:hover:before {
+
+.map .targetarea.toparrow:hover:before, .map .targetarea.bottomarrow:hover:before, .map .targetarea.leftarrow:hover:before, .map .targetarea.rightarrow:hover:before {
   display: block;
-  top: auto; 
+  top: auto;
   animation: scalespotafter 1.5s infinite;
 }

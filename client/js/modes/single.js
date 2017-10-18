@@ -39,12 +39,12 @@ game.single = {
       game.player.kills = 0;
       game.enemy.kills = 0;
       game.ai.start();
-      setTimeout(function () {
+      game.timeout(400, function () {
         game.skill.build('enemy');
         game.skill.build('player', 0, function () {
-          game.timeout(400, game.single.beginPlayer);
+          game.timeout(1000, game.single.beginPlayer);
         });
-      }, 400);
+      });
     }
   },
   startTurn: function (turn) {
