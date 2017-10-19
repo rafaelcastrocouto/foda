@@ -6,7 +6,7 @@ game.enemy = {
       cb: function(deck) {
         deck.addClass('cemitery enemy').hide().appendTo(game.states.table.enemy);
         var x = 2;
-        var y = 4-2;
+        var y = 4;
         $.each(deck.data('cards'), function(i, card) {
           var p = game.enemy.picks.indexOf(card.data('hero'));
           card.addClass('enemy').on('mousedown touchstart', game.card.select);
