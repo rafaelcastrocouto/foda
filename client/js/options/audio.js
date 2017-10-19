@@ -145,14 +145,11 @@ game.audio = {
   },
   sources: [],
   play: function (name, loop, music, cb) { //console.trace(name);
-    if (music) {console.log(name);
-      name = 'music/'+name;
-      console.log(game.audio.buffers[name]);
-    }
+    if (music) name = 'music/'+name;
     if (game.audio.context &&
         game.audio.context.createBufferSource &&
         game.audio.buffers[name] &&
-        game.audio.buffers[name].duration) {console.log(name);
+        game.audio.buffers[name].duration) {//console.log(name);
       var audio = game.audio.context.createBufferSource();
       //console.log(name, game.audio.buffers[name]);
       audio.buffer = game.audio.buffers[name];

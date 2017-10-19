@@ -315,3 +315,24 @@
 @keyframes wk-stun-sprite {
   100% { background-position: -272px; }
 }
+
+
+.map .fx-cm.ult {
+  transform: rotateX(-37deg) translate3d(105px,-440px,100px) scale(4);
+  width: 64px;
+  height: 177px;
+  animation: cm-ult-sprite 1.3s steps(13) 1;
+  background-image: url('../img/fx/cm/ult.png');
+}
+.map .fx-cm.ult.ult1 {
+  background-image: url('../img/fx/cm/ult1.png');
+}
+.map .fx-cm.ult.ult2 {
+  background-image: url('../img/fx/cm/ult2.png');
+}
+.map .fx-cm.ult.ult3 {
+  background-image: url('../img/fx/cm/ult3.png');
+}
+@keyframes cm-ult-sprite {
+  100% { background-position: -1014px; }
+}

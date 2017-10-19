@@ -61,25 +61,26 @@ game.skills.cm = {
       source.on('channelend', this.channelend);
     },
     channel: function (event, eventdata) {
-      var cm = eventdata.source;
-      if ( cm.data('channeling') === 0) {
+      var source = eventdata.source;
+      if ( source.data('channeling') === 0) {
         game.audio.play('cm/ult');
-        game.skills.cm.ult.damage(cm, eventdata.skill);
+        game.skills.cm.ult.damage(source, eventdata.skill);
       }
     },
-    damage: function (cm, skill) {
+    damage: function (source, skill) {
       game.shake();
       var range = skill.data('aoe range');
-      cm.opponentsInRange(range, function (target) {
-        cm.damage(skill.data('damage'), target, skill.data('damage type'));
-        cm.addBuff(target, skill, 'ult-targets');
+      source.opponentsInRange(range, function (target) {
+        game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
+        source.addBuff(target, skill, 'ult-targets');
+        game.fx.add('ult', source, target, 'random');
       });
     },
     channelend: function (event, eventdata) {
-      var cm = eventdata.source;
-      cm.data('cm-ult', null);
-      cm.removeClass('cm-ult');
-      cm.removeBuff('cm-ult');
+      var source = eventdata.source;
+      source.data('cm-ult', null);
+      source.removeClass('cm-ult');
+      source.removeBuff('cm-ult');
     }
   }
 };

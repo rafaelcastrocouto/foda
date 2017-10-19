@@ -49,7 +49,7 @@ game.skills.lina = {
       source.setDamage(source.data('current damage') - bonus);
       source.off('turnend.passive');
       $('span', buff).remove();
-      game.fx.stop('lina', 'passive');
+      game.fx.stop('passive', source);
     }
   },
   ult: {
