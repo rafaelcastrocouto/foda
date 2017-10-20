@@ -22,7 +22,8 @@
 .choose .pickbox .deck {
   position: relative;
   left: -316px;
-  height: 340px;
+  top: 20px;
+  height: 320px;
   transform: translateZ(0);
 }
 

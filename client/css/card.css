@@ -8,21 +8,21 @@
 
 .pickbox .card {
   margin: 0px -62px;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0) translateZ(0) scale(0.35);
+  transform: translate3d(-50%, 0, 0) translateZ(0) scale(0.35);
   /* filter: blur(1.5px); */
   transition: all 0.18s;
 }
 
 .pickbox .card.selected {
   margin: 0px 16px;
-  transform: translate3d(-50%, -50%, 0) scale(1.1);
+  transform: translate3d(-50%, 0, 0) scale(1.1);
   filter: blur(0);
 }
 
 .pickbox .card.half {
-  transform: translate3d(-50%, -50%, 0) scale(0.5);
+  transform: translate3d(-50%, 0, 0) scale(0.5);
   margin: 0px -50px;
 }
 .pickedbox .card {
@@ -791,7 +791,6 @@
 }
 
 .card.dragTargetClone.choose.drop {
-  transform: scale(0.5) translateZ(1px);
   box-shadow: 0 0 0 5px white;
 }
 
@@ -802,7 +801,6 @@
 .card.dragTargetClone.table.drop,
 .card.dragTargetClone.table.drop.fromHand,
 .card.dragTargetClone.table.drop.fromMap {
-  transform: scale(0.3) translateZ(1px);
   box-shadow: 0 0 0 10px white;
 }
 
@@ -816,7 +814,7 @@
 }
 .local .card.dragTargetClone.drop.enemy.fromHand.table,
 .library .card.dragTargetClone.drop.enemy.fromHand.table {
-  transform: rotate(180deg) translate3d(-35%, -40%, 1px) scale(0.3);
+  box-shadow: 0 0 0 10px white;
 }
 
 .map .card legend, .card.dragTargetClone.fromMap legend {

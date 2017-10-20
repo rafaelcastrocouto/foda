@@ -59,7 +59,7 @@ game.highlight = {
     return skill;
   },
   channelStop: function (event, skill, source) {
-    source.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.card.activeStopChanneling);
+    source.addClass('casttarget').on('mouseup.highlight', game.card.activeStopChanneling);
   },
   targets: function (event) {
     var skill = this, hero = skill.data('hero');
@@ -81,7 +81,7 @@ game.highlight = {
         if (skill.data('targets').indexOf(game.data.ui.summon) > 0) {
           var summon = source.data('summon');
           if (game.highlight.possible(summon)) {
-            summon.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+            summon.addClass('casttarget').on('mouseup.highlight', game.player.cast);
           }
         }
       }
@@ -112,29 +112,29 @@ game.highlight = {
   },
   passive: function (source) {
     if (!source.hasClass('dead')) {
-      source.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.passive);
+      source.addClass('casttarget').on('mouseup.highlight', game.player.passive);
     }
   },
   toggle: function (skill, source) {
     if (!source.hasClasses('dead stunned silenced hexed disabled sleeping cycloned taunted')) {
-      source.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.toggle);
+      source.addClass('casttarget').on('mouseup.highlight', game.player.toggle);
     }
   },
   self: function (source) {
-    source.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+    source.addClass('casttarget').on('mouseup.highlight', game.player.cast);
   },
   tower: function (side) {
-    game[side].tower.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+    game[side].tower.addClass('casttarget').on('mouseup.highlight', game.player.cast);
   },
   ally: function (source, skill) {
     var range = skill.data('cast range');
     if (range === game.data.ui.global) {
-      $('.map .card.'+source.side()).not('.towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+      $('.map .card.'+source.side()).not('.towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
     } else {
       source.around(range, function (neighbor) {
         var card = $('.card', neighbor);
         if (card.hasClass(source.side()) && !card.hasClass('towers')) {
-          card.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+          card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
         }
       });
     }
@@ -142,12 +142,12 @@ game.highlight = {
   enemy: function (source, skill) {
     var range = skill.data('cast range');
     if (range === game.data.ui.global) {
-      $('.map .'+source.opponent()).not('.towers').addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
+      $('.map .'+source.opponent()).not('.towers').addClass('casttarget').on('mouseup.highlight', game.player.cast);
     } else {
       source.inRange(range, function (neighbor) {
         var card = $('.card', neighbor);
         if (card.hasClass(source.opponent()) && !card.hasClass('towers')) {
-          card.addClass('casttarget').on('mouseup.highlight touchend.highlightd', game.player.cast);
+          card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
         }
       });
     }
@@ -155,21 +155,21 @@ game.highlight = {
   jungle: function (source, skill) {
     var range = skill.data('cast range');
     source.inRange(range, function (neighbor) {
-      if (neighbor.hasAllClasses('jungle free')) neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+      if (neighbor.hasAllClasses('jungle free')) neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
   summoner: function (source, skill) {
     var summoner = source.data(game.data.ui.summoner);
     summoner.around(skill.data('cast range'), function (neighbor) {
       if (neighbor.hasClass('free')) {
-        neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+        neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
       }
     });
   },
   freeSpots: function (source, skill) {
     source.around(skill.data('cast range'), function (neighbor) {
       if (neighbor.hasClass('free') && !neighbor.hasClass('block')) {
-        neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+        neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
       }
     });
   },
@@ -177,8 +177,8 @@ game.highlight = {
     source.around(skill.data('cast range'), function (neighbor) {
       var card = neighbor.find('.card');
       if (card.length && !card.hasClass('invisible')) {
-        card.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
-      } else neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+        card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
+      } else neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
   linear: function (source, skill) {
@@ -188,14 +188,14 @@ game.highlight = {
     source.inCross(range, width, function (neighbor) {
       var card = neighbor.find('.card');
       if (card.length && !card.hasClass('invisible')) {
-        card.addClass('casttarget').on('mouseup.highlight touchend.highlight', game.player.cast);
-      } else neighbor.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+        card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
+      } else neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
   atRange: function (source, skill, free) {
     var range = skill.data('cast range');
     source.atRange(range, function (spot) {
-      if (!free || (spot.hasClass('free') && !spot.hasClass('block'))) spot.addClass('targetarea').on('mouseup.highlight touchend.highlight', game.player.cast);
+      if (!free || (spot.hasClass('free') && !spot.hasClass('block'))) spot.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
   isTurn: function (card) {
@@ -212,7 +212,7 @@ game.highlight = {
       if (speed > 3) { speed = 3; }
       card.inMovementRange(Math.round(speed), function (neighbor) {
         if (neighbor.hasClass('free') && !neighbor.hasClass('block')) { 
-          neighbor.addClass('movearea').on('mouseup.highlight touchend.highlight', game.player.move); 
+          neighbor.addClass('movearea').on('mouseup.highlight', game.player.move); 
         }
       });
     }
@@ -225,10 +225,10 @@ game.highlight = {
       range = source.data('range');
       source.inRange(range, function (neighbor) {
         var card = $('.card', neighbor);
-        if (card.hasClass(source.opponent()) && !card.hasClass('invisible')) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
+        if (card.hasClass(source.opponent()) && !card.hasClass('invisible')) { card.addClass('attacktarget').on('mouseup.highlight', game.player.attack); }
         if (card[0] !== source[0] &&
             card.hasAllClasses(source.side()+' units') &&
-            card.data('current hp') < Math.floor(card.data('hp')/2) ) { card.addClass('attacktarget').on('mouseup.highlight touchend.highlight', game.player.attack); }
+            card.data('current hp') < Math.floor(card.data('hp')/2) ) { card.addClass('attacktarget').on('mouseup.highlight', game.player.attack); }
       });
     }
     return source;
@@ -374,7 +374,7 @@ game.highlight = {
   highlightCreep: function () {
     var side = game.selectedCard.side();
     game[side].tower.strokeAttack();
-    $('.spot.'+side+'area.free').addClass('movearea').on('mouseup.highlight touchend.highlight', game[side].summonCreep);
+    $('.spot.'+side+'area.free').addClass('movearea').on('mouseup.highlight', game[side].summonCreep);
   },
   clearMap: function () {
     game.skill.aoe = null;

@@ -27,7 +27,7 @@ game.events = {
     game.container.on('mousedown touchstart', game.events.hit);
     game.container.on('mousemove', game.events.move);
     game.container.on('touchmove', game.events.touchmove);
-    game.container.on('touchend', game.events.touchend);
+    game.container.on('touchend touchleave', game.events.touchend);
     game.container.on('mouseup mouseleave', game.events.end);
     game.container.on('contextmenu', game.events.rightclick);
   },
@@ -100,7 +100,7 @@ game.events = {
       return false;
     }
   },
-  end: function(event) { //console.log(event.type)
+  end: function(event) { //console.log(event)
         target = $(event.target);
     if (!target.closest('.chat').length) $('.chat').removeClass('hover');
     if (game.events.dragging) {

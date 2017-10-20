@@ -2,7 +2,8 @@
   position: relative;
   width: 600px;
   height: 550px;
-  background: url("../img/bkg/campaign.jpg");
+  background-color: #030301;
+  background-image: url("../img/bkg/campaign.jpg");
   background-size: cover;
   top: 310px;
   left: 320px;
