@@ -6,6 +6,9 @@ game.fx = {
       passive: ['passive'],
       ult: ["ult-close", "ult-far"]
     },
+    pud: {
+      hook: ['hook']
+    },
     wk: {
       stun: ['stun']
     },
@@ -46,13 +49,13 @@ game.fx = {
     //console.log(game.fx.heroes[hero][name])
     if (game.fx.heroes[hero][name]) {
       var fx = $('<div>').addClass(name + ' fx fx-' + hero);
+      var dirX = source.getX() - target.getX();
+      var dirY = source.getY() - target.getY();
       if (tag == 'linear') {
         var dir = source.getDirectionStr(target);
-        fx.addClass(dir);
+        fx.addClass(dir + ' d'+ Math.abs(dirX || dirY));
       }
       if (tag == 'rotate') {
-        var dirX = source.getX() - target.getX();
-        var dirY = source.getY() - target.getY();
         if (Math.abs(dirX) > 1 || Math.abs(dirY) > 1) fx.addClass(name + '-far');
         else fx.addClass(name + '-close');
         fx.addClass('r' + dirX + dirY);
@@ -61,13 +64,20 @@ game.fx = {
         var n = game.fx.heroes[hero][name].length;
         var r = Math.floor(Math.random() * n);
         if (r) fx.addClass(name+r);
+        game.timeout(Math.random() * 600, function (fx, target) {
+          fx.appendTo(target);
+          game.fx.play(fx);
+        }.bind(this, fx, target));
       }
-      fx.appendTo(target);
+      else {
+        fx.appendTo(target);
+        game.fx.play(fx);
+      }
       fx.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () {
-        this.remove();
-      });
-      game.fx.play(fx);
+          this.remove();
+        });
       target.closest('.card').reselect();
+      return fx;
     }
   },
   play: function(fx) {

@@ -9,9 +9,13 @@ game.skills.pud = {
           source.damage(skill.data('damage'), hooked, skill.data('damage type'));
           hooked.stopChanneling();
         }
-        var targetSpot = source.firstFreeSpotInLine(target, range);
-        if (targetSpot.getPosition() != hooked.getPosition()) {
-          hooked.move(targetSpot);
+        var targetSpot = source.firstFreeSpotInLine(target, 1);
+        if (targetSpot && targetSpot.getPosition() != hooked.getPosition()) {
+          var fx = game.fx.add('hook', source, hooked, 'linear');
+          game.timeout(700, function (hooked, targetSpot) {
+            hooked.move(targetSpot);
+            game.timeout(300, game.fx.stop.bind(this, 'hook', hooked));
+          }.bind(this, hooked, targetSpot));
         }
       }
     }

@@ -149,7 +149,7 @@
   image-rendering: pixelated;
   transform-style: preserve-3d;
   pointer-events: none;
-  transition: 0 all;
+  transition: none;
 }
 
 .buffs .fx {
@@ -335,4 +335,138 @@
 }
 @keyframes cm-ult-sprite {
   100% { background-position: -1014px; }
+}
+
+
+.map .fx-pud.hook {
+  transform: translate3d(-430px,-200px,100px) scale(3.3);
+  width: 214px;
+  height: 75px;
+  background-image: url('../img/fx/pud/hook.png');
+  background-position: 100% 50%;
+  transform-origin: 0% 0%;
+}
+.map .fx-pud.hook.d3 {
+  transform: translate3d(-430px,-200px,100px) scale(3.3);
+  animation: pud-hook-d3 1s steps(10) infinite;
+  width: 14px;
+}
+@keyframes pud-hook-d3 {
+  50%, 70% { 
+    transform: translate3d(-430px,-200px,100px) scale(3.3);
+    width: 164px;
+  }
+  100% {
+    transform: translate3d(65px,-200px,100px) scale(3.3);
+    width: 14px;
+  }
+}
+.map .fx-pud.hook.d2 {
+  transform: translate3d(-230px,-200px,100px) scale(3.3);
+  animation: pud-hook-d2 1s steps(10) infinite;
+  width: 14px;
+}
+@keyframes pud-hook-d2 {
+  50%, 70% { 
+    transform: translate3d(-230px,-200px,100px) scale(3.3);
+    width: 114px;
+  }
+  100% {
+    transform: translate3d(100px,-200px,100px) scale(3.3);
+    width: 14px;
+  }
+}
+
+.map .fx-pud.hook.top.d3 {
+  transform: translate3d(-30px,690px,100px) rotateZ(-90deg) scale(3.5);
+  animation: pud-hook-top-d3 1s steps(10) infinite;
+  width: 10px;
+}
+@keyframes pud-hook-top-d3 {
+  50%, 70% { 
+    transform: translate3d(-30px,690px,100px) rotateZ(-90deg) scale(3.5);
+    width: 214px;
+  }
+  100% {
+    transform: translate3d(-30px,-30px,100px) rotateZ(-90deg) scale(3.5);
+    width: 14px;
+  }
+}
+.map .fx-pud.hook.top.d2 {
+  transform: translate3d(-30px,405px,100px) rotateZ(-90deg) scale(3.5);
+  animation: pud-hook-top-d2 1s steps(10) infinite;
+  width: 10px;
+}
+@keyframes pud-hook-top-d2 {
+  50%, 70% { 
+    transform: translate3d(-30px,405px,100px) rotateZ(-90deg) scale(3.5);
+    width: 134px;
+  }
+  100% {
+    transform: translate3d(-30px,-30px,100px) rotateZ(-90deg) scale(3.5);
+    width: 14px;
+  }
+}
+
+.map .fx-pud.hook.left.d3 {
+  transform: scaleX(-1) translate3d(-650px,-200px,100px) scale(3.3);
+  animation: pud-hook-left-d3 1s steps(10) infinite;
+  width: 14px;
+}
+@keyframes pud-hook-left-d3 {
+  50%, 70% { 
+    transform: scaleX(-1) translate3d(-650px,-200px,100px) scale(3.3);
+    width: 164px;
+  }
+  100% {
+    transform: scaleX(-1) translate3d(-154px,-200px,100px) scale(3.3);
+    width: 14px;
+  }
+}
+.map .fx-pud.hook.left.d2 {
+  transform: scaleX(-1) translate3d(-434px,-200px,100px) scale(3.3);
+  animation: pud-hook-left-d2 1s steps(10) infinite;
+  width: 14px;
+}
+@keyframes pud-hook-left-d2 {
+  50%, 70% { 
+    transform: scaleX(-1) translate3d(-434px,-200px,100px) scale(3.3);
+    width: 114px;
+  }
+  100% {
+    transform: scaleX(-1) translate3d(-104px,-200px,100px) scale(3.3);
+    width: 14px;
+  }
+}
+
+
+.map .fx-pud.hook.bottom.d3 {
+  transform: scaleY(-1) translate3d(-30px,872px,100px) rotateZ(-90deg) scale(3.5);
+  animation: pud-hook-bottom-d3 1s steps(10) infinite;
+  width: 10px;
+}
+@keyframes pud-hook-bottom-d3 {
+  50%, 70% { 
+    transform: scaleY(-1) translate3d(-30px,872px,100px) rotateZ(-90deg) scale(3.5);
+    width: 214px;
+  }
+  100% {
+    transform: scaleY(-1) translate3d(-30px,170px,100px) rotateZ(-90deg) scale(3.5);
+    width: 14px;
+  }
+}
+.map .fx-pud.hook.bottom.d2 {
+  transform: scaleY(-1) translate3d(-30px,565px,100px) rotateZ(-90deg) scale(3.5);
+  animation: pud-hook-bottom-d2 1s steps(10) infinite;
+  width: 10px;
+}
+@keyframes pud-hook-bottom-d2 {
+  50%, 70% { 
+    transform: scaleY(-1) translate3d(-30px,565px,100px) rotateZ(-90deg) scale(3.5);
+    width: 134px;
+  }
+  100% {
+    transform: scaleY(-1) translate3d(-30px,145px,100px) rotateZ(-90deg) scale(3.5);
+    width: 14px;
+  }
 }
