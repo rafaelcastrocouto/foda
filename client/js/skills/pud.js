@@ -13,11 +13,13 @@ game.skills.pud = {
         if (targetSpot && targetSpot.getPosition() != hooked.getPosition()) {
           var fx = game.fx.add('hook', source, hooked, 'linear');
           source.addClass('nohighlight');
+          game.lockSelection = true;
           game.timeout(700, function (hooked, targetSpot, source) {
             hooked.move(targetSpot);
             game.timeout(300, function (hooked, source) {
               game.fx.stop('hook', hooked);
               source.removeClass('nohighlight');
+              game.lockSelection = false;
               source.reselect();
             }.bind(this, hooked, source));
           }.bind(this, hooked, targetSpot, source));

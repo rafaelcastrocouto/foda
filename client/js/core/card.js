@@ -186,16 +186,15 @@ game.card = {
     //console.trace('card select', event, this);
     var card = $(this).closest('.card');
     var forceSelection = !event;
-    if (card && !game.lockSelection) {
-      if (forceSelection)
-        game.card.setSelection(card);
-      else if (!card.hasClasses('selected attacktarget casttarget dead')) {
+    if (card) {
+      if (forceSelection) game.card.setSelection(card);
+      else if (!game.lockSelection && !card.hasClasses('selected attacktarget casttarget dead')) {
         game.card.setSelection(card, event);
       }
     }
     return card;
   },
-  clearSelection: function() {
+  clearSelection: function() { //console.trace('clear')
     if (game.selectedCard) {
       game.highlight.clearMap();
       game.selectedCard.removeClass('selected draggable');
@@ -207,7 +206,7 @@ game.card = {
       game.selectedCard = null;
     }
   },
-  setSelection: function(card, event) {
+  setSelection: function(card, event) { //console.log(card)
     game.card.clearSelection();
     game.selectedCard = card;
     card.addClass('selected');

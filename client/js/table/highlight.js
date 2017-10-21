@@ -17,7 +17,7 @@ game.highlight = {
     if (game.selectedCard) {
       if (game.selectedCard.hasClasses('heroes units')) {
         game.selectedCard.strokeAttack();
-        if (game.canPlay()) {
+        if (game.canPlay() && !game.selectedCard.hasClass('nohighlight')) {
           if (game.mode == 'tutorial') {
             if (game.tutorial.lesson == 'Move') {
               game.selectedCard.highlightMove();
@@ -205,7 +205,7 @@ game.highlight = {
   },
   move: function () {
     var card = this, speed;
-    if (game.highlight.isTurn(card) && card.hasClasses('units heroes') && card.canMove() && !card.hasClass('nohighlight')) {
+    if (game.highlight.isTurn(card) && card.hasClasses('units heroes') && card.canMove()) {
       if (card.hasClass('selected')) card.addClass('draggable');
       speed = card.data('current speed');
       if (speed < 1) { return card; }
@@ -220,7 +220,7 @@ game.highlight = {
   },
   attack: function () {
     var source = this, pos, range;
-    if (game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack() && !source.hasClass('nohighlight')) {
+    if (game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack()) {
       if (source.hasClass('selected')) source.addClass('draggable');
       range = source.data('range');
       source.inRange(range, function (neighbor) {

@@ -57,6 +57,7 @@ game.skills.com = {
   ult: {
     cast: function (skill, source, target) {
       source.addClass('nohighlight');
+      game.lockSelection = true;
       source.on('death.com-ult', this.death);
       target.on('death.com-ult', this.death);
       for (var i=0; i < skill.data('attacks'); i++) {
@@ -64,7 +65,8 @@ game.skills.com = {
         game.timeout((1400 * i) + 700, target.attack.bind(target, source, 'force'));
       }
       game.timeout(4200, function (source, target) {
-        source.removeClass('nohighlight').off('death.com-ult');
+        game.lockSelection = false;
+        source.removeClass('nohighlight').off('death.com-ult').reselect();
         target.off('death.com-ult');
       }.bind(this, source, target));
     },

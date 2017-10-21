@@ -54,11 +54,13 @@ game.skills.wind = {
       var damage = source.data('current damage');
       var nerf = skill.data('damage reduction');
       source.setDamage(damage - nerf).addClass('nohighlight');
+      game.lockSelection = true;
       for (var i=0; i < skill.data('attacks'); i++) {
         game.timeout(900 * i, source.attack.bind(source, target, 'force'));
       }
       game.timeout(3600, function (source, damage) {
         source.removeClass('nohighlight').setDamage(damage);
+        game.lockSelection = false;
       }.bind(this, source, damage));
     }
   }
