@@ -12,10 +12,13 @@ game.skills.pud = {
         var targetSpot = source.firstFreeSpotInLine(target, 1);
         if (targetSpot && targetSpot.getPosition() != hooked.getPosition()) {
           var fx = game.fx.add('hook', source, hooked, 'linear');
+          source.addClass('nohighlight');
           game.timeout(700, function (hooked, targetSpot, source) {
             hooked.move(targetSpot);
             game.timeout(300, function (hooked, source) {
               game.fx.stop('hook', hooked);
+              source.removeClass('nohighlight');
+              source.reselect();
             }.bind(this, hooked, source));
           }.bind(this, hooked, targetSpot, source));
         }
