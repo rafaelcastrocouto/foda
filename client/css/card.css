@@ -243,7 +243,7 @@
 }
 
 .states .map .card.player.heroes.selected, .states .map .card.player.towers.selected {
-  animation: none;
+  /* animation: none; */
   box-shadow: 0 0 0 10px springgreen;
   z-index: 2;
 }

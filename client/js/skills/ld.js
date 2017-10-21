@@ -87,7 +87,6 @@ game.skills.ld = {
         source.addBuff(bear, skill);
         bear.shake();
       }
-      source.select();
     }
   },
   roar: {

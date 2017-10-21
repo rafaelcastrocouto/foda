@@ -183,7 +183,7 @@ game.card = {
     return this;
   },
   select: function(event) {
-    // console.trace('card select', event);
+    //console.trace('card select', event, this);
     var card = $(this).closest('.card');
     var forceSelection = !event;
     if (card && !game.lockSelection) {
@@ -243,7 +243,7 @@ game.card = {
     if (destiny.hasClass('free') && !destiny.hasClass('block') && from !== to) {
       card.removeClass('draggable').off('mousedown touchstart');
       game.highlight.clearMap();
-      if (game.selectedCard) game.selectedCard.reselect();
+      card.reselect();
       card.stopChanneling();
       game.audio.play('move');
       card.animateMove(destiny);
@@ -387,9 +387,9 @@ game.card = {
       evt.bonus = 0;
       if (game.selectedCard) game.timeout(10, game.selectedCard.reselect.bind(game.selectedCard));
       //melee fx
-      if (source.data('range') == game.data.ui.melee) {
+      if (source.data('range') < 3) {
         source.addClass('melee-attack');
-        game.timeout(240, source.removeClass.bind(source, 'melee-attack'));
+        game.timeout(300, source.removeClass.bind(source, 'melee-attack'));
       }
       //ranged fx
       if (source.data('range') > 2) {

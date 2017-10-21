@@ -18,7 +18,8 @@ game.skills.en = {
       var side = source.side();
       var opponent = source.opponent();
       if (target.hasAllClasses('spot jungle')) {
-        game.units.forestCreep(side, target);
+        var creep = game.units.forestCreep(side, target);
+        creep.select();
       }else {
         target = $('.card', target);
         if (target.hasAllClasses(opponent +' heroes') || target.hasAllClasses(opponent +' ld-summon')) {

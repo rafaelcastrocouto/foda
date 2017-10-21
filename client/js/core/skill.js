@@ -240,7 +240,7 @@ game.skill = {
   },
   discard: function (source) {
     if (this.hasClass('skills')) {
-      if (source && game.canPlay()) source.select();
+      if (source && game.canPlay() && this.hasClass('selected')) source.select();
       else if (this.hasClass('selected')) game.card.unselect();
       this.trigger('discard', {target: this});
       var side = this.side();

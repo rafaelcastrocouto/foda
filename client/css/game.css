@@ -647,32 +647,3 @@ label input {
 .ethereal .img {
   background-image: url("../img/skills/ethereal.jpg")
 }
-
-.shake {
-  position: relative;
-  animation: shake 0.1s infinite linear;
-}
-
-@keyframes shake {
-  0% {
-    transform: translateX(2px);
-  }
-
-  50% {
-    transform: translateX(-2px);
-  }
-}
-
-.card.shake {
-  animation: cardshake 0.1s infinite linear;
-}
-
-@keyframes cardshake {
-  0% {
-    left: calc(50% + 8px);
-  }
-
-  50% {
-    left: calc(50% - 8px);
-  }
-}
