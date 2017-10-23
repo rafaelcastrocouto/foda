@@ -12,10 +12,10 @@ game.skills.lina = {
   },
   stun: {
     cast: function (skill, source, target) {
-      game.fx.add('stun', source, target);
       var range = skill.data('aoe range');
       var opponent = source.opponent();
       var damage = skill.data('damage');
+      game.fx.add('stun', source, target);
       target.cardsInRange(range, function (card) {
         if (card.hasClass(opponent)) {
           game.timeout(900, source.damage.bind(source, damage, card, skill.data('damage type')));

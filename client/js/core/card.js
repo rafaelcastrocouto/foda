@@ -211,9 +211,11 @@ game.card = {
     game.selectedCard = card;
     card.addClass('selected');
     game.highlight.map(event);
-    game.states.table.selectedClone = card.clone().css({
-      'transform': ''
-    }).appendTo(game.states.table.selectedCard).removeClass('selected blink done dead draggable dragTarget shake enemyMoveHighlight enemyMoveHighlightTarget').clearEvents();
+    game.states.table.selectedClone = card.clone()
+      .css({'transform': '' })
+      .removeClass('selected melee-attack blink done dead draggable dragTarget shake enemyMoveHighlight enemyMoveHighlightTarget')
+      .clearEvents()
+      .appendTo(game.states.table.selectedCard);
     game.states.table.selectedCard.addClass('flip');
     card.trigger('select', {
       card: card

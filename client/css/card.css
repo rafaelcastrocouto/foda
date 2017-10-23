@@ -249,13 +249,13 @@
 }
 
 .states .map .card.enemy.heroes.selected, .states .map .card.enemy.towers.selected {
-  animation: none;
+  /* animation: none; */
   box-shadow: 0 0 0 10px orangered;
   z-index: 2;
 }
 
 .states .map .card.skills.selected {
-  animation: none;
+  /* animation: none; */
   box-shadow: 0 0 0 6px skyblue;
   z-index: 2;
 }

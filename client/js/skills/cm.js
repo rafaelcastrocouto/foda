@@ -3,10 +3,11 @@ game.skills.cm = {
     cast: function (skill, source, target) {
       var opponent = source.opponent();
       var range = skill.data('aoe range');
+      game.fx.add('slow', source, target);
       target.inRange(range, function (spot) {
         var card = spot.find('.card');
         if (card.hasClass(opponent)) {
-          source.damage(skill.data('damage'), card, skill.data('damage type'));
+          game.timeout(900, source.damage.bind(source, skill.data('damage'), card, skill.data('damage type')));
           source.addBuff(card, skill);
         }
       });

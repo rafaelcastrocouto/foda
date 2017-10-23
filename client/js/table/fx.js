@@ -13,6 +13,7 @@ game.fx = {
       stun: ['stun']
     },
     cm: {
+      slow: ['slow'],
       ult: ['ult', 'ult1', 'ult2', 'ult3']
     }
   },
