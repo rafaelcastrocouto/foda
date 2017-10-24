@@ -20,7 +20,9 @@ game.map = {
       alliesInLine: game.map.alliesInLine,
       opponentsInLine: game.map.opponentsInLine,
       firstSpotInLine: game.map.firstSpotInLine,
+      lastSpotInLine: game.map.lastSpotInLine,
       firstFreeSpotInLine: game.map.firstFreeSpotInLine,
+      lastFreeSpotInLine: game.map.lastFreeSpotInLine,
       firstCardInLine: game.map.firstCardInLine,
       getPosition: game.map.getPosition,
       cardsInRange: game.map.cardsInRange,
@@ -601,6 +603,26 @@ game.map = {
     var source = this,
         dir = source.getDirectionObj(target);
     for (var i = 1; i <= range; i += 1) {
+      var x = game.map.getX(source) + (i * dir.x),
+          y = game.map.getY(source) + (i * dir.y);
+      var spot = game.map.getSpot(x, y);
+      if (spot && spot.hasClass('free') && !spot.hasClass('block')) return spot;
+    }
+  },
+  lastSpotInLine: function (target, range) {
+    var source = this,
+        dir = source.getDirectionObj(target);
+    for (var i = range; i > 0; i -= 1) {
+      var x = game.map.getX(source) + (i * dir.x),
+          y = game.map.getY(source) + (i * dir.y);
+      var spot = game.map.getSpot(x, y);
+      if (spot) return spot;
+    }
+  },
+  lastFreeSpotInLine: function (target, range) {
+    var source = this,
+        dir = source.getDirectionObj(target);
+    for (var i = range; i > 0; i -= 1) {
       var x = game.map.getX(source) + (i * dir.x),
           y = game.map.getY(source) + (i * dir.y);
       var spot = game.map.getSpot(x, y);

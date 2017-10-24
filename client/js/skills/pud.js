@@ -2,29 +2,33 @@ game.skills.pud = {
   hook: {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range'),
-          hooked = source.firstCardInLine(target, range);
+          hooked = source.firstCardInLine(target, range),
+          targetSpot = source.firstFreeSpotInLine(target, 1);
       if (hooked && hooked.hasClasses('heroes units') && !hooked.hasClasses('ghost towers')) {
         hooked.shake();
         if (hooked.side() == source.opponent()) {
           source.damage(skill.data('damage'), hooked, skill.data('damage type'));
           hooked.stopChanneling();
         }
-        var targetSpot = source.firstFreeSpotInLine(target, 1);
-        if (targetSpot && targetSpot.getPosition() != hooked.getPosition()) {
-          var fx = game.fx.add('hook', source, hooked, 'linear');
-          source.addClass('nohighlight');
-          game.lockSelection = true;
-          game.timeout(700, function (hooked, targetSpot, source) {
-            hooked.move(targetSpot);
-            game.timeout(300, function (hooked, source) {
-              game.fx.stop('hook', hooked);
-              source.removeClass('nohighlight');
-              game.lockSelection = false;
-              source.reselect();
-            }.bind(this, hooked, source));
-          }.bind(this, hooked, targetSpot, source));
-        }
+      } else {
+        var last = source.lastFreeSpotInLine(target, range);
+        hooked = $('<div>').addClass('fx ghost').appendTo(last);
       }
+      var fx = game.fx.add('hook', source, hooked, 'linear');
+      source.addClass('nohighlight');
+      game.lockSelection = true;
+      game.timeout(700, function (hooked, targetSpot, source) {
+        if (!hooked.hasClass('ghost') &&
+            targetSpot && 
+            targetSpot.getPosition() != hooked.getPosition()) hooked.move(targetSpot);
+        game.timeout(300, function (hooked, source) {
+          game.fx.stop('hook', hooked);
+          if (hooked.hasClass('ghost')) hooked.remove();
+          source.removeClass('nohighlight');
+          game.lockSelection = false;
+          source.reselect();
+        }.bind(this, hooked, source));
+      }.bind(this, hooked, targetSpot, source));
     }
   },
   rot: {

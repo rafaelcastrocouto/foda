@@ -476,8 +476,10 @@ game.card = {
         target.setCurrentHp(hp);
         target.shake();
       }
-      if (hp < 1)
-        game.timeout(400, game.card.kill.bind(game, evt));
+      if (hp < 1) {
+        target.stopChanneling();
+        game.timeout(400, game.card.kill.bind(game.card, evt));
+      }
       if (type === 'critical') {
         source.data('critical-attack', true);
         game.audio.play('crit');
@@ -535,6 +537,7 @@ game.card = {
     var source = evt.source;
     var spot = target.parent();
     target.setCurrentHp(0);
+    target.stopChanneling();
     if (source.hasClass('heroes') && target.hasClass('heroes')) {
       game[source.side()].kills += 1;
       var kills = source.data('kills') + 1;
@@ -557,17 +560,18 @@ game.card = {
     .bind(evt));
   },
   die: function(evt) {
-    this.trigger('death', evt);
-    this.data('killer', evt.source);
-    if (this.hasClass('selected')) this.unselect();
-    this.stopChanneling();
-    this.clearBuffs();
-    this.addClass('dead').removeClass('target done stunned rooted silenced hexed disabled sleeping cycloned taunted entangled disarmed ai');
-    var pos = evt.position, deaths, spot = $('#' + pos), side = this.side();
+    var dead = this;
+    dead.trigger('death', evt);
+    dead.data('killer', evt.source);
+    if (dead.hasClass('selected')) dead.unselect();
+    dead.stopChanneling();
+    dead.clearBuffs();
+    dead.addClass('dead').removeClass('target done stunned rooted silenced hexed disabled sleeping cycloned taunted entangled disarmed ai');
+    var pos = evt.position, deaths, spot = $('#' + pos), side = dead.side();
     if (!spot.hasClass('cript')) {
       spot.addClass('free');
     }
-    if (this.hasClass('heroes')) {
+    if (dead.hasClass('heroes')) {
       if (!spot.hasClass('cript')) {
         var damage = game.heroDeathDamage;
         var final = game[side].tower.data('current hp') - damage;
@@ -576,40 +580,53 @@ game.card = {
           evt.source.damage(damage, game[side].tower, game.data.ui.pure);
         var duration = game.deadLength;
         if (game.mode === 'library') duration = 0;
-        this.data('reborn', game.time + duration);
+        dead.data('reborn', game.time + duration);
         game[side].tower.selfBuff({
-          buffId: this.data('hero')+'-death',
-          className: this.data('hero') + ' heroes ' + this.data('hero')+'-death',
-          name: this.data('name'),
+          buffId: dead.data('hero')+'-death',
+          className: dead.data('hero') + ' heroes ' + dead.data('hero')+'-death',
+          name: dead.data('name'),
           description: game.data.ui.death,
           temp: true,
           duration: duration + 1
         }, false /*no extra buffs*/, true /*force tower buff*/);
       }
-      deaths = this.data('deaths') + 1;
-      this.data('deaths', deaths);
-      this.find('.deaths').text(deaths);
-      if (this.hasClass('player')) {
-        this.appendTo(game.player.heroesDeck);
-      } else if (this.hasClass('enemy')) {
-        this.appendTo(game.enemy.heroesDeck);
+      $('.card', game[side].skills.hand).each(function (i, el) {
+        var skill = $(el);
+        if (skill.data('deck') === game.data.ui.temp) {
+          skill.discard();
+        }
+      });
+      $('.card', game[side].skills.sidehand).each(function (i, el) {
+        var skill = $(el);
+        if (skill.hasClass('on')) {
+          game.skills[skill.data('hero')][skill.data('skill')].toggle(skill, dead);
+        }
+        skill.removeClass('on channel-on');
+      });
+      deaths = dead.data('deaths') + 1;
+      dead.data('deaths', deaths);
+      dead.find('.deaths').text(deaths);
+      if (dead.hasClass('player')) {
+        dead.appendTo(game.player.heroesDeck);
+      } else if (dead.hasClass('enemy')) {
+        dead.appendTo(game.enemy.heroesDeck);
       }
-    } else if (this.hasClass('towers')) {
-      if (this.hasClass('player')) {
+    } else if (dead.hasClass('towers')) {
+      if (dead.hasClass('player')) {
         if (game[game.mode].lose)
           game[game.mode].lose();
-      } else if (this.hasClass('enemy')) {
+      } else if (dead.hasClass('enemy')) {
         if (game[game.mode].win)
           game[game.mode].win();
       }
-    } else if (this.hasClass('units')) {
-      if (!this.hasClass('ld-summon') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
+    } else if (dead.hasClass('units')) {
+      if (!dead.hasClass('ld-summon') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
         evt.source.damage(game.creepDeathDamage, game[side].tower, game.data.ui.pure);
-      this.appendTo(game.hidden);
+      dead.appendTo(game.hidden);
     } else {
-      this.appendTo(game.hidden);
+      dead.appendTo(game.hidden);
     }
-    return this;
+    return dead;
   },
   reborn: function(spot) {
     if (spot && spot.hasClass)

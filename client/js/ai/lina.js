@@ -5,6 +5,7 @@ game.heroesAI.lina = {
   play: function (card, cardData) {
     var fire = $('.enemydecks .hand .skills.lina-fire');
     var stun = $('.enemydecks .hand .skills.lina-stun');
+    var ult = $('.enemydecks .hand .skills.lina-ult');
     if (!$('.map .enemy.lina').length) {
      fire.data('ai discard', fire.data('ai discard') + 1);
      stun.data('ai discard', stun.data('ai discard') + 1);
@@ -48,7 +49,6 @@ game.heroesAI.lina = {
         }
       });
     }
-    var ult = $('.enemydecks .hand .skills.lina-ult');
     if (ult.length) {
       cardData['can-cast'] = true;
       card.opponentsInRange(ult.data('cast range'), function (cardInRange) {

@@ -4,6 +4,7 @@ game.heroesAI.am = {
   },
   play: function (card, cardData) {
     var blinks = $('.enemydecks .hand .skills.am-blink');
+    var ult = $('.enemydecks .hand .skills.am-ult');
     if (!$('.map .enemy.am').length) {
       blinks.each(function (i, el) {
         var skill = $(el);
@@ -61,7 +62,6 @@ game.heroesAI.am = {
         });
       }
     }
-    var ult = $('.enemydecks .hand .skills.am-ult');
     if (ult.length && card.canCast(ult)) {
         /*opponent missing cards < N ||*/
         /*N ememies in target range ||*/

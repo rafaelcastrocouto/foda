@@ -28,19 +28,19 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   src: local('Sansita One'), local('SansitaOne'), url('../fonts/Sansita-One.woff2') format('woff2'), url('../fonts/Sansita-One.woff') format('woff');
 }
 
-.tutorial .battle, .versus, .log b, .rank li {
+.card .buffs .buff span, .tutorial .battle, .versus, .log b, .rank li {
   font-family: "Sansita One";
 }
 
 @font-face {
-  font-family: 'Brush Stroke';
+  font-family: 'OssBold';
   font-style: normal;
   font-weight: 400;
-  src: local('Brush Stroke Regular Std'), local('Brush Stroke Regular'), url('../fonts/Brush-Stroke-Regular.woff2') format('woff2'), url('../fonts/Brush-Stroke-Regular.woff') format('woff');
+  src: local('OssBold'), url('../fonts/OssBold.woff2') format('woff2'), url('../fonts/OssBold.woff') format('woff');
 }
 
 .card .damaged, .card .heal, .card .missed, .game-overlay .version {
-  font-family: "Brush Stroke";
+  font-family: "OssBold";
 }
 
 input[type="text"] {
