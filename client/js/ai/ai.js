@@ -182,6 +182,10 @@ game.ai = {
     if (card.data('current hp') < card.data('hp')/3) {
       cardData.strats.retreat += 20;
     }
+    if (card.canMove()) {
+      cardData['can-move'] = true;
+      cardData['can-make-action'] = true;
+    }
     card.inRange(range, function (spot) {
       if (card.canAttack()) { 
         if (side == 'player') {
@@ -193,8 +197,10 @@ game.ai = {
         var opponentCard = $('.card.'+opponent+':not(.invisible, .dead, .ghost)', spot);
         if (opponentCard.length) {
           //there is one opponent in range 
-          cardData['can-attack'] = true;
-          cardData['can-make-action'] = true;
+          if (card.canAttack()) {
+            cardData['can-attack'] = true;
+            cardData['can-make-action'] = true;
+          }
           // attack target
           cardData.strats.attack += 10;
           cardData['attack-targets'].push({
@@ -240,7 +246,7 @@ game.ai = {
       if (game.player.tower.data('current hp') > 3) cardData.strats.retreat += 10;
     }
     // move strats
-    if (card.canMove() && side == 'enemy') {
+    if (side == 'enemy') {
       var x = spot.getX(), y = spot.getY();
       // advance
       var bot = game.map.getSpot(x, y + 1);
@@ -252,6 +258,7 @@ game.ai = {
       var right = game.map.getSpot(x + 1, y);
       var tr = game.map.getSpot(x + 1, y - 1);
       var tl = game.map.getSpot(x - 1, y - 1);
+      // todo: speed bonus
       // advance
       if (bot && bot.hasClass('free')) {
         cardData = game.ai.spotData(cardData, bot, side, 'advance', 6);
@@ -285,21 +292,22 @@ game.ai = {
   spotData: function (cardData, spot, side, destiny, priority) {
     var spotData = spot.data('ai');
     priority += spotData.priority;
-    cardData['can-move'] = true;
-    cardData.strats.move += 2;
     if (spot.hasClass(side+'area')) priority += 10;
     var opponent = game.opponent(side);
     if (spot.hasClass(opponent+'area')) {
       if (game.player.tower.data('current hp') > 3) priority -= 15;
       else priority += 10;
     }
-    if (destiny == 'advance') cardData.strats.offensive += (priority/2);
-    if (destiny == 'retreat') cardData.strats.defensive += (priority/2);
-    cardData['can-'+destiny] = true;
     var o = {
       target: spot,
       priority: priority
     };
+    if (card.canMove()) {
+      cardData.strats.move += 2;
+      if (destiny == 'advance') cardData.strats.offensive += (priority/2);
+      if (destiny == 'retreat') cardData.strats.defensive += (priority/2);
+      cardData['can-'+destiny] = true;
+    }
     cardData.destinys.push(o);
     if (!cardData[destiny]) cardData[destiny] = [];
     cardData[destiny].push(o);
@@ -463,12 +471,14 @@ game.ai = {
     }
   },
   chooseDestiny: function (card, cardData, action) {
-    var destinys = cardData.destinys;
-    // filter advance and retreat spots
-    if (action && cardData[action]) destinys = cardData[action];
-    //console.log(action, destinys);
-    if (destinys.length) {
-      return game.ai.choose(destinys);
+    if (card.canMove()) {
+      var destinys = cardData.destinys;
+      // filter advance and retreat spots
+      if (action && cardData[action]) destinys = cardData[action];
+      //console.log(action, destinys);
+      if (destinys.length) {
+        return game.ai.choose(destinys);
+      }
     }
   },
   chooseTarget: function (targets) {
@@ -529,6 +539,7 @@ game.ai = {
     card.data('ai', cardData);
   },
   checkAttack: function (card) { 
+    //check instant attack buffs
     game.ai.buildData(card);
     var cardData = card.data('ai');
     if (cardData['can-attack']) {

@@ -12,7 +12,7 @@ game.heroesAI.am = {
         skill.data('ai discard', d);
       });
     }
-    if (blinks.length && card.canCast(blinks)) {
+    if (card.canCast(blinks.first())) {
       cardData['can-cast'] = true;
       // use blink to attack
       if (!card.hasClass('done') && !cardData['can-attack'] && card.data('current hp') > 25) {
@@ -62,14 +62,14 @@ game.heroesAI.am = {
         });
       }
     }
-    if (ult.length && card.canCast(ult)) {
+    if (card.canCast(ult)) {
         /*opponent missing cards < N ||*/
         /*N ememies in target range ||*/
         /*after N turns*/
-      cardData['can-cast'] = true;
       card.inRange(ult.data('cast range'), function (spot) {
         var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
+          cardData['can-cast'] = true;
           var targets = 0;
           if (!cardInRange.hasClass('towers') && cardInRange.data('mana')) {
             cardInRange.around(2, function (nspot) {

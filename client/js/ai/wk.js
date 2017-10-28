@@ -4,7 +4,7 @@ game.heroesAI.wk = {
   },
   play: function (card, cardData) {
     var stun = $('.enemydecks .hand .skills.wk-stun');
-    if (stun.length) {
+    if (card.canCast(stun)) {
       cardData['can-cast'] = true;
       card.opponentsInRange(stun.data('cast range'), function (cardInRange) {
         if (!cardInRange.hasClass('invisible ghost dead towers')) {

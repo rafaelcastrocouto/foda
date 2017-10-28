@@ -13,7 +13,7 @@ game.heroesAI.kotl = {
      illuminate.data('ai discard', illuminate.data('ai discard') + 1);
      leak.data('ai discard', leak.data('ai discard') + 1);
     }
-    if (illuminate.length) {
+    if (card.canCast(illuminate)) {
       cardData['can-cast'] = true;
       var range = illuminate.data('aoe range');
       var width = illuminate.data('aoe width');
@@ -32,11 +32,11 @@ game.heroesAI.kotl = {
         }
       });
     }
-    if (leak.length) {
-      cardData['can-cast'] = true;
+    if (card.canCast(leak)) {
       card.opponentsInRange(leak.data('cast range'), function (cardInRange) {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           if (cardInRange.hasClass('heroes')) {
+            cardData['can-cast'] = true;
             cardData['cast-strats'].push({
               priority: cardInRange.data('mana') * 10,
               skill: 'leak',
@@ -46,7 +46,8 @@ game.heroesAI.kotl = {
         }
       });
     }
-    if (mana.length) {
+    if (card.canCast(mana)) {
+      cardData['can-cast'] = true;
       if (game[card.side()].skills.hand.children().length < 8) {
         cardData['cast-strats'].push({
           priority: 50,
@@ -55,14 +56,15 @@ game.heroesAI.kotl = {
         });
       }
     }
-    if (ult.length) {
+    if (card.canCast(ult)) {
+      cardData['can-cast'] = true;
       cardData['cast-strats'].push({
         priority: 60,
         skill: 'ult',
         target: card
       });
     }
-    if (blind.length) {
+    if (card.canCast(blind)) {
       cardData['can-cast'] = true;
       card.around(blind.data('cast range'), function (spot) {
         var targets = 0, p = cardData['can-attack'] ? 15 : 0;
@@ -82,9 +84,10 @@ game.heroesAI.kotl = {
         }
       });
     }
-    if (recall.length) {
+    if (card.canCast(recall)) {
       var allies = $('.map .card.'+card.side()+':not(ghost dead towers)');
       if (allies.length) {
+        cardData['can-cast'] = true;
         $.each(allies, function (i, el) {
           var ally = $(el);
           var hp = ally.data('current hp') / ally.data('hp');
@@ -98,6 +101,7 @@ game.heroesAI.kotl = {
         });
       }
     }
+    card.data('ai', cardData);
   },
   defend: function (kotl) {
     //console.log('defend-from-kotl');

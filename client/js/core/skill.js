@@ -50,9 +50,11 @@ game.skill = {
     game[side].cardsPerTurn = Math.round(game[side].mana / 5);
   },
   canCast: function (skill) {
-    var c = !this.hasClasses('dead stunned silenced hexed disabled sleeping cycloned taunted');
-    if ( skill.hasClass('am-blink') && this.hasClass('rooted') ) c = false;
-    return c;
+    if (skill) {
+      var c = !this.hasClasses('dead stunned silenced hexed disabled sleeping cycloned taunted');
+      if ( skill.hasClass('am-blink') && this.hasClass('rooted') ) c = false;
+      return c;
+    }
   },
   cast: function (skill, target) {
     var source = this, targets, duration, channeler, channelDuration,

@@ -10,7 +10,7 @@ game.heroesAI.pud = {
     if (!$('.map .enemy.pud').length) {
      hook.data('ai discard', hook.data('ai discard') + 1);
     }
-    if (hook.length) {
+    if (card.canCast(hook)) {
       cardData['can-cast'] = true;
       var range = hook.data('aoe range');
       card.around(1, function (spot) {
@@ -26,7 +26,8 @@ game.heroesAI.pud = {
         }
       });
     }
-    if (rot.length) {
+    if (card.canCast(rot)) {
+      cardData['can-cast'] = true;
       var targets = 0;
       p = 0;
       card.opponentsInRange(rot.data('aoe range'), function (cardInRange) {
@@ -36,7 +37,14 @@ game.heroesAI.pud = {
       if (!rot.hasClass('on')) { // turn on
         if (targets > 1) {
           cardData['cast-strats'].push({
-            priority: p,
+            priority: p + 10,
+            skill: 'rot',
+            target: card
+          });
+        } else if (card.data('current hp') < 5) {
+          // deny
+          cardData['cast-strats'].push({
+            priority: 30,
             skill: 'rot',
             target: card
           });
@@ -51,17 +59,20 @@ game.heroesAI.pud = {
         }
       }
     }
-    if (ult.length) {
+    if (card.canCast(ult)) {
       p = cardData['can-attack'] ? 0 : 50;
       card.opponentsInRange(rot.data('aoe range'), function (cardInRange) {
-        if (!cardInRange.hasClasses('invisible ghost dead towers'))
-        cardData['cast-strats'].push({
-          priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
-          skill: 'ult',
-          target: cardInRange
-        });
+        if (!cardInRange.hasClasses('invisible ghost dead towers')) {
+          cardData['can-cast'] = true;
+          cardData['cast-strats'].push({
+            priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
+            skill: 'ult',
+            target: cardInRange
+          });
+        }
       });
     }
+    card.data('ai', cardData);
   },
   defend: function (pud) {
     //console.log('defend-from-pud');

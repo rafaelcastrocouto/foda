@@ -1,19 +1,21 @@
-game.heroesAI.lina = {
+game.heroesAI.wind = {
   move: {
-    default: 'defensive'
+    default: 'smart'
   },
   play: function (card, cardData) {
-    var fire = $('.enemydecks .hand .skills.lina-fire');
+    var arrow = $('.enemydecks .hand .skills.lina-arrow');
     var stun = $('.enemydecks .hand .skills.lina-stun');
+    var run = $('.enemydecks .hand .skills.lina-run');
     var ult = $('.enemydecks .hand .skills.lina-ult');
     if (!$('.map .enemy.lina').length) {
-     fire.data('ai discard', fire.data('ai discard') + 1);
+     arrow.data('ai discard', arrow.data('ai discard') + 1);
      stun.data('ai discard', stun.data('ai discard') + 1);
+     run.data('ai discard', run.data('ai discard') + 1);
     }
-    if (card.canCast(fire)) {
+    if (card.canCast(arrow)) {
       cardData['can-cast'] = true;
-      var range = fire.data('aoe range');
-      var width = fire.data('aoe width');
+      var range = arrow.data('aoe range');
+      var width = arrow.data('aoe width');
       card.around(1, function (spot) {
         var targets = 0, p = cardData['can-attack'] ? 15 : 0;
         card.opponentsInLine(spot, range, width, function (cardInRange) {
@@ -23,40 +25,40 @@ game.heroesAI.lina = {
         if (targets > 1) {
           cardData['cast-strats'].push({
             priority: p,
-            skill: 'fire',
+            skill: 'arrow',
             target: spot
           });
         }
       });
     }
     if (card.canCast(stun)) {
-      cardData['can-cast'] = true;
-      card.around(stun.data('cast range'), function (spot) {
-        var targets = 0, p = cardData['can-attack'] ? 15 : 0;
-        spot.around(stun.data('aoe range'), function (nspot) {
-          var cardInRange = $('.card.player', nspot);
-          if (cardInRange.length) {
-            targets++;
-            p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
-          }
-        });
-        if (targets > 1) {
+      card.opponentsInRange(stun.data('cast range'), function (cardInRange) {
+        if (!cardInRange.hasClass('invisible ghost dead towers')) {
+          cardData['can-cast'] = true;
           cardData['cast-strats'].push({
-            priority: p,
+            priority: 50 - (cardInRange.data('current hp')/2),
             skill: 'stun',
-            target: spot
+            target: cardInRange
           });
         }
       });
     }
+    if (card.canCast(run)) {
+      cardData['can-cast'] = true;
+      var p = 10;
+      if (cardData['can-be-attacked']) p = 40;
+      cardData['cast-strats'].push({
+        priority: p,
+        skill: 'run',
+        target: card
+      });
+    }
     if (card.canCast(ult)) {
       card.opponentsInRange(ult.data('cast range'), function (cardInRange) {
-        if (!cardInRange.hasClasses('invisible ghost dead towers')) {
+        if (!cardInRange.hasClass('invisible ghost dead towers')) {
           cardData['can-cast'] = true;
-          var p = (50 - cardInRange.data('current hp'))/4;
-          if (cardInRange.hasClass('units')) p -= 25;
           cardData['cast-strats'].push({
-            priority: p,
+            priority: 50 - (cardInRange.data('current hp')/2),
             skill: 'ult',
             target: cardInRange
           });
@@ -65,10 +67,8 @@ game.heroesAI.lina = {
     }
     card.data('ai', cardData);
   },
-  defend: function (cm) {
-    //console.log('defend-from-cm');
-    /*
-    prevent clustering
-    */
+  defend: function (card, cardData) {
+
+    //card.data('ai', cardData);
   }
 };

@@ -15,7 +15,7 @@ game.heroesAI.cm = {
       slow.data('ai discard', slow.data('ai discard') + 1);
       freeze.data('ai discard', freeze.data('ai discard') + 1);
     }
-    if (slow.length && card.canCast(slow)) {
+    if (card.canCast(slow)) {
       cardData['can-cast'] = true;
       card.inRange(slow.data('cast range'), function (spot) {
         var targets = 0, p = 10;
@@ -35,11 +35,11 @@ game.heroesAI.cm = {
         }
       });
     }
-    if (freeze.length && card.canCast(freeze)) {
-      cardData['can-cast'] = true;
+    if (card.canCast(freeze)) {
       card.inRange(freeze.data('cast range'), function (spot) {
         var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
+          cardData['can-cast'] = true;
           cardData['cast-strats'].push({
             priority: parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'freeze',
@@ -48,7 +48,8 @@ game.heroesAI.cm = {
         }
       });
     }
-    if (ult.length) {
+    if (card.canCast(ult)) {
+      cardData['can-cast'] = true;
       var targets = 0, p = cardData['can-attack'] ? 50 : -50;
       card.opponentsInRange(ult.data('aoe range'), function (cardInRange) {
         targets++;

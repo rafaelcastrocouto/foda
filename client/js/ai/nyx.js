@@ -13,7 +13,7 @@ game.heroesAI.nyx = {
      spike.data('ai discard', spike.data('ai discard') + 1);
     }
     // siege if has spike
-    if (spike.length) {
+    if (card.canCast(spike)) {
       cardData.strats.siege += 15;
       cardData['can-cast'] = true;
       cardData['cast-strats'].push({
@@ -23,7 +23,7 @@ game.heroesAI.nyx = {
       });
     }
     // stun if 1 or more enemies are aligned
-    if (stun.length) {
+    if (card.canCast(stun)) {
       cardData['can-cast'] = true;
       var range = stun.data('aoe range');
       var width = stun.data('aoe width');
@@ -43,10 +43,10 @@ game.heroesAI.nyx = {
       });
     }
     //mana burn
-    if (burn.length) {
-      cardData['can-cast'] = true;
+    if (card.canCast(burn)) {
       card.opponentsInRange(burn.data('cast range'), function (cardInRange) {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
+          cardData['can-cast'] = true;
           cardData['cast-strats'].push({
             priority: cardInRange.data('mana'),
             skill: 'burn',
@@ -56,7 +56,7 @@ game.heroesAI.nyx = {
       });
     }
     //ult
-    if (ult.length) {
+    if (card.canCast(ult)) {
       cardData.strats.siege += 15;
       cardData['can-cast'] = true;
       cardData['cast-strats'].push({
