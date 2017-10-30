@@ -14,6 +14,7 @@ game.fx = {
     },
     cm: {
       slow: ['slow'],
+      freeze: ['freeze'],
       ult: ['ult', 'ult1', 'ult2', 'ult3']
     }
   },
@@ -46,9 +47,12 @@ game.fx = {
   imgs: [],
   add: function(name, source, target, tag) {
     if (!target) target = source;
-    var hero = source.data('hero');
-    //console.log(game.fx.heroes[hero][name])
-    if (game.fx.heroes[hero][name]) {
+    var a = name.split('-');
+    var hero = a[0];
+    var skill = a[1];
+    //console.log(game.fx.heroes[hero][skill])
+    if (game.fx.heroes[hero][skill]) {
+      game.fx.stop(name, source);
       var fx = $('<div>').addClass(name + ' fx fx-' + hero);
       var dirX = source.getX() - target.getX();
       var dirY = source.getY() - target.getY();
@@ -57,14 +61,14 @@ game.fx = {
         fx.addClass(dir + ' d'+ Math.abs(dirX || dirY));
       }
       if (tag == 'rotate') {
-        if (Math.abs(dirX) > 1 || Math.abs(dirY) > 1) fx.addClass(name + '-far');
-        else fx.addClass(name + '-close');
+        if (Math.abs(dirX) > 1 || Math.abs(dirY) > 1) fx.addClass('far');
+        else fx.addClass('close');
         fx.addClass('r' + dirX + dirY);
       }
       if (tag == 'random') {
-        var n = game.fx.heroes[hero][name].length;
+        var n = game.fx.heroes[hero][skill].length;
         var r = Math.floor(Math.random() * n);
-        if (r) fx.addClass(name+r);
+        if (r) fx.addClass(skill+r);
         game.timeout(Math.random() * 600, function (fx, target) {
           fx.appendTo(target);
           game.fx.play(fx);
@@ -74,9 +78,7 @@ game.fx = {
         fx.appendTo(target);
         game.fx.play(fx);
       }
-      fx.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () {
-          this.remove();
-        });
+      if (tag != 'keep') fx.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () { this.remove(); });
       target.closest('.card').reselect();
       return fx;
     }

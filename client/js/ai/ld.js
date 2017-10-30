@@ -44,6 +44,7 @@ game.heroesAI.ld = {
       p = 0;
       card.opponentsInRange(roar.data('aoe range'), function (cardInRange) {
         p += 10;
+        if (cardInRange.hasClass('channeling')) p += 20;
       });
       if (p) cardData['cast-strats'].push({
         priority: p,

@@ -14,7 +14,7 @@ game.skills.pud = {
         var last = source.lastFreeSpotInLine(target, range);
         hooked = $('<div>').addClass('fx ghost').appendTo(last);
       }
-      var fx = game.fx.add('hook', source, hooked, 'linear');
+      var fx = game.fx.add('pud-hook', source, hooked, 'linear');
       source.addClass('nohighlight');
       game.lockSelection = true;
       game.timeout(700, function (hooked, targetSpot, source) {
@@ -22,7 +22,7 @@ game.skills.pud = {
             targetSpot && 
             targetSpot.getPosition() != hooked.getPosition()) hooked.move(targetSpot);
         game.timeout(300, function (hooked, source) {
-          game.fx.stop('hook', hooked);
+          game.fx.stop('pud-hook', hooked);
           if (hooked.hasClass('ghost')) hooked.remove();
           source.removeClass('nohighlight');
           game.lockSelection = false;

@@ -1,7 +1,7 @@
 game.skills.lina = {
   fire: {
     cast: function (skill, source, target) {
-      game.fx.add('fire', source, target, 'linear');
+      game.fx.add('lina-fire', source, target, 'linear');
       var range = skill.data('aoe range');
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
@@ -15,7 +15,7 @@ game.skills.lina = {
       var range = skill.data('aoe range');
       var opponent = source.opponent();
       var damage = skill.data('damage');
-      game.fx.add('stun', source, target);
+      game.fx.add('lina-stun', source, target);
       target.cardsInRange(range, function (card) {
         if (card.hasClass(opponent)) {
           game.timeout(900, source.damage.bind(source, damage, card, skill.data('damage type')));
@@ -38,7 +38,7 @@ game.skills.lina = {
       var bonus = buff.data('cast damage bonus') || 0;
       if (!$('span', buff).length) buff.append($('<span>').text(bonus));
       else $('span', buff).text(bonus + Number($('span', buff).text()));
-      game.fx.add('passive', source, buff);
+      game.fx.add('lina-passive', source, buff);
       source.setDamage(source.data('current damage') + bonus);
       source.on('turnend.passive', game.skills.lina.passive.turnend);
     },
@@ -49,12 +49,12 @@ game.skills.lina = {
       source.setDamage(source.data('current damage') - bonus);
       source.off('turnend.passive');
       $('span', buff).remove();
-      game.fx.stop('passive', source);
+      game.fx.stop('lina-passive', source);
     }
   },
   ult: {
     cast: function (skill, source, target) {
-      game.fx.add('ult', source, target, 'rotate');
+      game.fx.add('lina-ult', source, target, 'rotate');
       game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
     }
   }

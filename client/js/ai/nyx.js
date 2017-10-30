@@ -32,6 +32,7 @@ game.heroesAI.nyx = {
         card.opponentsInLine(spot, range, width, function (cardInRange) {
           targets++;
           p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          if (cardInRange.hasClass('channeling')) p += 20;
         });
         if (targets > 1) {
           cardData['cast-strats'].push({

@@ -68,19 +68,22 @@ game.heroesAI.am = {
         /*after N turns*/
       card.inRange(ult.data('cast range'), function (spot) {
         var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
+        var p = 20;
         if (cardInRange.length) {
           cardData['can-cast'] = true;
           var targets = 0;
           if (!cardInRange.hasClass('towers') && cardInRange.data('mana')) {
+            if (cardInRange.hasClass('channeling')) p += 20;
             cardInRange.around(2, function (nspot) {
               var sectarget = $('.card.player', nspot);
               if (sectarget.length) {
                 targets++;
+                if (sectarget.hasClass('channeling')) p += 20;
               }
             });
             var mana = (cardInRange.data('mana') || 0) * 3;
             cardData['cast-strats'].push({
-              priority: 20 + (targets * 8) + mana,
+              priority: p + (targets * 8) + mana,
               skill: 'ult',
               target: cardInRange
             });

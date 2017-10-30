@@ -3,7 +3,7 @@ game.skills.cm = {
     cast: function (skill, source, target) {
       var opponent = source.opponent();
       var range = skill.data('aoe range');
-      game.fx.add('slow', source, target);
+      game.fx.add('cm-slow', source, target);
       target.inRange(range, function (spot) {
         var card = spot.find('.card');
         if (card.hasClass(opponent)) {
@@ -40,6 +40,7 @@ game.skills.cm = {
       source.damage(buff.data('dot'), target, buff.data('damage type'));
       buff.on('buffcount', this.buffcount);
       buff.on('expire', this.expire);
+      game.timeout(400, game.fx.add.bind(this, 'cm-freeze', source, target, 'keep'));
     },
     buffcount: function (event, eventdata) {
       var target = eventdata.target;
@@ -50,6 +51,7 @@ game.skills.cm = {
     },
     expire: function (event, eventdata) {
       var target = eventdata.target;
+      game.fx.stop('cm-freeze', target);
       target.removeClass('rooted disarmed');
     }
   },
@@ -74,7 +76,7 @@ game.skills.cm = {
       source.opponentsInRange(range, function (target) {
         game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
         source.addBuff(target, skill, 'ult-targets');
-        game.fx.add('ult', source, target, 'random');
+        game.fx.add('cm-ult', source, target, 'random');
       });
     },
     channelend: function (event, eventdata) {

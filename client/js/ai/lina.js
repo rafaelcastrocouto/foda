@@ -38,6 +38,7 @@ game.heroesAI.lina = {
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          if (cardInRange.hasClass('channeling')) p += 20;
           }
         });
         if (targets > 1) {
