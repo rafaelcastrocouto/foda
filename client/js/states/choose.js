@@ -5,7 +5,7 @@ game.states.choose = {
     this.pickedbox = $('<div>').addClass('pickedbox').hide();
     this.slots = this.buildSlots();
     this.counter = $('<p>').addClass('counter').hide().appendTo(this.pickedbox);
-    this.pickDeck = this.buildDeck();
+    game.library.buildSkills(game.states.choose.buildDeck);
     this.buttonbox = $('<div>').addClass('buttonbox');
     this.back = $('<div>').addClass('back button').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
     this.intro = $('<div>').addClass('intro button').text(game.data.ui.intro).on('mouseup touchend', game.library.showIntro).appendTo(this.buttonbox);
@@ -23,23 +23,16 @@ game.states.choose = {
     if (game.mode != 'library') this.selectFirst();
     if (game.mode && game[game.mode].chooseStart) game[game.mode].chooseStart(hero);
   },
-  buildDeck: function (pickDeck) {
-    game.library.buildSkills();
+  buildDeck: function (libdeck) {
     return game.deck.build({
       name: 'heroes', 
       cb: function (pickDeck) {
+        game.states.choose.pickDeck = pickDeck;
         pickDeck.addClass('pickdeck').appendTo(game.states.choose.pickbox);
         $.each(pickDeck.data('cards'), function (i, card) {
           card[0].dataset.index = i;
           if (card.data('disable')) card.addClass('dead');
           card.on('mousedown.choose touchstart.choose', game.states.choose.select);
-          var hero = card.data('hero');
-          $('.library.skills .card.'+hero).each(function (i, el) {
-            var skill = $(el);
-            if (skill.data('deck') == game.data.ui.buy) {
-              card.selfBuff(skill, null, 'fxOff'); 
-            }
-          });
         });
         pickDeck.width(game.states.choose.size + $('.card').width() * pickDeck.children(':visible').length);
         $('.pickbox .card.dead').each(function (i, card) {

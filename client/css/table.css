@@ -148,6 +148,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
+  background-color: rgba(0,0,0,0.5);
 }
 
 .left-side .table .camera {

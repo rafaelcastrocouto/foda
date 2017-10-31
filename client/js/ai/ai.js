@@ -553,7 +553,7 @@ game.ai = {
     }
   },
   summon: function (card) {
-    var creep = card.data('type');
+    var creep = card.data('unit');
     var enemyarea = $('.spot.free.enemyarea');
     var spots = [];
     enemyarea.each(function () {

@@ -68,19 +68,19 @@ noscript {
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   color: #fff;
-  background-image: url("../img/banner.jpg");
+  /* background-image: url("../img/banner.jpg"); */
   background-size: cover;
   background-position: 50%;
   background-color: #859890;
   overflow: hidden;
 }
 
-.game-container.menu-state,
-.game-container.campaign-state, 
-.game-container.choose-state, 
-.game-container.vs-state, 
-.game-container.table-state,
-.game-container.result-state {
+.game-container.menu-state .states,
+.game-container.campaign-state .states,
+.game-container.choose-state .states,
+.game-container.vs-state .states,
+.game-container.table-state .states,
+.game-container.result-state .states {
   background-color: #126766;
   background-image: url("../img/bkg/polygon-dark.jpg");
 }
@@ -298,8 +298,12 @@ noscript .box {
   line-height: 22px;
 }
 
-.states, .state {
+.states {
+  background-image: url(../img/banner.jpg);
   background-size: cover;
+}
+
+.states, .state {
   width: 970px;
   height: 600px;
   position: absolute;

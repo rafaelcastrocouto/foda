@@ -2,36 +2,39 @@
   "creeps":{
     "melee": {
       "name": "Melee Creep",
-      "attribute": "Creeps"
+      "attribute": "Summon",
+      "description": "Basic creep unit, can attack, push lanes and block path"
     },
     "ranged": {
       "name": "Ranged Creep",
-      "attribute": "Creeps"
+      "attribute": "Summon",
+      "description": "Ranged creep unit, can attack from distance and block path"
     },
     "catapult": {
       "name": "Catapult",
-      "attribute": "Creeps"
+      "attribute": "Summon",
+      "description": "Long range creep unit, can safely attack the enemy tower"
     }
   },
   "forest":{
     "cent": {
       "name": "Centaur",
-      "attribute": "Jungle Creep",
+      "attribute": "Summon",
       "description": "Centaur Jungle Creep with Radial Area of Effect stun skill"
      },
     "golem": {
       "name": "Golem",
-      "attribute": "Jungle Creep",
+      "attribute": "Summon",
       "description": "Golem Jungle Creep with target unit stun skill"
     },
     "tomato": {
       "name": "Tomato",
-      "attribute": "Jungle Creep",
+      "attribute": "Summon",
       "description": "Tomato Jungle Creep with Radial Area of Effect damage skill"
     },
     "satyr": {
       "name": "Satyr",
-      "attribute": "Jungle Creep",
+      "attribute": "Summon",
       "description": "Tomato Jungle Creep with Linear Area of Effect damage skill"
     }
   }

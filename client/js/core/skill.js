@@ -34,7 +34,7 @@ game.skill = {
           } else skill.attr({ title: '' }).addClass('flipped');
           if (skill.data('deck') === game.data.ui.summon) skill.appendTo(game[side].unitsDeck);
           if (skill.data('deck') === game.data.ui.temp) skill.appendTo(game[side].skills.temp);
-          if (skill.data('skill') === 'ult') skill.appendTo(game[side].skills.ult);
+          if (skill.data('deck') === 'ult') skill.appendTo(game[side].skills.ult);
         }.bind(side));
         //deck.shuffleDeck();
         game[side].skills.deck = deck;
@@ -250,7 +250,7 @@ game.skill = {
       this.trigger('discard', {target: this});
       var side = this.side();
       if (this.data('deck') === game.data.ui.temp) this.appendTo(game[side].skills.temp);
-      else if (this.data('deck') === game.data.ui.summon) this.appendTo(game.hidden);
+      else if (this.data('type') === game.data.ui.summon) this.appendTo(game.hidden);
       else if (!this.data('cancel-discard')) this.appendTo(game[side].skills.cemitery);
       else this.data('cancel-discard', false);
       if (side == 'enemy') {

@@ -349,7 +349,7 @@
     "summon": {
       "name": "Invocar oso",
       "summon name": "Oso",
-      "type": "Activo",
+      "type": "Convocar",
       "hand": "Derecha",
       "deck": "Convocar",
       "targets": "Lugar",

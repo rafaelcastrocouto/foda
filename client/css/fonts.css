@@ -18,7 +18,7 @@ body, p, noscript, .card h1, .rank span {
 }
 
 h1, h2, .button, .option-state span, .topbar *, .choose .counter {
-  font-family: "Julius Sans One";
+  font-family: "Julius Sans One", sans-serif;
 }
 
 @font-face {
@@ -29,7 +29,7 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
 }
 
 .card .buffs .buff span, .tutorial .battle, .versus, .log b, .rank li {
-  font-family: "Sansita One";
+  font-family: "Sansita One", serif;
 }
 
 @font-face {
@@ -40,7 +40,7 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
 }
 
 .card .damaged, .card .heal, .card .missed, .game-overlay .version {
-  font-family: "OssBold";
+  font-family: "OssBold", Impact, sans-serif;
 }
 
 input[type="text"] {

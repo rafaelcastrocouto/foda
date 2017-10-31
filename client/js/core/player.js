@@ -121,7 +121,7 @@ game.player = {
     var skillid = skill.data('skill');
     if (game.canPlay() && hero && skillid && from && to) {
       source.cast(skill, to);
-      if (skill.data('deck') == game.data.ui.summon) {
+      if (skill.data('type') == game.data.ui.summon) {
         target.addClass('done').removeClass('draggable');
       }
       if (game.mode == 'online')
@@ -138,7 +138,7 @@ game.player = {
   summonCreep: function(event) {
     var target = $(this);
     var to = target.getPosition();
-    var creep = game.selectedCard.data('type');
+    var creep = game.selectedCard.data('unit');
     if (game.canPlay()) {
       if (game.mode == 'online')
         game.currentMoves.push('S:' + to + ':' + creep);

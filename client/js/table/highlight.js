@@ -75,7 +75,8 @@ game.highlight = {
         } else if (skill.data('type') === game.data.ui.toggle) {
           game.highlight.toggle(skill, source);
         } else if (skill.data('type') === game.data.ui.active ||
-                   skill.data('type') === game.data.ui.channel) {
+                   skill.data('type') === game.data.ui.channel ||
+                   skill.data('type') === game.data.ui.summon) {
           game.highlight.active(event, source, skill);
         }
         if (skill.data('targets').indexOf(game.data.ui.summon) > 0) {

@@ -349,7 +349,7 @@
     "summon": {
       "name": "Invocar Urso",
       "summon name": "Urso",
-      "type": "Ativa",
+      "type": "Invocação",
       "hand": "Direita",
       "deck": "Invocação",
       "targets": ["Local", "Livre"],

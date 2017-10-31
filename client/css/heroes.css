@@ -1,4 +1,4 @@
-.en {
+.en, .en .portrait {
   background: #5cb538;
 }
 
@@ -31,7 +31,7 @@
   background-position: 20% 50%;
 }
 
-.am {
+.am, .am .portrait {
   background: #544677;
 }
 
@@ -59,7 +59,7 @@
   background-position: 40% 50%;
 }
 
-.cm {
+.cm, .cm .portrait {
   background: #3c9ab7;
 }
 
@@ -97,7 +97,7 @@
   transform: scaleX(-1);
 }
 
-.kotl {
+.kotl, .kotl .portrait {
   background: #E5BC53;
 }
 
@@ -193,7 +193,7 @@
   background-image: url("../img/skills/kotl/recall.jpg");
 }
 
-.ld {
+.ld, .ld .portrait {
   background: #268e84;
 }
 
@@ -251,7 +251,7 @@
   background-image: url("../img/skills/ld/demolish.jpg");
 }
 
-.nyx {
+.nyx, .nyx .portrait {
   background: #4e2846;
 }
 
@@ -280,7 +280,7 @@
   background-image: url("../img/skills/nyx/ult.jpg");
 }
 
-.pud {
+.pud, .pud .portrait {
   background: #b43;
 }
 
@@ -321,8 +321,8 @@
   background-image: url("../img/skills/pud/dismember-rot.jpg");
 }
 
-.wk {
-  background: #326f73;
+.wk, .wk .portrait {
+  background-color: #326f73;
 }
 
 .wk.heroes .img {
@@ -346,7 +346,7 @@
 }
 
 
-.lina {
+.lina, .lina .portrait {
   background: #e08725;
 }
 
@@ -371,7 +371,7 @@
 }
 
 
-.cat {
+.cat, .cat .portrait {
   background: #5a4c8b;
 }
 
@@ -396,7 +396,7 @@
 }
 
 
-.wind {
+.wind, .wind .portrait {
   background: #53946f;
 }
 
@@ -420,7 +420,7 @@
   background-image: url("../img/skills/wind/ult.jpg");
 }
 
-.com {
+.com, .com .portrait {
   background: #a95747;
 }
 
@@ -444,7 +444,7 @@
   background-image: url("../img/skills/com/ult.jpg");
 }
 
-.venge {
+.venge, .venge .portrait {
   background: #e557c4;
 }
 

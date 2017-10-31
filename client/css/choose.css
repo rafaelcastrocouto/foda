@@ -68,10 +68,6 @@
   background: rgba(255,255,255,0.1);
 }
 
-.library .choose .buff {
-  display: none;
-}
-
 .choose .video {
   z-index: 30;
   position: absolute;

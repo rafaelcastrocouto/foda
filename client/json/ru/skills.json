@@ -349,7 +349,7 @@
     "summon": {
       "name": "Summon Bear",
       "summon name": "медведь",
-      "type": "активный",
+      "type": "созывать",
       "hand": "верно",
       "deck": "созывать",
       "targets": ["пятно", "бесплатно"],

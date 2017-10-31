@@ -2,9 +2,12 @@ game.states.loading = {
   updating: 0,
   totalUpdate: 9, // values + language + ui + heroes + skills + units + campaign + package + rank
   build: function () {
-    this.box = $('<div>').addClass('box');   
-    this.h2 = $('<p>').appendTo(this.box).addClass('loadtext').html('<span class="loader loading"></span><span class="message">Updating: </span><span class="progress">0%</span>');
-    this.el.append(this.box);
+    //this.box = $('<div>').addClass('box');   
+    //this.h2 = $('<p>').appendTo(this.box).addClass('loadtext').html('<span class="loader loading"></span><span class="message">Updating: </span><span class="progress">0%</span>');
+    //this.el.append(this.box);
+    this.el = $('.state.loading');
+    this.h2 = $('.state.loading .loadtext');
+    this.box = $('.state.loading .box');
   },
   start: function () {
     if (game.debug) game.states.loading.ping();

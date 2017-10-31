@@ -15,22 +15,24 @@ game.heroesAI.am = {
     if (card.canCast(blinks.first())) {
       cardData['can-cast'] = true;
       // use blink to attack
-      if (!card.hasClass('done') && !cardData['can-attack'] && card.data('current hp') > 25) {
+      if (!card.hasClass('done') && 
+          cardData['can-attack'] && 
+          card.data('current hp') > 25) {
         card.around(blinks.first().data('cast range'), function (spot) {
           if (spot.hasClass('free')) {
-            var targets = 0, p = 10;
+            var targets = 0, p = spot.data('priority');
             spot.around(game.data.ui.melee, function (nspot) {
               var cardInRange = $('.card.player', nspot);
               if (cardInRange.length) {
                 targets++;
                 p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
-                if (cardInRange.hasClass('towers')) p += 50;
-                if (nspot.hasClass('enemyarea')) p -= 15;
+                if (cardInRange.hasClass('towers')) p += 70;
+                if (nspot.hasClass('enemyarea')) p -= 30;
               }
             });
             if (targets) {
               cardData['cast-strats'].push({
-                priority: p - ((targets - 1) * 4),
+                priority: p,
                 skill: 'blink',
                 target: spot
               });
@@ -43,21 +45,12 @@ game.heroesAI.am = {
           card.data('current hp') < 25 &&
           (card.hasClass('done') || !cardData['can-make-action']) ) {
         card.around(blinks.first().data('cast range'), function (spot) {
-          if (spot.hasClass('free')) {
-            var targets = 0;
-            if (!spot.hasClass('playerarea')) {
-              spot.around(game.data.ui.melee, function (nspot) {
-                var cardInRange = $('.card.player', nspot);
-                if (cardInRange.length) {
-                  targets++;
-                }
-              });
-              cardData['cast-strats'].push({
-                priority: 20 - targets,
-                skill: 'blink',
-                target: spot
-              });
-            }
+          if (spot.hasClass('free') && !spot.hasClass('playerarea')) {
+            cardData['cast-strats'].push({
+              priority: 50 + spot.data('priority'),
+              skill: 'blink',
+              target: spot
+            });
           }
         });
       }

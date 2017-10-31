@@ -4,7 +4,7 @@ game.library = {
     game.seed = new Date().valueOf();
     game.id = btoa(game.seed);
   },
-  buildSkills: function () {
+  buildSkills: function (cb) {
     if (!game.library.skills) {
       game.library.skills = game.deck.build({
         name: 'skills',
@@ -14,6 +14,7 @@ game.library = {
           $.each(deck.data('cards'), function (i, skill) {
             skill.addClass('player');
           });
+          if (cb) cb(deck);
         }
       });
     }

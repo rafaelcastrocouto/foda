@@ -11,9 +11,11 @@ game.states = {
     var state = game.states[name];
     if (state && !state.builded) {
       state.builded = true;
-      state.el = $('<div>').addClass('state ' + name).hide();
-      if (state.build) state.build();
-      state.el.appendTo(game.states.el);
+      if (!state.el) {
+        state.el = $('<div>').addClass('state ' + name).hide();
+        if (state.build) state.build();
+        state.el.appendTo(game.states.el);
+      }
     }
   },
   validState: function (state) {
