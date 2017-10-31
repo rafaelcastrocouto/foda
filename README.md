@@ -21,11 +21,6 @@ Please report any [sugestions or issues][8] here at github.
 
 More information on how to [setup your own server][10]
 
-The game is available **free to play** at the following URLs:
-
- - https://foda-app.herokuapp.com/
- - http://rafaelcastrocouto.github.io/foda/client
-
 All [artwork](https://github.com/rafaelcastrocouto/dotacard) can be downloaded for free in high resolution
 
 Special thanks to:
