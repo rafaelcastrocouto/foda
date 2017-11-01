@@ -108,7 +108,6 @@
 
 .card .overlay {
   box-shadow: 0 0 12px rgba(0,0,0,0.4) inset;
-  border-radius: 3px;
   position: absolute;
   top: 0;
 }
@@ -116,12 +115,14 @@
 .card .portrait {
   position: relative;
 }
-
+.card .portrait .img {
+  background-color: rgba(255,255,255,0.3);
+}
 .card .portrait .img, .card .portrait .overlay {
   height: 112px;
   display: block;
   width: 100%;
-  background-color: rgba(0,0,0,0.1);
+  border-radius: 3px;
 }
 
 
@@ -212,34 +213,30 @@
   line-height: 13px;
 }
 
-.card.player {
-  background: #6eb975;
+.card.player, .card.player .portrait {
+  background: #62ab69;
 }
-.card.player.towers {
+.card.player.towers, .card.player.towers .portrait {
   background: #68d691;
 }
 
-.card.enemy.towers {
+.card.enemy.towers, .card.enemy.towers .portrait {
   background: #c5432c;
 }
 
-.card.enemy {
+.card.enemy, .card.enemy .portrait {
   background: #c55f5f;
 }
 
-.card.skills {
+.card.skills, .card.skills .portrait {
   background: #277cd6;
 }
 
-.card.left-hand.skills {
+.card.left-hand.skills, .card.left-hand.skills .portrait {
   background: #4db2dc;
 }
 
-.card.skills[class*="summon"] {
-  background: #249c6c;
-}
-
-.card.skills[class*="ult"] {
+.card.skills[class*="ult"], .card.skills[class*="ult"] .portrait {
   background: #8449ef;
 }
 
@@ -481,28 +478,6 @@
   transform: translate3d(-50%,-50%,0) scale(0.6) rotateZ(-180deg);
 }
 
-.skills.card, .units.card {
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
-
-.skills.card:after, .units.card:after {
-  content: "";
-  display: block;
-  background: white;
-  width: 200px;
-  height: 300px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate3d(0,0,-1px) rotateY(180deg);
-  border-radius: 8px;
-  background-image: url(../img/cardback.jpg);
-  background-size: cover;
-  z-index: 29;
-  backface-visibility: hidden;
-}
-
 .table .enemy .hand .card {
   margin-right: -158px;
 }
@@ -563,7 +538,6 @@
   }
 }
 
-
 .selectedarea .selectedcard {
   width: 240px;
   height: 360px;
@@ -606,8 +580,8 @@
 .table .selectedarea .selectedcard.flip .card:hover .img {
  image-rendering: pixelated;
 }*/
-.table .selectedarea .cardback {
-  background: #111;
+.table .selectedarea .cardback, .skills.card:after, .units.card:after {
+  background: #7d786b;
   background-image: url(../img/cardback.jpg);
   background-size: cover;
   background-position: 50%;
@@ -621,8 +595,8 @@
   transform: translate3d(-50%, -50%, -1px) rotateY(180deg);
 }
 
-.table .selectedarea .card .damaged, 
-.table .selectedarea .card .heal,  
+.table .selectedarea .card .damaged,
+.table .selectedarea .card .heal,
 .table .selectedarea .card .missed {
   display: none;
 }
@@ -632,6 +606,23 @@
   margin-right: -100px;
 }
 
+.skills.card, .units.card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.skills.card:after, .units.card:after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  transform: translate3d(0,0,-1px) rotateY(180deg);
+  border-radius: 8px;
+  z-index: 29;
+  backface-visibility: hidden;
+}
 .states .table .map .card {
   position: absolute;
   z-index: 3;
@@ -809,7 +800,7 @@
 }
 
 /*UNITS*/
-.card.trees {
+.card.trees, .card.trees .portrait {
   background: #5ba22f;
 }
 

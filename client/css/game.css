@@ -411,7 +411,7 @@ input:focus {
   outline: 0;
   background: #9dada4;
   color: white;
-  text-shadow: 0 1px 0 #444, 0 2px 0 #444;
+  text-shadow: 0 1px 0 #444;
   box-shadow: 0 4px 0 #777;
   position: relative;
   top: -3px;

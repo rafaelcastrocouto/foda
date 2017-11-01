@@ -2,7 +2,7 @@
   position: relative;
   width: 600px;
   height: 550px;
-  background-color: #030301;
+  background-color: #073131;
   background-image: url("../img/bkg/campaign.jpg");
   background-size: cover;
   top: 310px;
@@ -40,6 +40,7 @@
   border-radius: 4px;
   margin-bottom: 14px;
   background-position: 50% 50%;
+  background-color: lightgrey;
 }
 
 .campaign-img.tower {
@@ -97,6 +98,8 @@
   position: absolute;
   width: 80px;
   height: 80px;
+  background-color: rgba(255,255,225,0.1);
+  box-shadow: 0 0 15px 0 rgba(255,255,225,0.2);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50%;
