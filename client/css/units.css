@@ -1,5 +1,5 @@
 .player.skills[class*="summon"], .player.skills[class*="summon"] .portrait {
-  background: #249c88;
+  background-color: #249c88;
 }
 .enemy.skills[class*="summon"], .enemy.skills[class*="summon"] .portrait {
   background: #a74a6a;

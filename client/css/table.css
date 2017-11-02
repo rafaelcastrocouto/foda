@@ -144,7 +144,7 @@
   perspective-origin: 57% 50%;
   overflow: hidden;
   transform: translateZ(0);
-  background-image: url("../img/bkg/map.jpg");
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAECAIAAADNpLIqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iNjk5NzEyRTA3ODNBRjk2MkNGMjYzODI1RjY2NURCNTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUNBMzc0NDhDMDAyMTFFNzhEODJCOTQwODVGQUIyNjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUNBMzc0NDdDMDAyMTFFNzhEODJCOTQwODVGQUIyNjEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMzZCQjQ4M0FGNTJFNzExQjFBOEUwMDkwRDY0RjEwRiIgc3RSZWY6ZG9jdW1lbnRJRD0iNjk5NzEyRTA3ODNBRjk2MkNGMjYzODI1RjY2NURCNTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7zjCgtAAAAZklEQVR42gBYAKf/AXqEStbtC8/J4Ar78BEoFgENDP3t/QMnGh3+EP4YMCLzBAoJCP774+n++AYDIT8VLBkALRgSBQ0PAAIK/AEF3NXmBBwYEhYUCPTx6Abu7A0IGA85LBYlHAIMABdhH3ounuYxAAAAAElFTkSuQmCC');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -156,9 +156,19 @@
   right: 0;
 }
 
-
 .table .camera.night {
   background-image: url("../img/bkg/map-night.jpg");
+}
+
+.table .camera:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: url("../img/bkg/map.jpg");
+  background-size: cover;
+  background-position: 50%;
+  z-index: -1;
 }
 
 .table .camera:after {

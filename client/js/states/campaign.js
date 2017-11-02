@@ -178,7 +178,8 @@ game.states.campaign = {
     game.enemy.picks = data.picks;
     for (var i = 0; i < game.enemy.picks.length; i++) {
       var hero = game.enemy.picks[i];
-      $('<div>').addClass('heroes '+ hero).attr({title: hero}).append($('<div>').addClass('img')).appendTo(ch);
+      var portrait = $('<div>').addClass('portrait').append($('<div>').addClass('img'));
+      $('<div>').addClass('heroes '+ hero).attr({title: hero}).append(portrait).appendTo(ch);
     }
   },
   createStartPaths: function () {
