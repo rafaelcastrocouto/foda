@@ -68,7 +68,10 @@
 
 
 .map .spot .debug {
-  display: none;
+  opacity: 0.15;
+  font-size: 50px;
+  line-height: 70px;
+  margin: 10px;
 }
 /*
 .debug .map .spot .debug {

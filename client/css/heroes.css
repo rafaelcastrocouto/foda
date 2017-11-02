@@ -442,7 +442,7 @@
 
 
 .wind, .wind .portrait {
-  background: #53946f;
+  background-color: #53946f;
 }
 
 .wind.heroes .img {
@@ -466,7 +466,7 @@
 }
 
 .com, .com .portrait {
-  background: #a95747;
+  background-color: #a95747;
 }
 
 .com.heroes .img {

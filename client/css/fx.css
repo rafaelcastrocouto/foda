@@ -102,6 +102,7 @@
   transform-style: preserve-3d;
   pointer-events: none;
   transition: none;
+  position: absolute;
 }
 
 .buffs .fx {
@@ -383,6 +384,20 @@
 @keyframes cm-ult-sprite {
   100% {
     background-position: -1014px;
+  }
+}
+
+.map .fx.cat-star {
+  transform: rotateX(-37deg) translate3d(60px,-520px,10px) scale(4);
+  width: 96px;
+  height: 256px;
+  animation: cat-star-sprite 1.05s steps(23) 1;
+  background-image: url('../img/fx/cat/star.png');
+}
+
+@keyframes cat-star-sprite {
+  100% {
+    background-position: -2208px;
   }
 }
 

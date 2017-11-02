@@ -27,15 +27,15 @@ game.skills.cat = {
     cast: function (skill, source) {
       var range = skill.data('cast range'), targets = [];
       source.opponentsInRange(range, function (target) {
-        source.damage(skill.data('damage'), target, skill.data('damage type'));
-        target.shake();
+        game.fx.add('cat-star', source, target, 'random');
+        game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
         targets.push(target);
       });
       if (targets.length) {
         var target = targets[Math.floor(game.random() * targets.length)];
         game.timeout(900, function (source, target, skill) {
-          source.damage(skill.data('damage'), target, skill.data('damage type'));
-          target.shake();
+          game.fx.add('cat-star', source, target, 'random');
+          game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
         }.bind(this, source, target, skill));
       }
     }

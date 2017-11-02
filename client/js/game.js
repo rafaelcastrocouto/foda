@@ -33,9 +33,7 @@ var game = {
   heroesAI: {}, // heroes default AI behaviour
   start: function() {
     if (window.JSON && window.localStorage && window.btoa && window.atob && window.XMLHttpRequest) {
-      if (!game.debug)
-        game.debug = localStorage.getItem('debug');
-      if (game.debug || location.hostname == 'localhost') {
+      if (game.debug) {
         game.container.addClass('debug');
         game.staticHost = '';
         game.dynamicHost = '';

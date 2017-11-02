@@ -45,7 +45,6 @@ game.map = {
         if (game.debug) game.map.spots[h][w].append($('<span>').addClass('debug').text(game.map.toPosition(w, h)));
       }
     }
-    if (game.debug) map.addClass('debug');
     game.map.builded = true;
     game.map.el = map;
     return map;

@@ -16,6 +16,9 @@ game.fx = {
       slow: ['slow'],
       freeze: ['freeze'],
       ult: ['ult', 'ult1', 'ult2', 'ult3']
+    },
+    cat: {
+      star: ['star']
     }
   },
   build: function() {

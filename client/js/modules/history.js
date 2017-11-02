@@ -22,14 +22,14 @@ game.history = {
       game.states.log.out.show();
       game.rank.start();
       game.player.name = log;
-      if (state == 'loading') state = 'log';
-      if (state == 'table') state = 'vs';
       if (state !== 'log') {
         game.states.log.createBkgDeck();
         game.chat.build();
         setTimeout(game.chat.set.bind(game.chat, game.data.ui.reconnected), 200);
       }
       if (game.debug) {
+        if (state == 'loading') state = 'log';
+        if (state == 'table') state = 'vs';
         if (mode) game.setMode(mode, recovering);
         if (mode == 'online') {
           game.currentData = JSON.parse(game.history.data);
