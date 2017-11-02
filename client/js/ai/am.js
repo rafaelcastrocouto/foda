@@ -21,8 +21,8 @@ game.heroesAI.am = {
         card.around(blinks.first().data('cast range'), function (spot) {
           if (spot.hasClass('free')) {
             var targets = 0, p = spot.data('priority');
-            spot.around(game.data.ui.melee, function (nspot) {
-              var cardInRange = $('.card.player', nspot);
+            spot.around(card.data('range'), function (nspot) {
+              var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
               if (cardInRange.length) {
                 targets++;
                 p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
@@ -71,7 +71,7 @@ game.heroesAI.am = {
               var sectarget = $('.card.player', nspot);
               if (sectarget.length) {
                 targets++;
-                if (sectarget.hasClass('channeling')) p += 20;
+                if (sectarget.hasClasses('channeling towers')) p += 20;
               }
             });
             var mana = (cardInRange.data('mana') || 0) * 3;

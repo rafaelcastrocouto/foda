@@ -15,10 +15,13 @@ game.heroesAI.lina = {
       var range = fire.data('aoe range');
       var width = fire.data('aoe width');
       card.around(1, function (spot) {
-        var targets = 0, p = cardData['can-attack'] ? 15 : 0;
+        var targets = 0, p = cardData['can-attack'] ? 20 : 0;
         card.opponentsInLine(spot, range, width, function (cardInRange) {
-          targets++;
-          p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          if (!cardInRange.hasClasses('invisible ghost dead')) {
+            targets++;
+            p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+            if (cardInRange.hasClass('towers')) p += 20;
+          }
         });
         if (targets > 1) {
           cardData['cast-strats'].push({
@@ -32,13 +35,13 @@ game.heroesAI.lina = {
     if (card.canCast(stun)) {
       cardData['can-cast'] = true;
       card.around(stun.data('cast range'), function (spot) {
-        var targets = 0, p = cardData['can-attack'] ? 15 : 0;
+        var targets = 0, p = cardData['can-attack'] ? 20 : 0;
         spot.around(stun.data('aoe range'), function (nspot) {
-          var cardInRange = $('.card.player', nspot);
+          var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
-          if (cardInRange.hasClass('channeling')) p += 20;
+            if (cardInRange.hasClass('channeling towers')) p += 20;
           }
         });
         if (targets > 1) {
@@ -52,9 +55,10 @@ game.heroesAI.lina = {
     }
     if (card.canCast(ult)) {
       card.opponentsInRange(ult.data('cast range'), function (cardInRange) {
+        var p = cardData['can-attack'] ? 40 : 0;
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           cardData['can-cast'] = true;
-          var p = (50 - cardInRange.data('current hp'))/4;
+          p += (50 - cardInRange.data('current hp'))/4;
           if (cardInRange.hasClass('units')) p -= 25;
           cardData['cast-strats'].push({
             priority: p,

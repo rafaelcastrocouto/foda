@@ -43,8 +43,10 @@ game.heroesAI.ld = {
       cardData['can-cast'] = true;
       p = 0;
       card.opponentsInRange(roar.data('aoe range'), function (cardInRange) {
-        p += 10;
-        if (cardInRange.hasClass('channeling')) p += 20;
+        if (!cardInRange.hasClasses('invisible ghost dead')) {
+          p += 10;
+          if (cardInRange.hasClasses('channeling towers')) p += 20;
+        }
       });
       if (p) cardData['cast-strats'].push({
         priority: p,
@@ -56,7 +58,7 @@ game.heroesAI.ld = {
       cardData['can-cast'] = true;
       var inMelee = 0, inRange = 0;
       card.opponentsInRange(2, function (cardInRange) {
-        inMelee++;
+        if (!cardInRange.hasClasses('invisible ghost dead')) inMelee++;
       });
       if (!rot.hasClass('on')) { // turn on
         if (!cardData['can-attack'] || inMelee) cardData['cast-strats'].push({

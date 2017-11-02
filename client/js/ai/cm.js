@@ -20,10 +20,11 @@ game.heroesAI.cm = {
       card.inRange(slow.data('cast range'), function (spot) {
         var targets = 0, p = 10;
         spot.inRange(slow.data('aoe range'), function (castSpot) {
-          var cardInRange = $('.card.player', castSpot);
+          var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', castSpot);
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+            if (cardInRange.hasClass('towers')) p += 20;
           }
         });
         if (targets > 1) {
@@ -37,11 +38,13 @@ game.heroesAI.cm = {
     }
     if (card.canCast(freeze)) {
       card.inRange(freeze.data('cast range'), function (spot) {
-        var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
+        var p = 0, cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
           cardData['can-cast'] = true;
+          p = parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          if (cardInRange.hasClass('channeling')) p += 20;
           cardData['cast-strats'].push({
-            priority: parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
+            priority: p,
             skill: 'freeze',
             target: cardInRange
           });
@@ -50,10 +53,13 @@ game.heroesAI.cm = {
     }
     if (card.canCast(ult)) {
       cardData['can-cast'] = true;
-      var targets = 0, p = cardData['can-attack'] ? 50 : -50;
+      var targets = 0, p = cardData['can-attack'] ? -20 : 40;
       card.opponentsInRange(ult.data('aoe range'), function (cardInRange) {
-        targets++;
-        p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+        if (!cardInRange.hasClasses('invisible ghost dead towers')) {
+          targets++;
+          p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          if (cardInRange.hasClass('towers')) p += 20;
+        }
       });
       if (targets > 1) {
         cardData['cast-strats'].push({

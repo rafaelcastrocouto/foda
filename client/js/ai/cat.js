@@ -16,8 +16,11 @@ game.heroesAI.cat = {
       cardData['can-cast'] = true;
       var targets = 0, p = 20;
       card.opponentsInRange(star.data('aoe range'), function (cardInRange) {
-        targets++;
-        p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+        if (!cardInRange.hasClasses('invisible ghost dead')) {
+          targets++;
+          p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          if (cardInRange.hasClass('towers')) p += 20;
+        }
       });
       if (targets > 1) {
         cardData['cast-strats'].push({
@@ -32,7 +35,7 @@ game.heroesAI.cat = {
       var range = arrow.data('aoe range');
       card.around(1, function (spot) {
         var cardInRange = card.firstCardInLine(spot, range);
-        if (cardInRange && cardInRange.side() == card.opponent()) {
+        if (cardInRange && cardInRange.side() == card.opponent() && !cardInRange.hasClasses('invisible ghost dead')) {
           var p = 25;
           if (cardInRange.hasClass('channeling')) p += 20;
           cardData['cast-strats'].push({
@@ -50,11 +53,11 @@ game.heroesAI.cat = {
       if (!card.hasClass('done') && 
           cardData['can-attack'] && 
           card.data('current hp') > 25) {
-        card.around(leap.data('cast range'), function (spot) {
+        card.atRange(leap.data('cast range'), function (spot) {
           if (spot.hasClass('free')) {
             var targets = 0, p = spot.data('priority');
-            spot.around(game.data.ui.ranged, function (nspot) {
-              var cardInRange = $('.card.player', nspot);
+            spot.around(card.data('range'), function (nspot) {
+              var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', nspot);
               if (cardInRange.length) {
                 targets++;
                 p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
@@ -76,7 +79,7 @@ game.heroesAI.cat = {
       if (cardData['can-be-attacked'] && 
           card.data('current hp') < 25 &&
           (card.hasClass('done') || !cardData['can-make-action']) ) {
-        card.around(leap.data('cast range'), function (spot) {
+        card.atRange(leap.data('cast range'), function (spot) {
           if (spot.hasClass('free') && !spot.hasClass('playerarea')) {
             cardData['cast-strats'].push({
               priority: 50 + spot.data('priority'),
@@ -86,6 +89,15 @@ game.heroesAI.cat = {
           }
         });
       }
+    }
+    //ult
+    if (card.canCast(star)) {
+      cardData['can-cast'] = true;
+      cardData['cast-strats'].push({
+        priority: 60,
+        skill: 'ult',
+        target: card
+      });
     }
     card.data('ai', cardData);
   },

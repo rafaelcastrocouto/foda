@@ -3,10 +3,10 @@ game.heroesAI.en = {
     default: 'defensive'
   },
   play: function (card, cardData) {
-    var curse = $('.enemydecks .hand .skills.cm-curse');
-    var heal = $('.enemydecks .hand .skills.cm-heal');
-    var ult = $('.enemydecks .hand .skills.cm-ult');
-    if (!$('.map .enemy.cm').length) {
+    var curse = $('.enemydecks .hand .skills.en-curse');
+    var heal = $('.enemydecks .hand .skills.en-heal');
+    var ult = $('.enemydecks .hand .skills.en-ult');
+    if (!$('.map .enemy.en').length) {
       curse.data('ai discard', curse.data('ai discard') + 1);
       heal.data('ai discard', heal.data('ai discard') + 1);
     }
@@ -43,8 +43,10 @@ game.heroesAI.en = {
       cardData['can-cast'] = true;
       var p = 0, n = 0;
       card.alliesInRange(heal.data('cast range'), function (ally) {
-        p += ally.data('current hp')/4;
-        n++;
+        if (!ally.hasClasses('ghost dead towers')) {
+          p += ally.data('current hp')/4;
+          n++;
+        }
       });
       cardData['cast-strats'].push({
         priority: (n * 100)/p,
@@ -54,10 +56,12 @@ game.heroesAI.en = {
     }
     if (card.canCast(ult)) {
       card.opponentsInRange(ult.data('cast range'), function (cardInRange) {
-        if (!cardInRange.hasClass('invisible ghost dead towers')) {
+        if (!cardInRange.hasClasses('invisible ghost dead')) {
           cardData['can-cast'] = true;
+          var p = 40;
+          if (cardInRange.hasClass('towers')) p += 20;
           cardData['cast-strats'].push({
-            priority: 60 - (cardInRange.data('current hp')/2),
+            priority: p - (cardInRange.data('current hp')/2),
             skill: 'stun',
             target: cardInRange
           });

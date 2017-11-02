@@ -30,9 +30,11 @@ game.heroesAI.nyx = {
       card.around(1, function (spot) {
         var targets = 0, p = 10;
         card.opponentsInLine(spot, range, width, function (cardInRange) {
-          targets++;
-          p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
-          if (cardInRange.hasClass('channeling')) p += 20;
+          if (!cardInRange.hasClasses('invisible ghost dead')) {
+            targets++;
+            p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+            if (cardInRange.hasClasses('channeling towers')) p += 20;
+          }
         });
         if (targets > 1) {
           cardData['cast-strats'].push({
@@ -61,7 +63,7 @@ game.heroesAI.nyx = {
       cardData.strats.siege += 15;
       cardData['can-cast'] = true;
       cardData['cast-strats'].push({
-        priority: 15,
+        priority: 60,
         skill: 'ult',
         target: card
       });

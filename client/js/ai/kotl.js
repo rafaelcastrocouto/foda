@@ -18,10 +18,13 @@ game.heroesAI.kotl = {
       var range = illuminate.data('aoe range');
       var width = illuminate.data('aoe width');
       card.around(1, function (spot) {
-        var targets = 0, p = cardData['can-attack'] ? 15 : 0;
+        var targets = 0, p = cardData['can-attack'] ? -20 : 20;
         card.opponentsInLine(spot, range, width, function (cardInRange) {
-          targets++;
-          p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          if (!cardInRange.hasClasses('invisible ghost dead')) {
+            targets++;
+            p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+            if (cardInRange.hasClass('towers')) p += 20;
+          }
         });
         if (targets > 1) {
           cardData['cast-strats'].push({
@@ -34,15 +37,13 @@ game.heroesAI.kotl = {
     }
     if (card.canCast(leak)) {
       card.opponentsInRange(leak.data('cast range'), function (cardInRange) {
-        if (!cardInRange.hasClasses('invisible ghost dead towers')) {
-          if (cardInRange.hasClass('heroes')) {
-            cardData['can-cast'] = true;
-            cardData['cast-strats'].push({
-              priority: cardInRange.data('mana') * 10,
-              skill: 'leak',
-              target: cardInRange
-            });
-          }
+        if (!cardInRange.hasClasses('invisible ghost dead towers') && cardInRange.hasClass('heroes')) {
+          cardData['can-cast'] = true;
+          cardData['cast-strats'].push({
+            priority: cardInRange.data('mana') * 10,
+            skill: 'leak',
+            target: cardInRange
+          });
         }
       });
     }
@@ -67,13 +68,13 @@ game.heroesAI.kotl = {
     if (card.canCast(blind)) {
       cardData['can-cast'] = true;
       card.around(blind.data('cast range'), function (spot) {
-        var targets = 0, p = cardData['can-attack'] ? 15 : 0;
+        var targets = 0, p = 0;
         spot.around(blind.data('aoe range'), function (nspot) {
-          var cardInRange = $('.card.player', nspot);
+          var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
-            if (cardInRange.hasClass('channeling')) p += 20;
+            if (cardInRange.hasClass('channeling towers')) p += 20;
           }
         });
         if (targets > 1) {
@@ -86,7 +87,7 @@ game.heroesAI.kotl = {
       });
     }
     if (card.canCast(recall)) {
-      var allies = $('.map .card.'+card.side()+':not(ghost dead towers)');
+      var allies = $('.map .card.'+card.side()+':not(.ghost, .dead, .towers)');
       if (allies.length) {
         cardData['can-cast'] = true;
         $.each(allies, function (i, el) {

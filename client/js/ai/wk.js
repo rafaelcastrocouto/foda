@@ -7,8 +7,8 @@ game.heroesAI.wk = {
     if (card.canCast(stun)) {
       cardData['can-cast'] = true;
       card.opponentsInRange(stun.data('cast range'), function (cardInRange) {
-        if (!cardInRange.hasClass('invisible ghost dead towers')) {
-          var p = 40;
+        if (!cardInRange.hasClasses('invisible ghost dead towers')) {
+          var p = 50;
           if (cardInRange.hasClass('channeling')) p += 30;
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
