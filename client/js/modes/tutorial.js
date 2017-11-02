@@ -55,7 +55,7 @@ game.tutorial = {
   chooseStart: function () {
     game.states.choose.randombt.show();
     $('.pickbox .card').addClass('hidden');
-    $('.am, .cm, .pud, .ld, .nyx', '.pickbox').removeClass('hidden');
+    $('.am, .cm, .pud, .lina, .nyx', '.pickbox').removeClass('hidden');
     game.states.choose.selectFirst();
     game.states.choose.counter.show().text(game.data.ui.clickpick);
   },
@@ -282,10 +282,10 @@ game.tutorial = {
     $('.map .player').removeClass('blink');
     var card = $('.player .available.skills .am-shield'),
         hero = $('.map .player.heroes.am');
-    if (hero.hasClass('done')) {
-      card = $('.player .available.skills .cm-aura');
-      hero = $('.map .player.heroes.cm');
-    }
+    //if (hero.hasClass('done')) {
+    //  card = $('.player .available.skills .cm-aura');
+    //  hero = $('.map .player.heroes.cm');
+    //}
     card.first().appendTo(game.player.skills.sidehand).addClass('blink').on('select', game.tutorial.selected);
     hero.on('passive.tutorial', game.tutorial.toggleLesson);
     game.tutorial.axebaloon.hide().fadeIn('slow');
@@ -350,8 +350,8 @@ game.tutorial = {
   channelLesson: function () {
     game.tutorial.lesson = 'Channel';
     $('.blink').removeClass('blink');
-    var card = $('.player .ult.skills .cm-ult'),
-        hero = $('.map .player.cm');
+    var card = $('.playerdecks .skills .cm-ult'),
+        hero = $('.map .player.cm').removeClass('done');
     card.first().appendTo(game.player.skills.hand).addClass('blink').on('select', game.tutorial.selected);
     hero.on('cast.tutorial', game.tutorial.casted);
     game.tutorial.axebaloon.hide().fadeIn('slow');

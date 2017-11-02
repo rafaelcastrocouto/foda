@@ -32,6 +32,7 @@
   position: absolute;
   bottom: 245px;
   right: 185px;
+  font-size: 19px;
 }
 
 .tutorial.axe .baloon:before, .tutorial.axe .baloon:after {
@@ -68,10 +69,11 @@
   transform: rotate(2deg);
   color: #444;
   text-align: center;
+  background: transparent;
 }
 
 .tutorial .battle {
-  font-size: 175%;
+  font-size: 150%;
 }
 
 .blink, .table .player .blink {

@@ -28,7 +28,7 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   src: local('Sansita One'), local('SansitaOne'), url('../fonts/Sansita-One.woff2') format('woff2'), url('../fonts/Sansita-One.woff') format('woff');
 }
 
-.card .buffs .buff span, .tutorial .battle, .versus, .log b, .rank li {
+.card .buffs .buff span, .baloon .battle, .versus, .log b, .rank li {
   font-family: "Sansita One", serif;
 }
 
@@ -39,7 +39,7 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   src: local('OssBold'), url('../fonts/OssBold.woff2') format('woff2'), url('../fonts/OssBold.woff') format('woff');
 }
 
-.card .damaged, .card .heal, .card .missed, .game-overlay .version {
+.card .damaged, .card .heal, .card .missed, .game-overlay .version, .baloon {
   font-family: "OssBold", Impact, sans-serif;
 }
 
