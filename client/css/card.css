@@ -667,14 +667,15 @@
 }
 
 .map .card.enemy.invisible,
-.local .table.turn .map .card.enemy.invisible,
-.local .table .map .card.player.invisible,
-.local .table.unturn .map .card.invisible {
+.local .table .card.invisible,
+.local .table.turn .card.enemy.invisible,
+.local .table.unturn .card.player.invisible {
   display: none;
 }
+.local .table.unturn .map .card.enemy.invisible,
+.local .table.turn .map .card.player.invisible,
 .map .playerarea .card.enemy.invisible,
-.local .map .card.enemy.invisible,
-.local .table.turn .map .card.player.invisible {
+.map .enemyrarea .card.player.invisible {
   display: inline-block;
 }
 
