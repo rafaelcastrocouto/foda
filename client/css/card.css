@@ -354,7 +354,7 @@
 }
 
 .table .deck .card:hover {
-  transform: translate(-50%, -50%) scale(0.6);
+  transform: translate(-50%, -50%) scale(0.55);
   z-index: 11;
 }
 
@@ -366,7 +366,7 @@
 }
 
 .table .deck .card.selected {
-  transform: translate(-50%, -50%) scale(0.6) rotate(0);
+  transform: translate(-50%, -50%) scale(0.55) rotate(0);
   z-index: 11;
 }
 

@@ -129,12 +129,12 @@ game.highlight = {
   },
   ally: function (source, skill) {
     var range = skill.data('cast range');
-    if (range === game.data.ui.global) {
-      $('.map .card.'+source.side()).not('.towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
+    if (range === 'global') {
+      $('.map .card.'+source.side()).not('.dead, .towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
     } else {
       source.around(range, function (neighbor) {
         var card = $('.card', neighbor);
-        if (card.hasClass(source.side()) && !card.hasClass('towers')) {
+        if (card.hasClass(source.side()) && !card.hasClasses('dead towers ghost')) {
           card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
         }
       });
@@ -142,12 +142,12 @@ game.highlight = {
   },
   enemy: function (source, skill) {
     var range = skill.data('cast range');
-    if (range === game.data.ui.global) {
-      $('.map .'+source.opponent()).not('.towers').addClass('casttarget').on('mouseup.highlight', game.player.cast);
+    if (range === 'global') {
+      $('.map .'+source.opponent()).not('.dead, .towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
     } else {
       source.inRange(range, function (neighbor) {
         var card = $('.card', neighbor);
-        if (card.hasClass(source.opponent()) && !card.hasClass('towers')) {
+        if (card.hasClass(source.opponent()) && !card.hasClass('dead towers ghost')) {
           card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
         }
       });
