@@ -173,7 +173,11 @@ game.enemy = {
     if (game.mode == 'single') skill.data('ai discard', undefined);
     setTimeout(function(skill, target, hero, skillid) {
       //console.log(skill, target, hero, skillid)
-      if (game.skills[hero][skillid].cast && skill && source.hasClass('enemy') && source.cast) {
+      if (game.skills[hero] && game.skills[hero][skillid] &&
+          game.skills[hero][skillid].cast &&
+          skill &&
+          source.hasClass('enemy') &&
+          source.cast ) {
         source.cast(skill, target);
       }
     }

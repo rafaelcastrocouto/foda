@@ -116,7 +116,7 @@ game.turn = {
         game.timeout(800, function () { game.turn.el.removeClass('show'); });
       }
       if (turn == 'enemy-turn' && game.mode == 'single') {
-        game.single.endEnemyTurn();
+        game.single.beginPlayer();
         game.ai.timeover = true;
       }
       if (cb) cb(turn);

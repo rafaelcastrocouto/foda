@@ -33,6 +33,19 @@ game.ai = {
     if ((!count || count < game.ai.level) && chosenCard.length) {
       chosenCard.data('ai count', (chosenCard.data('ai count') + 1 || 0));
       if (chosenCard.data('ai count') >= game.ai.level) chosenCard.addClass('ai-max');
+      // add defensive data and strats
+      $('.map .player.card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
+        var card = $(el);
+        game.ai.buildData(card);
+        if (card.hasClass('heroes')) {
+          var hero = card.data('hero');
+          if (game.heroesAI[hero] && game.heroesAI[hero].defend) {
+            var cardData = card.data('ai');
+            // add per hero defend data
+            game.heroesAI[hero].defend(card, cardData);
+          }
+        }
+      });
       // add attack and move data
       $('.map .enemy.card:not(.towers, .dead, .ghost)').each(function (i, el) {
         var card = $(el);
@@ -47,19 +60,6 @@ game.ai = {
           if (game.heroesAI[hero] && game.heroesAI[hero].play) {
             // add per hero cast data
             game.heroesAI[hero].play(card, cardData);
-          }
-        }
-      });
-      // add defensive data and strats
-      $('.map .player.card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
-        var card = $(el);
-        game.ai.buildData(card);
-        if (card.hasClass('heroes')) {
-          var hero = card.data('hero');
-          if (game.heroesAI[hero] && game.heroesAI[hero].defend) {
-            var cardData = card.data('ai');
-            // add per hero defend data
-            game.heroesAI[hero].defend(card, cardData);
           }
         }
       });
@@ -148,8 +148,6 @@ game.ai = {
     var d = {
       'strat': '',
       'strats': {},
-      'destinys': [],
-      'attack-targets': [],
       'can-move': false,
       'can-attack': false,
       'can-attack-tower': false,
@@ -164,6 +162,8 @@ game.ai = {
       'cast-strats': [],
       'cast-targets': [],
       'can-make-action': false,
+      'attack-targets': [],
+      'destinys': [],
       'advance': [],
       'retreat': []
     };
@@ -182,7 +182,7 @@ game.ai = {
     return d;
   },
   buildData: function (card) {
-    // console.log('buildData', card[0], card.data('ai'));
+    //console.log('buildData', card[0], card.data('ai'));
     var side = card.side();
     var opponent = card.opponent();
     var cardData = card.data('ai');
@@ -195,50 +195,49 @@ game.ai = {
       cardData['can-move'] = true;
       cardData['can-make-action'] = true;
     }
-    card.inRange(range, function (spot) {
-      if (card.canAttack()) { 
-        if (side != game.ai.side) {
-          var spotData = spot.data('ai');
-          spotData.priority -= (card.data('current damage')) * 5;
-          spotData['can-be-attacked'] = true;
-          spot.data('ai', spotData);
+    card.around(range, function (spot) {
+      // if can attack next turn
+      if (side != game.ai.side) {
+        var spotData = spot.data('ai');
+        spotData.priority -= (card.data('current damage'));
+        spotData['can-be-attacked'] = true;
+        spot.data('ai', spotData);
+      }
+      var opponentCard = $('.card.'+opponent+':not(.invisible, .dead, .ghost)', spot);
+      if (opponentCard.length) {
+        //there is one opponent in range 
+        if (card.canAttack()) {
+          cardData['can-attack'] = true;
+          cardData['can-make-action'] = true;
         }
-        var opponentCard = $('.card.'+opponent+':not(.invisible, .dead, .ghost)', spot);
-        if (opponentCard.length) {
-          //there is one opponent in range 
-          if (card.canAttack()) {
-            cardData['can-attack'] = true;
-            cardData['can-make-action'] = true;
-          }
-          // attack target
-          cardData.strats.attack += 10;
-          cardData['attack-targets'].push({
-            priority: 50 - (opponentCard.data('current hp')/2),
-            target: opponentCard
-          });
-          // retreat if in enemy range
-          var opponentData = opponentCard.data('ai');
-          opponentData['can-be-attacked'] = true;
-          opponentData.strats.retreat += 15;
-          // attack towers
-          if ( opponentCard.hasClass('towers') ) {
-            cardData.strats.attack += 30;
-            cardData['can-attack-tower'] = true;
-          }
-          //check death
-          var hp = opponentCard.data('current hp');
-          var damage = card.data('current damage');
-          var armor = opponentCard.data('current armor');
-          if ( hp <= (damage - armor) ) {
-            // attack if able to kill
-            cardData['attack-can-kill'] = true;
-            cardData.strats.attack += 20;
-            // retreat if can be killed
-            opponentData['can-be-killed'] = true;
-            opponentData.strats.retreat += 25;
-          }
-          opponentCard.data('ai', opponentData);
+        // attack target
+        cardData.strats.attack += 10;
+        cardData['attack-targets'].push({
+          priority: 50 - (opponentCard.data('current hp')/2),
+          target: opponentCard
+        });
+        // retreat if in enemy range
+        var opponentData = opponentCard.data('ai');
+        opponentData['can-be-attacked'] = true;
+        opponentData.strats.retreat += 15;
+        // attack towers
+        if ( opponentCard.hasClass('towers') ) {
+          cardData.strats.attack += 30;
+          cardData['can-attack-tower'] = true;
         }
+        //check death
+        var hp = opponentCard.data('current hp');
+        var damage = card.data('current damage');
+        var armor = opponentCard.data('current armor');
+        if ( hp <= (damage - armor) ) {
+          // attack if able to kill
+          cardData['attack-can-kill'] = true;
+          cardData.strats.attack += 20;
+          // retreat if can be killed
+          opponentData['can-be-killed'] = true;
+          opponentData.strats.retreat += 25;
+        }
+        opponentCard.data('ai', opponentData);
       }
     });
     // tower limit
@@ -465,6 +464,7 @@ game.ai = {
     if (action) {
       if (action == 'move' || action == 'advance' || action == 'retreat') {
         target = game.ai.chooseDestiny(card, cardData, action);
+        //if (target) console.log(card[0], target.target[0], target.priority);
         action = 'move';
       }
       if (action == 'attack'){
@@ -513,7 +513,7 @@ game.ai = {
         chosen = itens.smartRandom(game.ai.level*Math.PI);
       }
     }
-    //console.log(itens, chosen)
+    //console.log(itens, chosen);
     if (chosen[parameter] > game.ai.level) return chosen;
   },
   parseMove: function (card, cardData, action, target, skillId) {
