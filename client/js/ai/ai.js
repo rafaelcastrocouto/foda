@@ -10,6 +10,7 @@ game.ai = {
   },
   turnStart: function () {
     // remember ai is playing the enemy cards
+    game.ai.timeover = false;
     game.message.text(game.data.ui.enemymove);
     game.ai.currentmovesLoop = game.ai.level*2;
     game.currentData.moves = [];
@@ -108,13 +109,15 @@ game.ai = {
     game.ai.autoMove(game.single.endEnemyTurn);
   },
   autoMove: function (cb) {
-    if (game.currentData.moves.length) {
-      game.enemy.moveEndCallback = cb;
-      game.currentMoves = game.currentData.moves;
-      //console.log(game.currentMoves);
-      game.enemy.autoMoveCount = 0;
-      game.enemy.autoMove();
-    } else cb();
+    if (!game.ai.timeover) {
+      if (game.currentData.moves.length) {
+        game.enemy.moveEndCallback = cb;
+        game.currentMoves = game.currentData.moves;
+        //console.log(game.currentMoves);
+        game.enemy.autoMoveCount = 0;
+        game.enemy.autoMove();
+      } else cb();
+    }
   },
   passives: function (card) {
     // activate all pasives
@@ -160,7 +163,9 @@ game.ai = {
       'can-cast': false,
       'cast-strats': [],
       'cast-targets': [],
-      'can-make-action': false
+      'can-make-action': false,
+      'advance': [],
+      'retreat': []
     };
     $(game.ai.strats).each(function (i, strat) {
       d.strats[strat] = 1;
