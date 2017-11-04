@@ -174,6 +174,7 @@ game.tutorial = {
     game.tutorial.axebaloon.hide().fadeIn('slow');
     if (game.player.skills.sidehand.children().length) game.tutorial.letter(game.data.ui.axesummonselect);
     else game.tutorial.letter(game.data.ui.axeselectplayer);
+    --game.tutorial.moveCountValue;
   },
   moveLesson: function () {
     game.tutorial.axebaloon.hide().fadeIn('slow');
@@ -188,7 +189,8 @@ game.tutorial = {
     data.card.removeClass('blink');
     game.states.table.skip.attr('disabled', false);
     game.tutorial.letter(game.data.ui.axemoveagain);
-    if (game.tutorial.moveCountValue === 3) game.tutorial.endTurnLesson();
+    --game.tutorial.moveCountValue;
+    if (game.tutorial.moveCountValue < 3) game.tutorial.endTurnLesson();
   },
   endTurnLesson: function () {
     $('.blink').removeClass('blink');
@@ -377,6 +379,7 @@ game.tutorial = {
     game.states.changeTo('result');
   },
   clear: function () {
+    $('.table .blink').removeClass('blink');
     game.tutorial.lesson = '';
     game.tutorial.started = false;
     game.states.choose.back.attr('disabled', false);
