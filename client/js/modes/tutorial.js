@@ -196,6 +196,7 @@ game.tutorial = {
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.axe.addClass('left');
     game.tutorial.letter(game.data.ui.axeendturn);
+    --game.tutorial.moveCountValue;
   },
   skip: function () {
     game.turn.time.text(game.data.ui.time + ': 1:30 ' + game.data.ui.night);
@@ -272,6 +273,7 @@ game.tutorial = {
     game.message.text(game.data.ui.yourturn);
     $('.map .player.heroes, .map .player.units').on('attack.tutorial', function () {
       game.card.unselect();
+      --game.tutorial.moveCountValue;
       game.timeout(100, game.tutorial.passiveLesson);
     });
   },
@@ -302,6 +304,7 @@ game.tutorial = {
     $('.player .available.skills .pud-rot').first().appendTo(game.player.skills.sidehand).addClass('blink').on('select', game.tutorial.selected);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.letter(game.data.ui.axetoggle);
+    --game.tutorial.moveCountValue;
     $('.map .player.pud').on('toggle.tutorial', game.tutorial.toggleOffLesson);
   },
   toggleOffLesson: function () {
@@ -328,6 +331,7 @@ game.tutorial = {
     hero.on('cast.tutorial', game.tutorial.castLesson);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.letter(game.data.ui.axeinstant);
+    --game.tutorial.moveCountValue;
   },*/
   castLesson: function () {
     game.tutorial.lesson = 'Cast';
@@ -338,6 +342,7 @@ game.tutorial = {
     hero.on('cast.tutorial', game.tutorial.channelLesson);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.letter(game.data.ui.axecast);
+    --game.tutorial.moveCountValue;
     $('.spot').each(function (i, spot) {
       if (!$('.card', spot).length) $(spot).addClass('free');
     });
@@ -351,8 +356,10 @@ game.tutorial = {
     hero.on('cast.tutorial', game.tutorial.casted);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.letter(game.data.ui.axechannel);
+    --game.tutorial.moveCountValue;
   },
   casted: function () {
+    --game.tutorial.moveCountValue;
     game.timeout(3000, game.tutorial.end);
   },
   surrender: function() {
