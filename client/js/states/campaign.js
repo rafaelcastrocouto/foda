@@ -33,21 +33,30 @@ game.states.campaign = {
   },
   nextStage: function () {
     if (!this.stage) this.stage = game.data.campaign.start;
-    if (this.stage.name == 'Stage 1') this.stage = game.data.campaign.easy;
-    if (this.stage.name == 'Stage 2') this.stage = game.data.campaign.normal;
-    if (this.stage.name == 'Stage 3') this.stage = game.data.campaign.hard;
-    if (this.stage.name == 'Stage 4') this.stage = game.data.campaign.last;
-    if (this.stage.name == 'Optional Stage') {
-      $('#o'+game.states.campaign.lane).removeClass('blink enabled').addClass('done').off('mouseup touchend');
-    }
-    if (this.stage.name == 'Roshan Stage') {
-      $('#ro').removeClass('blink enabled').addClass('done').off('mouseup touchend');
-    }
-    if (this.stage.name == 'Shop Stage') {
-      $('#sh').removeClass('blink enabled').addClass('done').off('mouseup touchend');
-    }
-    if (this.stage.name == 'Rune Stage') {
-      $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+    switch(this.stage.name) {
+      case 'Rune Stage':
+        $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        break;
+      case 'Shop Stage':
+        $('#sh').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        break;
+      case 'Roshan Stage':
+        $('#ro').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        break;
+      case 'Optional Stage':
+        $('#o'+game.states.campaign.lane).removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        break;
+      case 'Stage 4':
+        this.stage = game.data.campaign.last;
+        break;
+      case 'Stage 3':
+        this.stage = game.data.campaign.hard; 
+        break;
+      case 'Stage 2':
+        this.stage = game.data.campaign.normal; 
+        break;
+      default:
+        this.stage = game.data.campaign.easy;
     }
   },
   "Stage 1 Click": function () {
@@ -162,7 +171,8 @@ game.states.campaign = {
     this.buildDesc(game.data.campaign.normal);
   },
   buildDesc: function (data) {
-    game.states.campaign.stage = data;
+    if (!data) data = this.stage;
+    else this.stage = data;
     this.desc.html('');
     game.ai.mode = data.ai;
     game.enemy.name = "AI "+ game.ai.mode;
@@ -176,7 +186,7 @@ game.states.campaign = {
     game.enemy.picks = data.picks;
     localStorage.setItem('enemydeck', data.picks);
     game.enemy.picks = data.picks;
-    for (var i = 0; i < game.enemy.picks.length; i++) {
+    for (var i = game.enemy.picks.length-1; i > -1; i--) {
       var hero = game.enemy.picks[i];
       var portrait = $('<div>').addClass('portrait').append($('<div>').addClass('img'));
       $('<div>').addClass('heroes '+ hero).attr({title: hero}).append(portrait).appendTo(ch);

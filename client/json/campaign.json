@@ -9,7 +9,7 @@
       "Don't die (bonus)",
       "Kill 2 heroes (bonus)"
     ],
-    "picks": [ "cm", "pud", "lina", "wk", "am" ]
+    "picks": [ "wk", "cm", "pud", "lina", "am" ]
   },
   "easy": {
     "name": "Stage 2",

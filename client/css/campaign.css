@@ -46,10 +46,10 @@
 }
 
 .campaign-img {
-  height: 132px;
+  height: 160px;
   background-size: cover;
   border-radius: 4px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   background-position: 50% 50%;
   background-color: lightgrey;
 }
@@ -86,7 +86,7 @@
   text-align: left;
   font-size: 13px;
   margin: 1px;
-  line-height: 24px;
+  line-height: 20px;
 }
 .campaign-box p.achieve:before {
   content: "•";
@@ -94,7 +94,7 @@
 }
 .campaign-heroes {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 .campaign-box .campaign-heroes .heroes {
   width: 45px;

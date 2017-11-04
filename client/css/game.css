@@ -173,6 +173,7 @@ noscript {
   border-radius: 5px;
   background-color: rgba(11, 15, 14, 0.75);
 }
+noscript .box,
 .notfound .box,
 .campaign-box.box,
 .resultsbox,
@@ -281,7 +282,8 @@ noscript .box {
   width: auto;
   padding: 8px 40px;
 }
-.notfound .box a {
+.notfound .box a,
+noscript .box a {
   color: #333;
   text-decoration: underline;
 }
@@ -598,6 +600,11 @@ label input {
   opacity: 0.85;
   counter-reset: item;
   list-style-type: none;
+}
+.rank.box .loader {
+  float: none !IMPORTANT;
+  border-bottom: 3px solid #333;
+  margin-right: 10px;
 }
 .rank.box li {
   margin: 0;

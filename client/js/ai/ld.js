@@ -60,7 +60,7 @@ game.heroesAI.ld = {
       card.opponentsInRange(2, function (cardInRange) {
         if (!cardInRange.hasClasses('invisible ghost dead')) inMelee++;
       });
-      if (!rot.hasClass('on')) { // turn on
+      if (!ult.hasClass('on')) { // turn on
         if (!cardData['can-attack'] || inMelee) cardData['cast-strats'].push({
           priority: 30 + (10 * inMelee),
           skill: 'ult',
