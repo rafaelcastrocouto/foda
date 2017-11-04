@@ -89,6 +89,7 @@ game.tutorial = {
   },
   setTable: function () {
     if (!game.tutorial.started) {
+      game.currentTurnSide = 'player';
       game.tutorial.started = true;
       game.tutorial.lesson = 'Enemy';
       game.message.text(game.data.ui.battle);
@@ -212,7 +213,7 @@ game.tutorial = {
     game.message.text(game.data.ui.enemyturn);
     game.loader.addClass('loading');
     game.states.table.el.removeClass('turn');
-    game.map.el.addClass('night');
+    game.camera.addClass('night');
     game.timeout(2000, game.tutorial.enemyStart);
   },
   enemyStart: function () {
@@ -221,9 +222,9 @@ game.tutorial = {
     game.tutorial.axebaloon.fadeIn('slow');
     game.tutorial.letter(game.data.ui.axedone);
     game.enemy.buyCreeps(true);
-    $('.enemy .am-blink').first().appendTo(game.enemy.skills.hand);
-    $('.enemy .kotl-leak').first().appendTo(game.enemy.skills.hand);
-    $('.enemy .kotl-mana').first().appendTo(game.enemy.skills.hand);
+    $('.enemy .am-blink').first().appendTo(game.enemy.skills.hand).addClass('flipped');
+    $('.enemy .kotl-leak').first().appendTo(game.enemy.skills.hand).addClass('flipped');
+    $('.enemy .kotl-mana').first().appendTo(game.enemy.skills.hand).addClass('flipped');
     game.timeout(3000, game.tutorial.enemyMove);
   },
   enemyMove: function () {
@@ -240,7 +241,7 @@ game.tutorial = {
     game.enemy.startMoving(game.tutorial.endTurn);
   },
   endTurn: function () {
-    game.map.el.removeClass('night');
+    game.camera.removeClass('night');
     //game.message.removeClass('blink');
     game.turn.time.text(game.data.ui.time + ': 1:30 ' + game.data.ui.day);
     $('.spot').removeClass('free');
