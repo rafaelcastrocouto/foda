@@ -8,7 +8,7 @@ game.ai = {
     if (game.ai.mode == 'hard')      game.ai.level = 8;
     if (game.ai.mode == 'very-hard') game.ai.level = 9;
   },
-  turnStart: function () {
+  turnStart: function () { //console.log('ai start turn')
     // remember ai is playing the enemy cards
     game.ai.timeover = false;
     game.message.text(game.data.ui.enemymove);
@@ -353,8 +353,8 @@ game.ai = {
     if (cardData['cast-strats'].length) {
       var cast = game.ai.choose(cardData['cast-strats']);
       //console.log('cast-skill', cast);
-      if (cast && cast.skill && cast.target) {
-        game.ai.parseMove(card, cardData, 'cast', cast.target, cast.skill);
+      if (cast && cast.skill && cast.target && cast.card) {
+        game.ai.parseMove(card, cardData, 'cast', cast.target, cast);
         cardData['cast-strats'].erase(cast);
         return true;
       }
@@ -516,7 +516,7 @@ game.ai = {
     //console.log(itens, chosen);
     if (chosen[parameter] > game.ai.level) return chosen;
   },
-  parseMove: function (card, cardData, action, target, skillId) {
+  parseMove: function (card, cardData, action, target, cast) {
     //console.log(action, target);
     var move = [];
     if (action == 'move' || action == 'advance' || action == 'retreat') {
@@ -535,9 +535,10 @@ game.ai = {
     }
     if (action == 'cast') {
       move[0] = 'C';
+      if (cast.card.data('type') == game.data.ui.toggle) move[0] = 'T';
       move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
       move[2] = game.map.mirrorPosition(target.attr('id') || target.getSpot().attr('id'));
-      move[3] = skillId; //
+      move[3] = cast.skill;
       move[4] = card.data('hero');
     }
     //console.log(move);

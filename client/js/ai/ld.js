@@ -23,6 +23,7 @@ game.heroesAI.ld = {
           cardData['cast-strats'].push({
             priority: destiny.priority * 4,
             skill: 'bear',
+            card: bear,
             target: destiny.target
           });
         });
@@ -34,7 +35,8 @@ game.heroesAI.ld = {
       if (cardData['can-attack']) p = 40;
       cardData['cast-strats'].push({
         priority: p,
-        skill: 'bear',
+        skill: 'rabid',
+        card: rabid,
         target: card
       });
     }
@@ -50,7 +52,8 @@ game.heroesAI.ld = {
       });
       if (p) cardData['cast-strats'].push({
         priority: p,
-        skill: 'bear',
+        skill: 'roar',
+        card: roar,
         target: card
       });
     }
@@ -64,12 +67,14 @@ game.heroesAI.ld = {
         if (!cardData['can-attack'] || inMelee) cardData['cast-strats'].push({
           priority: 30 + (10 * inMelee),
           skill: 'ult',
+          card: ult,
           target: card
         });
       } else if (cardData['can-attack'] && !inMelee) { // turn off
         cardData['cast-strats'].push({
           priority: 30,
           skill: 'ult',
+          card: ult,
           target: card
         });
       }

@@ -9,9 +9,5 @@
     "src": "favicon.png",
     "sizes": "32x32",
     "type": "image/png"
-  },{
-    "src": "img/icon.png",
-    "sizes": "144x144",
-    "type": "image/png"
   }]
 }

@@ -13,6 +13,7 @@ game.heroesAI.wk = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',
+            card: stun,
             target: cardInRange
           });
         }

@@ -26,6 +26,7 @@ game.heroesAI.cat = {
         cardData['cast-strats'].push({
           priority: p,
           skill: 'star',
+          card: star,
           target: card
         });
       }
@@ -41,6 +42,7 @@ game.heroesAI.cat = {
           cardData['cast-strats'].push({
             priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'arrow',
+            card: arrow,
             target: spot
           });
         }
@@ -69,6 +71,7 @@ game.heroesAI.cat = {
               cardData['cast-strats'].push({
                 priority: p,
                 skill: 'leap',
+                card: lead,
                 target: spot
               });
             }
@@ -84,6 +87,7 @@ game.heroesAI.cat = {
             cardData['cast-strats'].push({
               priority: 50 + spot.data('priority'),
               skill: 'leap',
+              card: lead,
               target: spot
             });
           }
@@ -96,6 +100,7 @@ game.heroesAI.cat = {
       cardData['cast-strats'].push({
         priority: 60,
         skill: 'ult',
+        card: ult,
         target: card
       });
     }

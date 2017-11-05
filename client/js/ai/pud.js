@@ -21,6 +21,7 @@ game.heroesAI.pud = {
           cardData['cast-strats'].push({
             priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'hook',
+            card: hook,
             target: spot
           });
         }
@@ -42,6 +43,7 @@ game.heroesAI.pud = {
           cardData['cast-strats'].push({
             priority: p + 10,
             skill: 'rot',
+            card: rot,
             target: card
           });
         } else if (card.data('current hp') < 5) {
@@ -49,6 +51,7 @@ game.heroesAI.pud = {
           cardData['cast-strats'].push({
             priority: 30,
             skill: 'rot',
+            card: rot,
             target: card
           });
         }
@@ -57,6 +60,7 @@ game.heroesAI.pud = {
           cardData['cast-strats'].push({
             priority: 50 - (p/2),
             skill: 'rot',
+            card: rot,
             target: card
           });
         }
@@ -70,6 +74,7 @@ game.heroesAI.pud = {
           cardData['cast-strats'].push({
             priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'ult',
+            card: ult,
             target: cardInRange
           });
         }

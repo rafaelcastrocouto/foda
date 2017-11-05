@@ -27,6 +27,7 @@ game.heroesAI.lina = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'fire',
+            card: fire,
             target: spot
           });
         }
@@ -48,6 +49,7 @@ game.heroesAI.lina = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'stun',
+            card: stun,
             target: spot
           });
         }
@@ -63,6 +65,7 @@ game.heroesAI.lina = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'ult',
+            card: ult,
             target: cardInRange
           });
         }

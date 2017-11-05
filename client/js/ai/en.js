@@ -17,6 +17,7 @@ game.heroesAI.en = {
           cardData['cast-strats'].push({
             priority: 40,
             skill: 'curse',
+            card: curse,
             target: spot
           });
         }
@@ -27,12 +28,14 @@ game.heroesAI.en = {
             cardData['cast-strats'].push({
               priority: 12,
               skill: 'curse',
+              card: curse,
               target: cardInRange
             });
           } else if (cardInRange.hasClass('units')) {
             cardData['cast-strats'].push({
               priority: 40,
               skill: 'curse',
+              card: curse,
               target: cardInRange
             });
           }
@@ -51,6 +54,7 @@ game.heroesAI.en = {
       cardData['cast-strats'].push({
         priority: (n * 100)/p,
         skill: 'heal',
+        card: heal,
         target: card
       });
     }
@@ -63,6 +67,7 @@ game.heroesAI.en = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/2),
             skill: 'stun',
+            card: ult,
             target: cardInRange
           });
         }

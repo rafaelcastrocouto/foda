@@ -171,7 +171,7 @@ game.skill = {
     }
     return this;
   },
-  toggle: function (target) {
+  toggle: function (target) { //console.log('target')
     var skill = this,
       hero = skill.data('hero'),
       skillid = skill.data('skill');

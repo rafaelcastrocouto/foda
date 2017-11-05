@@ -19,6 +19,7 @@ game.heroesAI.nyx = {
       cardData['cast-strats'].push({
         priority: 20,
         skill: 'spike',
+        card: spike,
         target: card
       });
     }
@@ -40,6 +41,7 @@ game.heroesAI.nyx = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'stun',
+            card: stun,
             target: spot
           });
         }
@@ -53,6 +55,7 @@ game.heroesAI.nyx = {
           cardData['cast-strats'].push({
             priority: cardInRange.data('mana'),
             skill: 'burn',
+            card: burn,
             target: cardInRange
           });
         }
@@ -65,6 +68,7 @@ game.heroesAI.nyx = {
       cardData['cast-strats'].push({
         priority: 60,
         skill: 'ult',
+        card: ult,
         target: card
       });
     }

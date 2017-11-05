@@ -29,6 +29,7 @@ game.heroesAI.wind = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'arrow',
+            card: arrow,
             target: spot
           });
         }
@@ -43,6 +44,7 @@ game.heroesAI.wind = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',
+            card: stun,
             target: cardInRange
           });
         }
@@ -55,6 +57,7 @@ game.heroesAI.wind = {
       cardData['cast-strats'].push({
         priority: p,
         skill: 'run',
+        card: run,
         target: card
       });
     }
@@ -67,6 +70,7 @@ game.heroesAI.wind = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/2),
             skill: 'ult',
+            card: ult,
             target: cardInRange
           });
         }

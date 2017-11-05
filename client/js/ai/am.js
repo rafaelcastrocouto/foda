@@ -34,6 +34,7 @@ game.heroesAI.am = {
               cardData['cast-strats'].push({
                 priority: p,
                 skill: 'blink',
+                card: blinks.first(),
                 target: spot
               });
             }
@@ -49,6 +50,7 @@ game.heroesAI.am = {
             cardData['cast-strats'].push({
               priority: 50 + spot.data('priority'),
               skill: 'blink',
+              card: blinks.first(),
               target: spot
             });
           }
@@ -78,6 +80,7 @@ game.heroesAI.am = {
             cardData['cast-strats'].push({
               priority: p + (targets * 8) + mana,
               skill: 'ult',
+              card: ult,
               target: cardInRange
             });
           }

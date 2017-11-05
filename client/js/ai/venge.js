@@ -19,6 +19,7 @@ game.heroesAI.venge = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',
+            card: stun,
             target: cardInRange
           });
         }
@@ -40,6 +41,7 @@ game.heroesAI.venge = {
           cardData['cast-strats'].push({
             priority: p + (targets * 10),
             skill: 'corruption',
+            card: corruption,
             target: spot
           });
         }
@@ -69,6 +71,7 @@ game.heroesAI.venge = {
               cardData['cast-strats'].push({
                 priority: p,
                 skill: 'ult',
+                card: ult,
                 target: spot
               });
             }
@@ -84,6 +87,7 @@ game.heroesAI.venge = {
             cardData['cast-strats'].push({
               priority: 50 + spot.data('priority'),
               skill: 'ult',
+              card: ult,
               target: spot
             });
           }

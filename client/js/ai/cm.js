@@ -31,6 +31,7 @@ game.heroesAI.cm = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'slow',
+            card: slow,
             target: spot
           });
         }
@@ -46,6 +47,7 @@ game.heroesAI.cm = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'freeze',
+            card: freeze,
             target: cardInRange
           });
         }
@@ -65,6 +67,7 @@ game.heroesAI.cm = {
         cardData['cast-strats'].push({
           priority: p,
           skill: 'ult',
+          card: ult,
           target: card
         });
       }

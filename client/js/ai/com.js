@@ -25,6 +25,7 @@ game.heroesAI.com = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'aoe',
+            card: aoe,
             target: spot
           });
         }
@@ -38,6 +39,7 @@ game.heroesAI.com = {
           cardData['cast-strats'].push({
             priority: parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'heal',
+            card: heal,
             target: cardInRange
           });
         }
@@ -51,6 +53,7 @@ game.heroesAI.com = {
           cardData['cast-strats'].push({
             priority: parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'ult',
+            card: ult,
             target: cardInRange
           });
         }

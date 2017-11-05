@@ -30,6 +30,7 @@ game.heroesAI.kotl = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'illuminate',
+            card: illuminate,
             target: spot
           });
         }
@@ -42,6 +43,7 @@ game.heroesAI.kotl = {
           cardData['cast-strats'].push({
             priority: cardInRange.data('mana') * 10,
             skill: 'leak',
+            card: leak,
             target: cardInRange
           });
         }
@@ -53,6 +55,7 @@ game.heroesAI.kotl = {
         cardData['cast-strats'].push({
           priority: 50,
           skill: 'mana',
+          card: mana,
           target: card
         });
       }
@@ -62,6 +65,7 @@ game.heroesAI.kotl = {
       cardData['cast-strats'].push({
         priority: 60,
         skill: 'ult',
+        card: ult,
         target: card
       });
     }
@@ -81,6 +85,7 @@ game.heroesAI.kotl = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'blind',
+            card: blind,
             target: spot
           });
         }
@@ -97,6 +102,7 @@ game.heroesAI.kotl = {
             cardData['cast-strats'].push({
               priority: parseInt(10 + ((0.3 / hp) * 10)),
               skill: 'recall',
+              card: recall,
               target: ally
             });
           }
