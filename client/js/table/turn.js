@@ -115,10 +115,6 @@ game.turn = {
         game.turn.el.text(game.data.ui.enemyturn).addClass('show');
         game.timeout(800, function () { game.turn.el.removeClass('show'); });
       }
-      if (turn == 'enemy-turn' && game.mode == 'single') {
-        game.single.beginPlayer();
-        game.ai.timeover = true;
-      }
       if (cb) cb(turn);
     }
   },

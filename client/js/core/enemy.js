@@ -124,7 +124,8 @@ game.enemy = {
       }
       game.enemy.autoMoveCount++;
       if (game.enemy.autoMoveCount < game.currentMoves.length) {
-        game.timeout(game.enemy.moveAnimation, game.enemy.autoMove);
+        if (game.mode == 'single' && game.turn.counter < 1) game.timeout(game.enemy.moveAnimation, game.enemy.movesEnd);
+        else game.timeout(game.enemy.moveAnimation, game.enemy.autoMove);
       } else
         game.timeout(game.enemy.moveAnimation, game.enemy.movesEnd);
     }
@@ -133,7 +134,8 @@ game.enemy = {
     $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.source').removeClass('source');
-    game.timeout(1000, game.enemy.moveEndCallback);
+    if (game.mode == 'single' && game.turn.counter < 1) game.single.endEnemyTurn();
+    else game.timeout(1000, game.enemy.moveEndCallback);
   },
   move: function(from, to) {
     var target = $('#' + from + ' .card');

@@ -1,7 +1,7 @@
 {
   "start": {
     "name": "Stage 1",
-    "img": "tree",
+    "img": "tower",
     "title": "Very Easy - Radiant Tower",
     "ai": "very-easy",
     "desc": [
@@ -13,7 +13,7 @@
   },
   "easy": {
     "name": "Stage 2",
-    "img": "tower",
+    "img": "unit",
     "title": "Easy - Radiant Jungle",
     "ai": "easy",
     "desc": [
@@ -25,8 +25,7 @@
   },
   "optional": {
     "name": "Optional Stage",
-    "img": "cent",
-    "title": "Optional - Radiant Jungle",
+    "img": "forest",
     "ai": "easy",
     "desc": [
       "Win after 20 turns",
@@ -37,8 +36,8 @@
   },
   "rune": {
     "name": "Rune Stage",
-    "img": "cent",
-    "title": "Optional - River Rune",
+    "img": "rune",
+    "title": "River Rune",
     "ai": "easy",
     "desc": [
       "Win after 20 turns",
@@ -49,8 +48,8 @@
   },
   "shop": {
     "name": "Shop Stage",
-    "img": "cent",
-    "title": "Optional - Secret Shop",
+    "img": "catap",
+    "title": "Secret Shop",
     "ai": "easy",
     "desc": [
       "Win after 20 turns",
@@ -61,8 +60,8 @@
   },
   "roshan": {
     "name": "Roshan Stage",
-    "img": "cent",
-    "title": "Optional - Roshan Cave",
+    "img": "ecat",
+    "title": "Roshan Cave",
     "ai": "easy",
     "desc": [
       "Win after 20 turns",
@@ -73,7 +72,7 @@
   },
   "normal": {
     "name": "Stage 3",
-    "img": "catap",
+    "img": "eunit",
     "title": "Normal - Middle Tower",
     "ai": "normal",
     "desc": [
@@ -85,7 +84,7 @@
   },
   "hard": {
     "name": "Stage 4",
-    "img": "catap",
+    "img": "eunitran",
     "title": "Hard - Enemy Base",
     "ai": "hard",
     "desc": [
@@ -97,7 +96,7 @@
   },
   "last": {
     "name": "Last Stage",
-    "img": "catap",
+    "img": "etower",
     "title": "Very Hard - Enemy Ancient",
     "ai": "very-hard",
     "desc": [

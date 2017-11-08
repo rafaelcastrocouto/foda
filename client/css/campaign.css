@@ -65,14 +65,32 @@
 .campaign-img.tower:before {
   background-image: url("../img/towers/tower-player.jpg");
 }
+.campaign-img.etower:before {
+  background-image: url("../img/towers/tower-enemy.jpg");
+}
 .campaign-img.tree:before {
   background-image: url("../img/trees/tree_rad.jpg");
 }
-.campaign-img.cent:before {
-  background-image: url("../img/units/cent.jpg");
+.campaign-img.forest:before {
+  background-image: url("../img/units/tomato.jpg");
 }
 .campaign-img.catap:before {
   background-image: url("../img/creeps/player_catapult.jpg");
+}
+.campaign-img.unit:before {
+  background-image: url("../img/creeps/player_melee.jpg");
+}
+.campaign-img.eunit:before {
+  background-image: url("../img/creeps/enemy_melee.jpg");
+}
+.campaign-img.eunitran:before {
+  background-image: url("../img/creeps/enemy_ranged.jpg");
+}
+.campaign-img.ecat:before {
+  background-image: url("../img/creeps/enemy_catapult.jpg");
+}
+.campaign-img.rune:before {
+  background-image: url("../img/creeps/player_ranged.jpg");
 }
 
 
@@ -138,7 +156,7 @@
   display: none;
 }
 .states .stages.done {
-  opacity: 0.4;
+  opacity: 0.3;
   background-color: rgba(255,255,225,0.3);
 }
 .stages.done:after {
@@ -214,7 +232,7 @@
 }
 
 .stages.easy.top {
-  top: 180px;
+  top: 170px;
   left: 30px;
 }
 
@@ -247,7 +265,7 @@
 .stages.shop {
   background-image: url(../img/campaign/ico_shop.png);
   top: 250px;
-  left: 120px;
+  left: 110px;
   width: 60px;
   height: 60px;
 }
@@ -255,7 +273,7 @@
 .stages.normal.mid {
   background-image: url(../img/campaign/ico_medium.png);
   top: 200px;
-  left: 300px;
+  left: 280px;
 }
 
 .stages.hard {
@@ -264,17 +282,17 @@
 
 .stages.hard.top {
   top: 10px;
-  left: 400px;
+  left: 380px;
 }
 
 .stages.hard.mid {
-  top: 95px;
-  left: 427px;
+  top: 110px;
+  left: 400px;
 }
 
 .stages.hard.bot {
-  bottom: 335px;
-  left: 508px;
+  bottom: 320px;
+  left: 500px;
 }
 
 .stages.final {

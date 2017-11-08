@@ -5,7 +5,12 @@ game.tutorial = {
       game.tutorial.axe = $('<div>').addClass('axe tutorial');
       game.tutorial.axeimg = $('<div>').addClass('img').appendTo(game.tutorial.axe);
       game.tutorial.axebaloon = $('<div>').addClass('baloon').appendTo(game.tutorial.axe);
-      game.tutorial.message = $('<div>').addClass('txt').appendTo(game.tutorial.axebaloon);
+      game.tutorial.txtflip = $('<div>').addClass('txtflip').appendTo(game.tutorial.axebaloon);
+      $('<span>').addClass('txtclip').appendTo(game.tutorial.txtflip);
+      $('<span>').addClass('txtclip right').appendTo(game.tutorial.txtflip);
+      game.tutorial.message = $('<span>').addClass('txt').appendTo(game.tutorial.txtflip);
+      $('<span>').addClass('txtclip').appendTo(game.tutorial.txtflip);
+      $('<span>').addClass('txtclip right').appendTo(game.tutorial.txtflip);
       game.tutorial.axe.appendTo(game.states.choose.el);
     }
     game.seed = new Date().valueOf();
@@ -164,6 +169,7 @@ game.tutorial = {
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.audio.play('tutorial/axemove');
     if (card.hasClass('creep')) game.tutorial.letter(game.data.ui.axesummoncreep);
+    game.tutorial.letter(game.data.ui.axesummoncreep);
     $('.player .sidehand .card, .map .player.ld').on('summon cast', game.tutorial.summonedCreep);
   },
   summonedCreep: function () {

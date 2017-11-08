@@ -22,17 +22,15 @@
 }
 
 .tutorial.axe .baloon {
-  padding: 28px;
-  padding-top: 26px;
+  padding: 22px;
   background: #fff;
   border: 4px solid #777;
   border-width: 4px 8px;
-  width: 175px;
+  width: 200px;
   border-radius: 50%;
   position: absolute;
   bottom: 245px;
   right: 185px;
-  font-size: 19px;
 }
 
 .tutorial.axe .baloon:before, .tutorial.axe .baloon:after {
@@ -68,12 +66,28 @@
 .tutorial.axe .txt {
   transform: rotate(2deg);
   color: #444;
-  text-align: center;
   background: transparent;
+  border-radius: 50%;
+  width: 95%;
+  font-size: 18px;
+  line-height: 25px;
+}
+.tutorial.axe .txtflip {
+  text-align: center;
+}
+.tutorial.axe .txtclip {
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+  float: left;
+}
+.tutorial.axe .txtclip.right {
+  float: right;
 }
 
 .tutorial .battle {
-  font-size: 150%;
+  font-size: 160%;
+  line-height: 135%;
 }
 
 .blink, .table .player .blink {
@@ -152,11 +166,11 @@
   transform: scaleX(1);
 }
 
-.tutorial.axe.left .txt, .left-side .tutorial.axe .txt {
-  transform: scaleX(-1);
+.tutorial.axe.left .txtflip, .left-side .tutorial.axe .txtflip {
+  transform: rotate(-2deg) scaleX(-1);
 }
 
-.left-side .tutorial.axe.left .txt {
+.left-side .tutorial.axe.left .txtflip {
   transform: scaleX(1);
 }
 

@@ -1,4 +1,5 @@
 game.ai = {
+  timeToPlay: 20,
   side: 'enemy',
   start: function () {
     game.currentData.moves = [];
@@ -7,11 +8,10 @@ game.ai = {
     if (game.ai.mode == 'normal')    game.ai.level = 7;
     if (game.ai.mode == 'hard')      game.ai.level = 8;
     if (game.ai.mode == 'very-hard') game.ai.level = 9;
+    game.ai.timeToPlay = 5 * game.ai.level;
   },
   turnStart: function () { //console.log('ai start turn')
     // remember ai is playing the enemy cards
-    game.ai.timeover = false;
-    game.message.text(game.data.ui.enemymove);
     game.ai.currentmovesLoop = game.ai.level*2;
     game.currentData.moves = [];
     // add combo data and strats
@@ -78,7 +78,7 @@ game.ai = {
       game.ai.currentmovesLoop -= 1;
       game.ai.moveRandomCard();
     } else {
-      game.ai.endTurn();
+      game.single.endEnemyTurn();
     }
   },
   endTurn: function () {
@@ -109,7 +109,7 @@ game.ai = {
     game.ai.autoMove(game.single.endEnemyTurn);
   },
   autoMove: function (cb) {
-    if (!game.ai.timeover) {
+    if (game.turn.counter > 1) {
       if (game.currentData.moves.length) {
         game.enemy.moveEndCallback = cb;
         game.currentMoves = game.currentData.moves;
@@ -117,7 +117,7 @@ game.ai = {
         game.enemy.autoMoveCount = 0;
         game.enemy.autoMove();
       } else cb();
-    }
+    } else game.single.endEnemyTurn();
   },
   passives: function (card) {
     // activate all pasives
@@ -285,13 +285,13 @@ game.ai = {
         cardData = game.ai.spotData(top, card, cardData, side, 'retreat', 6);
       }
       if (right && right.hasClass('free') && cardData['can-retreat']) {
-        cardData = game.ai.spotData(right, card, cardData, side, 'retreat', 2);
+        cardData = game.ai.spotData(right, card, cardData, side, 'retreat', 4);
       }
       if (tr && tr.hasClass('free') && (top.hasClass('free') || right.hasClass('free'))) {
         cardData = game.ai.spotData(tr, card, cardData, side, 'retreat', 8);
       }
       if (tl && tl.hasClass('free') && (top.hasClass('free') || left.hasClass('free'))) {
-        cardData = game.ai.spotData(tl, card, cardData, side, 'retreat', 4);
+        cardData = game.ai.spotData(tl, card, cardData, side, 'retreat', 2);
       }
     }
     card.data('ai', cardData);
@@ -515,6 +515,7 @@ game.ai = {
     }
     //console.log(itens, chosen);
     if (chosen[parameter] > game.ai.level) return chosen;
+    else console.log(chosen)
   },
   parseMove: function (card, cardData, action, target, cast) {
     //console.log(action, target);

@@ -49,7 +49,7 @@ game.single = {
   },
   startTurn: function (turn) {
     if (turn == 'player-turn') game.turn.counter = game.timeToPlay;
-    else game.turn.counter = 30;
+    else game.turn.counter = game.ai.timeToPlay;
     game.timeout(1000, function () { 
       game.turn.count(turn, game.single.countEnd); 
     });

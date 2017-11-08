@@ -1,9 +1,9 @@
 game.states.campaign = {
-  lane: 'm',
+  lane: ['m','m'],
   build: function () {
     this.map = $('<div>').addClass('campaign-map');
     this.desc = $('<div>').addClass('campaign-box box');
-    this.st = $('<div>').attr('id','st').addClass('stages start').appendTo(this.map);
+    this.st = $('<div>').attr('id','st').addClass('stages start blink').appendTo(this.map);
     this.et = $('<div>').attr('id','et').addClass('stages easy top').appendTo(this.map);
     this.em = $('<div>').attr('id','em').addClass('stages easy mid').appendTo(this.map);
     this.eb = $('<div>').attr('id','eb').addClass('stages easy bot').appendTo(this.map);
@@ -22,29 +22,30 @@ game.states.campaign = {
     this.back = $('<div>').addClass('back button').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
     this.toChoose = $('<div>').addClass('campaign-play button highlight').text(game.data.ui.battle).on('mouseup touchend', this.toChoose).appendTo(this.buttonbox);
     this.el.append(this.map).append(this.desc).append(this.buttonbox);
-    this.stage = localStorage.getItem('stage') || game.data.campaign.start;
-    if (this[this.stage.name + ' Click']) this[this.stage.name + ' Click']();
+    this.buildDesc(game.data.campaign.start);
   },
   start: function () {
     this.clear();
     this.createStartPaths();
     game.message.text(game.data.ui.campaign);
-    if (this[this.stage.name + ' Show']) this[this.stage.name + ' Show']();
   },
   nextStage: function () {
-    if (!this.stage) this.stage = game.data.campaign.start;
     switch(this.stage.name) {
       case 'Rune Stage':
         $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        this.stage = game.data.campaign.normal;
         break;
       case 'Shop Stage':
         $('#sh').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        this.stage = game.data.campaign.normal;
         break;
       case 'Roshan Stage':
         $('#ro').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        this.stage = game.data.campaign.normal;
         break;
       case 'Optional Stage':
-        $('#o'+game.states.campaign.lane).removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        $('#o'+game.states.campaign.lane[0]).removeClass('blink enabled').addClass('done').off('mouseup touchend');
+        this.stage = game.data.campaign.normal;
         break;
       case 'Stage 4':
         this.stage = game.data.campaign.last;
@@ -58,6 +59,7 @@ game.states.campaign = {
       default:
         this.stage = game.data.campaign.easy;
     }
+    if (this[this.stage.name + ' Show']) this[this.stage.name + ' Show']();
   },
   "Stage 1 Click": function () {
     $('.campaign-path').css('opacity', 0.3);
@@ -103,25 +105,30 @@ game.states.campaign = {
   },
   "Stage 3 Show": function () {
     $('.stages.easy').removeClass('blink enabled').addClass('done').off('mouseup touchend');
-    $('#e'+game.states.campaign.lane).addClass('enabled').on('mouseup touchend', this["Stage 2 Click"]);
-    $('#nm').addClass('enabled blink').on('mouseup touchend', this["Stage 3 Click"]);
-    $('#o'+game.states.campaign.lane).addClass('enabled blink').on('mouseup touchend', this["Optional Click"]);   
+    $('#e'+game.states.campaign.lane[0]).addClass('enabled').on('mouseup touchend', this["Stage 2 Click"]);
+    this.nm.addClass('enabled blink').on('mouseup touchend', this["Stage 3 Click"]);
+    var opt = $('#o'+game.states.campaign.lane[0]);
+    opt.addClass('enabled').on('mouseup touchend', this["Optional Stage Click"]);   
+    if (!opt.hasClass('done')) opt.addClass('blink');
     $('.campaign-path').css('opacity', 0.3);
-    if (game.states.campaign.lane == 't') {
-      $('#ro').addClass('enabled blink').on('mouseup touchend', this["Roshan Cave Click"]);
+    if (game.states.campaign.lane[0] == 't') {
+      this.ro.addClass('enabled').on('mouseup touchend', this["Roshan Stage Click"]);
       $('.campaign-path.et-ro').css('opacity', 0.7);
+      if (!this.ro.hasClass('done')) this.ro.addClass('blink');
     }
-    if (game.states.campaign.lane == 'm') {
-      $('#sh').addClass('enabled blink').on('mouseup touchend', this["Secret Shop Click"]);
+    if (game.states.campaign.lane[0] == 'm') {
+      this.sh.addClass('enabled').on('mouseup touchend', this["Shop Stage Click"]);
       $('.campaign-path.em-sh').css('opacity', 0.7);
+      if (!this.sh.hasClass('done')) this.sh.addClass('blink');
     }
-    if (game.states.campaign.lane == 'b') {
-      $('#ru').addClass('enabled blink').on('mouseup touchend', this["River Rune Click"]);
+    if (game.states.campaign.lane[0] == 'b') {
+      this.ru.addClass('enabled').on('mouseup touchend', this["Rune Stage Click"]);
       $('.campaign-path.eb-ru').css('opacity', 0.7);
+      if (!this.ru.hasClass('done')) this.ru.addClass('blink');
     }
-    $('.campaign-path.e'+game.states.campaign.lane+'-nm').css('opacity', 0.7);
-    $('.campaign-path.e'+game.states.campaign.lane+'-o'+game.states.campaign.lane).css('opacity', 0.7);
-    $('.campaign-path.st-e'+game.states.campaign.lane).css('opacity',1);
+    $('.campaign-path.e'+game.states.campaign.lane[0] +'-nm').css('opacity', 0.7);
+    $('.campaign-path.e'+game.states.campaign.lane[0] +'-o'+game.states.campaign.lane[0]).css('opacity', 0.7);
+    $('.campaign-path.st-e'+game.states.campaign.lane[0]).css('opacity',1);
     this.createPath(this.nm, this.ht, 'nm-ht');
     this.createPath(this.nm, this.hm, 'nm-hm');
     this.createPath(this.nm, this.hb, 'nm-hb');
@@ -163,12 +170,36 @@ game.states.campaign = {
     $('.campaign-path.nm-ht').css('opacity', 0.7);
     $('.campaign-path.nm-hm').css('opacity', 0.7);
     $('.campaign-path.nm-hb').css('opacity', 0.7);
-    $('.campaign-path.st-e'+game.states.campaign.lane).css('opacity',1);
-    $('.campaign-path.e'+game.states.campaign.lane+'-nm').css('opacity',1);
+    $('.campaign-path.st-e'+game.states.campaign.lane[0]).css('opacity',1);
+    $('.campaign-path.e'+game.states.campaign.lane[0] +'-nm').css('opacity',1);
     this.createPath(this.nm, this.ht, 'nm-ht');
     this.createPath(this.nm, this.hm, 'nm-hm');
     this.createPath(this.nm, this.hb, 'nm-hb');
-    this.buildDesc(game.data.campaign.normal);
+    this.buildDesc(game.data.campaign.hard);
+  },
+  "Last Stage Click": function () {
+    var target = $(this);
+    $('.blink').removeClass('blink');
+    target.addClass('blink');
+    game.states.campaign.pathHighlight(target);
+    game.states.campaign.buildDesc(game.data.campaign.last);
+  },
+  "Last Stage Show": function () {
+    $('.stages.hard').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+    $('#h'+game.states.campaign.lane[1]).addClass('enabled').on('mouseup touchend', this["Stage 4 Click"]);
+    $('#fi').addClass('enabled blink').on('mouseup touchend', this["Last Stage Click"]);
+    $('.campaign-path').css('opacity', 0.3);
+    $('.campaign-path.ht-fi').css('opacity', 0.7);
+    $('.campaign-path.hm-fi').css('opacity', 0.7);
+    $('.campaign-path.hb-fi').css('opacity', 0.7);
+    $('.campaign-path.st-e'+game.states.campaign.lane[0]).css('opacity',1);
+    $('.campaign-path.e'+game.states.campaign.lane[0] +'-nm').css('opacity',1);
+    $('.campaign-path.nm-h'+game.states.campaign.lane[1]).css('opacity',1);
+    this.createPath(this.ht, this.fi, 'ht-fi');
+    this.createPath(this.hm, this.fi, 'hm-fi');
+    this.createPath(this.hb, this.fi, 'hb-fi');
+    $('.campaign-path.h'+game.states.campaign.lane[1]+'-fi').css('opacity',1);
+    this.buildDesc(game.data.campaign.last);
   },
   buildDesc: function (data) {
     if (!data) data = this.stage;
@@ -205,16 +236,16 @@ game.states.campaign = {
     var s = source.position(), t = target.position();
     var sourcesize = source.width() / 2;
     s.left += (sourcesize - size);
-    s.top += (sourcesize - size) * 1.2;
+    s.top += (sourcesize - size);
     var targetsize = target.width() / 2;
     t.left += (targetsize - size);
-    t.top += (targetsize - size) * 1.2;
+    t.top += (targetsize - size);
     var mx = t.left - s.left, 
         my = t.top - s.top;
     var a = Math.atan2(my, mx);
     var d = Math.pow( Math.pow(mx,2) + Math.pow(my,2) , 1/2);
-    var toff = sourcesize + dash;
-    d -= toff;
+    var toff = sourcesize + (dash/2);
+    d -= toff + (dash/2);
     var n = Math.floor(d/dash) - 1, x, y;
     for (var i = 0; i < n; i++) {
       x = s.left + (toff * Math.cos(a)) + (i * dash * Math.cos(a));
@@ -225,24 +256,53 @@ game.states.campaign = {
   pathHighlight: function (target) {
     $('.campaign-path').css('opacity', 0.3);
     if (target.attr('id')[0] == 'e') {
+      game.states.campaign.lane[0] = target.attr('id')[1];
       $('.campaign-path.st-'+target.attr('id')).css('opacity', 1);
-      game.states.campaign.lane = target.attr('id')[1];
     }
-    var l = game.states.campaign.lane;
+    var l = game.states.campaign.lane[0];
+    if (target.attr('id')[0] == 'o') {
+      $('.campaign-path.st-e'+l).css('opacity', 1);
+      $('.campaign-path.e'+l+'-o'+l).css('opacity', 1);
+    }
+    if (target.attr('id') == 'ro') {
+      $('.campaign-path.st-e'+l).css('opacity', 1);
+      $('.campaign-path.e'+l+'-ro').css('opacity', 1);
+    }
+    if (target.attr('id') == 'sh') {
+      $('.campaign-path.st-e'+l).css('opacity', 1);
+      $('.campaign-path.e'+l+'-sh').css('opacity', 1);
+    }
+    if (target.attr('id') == 'ru') {
+      $('.campaign-path.st-e'+l).css('opacity', 1);
+      $('.campaign-path.e'+l+'-ru').css('opacity', 1);
+    }
     if (target.attr('id') == 'nm') {
       $('.campaign-path.st-e'+l).css('opacity', 1);
       $('.campaign-path.e'+l+'-nm').css('opacity', 1);
     }
-    if (target.attr('id')[0] == 'o') {
+    if (target.attr('id')[0] == 'h') {
+      game.states.campaign.lane[1] = target.attr('id')[1];
       $('.campaign-path.st-e'+l).css('opacity', 1);
-      $('.campaign-path.e'+l+'-o'+l).css('opacity', 1);
+      $('.campaign-path.e'+l+'-nm').css('opacity', 1);
+      $('.campaign-path.nm-h'+target.attr('id')[1]).css('opacity', 1);
+    }
+    var l1 = game.states.campaign.lane[1];
+    if (target.attr('id') == 'fi') {
+      $('.campaign-path.st-e'+l).css('opacity', 1);
+      $('.campaign-path.e'+l+'-nm').css('opacity', 1);
+      $('.campaign-path.nm-h'+l1).css('opacity', 1);
+      $('.campaign-path.h'+l1+'-fi').css('opacity', 1);
     }
   },
   clearPaths: function () {
     $('.campaign-path', game.states.campaign.map).hide();
   },
   toChoose: function () {
-    game.states.changeTo('choose');
+    if (game.states.campaign.stage.name == 'Stage 1') {
+      game.states.changeTo('choose');
+    } else {
+      game.states.changeTo('vs');
+    }
   },
   backClick: function () {
     game.clear();
