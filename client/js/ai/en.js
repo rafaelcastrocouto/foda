@@ -46,7 +46,7 @@ game.heroesAI.en = {
       cardData['can-cast'] = true;
       var p = 0, n = 0;
       card.alliesInRange(heal.data('cast range'), function (ally) {
-        if (!ally.hasClasses('ghost dead towers')) {
+        if (!ally.hasClasses('ghost dead towers') && ally.data('current hp') < ally.data('hp')) {
           p += ally.data('current hp')/4;
           n++;
         }

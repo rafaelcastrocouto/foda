@@ -26,6 +26,7 @@
   "optional": {
     "name": "Optional Stage",
     "img": "forest",
+    "title": "Optional - Jungle",
     "ai": "easy",
     "desc": [
       "Win after 20 turns",

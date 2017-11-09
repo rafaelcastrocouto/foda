@@ -28,6 +28,10 @@ game.states.campaign = {
     this.clear();
     this.createStartPaths();
     game.message.text(game.data.ui.campaign);
+    if (game.nextStage) {
+      game.states.campaign.nextStage();
+      game.nextStage = false;
+    }
   },
   nextStage: function () {
     switch(this.stage.name) {

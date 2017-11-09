@@ -68,7 +68,7 @@ game.units = {
     creep.addClass(side);
     creep.appendTo(target);
     if (game.canPlay()) creep.on('mousedown touchstart', game.card.select);
-    if (side == 'enemy') crep.addClass('flipped');
+    //if (side == 'enemy') creep.addClass('flipped');
     return creep;
   },
   summonCreep: function(target, to, creep) {

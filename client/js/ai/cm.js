@@ -42,7 +42,7 @@ game.heroesAI.cm = {
         var p = 0, cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
           cardData['can-cast'] = true;
-          p = parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          p = 10 + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
           if (cardInRange.hasClass('channeling')) p += 20;
           cardData['cast-strats'].push({
             priority: p,

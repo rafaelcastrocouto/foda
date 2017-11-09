@@ -9,11 +9,12 @@ game.ai = {
     if (game.ai.mode == 'hard')      game.ai.level = 8;
     if (game.ai.mode == 'very-hard') game.ai.level = 9;
     game.ai.timeToPlay = 5 * game.ai.level;
+    if (game.debug) game.ai.level = 9;
   },
   turnStart: function () { //console.log('ai start turn')
     // remember ai is playing the enemy cards
     game.ai.currentmovesLoop = game.ai.level*2;
-    game.currentData.moves = [];
+    game.ai.resetData();
     // add combo data and strats
     //game.ai.comboData();
     // activate all passives, other sidehand skills strats per hero
@@ -74,21 +75,19 @@ game.ai = {
     game.ai.autoMove(game.ai.nextMove);
   },
   nextMove: function () {
-    if (game.ai.currentmovesLoop > 0 && game.turn.counter > 1) {
-      game.ai.currentmovesLoop -= 1;
-      game.ai.moveRandomCard();
+    if (game.turn.counter > 1) {
+      if (game.ai.currentmovesLoop > 0) {
+        game.ai.currentmovesLoop -= 1;
+        game.ai.moveRandomCard();
+      } else {
+        game.ai.lastMoves();
+      }
     } else {
-      game.single.endEnemyTurn();
+      game.ai.endTurn();
     }
   },
-  endTurn: function () {
+  lastMoves: function () {
     //console.log('ai end turn')
-    game.ai.resetData();
-    $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
-    $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
-    $('.card').data('ai count', 0);
-    $('.source').removeClass('source');
-    $('.ai-max').removeClass('ai-max');
     //check attack
     $('.map .card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
       var card = $(el);
@@ -106,18 +105,25 @@ game.ai = {
       game.ai.skillsDiscard(card);
     });
     //console.log(game.currentData.moves)
-    game.ai.autoMove(game.single.endEnemyTurn);
+    game.ai.autoMove(game.ai.endTurn);
+  },
+  endTurn: function () {
+    $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
+    $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
+    $('.card').data('ai count', 0);
+    $('.source').removeClass('source');
+    $('.ai-max').removeClass('ai-max');
+    game.single.endEnemyTurn();
   },
   autoMove: function (cb) {
     if (game.turn.counter > 1) {
       if (game.currentData.moves.length) {
         game.enemy.moveEndCallback = cb;
         game.currentMoves = game.currentData.moves;
-        //console.log(game.currentMoves);
         game.enemy.autoMoveCount = 0;
         game.enemy.autoMove();
       } else cb();
-    } else game.single.endEnemyTurn();
+    } else game.ai.endTurn();
   },
   passives: function (card) {
     // activate all pasives
@@ -513,9 +519,9 @@ game.ai = {
         chosen = itens.smartRandom(game.ai.level*Math.PI);
       }
     }
-    //console.log(itens, chosen);
-    if (chosen[parameter] > game.ai.level) return chosen;
-    else console.log(chosen)
+    //console.log(itens, chosen)
+    if (chosen[parameter] > game.ai.level-9) return chosen;
+    //else console.log(chosen)
   },
   parseMove: function (card, cardData, action, target, cast) {
     //console.log(action, target);
@@ -567,9 +573,10 @@ game.ai = {
     enemyarea.each(function () {
       var spot =  $(this);
       var spotData = spot.data('ai');
+      var y = spot.getY();
       if (!spotData.blocked) spots.push({
         target: spot,
-        priority: spotData.priority + 10,
+        priority: spotData.priority + (10 * y),
         data: spotData
       });
     });

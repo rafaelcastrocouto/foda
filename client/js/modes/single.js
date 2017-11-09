@@ -92,7 +92,7 @@ game.single = {
   },
   win: function () {
     game.turn.stopCount();
-    game.states.campaign.nextStage();
+    game.nextStage = true;
     game.winner = game.player.name;
     game.player.points += 1;
     localStorage.setItem('points', game.player.points);

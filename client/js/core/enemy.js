@@ -79,6 +79,7 @@ game.enemy = {
       $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
       $('.source').removeClass('source');
       game.enemy.moveAnimation = 1600;
+      //console.log(move)
       if (move[1]) {
         from = game.map.mirrorPosition(move[1]);
         if (move[2])
