@@ -24,6 +24,7 @@ game.heroesAI.kotl = {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
             if (cardInRange.hasClass('towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {
@@ -38,7 +39,7 @@ game.heroesAI.kotl = {
     }
     if (card.canCast(leak)) {
       card.opponentsInRange(leak.data('cast range'), function (cardInRange) {
-        if (!cardInRange.hasClasses('invisible ghost dead towers') && cardInRange.hasClass('heroes')) {
+        if (!cardInRange.hasClasses('invisible ghost dead towers units') && cardInRange.hasClass('heroes')) {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({
             priority: cardInRange.data('mana') * 10,
@@ -79,6 +80,7 @@ game.heroesAI.kotl = {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
             if (cardInRange.hasClass('channeling towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {

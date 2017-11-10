@@ -25,6 +25,7 @@ game.heroesAI.cm = {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
             if (cardInRange.hasClass('towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {
@@ -44,6 +45,7 @@ game.heroesAI.cm = {
           cardData['can-cast'] = true;
           p = 10 + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
           if (cardInRange.hasClass('channeling')) p += 20;
+          if (cardInRange.hasClass('units')) p -= 15;
           cardData['cast-strats'].push({
             priority: p,
             skill: 'freeze',
@@ -61,6 +63,7 @@ game.heroesAI.cm = {
           targets++;
           p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
           if (cardInRange.hasClass('towers')) p += 20;
+          if (cardInRange.hasClass('units')) p -= 5;
         }
       });
       if (targets > 1) {

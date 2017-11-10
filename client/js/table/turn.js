@@ -11,6 +11,8 @@ game.turn = {
     game.enemy.turn = 0;
     game.player.kills = 0;
     game.enemy.kills = 0;
+    game.player.deaths = 0;
+    game.enemy.deaths = 0;
     game.moves = [];
     game.turn.tickTime();
   },

@@ -19,6 +19,7 @@ game.heroesAI.com = {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
             if (cardInRange.hasClass('towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {
@@ -33,11 +34,12 @@ game.heroesAI.com = {
     }
     if (card.canCast(heal)) {
       card.inRange(heal.data('cast range'), function (spot) {
-        var cardInRange = $('.card.enemy:not(.ghost, .dead, .towers)', spot);
+        var cardInRange = $('.card.enemy:not(.ghost, .dead, .towers, .units)', spot);
+        var p = 10;
         if (cardInRange.length) {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({
-            priority: parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
+            priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'heal',
             card: heal,
             target: cardInRange
@@ -47,7 +49,7 @@ game.heroesAI.com = {
     }
     if (card.canCast(ult)) {
       card.inRange(ult.data('cast range'), function (spot) {
-        var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
+        var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers, .units)', spot);
         if (cardInRange.length) {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({

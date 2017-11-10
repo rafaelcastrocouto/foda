@@ -18,6 +18,7 @@ game.heroesAI.pud = {
         if (cardInRange && cardInRange.side() == card.opponent() && !cardInRange.hasClasses('invisible ghost dead towers')) {
           var p = cardData['can-attack'] ? -20 : 20;
           if (cardInRange.hasClass('channeling')) p += 20;
+          if (cardInRange.hasClass('units')) p -= 15;
           cardData['cast-strats'].push({
             priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'hook',
@@ -36,6 +37,7 @@ game.heroesAI.pud = {
           targets++;
           p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
           if (cardInRange.hasClass('towers')) p += 20;
+          if (cardInRange.hasClass('units')) p -= 5;
         }
       });
       if (!rot.hasClass('on')) { // turn on
@@ -71,6 +73,7 @@ game.heroesAI.pud = {
       card.opponentsInRange(rot.data('aoe range'), function (cardInRange) {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           cardData['can-cast'] = true;
+          if (cardInRange.hasClass('units')) p -= 15;
           cardData['cast-strats'].push({
             priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'ult',

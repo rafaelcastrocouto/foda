@@ -35,6 +35,7 @@ game.heroesAI.nyx = {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
             if (cardInRange.hasClasses('channeling towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {
@@ -50,7 +51,7 @@ game.heroesAI.nyx = {
     //mana burn
     if (card.canCast(burn)) {
       card.opponentsInRange(burn.data('cast range'), function (cardInRange) {
-        if (!cardInRange.hasClasses('invisible ghost dead towers')) {
+        if (!cardInRange.hasClasses('invisible ghost dead towers units')) {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({
             priority: cardInRange.data('mana'),

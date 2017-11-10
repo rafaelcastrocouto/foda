@@ -48,6 +48,7 @@ game.heroesAI.ld = {
         if (!cardInRange.hasClasses('invisible ghost dead')) {
           p += 10;
           if (cardInRange.hasClasses('channeling towers')) p += 20;
+          if (cardInRange.hasClass('units')) p -= 5;
         }
       });
       if (p) cardData['cast-strats'].push({

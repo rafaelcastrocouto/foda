@@ -1,14 +1,14 @@
 game.ai = {
-  timeToPlay: 20,
+  timeToPlay: 30,
   side: 'enemy',
   start: function () {
     game.currentData.moves = [];
-    if (game.ai.mode == 'very-easy') game.ai.level = 4;
-    if (game.ai.mode == 'easy')      game.ai.level = 5;
-    if (game.ai.mode == 'normal')    game.ai.level = 7;
-    if (game.ai.mode == 'hard')      game.ai.level = 8;
-    if (game.ai.mode == 'very-hard') game.ai.level = 9;
-    game.ai.timeToPlay = 5 * game.ai.level;
+    if (game.ai.mode == 'very-easy') game.ai.level = 3;
+    if (game.ai.mode == 'easy')      game.ai.level = 4;
+    if (game.ai.mode == 'normal')    game.ai.level = 5;
+    if (game.ai.mode == 'hard')      game.ai.level = 6;
+    if (game.ai.mode == 'very-hard') game.ai.level = 8;
+    game.ai.timeToPlay = 10 * game.ai.level;
     if (game.debug) game.ai.level = 9;
   },
   turnStart: function () { //console.log('ai start turn')
@@ -520,7 +520,7 @@ game.ai = {
       }
     }
     //console.log(itens, chosen)
-    if (chosen[parameter] > game.ai.level-9) return chosen;
+    if (chosen[parameter] > 0) return chosen;
     //else console.log(chosen)
   },
   parseMove: function (card, cardData, action, target, cast) {
@@ -541,12 +541,18 @@ game.ai = {
       cardData['can-attack'] = false;
     }
     if (action == 'cast') {
-      move[0] = 'C';
-      if (cast.card.data('type') == game.data.ui.toggle) move[0] = 'T';
-      move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
-      move[2] = game.map.mirrorPosition(target.attr('id') || target.getSpot().attr('id'));
-      move[3] = cast.skill;
-      move[4] = card.data('hero');
+      if (cast.card.data('type') == game.data.ui.toggle) {
+        move[0] = 'T';
+        move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
+        move[2] = cast.skill;
+        move[3] = card.data('hero');
+      } else {
+        move[0] = 'C';
+        move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
+        move[2] = game.map.mirrorPosition(target.attr('id') || target.getSpot().attr('id'));
+        move[3] = cast.skill;
+        move[4] = card.data('hero');
+      }
     }
     //console.log(move);
     game.currentData.moves.push(move.join(':'));

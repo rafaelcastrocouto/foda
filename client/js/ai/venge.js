@@ -16,6 +16,7 @@ game.heroesAI.venge = {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           var p = 50;
           if (cardInRange.hasClass('channeling')) p += 30;
+          if (cardInRange.hasClass('units')) p -= 25;
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',
@@ -35,6 +36,7 @@ game.heroesAI.venge = {
           if (!cardInRange.hasClasses('invisible ghost dead towers')) {
             targets++;
             if (cardInRange.hasClass('towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {
@@ -64,6 +66,7 @@ game.heroesAI.venge = {
                 targets++;
                 p += parseInt((cardInUltRange.data('hp')-cardInUltRange.data('current hp'))/4);
                 if (cardInUltRange.hasClass('towers')) p += 70;
+                if (cardInUltRange.hasClass('units')) p -= 5;
                 if (nspot.hasClass('enemyarea')) p -= 30;
               }
             });
@@ -82,15 +85,14 @@ game.heroesAI.venge = {
       if (cardData['can-be-attacked'] && 
           card.data('current hp') < 25 &&
           (card.hasClass('done') || !cardData['can-make-action']) ) {
-        card.around(ult.data('cast range'), function (spot) {
-          if (spot.hasClass('free') && !spot.hasClass('playerarea')) {
-            cardData['cast-strats'].push({
-              priority: 50 + spot.data('priority'),
-              skill: 'ult',
-              card: ult,
-              target: spot
-            });
-          }
+        card.alliesInRange(ult.data('cast range'), function (cardInRange) {
+          if (cardInRange.hasClass('units')) p += 30;
+          cardData['cast-strats'].push({
+            priority: 10 + cardInRange.data('current hp'),
+            skill: 'ult',
+            card: ult,
+            target: spot
+          });
         });
       }
     }

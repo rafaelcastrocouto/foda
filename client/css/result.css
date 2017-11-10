@@ -14,16 +14,20 @@
 }
 .result h1 {
   display: inline;
+  margin-right: 10px;
+  font-size: 18px;
 }
+.result h1:last-child {
+  margin-right: 0;
+}
+.result .sub {white-space: nowrap;}
 .result .resultTitle {
   text-transform: uppercase;
   font-size: 25px;
   display: block;
   /* font-weight: bold; */
   margin-bottom: 6px;
-}
-.result .resultTitle + h1 {
-  margin-right: 30px;
+  margin-right: 0;
 }
 
 .result .results {

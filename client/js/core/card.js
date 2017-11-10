@@ -538,16 +538,18 @@ game.card = {
     var spot = target.parent();
     target.setCurrentHp(0);
     target.stopChanneling();
-    if (source.hasClass('heroes') && target.hasClass('heroes')) {
-      game[source.side()].kills += 1;
-      var kills = source.data('kills') + 1;
-      source.data('kills', kills);
-      source.find('.kills').text(kills);
+    if (target.hasClass('heroes')) {
       game[target.side()].deaths += 1;
       var deaths = target.data('deaths') + 1;
       target.data('deaths', deaths);
       target.find('.deaths').text(deaths);
       target.reselect();
+    }
+    if (source.hasClass('heroes') && target.hasClass('heroes')) {
+      game[source.side()].kills += 1;
+      var kills = source.data('kills') + 1;
+      source.data('kills', kills);
+      source.find('.kills').text(kills);
       source.reselect();
     }
     evt.position = target.getPosition();

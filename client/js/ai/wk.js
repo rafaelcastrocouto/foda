@@ -10,6 +10,7 @@ game.heroesAI.wk = {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           var p = 50;
           if (cardInRange.hasClass('channeling')) p += 30;
+          if (cardInRange.hasClass('units')) p -= 20;
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',

@@ -21,6 +21,7 @@ game.heroesAI.lina = {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
             if (cardInRange.hasClass('towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {
@@ -43,6 +44,7 @@ game.heroesAI.lina = {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
             if (cardInRange.hasClass('channeling towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {
@@ -61,7 +63,7 @@ game.heroesAI.lina = {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           cardData['can-cast'] = true;
           p += (50 - cardInRange.data('current hp'))/4;
-          if (cardInRange.hasClass('units')) p -= 25;
+          if (cardInRange.hasClass('units')) p -= 30;
           cardData['cast-strats'].push({
             priority: p,
             skill: 'ult',

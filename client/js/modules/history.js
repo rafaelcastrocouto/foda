@@ -30,6 +30,7 @@ game.history = {
       if (game.debug) {
         if (state == 'loading') state = 'log';
         if (state == 'table') state = 'vs';
+        if (state == 'result') state = 'menu';
         if (mode) game.setMode(mode, recovering);
         if (mode == 'online') {
           game.currentData = JSON.parse(game.history.data);

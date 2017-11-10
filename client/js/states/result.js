@@ -2,8 +2,11 @@ game.states.result = {
   build: function () {
     this.resultsbox = $('<div>').addClass('resultsbox box');
     this.title = $('<h1>').appendTo(this.resultsbox).addClass('resultTitle');
-    this.towers = $('<h1>').appendTo(this.resultsbox);
-    this.kd = $('<h1>').appendTo(this.resultsbox);
+    this.sub = $('<div>').addClass('sub').appendTo(this.resultsbox);
+    this.towers = $('<h1>').appendTo(this.sub);
+    this.kills = $('<h1>').appendTo(this.sub);
+    this.deaths = $('<h1>').appendTo(this.sub);
+    this.turns = $('<h1>').appendTo(this.sub);
     this.playerResults = $('<div>').appendTo(this.resultsbox).addClass('results');
     this.enemyResults = $('<div>').appendTo(this.resultsbox).addClass('results enemy');
     $('<div>').addClass('button close').appendTo(this.resultsbox).text(game.data.ui.close).on('mouseup touchend', this.close);
@@ -55,8 +58,10 @@ game.states.result = {
     });
     game.states.result.enemyResults.append(ch);
     this.title.text(title);
-    this.towers.text(game.data.ui.towers + ' HP: ' + game.player.tower.data('current hp') + ' / ' + game.enemy.tower.data('current hp'));
-    this.kd.text(game.data.ui.heroes + ': ' + game.player.kills + ' / ' + game.enemy.kills);
+    this.towers.text(game.data.ui.towers + ' HP: ' + game.player.tower.data('current hp') + '/' + game.enemy.tower.data('current hp'));
+    this.kills.text(game.data.ui.kills + ': ' + game.player.kills + '/' + game.enemy.kills);
+    this.deaths.text(game.data.ui.death + ': ' + game.player.deaths + '/' + game.enemy.deaths);
+    this.turns.text(game.data.ui.turns + ': ' + game.player.turn + '/' + game.enemy.turn + ' (' + game.totalTurns + ')');
   },
   close: function () {
     if (game.mode == 'single') {
@@ -77,6 +82,8 @@ game.states.result = {
     $('.result .results .heroes').remove();
     this.title.text('');
     this.towers.text('');
-    this.kd.text('');
+    this.kills.text('');
+    this.deaths.text('');
+    this.turns.text('');
   }
 };

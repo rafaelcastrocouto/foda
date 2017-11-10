@@ -36,8 +36,6 @@ game.single = {
       game.states.table.skip.show().attr('disabled', true);
       game.states.table.discard.attr('disabled', true).show();
       game.turn.build(6);
-      game.player.kills = 0;
-      game.enemy.kills = 0;
       game.ai.start();
       game.timeout(400, function () {
         game.skill.build('enemy');

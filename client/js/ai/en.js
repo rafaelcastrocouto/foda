@@ -48,6 +48,7 @@ game.heroesAI.en = {
       card.alliesInRange(heal.data('cast range'), function (ally) {
         if (!ally.hasClasses('ghost dead towers') && ally.data('current hp') < ally.data('hp')) {
           p += ally.data('current hp')/4;
+          if (ally.hasClass('units')) p -= 10;
           n++;
         }
       });
@@ -64,6 +65,7 @@ game.heroesAI.en = {
           cardData['can-cast'] = true;
           var p = 40;
           if (cardInRange.hasClass('towers')) p += 20;
+          if (cardInRange.hasClass('units')) p -= 15;
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/2),
             skill: 'stun',

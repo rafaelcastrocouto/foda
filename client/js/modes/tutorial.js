@@ -108,8 +108,6 @@ game.tutorial = {
       game.turn.build(6);
       game.tutorial.axe.removeClass('up').appendTo(game.states.table.el);
       game.tutorial.axebaloon.hide();
-      game.player.kills = 0;
-      game.enemy.kills = 0;
       game.tutorial.moveCountValue = 5;
       game.message.text(game.data.ui.yourturn);
       game.tutorial.axe.addClass('up left');

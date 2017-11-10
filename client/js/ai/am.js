@@ -27,6 +27,7 @@ game.heroesAI.am = {
                 targets++;
                 p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
                 if (cardInRange.hasClass('towers')) p += 70;
+                if (cardInRange.hasClass('units')) p += 10;
                 if (nspot.hasClass('enemyarea')) p -= 30;
               }
             });
@@ -69,6 +70,7 @@ game.heroesAI.am = {
           var targets = 0;
           if (!cardInRange.hasClass('towers') && cardInRange.data('mana')) {
             if (cardInRange.hasClass('channeling')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
             cardInRange.around(2, function (nspot) {
               var sectarget = $('.card.player', nspot);
               if (sectarget.length) {

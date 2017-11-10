@@ -56,8 +56,6 @@ game.local = {
     game.states.table.skip.attr('disabled', true).show();
     game.states.table.discard.attr('disabled', true).show();
     game.states.table.enableUnselect();
-    game.player.kills = 0;
-    game.enemy.kills = 0;
     game.turn.build(6);
     game.timeout(400, function () {
       game.skill.build('enemy');

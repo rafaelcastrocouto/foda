@@ -39,6 +39,7 @@ game.heroesAI.cat = {
         if (cardInRange && cardInRange.side() == card.opponent() && !cardInRange.hasClasses('invisible ghost dead')) {
           var p = 25;
           if (cardInRange.hasClass('channeling')) p += 20;
+          if (cardInRange.hasClass('units')) p -= 15;
           cardData['cast-strats'].push({
             priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'arrow',
@@ -65,6 +66,7 @@ game.heroesAI.cat = {
                 p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
                 if (cardInRange.hasClass('towers')) p += 70;
                 if (nspot.hasClass('enemyarea')) p -= 30;
+                if (cardInRange.hasClass('units')) p -= 10;
               }
             });
             if (targets) {

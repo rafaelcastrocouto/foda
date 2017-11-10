@@ -23,6 +23,7 @@ game.heroesAI.wind = {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
             if (cardInRange.hasClass('towers')) p += 20;
+            if (cardInRange.hasClass('units')) p -= 5;
           }
         });
         if (targets > 1) {
@@ -40,7 +41,11 @@ game.heroesAI.wind = {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           cardData['can-cast'] = true;
           var p = 20, secTarget = card.behindTarget(cardInRange);
-          if (secTarget) p += 30;
+          if (cardInRange.hasClass('units')) p -= 10;
+          if (secTarget) {
+            p += 30;
+            if (secTarget.hasClass('units')) p -= 10;
+          }
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',
@@ -67,6 +72,7 @@ game.heroesAI.wind = {
           var p = 40;
           cardData['can-cast'] = true;
           if (cardInRange.hasClass('towers')) p += 40;
+          if (cardInRange.hasClass('units')) p -= 30;
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/2),
             skill: 'ult',
