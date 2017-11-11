@@ -8,6 +8,7 @@ game.chat = {
       game.chat.input = $('<input>').appendTo(game.chat.el).attr({type: 'text', maxlength: 36}).keydown(game.chat.keydown);
       game.chat.button = $('<div>').addClass('button').appendTo(game.chat.el).on('mouseup touchend', game.chat.send).text(game.data.ui.send);
       setInterval(game.chat.interval, 1000);
+      game.chat.notification();
     }
   },
   hover: function (event) {
@@ -39,12 +40,12 @@ game.chat = {
         var now = new Date().valueOf();
         var diff = now - Number(this.date);
         var date = new Date(Number(this.date));
-        var day = game.data.ui.today + ' ' + date.toLocaleTimeString();
-        if (diff > 24 * 60 * 60 * 1000) day = game.data.ui.yesterday + ' ' + date.toLocaleTimeString();
-        if (diff > 48 * 60 * 60 * 1000) day = date.toLocaleString();
+        var dateStr = game.data.ui.today + ' ' + date.toLocaleTimeString();
+        if (diff > 24 * 60 * 60 * 1000) dateStr = game.data.ui.yesterday + ' ' + date.toLocaleTimeString();
+        if (diff > 48 * 60 * 60 * 1000) dateStr = date.toLocaleString();
         var msg = $('<p>');
         msg.append($('<span>').addClass('user').text(this.user));
-        msg.append($('<span>').addClass('date').text(day));
+        msg.append($('<span>').addClass('date').text(dateStr));
         msg.append($('<span>').addClass('data').text(this.data));
         msg.prependTo(game.chat.messages);
       });
@@ -80,6 +81,49 @@ game.chat = {
   keydown: function (event) {
     if (event.which === 13 && !game.chat.button.attr('disabled')) {
       game.chat.send();
+    }
+  },
+  notification: function () {
+    if (Notification && Notification.requestPermission && (Notification.permission !== 'denied') && (Notification.permission !== 'granted')) {
+      Notification.requestPermission(function (permission) {
+        if (permission === "granted") {
+          setInterval(game.chat.notifyInterval, 5000);
+        }
+      });
+    } else if (Notification && (Notification.permission == 'granted')) {
+      setInterval(game.chat.notifyInterval, 5000);
+    }
+  },
+  notifyInterval: function(){
+    game.db({
+      'get': 'waiting'
+    }, function (waiting) { //console.log('response:', waiting);
+      if (game.mode !== 'online' &&
+          waiting.id != 'none' &&
+          waiting.id != game.currentData.id &&
+          waiting.id != game.chat.notifiedId) {
+        game.chat.notifiedId = waiting.id;
+        game.chat.notify();
+      }
+    });
+  },
+  notifyOpt: {
+    title: 'New challenger!',
+    body: 'Play online match',
+    badge: '/img/campaign/ico_rosh.png',
+    icon: '/img/campaign/ico_rosh.png'
+  },
+  notify: function () {
+    if (Notification && (Notification.permission == 'granted')) {
+      if (game.chat.currentnotification) game.chat.currentnotification.close();
+      game.chat.currentnotification = new Notification(game.chat.notifyOpt.title, game.chat.notifyOpt);
+      game.chat.currentnotification.onclick = function(event) {
+        event.preventDefault(); // prevent the browser from focusing the Notification's tab
+        game.setMode('online');
+        game.states.changeTo('choose');
+        game.chat.currentnotification.close();
+        return false;
+      };
     }
   }
 };

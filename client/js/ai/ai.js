@@ -582,7 +582,7 @@ game.ai = {
       var y = spot.getY();
       if (!spotData.blocked) spots.push({
         target: spot,
-        priority: spotData.priority + (10 * y),
+        priority: spotData.priority + (15 * y),
         data: spotData
       });
     });

@@ -11,6 +11,7 @@ game.heroesAI.ld = {
     var rabid = $('.enemydecks .hand .skills.ld-rabid');
     var roar = $('.enemydecks .hand .skills.ld-roar');
     var ult = $('.enemydecks .sidehand .skills.ld-ult');
+    var cry = $('.enemydecks .sidehand .skills.ld-cry');
     //return
     if (!$('.map .enemy.ld').length) {
       rabid.data('ai discard', rabid.data('ai discard') + 1);
@@ -32,7 +33,7 @@ game.heroesAI.ld = {
     if (card.canCast(rabid)) {
       cardData['can-cast'] = true;
       p = 10;
-      if (cardData['can-attack']) p = 40;
+      if (cardData['can-attack']) p += 40;
       cardData['cast-strats'].push({
         priority: p,
         skill: 'rabid',
@@ -65,13 +66,13 @@ game.heroesAI.ld = {
         if (!cardInRange.hasClasses('invisible ghost dead')) inMelee++;
       });
       if (!ult.hasClass('on')) { // turn on
-        if (!cardData['can-attack'] || inMelee) cardData['cast-strats'].push({
+        if (!card.hasBuff('ld-cry') || inMelee) cardData['cast-strats'].push({
           priority: 30 + (10 * inMelee),
           skill: 'ult',
           card: ult,
           target: card
         });
-      } else if (cardData['can-attack'] && !inMelee) { // turn off
+      } else if ((!card.hasBuff('ld-cry') && !cry.length) || (cardData['can-attack'] && !inMelee && inRange)) { // turn off
         cardData['cast-strats'].push({
           priority: 30,
           skill: 'ult',
@@ -79,6 +80,15 @@ game.heroesAI.ld = {
           target: card
         });
       }
+    }
+    if (card.canCast(cry)) {
+      cardData['can-cast'] = true;
+      cardData['cast-strats'].push({
+          priority: 50,
+          skill: 'cry',
+          card: cry,
+          target: card
+        });
     }
     card.data('ai', cardData);
   },

@@ -96,9 +96,9 @@ http.createServer(function(request, response) {
           }
           return;
         case 'back':
-          if (query.data.id == waiting.id) {
+          //if (query.data.id == waiting.id) {
             clearWait();
-          }
+          //}
           send(response, JSON.stringify(waiting));
           return;
         case 'chat':
@@ -161,7 +161,8 @@ http.createServer(function(request, response) {
           send(response, JSON.stringify({lang: request.headers['accept-language'] || ''})); 
           return;
         case 'waiting':
-          send(response, JSON.stringify(waiting));
+          if (typeof(waiting) !== 'string') send(response, JSON.stringify(waiting));
+          else send(response, waiting);
           return;
         case 'rank':
           send(response, JSON.stringify(mongo.rank));
