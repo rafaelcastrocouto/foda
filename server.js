@@ -9,7 +9,7 @@ var http = require('http'),
   waitTimeout,
   chat = [],
   debug = false,
-  waitLimit = 30,
+  waitLimit = 5,
   origin;
 
 var db = {
@@ -96,9 +96,9 @@ http.createServer(function(request, response) {
           }
           return;
         case 'back':
-          //if (query.data.id == waiting.id) {
+          if (query.data.id == waiting.id) {
             clearWait();
-          //}
+          }
           send(response, JSON.stringify(waiting));
           return;
         case 'chat':
@@ -155,7 +155,9 @@ http.createServer(function(request, response) {
           send(response, JSON.stringify({status: 'online'}));
           return;
         case 'chat':
-          send(response, JSON.stringify({messages: chat}));
+          var w = waiting;
+          if (typeof(waiting) !== 'string') w = JSON.stringify(waiting);
+          send(response, JSON.stringify({messages: chat, waiting: w}));
           return;
         case 'lang':
           send(response, JSON.stringify({lang: request.headers['accept-language'] || ''})); 

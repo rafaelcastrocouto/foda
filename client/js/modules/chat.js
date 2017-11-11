@@ -7,7 +7,7 @@ game.chat = {
       game.chat.messages = $('<div>').addClass('messages').appendTo(game.chat.el);
       game.chat.input = $('<input>').appendTo(game.chat.el).attr({type: 'text', maxlength: 36}).keydown(game.chat.keydown);
       game.chat.button = $('<div>').addClass('button').appendTo(game.chat.el).on('mouseup touchend', game.chat.send).text(game.data.ui.send);
-      setInterval(game.chat.interval, 1000);
+      setInterval(game.chat.interval, 2000);
       game.chat.notification();
     }
   },
@@ -27,11 +27,12 @@ game.chat = {
     });
   },
   interval: function () {
-    if (game.chat.updating) {
+    //if (game.chat.updating) {
       game.db({ 'get': 'chat' }, function (chat) {
         game.chat.update(chat);
+        game.chat.notifyInterval(chat.waiting);
       });
-    }
+    //}
   },
   update: function (received) {
     if (received.messages && received.messages.length) {
@@ -85,27 +86,22 @@ game.chat = {
   },
   notification: function () {
     if (Notification && Notification.requestPermission && (Notification.permission !== 'denied') && (Notification.permission !== 'granted')) {
-      Notification.requestPermission(function (permission) {
-        if (permission === "granted") {
-          setInterval(game.chat.notifyInterval, 5000);
-        }
-      });
-    } else if (Notification && (Notification.permission == 'granted')) {
-      setInterval(game.chat.notifyInterval, 5000);
-    }
+      Notification.requestPermission();
+    } 
   },
-  notifyInterval: function(){
-    game.db({
-      'get': 'waiting'
-    }, function (waiting) { //console.log('response:', waiting);
-      if (game.mode !== 'online' &&
-          waiting.id != 'none' &&
-          waiting.id != game.currentData.id &&
-          waiting.id != game.chat.notifiedId) {
-        game.chat.notifiedId = waiting.id;
-        game.chat.notify();
-      }
-    });
+  notifyInterval: function (response) {
+    var waiting = response;
+    if (typeof(waiting) == 'string') waiting = JSON.parse(response);
+     console.log(waiting);
+    if (Notification && 
+        Notification.permission == 'granted' &&
+        game.mode !== 'online' &&
+        waiting.id != 'none' &&
+        waiting.id != game.currentData.id &&
+        waiting.id != game.chat.notifiedId) {
+      game.chat.notifiedId = waiting.id;
+      game.chat.notify();
+    }
   },
   notifyOpt: {
     title: 'New challenger!',

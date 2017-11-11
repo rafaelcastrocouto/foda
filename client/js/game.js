@@ -7,7 +7,7 @@ var game = {
   triesCounter: $('<small>').addClass('triescounter'),
   timeToPick: 40,
   timeToPlay: 80,
-  waitLimit: 60,
+  waitLimit: 5,
   connectionLimit: 30,
   dayLength: 12,
   deadLength: 4,
