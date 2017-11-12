@@ -72,6 +72,10 @@
   font-size: 18px;
   line-height: 25px;
 }
+.tutorial.axe .txt b {
+  font-size: 20px;
+  text-shadow: 0 1px 0 #aaa;
+}
 .tutorial.axe .txtflip {
   text-align: center;
 }
@@ -85,7 +89,7 @@
   float: right;
 }
 
-.tutorial .battle {
+.tutorial .txt b.battle {
   font-size: 160%;
   line-height: 135%;
 }

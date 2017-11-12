@@ -92,10 +92,11 @@ game.chat = {
   notifyInterval: function (response) {
     var waiting = response;
     if (typeof(waiting) == 'string') waiting = JSON.parse(response);
-     console.log(waiting);
+    //console.log(waiting);
     if (Notification && 
         Notification.permission == 'granted' &&
         game.mode !== 'online' &&
+        waiting && waiting.id &&
         waiting.id != 'none' &&
         waiting.id != game.currentData.id &&
         waiting.id != game.chat.notifiedId) {
