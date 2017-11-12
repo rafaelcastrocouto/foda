@@ -378,6 +378,7 @@ game.card = {
         dmgType = 'critical';
       }
       var bonus = evt.bonus || 0;
+      //console.log(evt)
       damage += bonus;
       evt.damage = damage;
       source.trigger('attack', evt).trigger('action', evt);

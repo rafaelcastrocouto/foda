@@ -71,7 +71,6 @@ var game = {
     localStorage.setItem('data', JSON.stringify(game.currentData));
   },
   canPlay: function() {
-    if (game.mode == 'library') return true;
     if (game.mode == 'local') return game.states.table.el.hasClasses('turn unturn');
     return game.states.table.el.hasClass('turn');
   },

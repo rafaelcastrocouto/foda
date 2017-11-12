@@ -147,7 +147,7 @@ game.highlight = {
     } else {
       source.inRange(range, function (neighbor) {
         var card = $('.card', neighbor);
-        if (card.hasClass(source.opponent()) && !card.hasClass('dead towers ghost')) {
+        if (card.hasClass(source.opponent()) && !card.hasClasses('dead towers ghost')) {
           card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
         }
       });

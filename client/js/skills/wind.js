@@ -41,12 +41,17 @@ game.skills.wind = {
   },
   run: {
     cast: function (skill, source) {
-      source.selfBuff(skill);
-      source.on('attacked.kotl-blind', this.attacked);
+      var buff = source.selfBuff(skill);
+      source.on('attacked.wind-run', this.attacked);
+      buff.on('expire', this.expire);
     },
     attacked: function (event, eventdata) {
       var source = eventdata.source;
       source.data('miss-attack', true);
+    },
+    expire: function (event, eventdata) {
+      var target = eventdata.target;
+      target.off('attacked.wind-run');
     }
   },
   ult: {

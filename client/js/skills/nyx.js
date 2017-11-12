@@ -31,18 +31,16 @@ game.skills.nyx = {
       buff.on('expire', this.expire);
     },
     damage: function (event, eventdata) {
-      game.timeout(900, function (eventdata) {
-        var nyx = eventdata.target;
-        var skill = nyx.data('nyx-spike');
+      var nyx = eventdata.target;
+      game.timeout(900, function (eventdata, nyx, skill) {
         var dmgType = skill.data('damage type');
         var attacker = eventdata.source;
         var damage = eventdata.originalDamage;
-          if (!attacker.hasClass('towers')) {
-        nyx.damage(damage, attacker, dmgType);
-        attacker.shake();
-        nyx.addStun(attacker, skill);
+        if (!attacker.hasClass('towers')) {
+          nyx.damage(damage, attacker, dmgType);
+          nyx.addStun(attacker, skill);
         }
-      }.bind(this, eventdata));
+      }.bind(this, eventdata, nyx, nyx.data('nyx-spike')));
     },
     expire: function (event, eventdata) {
       var target = eventdata.target;
@@ -56,12 +54,18 @@ game.skills.nyx = {
       var buff = source.selfBuff(skill);
       buff.on('expire', this.expire);
       source.on('invisibilityLoss', this.invisibilityLoss);
-      source.on('attack.nyx-ult', this.attack);
+      source.on('pre-attack.nyx-ult', this.attack);
       source.addInvisibility();
       source.addClass('nyx-ult');
     },
     attack: function (event, eventdata) {
-      game.audio.play('nyx/ultattack');
+      var source = eventdata.source;
+      var target = eventdata.target;
+      var buff = source.getBuff('nyx-ult');
+      //console.log(target)
+      if (target.hasClass('towers')) {
+        eventdata.bonus = -buff.data('damage bonus') + 1;
+      } else game.audio.play('nyx/ultattack');
     },
     invisibilityLoss: function (event, eventdata) {
       var source = eventdata.target;
