@@ -115,6 +115,7 @@ game.chat = {
       game.chat.currentnotification = new Notification(game.chat.notifyOpt.title, game.chat.notifyOpt);
       game.chat.currentnotification.onclick = function(event) {
         event.preventDefault(); // prevent the browser from focusing the Notification's tab
+        game.clear();
         game.setMode('online');
         game.states.changeTo('choose');
         game.chat.currentnotification.close();
