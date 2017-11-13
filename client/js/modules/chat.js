@@ -85,23 +85,28 @@ game.chat = {
     }
   },
   notification: function () {
-    if (Notification && Notification.requestPermission && (Notification.permission !== 'denied') && (Notification.permission !== 'granted')) {
-      Notification.requestPermission();
-    } 
+    if ( !("Notification" in window) ) {
+      return;
+    } else {
+      game.chat.canNotify = true;
+      if ((Notification.permission !== 'denied') && (Notification.permission !== 'granted')) {
+        Notification.requestPermission();
+      } 
+    }
   },
   notifyInterval: function (response) {
-    var waiting = response;
-    if (typeof(waiting) == 'string') waiting = JSON.parse(response);
-    //console.log(waiting);
-    if (Notification && 
-        Notification.permission == 'granted' &&
-        game.mode !== 'online' &&
-        waiting && waiting.id &&
-        waiting.id != 'none' &&
-        waiting.id != game.currentData.id &&
-        waiting.id != game.chat.notifiedId) {
-      game.chat.notifiedId = waiting.id;
-      game.chat.notify();
+    if (game.chat.canNotify && Notification.permission == 'granted') {
+      var waiting = response;
+      if (typeof(waiting) == 'string') waiting = JSON.parse(response);
+      //console.log(waiting);
+      if (game.mode !== 'online' &&
+          waiting && waiting.id &&
+          waiting.id != 'none' &&
+          waiting.id != game.currentData.id &&
+          waiting.id != game.chat.notifiedId) {
+        game.chat.notifiedId = waiting.id;
+        game.chat.notify();
+      }
     }
   },
   notifyOpt: {
@@ -111,7 +116,7 @@ game.chat = {
     icon: '/img/campaign/ico_rosh.png'
   },
   notify: function () {
-    if (Notification && (Notification.permission == 'granted')) {
+    if (game.chat.canNotify && Notification.permission == 'granted') {
       if (game.chat.currentnotification) game.chat.currentnotification.close();
       game.chat.currentnotification = new Notification(game.chat.notifyOpt.title, game.chat.notifyOpt);
       game.chat.currentnotification.onclick = function(event) {
