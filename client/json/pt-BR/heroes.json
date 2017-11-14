@@ -1,82 +1,81 @@
 {
-
-  "ld":{
-    "name": "Urso Druida",
+  
+  "ld": {
+    "name": "Bear Druid",
     "attribute": "Agilidade",
-    "description": "Pusher, Carry, Durable"
+    "description": "Defensor da floresta de Brush Creek, foi para a guerra depois que a floresta foi queimada. O Druida e o Urso estão juntos há tanto tempo que uniram almas"
   },
 
-  "pud":{
+  "pud": {
     "name": "Açougueiro",
     "attribute": "Força",
-    "description": "Initiator, Disabler, Durable"
+    "description": "Invocado por Necro, ele é composto de membros e partes de corpos enxertadas juntas. A lenda diz que seu coração é de um membro do clan Shirai Ryu"
   },
 
   "cat": {
-    "name": "Senhora dos Gatos",
+    "name": "Senhora do Gato",
     "attribute": "Agilidade",
-    "description": "Initiator, Escape, Nuker"
+    "description": "Ela se dedica completamente ao serviço de Selemene, Deusa da Lua. Ela ensinou a Elfa do Vento e a Drow Ranger os segredos do arco e flecha!"
   },
 
-  "wk":{
-    "name": "Rei dos Mortos",
+  "wk": {
+    "name": "Rei morto",
     "attribute": "Força",
-    "description": "Carry, Disabler, Durable"
+    "description": "Quando o rei de Arendelle descobriu sobre sua filha, ele procurou uma cura. Depois de ser traído pela Bruxa, ele é agora um escravo da ira dos mortos"
   },
 
   "lina": {
     "name": "Dobradora de fogo",
     "attribute": "Inteligência",
-    "description": "Nuker, Carry, Disabler"
+    "description": "Após a queda da Nação do Fogo, ela se apaixonou pela Maga do Gelo. Agora, juntas elas lutam na guerra dos anciões e ela está literalmente em chamas"
   },
 
-  "cm":{
-    "name": "Feitiçeira do Gelo",
+  "cm": {
+    "name": "Maga do Gelo",
     "attribute": "Inteligência",
-    "description": "Nuker, Support, Disabler"
+    "description": "Nascida em Arendelle, a Maga do Gelo foi ensinada por seu bisavô Lich. Mas com alguma ajuda, ela encontrou a verdade sobre os anciões e livre está!"
   },
-
-  "kotl":{
+  
+  "kotl": {
     "name": "Guardião da Luz",
     "attribute": "Inteligência",
-    "description": "Support, Nuker, Disabler"
+    "description": "Sendo um dos Maiar, ele é o guadião da verdade. Ele caiu quando a escuridão dominou a terra, mas agora ele está de volta com o poder de kame rame rá!"
   },
 
-  "am":{
+  "am": {
     "name": "Magino",
     "attribute": "Agilidade",
-    "range": "Perto",
-    "description": "Nuker, Carry, Escape"
+    "description": "Quando a alma de seu irmão foi amaldiçoada, ele começou sua guerra contra a magia. Ele é um lutador astuto e usa o poder de seus inimigos contra eles"
   },
 
-  "nyx":{
+  "nyx": {
     "name": "Mix",
     "attribute": "Agilidade",
-    "description": "Initiator, Disabler, Escape"
+    "description": "Mais antigo fundador da Colméia de Samsa, ele não é um assassino comum. Ele é o Mix, escolhido para matar quem estiver no caminho de sua rainha"
   },
 
   "com": {
     "name": "Comandante Sashay",
     "attribute": "Força",
-    "description": "Carry, Durable, Healer"
-  },
-  
-  "wind": {
-    "name": "Wind Elf",
-    "attribute": "Inteligência",
-    "description": "Disabler, Escape, Nuker"
+    "description": "É preciso coragem para entrar no campo de batalha. Mas voltar como mulher e enfrentar o desafio requer outra coisa, e ela tem isso e muito mais!"
   },
 
-   "venge": {
+  "wind": {
+    "name": "Elfa do Vento",
+    "attribute": "Inteligência",
+    "description": "Sua família foi morta por um furacão na noite em ela nasceu, mas o próprio vento se compadeceu e a salvou. Agora usa flechas contra seus inimigos"
+  },
+
+  "venge": {
     "name": "Venge",
     "attribute": "Agilidade",
-    "description": "Disabler, Escape, Nuker"
+    "description": "Depois de perder seu direito ao trono e seu amor, o Mago do Céu, a Venge nunca perdoará a traição de sua irmã e a caçará até que a justiça seja feita"
   },
   
   "en": {
     "name": "Bambi",
     "attribute": "Inteligência",
-    "description": "Jungler, Healer, Durable"
+    "description": "O amor e a beleza são seus pontos fortes, e é por isso que ela se afasta do calor da batalha. Mas não se deixe enganar, ela é tão mortal quanto encantadora"
   }
 
 }
