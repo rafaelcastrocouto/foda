@@ -20,24 +20,33 @@ game.online = {
     game.newId();
     game.setData('id', game.id);
     game.online.ask();
+    game.tries = 0;
+    game.triesLoop = 0;
+    game.loader.addClass('loading');
+    game.message.text(game.data.ui.loading);
   },
-  ask: function () {
+  ask: function () {//console.log('ask');
     game.db({
       'set': 'waiting',
-      'data': game.currentData.id
+      'data': game.id,
     }, function (waiting) { //console.log('response:', waiting);
-      if (waiting == 'none') game.online.wait();
-      else game.online.found(waiting);
-    }, true /*no parse*/);
+      game.triesCounter.text(game.tries += 1);
+      game.triesLoop += 1;
+      if (waiting && waiting.id) {
+        if (waiting.id == 'none' || waiting.id == game.id) game.online.wait();
+        else game.online.found(waiting);
+      } else {
+        setTimeout(game.online.ask, 1000);
+      }
+    });
   },
   backClick: function () {
     game.db({
       'set': 'back',
-      'data': game.id
-    }, game.states.choose.toMenu, true);
+      'data': {id: game.id},
+    }, game.states.choose.toMenu);
   },
   wait: function () {
-    game.loader.addClass('loading');
     game.setData('id', game.id);
     game.player.type = 'challenged';
     game.setData('challenged', game.player.name);
@@ -46,8 +55,8 @@ game.online = {
       'data': game.currentData
     }, function () {
       game.message.text(game.data.ui.waiting);
-      game.tries = 0;
       game.online.waiting = true;
+      game.triesLoop = 0;
       setTimeout(game.online.searching, 1000);
     });
   },
@@ -59,7 +68,8 @@ game.online = {
           game.online.challengerFound(found.challenger);
         } else {
           game.triesCounter.text(game.tries += 1);
-          if (game.tries >= game.waitLimit) {
+          game.triesLoop += 1;
+          if (game.triesLoop >= game.waitLimit) {
             game.online.ask();
           } else { game.timeout(1000, game.online.searching); }
         }
@@ -74,11 +84,11 @@ game.online = {
   found: function (waiting) {
     game.states.choose.back.attr({disabled: true});
     game.message.text(game.data.ui.gamefound);
-    game.setId(waiting);
+    game.setId(waiting.id);
     game.player.type = 'challenger';
     game.setData('challenger', game.player.name);
     // ask challenged name
-    game.db({ 'get': waiting }, function (found) {
+    game.db({ 'get': waiting.id }, function (found) {
       //console.log('found:', found);
       var enemyName = found.challenged;
       if (enemyName) { // tell player name

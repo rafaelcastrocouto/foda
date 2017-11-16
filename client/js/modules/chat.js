@@ -98,13 +98,14 @@ game.chat = {
   notifyInterval: function (response) {
     if (game.chat.canNotify && Notification.permission == 'granted') {
       var waiting = response;
-      //console.log(waiting);
+      //console.log('chat',waiting);
       if (game.mode !== 'online' &&
           waiting &&
-          waiting != 'none' &&
-          waiting != game.currentData.id &&
-          waiting != game.chat.notifiedId) {
-        game.chat.notifiedId = waiting;
+          waiting.id &&
+          waiting.id != 'none' &&
+          waiting.id != game.id &&
+          waiting.id != game.chat.notifiedId) {
+        game.chat.notifiedId = waiting.id;
         game.chat.notify();
       }
     }

@@ -97,12 +97,9 @@ var game = {
       timeout: 4000,
       complete: function(receive) {
         var data;
-        if (receive.responseText) {
-          if (str) data = receive.responseText;
-          else data = JSON.parse(receive.responseText);
-        }
-        if (cb) {
-          cb(data || {});
+        if (cb && receive && receive.responseText) {
+          if (str) cb (receive.responseText);
+          else cb(JSON.parse(receive.responseText));
         }
       }
     });

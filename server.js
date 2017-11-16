@@ -5,7 +5,7 @@ var http = require('http'),
   host = process.env.HOST,
   port = process.env.PORT || 5000,
   secret = process.env.SECRET || 'password',
-  waiting = 'none',
+  waiting = {id: 'none'},
   waitTimeout,
   chat = [],
   debug = false,
@@ -72,7 +72,7 @@ var send = function(response, data){
 
 var clearWait = function () {
   clearTimeout(waitTimeout);
-  waiting = 'none';
+  waiting = {id: 'none'};
 };
 
 http.createServer(function(request, response) {
@@ -86,22 +86,25 @@ http.createServer(function(request, response) {
     if (query.set){
       switch (query.set) {
         case 'waiting':
-          if (waiting === 'none'){
-            send(response, waiting);
-            waiting = query.data;
-            waitTimeout = setTimeout(clearWait, waitLimit * 1000);
-          } else {
-            send(response, waiting);
-            clearWait();
+          if (query.data) {
+            /*/console.log(query.data)
+            if (waiting.id === 'none') {
+              send(response, JSON.stringify(waiting));
+              waiting.id = query.data;
+              waitTimeout = setTimeout(clearWait, waitLimit * 1000);
+            } else {
+              send(response, JSON.stringify(waiting));
+              clearWait();
+            }
           }
           //console.log(waiting);
           return;
         case 'back':
-          if (query.data == waiting) {
-            db.data[waiting] = null;
+          if (query.data == waiting.id) {
+            db.data[waiting.id] = null;
             clearWait();
           }
-          send(response, waiting);
+          send(response, JSON.stringify(waiting));
           return;
         case 'chat':
           var msg = {
