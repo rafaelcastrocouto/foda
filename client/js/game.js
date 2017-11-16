@@ -62,9 +62,14 @@ var game = {
     localStorage.setItem('seed', game.seed);
   },
   setSeed: function(id) {
-    var n = id.split('|');
-    game.seed = parseInt(atob(n[0]), 10);
-    localStorage.setItem('seed', game.seed);
+    console.log(id);
+    if (id) {
+      var n = id.split('|');
+      if (n[0].length) {
+        game.seed = parseInt(atob(n[0]), 10);
+        localStorage.setItem('seed', game.seed);
+      }
+    }
   },
   setData: function(item, data) {
     game.currentData[item] = data;
