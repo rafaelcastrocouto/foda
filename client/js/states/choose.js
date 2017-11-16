@@ -198,10 +198,7 @@ game.states.choose = {
   backClick: function () {
     if (!$(this).attr('disabled')) {
       if (game.mode == 'online') {
-        game.db({
-          'set': 'back',
-          'data': game.id
-        }, game.states.choose.toMenu);
+        game.online.backClick();
       } if (game.mode == 'single') {
         game.states.changeTo('campaign');
       } else game.states.choose.toMenu();

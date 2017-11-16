@@ -29,6 +29,7 @@ game.chat = {
   interval: function () {
     //if (game.chat.updating) {
       game.db({ 'get': 'chat' }, function (chat) {
+        //console.log(chat)
         game.chat.update(chat);
         game.chat.notifyInterval(chat.waiting);
       });
@@ -97,14 +98,13 @@ game.chat = {
   notifyInterval: function (response) {
     if (game.chat.canNotify && Notification.permission == 'granted') {
       var waiting = response;
-      if (typeof(waiting) == 'string') waiting = JSON.parse(response);
       //console.log(waiting);
       if (game.mode !== 'online' &&
-          waiting && waiting.id &&
-          waiting.id != 'none' &&
-          waiting.id != game.currentData.id &&
-          waiting.id != game.chat.notifiedId) {
-        game.chat.notifiedId = waiting.id;
+          waiting &&
+          waiting != 'none' &&
+          waiting != game.currentData.id &&
+          waiting != game.chat.notifiedId) {
+        game.chat.notifiedId = waiting;
         game.chat.notify();
       }
     }

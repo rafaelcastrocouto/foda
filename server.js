@@ -5,7 +5,7 @@ var http = require('http'),
   host = process.env.HOST,
   port = process.env.PORT || 5000,
   secret = process.env.SECRET || 'password',
-  waiting = {id: 'none'},
+  waiting = 'none',
   waitTimeout,
   chat = [],
   debug = false,
@@ -72,7 +72,7 @@ var send = function(response, data){
 
 var clearWait = function () {
   clearTimeout(waitTimeout);
-  waiting = {id: 'none'};
+  waiting = 'none';
 };
 
 http.createServer(function(request, response) {
@@ -86,20 +86,22 @@ http.createServer(function(request, response) {
     if (query.set){
       switch (query.set) {
         case 'waiting':
-          if (waiting.id === 'none'){
-            send(response, JSON.stringify(waiting));
+          if (waiting === 'none'){
+            send(response, waiting);
             waiting = query.data;
             waitTimeout = setTimeout(clearWait, waitLimit * 1000);
           } else {
             send(response, waiting);
             clearWait();
           }
+          //console.log(waiting);
           return;
         case 'back':
-          if (query.data.id == waiting.id) {
+          if (query.data == waiting) {
+            db.data[waiting] = null;
             clearWait();
           }
-          send(response, JSON.stringify(waiting));
+          send(response, waiting);
           return;
         case 'chat':
           var msg = {
@@ -109,7 +111,7 @@ http.createServer(function(request, response) {
           };
           chat.unshift(msg);
           chat = chat.slice(0, 3);
-          send(response, JSON.stringify({messages: chat}));
+          send(response, JSON.stringify({messages: chat, waiting: waiting}));
           return;
         case 'poll':
           if (secret !== 'password' && typeof(mongo.poll[query.data]) == 'number') {
@@ -155,16 +157,13 @@ http.createServer(function(request, response) {
           send(response, JSON.stringify({status: 'online'}));
           return;
         case 'chat':
-          var w = waiting;
-          if (typeof(waiting) !== 'string') w = JSON.stringify(waiting);
-          send(response, JSON.stringify({messages: chat, waiting: w}));
+          send(response, JSON.stringify({messages: chat, waiting: waiting}));
           return;
         case 'lang':
           send(response, JSON.stringify({lang: request.headers['accept-language'] || ''})); 
           return;
         case 'waiting':
-          if (typeof(waiting) !== 'string') send(response, JSON.stringify(waiting));
-          else send(response, waiting);
+          send(response, waiting);
           return;
         case 'rank':
           send(response, JSON.stringify(mongo.rank));

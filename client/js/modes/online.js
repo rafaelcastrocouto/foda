@@ -24,11 +24,17 @@ game.online = {
   ask: function () {
     game.db({
       'set': 'waiting',
-      'data': game.currentData
+      'data': game.currentData.id
     }, function (waiting) { //console.log('response:', waiting);
-      if (waiting.id == 'none') game.online.wait();
+      if (waiting == 'none') game.online.wait();
       else game.online.found(waiting);
-    });
+    }, true /*no parse*/);
+  },
+  backClick: function () {
+    game.db({
+      'set': 'back',
+      'data': game.id
+    }, game.states.choose.toMenu, true);
   },
   wait: function () {
     game.loader.addClass('loading');
@@ -68,11 +74,11 @@ game.online = {
   found: function (waiting) {
     game.states.choose.back.attr({disabled: true});
     game.message.text(game.data.ui.gamefound);
-    game.setId(waiting.id);
+    game.setId(waiting);
     game.player.type = 'challenger';
     game.setData('challenger', game.player.name);
     // ask challenged name
-    game.db({ 'get': waiting.id }, function (found) { 
+    game.db({ 'get': waiting }, function (found) {
       //console.log('found:', found);
       var enemyName = found.challenged;
       if (enemyName) { // tell player name

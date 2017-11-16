@@ -62,7 +62,7 @@ var game = {
     localStorage.setItem('seed', game.seed);
   },
   setSeed: function(id) {
-    console.log(id);
+    //console.trace(id);
     if (id) {
       var n = id.split('|');
       if (n[0].length) {
@@ -82,7 +82,7 @@ var game = {
   opponent: function(side) {
     return (side == 'player') ? 'enemy' : 'player';
   },
-  db: function(send, cb) {
+  db: function(send, cb, str) {
     var server = game.dynamicHost + 'db';
     if (game.debug)
       server = '/db';
@@ -98,7 +98,8 @@ var game = {
       complete: function(receive) {
         var data;
         if (receive.responseText) {
-          data = JSON.parse(receive.responseText);
+          if (str) data = receive.responseText;
+          else data = JSON.parse(receive.responseText);
         }
         if (cb) {
           cb(data || {});
