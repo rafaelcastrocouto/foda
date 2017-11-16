@@ -29,7 +29,7 @@ game.online = {
     game.db({
       'set': 'waiting',
       'data': game.id,
-    }, function (waiting) { console.log('ask:', waiting);
+    }, function (waiting) { //console.log('ask:', waiting);
       game.triesCounter.text(game.tries += 1);
       game.triesLoop += 1;
       if (waiting && waiting.id) {
@@ -43,7 +43,7 @@ game.online = {
   backClick: function () {
     game.db({
       'set': 'back',
-      'data': {id: game.id},
+      'data': game.id,
     }, game.states.choose.toMenu);
   },
   wait: function () {
