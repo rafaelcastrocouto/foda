@@ -87,7 +87,7 @@ http.createServer(function(request, response) {
       switch (query.set) {
         case 'waiting':
           if (query.data) {
-            /*/console.log(query.data)
+            //console.log(query.data)
             if (waiting.id === 'none') {
               send(response, JSON.stringify(waiting));
               waiting.id = query.data;
