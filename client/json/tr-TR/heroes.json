@@ -1,81 +1,81 @@
 {
-
-  "ld":{
-    "name": "Bear Druid",
-    "attribute": "Çeviklik",
-    "description": "Pusher, Carry, Durable"
-  },
-
-  "pud":{
-    "name": "Butcher",
-    "attribute": "Kuvvet",
-    "description": "Initiator, Disabler, Durable"
-  },
   
+  "ld": {
+    "name": "Ayı Büyücü",
+    "attribute": "Çeviklik",
+    "description": "Fırça Deresi ormanının koruyucusu, orman patladığında savaş istedi. Büyücü ve ayıları birlikte oldukları için uzun süre onlar ruhları birbirine bağlarlar"
+  },
+
+  "pud": {
+    "name": "Kasap",
+    "attribute": "Kuvvet",
+    "description": "Necro tarafından çağrılan Kasap vücut parçalarının bir bileşimidir. Efsane, kalbinin eski bir Shirai Ryu üyesinden olduğunu söylüyor"
+  },
+
   "cat": {
-    "name": "Cat Lady",
+    "name": "Kedi Kadın",
     "attribute": "Çeviklik",
-    "description": "Initiator, Escape, Nuker"
+    "description": "Kendini ayın tanrıçası Sajedene'nin hizmetine tamamen adamıştır. Rüzgar Elfine ve Drow Ranger'e bir ok vurmayı öğretti!"
   },
 
-  "wk":{
-    "name": "Dead King",
+  "wk": {
+    "name": "Ölü kral",
     "attribute": "Kuvvet",
-    "description": "Carry, Disabler, Durable"
+    "description": "Arendelle Kralı kız olayıyla ilgili bir şeyler keşfettiğinde bir tedavi aradı. Cadı tarafından ihanete uğradı sonra, şimdi Dire wraith'inin bir kölemidir."
   },
-  
+
   "lina": {
-    "name": "Fire Bender",
+    "name": "Yangın Bükücü",
     "attribute": "Zeka",
-    "description": "Nuker, Carry, Disabler"
+    "description": "Ateş Ulusunun düşüşünden sonra Ice Mage'e aşık oldu. Şimdi, birlikte yaşlılar için savaşıyorlar ve ateş ediyor ve saldırmaya hazır!"
   },
 
-  "cm":{
-    "name": "Ice Mage",
+  "cm": {
+    "name": "Buz sihirbaz",
     "attribute": "Zeka",
-    "description": "Nuker, Support, Disabler"
-  },
-
-  "kotl":{
-    "name": "Light Keeper",
-    "attribute": "Zeka",
-    "description": "Support, Nuker, Disabler"
-  },
-
-  "am":{
-    "name": "Magino",
-    "attribute": "Çeviklik",
-    "description": "Nuker, Carry, Escape"
+    "description": "Arendelle'de doğan buz sihirbazının büyükbabası Lich tarafından öğretildi. Biraz yardım ederek, antik insanlar hakkındaki gerçeği keşfetti"
   },
   
-  "nyx":{
-    "name": "Mix",
+  "kotl": {
+    "name": "Işık Koruyucu",
+    "attribute": "Zeka",
+    "description": "Maiar'dan biri olmak, gerçeği yaymaktan sorumludur. Karanlık devrildiğinde düştü, ama şimdi rame rá'ı kandırma gücüyle geri döndü!"
+  },
+
+  "am": {
+    "name": "Hiçbüyü",
     "attribute": "Çeviklik",
-    "description": "Initiator, Disabler, Escape"
+    "description": "Kardeşinin ruhu çalınca, maceraya tüm sihrine karşı başladı. Keskin bir dövüşçüyken, düşmanlarına sihir gücünü kendine karşı çeviriyor"
+  },
+
+  "nyx": {
+    "name": "Karıştırmak",
+    "attribute": "Çeviklik",
+    "description": "Samsa Kovanının en eski yetiştiricisi, sıradan bir fıçı kurusu değildir. O, onun kraliçesinin yolunda olanları öldürmek için seçilen Karma suikastçısıdır."
   },
 
   "com": {
-    "name": "Sashay Commander",
+    "name": "Sashay Komutanı",
     "attribute": "Kuvvet",
-    "description": "Carry, Durable, Healer"
+    "description": "Savaş alanına girmek için cesaret gerekiyor. Fakat bir kadın olarak geri gelmek ve meydan okumaya ayak uydurmak başka bir şey gerektirir ve hepsi bu kadardır!"
   },
-  
+
   "wind": {
-    "name": "Wind Elf",
+    "name": "Rüzgar Peri",
     "attribute": "Zeka",
-    "description": "Disabler, Escape, Nuker"
+    "description": "Ailesi doğumunun gecesinde bir fırtınada öldürüldü, ancak rüzgarın kendisi pislendi ve kurtardı. Okçu sırlarını düşmanlarını atmak için kullanır."
   },
-  
+
   "venge": {
-    "name": "Venge",
+    "name": "Tikam",
     "attribute": "Çeviklik",
-    "description": "Disabler, Escape, Nuker"
+    "description": "Tahta doğuş hakkını kaybettikten sonra Venge, kız kardeşinin ihanetini asla affetmeyecek ve adalet yapılıncaya kadar onu avlayacak."
   },
   
   "en": {
-    "name": "Bambi",
+    "name": "Geyik",
     "attribute": "Zeka",
-    "description": "Jungler, Healer, Durable"
+    "description": "Sevgi ve güzellik güçlüdür, bu yüzden savaş sıcağından uzaklaşır. Ama aptal olma, büyüleyici kadar ölümcül"
   }
 
 }

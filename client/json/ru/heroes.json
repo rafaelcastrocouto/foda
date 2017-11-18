@@ -1,83 +1,81 @@
 {
   
-  "ld":{
-    "name": "Bear Druid",
+  "ld": {
+    "name": "Медвежий друид",
     "attribute": "проворство",
-    "description": "Pusher, Carry, Durable"
+    "description": "Защитник леса ручей кисти, он искал войну после того, как лес горел. Друид и его Медведь вместе так долго, что связывают души"
   },
 
-  "pud":{
-    "name": "Butcher",
+  "pud": {
+    "name": "мясник",
     "attribute": "Прочность",
-    "description": "Initiator, Disabler, Durable"
+    "description": "Мобил, вызванный Некро, представляет собой составную часть частей тела. Легенда гласит, что его сердце от бывшего члена Ширай Рю"
   },
 
   "cat": {
-    "name": "Cat Lady",
+    "name": "Кот дама",
     "attribute": "проворство",
-    "description": "Initiator, Escape, Nuker"
+    "description": "Она полностью посвящает себя служению Sajedene, Богине Луны. Она научила Ветрящего Эльфа и Дроу Рейнджеру стрелять стрелой!"
   },
 
-  "wk":{
-    "name": "Dead King",
+  "wk": {
+    "name": "король умерший",
     "attribute": "Прочность",
-    "description": "Carry, Disabler, Durable"
+    "description": "Когда король Аренделл узнал о своей дочерью, он искал лекарство. После предательства ведьмы он теперь является рабом Призрачного призрака"
   },
 
   "lina": {
-    "name": "Fire Bender",
+    "name": "Огненный Бендер",
     "attribute": "интеллект",
-    "description": "Nuker, Carry, Disabler"
+    "description": "После падения Нации Огня она влюбилась в Ледяного Мага. Теперь они вместе сражаются за старейшин, и она в огне и готова атаковать!"
   },
 
-  "cm":{
-    "name": "Ice Mage",
+  "cm": {
+    "name": "Ледяной маг",
     "attribute": "интеллект",
-    "description": "Nuker, Support, Disabler"
+    "description": "Рожденный в Аренделл, Ледяной Маг учил ее прадед Лич. С некоторой помощью она нашла правду о древних и готова отпустить ее!"
   },
   
-  "kotl":{
-    "name": "Light Keeper",
+  "kotl": {
+    "name": "Световой хранитель",
     "attribute": "интеллект",
-    "description": "Support, Nuker, Disabler"
+    "description": "Один из майяров и ответственен за распространение правды. Он упал, когда темнота заняла верх, но он вернулся с силой!"
   },
 
-  "am":{
-    "name": "Magino",
+  "am": {
+    "name": "нетмагия",
     "attribute": "проворство",
-    "range": "ближний бой",
-    "description": "Nuker, Carry, Escape"
+    "description": "Когда душа его брата была украдена, он начал свои поиски против магии. Преобразует магическую силу своих врагов против себя"
   },
 
-  "nyx":{
-    "name": "Mix",
+  "nyx": {
+    "name": "Смешивание",
     "attribute": "проворство",
-    "description": "Initiator, Disabler, Escape"
+    "description": "Самый старый заводчик Samsa Hive, не обычный жук. Он - убийца Микса, выбранный, чтобы убить того, кто мешает королеве"
   },
 
   "com": {
-    "name": "Sashay Commander",
+    "name": "Sasha командующий",
     "attribute": "Прочность",
-    "description": "Carry, Durable, Healer"
+    "description": "Нужно смело войти на поле битвы. Но возвращаться как женщина и встать на вызов требует чего-то еще, и у нее есть все это!"
   },
 
   "wind": {
-    "name": "Wind Elf",
+    "name": "Ветрогенераторы",
     "attribute": "интеллект",
-    "description": "Disabler, Escape, Nuker"
+    "description": "Ее семья умерла в шторме в ночь ее рождения, но сам ветер спас ее. Теперь она использует секреты стрельбы из лука"
   },
 
   "venge": {
-    "name": "Venge",
+    "name": "месть",
     "attribute": "проворство",
-    "description": "Disabler, Escape, Nuker"
+    "description": "Потеряв трон и свою любовь, Волшебник Небес, она не простит предательства своей сестры и будет всегда преследовать ее"
   },
   
   "en": {
-    "name": "Bambi",
+    "name": "олень",
     "attribute": "интеллект",
-    "description": "Jungler, Healer, Durable"
+    "description": "Красота - его сильная сторона, поэтому он отходит от жары битвы. Но не ошибитесь, это так же ужасно, как прекрасное"
   }
 
 }
-
