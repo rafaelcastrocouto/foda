@@ -20,15 +20,15 @@ game.screen = {
     if (rememberedres && game.screen.resolutions.indexOf(rememberedres) > -1) res = rememberedres;
     if (res) {
       game.screen.setResotution(res);
-      game.screen.changeResolution(res);
     }
   },
   setResotution: function (res) {
     $('input[name=resolution][value='+res+']').attr('checked', true);
+    game.screen.changeResolution(res);
   },
   changeResolution: function (resolution) {
     if (!resolution || resolution.constructor.name !== 'String') {
-      resolution = $('input[name=resolution]:checked', '.screenresolution').val() || 'auto';
+      resolution = $('input[name=resolution]:checked', '.screenresolution').val() || 'default';
       game.screen.resolution = resolution;
     }
     game.container.removeClass(game.screen.resolutions.join(' ')).addClass(resolution);

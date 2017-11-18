@@ -8,6 +8,7 @@ game.history = {
     game.history.last = localStorage.getItem('last-activity');
   },
   recover: function () {
+    if (window.innerWidth < 600) game.sreen.setResotution('auto');
     var mode = game.history.mode,
         state = game.history.state,
         valid = game.states.validState(state),
@@ -27,6 +28,7 @@ game.history = {
         game.chat.build();
         setTimeout(game.chat.set.bind(game.chat, game.data.ui.reconnected), 200);
       }
+      
       if (game.debug) {
         if (state == 'loading') state = 'log';
         if (state == 'table') state = 'vs';

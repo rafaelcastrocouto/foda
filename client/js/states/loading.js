@@ -40,7 +40,7 @@ game.states.loading = {
     game.container.append(game.topbar);
     game.states.build( function () {
       game.rank.build();
-      if (window.AudioContext) game.audio.build();
+      if ('AudioContext' in window) game.audio.build();
       game.timeout(400, game.history.recover);
     });
   },
