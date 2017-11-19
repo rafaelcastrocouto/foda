@@ -29,8 +29,8 @@ game.heroesAI.wk = {
     var stun = game.data.skills.wk.stun;
     card.inRange(stun['cast range'], function (spot) {
       var spotData = spot.data('ai');
-      spot.priority -= 20;
-      spot['can-be-casted'] = true;
+      spotData.priority -= 20;
+      spotData['can-be-casted'] = true;
       spot.data('ai', spotData);
     });
     card.data('ai', cardData);

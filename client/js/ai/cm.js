@@ -83,19 +83,19 @@ game.heroesAI.cm = {
     card.inRange(slow['cast range'], function (spot) {
       spot.inRange(slow['aoe range'], function (castSpot) {
         var spotData = castSpot.data('ai');
-        castSpot.priority -= 10;
-        castSpot['can-be-casted'] = true;
+        spotData.priority -= 5;
+        spotData['can-be-casted'] = true;
         castSpot.data('ai', spotData);
       });
     });
     var freeze = game.data.skills.cm.freeze;
     card.inRange(freeze['cast range'], function (spot) {
       var spotData = spot.data('ai');
-      spot.priority -= 10;
-      spot['can-be-casted'] = true;
+      spotData.priority -= 5;
+      spotData['can-be-casted'] = true;
       spot.data('ai', spotData);
     });
-    if (game.player.turns > game.ultTurn) {
+    if (game.player.turn >= game.ultTurn) {
       var ult = game.data.skills.cm.ult;
       card.inRange(ult['aoe range'], function (spot) {
         var spotData = spot.data('ai');

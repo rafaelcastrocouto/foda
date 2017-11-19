@@ -64,7 +64,7 @@ game.heroesAI.com = {
     card.data('ai', cardData);
   },
   defend: function (card, cardData) {
-
+    
     //card.data('ai', cardData);
   }
 };

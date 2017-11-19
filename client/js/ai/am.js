@@ -71,7 +71,7 @@ game.heroesAI.am = {
           if (!cardInRange.hasClass('towers') && cardInRange.data('mana')) {
             if (cardInRange.hasClass('channeling')) p += 20;
             if (cardInRange.hasClass('units')) p -= 5;
-            cardInRange.around(2, function (nspot) {
+            cardInRange.around(card.data('range'), function (nspot) {
               var sectarget = $('.card.player', nspot);
               if (sectarget.length) {
                 targets++;
@@ -94,27 +94,43 @@ game.heroesAI.am = {
   },
   defend: function (card, cardData) {
     //console.log('defend-from-am');
+    var blink = game.data.skills.am.blink;
+    var side = card.side();
     var canBlinkTower = false;
-    card.opponentsInRange(6, function () {
-      if (card.hasClasses('enemy towers')) {
-        canBlinkTower = true;
+    card.around(blink['cast range'], function (blinkSpot) {
+      if (blinkSpot.hasClass('free')) {
+        blinkSpot.around(card.data('range'), function (spot) {
+          var spotData = spot.data('ai');
+          spotData.priority -= 1;
+          spot.data('ai', spotData);
+          var cardInRange = $('.card.'+side, spot);
+          if (cardInRange.hasClass('towers')) {
+            canBlinkTower = true;
+          }
+        });
       }
     });
     // make ai units near the tower block am path
     if (canBlinkTower) {
+      game.enemy.tower.atRange(2, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority += 30;
+        spot.data('ai', spotData);
+      });
       game.enemy.tower.atRange(4, function (spot) {
-        var card = spot.find('.card.enemy');
-        if (card.length) {
-          cardData.strats.retreat += 10;
+        var defenderCard = spot.find('.card.'+side);
+        if (defenderCard.length) {
+          var defenderData = defenderCard.data('ai');
+          defenderData.strats.retreat += 15;
+          defenderCard.data('ai', defenderData);
         }
       });
     }
-    // prevent clustering 
-    if (game.player.turns > game.ultTurn) {
+    if (game.player.turn >= game.ultTurn) {
       var ult = game.data.skills.am.ult;
       card.inRange(ult['cast range'], function (spot) {
         var spotData = spot.data('ai');
-        spotData.priority -= 25;
+        spotData.priority -= 15;
         spotData['can-be-casted'] = true;
         spot.data('ai', spotData);
       });

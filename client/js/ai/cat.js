@@ -110,5 +110,53 @@ game.heroesAI.cat = {
   },
   defend: function (card, cardData) {
     //card.data('ai', cardData);
+    var star = game.data.skills.cat.star;
+    card.inRange(star['aoe range'], function (spot) {
+      var spotData = spot.data('ai');
+      spotData.priority -= 5;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    var arrow = game.data.skills.cat.arrow;
+    var range = arrow['aoe range'];
+    var width = arrow['aoe width'];
+    card.around(1, function (dirSpot) {
+      card.inLine(dirSpot, range, width, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 30;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+      });
+    });
+    var leap = game.data.skills.cat.leap;
+    var canBlinkTower = false;
+    card.atRange(leap['cast range'], function (spot) {
+      if (spot.hasClass('free')) {
+        spot.around(card.data('range'), function () {
+          var spotData = spot.data('ai');
+          spotData.priority -= 1;
+          spot.data('ai', spotData);
+          if (card.hasClass('towers')) {
+            canBlinkTower = true;
+          }
+        });
+      }
+    });
+    if (canBlinkTower) {
+      game.enemy.tower.atRange(2, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority += 30;
+        spot.data('ai', spotData);
+      });
+      game.enemy.tower.atRange(4, function (spot) {
+        var defenderCard = spot.find('.card.'+side);
+        if (defenderCard.length) {
+          var defenderData = defenderCard.data('ai');
+          defenderData.strats.retreat += 15;
+          defenderCard.data('ai', defenderData);
+        }
+      });
+    }
+    card.data('ai', cardData);
   }
 };

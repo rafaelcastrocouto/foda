@@ -47,6 +47,12 @@ game.ai = {
           }
         }
       });
+      if (game.debug) {
+        $('.map .spot').each(function (i, el) {
+          var spot = $(el);
+          $('.debug', spot).text(spot.data('ai').priority);
+        });
+      }
       // add attack and move data
       $('.map .enemy.card:not(.towers, .dead, .ghost)').each(function (i, el) {
         var card = $(el);
@@ -181,7 +187,7 @@ game.ai = {
   newSpotData: function (spot) {
     var d = {
       'blocked': !spot.hasClass('free'),
-      'priority': 0,
+      'priority': 50,
       'can-be-attacked': false,
       'can-be-casted': false
     };
