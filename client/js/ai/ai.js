@@ -98,7 +98,6 @@ game.ai = {
     $('.map .card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
       var card = $(el);
       if (card.side() == game.ai.side && !card.hasClass('channeling')) game.ai.checkAttack(card);
-      card.data('ai done', false);//.removeClass('ai');
     });
     // creep summon
     $('.enemydecks .sidehand .units').each(function (i, el) {
@@ -150,6 +149,7 @@ game.ai = {
     $('.map .card:not(.dead, .ghost)').each(function (i, el) {
       var card = $(el);
       card.data('ai', game.ai.newData(card));
+      card.data('ai done', false);
     });
     $('.map .spot').each(function (i, el) {
       var spot = $(el);
@@ -170,13 +170,15 @@ game.ai = {
       'in-tower-attack-range': false,
       'can-advance': false,
       'can-retreat': false,
+      'can-dodge': false,
       'can-cast': false,
       'cast-strats': [],
       'cast-targets': [],
       'can-make-action': false,
       'attack-targets': [],
-      'destinys': [],
+      'move': [],
       'advance': [],
+      'dodge': [],
       'retreat': []
     };
     $(game.ai.strats).each(function (i, strat) {
@@ -187,7 +189,7 @@ game.ai = {
   newSpotData: function (spot) {
     var d = {
       'blocked': !spot.hasClass('free'),
-      'priority': 50,
+      'priority': 40,
       'can-be-attacked': false,
       'can-be-casted': false
     };
@@ -205,7 +207,6 @@ game.ai = {
     }
     if (card.canMove()) {
       cardData['can-move'] = true;
-      cardData['can-make-action'] = true;
     }
     card.around(range, function (spot) {
       // if can attack next turn
@@ -220,7 +221,6 @@ game.ai = {
         //there is one opponent in range 
         if (card.canAttack()) {
           cardData['can-attack'] = true;
-          cardData['can-make-action'] = true;
         }
         // attack target
         cardData.strats.attack += 10;
@@ -284,32 +284,38 @@ game.ai = {
         cardData = game.ai.spotData(bot, card, cardData, side, 'advance', 6);
       }
       if (left && left.hasClass('free')) {
-        cardData = game.ai.spotData(left, card, cardData, side, 'advance', 2);
+        cardData['can-dodge'] = true;
+        cardData = game.ai.spotData(left, card, cardData, side, 'advance', 2, true);
       }
       if (bl && bl.hasClass('free') && (bot.hasClass('free') || left.hasClass('free'))) {
-        cardData = game.ai.spotData(bl, card, cardData, side, 'advance', 8);
+        cardData['can-dodge'] = true;
+        cardData = game.ai.spotData(bl, card, cardData, side, 'advance', 8, true);
       }
       if (br && br.hasClass('free') && (bot.hasClass('free') || right.hasClass('free'))) {
-        cardData = game.ai.spotData(br, card, cardData, side, 'advance', 4);
+        cardData['can-dodge'] = true;
+        cardData = game.ai.spotData(br, card, cardData, side, 'advance', 4, true);
       }
       // retreat
       if (top && top.hasClass('free')) {
         cardData = game.ai.spotData(top, card, cardData, side, 'retreat', 6);
       }
       if (right && right.hasClass('free') && cardData['can-retreat']) {
-        cardData = game.ai.spotData(right, card, cardData, side, 'retreat', 4);
+        cardData['can-dodge'] = true;
+        cardData = game.ai.spotData(right, card, cardData, side, 'retreat', 4, true);
       }
       if (tr && tr.hasClass('free') && (top.hasClass('free') || right.hasClass('free'))) {
-        cardData = game.ai.spotData(tr, card, cardData, side, 'retreat', 8);
+        cardData['can-dodge'] = true;
+        cardData = game.ai.spotData(tr, card, cardData, side, 'retreat', 8, true);
       }
       if (tl && tl.hasClass('free') && (top.hasClass('free') || left.hasClass('free'))) {
-        cardData = game.ai.spotData(tl, card, cardData, side, 'retreat', 2);
+        cardData['can-dodge'] = true;
+        cardData = game.ai.spotData(tl, card, cardData, side, 'retreat', 2, true);
       }
     }
     card.data('ai', cardData);
     //console.log(cardData);
   },
-  spotData: function (spot, card, cardData, side, destiny, priority) {
+  spotData: function (spot, card, cardData, side, destiny, priority, dodge) {
     var spotData = spot.data('ai');
     priority += spotData.priority;
     spot.data('ai', spotData);
@@ -324,14 +330,14 @@ game.ai = {
       priority: priority
     };
     if (card.canMove()) {
-      cardData.strats.move += 2;
-      if (destiny == 'advance') cardData.strats.offensive += (priority/2);
-      if (destiny == 'retreat') cardData.strats.defensive += (priority/2);
+      if (destiny == 'advance') cardData.strats.siege += (priority/2);
+      if (destiny == 'retreat') cardData.strats.alert += (priority/2);
+      if (dodge) cardData.strats.dodge += (priority/2);
       cardData['can-'+destiny] = true;
     }
-    cardData.destinys.push(o);
-    if (!cardData[destiny]) cardData[destiny] = [];
+    cardData.move.push(o);
     cardData[destiny].push(o);
+    if (dodge) cardData.dodge.push(o);
     return cardData;
   },
   /*comboData: function () {
@@ -351,7 +357,7 @@ game.ai = {
   },*/
   chooseStrat: function (card, cardData) {
     // console.log(card);
-    if (game.player.tower.data('current hp') == 1) {
+    if (game.player.tower.data('current hp') < 3) {
       return {strat: 'siege'};
     }
     var strats = [];
@@ -375,12 +381,9 @@ game.ai = {
   strats: [
     'siege',
     'attack',
-    'offensive',
-    'smart',
-    'move',
-    'stand',
+    'flank',
+    'dodge',
     'alert',
-    'defensive',
     'retreat'
   ],
   decideAction: function (strat, card, cardData) {
@@ -393,79 +396,43 @@ game.ai = {
         target = $('.map .towers.enemy');
       } else if (cardData['can-advance']) {
         action = 'advance';
-      } else if (cardData['can-make-action']) {
-        action = 'any';
       }
     }
     if (strat == 'attack') {
       if (cardData['can-attack']) {
         action = 'attack';
-      } else if (cardData['can-make-action']) {
-        action = 'any';
       } else if (cardData['can-advance']) {
         action = 'advance';
       }
     }
-    if (strat == 'offensive') {
-      if (cardData['can-make-action']) {
-        action = 'any';
-      } else if (cardData['can-advance']) {
-        action = 'advance';
-      }
-    }
-    if (strat == 'secure') {
-      if (cardData['can-make-action']) {
-        action = 'any';
-      } else if (!cardData['can-be-attacked'] && cardData['can-advance']) {
+    if (strat == 'flank') {
+      if (cardData['can-attack']) {
+        action = 'attack';
+      } else if (cardData['can-advance'] && !cardData['at-tower-limit']) {
         action = 'advance';
       } else if (cardData['can-be-attacked'] && cardData['can-retreat']) {
         action = 'retreat';
       }
     }
-    if (strat == 'smart') {
-      if (cardData['can-make-action']) {
-        action = 'any';
-      } else if (cardData['can-advance'] && !cardData['at-tower-limit'] && !cardData['can-be-attacked']) {
-        action = 'advance';
-      } else if (cardData['can-be-attacked'] && cardData['can-retreat']) {
-        action = 'retreat';
-      }
-    }
-    if (strat == 'move') {
-      if (cardData['can-move']) {
-        action =  'move';
-      } else if (cardData['can-make-action']) {
-        action = 'any';
-      }
-    }
-    if (strat == 'stand') {
-      if (cardData['can-make-action']) {
-        action = 'any';
+    if (strat == 'dodge') {
+      if (cardData['can-dodge']) {
+        action =  'dodge';
       }
     }
     if (strat == 'alert') {
-      if (cardData['can-make-action']) {
-        action = 'any';
+      if (cardData['can-attack']) {
+        action = 'attack';
       } else if (cardData['can-be-attacked'] && cardData['can-retreat']) {
         action = 'retreat';
-      }
-    }
-    if (strat == 'defensive') {
-      if (cardData['can-be-attacked'] && cardData['can-retreat']) {
-        action = 'retreat';
-      } else if (cardData['can-make-action']) {
-        action = 'any';
       }
     }
     if (strat == 'retreat') {
       if (cardData['can-retreat']) {
         action = 'retreat';
-      } else if (cardData['can-make-action']) {
-        action = 'any';
       }
     }
     // decide final action
-    if (action == 'any') {
+    if (!action) {
       if (cardData['can-attack']) {
         action = 'attack';
       } else if (cardData['can-move']) {
@@ -474,13 +441,13 @@ game.ai = {
     }
     //console.log('action:', action); 
     if (action) {
-      if (action == 'move' || action == 'advance' || action == 'retreat') {
+      if (action == 'move' || action == 'advance' || action == 'retreat' || action == 'dodge') {
         target = game.ai.chooseDestiny(card, cardData, action);
         //if (target) console.log(card[0], target.target[0], target.priority);
         action = 'move';
       }
       if (action == 'attack'){
-        target = game.ai.chooseTarget(cardData['attack-targets']);
+        if (!target) target = game.ai.chooseTarget(cardData['attack-targets']);
       }
       //console.log('target', target);
       if (action && target && target.target) {
@@ -490,8 +457,7 @@ game.ai = {
   },
   chooseDestiny: function (card, cardData, action) {
     if (card.canMove()) {
-      var destinys = cardData.destinys;
-      // filter advance and retreat spots
+      // filter move, dodge, advance and retreat spots
       if (action && cardData[action]) destinys = cardData[action];
       //console.log(action, destinys);
       if (destinys.length) {
@@ -588,7 +554,7 @@ game.ai = {
       var y = spot.getY();
       if (!spotData.blocked) spots.push({
         target: spot,
-        priority: spotData.priority + (15 * y),
+        priority: spotData.priority + spotData.unitPriority + (15 * y),
         data: spotData
       });
     });

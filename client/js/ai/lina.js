@@ -1,6 +1,6 @@
 game.heroesAI.lina = {
   move: {
-    default: 'defensive'
+    default: 'flank'
   },
   play: function (card, cardData) {
     var fire = $('.enemydecks .hand .skills.lina-fire');

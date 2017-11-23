@@ -1,6 +1,6 @@
 game.heroesAI.en = {
   move: {
-    default: 'defensive'
+    default: 'flank'
   },
   play: function (card, cardData) {
     var curse = $('.enemydecks .hand .skills.en-curse');
@@ -78,7 +78,22 @@ game.heroesAI.en = {
     card.data('ai', cardData);
   },
   defend: function (card, cardData) {
-
-    //card.data('ai', cardData);
+    var curse = game.data.skills.en.curse;
+    card.inRange(curse['cast range'], function (spot) {
+      var spotData = spot.data('ai');
+      spotData.unitPriority -= 15;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    if (game[card.side()].turn >= game.ultTurn) {
+      var ult = game.data.skills.en.ult;
+      card.inRange(ult['cast range'], function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 5;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+      });
+    }
+    card.data('ai', cardData);
   }
 };

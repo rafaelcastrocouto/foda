@@ -1,6 +1,6 @@
 game.heroesAI.cat = {
   move: {
-    default: 'offensive'
+    default: 'flank'
   },
   play: function (card, cardData) {
     var star = $('.enemydecks .sidehand .skills.cat-star');
@@ -127,6 +127,12 @@ game.heroesAI.cat = {
         spotData['can-be-casted'] = true;
         spot.data('ai', spotData);
       });
+      var cardInRange = card.firstCardInLine(dirSpot, range);
+      if (cardInRange) {
+        var cardInRangeData = cardInRange.data('ai');
+        cardInRangeData.strats.dodge += 50;
+        cardInRange.data('ai', cardInRangeData);
+      }
     });
     var leap = game.data.skills.cat.leap;
     var canBlinkTower = false;
@@ -152,9 +158,17 @@ game.heroesAI.cat = {
         var defenderCard = spot.find('.card.'+side);
         if (defenderCard.length) {
           var defenderData = defenderCard.data('ai');
-          defenderData.strats.retreat += 15;
+          defenderData.strats.retreat += 20;
           defenderCard.data('ai', defenderData);
         }
+      });
+    }
+    if (game.player.miranaUltCasted) {
+      $('.map .card.'+game.ai.side).each(function (i, aicardel) {
+        var aicard = $(aicardel);
+        var aicarddata = aicard.data('ai');
+        aicarddata.strats.retreat += 10;
+        aicard.data('ai', aicarddata);
       });
     }
     card.data('ai', cardData);

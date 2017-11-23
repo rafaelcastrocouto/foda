@@ -1,6 +1,6 @@
 game.heroesAI.com = {
   move: {
-    default: 'offensive'
+    default: 'attack'
   },
   play: function (card, cardData) {
     var aoe = $('.enemydecks .hand .skills.com-aoe');
@@ -64,7 +64,28 @@ game.heroesAI.com = {
     card.data('ai', cardData);
   },
   defend: function (card, cardData) {
-    
-    //card.data('ai', cardData);
+    var aoe = game.data.skills.com.aoe;
+    var aoeSpots = [];
+    card.inRange(aoe['cast range'], function (spot) {
+      spot.inRange(aoe['aoe range'], function (castSpot) {
+        if (aoeSpots.indexOf(castSpot) < 0) aoeSpots.push(castSpot);
+      });
+    });
+    $.each(aoeSpots, function (i, spot) {
+      var spotData = spot.data('ai');
+      spotData.priority -= 5;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    if (game[card.side()].turn >= game.ultTurn) {
+      var ult = game.data.skills.com.ult;
+      card.inRange(ult['cast range'], function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 15;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+      });
+    }
+    card.data('ai', cardData);
   }
 };

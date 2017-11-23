@@ -1,6 +1,6 @@
 game.heroesAI.am = {
   move: {
-    default: 'smart'
+    default: 'flank'
   },
   play: function (card, cardData) {
     var blinks = $('.enemydecks .hand .skills.am-blink');
@@ -121,12 +121,12 @@ game.heroesAI.am = {
         var defenderCard = spot.find('.card.'+side);
         if (defenderCard.length) {
           var defenderData = defenderCard.data('ai');
-          defenderData.strats.retreat += 15;
+          defenderData.strats.retreat += 20;
           defenderCard.data('ai', defenderData);
         }
       });
     }
-    if (game.player.turn >= game.ultTurn) {
+    if (game[side].turn >= game.ultTurn) {
       var ult = game.data.skills.am.ult;
       card.inRange(ult['cast range'], function (spot) {
         var spotData = spot.data('ai');

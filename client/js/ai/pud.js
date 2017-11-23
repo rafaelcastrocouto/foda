@@ -1,6 +1,6 @@
 game.heroesAI.pud = {
   move: {
-    default: 'defensive'
+    default: 'alert'
   },
   play: function (card, cardData) {
     var hook = $('.enemydecks .hand .skills.pud-hook');
@@ -85,8 +85,24 @@ game.heroesAI.pud = {
     }
     card.data('ai', cardData);
   },
-  defend: function (pud) {
-    //console.log('defend-from-pud');
-    //avoid hook
+  defend: function (card, cardData) {
+    var hook = game.data.skills.pud.hook;
+    var range = hook['aoe range'];
+    var width = hook['aoe width'];
+    card.around(1, function (dirSpot) {
+      card.inLine(dirSpot, range, width, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 30;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+      });
+      var cardInRange = card.firstCardInLine(dirSpot, range);
+      if (cardInRange) {
+        var cardInRangeData = cardInRange.data('ai');
+        cardInRangeData.strats.dodge += 50;
+        cardInRange.data('ai', cardInRangeData);
+      }
+    });
+    card.data('ai', cardData);
   }
 };

@@ -1,6 +1,6 @@
 game.heroesAI.nyx = {
   move: {
-    default: 'defensive'
+    default: 'attack'
   },
   play: function (card, cardData) {
     var spike = $('.enemydecks .hand .skills.nyx-spike');

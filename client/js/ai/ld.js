@@ -1,6 +1,6 @@
 game.heroesAI.ld = {
   move: {
-    default: 'offensive'
+    default: 'attack'
   },
   play: function (card, cardData) {
     // bear strats (siege)

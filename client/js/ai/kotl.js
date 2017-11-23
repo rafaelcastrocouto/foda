@@ -1,6 +1,6 @@
 game.heroesAI.kotl = {
   move: {
-    default: 'defensive'
+    default: 'alert'
   },
   play: function (card, cardData) {
     var illuminate = $('.enemydecks .hand .skills.kotl-illuminate');

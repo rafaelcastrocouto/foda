@@ -1,6 +1,6 @@
 game.heroesAI.wind = {
   move: {
-    default: 'smart'
+    default: 'flank'
   },
   play: function (card, cardData) {
     var arrow = $('.enemydecks .hand .skills.wind-arrow');

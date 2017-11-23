@@ -1,6 +1,6 @@
 game.heroesAI.wk = {
   move: {
-    default: 'offensive'
+    default: 'attack'
   },
   play: function (card, cardData) {
     var stun = $('.enemydecks .hand .skills.wk-stun');
