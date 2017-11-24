@@ -126,13 +126,13 @@ game.heroesAI.cat = {
         spotData.priority -= 30;
         spotData['can-be-casted'] = true;
         spot.data('ai', spotData);
+        var cardInRange = $('.card.'+card.opponent(), spot);
+        if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
+          var cardInRangeData = cardInRange.data('ai');
+          cardInRangeData.strats.dodge += 50;
+          cardInRange.data('ai', cardInRangeData);
+        }
       });
-      var cardInRange = card.firstCardInLine(dirSpot, range);
-      if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
-        var cardInRangeData = cardInRange.data('ai');
-        cardInRangeData.strats.dodge += 50;
-        cardInRange.data('ai', cardInRangeData);
-      }
     });
     var leap = game.data.skills.cat.leap;
     var canBlinkTower = false;

@@ -99,8 +99,8 @@ game.heroesAI.cm = {
       spotData['can-be-casted'] = true;
       spot.data('ai', spotData);
     });
+    var ult = game.data.skills.cm.ult;
     if (game[card.side()].turn >= game.ultTurn) {
-      var ult = game.data.skills.cm.ult;
       card.inRange(ult['aoe range'], function (spot) {
         var spotData = spot.data('ai');
         spotData.priority -= 5;

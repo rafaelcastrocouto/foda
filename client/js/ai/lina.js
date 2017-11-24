@@ -86,7 +86,7 @@ game.heroesAI.lina = {
         spotData['can-be-casted'] = true;
         spot.data('ai', spotData);
         var cardInRange = $('.card.'+card.opponent(), spot);
-        if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
+        if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
           var cardInRangeData = cardInRange.data('ai');
           cardInRangeData.strats.dodge += 20;
           cardInRange.data('ai', cardInRangeData);
@@ -95,8 +95,8 @@ game.heroesAI.lina = {
     });
     var stun  = game.data.skills.lina.stun;
     var stunSpots = [];
-    card.inRange(slow['cast range'], function (spot) {
-      spot.inRange(slow['aoe range'], function (castSpot) {
+    card.inRange(stun['cast range'], function (spot) {
+      spot.inRange(stun['aoe range'], function (castSpot) {
         if (stunSpots.indexOf(castSpot) < 0) stunSpots.push(castSpot);
       });
     });

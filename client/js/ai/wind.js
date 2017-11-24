@@ -95,7 +95,7 @@ game.heroesAI.wind = {
         spotData['can-be-casted'] = true;
         spot.data('ai', spotData);
         var cardInRange = $('.card.'+card.opponent(), spot);
-        if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
+        if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
           var cardInRangeData = cardInRange.data('ai');
           cardInRangeData.strats.dodge += 50;
           cardInRange.data('ai', cardInRangeData);
