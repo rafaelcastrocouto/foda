@@ -225,7 +225,7 @@ game.ai = {
         // attack target
         cardData.strats.attack += 10;
         cardData['attack-targets'].push({
-          priority: 50 - (opponentCard.data('current hp')/2),
+          priority: 50 - (opponentCard.data('current hp')/2) + (opponentCard.data('ai priority bonus') || 0),
           target: opponentCard
         });
         // retreat if in enemy range
@@ -554,7 +554,7 @@ game.ai = {
       var y = spot.getY();
       if (!spotData.blocked) spots.push({
         target: spot,
-        priority: spotData.priority + spotData.unitPriority + (15 * y),
+        priority: spotData.priority + (spotData.unitPriority||0) + (15 * y),
         data: spotData
       });
     });

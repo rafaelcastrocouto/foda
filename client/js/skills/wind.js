@@ -3,7 +3,7 @@ game.skills.wind = {
     cast: function (skill, source, target) {
       source.shake();
       var secTarget = source.behindTarget(target);
-      if (secTarget) {
+      if (secTarget && !secTarget.hasClasses('ghost dead towers')) {
         secTarget.shake();
         game.audio.play('wind/stunhit');
         if (secTarget.side() == source.opponent()) {

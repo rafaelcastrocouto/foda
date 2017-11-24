@@ -75,10 +75,46 @@ game.heroesAI.lina = {
     }
     card.data('ai', cardData);
   },
-  defend: function (cm) {
-    //console.log('defend-from-cm');
-    /*
-    prevent clustering
-    */
+  defend: function (card, cardData) {
+    var fire = game.data.skills.lina.fire;
+    var range = fire['aoe range'];
+    var width = fire['aoe width'];
+    card.around(1, function (dirSpot) {
+      card.inLine(dirSpot, range, width, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 10;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+        var cardInRange = $('.card.'+card.opponent(), spot);
+        if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
+          var cardInRangeData = cardInRange.data('ai');
+          cardInRangeData.strats.dodge += 20;
+          cardInRange.data('ai', cardInRangeData);
+        }
+      });
+    });
+    var stun  = game.data.skills.lina.stun;
+    var stunSpots = [];
+    card.inRange(slow['cast range'], function (spot) {
+      spot.inRange(slow['aoe range'], function (castSpot) {
+        if (stunSpots.indexOf(castSpot) < 0) stunSpots.push(castSpot);
+      });
+    });
+    $.each(stunSpots, function (i, spot) {
+      var spotData = spot.data('ai');
+      spotData.priority -= 10;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    var ult = game.data.skills.lina.ult;
+    if (game[card.side()].turn >= game.ultTurn) {
+      card.inRange(ult['cast range'], function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 25;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+      });
+    }
+    card.data('ai', cardData);
   }
 };

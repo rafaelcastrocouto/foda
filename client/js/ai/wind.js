@@ -42,9 +42,9 @@ game.heroesAI.wind = {
           cardData['can-cast'] = true;
           var p = 20, secTarget = card.behindTarget(cardInRange);
           if (cardInRange.hasClass('units')) p -= 10;
-          if (secTarget) {
+          if (secTarget && !secTarget.hasClasses('invisible ghost dead towers')) {
             p += 30;
-            if (secTarget.hasClass('units')) p -= 10;
+            if (secTarget.hasClass('units')) p -= 5;
           }
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
@@ -85,7 +85,42 @@ game.heroesAI.wind = {
     card.data('ai', cardData);
   },
   defend: function (card, cardData) {
-
-    //card.data('ai', cardData);
+    var arrow = game.data.skills.wind.arrow;
+    var range = arrow['aoe range'];
+    var width = arrow['aoe width'];
+    card.around(1, function (dirSpot) {
+      card.inLine(dirSpot, range, width, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 30;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+        var cardInRange = $('.card.'+card.opponent(), spot);
+        if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
+          var cardInRangeData = cardInRange.data('ai');
+          cardInRangeData.strats.dodge += 50;
+          cardInRange.data('ai', cardInRangeData);
+        }
+      });
+    });
+    var stun = game.data.skills.wind.stun;
+    card.inRange(stun['cast range'], function (spot) {
+      var spotData = spot.data('ai');
+      spotData.priority -= 5;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    if (card.hasBuff('wind-run')) {
+      card.data('ai priority bonus', -80);
+    }
+    var ult = game.data.skills.wind.ult;
+    if (game[card.side()].turn >= game.ultTurn) {
+      card.inRange(ult['cast range'], function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 5;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+      });
+    }
+    card.data('ai', cardData);
   }
 };

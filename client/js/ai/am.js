@@ -72,7 +72,7 @@ game.heroesAI.am = {
             if (cardInRange.hasClass('channeling')) p += 20;
             if (cardInRange.hasClass('units')) p -= 5;
             cardInRange.around(card.data('range'), function (nspot) {
-              var sectarget = $('.card.player', nspot);
+              var sectarget = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
               if (sectarget.length) {
                 targets++;
                 if (sectarget.hasClasses('channeling towers')) p += 20;

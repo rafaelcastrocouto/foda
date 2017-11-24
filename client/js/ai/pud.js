@@ -95,14 +95,29 @@ game.heroesAI.pud = {
         spotData.priority -= 30;
         spotData['can-be-casted'] = true;
         spot.data('ai', spotData);
+        var cardInRange = $('.card.'+card.opponent(), spot);
+        if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
+          var cardInRangeData = cardInRange.data('ai');
+          cardInRangeData.strats.dodge += 60;
+          cardInRange.data('ai', cardInRangeData);
+        }
       });
-      var cardInRange = card.firstCardInLine(dirSpot, range);
-      if (cardInRange) {
-        var cardInRangeData = cardInRange.data('ai');
-        cardInRangeData.strats.dodge += 50;
-        cardInRange.data('ai', cardInRangeData);
-      }
     });
+    var rot = game.data.skills.pud.rot;
+    card.inRange(rot['aoe range'], function (spot) {
+      var spotData = spot.data('ai');
+      spotData.priority -= 5;
+      spot.data('ai', spotData);
+    });
+    var ult = game.data.skills.pud.ult;
+    if (game[card.side()].turn >= game.ultTurn) {
+      card.inRange(ult['cast range'], function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 5;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+      });
+    }
     card.data('ai', cardData);
   }
 };

@@ -85,6 +85,9 @@ game.heroesAI.en = {
       spotData['can-be-casted'] = true;
       spot.data('ai', spotData);
     });
+    if (card.hasBuff('en-passive')) {
+      card.data('ai priority bonus', -10);
+    }
     if (game[card.side()].turn >= game.ultTurn) {
       var ult = game.data.skills.en.ult;
       card.inRange(ult['cast range'], function (spot) {

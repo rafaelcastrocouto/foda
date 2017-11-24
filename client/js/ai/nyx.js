@@ -75,8 +75,42 @@ game.heroesAI.nyx = {
     }
     card.data('ai', cardData);
   },
-  defend: function (nyx) {
-    //console.log('defend-from-nyx');
-    //aviod align
+  defend: function (card, cardData) {
+    var stun = game.data.skills.nyx.stun;
+    var range = stun['aoe range'];
+    var width = stun['aoe width'];
+    card.around(1, function (dirSpot) {
+      card.inLine(dirSpot, range, width, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 30;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+        var cardInRange = $('.card.'+card.opponent(), spot);
+        if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
+          var cardInRangeData = cardInRange.data('ai');
+          cardInRangeData.strats.dodge += 50;
+          cardInRange.data('ai', cardInRangeData);
+        }
+      });
+    });
+    var burn = game.data.skills.nyx.burn;
+    card.inRange(burn['cast range'], function (spot) {
+      var spotData = spot.data('ai');
+      spotData.priority -= 5;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    if (card.hasBuff('nyx-spike')) {
+      card.data('ai priority bonus', -80);
+    }
+    if (card.hasBuff('nyx-ult')) {
+      $('.map .card.'+game.ai.side).each(function (i, aicardel) {
+        var aicard = $(aicardel);
+        var aicarddata = aicard.data('ai');
+        aicarddata.strats.retreat += 10;
+        aicard.data('ai', aicarddata);
+      });
+    }
+    card.data('ai', cardData);
   }
 };

@@ -33,7 +33,9 @@ game.heroesAI.wk = {
       spotData['can-be-casted'] = true;
       spot.data('ai', spotData);
     });
+    if (card.hasBuff('wk-ult')) {
+      card.data('ai priority bonus', -40);
+    }
     card.data('ai', cardData);
-    //dont focus if ult buff
   }
 };

@@ -128,7 +128,7 @@ game.heroesAI.cat = {
         spot.data('ai', spotData);
       });
       var cardInRange = card.firstCardInLine(dirSpot, range);
-      if (cardInRange) {
+      if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
         var cardInRangeData = cardInRange.data('ai');
         cardInRangeData.strats.dodge += 50;
         cardInRange.data('ai', cardInRangeData);
@@ -163,7 +163,7 @@ game.heroesAI.cat = {
         }
       });
     }
-    if (game.player.miranaUltCasted) {
+    if (card.hasBuff('cat-ult')) {
       $('.map .card.'+game.ai.side).each(function (i, aicardel) {
         var aicard = $(aicardel);
         var aicarddata = aicard.data('ai');

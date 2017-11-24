@@ -50,14 +50,12 @@ game.skills.cat = {
         ally.addInvisibility();
         ally.on('invisibilityLoss', game.skills.cat.ult.end);
       });
-      game[side].miranaUltCasted = true;
     },
     end: function (event, eventdata) {
       eventdata.target.removeBuff('cat-ult');
     },
     expire: function (event, eventdata) {
       eventdata.target.removeInvisibility();
-      game[side].miranaUltCasted = false;
     }
   }
 };

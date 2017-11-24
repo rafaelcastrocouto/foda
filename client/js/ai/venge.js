@@ -99,7 +99,61 @@ game.heroesAI.venge = {
     card.data('ai', cardData);
   },
   defend: function (card, cardData) {
-
-    //card.data('ai', cardData);
+    var stun = game.data.skills.venge.stun;
+    card.inRange(stun['cast range'], function (spot) {
+      var spotData = spot.data('ai');
+      spotData.priority -= 5;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    var corruption = game.data.skills.venge.corruption;
+    var range = corruption['aoe range'];
+    var width = corruption['aoe width'];
+    card.around(1, function (dirSpot) {
+      card.inLine(dirSpot, range, width, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 10;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+        var cardInRange = $('.card.'+card.opponent(), spot);
+        if (cardInRange && !cardInRange.hasClasses('ghost dead towers')) {
+          var cardInRangeData = cardInRange.data('ai');
+          cardInRangeData.strats.dodge += 30;
+          cardInRange.data('ai', cardInRangeData);
+        }
+      });
+    });
+    var ult = game.data.skills.venge.ult;
+    var side = card.side();
+    var canBlinkTower = false;
+    if (game[side].turn >= game.ultTurn) {
+      card.around(ult['cast range'], function (swapSpot) {
+        if (swapSpot.hasClass('free')) {
+          swapSpot.around(card.data('range'), function (spot) {
+            var cardInRange = $('.card.'+side, spot);
+            if (cardInRange.hasClass('towers')) {
+              canSwapTower = true;
+            }
+          });
+        }
+      });
+      // make ai units near the tower walk away
+      if (canSwapTower) {
+        game.enemy.tower.atRange(2, function (spot) {
+          var spotData = spot.data('ai');
+          spotData.priority -= 30;
+          spot.data('ai', spotData);
+        });
+        game.enemy.tower.atRange(4, function (spot) {
+          var defenderCard = spot.find('.card.'+side);
+          if (defenderCard.length) {
+            var defenderData = defenderCard.data('ai');
+            defenderData.strats.siege += 20;
+            defenderCard.data('ai', defenderData);
+          }
+        });
+      }
+    }
+    card.data('ai', cardData);
   }
 };
