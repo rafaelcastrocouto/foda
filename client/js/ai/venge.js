@@ -125,7 +125,7 @@ game.heroesAI.venge = {
     });
     var ult = game.data.skills.venge.ult;
     var side = card.side();
-    var canBlinkTower = false;
+    var canSwapTower = false;
     if (game[side].turn >= game.ultTurn) {
       card.around(ult['cast range'], function (swapSpot) {
         if (swapSpot.hasClass('free')) {
