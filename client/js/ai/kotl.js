@@ -113,12 +113,40 @@ game.heroesAI.kotl = {
     }
     card.data('ai', cardData);
   },
-  defend: function (kotl) {
-    //console.log('defend-from-kotl');
-    /*
-    avoid illuminate
-    avoid moving if leak-buff
-    avoid attacking if blind-buff
-    */
+  defend: function (card, cardData) {
+    var illuminate = game.data.skills.kotl.illuminate;
+    var range = illuminate['aoe range'];
+    var width = illuminate['aoe width'];
+    var channeling = card.hasClass('channeling');
+    card.around(1, function (dirSpot) {
+      card.inLine(dirSpot, range, width, function (spot) {
+        var spotData = spot.data('ai');
+        spotData.priority -= 5;
+        if (channeling) spotData.priority -= 25;
+        spotData['can-be-casted'] = true;
+        spot.data('ai', spotData);
+        var cardInRange = $('.card.'+card.opponent(), spot);
+        if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
+          var cardInRangeData = cardInRange.data('ai');
+          cardInRangeData.strats.dodge += 10;
+          if (channeling) cardInRangeData.strats.dodge += 15;
+          cardInRange.data('ai', cardInRangeData);
+        }
+      });
+    });
+    $('.map .card.'+card.opponent()).each(function (i, el) {
+      //var leak =   game.data.skills.kotl.leak;
+      var opponent = $(el);
+      var opponentData = opponent.data('ai');
+      if (opponent.hasBuff('kotl-leak')) {
+        opponentData.strats.stand += 40;
+      }
+      //var blind =  game.data.skills.kotl.blind;
+      if (opponent.hasBuff('kotl-blind')) {
+        opponentData.strats.siege += 30;
+      }
+      opponent.data('ai', opponentData);
+    });
+    card.data('ai', cardData);
   }
 };

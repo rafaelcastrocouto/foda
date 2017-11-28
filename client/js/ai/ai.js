@@ -384,6 +384,7 @@ game.ai = {
     'flank',
     'dodge',
     'alert',
+    'stand',
     'retreat'
   ],
   decideAction: function (strat, card, cardData) {
@@ -392,8 +393,7 @@ game.ai = {
     //console.log('strat', strat, card, cardData);
     if (strat == 'siege') {
       if (cardData['can-attack-tower']) {
-        action = 'attack';
-        target = $('.map .towers.enemy');
+        action = 'attack'; target = $('.map .towers.enemy');
       } else if (cardData['can-advance']) {
         action = 'advance';
       }
@@ -414,11 +414,6 @@ game.ai = {
         action = 'retreat';
       }
     }
-    if (strat == 'dodge') {
-      if (cardData['can-dodge']) {
-        action =  'dodge';
-      }
-    }
     if (strat == 'alert') {
       if (cardData['can-attack']) {
         action = 'attack';
@@ -426,10 +421,20 @@ game.ai = {
         action = 'retreat';
       }
     }
+    if (strat == 'dodge') {
+      if (cardData['can-dodge']) {
+        action =  'dodge';
+      }
+    }
     if (strat == 'retreat') {
       if (cardData['can-retreat']) {
         action = 'retreat';
       }
+    }
+    if (strat == 'stand') {
+      if (cardData['can-attack']) {
+        action = 'attack';
+      } else action = 'stand';
     }
     // decide final action
     if (!action) {
