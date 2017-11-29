@@ -47,12 +47,6 @@ game.ai = {
           }
         }
       });
-      if (game.debug) {
-        $('.map .spot').each(function (i, el) {
-          var spot = $(el);
-          $('.debug', spot).text(spot.data('ai').priority);
-        });
-      }
       // add attack and move data
       $('.map .enemy.card:not(.towers, .dead, .ghost)').each(function (i, el) {
         var card = $(el);
@@ -76,6 +70,12 @@ game.ai = {
         var choosen = game.ai.chooseStrat(chosenCard, chosenCardData);
         // action strats
         if (choosen) game.ai.decideAction(choosen.strat, chosenCard, chosenCardData);
+      }
+      if (game.debug) {
+        $('.map .spot').each(function (i, el) {
+          var spot = $(el);
+          $('.debug', spot).text(spot.data('ai').priority);
+        });
       }
     }
     game.ai.autoMove(game.ai.nextMove);
@@ -187,9 +187,13 @@ game.ai = {
     return d;
   },
   newSpotData: function (spot) {
+    var p = 40;
+    var id = spot.getPosition();
+    if (spot.hasClass('jungle')) p -= 40;
+    if (id == 'A4' || id == 'I2') p -= 35;
     var d = {
       'blocked': !spot.hasClass('free'),
-      'priority': 40,
+      'priority': p,
       'can-be-attacked': false,
       'can-be-casted': false
     };

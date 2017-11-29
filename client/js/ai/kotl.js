@@ -98,15 +98,17 @@ game.heroesAI.kotl = {
       if (allies.length) {
         cardData['can-cast'] = true;
         $.each(allies, function (i, el) {
-          var ally = $(el);
-          var hp = ally.data('current hp') / ally.data('hp');
-          if (hp < 0.3) {
-            cardData['cast-strats'].push({
-              priority: parseInt(10 + ((0.3 / hp) * 10)),
-              skill: 'recall',
-              card: recall,
-              target: ally
-            });
+          if (card[0] != el) {
+            var ally = $(el);
+            var hp = ally.data('current hp') / ally.data('hp');
+            if (hp < 0.3) {
+              cardData['cast-strats'].push({
+                priority: parseInt(10 + ((0.3 / hp) * 10)),
+                skill: 'recall',
+                card: recall,
+                target: ally
+              });
+            }
           }
         });
       }
