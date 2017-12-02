@@ -35,6 +35,10 @@ game.states.campaign = {
   },
   nextStage: function () {
     switch(this.stage.name) {
+      case 'Last Stage':
+        game.alert('Congratulation, you beat our best Artifial Intelligence! Thanks a lot for participating in our beta test!');
+        this.stage = game.data.campaign.start;
+        break;
       case 'Rune Stage':
         $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
         this.stage = game.data.campaign.normal;

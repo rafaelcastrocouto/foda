@@ -103,6 +103,7 @@
   pointer-events: none;
   transition: none;
   position: absolute;
+  opacity: 1;
 }
 
 .buffs .fx {
@@ -398,6 +399,128 @@
 @keyframes cat-star-sprite {
   100% {
     background-position: -2208px;
+  }
+}
+
+.map .fx.cat-leap {
+  transform: rotateX(-37deg) translate3d(80px,40px,120px) scale(4);
+  width: 67px;
+  height: 58px;
+  animation: cat-leap-sprite 0.8s steps(6) 1;
+  background-image: url('../img/fx/cat/leap.png');
+}
+@keyframes cat-leap-sprite {
+  100% {
+    background-position: -402px;
+  }
+}
+
+.map .fx.cat-leap-path {
+  transform: translate3d(85px,300px,10px) scale(4);
+  width: 28px;
+  height: 157px;
+  animation: cat-leap-path-sprite 0.8s steps(6) 1;
+  background-image: url('../img/fx/cat/leap-path.png');
+}
+@keyframes cat-leap-path-sprite {
+  100% {
+    background-position: -168px;
+  }
+}
+
+.map .fx.cat-leap-path.r-12 {
+  transform: rotateZ(20deg) translate3d(120px,320px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r12 {
+  transform: rotateZ(-20deg) translate3d(50px,380px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r-20 {
+  transform: rotateZ(90deg) translate3d(10px,140px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r-21 {
+  transform: rotateZ(55deg) translate3d(50px,220px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r-2-1 {
+  transform: rotateZ(125deg) translate3d(-50px,200px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r20 {
+  transform: rotateZ(-90deg) translate3d(-10px,320px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r2-1 {
+  transform: rotateZ(-125deg) translate3d(-50px,350px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r21 {
+  transform: rotateZ(-55deg) translate3d(40px,360px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r0-2 {
+  transform: rotateZ(180deg) translate3d(-90px,320px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r-1-2 {
+  transform: rotateZ(160deg) translate3d(-100px,320px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r1-2 {
+  transform: rotateZ(200deg) translate3d(-80px,400px,10px) scale(4);
+}
+
+.map .fx.cat-arrow {
+  transform: translate3d(80px,380px,10px) scale(4);
+  width: 30px;
+  height: 243px;
+  animation: cat-arrow-sprite 1.1s steps(7) 1;
+  background-image: url('../img/fx/cat/arrow.png');
+}
+@keyframes cat-arrow-sprite {
+  100% {
+    background-position: -210px;
+  }
+}
+.map .fx.cat-arrow.r-40, .map .fx.cat-arrow.r-30, .map .fx.cat-arrow.r-20, .map .fx.cat-arrow.r-10 {
+  transform: rotateZ(90deg) translate3d(-40px,360px,10px) scale(4);
+}
+.map .fx.cat-arrow.r40, .map .fx.cat-arrow.r30, .map .fx.cat-arrow.r20, .map .fx.cat-arrow.r10 {
+  transform: rotateZ(-90deg) translate3d(40px,500px,10px) scale(4);
+}
+.map .fx.cat-arrow.r0-1, .map .fx.cat-arrow.r0-2, .map .fx.cat-arrow.r0-3, .map .fx.cat-arrow.r0-4 {
+  transform: rotateZ(180deg) translate3d(-80px,440px,10px) scale(4);
+}
+
+.map .fx.cat-arrow-impact {
+  transform: translate3d(70px,-180px,10px) scale(3.5);
+  width: 62px;
+  height: 73px;
+  animation: cat-arrow-sprite-impact 0.6s steps(6) 1;
+  background-image: url('../img/fx/cat/arrow-impact.png');
+}
+@keyframes cat-arrow-sprite-impact {
+  100% {
+    background-position: -372px;
+  }
+}
+.map .fx.cat-arrow-impact.r-40, .map .fx.cat-arrow-impact.r-30, .map .fx.cat-arrow-impact.r-20, .map .fx.cat-arrow-impact.r-10 {
+  transform: rotateZ(90deg) translate3d(-180px,-40px,10px) scale(3.5);
+}
+.map .fx.cat-arrow-impact.r40, .map .fx.cat-arrow-impact.r30, .map .fx.cat-arrow-impact.r20, .map .fx.cat-arrow-impact.r10 {
+  transform: rotateZ(-90deg) translate3d(180px,100px,10px) scale(3.5);
+}
+.map .fx.cat-arrow-impact.r0-1, .map .fx.cat-arrow-impact.r0-2, .map .fx.cat-arrow-impact.r0-3, .map .fx.cat-arrow-impact.r0-4 {
+  transform: rotateZ(180deg) translate3d(-70px,180px,10px) scale(3.5);
+}
+
+.map .fx.cat-ult {
+  transform: rotateX(-6deg) translate3d(20px,-430px,10px) scale(4);
+  width: 156px;
+  height: 67px;
+  animation: cat-ult-sprite 1.4s steps(18) 1;
+  background-image: url('../img/fx/cat/ult.png');
+}
+
+@keyframes cat-ult-sprite {
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-position: -2808px;
   }
 }
 

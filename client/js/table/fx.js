@@ -18,7 +18,10 @@ game.fx = {
       ult: ['ult', 'ult1', 'ult2', 'ult3']
     },
     cat: {
-      star: ['star']
+      arrow: ['arrow', 'arrow-impact'],
+      star: ['star'],
+      leap: ['leap', 'leap-path'],
+      ult: ['ult']
     }
   },
   build: function() {

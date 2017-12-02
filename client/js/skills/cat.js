@@ -6,21 +6,31 @@ game.skills.cat = {
       var stunBonus = skill.data('distance stun bonus');
       var damage = skill.data('damage');
       var arrowTarget = source.firstCardInLine(target, range);
+      game.timeout( 50, game.fx.add.bind(this, 'cat-leap', source.parent()));
+      var fxTarget;
       if (arrowTarget && arrowTarget.side() == source.opponent()) {
+        fxTarget = arrowTarget.parent();
         var distance = Math.abs((source.getX() - arrowTarget.getX()) || (source.getY() - arrowTarget.getY())) - 1;
         game.timeout(900, function () {
+          game.fx.add('cat-arrow-impact', source, arrowTarget, 'rotate');
           game.audio.play('cat/arrowhit');
           arrowTarget.shake();
           source.addStun(arrowTarget, skill, (distance * stunBonus));
           source.damage(damage + (distance * damageBonus), arrowTarget, skill.data('damage type'));
         });
+      } else {
+        fxTarget = source.lastSpotInLine(target, range);
       }
+      game.timeout(100, game.fx.add.bind(this, 'cat-arrow', source, fxTarget, 'rotate'));
     }
   },
   leap: {
     cast: function (skill, source, target) {
       source.selfBuff(skill);
       source.move(target);
+      game.timeout( 50, game.fx.add.bind(this, 'cat-leap', source.parent()));
+      game.timeout( 50, game.fx.add.bind(this, 'cat-leap-path', source, target, 'rotate'));
+      game.timeout(150, game.fx.add.bind(this, 'cat-leap', target));
     }
   },
   star: {
@@ -50,6 +60,7 @@ game.skills.cat = {
         ally.addInvisibility();
         ally.on('invisibilityLoss', game.skills.cat.ult.end);
       });
+      game.timeout(400, game.fx.add.bind(this, 'cat-ult', source));
     },
     end: function (event, eventdata) {
       eventdata.target.removeBuff('cat-ult');
