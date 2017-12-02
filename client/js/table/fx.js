@@ -18,7 +18,7 @@ game.fx = {
       ult: ['ult', 'ult1', 'ult2', 'ult3']
     },
     cat: {
-      arrow: ['arrow', 'arrow-impact'],
+      arrow: ['arrow', 'arrow-impact', 'arrow-source', 'arrow-source-horiz'],
       star: ['star'],
       leap: ['leap', 'leap-path'],
       ult: ['ult']
@@ -51,7 +51,7 @@ game.fx = {
     img.attr({ src: '/img/fx/' + hero + '/' + name + '.png' });
   },
   imgs: [],
-  add: function(name, source, target, tag) {
+  add: function(name, source, target, tag, append) {
     if (!target) target = source;
     var a = name.split('-');
     var hero = a[0];
@@ -76,12 +76,15 @@ game.fx = {
         var r = Math.floor(Math.random() * n);
         if (r) fx.addClass(skill+r);
         game.timeout(Math.random() * 600, function (fx, target) {
-          fx.appendTo(target);
+          if (append) fx.appendTo(append);
+          else fx.appendTo(target);
           game.fx.play(fx);
         }.bind(this, fx, target));
       }
       else {
-        fx.appendTo(target);
+        console.log(append);
+        if (append) fx.appendTo(append);
+        else fx.appendTo(target);
         game.fx.play(fx);
       }
       if (tag != 'keep') fx.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () { this.remove(); });

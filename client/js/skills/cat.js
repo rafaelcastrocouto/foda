@@ -6,13 +6,13 @@ game.skills.cat = {
       var stunBonus = skill.data('distance stun bonus');
       var damage = skill.data('damage');
       var arrowTarget = source.firstCardInLine(target, range);
-      game.timeout( 50, game.fx.add.bind(this, 'cat-leap', source.parent()));
+      game.timeout( 50, game.fx.add.bind(this, 'cat-arrow-source', source, target, 'rotate', source.parent()));
       var fxTarget;
       if (arrowTarget && arrowTarget.side() == source.opponent()) {
         fxTarget = arrowTarget.parent();
         var distance = Math.abs((source.getX() - arrowTarget.getX()) || (source.getY() - arrowTarget.getY())) - 1;
-        game.timeout(900, function () {
-          game.fx.add('cat-arrow-impact', source, arrowTarget, 'rotate');
+        game.timeout(700, function () {
+          game.fx.add('cat-arrow-impact', source, arrowTarget);
           game.audio.play('cat/arrowhit');
           arrowTarget.shake();
           source.addStun(arrowTarget, skill, (distance * stunBonus));
