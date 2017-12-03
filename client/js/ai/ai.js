@@ -18,6 +18,8 @@ game.ai = {
     // add combo data and strats
     //game.ai.comboData();
     // activate all passives, other sidehand skills strats per hero
+    $('.map .ld.'+game.ai.side).data('ai ult limit', 0);
+    
     $('.enemydecks .sidehand .skills').each(function (i, el) {
       var card = $(el);
       game.ai.passives(card);
@@ -229,7 +231,7 @@ game.ai = {
         // attack target
         cardData.strats.attack += 10;
         cardData['attack-targets'].push({
-          priority: 50 - (opponentCard.data('current hp')/2) + (opponentCard.data('ai priority bonus') || 0),
+          priority: 50 - (opponentCard.data('current armor')*2) - (opponentCard.data('current hp')/2) + (opponentCard.data('ai priority bonus') || 0),
           target: opponentCard
         });
         // retreat if in enemy range

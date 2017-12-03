@@ -14,14 +14,14 @@ game.skills.en = {
     }
   },
   curse: {
-    cast: function (skill, source, target) {
+    cast: function (skill, source, target) { //console.log('curse',skill, source, target)
       var side = source.side();
       var opponent = source.opponent();
-      if (target.hasAllClasses('spot jungle')) {
+      if (target.hasAllClasses('spot jungle free')) {
         var creep = game.units.forestCreep(side, target);
         creep.select();
-      }else {
-        target = $('.card', target);
+      } else {
+        if (!target.hasClass('card')) target = $('.card', target);
         if (target.hasAllClasses(opponent +' heroes') || target.hasAllClasses(opponent +' ld-summon')) {
           source.addBuff(target, skill);
         } else if (target.hasAllClasses(opponent +' units')) {

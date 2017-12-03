@@ -82,7 +82,6 @@ game.fx = {
         }.bind(this, fx, target));
       }
       else {
-        console.log(append);
         if (append) fx.appendTo(append);
         else fx.appendTo(target);
         game.fx.play(fx);

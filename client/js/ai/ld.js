@@ -7,25 +7,25 @@ game.heroesAI.ld = {
     // use return if bear is low hp
     // cardData['has-instant-attack-buff'] = true;
     card.data('ai', cardData);
-    var bear = $('.enemydecks .sidehand .skills.ld-bear');
+    var bear = $('.enemydecks .sidehand .skills.ld-summon');
     var rabid = $('.enemydecks .hand .skills.ld-rabid');
     var roar = $('.enemydecks .hand .skills.ld-roar');
     var ult = $('.enemydecks .sidehand .skills.ld-ult');
-    var cry = $('.enemydecks .sidehand .skills.ld-cry');
-    //return
+    var cry = $('.enemydecks .hand .skills.ld-cry');
+    //todo return
     if (!$('.map .enemy.ld').length) {
       rabid.data('ai discard', rabid.data('ai discard') + 1);
       roar.data('ai discard', roar.data('ai discard') + 1);
     }
-    if (game.enemy.turn > 2 && card.canCast(bear)) {
+    if (card.canCast(bear)) {
       if (cardData.advance.length) {
         $.each(cardData.advance, function (i, destiny) {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({
-            priority: destiny.priority * 4,
-            skill: 'bear',
+            priority: 10 + (destiny.priority * 4) + (game.enemy.turn*2),
+            skill: 'summon',
             card: bear,
-            target: destiny.target
+            target: $(destiny.target)
           });
         });
       }
@@ -61,24 +61,29 @@ game.heroesAI.ld = {
     }
     if (card.canCast(ult)) {
       cardData['can-cast'] = true;
-      var inMelee = 0, inRange = 0;
-      card.opponentsInRange(2, function (cardInRange) {
-        if (!cardInRange.hasClasses('invisible ghost dead')) inMelee++;
-      });
-      if (!ult.hasClass('on')) { // turn on
-        if (!card.hasBuff('ld-cry') || inMelee) cardData['cast-strats'].push({
-          priority: 30 + (10 * inMelee),
-          skill: 'ult',
-          card: ult,
-          target: card
+      var inMelee = 0, inRange = 0,
+          limit = (card.data('ai ult limit') < 3);
+      if (limit) {
+        card.opponentsInRange(2, function (cardInRange) {
+          if (!cardInRange.hasClasses('invisible ghost dead')) inMelee++;
         });
-      } else if ((!card.hasBuff('ld-cry') && !cry.length) || (cardData['can-attack'] && !inMelee && inRange)) { // turn off
-        cardData['cast-strats'].push({
-          priority: 30,
-          skill: 'ult',
-          card: ult,
-          target: card
-        });
+        if (!ult.hasClass('on')) { 
+          // turn on
+          if (!card.hasBuff('ld-cry') || inMelee) cardData['cast-strats'].push({
+            priority: 10 + (10 * inMelee),
+            skill: 'ult',
+            card: ult,
+            target: card
+          });
+        } else if ((!card.hasBuff('ld-cry') && !cry.length) || (cardData['can-attack'] && !inMelee && inRange)) { 
+          // turn off
+          cardData['cast-strats'].push({
+            priority: 5,
+            skill: 'ult',
+            card: ult,
+            target: card
+          });
+        }
       }
     }
     if (card.canCast(cry)) {
@@ -93,6 +98,20 @@ game.heroesAI.ld = {
     card.data('ai', cardData);
   },
   defend: function (ld) {
+    var bear = card.data('bear');
+    if (bear) {
+      card.data('ai priority bonus', -20);
+    }
+    var roar = game.data.skills.ld.roar;
+    card.inRange(roar['aoe range'], function (spot) {
+      var spotData = spot.data('ai');
+      spotData.priority -= 25;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', spotData);
+    });
+    if (card.hasBuff('ld-ult')) {
+      card.data('ai priority bonus', -10);
+    }
     //console.log('defend-from-ld');
     //if bear in player area path block tower
   }

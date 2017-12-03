@@ -155,6 +155,7 @@ game.skills.ld = {
         source.removeBuff('ld-ult');
         source.data('range', game.data.ui.short);
       }
+      source.data('ai ult limit', source.data('ai ult limit') + 1);
     }
   },
   cry: {
