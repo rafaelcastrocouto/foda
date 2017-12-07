@@ -8,7 +8,7 @@ game.history = {
     game.history.last = localStorage.getItem('last-activity');
   },
   recover: function () {
-    if (window.innerWidth < 600) game.sreen.setResotution('auto');
+    if (window.innerWidth < 600) game.screen.setResotution('auto');
     var mode = game.history.mode,
         state = game.history.state,
         valid = game.states.validState(state),

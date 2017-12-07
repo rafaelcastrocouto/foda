@@ -240,14 +240,19 @@ game.states.campaign = {
     }
   },
   createPath: function (source, target, cl) {
-    var dash = 18, size = 4;
+    var scale = Number(game.screen.scale);
+    var dash = 18, dotsize = 4;
     var s = source.position(), t = target.position();
-    var sourcesize = source.width() / 2;
-    s.left += (sourcesize - size);
-    s.top += (sourcesize - size);
-    var targetsize = target.width() / 2;
-    t.left += (targetsize - size);
-    t.top += (targetsize - size);
+    var sourcesize = (source.width()/scale) / 2;
+    s.left /= scale;
+    s.top /= scale;
+    t.left /= scale;
+    t.top /= scale;
+    s.left += (sourcesize - dotsize);
+    s.top += (sourcesize - dotsize);
+    var targetsize = (target.width()/scale) / 2;
+    t.left += (targetsize - dotsize);
+    t.top += (targetsize - dotsize);
     var mx = t.left - s.left, 
         my = t.top - s.top;
     var a = Math.atan2(my, mx);
