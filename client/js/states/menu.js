@@ -1,31 +1,39 @@
 game.states.menu = {
   build: function () {
-    this.menu = $('<div>').appendTo(this.el).addClass('menu box');
+    //this.menu = $('<div>').appendTo(this.el).addClass('menu box');
     //this.title = $('<h1>').appendTo(this.menu).text(game.data.ui.menu);
-    this.tutorial = $('<div>').addClass('button').appendTo(this.menu).attr({title: game.data.ui.choosetutorial}).text(game.data.ui.tutorial).on('mouseup touchend', function () {
+    this.mountains = $('<div>').appendTo(this.el).addClass('menu paralax mountains');
+    this.amdoll = $('<div>').appendTo(this.el).addClass('menu paralax amdoll');
+    this.cmdoll = $('<div>').appendTo(this.el).addClass('menu paralax cmdoll');
+    this.fire = $('<div>').appendTo(this.el).addClass('menu paralax fire hidden').on('mouseup touchend', function () {
+      $(this).toggleClass('hidden');
+    });
+    this.ground = $('<div>').appendTo(this.el).addClass('menu paralax ground');
+    this.bush = $('<div>').appendTo(this.el).addClass('menu paralax bush');
+    this.tutorial = $('<div>').addClass('tutorial icon').appendTo(this.el).attr({title: game.data.ui.choosetutorial}).append($('<span>').text(game.data.ui.tutorial)).on('mouseup touchend', function () {
       game.setMode('tutorial');
       game.states.changeTo('choose');
     });
-    this.campaign = $('<div>').addClass('button').appendTo(this.menu).attr({title: game.data.ui.choosecampaign}).text(game.data.ui.campaign).on('mouseup touchend', function () {
+    this.campaign = $('<div>').addClass('campaign icon').appendTo(this.el).attr({title: game.data.ui.choosecampaign}).append($('<span>').text(game.data.ui.campaign)).on('mouseup touchend', function () {
       game.setMode('single');
       game.states.changeTo('campaign');
     });
-    this.online = $('<div>').addClass('button').appendTo(this.menu).attr({title: game.data.ui.chooseonline}).text(game.data.ui.online).on('mouseup touchend', function () {
+    this.online = $('<div>').addClass('online icon').appendTo(this.el).attr({title: game.data.ui.chooseonline}).append($('<span>').text(game.data.ui.online)).on('mouseup touchend', function () {
       game.setMode('online');
       game.states.changeTo('choose');
     });
     if (!localStorage.getItem('tutorial')) this.tutorial.addClass('highlight');
     else if (!localStorage.getItem('campaign')) this.campaign.addClass('highlight');
     else this.online.addClass('highlight');
-    this.local = $('<div>').addClass('button').appendTo(this.menu).attr({ title: game.data.ui.chooselocal}).text(game.data.ui.local).on('mouseup touchend', function () {
+    this.local = $('<div>').addClass('local icon').appendTo(this.el).attr({ title: game.data.ui.chooselocal}).append($('<span>').text(game.data.ui.local)).on('mouseup touchend', function () {
       game.setMode('local');
       game.states.changeTo('choose');
     });
-    this.library = $('<div>').addClass('button').appendTo(this.menu).attr({ title: game.data.ui.chooselibrary}).text(game.data.ui.library).on('mouseup touchend', function () {
+    this.library = $('<div>').addClass('library icon').appendTo(this.el).attr({ title: game.data.ui.chooselibrary}).append($('<span>').text(game.data.ui.library)).on('mouseup touchend', function () {
       game.setMode('library');
       game.states.changeTo('choose');
     });
-    this.credits = $('<a>').addClass('button alert').appendTo(this.menu).attr({title: game.data.ui.choosecredits}).text(game.data.ui.credits).on('mouseup touchend', function () {
+    this.credits = $('<a>').addClass('credits icon').appendTo(this.el).attr({title: game.data.ui.choosecredits}).append($('<span>').text(game.data.ui.credits)).on('mouseup touchend', function () {
       var box = $('<div>').addClass('credits box');
       game.overlay.show().append(box);
       box.append($('<h1>').text(game.data.ui.credits));
@@ -43,43 +51,6 @@ game.states.menu = {
         return false;
       }));
     });
-  },
-  move: function (event) {
-    clearTimeout(game.iddleTimeout);
-    if (game.currentState == 'menu' ||  game.currentState == 'vs') {
-      var s = 0.01;
-      var p = { x: event.clientX, y: event.clientY };
-      var w = { x: window.innerWidth, y: window.innerHeight };
-      var offmiddle = { x: p.x - (w.x/2), y: p.y - (w.y/2) };
-      var v = { x: 50 + (offmiddle.x * s), y: 50 + (offmiddle.y * s) };
-      var str = ''+ v.x + '% ' + v.y + '%';
-      game.states.el.removeClass('iddle').css('perspective-origin', str);
-      game.iddleTimeout = setTimeout(function () { game.states.el.addClass('iddle'); }, 8000);
-    }
-  },
-  orientation: function (event) {
-    clearTimeout(game.iddleTimeout);
-    if (game.currentState == 'menu' ||  game.currentState == 'vs') {
-      var o = {
-        x: -event.originalEvent.gamma,
-        y: -event.originalEvent.beta
-      };
-      if (window.innerHeight < window.innerWidth) {
-        o.x = event.originalEvent.beta;
-        o.y = -event.originalEvent.gamma;
-      }
-      o.x = Math.min(Math.max(o.x, -90), 90);
-      o.y = Math.min(Math.max(o.y, -90), 90);
-      o.x = ((o.x + 90)/180)*100;
-      o.y = ((o.y + 90)/180)*100;
-      var min = 5, max = 95;
-      o.x = Math.min(Math.max(o.x, min), max);
-      o.y = Math.min(Math.max(o.y, min), max);
-      var str = ''+ o.x + '% ' + o.y + '%';
-      game.states.el.removeClass('iddle').css('perspective-origin', str);
-      game.iddleTimeout = setTimeout(function () { game.states.el.addClass('iddle'); }, 8000);
-
-    }
   },
   start: function () {
     game.clear();

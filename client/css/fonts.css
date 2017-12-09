@@ -39,7 +39,8 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   src: local('OssBold'), url('../fonts/OssBold.woff2') format('woff2'), url('../fonts/OssBold.woff') format('woff');
 }
 
-.card .damaged, .card .heal, .card .missed, .game-overlay .version, .baloon {
+
+.menu .icon span, .card .damaged, .card .heal, .card .missed, .game-overlay .version, .baloon {
   font-family: "OssBold", Impact, sans-serif;
 }
 

@@ -75,7 +75,6 @@ noscript {
   overflow: hidden;
 }
 
-.game-container.menu-state .states,
 .game-container.campaign-state .states,
 .game-container.choose-state .states,
 .game-container.vs-state .states,
@@ -83,51 +82,6 @@ noscript {
 .game-container.result-state .states {
   background-color: #126766;
   background-image: url("../img/bkg/polygon-dark.jpg");
-}
-
-
-.bkgdeck {
-  position: absolute;
-  transform-style: preserve-3d;
-}
-
-.log-state .bkgdeck, .campaign-state .bkgdeck, .choose-state .bkgdeck, .vs-state .bkgdeck, .table-state .bkgdeck{
-  display: none;
-}
-
-.bkgdeck .card {
-  position: absolute;
-  cursor: default;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.bkgdeck .card:hover {
-  z-index: 1;
-}
-
-.bkgdeck .ld {
-  transform: translate3d(787px, -44px, -69px) rotateY(-61deg) rotateZ(34deg) rotateX(-25deg);
-}
-
-.bkgdeck .wk {
-  transform: translate3d(740px, -130px, -260px) rotateY(-50deg) rotateZ(30deg) rotateX(-15deg);
-}
-
-.bkgdeck .cm {
-  transform: translate3d(970px, 90px, -184px) rotateY(-85deg) rotateZ(35deg) rotateX(-5deg);
-}
-
-.bkgdeck .pud {
-  transform: translate(-65px, -60px) translateZ(-140px) rotateY(50deg) rotateZ(-36deg) rotateX(-2deg);
-}
-
-.bkgdeck .am {
-  transform: translate(-255px, 130px) translateZ(-290px) rotateY(70deg) rotateZ(-35deg) rotateX(5deg);
-}
-
-.bkgdeck .kotl {
-  transform: translate(-5px, -130px) translateZ(-323px) rotateY(40deg) rotateZ(-39deg) rotateX(-18deg);
 }
 
 .states {
@@ -576,66 +530,6 @@ label input {
   vertical-align: bottom;
 }
 
-.menu h1 {
-  margin-bottom: 20px;
-}
-
-.menu.box {
-  padding: 30px 50px;
-  left: 40%;
-}
-
-.menu.box .button {
-  margin: 10px;
-  display: block;
-  font-size: 18px;
-  width: 274px;
-}
-
-.menu .rank.box {
-  transform: translate(215px, -66%);
-  width: 260px;
-  padding: 15px;
-  border-radius: 0 18px 18px 0;
-  opacity: 0.85;
-  counter-reset: item;
-  list-style-type: none;
-}
-.rank.box .loader {
-  float: none !IMPORTANT;
-  border-bottom: 3px solid #333;
-  margin-right: 10px;
-}
-.rank.box li {
-  margin: 0;
-  width: 100%;
-  height: 28px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-  font-weight: normal;
-}
-.rank.box li:before {
-  counter-increment: item;
-  content: counter(item) " ";
-  display: inline-block;
-  line-height: 28px;
-  vertical-align: top;
-  margin-right: 4px;
-}
-.rank.box li:last-child {
-  border: 0;
-}
-.rank.box span {
-  max-width: 160px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin-left: 8px;
-  display: inline-block;
-}
-.rank.box span:last-child {
-  float: right;
-  max-width: 40px;
-}
 
 .deck {
   transition: all 0.4s;

@@ -24,11 +24,10 @@ game.history = {
       game.rank.start();
       game.player.name = log;
       if (state !== 'log') {
-        game.states.log.createBkgDeck();
+        game.bkgdeck.create();
         game.chat.build();
         setTimeout(game.chat.set.bind(game.chat, game.data.ui.reconnected), 200);
       }
-      
       if (game.debug) {
         if (state == 'loading') state = 'log';
         if (state == 'table') state = 'vs';

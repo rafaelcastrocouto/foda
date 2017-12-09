@@ -1,0 +1,196 @@
+.game-container.menu-state .states {
+  background-color: #6fb6f0;
+  background-image: url("../img/bkg/sky.png");
+}
+.menu.paralax {
+  height: 600px;
+  width: 970px;
+  background-size: 100%;
+  background-position: 50% 50%;
+  position: absolute;
+}
+.menu.mountains {
+  background-image: url("../img/bkg/mountains.png");
+  transform: scale(1.4) translateZ(-200px);
+}
+.menu.ground {
+  background-image: url("../img/bkg/ground.png");
+  pointer-events: none;
+}
+.menu.bush {
+  background-image: url("../img/bkg/bush.png");
+  transform: scale(0.25) translate3d(-1070px,640px,140px);
+}
+
+.menu .icon {
+  cursor: pointer;
+  background-size: 340px;
+  background-image: url("../img/bkg/icons.png");
+  position: absolute;
+}
+.menu .icon:hover {
+  animation: twist 0.8s infinite;
+}
+@keyframes twist {
+  0%, 100% {transform: rotateZ(-2deg);}
+  50% {transform: rotateZ(2deg);}
+}
+.menu .icon span {
+  text-align: center;
+  opacity: 0.1;
+  display: block;
+  font-size: 28px;
+  height: 60px;
+  text-shadow: 2px 2px #333, -2px -2px #333, 2px -2px #333, -2px 2px #333;
+  line-height: 40px;
+  transition: all 0.4s;
+}
+.menu .icon:hover span {
+  opacity: 1;
+}
+
+.menu .icon.campaign {
+  width: 112px;
+  height: 72px;
+  background-position: 0px 0px;
+  top: 285px;
+  left: 340px;
+}
+.menu .icon.online {
+  width: 128px;
+  height: 82px;
+  background-position: -112px 0px;
+  top: 335px;
+  left: 460px;
+}
+.menu .icon.tutorial {
+  width: 100px;
+  height: 82px;
+  background-position: -240px 0px;
+  top: 175px;
+  left: 720px;
+}
+.menu .icon.local {
+  width: 102px;
+  height: 56px;
+  background-position: 0px -88px;
+  top: 272px;
+  left: 720px;
+}
+.menu .icon.library {
+  width: 136px;
+  height: 60px;
+  background-position: -102px -84px;
+  top: 358px;
+  left: 702px;
+}
+.menu .icon.credits {
+  width: 104px;
+  height: 60px;
+  background-position: -236px -84px;
+  top: 434px;
+  left: 706px;
+}
+.menu.amdoll {
+  width: 42px;
+  height: 46px;
+  background-image: url("../img/bkg/dolls.png");
+  background-size: cover;
+  background-position: 0% 0%;
+  top: 144px;
+  left: 380px;
+}
+.menu.cmdoll {
+  width: 45px;
+  height: 45px;
+  background-image: url("../img/bkg/dolls.png");
+  background-size: cover;
+  background-position: 100% 0%;
+  top: 129px;
+  left: 319px;
+}
+.menu.cmdoll:hover, .menu.amdoll:hover {
+  transform-origin: 50% 0%;
+  animation: twist 1.2s infinite;
+}
+@keyframes twist {
+  0%, 100% {transform: rotateZ(-4deg);}
+  50% {transform: rotateZ(4deg);}
+}
+.menu .fire {
+  cursor: pointer;
+  top: 46px;
+  left: 246px;
+  width: 34px;
+  height: 50px;
+  animation: lina-passive-sprite 0.8s steps(8) infinite;
+  background-image: url('../img/fx/lina/passive.png');
+  background-size: cover;
+  background-position: initial;
+  transform: scale(1.6);
+  transition: opacity 0.4s;
+}
+.menu .fire.hidden {
+  opacity: 0;
+  display: block;
+}
+/*.menu h1 {
+  margin-bottom: 20px;
+}
+
+.menu.box {
+  padding: 30px 50px;
+  left: 40%;
+}
+
+.menu.box .button {
+  margin: 10px;
+  display: block;
+  font-size: 18px;
+  width: 274px;
+}*/
+
+.menu .rank.box {
+  transform: translate(215px, -66%);
+  width: 260px;
+  padding: 15px;
+  border-radius: 0 18px 18px 0;
+  opacity: 0.85;
+  counter-reset: item;
+  list-style-type: none;
+}
+.rank.box .loader {
+  float: none !IMPORTANT;
+  border-bottom: 3px solid #333;
+  margin-right: 10px;
+}
+.rank.box li {
+  margin: 0;
+  width: 100%;
+  height: 28px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-weight: normal;
+}
+.rank.box li:before {
+  counter-increment: item;
+  content: counter(item) " ";
+  display: inline-block;
+  line-height: 28px;
+  vertical-align: top;
+  margin-right: 4px;
+}
+.rank.box li:last-child {
+  border: 0;
+}
+.rank.box span {
+  max-width: 160px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: 8px;
+  display: inline-block;
+}
+.rank.box span:last-child {
+  float: right;
+  max-width: 40px;
+}

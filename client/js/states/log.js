@@ -25,19 +25,6 @@ game.states.log = {
       if (!localStorage.getItem('voted')) game.poll.addButton();
     }
   },
-  createBkgDeck: function () {
-    if (!game.bkgDeck) {
-      var div = $('<div>').addClass('bkgdeck');
-      $('.pickbox .card.wk').clone().appendTo(div);
-      $('.pickbox .card.cm').clone().appendTo(div);
-      $('.pickbox .card.am').clone().appendTo(div);
-      $('.pickbox .card.kotl').clone().appendTo(div);
-      $('.pickbox .card.pud').clone().appendTo(div);
-      $('.pickbox .card.ld').clone().appendTo(div);
-      game.states.el.prepend(div).addClass('iddle');
-      game.bkgDeck = div;
-    }
-  },
   alertBox: function () {
     var box = $('<div>').addClass('log box');
     game.overlay.show().append(box);
@@ -69,7 +56,7 @@ game.states.log = {
       game.chat.set(game.data.ui.joined);
       game.chat.build();
       game.chat.el.show();
-      game.states.log.createBkgDeck();
+      game.bkgdeck.create();
       game.states.changeTo('menu');
     } else {
       game.states.log.input.focus();

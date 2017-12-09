@@ -110,3 +110,48 @@
 .result .turntitle.show {
   opacity: 1;
 }
+
+.bkgdeck {
+  position: absolute;
+  transform-style: preserve-3d;
+  display: none;
+}
+
+.result-state .bkgdeck {
+  display: block;
+}
+
+.bkgdeck .card {
+  position: absolute;
+  cursor: default;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bkgdeck .card:hover {
+  z-index: 1;
+}
+
+.bkgdeck .ld {
+  transform: translate3d(787px, -44px, -69px) rotateY(-61deg) rotateZ(34deg) rotateX(-25deg);
+}
+
+.bkgdeck .wk {
+  transform: translate3d(740px, -130px, -260px) rotateY(-50deg) rotateZ(30deg) rotateX(-15deg);
+}
+
+.bkgdeck .cm {
+  transform: translate3d(970px, 90px, -184px) rotateY(-85deg) rotateZ(35deg) rotateX(-5deg);
+}
+
+.bkgdeck .pud {
+  transform: translate(-65px, -60px) translateZ(-140px) rotateY(50deg) rotateZ(-36deg) rotateX(-2deg);
+}
+
+.bkgdeck .am {
+  transform: translate(-255px, 130px) translateZ(-290px) rotateY(70deg) rotateZ(-35deg) rotateX(5deg);
+}
+
+.bkgdeck .kotl {
+  transform: translate(-5px, -130px) translateZ(-323px) rotateY(40deg) rotateZ(-39deg) rotateX(-18deg);
+}
