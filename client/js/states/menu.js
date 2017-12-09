@@ -2,6 +2,7 @@ game.states.menu = {
   build: function () {
     //this.menu = $('<div>').appendTo(this.el).addClass('menu box');
     //this.title = $('<h1>').appendTo(this.menu).text(game.data.ui.menu);
+    
     this.mountains = $('<div>').appendTo(this.el).addClass('menu paralax mountains');
     this.amdoll = $('<div>').appendTo(this.el).addClass('menu paralax amdoll');
     this.cmdoll = $('<div>').appendTo(this.el).addClass('menu paralax cmdoll');
