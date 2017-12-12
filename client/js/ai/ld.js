@@ -97,7 +97,7 @@ game.heroesAI.ld = {
     }
     card.data('ai', cardData);
   },
-  defend: function (ld) {
+  defend: function (card, cardData) {
     var bear = card.data('bear');
     if (bear) {
       card.data('ai priority bonus', -20);
