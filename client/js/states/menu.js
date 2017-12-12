@@ -4,6 +4,7 @@ game.states.menu = {
     //this.title = $('<h1>').appendTo(this.menu).text(game.data.ui.menu);
     this.sky = $('<div>').appendTo(this.el).addClass('menu paralax sky');
     this.mountains = $('<div>').appendTo(this.el).addClass('menu paralax mountains');
+    this.boom = $('<div>').appendTo(this.mountains).addClass('menu boom map').on('mouseup touchend', this.boomClick);
     this.amdoll = $('<div>').appendTo(this.el).addClass('menu paralax amdoll');
     this.cmdoll = $('<div>').appendTo(this.el).addClass('menu paralax cmdoll');
     this.fire = $('<div>').appendTo(this.el).addClass('menu paralax fire hidden').on('mouseup touchend', function () {
@@ -61,5 +62,20 @@ game.states.menu = {
     game.states.log.out.show();
     game.rank.update(game.rank.data);
     game.audio.loopSong('SneakyAdventure');
+    game.states.menu.boomCount = 0;
+  },
+  boomCount: 0,
+  boomClick: function () {
+    game.states.menu.boomCount++;
+    var boom = $(this);
+    if (!boom.hasClass('playing') && game.states.menu.boomCount > 9) {
+      game.states.menu.boomCount = 0;
+      var fx = $('<span>').addClass('fx lina-stun').on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () { this.remove(); });
+      boom.addClass('playing').append(fx);
+      clearTimeout(game.states.menu.boomTimeout);
+      game.states.menu.boomTimeout = setTimeout(function () {
+        game.states.menu.boom.removeClass('playing');
+      }, 2000);
+    }
   }
 };

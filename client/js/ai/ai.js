@@ -140,7 +140,7 @@ game.ai = {
       var hero = $('.map .card.enemy.heroes.'+heroId+':not(.dead, .ghost)');
       if (hero.length) {
         var spotId = hero.getSpot().attr('id');
-        if (spotId) game.currentData.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
+        if (spotId && skillId && heroId) game.currentData.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
       }
     }
   },

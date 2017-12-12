@@ -138,8 +138,7 @@ noscript .box,
 .resultsbox,
 .loading .box,
 .game-overlay .box,
-.log .box,
-.menu .box {
+.log .box {
   background-color: #F9F9F9;
   color: #333;
   font-weight: bold;
