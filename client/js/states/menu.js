@@ -40,13 +40,14 @@ game.states.menu = {
       game.overlay.show().append(box);
       box.append($('<h1>').text(game.data.ui.credits));
       box.append($('<p>').html([
-        'Author/Dev: <a href="https://github.com/rafaelcastrocouto/foda">rafaelcastrocouto</a>',
-        'Artwork: <a href="https://www.youtube.com/user/dopatwo">Dopatwo</a>',
-        'Audio: <a href="https://www.youtube.com/user/kmmusic">Kevin MacLeod</a>',
-        'Language (TU): <a href="https://github.com/ahmetozalp">Ahmet</a>',
-        'Introduction Videos: <a href="https://www.youtube.com/user/SkylentGames">Skylent</a>',
-        'Hero (Venge): <a href="https://github.com/xinton">Washington</a>',
-        'Contribute: <a href="https://github.com/rafaelcastrocouto/foda">Your name here</a>'].join('<br>')));
+        'Author/Dev: <a target="_blank" href="https://github.com/rafaelcastrocouto/foda">rafaelcastrocouto</a>',
+        'Artwork: <a target="_blank" href="https://www.youtube.com/user/dopatwo">Dopatwo</a>',
+        'Audio: <a target="_blank" href="https://www.youtube.com/user/kmmusic">Kevin MacLeod</a>',
+        'Introduction Videos: <a target="_blank" href="https://www.youtube.com/user/SkylentGames">Skylent</a>',
+        'Patreons: <a target="_blank" href="https://www.patreon.com/racascou">Hatcrafter and Milokot</a>',
+        'Language (TU): <a target="_blank" href="https://github.com/ahmetozalp">Ahmet</a>',
+        'Hero (Venge): <a target="_blank" href="https://github.com/xinton">Washington</a>',
+        'Help us: <a target="_blank" href="https://www.patreon.com/racascou">Become a Patreon</a>'].join('<br>')));
       box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
         game.overlay.hide();
         game.overlay.empty();
