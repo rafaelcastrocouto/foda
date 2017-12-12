@@ -168,10 +168,10 @@ var game = {
     }));
   },
   error: function(details, cb) {
-    var box = $('<div>').addClass('box');
+    var box = $('<div>').addClass('box error');
     game.overlay.show().append(box);
     box.append($('<h1>').text(game.data.ui.error));
-    box.append($('<p>').text(game.data.ui.reload));
+    box.append($('<p>').html(details+'<br>'+game.data.ui.reload));
     box.append($('<div>').addClass('button alert').text(game.data.ui.ok).on('mouseup touchend', function () {
       game.overlay.hide();
       game.overlay.empty();

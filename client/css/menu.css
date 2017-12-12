@@ -1,13 +1,23 @@
-.game-container.menu-state .states {
-  background-color: #6fb6f0;
-  background-image: url("../img/bkg/sky.png");
-}
 .menu.paralax {
   height: 600px;
   width: 970px;
   background-size: 100%;
   background-position: 50% 50%;
   position: absolute;
+}
+.menu.sky {
+  background-color: #6fb6f0;
+  background-image: url("../img/bkg/sky.png");
+  animation: sky 36s linear infinite;
+  background-position: 0 0;
+}
+@keyframes sky {
+  20% {background-color: #438bc5;}
+  30% {background-color: #ef761b;}
+  40%, 60% {background-color: #22122c;}
+  70% {background-color: #bb38e6;}
+  80% {background-color: #438bc5;}
+  100% {background-position: 970px 0;}
 }
 .menu.mountains {
   background-image: url("../img/bkg/mountains.png");

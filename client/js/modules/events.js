@@ -11,11 +11,7 @@ game.events = {
     game.skill.extendjQuery();
     game.highlight.extendjQuery();
     game.map.extendjQuery();
-    $(window).on('error', function(event) {
-      var err = event.originalEvent;
-      var details = err.message +' '+ err.filename +' '+ err.lineno +':'+err.colno;
-      //game.reset(details);
-    });
+    $(window).on('error', game.events.error);
     //$(document).ajaxError(function(event, xhr, settings) {
     //  if (xhr.status !== 403 && xhr.status!== 404) game.logError(settings.url + ' ' + xhr.status + ': ' + xhr.responseText);
     //});
@@ -148,5 +144,16 @@ game.events = {
   rightclick: function (event) {
     game.card.unselect();
     game.events.cancel(event);
+  },
+  error: function(event) {
+    var err = event.originalEvent;
+    var details = err.message +' '+ err.filename +' '+ err.lineno +':'+err.colno;
+    game.logError(details);
+    game.error(details, function () {
+      game.clear();
+      localStorage.setItem('state', 'menu');
+      location.reload(true);
+    });
+    //game.reset(details);
   }
 };

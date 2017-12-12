@@ -127,6 +127,11 @@ noscript {
   border-radius: 5px;
   background-color: rgba(11, 15, 14, 0.75);
 }
+
+.box.error {
+  width: 600px;
+}
+
 noscript .box,
 .notfound .box,
 .campaign-box.box,
