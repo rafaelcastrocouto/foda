@@ -691,7 +691,7 @@
 }
 
 .map .card .current .hp span {
-  /* padding: 0; */
+  /* font-size: 14px; */
 }
 .map .card.towers .current .hp span {
   width: 19px;

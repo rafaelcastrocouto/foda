@@ -68,13 +68,13 @@ game.tutorial = {
     var availableSlots = $('.slot.available').length;
     game.tutorial.axebaloon.hide().fadeIn('slow');
     if (availableSlots === 4) {
-      game.tutorial.letter(game.data.ui.axechooseorder);
-    } else if (availableSlots === 3) {
       game.tutorial.letter(game.data.ui.axeheroes);
-    } else if (availableSlots === 2) {
-      game.tutorial.letter(game.data.ui.axeautodeck);
-    } else if (availableSlots === 1) {
+    } else if (availableSlots === 3) {
       game.tutorial.letter(game.data.ui.axemana);
+    } else if (availableSlots === 2) {
+      game.tutorial.letter(game.data.ui.axechooseorder);
+    } else if (availableSlots === 1) {
+      game.tutorial.letter(game.data.ui.axeautodeck);
     }
     if (availableSlots) {
       game.states.choose.counter.text(availableSlots + ' ' + game.data.ui.togo);
@@ -341,6 +341,7 @@ game.tutorial = {
     --game.tutorial.moveCountValue;
   },*/
   castLesson: function () {
+    $('.map .player.pud').off('toggle.tutorialOff');
     game.tutorial.lesson = 'Cast';
     $('.blink').removeClass('blink');
     card = $('.player .available.skills .am-blink');

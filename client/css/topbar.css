@@ -100,7 +100,7 @@
 }
 
 .topbar .turns {
-  right: 150px;
+  right: 180px;
 }
 
 .topbar .opt {
@@ -119,7 +119,7 @@
 
 .topbar .logout {
   position: absolute;
-  right: 85px;
+  right: 100px;
   cursor: pointer;
 }
 

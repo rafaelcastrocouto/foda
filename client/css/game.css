@@ -6,7 +6,6 @@ html, body {
   height: 100%;
   min-width: 485px;
   min-height: 300px;
-  font-family: sans-serif;
 }
 
 body {
@@ -361,12 +360,12 @@ input:focus {
 .button, button, input[type=button], input[type=submit] {
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 40px;
   cursor: pointer;
   padding: 8px 12px;
   border: 0;
-  border-radius: 3px;
+  border-radius: 6px;
   margin: 6px;
   outline: 0;
   background: #9dada4;
@@ -380,7 +379,7 @@ input:focus {
   min-width: 75px;
   min-height: 40px;
   overflow: hidden;
-  font-weight: 300;
+  font-weight: normal;
 }
 
 .button:hover, button:hover, input[type=button]:hover, input[type=submit]:hover {
@@ -528,6 +527,7 @@ label input {
 
 .log .remembername {
   cursor: pointer;
+  font-size: 15px;
 }
 
 .log .remembername * {

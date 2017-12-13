@@ -5,7 +5,7 @@
   src: local('Open Sans'), local('OpenSans'), url(../fonts/Open-Sans.woff2) format('woff2'), url(../fonts/Open-Sans.woff) format('woff');
 }
 
-body, p, noscript, .card h1, .rank span {
+body, p, noscript, .card h1 {
   line-height: 28px;
   font-family: "Open Sans", "open sans", "Droid Sans", "Lucida Sans Unicode", "Lucida Grande", 'Segoe UI', Tahoma, Verdana, Arial, Helvetica, sans-serif;
 }
@@ -17,7 +17,7 @@ body, p, noscript, .card h1, .rank span {
   src: local('Julius Sans One'), local('JuliusSansOne-Regular'), url(../fonts/Julius-Sans-One.woff2) format('woff2'), url(../fonts/Julius-Sans-One.woff) format('woff');
 }
 
-h1, h2, .button, .option-state span, .topbar *, .choose .counter {
+.option-state span, .topbar *, .choose .counter {
   font-family: "Julius Sans One", sans-serif;
 }
 
@@ -39,11 +39,7 @@ h1, h2, .button, .option-state span, .topbar *, .choose .counter {
   src: local('OssBold'), url('../fonts/OssBold.woff2') format('woff2'), url('../fonts/OssBold.woff') format('woff');
 }
 
-
-.menu .icon span, .card .damaged, .card .heal, .card .missed, .game-overlay .version, .baloon {
+h1, h2, input[type="text"], .button, .menu .icon span, .rank span, .rank li:before, 
+.card .damaged, .card .heal, .card .missed, .game-overlay .version, .baloon/*, .map .card .current .hp span*/ {
   font-family: "OssBold", Impact, sans-serif;
-}
-
-input[type="text"] {
-  font-family: monospace;
 }
