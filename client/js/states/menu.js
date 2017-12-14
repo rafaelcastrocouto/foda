@@ -2,6 +2,7 @@ game.states.menu = {
   build: function () {
     //this.menu = $('<div>').appendTo(this.el).addClass('menu box');
     //this.title = $('<h1>').appendTo(this.menu).text(game.data.ui.menu);
+    this.sun = $('<div>').appendTo(this.el).addClass('menu paralax sun');
     this.sky = $('<div>').appendTo(this.el).addClass('menu paralax sky');
     this.mountains = $('<div>').appendTo(this.el).addClass('menu paralax mountains');
     this.boom = $('<div>').appendTo(this.mountains).addClass('menu boom map').on('mouseup touchend', this.boomClick);
