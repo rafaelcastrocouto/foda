@@ -71,7 +71,8 @@ game.skills.pud = {
         target = $(card);
         source.damage(damage, target, skill.data('damage type'));
         target.removeClass('pud-rot-target');
-    });
+      });
+      game.fx.add('pud-rot', source);
     }
   },
   passive: {
@@ -127,6 +128,7 @@ game.skills.pud = {
       target.stopChanneling();
       source.damage(skill.data('dot'), target, skill.data('damage type'));
       source.heal(skill.data('dot'));
+      game.fx.add('pud-ult', source, target);
     },
     death: function (event, eventdata) {
       var target = eventdata.target;

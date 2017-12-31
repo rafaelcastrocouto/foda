@@ -7,7 +7,9 @@ game.fx = {
       ult: ["ult-close", "ult-far"]
     },
     pud: {
-      hook: ['hook']
+      hook: ['hook'],
+      rot: ['rot'],
+      ult: ['ult']
     },
     wk: {
       stun: ['stun']
