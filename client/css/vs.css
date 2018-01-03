@@ -37,10 +37,10 @@
   transform: translateX(100px) rotateY(10deg);
 }
 
-.vsplayerinfo {
+.vsplayerinfo, .vsenemyinfo {
   font-size: 14px;
   position: absolute;
-  bottom: 6px;
+  bottom: 2px;
   left: 12px;
 }
 
@@ -54,9 +54,7 @@
 }
 
 .vsenemyinfo {
-  font-size: 14px;
-  position: absolute;
-  bottom: 6px;
+  left: auto;
   right: 12px;
 }
 
@@ -66,9 +64,10 @@
 
 .vs .vsplayer > h1, .vs .vsenemy > h1 {
   font-size: 36px;
-  padding: 10px 40px 0;
+  padding: 0 20px;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 36px;
 }
 
 .vs .card {

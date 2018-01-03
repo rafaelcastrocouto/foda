@@ -50,11 +50,11 @@
   background-size: 970px 405px;
   background-position: 0 0;
 }
+
 .menu.boom {
   transform: translate(75px, 45px);
   width: 80px;
   height: 140px;
-  /* background-color: #fff; */
 }
 .menu.boom .fx {
   transform: translate(10px, -120px) scale(3.5);
@@ -80,6 +80,7 @@
   background-image: url("../img/bkg/icons.png");
   position: absolute;
 }
+
 .menu .icon:hover {
   animation: twist 0.8s infinite;
 }
@@ -95,8 +96,34 @@
   height: 60px;
   text-shadow: 2px 2px #333, -2px -2px #333, 2px -2px #333, -2px 2px #333;
   line-height: 40px;
-  transition: all 0.4s;
+  transition: all 0.3s;
+  animation: iconblink 5s infinite;
 }
+@keyframes iconblink {
+  45%, 65% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.menu .icon.online span {
+  animation-delay: 0.3s;
+}
+.menu .icon.tutorial span {
+  animation-delay: 0.6s;
+}
+.menu .icon.local span {
+  animation-delay: 0.9s;
+}
+.menu .icon.library span {
+  animation-delay: 1.2s;
+}
+.menu .icon.credits span {
+  animation-delay: 1.5s;
+}
+
 .menu .icon:hover span {
   opacity: 1;
 }

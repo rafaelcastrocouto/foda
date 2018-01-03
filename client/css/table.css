@@ -159,10 +159,6 @@
   right: 0;
 }
 
-.table .camera.night {
-  background-image: url("../img/bkg/map-night.jpg");
-}
-
 .table .camera:before {
   content: "";
   display: block;

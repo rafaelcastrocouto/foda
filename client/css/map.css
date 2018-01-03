@@ -9,9 +9,9 @@
   transition: all 2s;
 }
 
-.map.night .spot {
-  filter: brightness(0.85);
-  -webkit-filter: brightness(0.85);
+.camera.night:before {
+  filter: hue-rotate(60deg) brightness(0.7);
+  -webkit-filter: hue-rotate(60deg) brightness(0.7);
 }
 
 .map .row {

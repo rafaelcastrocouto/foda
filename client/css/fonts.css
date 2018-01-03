@@ -17,7 +17,7 @@ body, p, noscript, .card h1 {
   src: local('Julius Sans One'), local('JuliusSansOne-Regular'), url(../fonts/Julius-Sans-One.woff2) format('woff2'), url(../fonts/Julius-Sans-One.woff) format('woff');
 }
 
-.option-state span, .topbar *, .choose .counter {
+.option-state span, .topbar *, .choose .counter, .vs.state .vsplayerinfo, .vs.state .vsenemyinfo {
   font-family: "Julius Sans One", sans-serif;
 }
 
