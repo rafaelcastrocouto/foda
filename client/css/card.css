@@ -562,28 +562,18 @@
   top: 50%;
   left: 50%;
   transform-origin: 100% 0%;
-  transform: translate3d(-50%, -50%, 1px) !important;
+  transform: translate3d(-80px, -180px, 1px) scale(1.2);
   cursor: default;
   transition: all 0s;
-  zoom: 1.2;
+}
+.table .selectedarea .selectedcard.flip .card.zoom {
+   transform: translate(-78px, -182px) scale(1.9);
 }
 
-/*.table .selectedarea .selectedcard.flip .card:hover {
-   transform: translate(-146px, -80px) scale(1); 
-   zoom: 188%; 
-}
-.table .selectedarea .selectedcard.flip .card:hover .buffs {
-  bottom: 2px;
-  left: 4px;
-}
-.table .selectedarea .selectedcard.flip .card:hover .current {
-  margin-top: 1px;
-}
-.table .selectedarea .selectedcard.flip .card:hover .img {
- image-rendering: pixelated;
-}*/
-.table .selectedarea .cardback, .skills.card:after, .units.card:after {
+.table .selectedarea .cardback:before, .skills.card:after, .units.card:after {
   background-image: url(../img/cardback.jpg);
+}
+.table .selectedarea .cardback, .skills.card:after, .units.card:after {
   background-size: cover;
   background-position: 50%;
   position: absolute;
@@ -595,24 +585,24 @@
   left: 50%;
   transform: translate3d(-50%, -50%, -1px) rotateY(180deg);
 }
-.table .selectedarea:after {
+.table .selectedarea .cardback:before {
   content: "";
   display: block;
   height: 360px;
   width: 240px;
-  background-color: #7d786b;
   background-size: cover;
   background-position: 50%;
   border-radius: 8px;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  pointer-events: none;
 }
-
-.table .selectedarea:after, .skills.card:before, .units.card:before {
+.table .selectedarea .cardback,
+.skills.card:before, .units.card:before {
+  background-color: #7d786b;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAGCAIAAABrW6giAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2MzQ4Mjg3QzU3N0NFNzExODYxMUVCRUUyQjY0MzY4MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozRjNCN0E4M0MwMDQxMUU3QjU2M0U4MTExODg0OTlBMiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozRjNCN0E4MkMwMDQxMUU3QjU2M0U4MTExODg0OTlBMiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQyQ0RFODk4NTg3Q0U3MTE5NTFBQUQwQzdGQUM3OUFCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjYzNDgyODdDNTc3Q0U3MTE4NjExRUJFRTJCNjQzNjgzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+lT4RJQAAAFxJREFUeNoATgCx/wSHXkrk6fU+PhwOCwUE/QIFAQEAwMXlEAwKBBwdC0lOIQcF/bi14AMwHBby8fsPEQ7+/fwE/fr+zMvmt7nhEw4DAj88GkI/GwkH/igiDAIMAGZaHYbUjW2kAAAAAElFTkSuQmCC');
-}
+} 
 
 .table .selectedarea .card .damaged,
 .table .selectedarea .card .heal,

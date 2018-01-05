@@ -215,7 +215,12 @@ game.card = {
       .css({'transform': '' })
       .removeClass('selected melee-attack blink done dead draggable dragTarget shake enemyMoveHighlight enemyMoveHighlightTarget')
       .clearEvents()
-      .appendTo(game.states.table.selectedCard);
+      .appendTo(game.states.table.selectedCard)
+      .on('mouseup', function () {
+        $(this).toggleClass('zoom');
+        game.selectedCardZoom = !game.selectedCardZoom;
+      });
+    if (game.selectedCardZoom) game.states.table.selectedClone.addClass('zoom');
     game.states.table.selectedCard.addClass('flip');
     card.trigger('select', {
       card: card
@@ -227,6 +232,7 @@ game.card = {
     game.states.table.el.removeClass('player enemy').addClass(card.side());
   },
   unselect: function() {
+    game.selectedCardZoom = false;
     game.states.table.selectedCard.removeClass('flip');
     game.timeout(200, game.card.clearSelection);
   },
