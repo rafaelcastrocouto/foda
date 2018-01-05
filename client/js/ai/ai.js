@@ -262,10 +262,10 @@ game.ai = {
       card.inMovementRange(card.data('current speed'), function (spot) {
         var dir = card.getDirectionObj(spot);
         var destiny = 'retreat';
-        if ((dir.x ==  0 && dir.y == 1) || //bot
-            (dir.x == -1 && dir.y == 0) || //left
-            (dir.x == -1 && dir.y == 1) || //bl
-            (dir.x ==  1 && dir.y == 1) ) {//br
+        if ((dir.x ===  0 && dir.y === 1) || //bot
+            (dir.x === -1 && dir.y === 0) || //left
+            (dir.x === -1 && dir.y === 1) || //bl
+            (dir.x ===  1 && dir.y === 1) ) {//br
           destiny = 'advance';
         }
         var dodge = false;
