@@ -210,7 +210,7 @@ game.highlight = {
       if (card.hasClass('selected')) card.addClass('draggable');
       speed = card.data('current speed');
       if (speed < 1) { return card; }
-      if (speed > 3) { speed = 3; }
+      if (speed > 4) { speed = 4; }
       card.inMovementRange(Math.round(speed), function (neighbor) {
         if (neighbor.hasClass('free') && !neighbor.hasClass('block')) { 
           neighbor.addClass('movearea').on('mouseup.highlight', game.player.move); 

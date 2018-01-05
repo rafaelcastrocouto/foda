@@ -1,6 +1,6 @@
 .table .map {
   z-index: 0;
-  transform: translate(-49.6%,-50.5%) rotateX(37deg) scale3d(.31,.31,.31);
+  transform: translate(-49.7%,-50.8%) rotateX(38deg) scale3d(0.22,0.22,0.22);
   transform-style: preserve-3d;
   padding: 0;
   position: absolute;
@@ -15,7 +15,7 @@
 }
 
 .map .row {
-  width: 1910px;
+  /* width: 1910px; */
   height: 312px;
 }
 

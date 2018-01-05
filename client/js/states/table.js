@@ -1,7 +1,7 @@
 game.states.table = {
   build: function () {
     game.camera = $('<div>').addClass('camera');
-    this.map = game.map.build({'width': game.width, 'height': game.height}).appendTo(game.camera);
+    this.map = game.map.build().appendTo(game.camera);
     this.selectedArea = $('<div>').addClass('selectedarea');
     this.selectedCard = $('<div>').addClass('selectedcard').appendTo(this.selectedArea);
     this.cardBack = $('<div>').addClass('cardback').appendTo(this.selectedCard);

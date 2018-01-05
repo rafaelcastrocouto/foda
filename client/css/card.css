@@ -701,12 +701,12 @@
 .map .card.towers.player .current .hp span {
   background: #a9f38b;
   border: 2px solid #e2f5c2;
-  transform: translate(-15px, -5px) scale(6);
+  transform: translate(-15px, -5px) scale(7);
 }
 .map .card.towers.enemy .current .hp span {
   background: #e87070;
   border: 2px solid #ed8c8c;
-  transform: translate(-15px, -5px) scale(6);
+  transform: translate(-15px, -5px) scale(7);
 }
 
 
@@ -805,7 +805,7 @@
 }
 
 .map .card .current .hp span, .card.dragTargetClone.fromMap .current .hp span {
-  transform: translate(2px, -15px) scale(4.5);
+  transform: translate(-10px, -4px) scale(6.4);
   padding-right: 1px;
   width: 21px;
 }

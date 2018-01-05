@@ -51,6 +51,7 @@ game.skills.pud = {
         var curse = game.skills.pud.rot.curse.bind({source: source, skill: skill});
         source.opponentsInRange(range, curse);
         source.on('moved.rot', function () { source.opponentsInRange(range, curse); });
+        game.fx.add('pud-rot', source);
       }
     },
     curse: function (target) {

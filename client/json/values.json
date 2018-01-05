@@ -1,7 +1,7 @@
 {
   "heroes": {
     "ld": {
-      "range": 3,
+      "range": 4,
       "hp": 50,
       "mana": 2,
       "damage": 15,
@@ -20,7 +20,7 @@
     },
 
     "cat": {
-      "range": 4,
+      "range": 5,
       "hp": 40,
       "mana": 3,
       "damage": 13,
@@ -38,7 +38,7 @@
     },
 
     "lina": {
-      "range": 4,
+      "range": 5,
       "hp": 40,
       "mana": 4,
       "damage": 12,
@@ -47,7 +47,7 @@
     },
 
     "cm": {
-      "range": 4,
+      "range": 5,
       "hp": 40,
       "mana": 4,
       "damage": 12,
@@ -57,7 +57,7 @@
     },
 
     "kotl": {
-      "range": 4,
+      "range": 5,
       "hp": 40,
       "mana": 4,
       "damage": 13,
@@ -94,7 +94,7 @@
     },
 
     "wind": {
-      "range": 4,
+      "range": 5,
       "hp": 40,
       "mana": 4,
       "damage": 13,
@@ -103,7 +103,7 @@
     },
 
     "venge": {
-      "range": 3,
+      "range": 4,
       "hp": 42,
       "mana": 2,
       "damage": 13,
@@ -112,7 +112,7 @@
     },
 
     "en": {
-      "range": 4,
+      "range": 5,
       "hp": 40,
       "mana": 3,
       "damage": 12,
@@ -124,7 +124,7 @@
   "skills": {
     "com": {
       "aoe": {
-        "cast range": 4,
+        "cast range": 5,
         "aoe range": 1,
         "cards": 1,
         "damage": 4,
@@ -132,7 +132,7 @@
         "damage per hero": 3
       },
       "heal": {
-        "cast range": 4,
+        "cast range": 5,
         "cards": 1,
         "buffdata": {
           "duration": 3,
@@ -162,9 +162,9 @@
         "cards": 1
       },
       "arrow": {
-        "cast range": 4,
+        "cast range": 5,
         "cast width": 0,
-        "aoe range": 4,
+        "aoe range": 5,
         "aoe width": 0,
         "damage": 16,
         "damage reduction": 2,
@@ -179,7 +179,7 @@
         }
       },
       "ult": {
-        "cast range": 4,
+        "cast range": 5,
         "cards": 1,
         "attacks": 4,
         "damage reduction": 4
@@ -188,14 +188,14 @@
 
     "cat": {
       "star": {
-        "cast range": 4,
+        "cast range": 5,
         "damage": 10,
         "cards": 1
       },
       "arrow": {
-        "cast range": 4,
+        "cast range": 5,
         "cast width": 0,
-        "aoe range": 4,
+        "aoe range": 5,
         "aoe width": 0,
         "damage": 10,
         "distance damage bonus": 2,
@@ -204,7 +204,7 @@
         "cards": 1
       },
       "leap": {
-        "cast range": 4,
+        "cast range": 5,
         "cards": 1,
         "buffdata": {
           "duration": 3,
@@ -223,13 +223,13 @@
       "fire": {
         "cast range": 1,
         "cast width": 0,
-        "aoe range": 3,
+        "aoe range": 4,
         "aoe width": 1,
         "damage": 12,
         "cards": 1
       },
       "stun": {
-        "cast range": 4,
+        "cast range": 5,
         "aoe range": 1,
         "damage": 10,
         "stun": 2,
@@ -253,7 +253,7 @@
         "cards": 1
       },
       "blink": {
-        "cast range": 5,
+        "cast range": 6,
         "cards": 2
       },
       "shield": {
@@ -289,7 +289,7 @@
         }
       },
       "freeze": {
-        "cast range": 4,
+        "cast range": 5,
         "cards": 1,
         "buffdata": {
           "duration": 2,
@@ -324,7 +324,7 @@
         "cast range": 1,
         "cast width": 0,
         "aoe width": 1,
-        "aoe range": 4,
+        "aoe range": 5,
         "damage": 4,
         "cards": 1,
         "buffsdata": {
@@ -444,16 +444,16 @@
     "nyx": {
       "stun": {
         "aoe width": 0,
-        "aoe range": 3,
+        "aoe range": 4,
         "cast width": 0,
-        "cast range": 3,
+        "cast range": 4,
         "cards": 1,
         "damage": 12,
         "stun": 2
       },
       "burn": {
-        "cast range": 4,
-        "multiplier": 4,
+        "cast range": 5,
+        "multiplier": 5,
         "cards": 1
       },
       "spike": {
@@ -478,9 +478,9 @@
 
     "pud": {
       "hook": {
-        "cast range": 3,
+        "cast range": 4,
         "cast width": 0,
-        "aoe range": 3,
+        "aoe range": 4,
         "aoe width": 0,
         "damage": 14,
         "highlight": "in",
@@ -529,7 +529,7 @@
 
     "wk": {
       "stun": {
-        "cast range": 3,
+        "cast range": 4,
         "damage": 12,
         "stun": 2,
         "cards": 1,
@@ -572,15 +572,15 @@
 
     "venge": {
       "stun": {
-        "cast range": 4,
+        "cast range": 5,
         "damage": 14,
         "stun": 2,
         "cards": 1
       },
       "corruption": {
-        "cast range": 4,
+        "cast range": 5,
         "cast width": 0,
-        "aoe range": 4,
+        "aoe range": 5,
         "aoe width": 0,
         "damage": 6,
         "cards": 1,
@@ -597,7 +597,7 @@
         }
       },
        "ult":{
-        "cast range": 4,
+        "cast range": 5,
         "cards": 1
        }
      },
@@ -615,7 +615,7 @@
         }
       },
       "curse": {
-        "cast range": 4,
+        "cast range": 5,
         "cards": 1,
         "buffdata": {
           "duration": 2,
@@ -624,7 +624,7 @@
         }
       },
       "heal": {
-        "cast range": 4,
+        "cast range": 5,
         "max targets": 4,
         "cards": 1,
         "buffdata": {
@@ -633,7 +633,7 @@
         }
       },
        "ult":{
-        "cast range": 5,
+        "cast range": 6,
         "cards": 2
        }
      }
@@ -650,7 +650,7 @@
         "resistance": 1
       },
       "ranged": {
-        "range": 4,
+        "range": 5,
         "hp": 26,
         "damage": 14,
         "armor": 1,
@@ -658,7 +658,7 @@
         "resistance": 2
       },
       "catapult": {
-        "range": 6,
+        "range": 7,
         "hp": 32,
         "damage": 14,
         "armor": 4,

@@ -21,7 +21,7 @@ game.tower = {
     return tower;
   },
   place: function () {
-    var p = 'B5';
+    var p = 'C7';
     game.player.tower = game.tower.build('player', p);
     game.enemy.tower = game.tower.build('enemy', game.map.mirrorPosition(p));
   },

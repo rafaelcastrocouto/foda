@@ -8,11 +8,11 @@ game.player = {
         if (game.mode == 'library') {
           var card = deck.data('cards')[0];
           card.addClass('player').on('mousedown touchstart', game.card.select);
-          card.place(game.map.toPosition(4, 3));
+          card.place(game.map.toPosition(5, 4));
           card.on('action', game.library.action).on('death', game.library.action);
         } else {
-          var x = 2;
-          var y = 4;
+          var x = 3;
+          var y = 6;
           $.each(deck.data('cards'), function(i, card) {
             var p = game.player.picks.indexOf(card.data('hero'));
             card.addClass('player').on('mousedown touchstart', game.card.select);

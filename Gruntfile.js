@@ -9,6 +9,7 @@ module.exports = function(grunt) {
     'jshint': {
       options: {
         reporterOutput: "",
+        laxcomma: true
       },
       all: [
         'package.json',

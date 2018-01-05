@@ -64,7 +64,7 @@ game.library = {
     game.states.table.skip.attr('disabled', true).show();
     game.states.table.discard.attr('disabled', true).show();
     game.states.table.enableUnselect();
-    game.turn.build(6);
+    game.turn.build(11);
     game.timeout(400, function () {
       game.skill.build('enemy');
       game.skill.build('player', 0, function () {

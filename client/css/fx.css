@@ -165,7 +165,7 @@
 
 @keyframes lina-fire-sprite {
   100% {
-    transform: translate3d(60px,-400px,100px) scale(7);
+    transform: translate3d(60px,-700px,100px) scale(7);
     background-position: -1440px;
   }
 }
@@ -177,7 +177,7 @@
 
 @keyframes lina-fire-sprite-bottom {
   100% {
-    transform: scaleY(-1) translate3d(60px,-700px,100px) scale(7);
+    transform: scaleY(-1) translate3d(60px,-900px,100px) scale(7);
     background-position: -1440px;
   }
 }
@@ -189,7 +189,7 @@
 
 @keyframes lina-fire-sprite-left {
   100% {
-    transform: translate3d(-300px,160px,100px) rotateZ(-90deg) scale(7);
+    transform: translate3d(-350px,160px,100px) rotateZ(-90deg) scale(7);
     background-position: -1440px;
   }
 }
@@ -201,7 +201,7 @@
 
 @keyframes lina-fire-sprite-right {
   100% {
-    transform: translate3d(400px,160px,100px) rotateZ(90deg) scale(7);
+    transform: translate3d(450px,160px,100px) rotateZ(90deg) scale(7);
     background-position: -1440px;
   }
 }

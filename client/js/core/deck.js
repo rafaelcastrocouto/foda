@@ -37,7 +37,7 @@ game.deck = {
       }
       if (found || !filter) {
         herodata.hero = heroid;
-        herodata.speed = 2;
+        herodata.speed = game.defaultSpeed;
         herodata.kd = true;
         herodata.buffsBox = true;
         herodata.className = [
@@ -69,7 +69,7 @@ game.deck = {
           unitdata.type = game.data.ui.summon;
           unitdata.id = unitid;
           unitdata.unit = unittype;
-          unitdata.speed = 2;
+          unitdata.speed = game.defaultSpeed;
           unitdata.buffsBox = true;
           unitdata.className = [
             unitid,

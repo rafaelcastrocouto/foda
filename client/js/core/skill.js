@@ -215,7 +215,7 @@ game.skill = {
     unit.data('range', skill.data('range'));
     unit.data('armor', skill.data('armor'));
     unit.data('resistance', skill.data('resistance'));
-    unit.data('speed', skill.data('speed') || 2);
+    unit.data('speed', skill.data('speed') || game.defaultSpeed);
     unit.data('current hp', unit.data('hp'));
     unit.data('current damage', unit.data('damage'));
     unit.data('current armor', unit.data('armor'));
