@@ -19,7 +19,6 @@ game.ai = {
     //game.ai.comboData();
     // activate all passives, other sidehand skills strats per hero
     $('.map .ld.'+game.ai.side).data('ai ult limit', 0);
-    
     $('.enemydecks .sidehand .skills').each(function (i, el) {
       var card = $(el);
       game.ai.passives(card);
@@ -66,18 +65,18 @@ game.ai = {
           }
         }
       });
+      if (game.debug) {
+        $('.map .spot').each(function (i, el) {
+          var spot = $(el);
+          $('.debug', spot).text(spot.data('ai').priority);
+        });
+      }
       // cast strats
       var cast = game.ai.decideCast(chosenCard, chosenCardData);
       if (!chosenCard.data('ai done') && !cast) {
         var choosen = game.ai.chooseStrat(chosenCard, chosenCardData);
         // action strats
         if (choosen) game.ai.decideAction(choosen.strat, chosenCard, chosenCardData);
-      }
-      if (game.debug) {
-        $('.map .spot').each(function (i, el) {
-          var spot = $(el);
-          $('.debug', spot).text(spot.data('ai').priority);
-        });
       }
     }
     game.ai.autoMove(game.ai.nextMove);
@@ -188,19 +187,6 @@ game.ai = {
     });
     return d;
   },
-  newSpotData: function (spot) {
-    var p = 40;
-    var id = spot.getPosition();
-    if (spot.hasClass('jungle')) p -= 40;
-    if (id == 'A4' || id == 'I2') p -= 35;
-    var d = {
-      'blocked': !spot.hasClass('free'),
-      'priority': p,
-      'can-be-attacked': false,
-      'can-be-casted': false
-    };
-    return d;
-  },
   buildData: function (card) {
     //console.log('buildData', card[0], card.data('ai'));
     var side = card.side();
@@ -259,8 +245,8 @@ game.ai = {
       }
     });
     // tower limit
-    card.around(game.data.ui.melee, function (neighbor) {
-      if (neighbor.hasClass(opponent+'area')) {
+    card.around(game.data.ui.melee, function (spot) {
+      if (spot.hasClass(opponent+'area')) {
         cardData['at-tower-limit'] = true;
         cardData.strats.alert += 10;
       }
@@ -273,64 +259,46 @@ game.ai = {
     }
     // move strats
     if (side == game.ai.side) {
-      var x = spot.getX(), y = spot.getY();
-      // advance
-      var bot = game.map.getSpot(x, y + 1);
-      var left = game.map.getSpot(x - 1, y);
-      var bl = game.map.getSpot(x - 1, y + 1);
-      var br = game.map.getSpot(x + 1, y + 1);
-      // retreat
-      var top = game.map.getSpot(x, y - 1);
-      var right = game.map.getSpot(x + 1, y);
-      var tr = game.map.getSpot(x + 1, y - 1);
-      var tl = game.map.getSpot(x - 1, y - 1);
-      // todo: speed bonus
-      // advance
-      if (bot && bot.hasClass('free')) {
-        cardData = game.ai.spotData(bot, card, cardData, side, 'advance', 6);
-      }
-      if (left && left.hasClass('free')) {
-        cardData['can-dodge'] = true;
-        cardData = game.ai.spotData(left, card, cardData, side, 'advance', 2, true);
-      }
-      if (bl && bl.hasClass('free') && (bot.hasClass('free') || left.hasClass('free'))) {
-        cardData['can-dodge'] = true;
-        cardData = game.ai.spotData(bl, card, cardData, side, 'advance', 8, true);
-      }
-      if (br && br.hasClass('free') && (bot.hasClass('free') || right.hasClass('free'))) {
-        cardData['can-dodge'] = true;
-        cardData = game.ai.spotData(br, card, cardData, side, 'advance', 4, true);
-      }
-      // retreat
-      if (top && top.hasClass('free')) {
-        cardData = game.ai.spotData(top, card, cardData, side, 'retreat', 6);
-      }
-      if (right && right.hasClass('free') && cardData['can-retreat']) {
-        cardData['can-dodge'] = true;
-        cardData = game.ai.spotData(right, card, cardData, side, 'retreat', 4, true);
-      }
-      if (tr && tr.hasClass('free') && (top.hasClass('free') || right.hasClass('free'))) {
-        cardData['can-dodge'] = true;
-        cardData = game.ai.spotData(tr, card, cardData, side, 'retreat', 8, true);
-      }
-      if (tl && tl.hasClass('free') && (top.hasClass('free') || left.hasClass('free'))) {
-        cardData['can-dodge'] = true;
-        cardData = game.ai.spotData(tl, card, cardData, side, 'retreat', 2, true);
-      }
+      card.inMovementRange(card.data('current speed'), function (spot) {
+        var dir = card.getDirectionObj(spot);
+        var destiny = 'retreat';
+        if ((dir.x ==  0 && dir.y == 1) || //bot
+            (dir.x == -1 && dir.y == 0) || //left
+            (dir.x == -1 && dir.y == 1) || //bl
+            (dir.x ==  1 && dir.y == 1) ) {//br
+          destiny = 'advance';
+        }
+        var dodge = false;
+        if (dir.x !== 0) dodge = true;
+        cardData = game.ai.spotData(spot, card, cardData, side, destiny, dodge);
+      });
     }
     card.data('ai', cardData);
     //console.log(cardData);
   },
-  spotData: function (spot, card, cardData, side, destiny, priority, dodge) {
-    var spotData = spot.data('ai');
-    priority += spotData.priority;
-    spot.data('ai', spotData);
-    if (spot.hasClass(side+'area')) priority += 10;
-    var opponent = game.opponent(side);
+  newSpotData: function (spot) {
+    var priority = 40;
+    var opponent = game.opponent(game.ai.side);
+    priority += (game.width - spot.getX()) * 4;
+    priority += spot.getY() * 6;
+    if (spot.hasClass('jungle')) priority -= 50;
+    if (spot.hasClass(game.ai.side+'area')) priority += 5;
     if (spot.hasClass(opponent+'area')) {
-      if (game.player.tower.data('current hp') > 3) priority -= 15;
-      else priority += 10;
+      var hp = game[opponent].tower.data('current hp');
+      if (hp > 5) priority -= 40;
+      if (hp < 4) priority += 30;
     }
+    var data = {
+      'blocked': !spot.hasClass('free'),
+      'priority': priority,
+      'can-be-attacked': false,
+      'can-be-casted': false
+    };
+    return data;
+  },
+  spotData: function (spot, card, cardData, side, destiny, dodge) {
+    var spotData = spot.data('ai');
+    var priority = spotData.priority;
     var o = {
       target: spot,
       priority: priority

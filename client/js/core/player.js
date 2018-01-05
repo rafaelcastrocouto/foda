@@ -11,7 +11,7 @@ game.player = {
           card.place(game.map.toPosition(5, 4));
           card.on('action', game.library.action).on('death', game.library.action);
         } else {
-          var x = 3;
+          var x = 4;
           var y = 6;
           $.each(deck.data('cards'), function(i, card) {
             var p = game.player.picks.indexOf(card.data('hero'));

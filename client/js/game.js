@@ -20,7 +20,7 @@ var game = {
   creepDeathDamage: 1,
   treeRespawn: 4,
   defaultSpeed: 3,
-  width: 12,
+  width: 13,
   height: 7,
   tries: 0,
   seed: 0,

@@ -57,7 +57,7 @@ game.units = {
     }
   },
   forestSpot: function () {
-    var spot = 'A4';
+    var spot = 'A2';
     $('#' + spot).addClass('jungle').attr({title: 'Jungle'});
     $('#' + game.map.mirrorPosition(spot)).addClass('jungle').attr({title: 'Jungle'});
   },

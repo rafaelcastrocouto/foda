@@ -114,14 +114,14 @@ game.heroesAI.am = {
     if (canBlinkTower) {
       game.enemy.tower.atRange(2, function (spot) {
         var spotData = spot.data('ai');
-        spotData.priority += 30;
+        spotData.priority += 10;
         spot.data('ai', spotData);
       });
       game.enemy.tower.atRange(4, function (spot) {
         var defenderCard = spot.find('.card.'+side);
         if (defenderCard.length) {
           var defenderData = defenderCard.data('ai');
-          defenderData.strats.retreat += 20;
+          defenderData.strats.retreat += 10;
           defenderCard.data('ai', defenderData);
         }
       });

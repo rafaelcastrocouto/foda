@@ -409,7 +409,7 @@ game.map = {
         var ex = game.map.getX(spot)
           , ey = game.map.getY(spot)
           , path = game.map.finder.findPath(ox, oy, ex, ey, game.map.grid);
-        if (path.length <= range) fil(ex, ey);
+        if (range < 3 || path.length <= range) fil(ex, ey);
       });
     }
   },

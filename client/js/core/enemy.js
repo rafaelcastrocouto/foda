@@ -5,7 +5,7 @@ game.enemy = {
       filter: game.enemy.picks,
       cb: function(deck) {
         deck.addClass('cemitery enemy').hide().appendTo(game.states.table.enemy);
-        var x = 3;
+        var x = 4;
         var y = 6;
         $.each(deck.data('cards'), function(i, card) {
           var p = game.enemy.picks.indexOf(card.data('hero'));
