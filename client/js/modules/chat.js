@@ -99,7 +99,8 @@ game.chat = {
     if (!window.Notification || !Notification.requestPermission)
       return false;
     if (Notification.permission == 'granted')
-      throw new Error('You must only call this *before* calling Notification.requestPermission(), otherwise this feature detect would bug the user with an actual notification!');
+      return true;
+    //  throw new Error('You must only call this *before* calling Notification.requestPermission(), otherwise this feature detect would bug the user with an actual notification!');
     try {
       new Notification('');
     } catch (e) {
@@ -143,6 +144,7 @@ game.chat = {
       game.states.changeTo('choose');
       game.chat.currentnotification.close();
       return false;
-    };
+    }
+    ;
   }
 };
