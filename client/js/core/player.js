@@ -142,7 +142,7 @@ game.player = {
     if (game.canPlay()) {
       if (game.mode == 'online')
         game.currentMoves.push('S:' + to + ':' + creep);
-      game.units.summonCreep(target, to, creep);
+      game.units.summonCreep(target, to, creep, event);
     }
   },
   discard: function(skill) {

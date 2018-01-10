@@ -220,7 +220,7 @@ game.enemy = {
     var to = target.getPosition();
     var creep = game.selectedCard.data('unit');
     if (game.currentTurnSide == 'enemy' || game.mode == 'library') {
-      game.units.summonCreep(target, to, creep);
+      game.units.summonCreep(target, to, creep, event);
     }
   },
   summonCreepMove: function(to, creep) {

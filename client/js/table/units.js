@@ -71,7 +71,7 @@ game.units = {
     //if (side == 'enemy') creep.addClass('flipped');
     return creep;
   },
-  summonCreep: function(target, to, creep) {
+  summonCreep: function(target, to, creep, event) {
     if (target.hasClass('free')) {
       game.audio.play('activate');
       game.highlight.clearMap();

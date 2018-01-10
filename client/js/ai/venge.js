@@ -91,7 +91,7 @@ game.heroesAI.venge = {
             priority: 10 + cardInRange.data('current hp'),
             skill: 'ult',
             card: ult,
-            target: spot
+            target: cardInRange.getSpot()
           });
         });
       }

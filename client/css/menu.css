@@ -17,8 +17,8 @@
   75% {background-color: #438bc5;}
 }
 .menu.sky {
-  background-image: url("../img/bkg/sky.png");
   animation: cloudwind 30s -5s linear infinite, cloudnight 60s -5s linear infinite;
+  background-image: url("../img/bkg/sky.png");
   background-position: -870px 0;
   background-repeat: no-repeat;
   background-size: 682px 233px;
@@ -27,9 +27,67 @@
   100% {background-position: 970px 0;}
 }
 @keyframes cloudnight {
-  50% {opacity: 1;}
-  51% {opacity: 0.2;}
-  100% {opacity: 0.2;}
+  49%, 100% {opacity: 1;}
+  50% {opacity: 0.1;}
+}
+.menu.star {
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 white;
+  opacity: 0;
+  animation: stars 60s linear infinite;
+}
+@keyframes stars {
+  0%, 35%,             63%, 100% {opacity: 0;}
+        45%, 55%, 60%   {opacity: 1; box-shadow: 0 0 0 2px white;}
+          50%, 59% {opacity: 0.6; box-shadow: 0 0 0 0 white;}
+}
+.menu.star:first-child {
+  top: 40px; left: 20px;
+}
+.menu.star:nth-child(2) {
+  top: 24px;
+  left: 720px;
+  animation-delay: 3s;
+}
+.menu.star:nth-child(3) {
+  top: 24px;
+  left: 190px;
+  animation-delay: -3s;
+}
+.menu.star:nth-child(4) {
+  top: 84px;
+  left: 140px;
+  animation-delay: -1s;
+}
+.menu.star:nth-child(5) {
+  top: 16px;
+  left: 240px;
+  animation-delay: 2s;
+}
+.menu.star:nth-child(6) {
+  top: 64px;
+  left: 450px;
+}
+.menu.star:nth-child(7) {
+  top: 86px;
+  left: 320px;
+}
+.menu.star:nth-child(8) {
+  top: 7px;
+  left: 410px;
+  animation-delay: -2s;
+}
+.menu.star:nth-child(9) {
+  top: 160px;
+  left: 360px;
+}
+.menu.star:nth-child(10) {
+  top: 34px;
+  left: 470px;
+  animation-delay: 1s;
 }
 .menu.sun {
   width: 200px;
@@ -96,11 +154,15 @@
   height: 60px;
   text-shadow: 2px 2px #333, -2px -2px #333, 2px -2px #333, -2px 2px #333;
   line-height: 40px;
-  transition: all 0.3s;
-  animation: iconblink 5s infinite;
+  transition: all 0.2s;
+  animation: iconblink 4s infinite;
 }
+.menu .icon:hover span {
+  opacity: 1;
+}
+
 @keyframes iconblink {
-  45%, 65% {
+  46%, 64% {
     opacity: 0.1;
   }
   50% {
@@ -122,10 +184,6 @@
 }
 .menu .icon.credits span {
   animation-delay: 1.5s;
-}
-
-.menu .icon:hover span {
-  opacity: 1;
 }
 
 .menu .icon.campaign {

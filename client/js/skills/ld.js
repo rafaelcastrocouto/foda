@@ -13,6 +13,7 @@ game.skills.ld = {
         bear.on('pre-attack', this.attack);
         bear.on('death', this.beardeath);
         bear.data('return', $('.table .'+side+' .temp.skills .ld-bearreturn'));
+        bear.data('death damage', skill.data('death damage'));
       }
       bear.data('return').appendTo(game[side].skills.sidehand);
       bear.setCurrentHp(bear.data('hp'));
@@ -54,9 +55,8 @@ game.skills.ld = {
     beardeath: function (event, eventdata) {
       var bear = eventdata.target;
       var killer = eventdata.source;
-      var skill = bear.data('summon');
       var ld = bear.data('summoner');
-      if (bear.side() != killer.side()) killer.damage(skill.data('death damage'), ld, game.data.ui.pure);
+      if (bear.side() != killer.side()) killer.damage(bear.data('death damage'), ld, game.data.ui.pure);
       var returnSkill = bear.data('return');
       returnSkill.discard();
       ld.data('bear', null);

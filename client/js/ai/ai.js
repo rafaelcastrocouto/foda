@@ -2,6 +2,7 @@ game.ai = {
   timeToPlay: 30,
   side: 'enemy',
   start: function () {
+    if (!game.currentData) game.currentData = {};
     game.currentData.moves = [];
     if (game.ai.mode == 'very-easy') game.ai.level = 3;
     if (game.ai.mode == 'easy')      game.ai.level = 4;
@@ -248,14 +249,16 @@ game.ai = {
     card.around(game.data.ui.melee, function (spot) {
       if (spot.hasClass(opponent+'area')) {
         cardData['at-tower-limit'] = true;
-        cardData.strats.alert += 10;
+        if (cardData.strats) cardData.strats.alert += 10;
       }
     });
     // tower area
     var spot = card.getSpot();
     if (spot.hasClass(opponent+'area')) {
       cardData['in-tower-attack-range'] = true;
-      if (game.player.tower.data('current hp') > 3) cardData.strats.retreat += 10;
+      if (game.player.tower.data('current hp') > 3) {
+        if (cardData.strats) cardData.strats.retreat += 10;
+      }
     }
     // move strats
     if (side == game.ai.side) {
@@ -270,7 +273,7 @@ game.ai = {
         }
         var dodge = false;
         if (dir.x !== 0) dodge = true;
-        cardData = game.ai.spotData(spot, card, cardData, side, destiny, dodge);
+        game.ai.spotData(spot, card, cardData, side, destiny, dodge);
       });
     }
     card.data('ai', cardData);
@@ -297,22 +300,24 @@ game.ai = {
     return data;
   },
   spotData: function (spot, card, cardData, side, destiny, dodge) {
-    var spotData = spot.data('ai');
-    var priority = spotData.priority;
-    var o = {
-      target: spot,
-      priority: priority
-    };
-    if (card.canMove()) {
-      if (destiny == 'advance') cardData.strats.siege += (priority/2);
-      if (destiny == 'retreat') cardData.strats.alert += (priority/2);
-      if (dodge) cardData.strats.dodge += (priority/2);
-      cardData['can-'+destiny] = true;
+    if (spot && card && cardData) {
+      var spotData = spot.data('ai');
+      var priority = spotData.priority;
+      var o = {
+        target: spot,
+        priority: priority
+      };
+      if (card.canMove()) {
+        if (destiny == 'advance') cardData.strats.siege += (priority/2);
+        if (destiny == 'retreat') cardData.strats.alert += (priority/2);
+        if (dodge) cardData.strats.dodge += (priority/2);
+        cardData['can-'+destiny] = true;
+      }
+      cardData.move.push(o);
+      cardData[destiny].push(o);
+      if (dodge) cardData.dodge.push(o);
+      card.data('ai', cardData);
     }
-    cardData.move.push(o);
-    cardData[destiny].push(o);
-    if (dodge) cardData.dodge.push(o);
-    return cardData;
   },
   /*comboData: function () {
     var combos = [];
