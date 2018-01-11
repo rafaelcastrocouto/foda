@@ -233,7 +233,7 @@ game.card = {
   },
   unselect: function() {
     game.selectedCardZoom = false;
-    game.states.table.selectedCard.removeClass('flip');
+    if (game.states.table.selectedCard) game.states.table.selectedCard.removeClass('flip');
     game.timeout(200, game.card.clearSelection);
   },
   reselect: function () {

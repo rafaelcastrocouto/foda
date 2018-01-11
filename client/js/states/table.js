@@ -81,7 +81,7 @@ game.states.table = {
     return false;
   },
   clear: function () {
-    this.selectedCard.removeClass('flip');
+    if (this.selectedCard) this.selectedCard.removeClass('flip');
     game.states.table.setup = false;
     game.map.clear();
     game.card.clearSelection();

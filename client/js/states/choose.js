@@ -214,15 +214,15 @@ game.states.choose = {
       $('.slot .card.skills').appendTo(game.library.skills);
       $('.pickbox .card').removeClass('hidden');
       $('.slot').addClass('available').show();
-      this.mydeck.attr('disabled', false);
-      this.randombt.attr('disabled', false);
-      this.back.attr({disabled: false});
-      this.counter.hide();
-      this.pickedbox.hide();
+      if (this.mydeck) this.mydeck.attr('disabled', false);
+      if (this.randombt) this.randombt.attr('disabled', false);
+      if (this.back) this.back.attr({disabled: false});
+      if (this.counter) this.counter.hide();
+      if (this.pickedbox) this.pickedbox.hide();
       $('.choose .buttonbox .button').not('.back').hide();
-      this.playVideo(); //clear video iframe
+      if (this.video) this.playVideo(); //clear video iframe
       $('.slot .card.heroes').prependTo(this.pickDeck).on('mousedown.choose touchstart.choose', game.states.choose.select);
       this.sort();
-    }.bind(this), 100);
+    }.bind(game.states.choose), 100);
   }
 };
