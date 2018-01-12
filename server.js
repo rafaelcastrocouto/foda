@@ -23,7 +23,7 @@ var mongo = {
   url: 'mongodb://rafaelcastrocouto:'+process.env.SECRET+'@ds147905.mlab.com:47905/dotacard',
   connect: function (cb) { mongo.client.connect(mongo.url, function (err, db) { if (!err) cb(db); else console.log(err.message); });},
   get: function (name, cb) { mongo.connect(function(db) {
-      db.collection('collection').find().toArray(function readCollection (err, docs) { cb(docs[0][name] || ''); });
+      db.collection('collection').find().toArray(function readCollection (err, docs) { cb(docs[1][name] || ''); });
     });
   },
   set: function(name, val, cb) { var data = {}; data[name] = val; mongo.connect(function(db) {
@@ -40,7 +40,7 @@ var getRank = function () {
     mongo.rank = data;
     for (var item in data) { mongo.ranked.push({'name': item, 'points': parseInt(data[item])}); }
     mongo.ranked.sort(function (a,b) { return a.points - b.points; });
-    if (mongo.ranked.length !== 5) setTimeout(10000, getRank);
+    if (mongo.ranked.length !== 5) setTimeout(getRank, 10000);
   });
 };
 
