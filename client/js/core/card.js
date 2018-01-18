@@ -575,7 +575,7 @@ game.card = {
     if (dead.hasClass('selected')) dead.unselect();
     dead.stopChanneling();
     dead.clearBuffs();
-    dead.find('.damaged, .heal').remove();
+    dead.find('.damaged, .heal, .fx').remove();
     dead.addClass('dead').removeClass('target done stunned rooted silenced hexed disabled sleeping cycloned taunted entangled disarmed ai');
     var pos = evt.position, deaths, spot = $('#' + pos), side = dead.side();
     if (!spot.hasClass('cript')) {

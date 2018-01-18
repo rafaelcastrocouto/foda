@@ -23,7 +23,7 @@ var mongo = {
   url: 'mongodb://rafaelcastrocouto:'+process.env.SECRET+'@ds147905.mlab.com:47905/dotacard',
   connect: function (cb) { mongo.client.connect(mongo.url, function (err, db) { if (!err) cb(db); else console.log(err.message); });},
   get: function (name, cb) { mongo.connect(function(db) {
-      db.collection('collection').find().toArray(function readCollection (err, docs) { cb(docs[1][name] || ''); });
+      db.collection('collection').findOne({document: 'dotacard'}, function(err, document) { cb(document[name] || ''); });
     });
   },
   set: function(name, val, cb) { var data = {}; data[name] = val; mongo.connect(function(db) {
