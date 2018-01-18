@@ -113,10 +113,12 @@ game.map = {
     var p1 = {
       x: game.map.getX(this),
       y: game.map.getY(this)
-    }, p2 = {
+    }
+      , p2 = {
       x: game.map.getX(target),
       y: game.map.getY(target)
-    }, dir = {
+    }
+      , dir = {
       x: 0,
       y: 0
     };
@@ -151,10 +153,14 @@ game.map = {
     var x = sx
       , y = sy;
     var spot;
-    if (dir == 'right')  x++;
-    if (dir == 'left')   x--;
-    if (dir == 'bottom') y++;
-    if (dir == 'top')    y--;
+    if (dir == 'right')
+      x++;
+    if (dir == 'left')
+      x--;
+    if (dir == 'bottom')
+      y++;
+    if (dir == 'top')
+      y--;
     return game.map.getSpot(x, y);
   },
   getPosition: function() {
@@ -409,7 +415,9 @@ game.map = {
         var ex = game.map.getX(spot)
           , ey = game.map.getY(spot)
           , path = game.map.finder.findPath(ox, oy, ex, ey, game.map.grid);
-        if (range < 3 || path.length <= range) fil(ex, ey);
+        if (path.length && (path.length - 1) <= Math.ceil(range / 2)) {
+          fil(ex, ey);
+        }
       });
     }
   },
@@ -612,8 +620,11 @@ game.map = {
     if (range === game.data.ui.far) {
       r = 6;
     }
-    if (range === game.data.ui.max) {
+    if (range === game.data.ui.away) {
       r = 7;
+    }
+    if (range === game.data.ui.max) {
+      r = 8;
     }
     if (range === game.data.ui.global) {
       r = 999;
@@ -641,6 +652,9 @@ game.map = {
       range = game.data.ui.far;
     }
     if (r === 7) {
+      range = game.data.ui.away;
+    }
+    if (r === 9) {
       range = game.data.ui.max;
     }
     if (r === 999) {

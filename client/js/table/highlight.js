@@ -1,5 +1,5 @@
 game.highlight = {
-  extendjQuery: function () {
+  extendjQuery: function() {
     $.fn.extend({
       highlightSource: game.highlight.source,
       highlightAlly: game.highlight.ally,
@@ -12,7 +12,7 @@ game.highlight = {
       highlightCreep: game.highlight.highlightCreep
     });
   },
-  map: function (event) {
+  map: function(event) {
     game.highlight.clearMap();
     if (game.selectedCard) {
       if (game.selectedCard.hasClasses('heroes units')) {
@@ -32,14 +32,13 @@ game.highlight = {
       }
       if (game.selectedCard.hasClass('skills')) {
         game.selectedCard.highlightSource();
-        if (!game.selectedCard.hasClass('channel-on')) game.selectedCard.strokeSkill();
+        if (!game.selectedCard.hasClass('channel-on'))
+          game.selectedCard.strokeSkill();
         if (game.canPlay()) {
           game.selectedCard.highlightArrows();
           game.selectedCard.highlightTargets(event);
         }
-        if (game.selectedCard.closest('.hand').length &&
-            (game.mode != 'tutorial' || game.mode != 'library') &&
-            game.canPlay()) {
+        if (game.selectedCard.closest('.hand').length && (game.mode != 'tutorial' || game.mode != 'library') && game.canPlay()) {
           game.states.table.discard.attr('disabled', false);
         }
       }
@@ -48,21 +47,24 @@ game.highlight = {
       }
       if (game.selectedCard.hasClass('units') && game.selectedCard.parent().is('.sidehand')) {
         game[game.selectedCard.side()].tower.strokeAttack();
-        if (game.canPlay()) game.selectedCard.highlightCreep();
+        if (game.canPlay())
+          game.selectedCard.highlightCreep();
       }
     }
   },
-  source: function () {
+  source: function() {
     var skill = this;
     var hero = skill.data('hero');
-    if (hero) $('.map .card.'+skill.side()+'.heroes.' + hero).addClass('source');
+    if (hero)
+      $('.map .card.' + skill.side() + '.heroes.' + hero).addClass('source');
     return skill;
   },
-  channelStop: function (event, skill, source) {
+  channelStop: function(event, skill, source) {
     source.addClass('casttarget').on('mouseup.highlight', game.card.activeStopChanneling);
   },
-  targets: function (event) {
-    var skill = this, hero = skill.data('hero');
+  targets: function(event) {
+    var skill = this
+      , hero = skill.data('hero');
     var source = skill.data('source');
     if (!source || !source.length) {
       source = $('.map .source');
@@ -74,9 +76,7 @@ game.highlight = {
           game.highlight.passive(source);
         } else if (skill.data('type') === game.data.ui.toggle) {
           game.highlight.toggle(skill, source);
-        } else if (skill.data('type') === game.data.ui.active ||
-                   skill.data('type') === game.data.ui.channel ||
-                   skill.data('type') === game.data.ui.summon) {
+        } else if (skill.data('type') === game.data.ui.active || skill.data('type') === game.data.ui.channel || skill.data('type') === game.data.ui.summon) {
           game.highlight.active(event, source, skill);
         }
         if (skill.data('targets').indexOf(game.data.ui.summon) > 0) {
@@ -89,50 +89,60 @@ game.highlight = {
     }
     return skill;
   },
-  active: function (event, source, skill) {
+  active: function(event, source, skill) {
     var targets = skill.data('targets');
     if (source.canCast(skill)) {
-      if (skill.hasClass('channel-on')) game.highlight.channelStop(event, skill, source);
+      if (skill.hasClass('channel-on'))
+        game.highlight.channelStop(event, skill, source);
       else {
-        if (targets.indexOf(game.data.ui.self) >= 0) game.highlight.self(source);
-        if (targets.indexOf(game.data.ui.ally) >= 0) game.highlight.ally(source, skill);
-        if (targets.indexOf(game.data.ui.enemy) >= 0) game.highlight.enemy(source, skill);
-        if (targets.indexOf(game.data.ui.jungle) >= 0) game.highlight.jungle(source, skill);
-        if (targets.indexOf(game.data.ui.sumonner) >= 0) game.highlight.summoner(source, skill);
+        if (targets.indexOf(game.data.ui.self) >= 0)
+          game.highlight.self(source);
+        if (targets.indexOf(game.data.ui.ally) >= 0)
+          game.highlight.ally(source, skill);
+        if (targets.indexOf(game.data.ui.enemy) >= 0)
+          game.highlight.enemy(source, skill);
+        if (targets.indexOf(game.data.ui.jungle) >= 0)
+          game.highlight.jungle(source, skill);
+        if (targets.indexOf(game.data.ui.sumonner) >= 0)
+          game.highlight.summoner(source, skill);
         if (targets.indexOf(game.data.ui.spot) >= 0) {
-          if (targets.indexOf(game.data.ui.range) >= 0) game.highlight.atRange(source, skill, (targets.indexOf(game.data.ui.free) >= 0));
-          else if (targets.indexOf(game.data.ui.free) >= 0) game.highlight.freeSpots(source, skill);
+          if (targets.indexOf(game.data.ui.range) >= 0)
+            game.highlight.atRange(source, skill, (targets.indexOf(game.data.ui.free) >= 0));
+          else if (targets.indexOf(game.data.ui.free) >= 0)
+            game.highlight.freeSpots(source, skill);
           else {
             var aoe = skill.data('aoe');
-            if (aoe === game.data.ui.radial) game.highlight.radial(source, skill);
-            if (aoe === game.data.ui.linear) game.highlight.linear(source, skill);
+            if (aoe === game.data.ui.radial)
+              game.highlight.radial(source, skill);
+            if (aoe === game.data.ui.linear)
+              game.highlight.linear(source, skill);
           }
         }
       }
     }
   },
-  passive: function (source) {
+  passive: function(source) {
     if (!source.hasClass('dead')) {
       source.addClass('casttarget').on('mouseup.highlight', game.player.passive);
     }
   },
-  toggle: function (skill, source) {
+  toggle: function(skill, source) {
     if (!source.hasClasses('dead stunned silenced hexed disabled sleeping cycloned taunted')) {
       source.addClass('casttarget').on('mouseup.highlight', game.player.toggle);
     }
   },
-  self: function (source) {
+  self: function(source) {
     source.addClass('casttarget').on('mouseup.highlight', game.player.cast);
   },
-  tower: function (side) {
+  tower: function(side) {
     game[side].tower.addClass('casttarget').on('mouseup.highlight', game.player.cast);
   },
-  ally: function (source, skill) {
+  ally: function(source, skill) {
     var range = skill.data('cast range');
     if (range === 'global') {
-      $('.map .card.'+source.side()).not('.dead, .towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
+      $('.map .card.' + source.side()).not('.dead, .towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
     } else {
-      source.around(range, function (neighbor) {
+      source.around(range, function(neighbor) {
         var card = $('.card', neighbor);
         if (card.hasClass(source.side()) && !card.hasClasses('dead towers ghost')) {
           card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
@@ -140,12 +150,12 @@ game.highlight = {
       });
     }
   },
-  enemy: function (source, skill) {
+  enemy: function(source, skill) {
     var range = skill.data('cast range');
     if (range === 'global') {
-      $('.map .'+source.opponent()).not('.dead, .towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
+      $('.map .' + source.opponent()).not('.dead, .towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
     } else {
-      source.inRange(range, function (neighbor) {
+      source.inRange(range, function(neighbor) {
         var card = $('.card', neighbor);
         if (card.hasClass(source.opponent()) && !card.hasClasses('dead towers ghost')) {
           card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
@@ -153,98 +163,107 @@ game.highlight = {
       });
     }
   },
-  jungle: function (source, skill) {
+  jungle: function(source, skill) {
     var range = skill.data('cast range');
-    source.inRange(range, function (neighbor) {
-      if (neighbor.hasAllClasses('jungle free')) neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
+    source.inRange(range, function(neighbor) {
+      if (neighbor.hasAllClasses('jungle free'))
+        neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
-  summoner: function (source, skill) {
+  summoner: function(source, skill) {
     var summoner = source.data(game.data.ui.summoner);
-    summoner.around(skill.data('cast range'), function (neighbor) {
+    summoner.around(skill.data('cast range'), function(neighbor) {
       if (neighbor.hasClass('free')) {
         neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
       }
     });
   },
-  freeSpots: function (source, skill) {
-    source.around(skill.data('cast range'), function (neighbor) {
+  freeSpots: function(source, skill) {
+    source.around(skill.data('cast range'), function(neighbor) {
       if (neighbor.hasClass('free') && !neighbor.hasClass('block')) {
         neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
       }
     });
   },
-  radial: function (source, skill) {
-    source.around(skill.data('cast range'), function (neighbor) {
+  radial: function(source, skill) {
+    source.around(skill.data('cast range'), function(neighbor) {
       var card = neighbor.find('.card');
       if (card.length && !card.hasClass('invisible')) {
         card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      } else neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
+      } else
+        neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
-  linear: function (source, skill) {
-    var pos = source.getPosition(),
-        range = skill.data('cast range'),
-        width = skill.data('cast width');
-    source.inCross(range, width, function (neighbor) {
+  linear: function(source, skill) {
+    var pos = source.getPosition()
+      , range = skill.data('cast range')
+      , width = skill.data('cast width');
+    source.inCross(range, width, function(neighbor) {
       var card = neighbor.find('.card');
       if (card.length && !card.hasClass('invisible')) {
         card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      } else neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
+      } else
+        neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
-  atRange: function (source, skill, free) {
+  atRange: function(source, skill, free) {
     var range = skill.data('cast range');
-    source.atRange(range, function (spot) {
-      if (!free || (spot.hasClass('free') && !spot.hasClass('block'))) spot.addClass('targetarea').on('mouseup.highlight', game.player.cast);
+    source.atRange(range, function(spot) {
+      if (!free || (spot.hasClass('free') && !spot.hasClass('block')))
+        spot.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
-  isTurn: function (card) {
-    if (game.mode == 'library') return true;
+  isTurn: function(card) {
+    if (game.mode == 'library')
+      return true;
     var side = card.side();
     return side == game.currentTurnSide;
   },
-  move: function () {
+  move: function() {
     var card = this, speed;
     if (game.highlight.isTurn(card) && card.hasClasses('units heroes') && card.canMove()) {
-      if (card.hasClass('selected')) card.addClass('draggable');
+      if (card.hasClass('selected'))
+        card.addClass('draggable');
       speed = card.data('current speed');
-      if (speed < 1) { return card; }
-      if (speed > 4) { speed = 4; }
-      card.inMovementRange(Math.round(speed), function (neighbor) {
-        if (neighbor.hasClass('free') && !neighbor.hasClass('block')) { 
-          neighbor.addClass('movearea').on('mouseup.highlight', game.player.move); 
-        }
-      });
+      if (speed > 1) {
+        card.inMovementRange(Math.round(speed), function(neighbor) {
+          if (neighbor.hasClass('free') && !neighbor.hasClass('block')) {
+            neighbor.addClass('movearea').on('mouseup.highlight', game.player.move);
+          }
+        });
+      }
     }
     return card;
   },
-  attack: function () {
+  attack: function() {
     var source = this, pos, range;
     if (game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack()) {
-      if (source.hasClass('selected')) source.addClass('draggable');
+      if (source.hasClass('selected'))
+        source.addClass('draggable');
       range = source.data('range');
-      source.inRange(range, function (neighbor) {
+      source.inRange(range, function(neighbor) {
         var card = $('.card', neighbor);
-        if (card.hasClass(source.opponent()) && !card.hasClass('invisible')) { card.addClass('attacktarget').on('mouseup.highlight', game.player.attack); }
-        if (card[0] !== source[0] &&
-            card.hasAllClasses(source.side()+' units') &&
-            card.data('current hp') < Math.floor(card.data('hp')/2) ) { card.addClass('attacktarget').on('mouseup.highlight', game.player.attack); }
+        if (card.hasClass(source.opponent()) && !card.hasClass('invisible')) {
+          card.addClass('attacktarget').on('mouseup.highlight', game.player.attack);
+        }
+        if (card[0] !== source[0] && card.hasAllClasses(source.side() + ' units') && card.data('current hp') < Math.floor(card.data('hp') / 2)) {
+          card.addClass('attacktarget').on('mouseup.highlight', game.player.attack);
+        }
       });
     }
     return source;
   },
-  strokeAttack: function () {
+  strokeAttack: function() {
     var card = this;
     if (!card.hasClasses('dead stunned disabled disarmed hexed')) {
       card.radialStroke(card.data('range'), card.side() + 'attack');
     }
     return card;
   },
-  strokeSkill: function () {  
-    var skill = this,
-      hero = skill.data('hero'),
-      source = $('.map .source');
+  strokeSkill: function() {
+    var skill = this
+      , hero = skill.data('hero')
+      , source = $('.map .source');
     if (hero) {
       game.skill.castsource = source;
       game.skill.castrange = skill.data('cast range') || skill.data('stroke range');
@@ -274,17 +293,18 @@ game.highlight = {
     }
     return skill;
   },
-  hover: function (event) {
+  hover: function(event) {
     var spot = $(this);
     if (game.map.el.hasClass('aoe')) {
       $('.map .spot').removeClass('skillstroke skillhoverstroke stroke top right left bottom toparrow bottomarrow leftarrow rightarrow');
       $('.map .card').removeClass('toparrow bottomarrow leftarrow rightarrow');
       if (spot.hasClass('targetarea') || spot.find('.casttarget').length) {
         game.highlight.strokeAtCursor(spot);
-      } else game.highlight.strokeAtCaster();
+      } else
+        game.highlight.strokeAtCaster();
     }
   },
-  strokeAtCursor: function (spot) {
+  strokeAtCursor: function(spot) {
     game.selectedCard.highlightArrows(spot);
     if (game.skill.aoe === game.data.ui.linear) {
       spot.linearStroke(game.skill.aoerange, game.skill.aoewidth, 'skillhoverstroke');
@@ -293,7 +313,7 @@ game.highlight = {
       spot.radialStroke(game.skill.aoerange, 'skillhoverstroke');
     }
   },
-  strokeAtCaster: function () {
+  strokeAtCaster: function() {
     game.selectedCard.highlightArrows();
     if (game.skill.aoe === game.data.ui.linear) {
       game.skill.castsource.crossStroke(game.skill.aoerange, game.skill.aoewidth, 'skillstroke');
@@ -308,34 +328,35 @@ game.highlight = {
       }
     }
   },
-  possible: function (unit) {
+  possible: function(unit) {
     return (unit && game.map.el.has(unit));
   },
-  highlightArrows: function (spot) {
-    var skill = this,
-        source = $('.map .source'),
-        range = skill.data('aoe range'),
-        opponent = source.opponent();
+  highlightArrows: function(spot) {
+    var skill = this
+      , source = $('.map .source')
+      , range = skill.data('aoe range')
+      , opponent = source.opponent();
     if (this.data('highlight') == 'top') {
       // LD roar
       var summon = source.data('summon');
       var dir = 'top';
-      if (source.side() == 'enemy') dir = 'bottom';
+      if (source.side() == 'enemy')
+        dir = 'bottom';
       if (spot) {
-        spot.around(range, function (neighbor) {
-          neighbor.addClass(dir+'arrow');
-          $('.card.'+opponent, neighbor).addClass(dir+'arrow');
+        spot.around(range, function(neighbor) {
+          neighbor.addClass(dir + 'arrow');
+          $('.card.' + opponent, neighbor).addClass(dir + 'arrow');
         });
       } else {
         if (game.highlight.possible(summon)) {
-          summon.around(range, function (neighbor) {
-            neighbor.not(source.parent()).addClass(dir+'arrow');
-            $('.card.'+opponent, neighbor).addClass(dir+'arrow');
+          summon.around(range, function(neighbor) {
+            neighbor.not(source.parent()).addClass(dir + 'arrow');
+            $('.card.' + opponent, neighbor).addClass(dir + 'arrow');
           });
         }
-        source.around(range, function (neighbor) {
-          neighbor.addClass(dir+'arrow');
-          $('.card.'+opponent, neighbor).addClass(dir+'arrow');
+        source.around(range, function(neighbor) {
+          neighbor.addClass(dir + 'arrow');
+          $('.card.' + opponent, neighbor).addClass(dir + 'arrow');
         });
       }
     }
@@ -344,15 +365,18 @@ game.highlight = {
       // PUD hook
       if (spot) {
         var linedir = game.map.invertDirection(source.getDirectionStr(spot));
-        var targetSpot =  source.firstSpotInLine(spot, range);
+        var targetSpot = source.firstSpotInLine(spot, range);
         if (targetSpot && linedir) {
-          source.inLine(targetSpot, range, width, function (neighbor) {
+          source.inLine(targetSpot, range, width, function(neighbor) {
             var card = $('.card', neighbor);
-            if (card.length) card.addClass(linedir+'arrow');
-            else neighbor.addClass(linedir+'arrow');
+            if (card.length)
+              card.addClass(linedir + 'arrow');
+            else
+              neighbor.addClass(linedir + 'arrow');
           });
         }
-      }/* else {
+      }
+      /* else {
         source.inCross(range, width, function (neighbor, dir) {
           var invdir = game.map.invertDirection(dir);
           var card = $('.card', neighbor);
@@ -364,20 +388,22 @@ game.highlight = {
     if (this.data('highlight') == 'out') {
       if (spot) {
         // KOTL blind
-        spot.inCross(1, 0, function (neighbor, dir) {
-          var card = $('.card.'+opponent, neighbor);
-          if (card.length) card.addClass(dir+'arrow');
-          else neighbor.addClass(dir+'arrow');
+        spot.inCross(1, 0, function(neighbor, dir) {
+          var card = $('.card.' + opponent, neighbor);
+          if (card.length)
+            card.addClass(dir + 'arrow');
+          else
+            neighbor.addClass(dir + 'arrow');
         });
       }
     }
   },
-  highlightCreep: function () {
+  highlightCreep: function() {
     var side = game.selectedCard.side();
     game[side].tower.strokeAttack();
-    $('.spot.'+side+'area.free').addClass('movearea').on('mouseup.highlight', game[side].summonCreep);
+    $('.spot.' + side + 'area.free').addClass('movearea').on('mouseup.highlight', game[side].summonCreep);
   },
-  clearMap: function () {
+  clearMap: function() {
     game.skill.aoe = null;
     game.skill.aoerange = null;
     game.skill.aoewidth = null;
