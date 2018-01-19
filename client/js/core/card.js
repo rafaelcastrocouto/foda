@@ -249,8 +249,9 @@ game.card = {
     var card = this, t, d, from = card.getPosition(), to = destiny.getPosition();
     if (destiny.hasClass('free') && !destiny.hasClass('block') && from !== to) {
       card.removeClass('draggable').off('mousedown touchstart');
-      game.highlight.clearMap();
-      card.reselect();
+      $('.map .movearea').addClass('moving');
+      card.parent().addClass('movesource');
+      destiny.addClass('movetarget');
       card.stopChanneling();
       game.audio.play('move');
       card.animateMove(destiny);
@@ -269,6 +270,7 @@ game.card = {
           transform: ''
         }).prependTo(destiny).on('mousedown touchstart', game.card.select);
         card.trigger('moved', evt);
+        game.highlight.clearMap();
         card.reselect();
       }.bind(this, card, destiny);
       if (!this.hasClass('dragTarget')) game.timeout(300, end);

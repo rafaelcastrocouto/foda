@@ -3,6 +3,21 @@
   /*animation: 1s blinkmovearea infinite;*/
 }
 
+.states .map .spot.movearea.moving {
+  background-color: rgba(100,220,140,0.4);
+}
+.states .map .spot.movearea.movetarget,
+.states .map .spot.movesource {
+  background-color: rgba(200,255,230,0.8);
+}
+
+.states .map .spot.movearea.moving:after,
+.states .map .spot.movearea.moving:before,
+.states .map .spot.movearea.movetarget:after,
+.states .map .spot.movearea.movetarget:before {
+  display: none;
+}
+
 /*@keyframes blinkmovearea {
   0%, 100% {background: rgba(200,255,230,0.05);}
   50% {background: rgba(200,255,230,0.15);}

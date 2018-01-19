@@ -61,13 +61,15 @@ noscript {
 
 .game-container {
   position: absolute;
+  border: 1px solid #333;
+  box-shadow: inset 0 0 0 1px #333;
   width: 970px;
   height: 600px;
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   color: #fff;
-  /* background-image: url("../img/banner.jpg"); */
+  background-image: url("../img/banner.jpg");
   background-size: cover;
   background-position: 50%;
   background-color: #859890;
@@ -344,7 +346,7 @@ input:focus {
 .game-overlay .box {
   z-index: 30;
   padding: 40px 80px;
-  transform: translate3d(-50%, -48%, 2px);
+  transform: translate3d(-50%, -48%, 200px);
 }
 
 .game-overlay h1 {
