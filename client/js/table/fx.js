@@ -49,8 +49,11 @@ game.fx = {
     });
   },
   preload: function(hero, name, skill) {
-    var img = $('<img>').appendTo(game.hidden);
-    img.attr({ src: '/img/fx/' + hero + '/' + name + '.png' });
+    var str = hero+'-'+name;
+    if (!game.hidden.children('.'+str).length) {
+      var img = $('<img>').addClass(str).appendTo(game.hidden);
+      img.attr({ src: '/img/fx/' + hero + '/' + name + '.png' });
+    }
   },
   imgs: [],
   add: function(name, source, target, tag, append) {
@@ -106,5 +109,21 @@ game.fx = {
   stop: function(name, source) {
     var fx = source.find('.fx.'+name);
     fx.remove();
+  },
+  ult: function(skill, cb) {
+    var skillid = skill.data('skill');
+    if (skillid == 'ult') {
+      $('.ultfx .star').removeClass('hide');
+      var fx = $('<div>').addClass(skill.data('hero')+'-ult fx');
+      game.states.table.ultfx.append(fx);
+      game.timeout(1800, function () {
+        $('.ultfx .star').addClass('hide');
+        game.states.table.ultfx.children('.fx').remove();
+        if (cb) cb();
+      });
+    } else if (cb) cb();
+  },
+  clear: function() {
+    game.fx.ldult = false;
   }
 };

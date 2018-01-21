@@ -41,7 +41,7 @@ game.states.loading = {
     game.states.build( function () {
       game.rank.build();
       if ('AudioContext' in window) game.audio.build();
-      $('<img>').attr('src', '../img/bkg/ground.png').on('load', function () {
+      $('<img>').attr('src', '/img/bkg/ground.png').on('load', function () {
         game.states.menu.ground.addClass('loaded');
       }).appendTo(game.hidden);
       game.timeout(400, game.history.recover);

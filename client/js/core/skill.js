@@ -77,7 +77,11 @@ game.skill = {
         };
         source.trigger('cast', evt).trigger('action', evt);
         if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
-          game.audio.play(hero + '/' + skillid);
+          var str = hero + '/' + skillid;
+          if (skillid !== 'ult') game.audio.play(str);
+          else game.timeout(2000, function (str) {
+            game.audio.play(str);
+          }.bind(this, str));
         }
         if (skill.data('type') == game.data.ui.channel) {
           channelDuration = skill.data('channel');
@@ -98,9 +102,15 @@ game.skill = {
             }
           });
         }
-        game.skills[hero][skillid].cast(skill, source, target);
-        if (!skill.hasClass('dragTarget')) game.timeout(400, skill.discard.bind(skill, source));
-        else skill.discard(source);
+        var skillend = function (skill, source, target) {
+          game.fx.ult(skill, function (skill) {
+            var hero = skill.data('hero'),
+              skillid = skill.data('skill');
+            game.skills[hero][skillid].cast(skill, source, target);
+          }.bind(this, skill));
+        }.bind(this, skill, source, target);
+        if (skill.hasClass('dragTarget')) skill.discard(source, skillend);
+        else game.timeout(400, skill.discard.bind(skill, source, skillend));
       }
     }
     return this;
@@ -240,7 +250,7 @@ game.skill = {
     this.removeClass('invisible').off('action.invisible');
     this.trigger('invisibilityLoss', {target: this});
   },
-  discard: function (source) {
+  discard: function (source, cb) {
     if (this.hasClass('skills')) {
       if (this.hasClass('selected')) {
         game.highlight.clearMap();
@@ -260,6 +270,7 @@ game.skill = {
       if (this.closest('.map').length) this.parent().addClass('free');
       this.appendTo(game.hidden);
     }
+    if (cb) cb();
     return this;
   }
 };

@@ -97,7 +97,113 @@
   }
 }
 
-.fx {
+.ultfx .fx {
+  width: 720px;
+  height: 300px;
+  border-top: 75px solid #222;
+  border-bottom: 75px solid #222;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: 50%;
+  z-index: 40;
+  box-shadow: 250px -375px 0 #222, -250px 375px 0 #222;
+  animation: ult-fx 2s 1;
+  pointer-events: none;
+}
+
+@keyframes ult-fx {
+  0% {transform: translateX(-1200px);}
+  40%, 60% {transform: translateX(0px);}
+  100% {transform: translateX(1200px);}
+}
+
+.ultfx .star {
+  width: 900px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  z-index: 41;
+  animation: ult-stars 0.8s linear infinite;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.ultfx .star.hide {
+  opacity: 0;
+}
+
+.ultfx .star:nth-child(1) {
+  top: 15px;
+}
+.ultfx .star:nth-child(2) {
+  top: 40px;
+  animation-delay: 0.3s;
+}
+.ultfx .star:nth-child(3) {
+  top: 70px;
+  animation-delay: 0.6s;
+}
+.ultfx .star:nth-child(4) {
+  top: 370px;
+}
+.ultfx .star:nth-child(5) {
+  top: 400px;
+  animation-delay: 0.3s;
+}
+.ultfx .star:nth-child(6) {
+  top: 427px;
+  animation-delay: 0.6s;
+}
+
+@keyframes ult-stars {
+  0% {transform: translateX(-920px);}
+  100% {transform: translateX(920px);}
+}
+
+.ultfx .ld-ult {
+  background-image: url("../img/skills/ld/ult.jpg");
+}
+.ultfx .pud-ult {
+  background-image: url("../img/skills/pud/ult.jpg");
+}
+.ultfx .cat-ult {
+  background-image: url("../img/skills/cat/ult.jpg");
+}
+.ultfx .wk-ult {
+  background-image: url("../img/skills/wk/ult.jpg");
+}
+.ultfx .lina-ult {
+  background-image: url("../img/skills/lina/ult.jpg");
+}
+.ultfx .cm-ult {
+  background-image: url("../img/skills/cm/ult.jpg");
+}
+.ultfx .kotl-ult {
+  background-image: url("../img/skills/kotl/ult.jpg");
+}
+.ultfx .am-ult {
+  background-image: url("../img/skills/am/ult.jpg");
+}
+.ultfx .nyx-ult {
+  background-image: url("../img/skills/nyx/ult.jpg");
+}
+.ultfx .com-ult {
+  background-image: url("../img/heroes/com.jpg");
+}
+.ultfx .wind-ult {
+  background-image: url("../img/heroes/wind.jpg");
+}
+.ultfx .venge-ult {
+  background-image: url("../img/heroes/venge.jpg");
+}
+.ultfx .en-ult {
+  background-image: url("../img/skills/en/ult.jpg");
+}
+
+.map .fx {
   image-rendering: pixelated;
   transform-style: preserve-3d;
   pointer-events: none;
@@ -541,7 +647,7 @@
 }
 
 .map .fx.cat-ult {
-  transform: rotateX(-6deg) translate3d(20px,-430px,10px) scale(4);
+  transform: translate3d(40px,-320px,70px) scale(4);
   width: 156px;
   height: 67px;
   animation: cat-ult-sprite 1.4s steps(18) 1;

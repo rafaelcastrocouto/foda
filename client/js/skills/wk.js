@@ -83,6 +83,7 @@ game.skills.wk = {
       var spot = wk.data('wk-ult-spot');
       var side = wk.side();
       game.audio.play('wk/ult');
+      game.fx.ult(skill);
       game.timeout(900, function (wk, spot) { //console.log(wk, spot)
         game.shake();
         wk.reborn(spot);

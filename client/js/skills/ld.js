@@ -148,6 +148,10 @@ game.skills.ld = {
         cry.appendTo(game[side].skills.hand);
         source.selfBuff(skill);
         source.data('range', game.data.ui.melee);
+        if (!game.fx.ldult) {
+          game.fx.ult(skill);
+          game.fx.ldult = true;
+        }
       } else {
         source.removeClass('transformed');
         skill.removeClass('on');

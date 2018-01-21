@@ -601,6 +601,9 @@ game.card = {
           temp: true,
           duration: duration + 1
         }, false /*no extra buffs*/, true /*force tower buff*/);
+        deaths = dead.data('deaths') + 1;
+        dead.data('deaths', deaths);
+        dead.find('.deaths').text(deaths);
       }
       $('.card', game[side].skills.hand).each(function (i, el) {
         var skill = $(el);
@@ -615,9 +618,6 @@ game.card = {
         }
         skill.removeClass('on channel-on');
       });
-      deaths = dead.data('deaths') + 1;
-      dead.data('deaths', deaths);
-      dead.find('.deaths').text(deaths);
       if (dead.hasClass('player')) {
         dead.appendTo(game.player.heroesDeck);
       } else if (dead.hasClass('enemy')) {

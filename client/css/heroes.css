@@ -335,7 +335,7 @@
 }
 
 .pud-ult .img, .buffs .buff.pud-ult .img, .map .pud-ult .img, .fromMap.pud-ult .img, .buffs .buff.pud-rot.ult-source .img {
-  background-image: url("../img/skills/pud/dismember.jpg");
+  background-image: url("../img/skills/pud/ult.jpg");
 }
 
 .slot .pud.heroes .portrait .img, .map .pud.heroes .portrait .img, .fromMap.pud.heroes .portrait .img {
@@ -352,7 +352,7 @@
 }
 
 .map .pud-ult.pud-rot .portrait .img, .fromMap.pud-ult.pud-rot .portrait .img {
-  background-image: url("../img/skills/pud/dismember-rot.jpg");
+  background-image: url("../img/skills/pud/ult-rot.jpg");
 }
 
 .wk, .wk .portrait {

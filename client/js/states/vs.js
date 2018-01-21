@@ -35,6 +35,7 @@ game.states.vs = {
       game.timeout(t - 300, function () {
         this.player.addClass('slide');
         this.enemy.addClass('slide');
+        game.fx.build();
       }.bind(this));
       game.timeout(t, this.toTable);
     }
@@ -123,7 +124,6 @@ game.states.vs = {
     if (game.mode == 'local') return game.enemy.picks;
   },
   toTable: function () {
-    game.fx.build();
     game.states.vs.clear();
     game.states.changeTo('table');
   },

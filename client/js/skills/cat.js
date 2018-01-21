@@ -60,7 +60,7 @@ game.skills.cat = {
         ally.addInvisibility();
         ally.on('invisibilityLoss', game.skills.cat.ult.end);
       });
-      game.timeout(400, game.fx.add.bind(this, 'cat-ult', source));
+      game.timeout(400, game.fx.add.bind(this, 'cat-ult', source.parent()));
     },
     end: function (event, eventdata) {
       eventdata.target.removeBuff('cat-ult');

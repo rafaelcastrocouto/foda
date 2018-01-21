@@ -14,6 +14,10 @@ game.states.table = {
     this.discard = $('<div>').hide().appendTo(this.buttonbox).addClass('discard button').attr({disabled: true}).text(game.data.ui.discard).on('mouseup touchend', this.discardClick);
     this.skip = $('<div>').hide().appendTo(this.buttonbox).addClass('skip button highlight').attr({disabled: true, title: 'SPACE'}).text(game.data.ui.skip).on('mouseup touchend', this.skipClick);
     this.el.append(game.camera).append(this.selectedArea).append(this.buttonbox).append(this.player).append(this.enemy);
+    this.ultfx = $('<div>').addClass('ultfx').appendTo(game.camera);
+    for (var s=0; s<6; s++) {
+      var star = $('<div>').appendTo(this.ultfx).addClass('ulfx star hide');
+    }
   },
   start: function (recover) {
     if (game.turn.el) {
@@ -85,6 +89,7 @@ game.states.table = {
     game.states.table.setup = false;
     game.map.clear();
     game.card.clearSelection();
+    game.fx.clear();
     $('.deck', game.states.table.el).remove();
     $('.card', game.states.table.el).remove();
     $('.card', game.hidden).remove();
