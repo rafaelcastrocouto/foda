@@ -108,7 +108,7 @@ game.states.vs = {
       return [ 'lina', 'am', 'en', 'com', 'cat' ];
     }
     if (game.mode == 'tutorial') {
-      return [ 'ld', 'cm', 'wk', 'pud', 'am' ];
+      return [ 'wk', 'cm', 'am', 'pud', 'ld' ];
     }
     if (game.mode == 'online') {
       picks = game.enemy.picks;

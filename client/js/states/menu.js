@@ -5,11 +5,15 @@ game.states.menu = {
     this.sky = $('<div>').appendTo(this.el).addClass('menu paralax sky');
     this.stars = $('<div>').appendTo(this.el);
     for (var s=0; s<10; s++) {
-      var star = $('<div>').appendTo(this.stars).addClass('menu paralax star');
+      $('<div>').appendTo(this.stars).addClass('menu paralax star');
     }
     this.sun = $('<div>').appendTo(this.el).addClass('menu paralax sun');
     this.cloud = $('<div>').appendTo(this.el).addClass('menu paralax cloud');
     this.mountains = $('<div>').appendTo(this.el).addClass('menu paralax mountains');
+    this.eyes = $('<div>').appendTo(this.mountains);
+    for (s=0; s<8; s++) {
+      $('<div>').appendTo(this.eyes).addClass('menu paralax eye');
+    }
     this.boom = $('<div>').appendTo(this.mountains).addClass('menu boom map').on('mouseup touchend', this.boomClick);
     this.amdoll = $('<div>').appendTo(this.el).addClass('menu paralax amdoll');
     this.cmdoll = $('<div>').appendTo(this.el).addClass('menu paralax cmdoll');

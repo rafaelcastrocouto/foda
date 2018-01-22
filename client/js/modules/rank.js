@@ -1,6 +1,6 @@
 game.rank = {
   build: function () {
-    game.rank.list = $('<ol>').appendTo(game.container).addClass('rank').hide();
+    game.rank.list = $('<ol>').appendTo(game.states.menu.el).addClass('rank').hide();
   },
   start: function () {
     var p = parseInt(localStorage.getItem('points'));

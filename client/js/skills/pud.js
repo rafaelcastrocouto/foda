@@ -41,6 +41,7 @@ game.skills.pud = {
         source.removeBuff('pud-rot');
         $('.pud-rot-target').removeClass('pud-rot-target');
         $('.map .card.'+source.opponent()).removeBuff('pud-rot');
+        game.fx.stop('pud-rot', source);
       } else { //turn on
         skill.addClass('on');
         source.on('turnend.rot', game.skills.pud.rot.turnend);

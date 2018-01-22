@@ -60,7 +60,7 @@ game.tutorial = {
   chooseStart: function () {
     game.states.choose.randombt.show();
     $('.pickbox .card').addClass('hidden');
-    $('.am, .cm, .pud, .lina, .nyx', '.pickbox').removeClass('hidden');
+    $('.am, .cm, .pud, .lina, .wind', '.pickbox').removeClass('hidden');
     game.states.choose.selectFirst();
     game.states.choose.counter.show().text(game.data.ui.clickpick);
   },
@@ -226,6 +226,7 @@ game.tutorial = {
     game.tutorial.axebaloon.fadeIn('slow');
     game.tutorial.letter(game.data.ui.axedone);
     game.enemy.buyCreeps(true);
+    $('.enemy .ld-rabid').first().appendTo(game.enemy.skills.hand).addClass('flipped');
     $('.enemy .am-blink').first().appendTo(game.enemy.skills.hand).addClass('flipped');
     $('.enemy .kotl-leak').first().appendTo(game.enemy.skills.hand).addClass('flipped');
     $('.enemy .kotl-mana').first().appendTo(game.enemy.skills.hand).addClass('flipped');
@@ -236,9 +237,11 @@ game.tutorial = {
     game.tutorial.letter(game.data.ui.axeenemymove);
     game.message.html(game.data.ui.enemymove);
     game.currentData.moves = [
-      'S:'+game.map.mirrorPosition('G3')+':melee',
-      'C:'+game.map.mirrorPosition('C1')+':'+game.map.mirrorPosition('D3')+':blink:am'
-      //'M:'+game.map.mirrorPosition('D1')+':'+game.map.mirrorPosition('C2'),
+      'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E3'),
+      'C:'+game.map.mirrorPosition('E3')+':'+game.map.mirrorPosition('E4')+':summon:ld',
+      'C:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition('G5')+':blink:am',
+      'M:'+game.map.mirrorPosition('G5')+':'+game.map.mirrorPosition('G6'),
+      'S:'+game.map.mirrorPosition('J3')+':melee'
       //'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),
       //'C:'+game.map.mirrorPosition('F1')+':'+game.map.mirrorPosition('F1')+':mana:kotl',
     ].join('|');
@@ -368,7 +371,7 @@ game.tutorial = {
   },
   casted: function () {
     --game.tutorial.moveCountValue;
-    game.timeout(3000, game.tutorial.end);
+    game.timeout(5000, game.tutorial.end);
   },
   surrender: function() {
     game.clear();

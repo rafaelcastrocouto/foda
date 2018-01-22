@@ -665,10 +665,10 @@
 }
 
 .map .fx.pud-rot {
-  transform: rotateX(-17deg) translate3d(40px,-130px,140px) scale(6);
+  transform: rotateX(-17deg) translate3d(20px,-200px,140px) scale(6.5);
   width: 92px;
   height: 83px;
-  animation: pud-rot-sprite 1.2s steps(14) 1;
+  animation: pud-rot-sprite 1.1s steps(14) infinite;
   background-image: url('../img/fx/pud/rot.png');
 }
 
