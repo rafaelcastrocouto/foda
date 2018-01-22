@@ -160,7 +160,7 @@
   background-color: white;
   position: absolute;
   z-index: 41;
-  animation: ult-stars 0.9s linear infinite;
+  animation: ult-stars 0.7s infinite;
   transition: opacity 0.2s;
   pointer-events: none;
   box-shadow: -500px 0 0 -3px white;
@@ -176,22 +176,22 @@
 }
 .ultfx .star:nth-child(2) {
   top: 40px;
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 .ultfx .star:nth-child(3) {
   top: 70px;
-  animation-delay: 0.6s;
+  animation-delay: 0.4s;
 }
 .ultfx .star:nth-child(4) {
   top: 370px;
 }
 .ultfx .star:nth-child(5) {
   top: 400px;
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 .ultfx .star:nth-child(6) {
   top: 427px;
-  animation-delay: 0.6s;
+  animation-delay: 0.4s;
 }
 
 @keyframes ult-stars {

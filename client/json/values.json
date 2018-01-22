@@ -204,7 +204,7 @@
         "cards": 1
       },
       "leap": {
-        "cast range": 5,
+        "cast range": 4,
         "cards": 1,
         "buffdata": {
           "duration": 3,
