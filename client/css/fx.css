@@ -100,16 +100,17 @@
 .ultfx .fx {
   width: 720px;
   height: 300px;
-  border-top: 75px solid #222;
-  border-bottom: 75px solid #222;
+  /* border-top: 75px solid #222; */
+  /* border-bottom: 75px solid #222; */
+  margin: 75px 0;
   position: absolute;
   left: 0;
   top: 0;
   background-size: cover;
   background-position: 50%;
   z-index: 40;
-  box-shadow: 250px -375px 0 #222, -250px 375px 0 #222;
-  animation: ult-fx 2s 1;
+  /* box-shadow: 250px -375px 0 #222, -250px 375px 0 #222; */
+  animation: ult-fx 2s infinite;
   pointer-events: none;
 }
 
@@ -119,6 +120,39 @@
   100% {transform: translateX(1200px);}
 }
 
+.ultfx .fx:after,
+.ultfx .fx:before {
+  content: "";
+  display: block;
+  width: 900px;
+  height: 160px;
+  background-image: url("../img/fx/ultfx.png");
+  position:  absolute;
+  left: -60px;
+  top: -90px;
+  background-size: contain;
+  animation: ult-stripes 2s infinite;
+}
+
+.ultfx .fx:before {
+  transform: scaleX(-1);
+  top: 260px;
+  left: -120px;
+  animation: ult-stripes2 2s infinite;
+  width: 1100px;
+  height: 190px;
+}
+
+@keyframes ult-stripes {
+  0% {transform: translateX(200px);}
+  100% {transform: translateX(-200px);}
+}
+
+@keyframes ult-stripes2 {
+  0% {transform: scaleX(-1) translateX(300px);}
+  100% {transform: scaleX(-1) translateX(-100px);}
+}
+
 .ultfx .star {
   width: 900px;
   height: 8px;
@@ -126,9 +160,11 @@
   background-color: white;
   position: absolute;
   z-index: 41;
-  animation: ult-stars 0.8s linear infinite;
+  animation: ult-stars 0.9s linear infinite;
   transition: opacity 0.2s;
   pointer-events: none;
+  box-shadow: -500px 0 0 -3px white;
+  /* left: 500px; */
 }
 
 .ultfx .star.hide {
@@ -159,8 +195,8 @@
 }
 
 @keyframes ult-stars {
-  0% {transform: translateX(-920px);}
-  100% {transform: translateX(920px);}
+  0% {transform: translateX(-2000px);}
+  100% {transform: translateX(2000px);}
 }
 
 .ultfx .ld-ult {

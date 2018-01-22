@@ -17,7 +17,7 @@ game.states.menu = {
     this.boom = $('<div>').appendTo(this.mountains).addClass('menu boom map').on('mouseup touchend', this.boomClick);
     this.amdoll = $('<div>').appendTo(this.el).addClass('menu paralax amdoll');
     this.cmdoll = $('<div>').appendTo(this.el).addClass('menu paralax cmdoll');
-    this.fire = $('<div>').appendTo(this.el).addClass('menu paralax fire hidden').on('mouseup touchend', function () {
+    this.fire = $('<div>').appendTo(this.el).addClass('menu paralax fire hidden').on('mouseup tap', function () {
       $(this).toggleClass('hidden');
     });
     this.ground = $('<div>').appendTo(this.el).addClass('menu paralax ground');

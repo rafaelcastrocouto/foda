@@ -192,8 +192,8 @@
     -webkit-filter: hue-rotate(0) brightness(1);
   }
   55%, 60%{
-    filter: hue-rotate(15deg) brightness(0.7);
-    -webkit-filter: hue-rotate(15deg) brightness(0.7);
+    filter: hue-rotate(15deg) brightness(0.85);
+    -webkit-filter: hue-rotate(15deg) brightness(0.85);
   }
 }
 
@@ -202,7 +202,7 @@
 }
 .menu.bush {
   background-image: url("../img/bkg/bush.png");
-  transform: scale(0.25) translate3d(-1070px,640px,140px);
+  transform: scale(0.25) translate3d(-1070px,720px,140px);
   animation: night 60s infinite;
 }
 
@@ -212,6 +212,7 @@
   background-image: url("../img/bkg/icons.png");
   position: absolute;
   z-index: 5;
+  transform: translateZ(10px);
 }
 .menu .icon.highlight span {
   opacity: 1;
@@ -384,12 +385,13 @@
   color: #473936;
   border: 1.5px solid #2b2734;
   transform-origin: 50% 1%;
-  transform: rotateZ(2deg) rotateX(-10deg)  translate3d(215px, 150px, 30px);
+  transform: rotateZ(2deg) translate3d(220px, 125px, 10px) scale(0.8);
   width: 90px;
   padding: 21px 10px 12px;
   border-radius: 5px 40px/50px 8px;
   counter-reset: item;
   list-style-type: none;
+  z-index: 5;
 }
 .rank:before {
   content: "";
@@ -407,8 +409,8 @@
   animation: ranktwist 3s infinite;
 }
 @keyframes ranktwist {
-  0%, 100% {transform: rotateZ(2deg) rotateX(-10deg) translate3d(215px, 150px, 30px);}
-  50% {transform: rotateZ(2deg) rotateX(-10deg) translate3d(215px, 150px, 30px) rotateZ(-4deg);}
+  0%, 100% {transform: rotateZ(2deg) translate3d(220px, 125px, 10px) scale(0.8);}
+  50% {transform: rotateZ(2deg) translate3d(220px, 125px, 10px) scale(0.8) rotateZ(-4deg);}
 }
 .rank li {
   margin: 0;
