@@ -160,7 +160,7 @@
 
 .tutorial.axe.left, .left-side .tutorial.axe {
   right: auto;
-  left: -140px;
+  left: -160px;
   transform: scaleX(-1);
 }
 

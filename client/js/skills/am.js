@@ -25,7 +25,7 @@ game.skills.am = {
   },
   blink: {
     cast: function (skill, source, target) {
-      source.place(target);
+      if (target.hasClass('free')) source.place(target);
     }
   },
   ult: {

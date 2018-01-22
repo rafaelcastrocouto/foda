@@ -236,11 +236,11 @@ game.tutorial = {
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.letter(game.data.ui.axeenemymove);
     game.message.html(game.data.ui.enemymove);
+    var target = $('#G6').firstFreeSpotInLine($('#G5'), 8).getPosition();
     game.currentData.moves = [
       'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E3'),
       'C:'+game.map.mirrorPosition('E3')+':'+game.map.mirrorPosition('E4')+':summon:ld',
-      'C:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition('G5')+':blink:am',
-      'M:'+game.map.mirrorPosition('G5')+':'+game.map.mirrorPosition('G6'),
+      'C:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition(target)+':blink:am',
       'S:'+game.map.mirrorPosition('J3')+':melee'
       //'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),
       //'C:'+game.map.mirrorPosition('F1')+':'+game.map.mirrorPosition('F1')+':mana:kotl',
