@@ -212,7 +212,7 @@
   background-image: url("../img/bkg/icons.png");
   position: absolute;
   z-index: 5;
-  transform: translateZ(10px);
+  transform: translateZ(4px);
 }
 .menu .icon.highlight span {
   opacity: 1;
@@ -223,8 +223,8 @@
   animation: twist 0.8s infinite;
 }
 @keyframes twist {
-  0%, 100% {transform: rotateZ(-2deg);}
-  50% {transform: rotateZ(2deg);}
+  0%, 100% {transform: translateZ(4px) rotateZ(-2deg);}
+  50% {transform: translateZ(4px) rotateZ(2deg);}
 }
 .menu .icon span {
   text-align: center;
@@ -328,9 +328,9 @@
 }
 .menu.cmdoll:hover, .menu.amdoll:hover {
   transform-origin: 50% 0%;
-  animation: twist 1.2s infinite;
+  animation: dolltwist 1.2s infinite;
 }
-@keyframes twist {
+@keyframes dolltwist {
   0%, 100% {transform: rotateZ(-4deg);}
   50% {transform: rotateZ(4deg);}
 }

@@ -116,16 +116,17 @@ game.fx = {
       $('.ultfx .star').removeClass('hide');
       var fx = $('<div>').addClass(skill.data('hero')+'-ult fx');
       game.states.table.ultfx.append(fx);
-      game.timeout(1400, function () {
+      game.timeout(1900, function () {
         $('.ultfx .star').addClass('hide');
       });
-      game.timeout(1800, function () {
+      game.timeout(2100, function () {
         game.states.table.ultfx.children('.fx').remove();
         if (cb) cb();
       });
     } else if (cb) cb();
   },
   clear: function() {
+    $('.map .fx').remove();
     game.fx.ldult = false;
   }
 };

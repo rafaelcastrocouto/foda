@@ -624,12 +624,13 @@ game.card = {
         dead.appendTo(game.enemy.heroesDeck);
       }
     } else if (dead.hasClass('towers')) {
+      game.fx.add('lina-stun', dead.parent());
       if (dead.hasClass('player')) {
         if (game[game.mode].lose)
-          game[game.mode].lose();
+          game.timeout(1400, game[game.mode].lose);
       } else if (dead.hasClass('enemy')) {
         if (game[game.mode].win)
-          game[game.mode].win();
+          game.timeout(1400, game[game.mode].win);
       }
     } else if (dead.hasClass('units')) {
       if (!dead.hasClass('ld-summon') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
