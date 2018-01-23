@@ -77,7 +77,9 @@ game.tutorial = {
       game.tutorial.letter(game.data.ui.axeautodeck);
     }
     if (availableSlots) {
-      game.states.choose.counter.text(availableSlots + ' ' + game.data.ui.togo);
+      if (game.language.current == 'ru')
+        game.states.choose.counter.text(game.data.ui.togo + ' ' + availableSlots);
+      else game.states.choose.counter.text(availableSlots + ' ' + game.data.ui.togo);
     } else {
       game.states.choose.back.attr('disabled', true);
       game.loader.addClass('loading');
