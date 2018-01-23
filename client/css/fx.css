@@ -117,7 +117,7 @@
 @keyframes ult-fx {
   0% {transform: translateX(-1200px);}
   /*35%, 65% {transform: translateX(0px);}*/
-  100% {transform: translateX(1300px);}
+  100% {transform: translateX(1200px);}
 }
 
 .ultfx .fx:after,

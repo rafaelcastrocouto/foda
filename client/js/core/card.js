@@ -647,15 +647,15 @@ game.card = {
     var hp = this.data('hp'), x, y;
     if (!spot) {
       if (this.hasClass('player')) {
-        x = 1;
-        y = 4;
+        x = 3;
+        y = 6;
         spot = game.map.toPosition(x, y);
         while (!$('#' + spot).hasClass('free') && x <= 5) {
           x += 1;
           spot = game.map.toPosition(x, y);
         }
       } else if (this.hasClass('enemy')) {
-        x = 6;
+        x = 9;
         y = 0;
         spot = game.map.toPosition(x, y);
         while (!$('#' + spot).hasClass('free') && x >= 2) {

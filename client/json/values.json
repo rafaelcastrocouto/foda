@@ -572,7 +572,7 @@
 
     "venge": {
       "stun": {
-        "cast range": 5,
+        "cast range": 4,
         "damage": 14,
         "stun": 2,
         "cards": 1
