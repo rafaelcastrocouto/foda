@@ -482,5 +482,27 @@
   background-image: url("../img/bkg/icons.png");
   background-position: -324px -100px;
   bottom: 180px;
-  right: 100px;
+  right: 80px;
+}
+
+
+.credits .supp1 {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background-image: url("../img/bkg/supp1.png");
+  background-size: cover;
+  top: 350px;
+  left: 140px;
+}
+
+.credits .supp2 {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background-image: url("../img/bkg/supp2.png");
+  background-size: cover;
+  top: 360px;
+  left: 300px;
+  border-radius: 50%;
 }

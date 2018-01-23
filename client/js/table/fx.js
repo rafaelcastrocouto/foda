@@ -27,6 +27,8 @@ game.fx = {
     }
   },
   build: function() {
+    var img = $('<img>').appendTo(game.hidden);
+    img.attr({ src: '/img/fx/ultfx.png' });
     var loaded = [];
     $.each(game.player.picks, function(i, hero) {
       $.each(game.fx.heroes[hero], function(skillname, fxarray) {
