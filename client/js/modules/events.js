@@ -51,7 +51,7 @@ game.events = {
       game.offset = game.container.offset();
       game.events.dragTarget = card;
       game.events.draggingPosition = position;
-      game.events.dragClone = card.clone().hide().removeClass('dragTarget').addClass('dragTargetClone ' + game.currentState + cl).appendTo(game.container);
+      game.events.dragClone = card.clone().removeClass('dragTarget').addClass('hidden dragTargetClone ' + game.currentState + cl).appendTo(game.container);
       game.events.dragScale = card.getScale();
       game.events.dragOffset = {
         'left': (position.left - cardOffset.left) / game.events.dragScale,
@@ -77,7 +77,7 @@ game.events = {
       game.events.dragClone.css({
         'left': ((position.left - game.offset.left) - (game.events.dragOffset.left * scale)) / scale2 + 'px',
         'top': ((position.top - game.offset.top) - (game.events.dragOffset.top * scale)) / scale2 + 'px'
-      }).show();
+      }).removeClass('hidden');
       var target = $(document.elementFromPoint(position.left, position.top));
       $('.drop').removeClass('drop');
       if (target.hasClasses('slot targetarea casttarget movearea attacktarget')) {

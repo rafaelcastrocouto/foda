@@ -123,11 +123,7 @@ game.skill = {
       var fx = x * 1 - 150; var fy = y * 1 - 220;
       skill.css({transform: 'translate('+fx+'px, '+fy+'px) scale(0.3)'});
       game.timeout(400, function (cb) {
-        $(this).css({
-          top: '',
-          left: '',
-          transform: ''
-        });
+        $(this).css({transform: ''});
         if (cb) cb();
       }.bind(skill, cb));
     }
@@ -214,7 +210,7 @@ game.skill = {
     return this;
   },
   summon: function (skill) {
-    var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped').on('mousedown touchstart', game.card.select);
+    var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped dragTarget').on('mousedown touchstart', game.card.select).css({transform: ''});
     if (game.mode == 'library') unit.on('action', game.library.action);
     unit.find('legend').text(skill.data('summon name'));
     unit.find('.description').remove();
