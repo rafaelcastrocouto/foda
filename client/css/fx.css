@@ -701,7 +701,7 @@
 }
 
 .map .fx.pud-rot {
-  transform: rotateX(-17deg) translate3d(20px,-200px,140px) scale(6.5);
+  transform: rotateX(-17deg) translate3d(34px,-190px,30px) scale(6.5);
   width: 92px;
   height: 83px;
   animation: pud-rot-sprite 1.1s steps(14) infinite;

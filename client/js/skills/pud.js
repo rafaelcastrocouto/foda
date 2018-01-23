@@ -39,7 +39,8 @@ game.skills.pud = {
         source.data('pud-rot', null);
         source.removeClass('pud-rot');
         source.removeBuff('pud-rot');
-        $('.pud-rot-target').removeClass('pud-rot-target');
+        var side = source.side();
+        $('.pud-rot-target-'+side).removeClass('pud-rot-target-'+side);
         $('.map .card.'+source.opponent()).removeBuff('pud-rot');
         game.fx.stop('pud-rot', source);
       } else { //turn on
@@ -57,24 +58,27 @@ game.skills.pud = {
     },
     curse: function (target) {
       var source = this.source,
-          skill = this.skill;
-      target.addClass('pud-rot-target');
+          skill = this.skill,
+          side = source.side();
+      target.addClass('pud-rot-target-'+side);
       source.addBuff(target, skill, 'rot-targets');
     },
     turnend: function (event, eventdata) {
       var source = eventdata.target;
+      var side = source.side();
       var skill = source.data('pud-rot');
       var range = skill.data('aoe range');
       var damage = skill.data('damage');
       source.damage(damage, source, skill.data('damage type'));
       var curse = game.skills.pud.rot.curse.bind({source: source, skill: skill});
       source.opponentsInRange(range, curse);
-      $('.pud-rot-target').each(function (i, card) {
+      $('.pud-rot-target-'+side).each(function (i, card) {
         target = $(card);
         source.damage(damage, target, skill.data('damage type'));
-        target.removeClass('pud-rot-target');
+        target.removeClass('pud-rot-target-'+side);
       });
       game.fx.add('pud-rot', source);
+
     }
   },
   passive: {
