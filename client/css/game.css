@@ -155,6 +155,7 @@ noscript .box {
   display: block;
   font-weight: normal;
   margin-bottom: 4px;
+  line-height: 40px;
 }
 
 .game-overlay .box a {
@@ -339,14 +340,11 @@ input:focus {
   display: none;
 }
 
-.credits.box {
-  width: 480px;
-}
-
 .game-overlay .box {
   z-index: 30;
   padding: 40px 80px;
   transform: translate3d(-50%, -48%, 200px);
+  overflow: hidden;
 }
 
 .game-overlay h1 {

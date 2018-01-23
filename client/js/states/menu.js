@@ -46,13 +46,15 @@ game.states.menu = {
       game.states.changeTo('choose');
     });
     this.credits = $('<a>').addClass('credits icon').appendTo(this.el).attr({title: game.data.ui.choosecredits}).append($('<span>').text(game.data.ui.credits)).on('mouseup touchend', function () {
-      var box = $('<div>').addClass('credits box');
-      game.overlay.show().append(box);
+      var creditsbox = $('<div>').addClass('credits box');
+      var hidebox = $('<div>').addClass('credithide').appendTo(creditsbox);
+      var box = $('<div>').addClass('creditscroll').appendTo(hidebox);
       box.append($('<div>').addClass('doll1'));
       box.append($('<div>').addClass('doll2'));
       box.append($('<div>').addClass('doll3'));
       box.append($('<div>').addClass('supp1'));
       box.append($('<div>').addClass('supp2'));
+      box.append($('<div>').addClass('supp3'));
       box.append($('<h1>').text(game.data.ui.credits));
       box.append($('<p>').html([
         'Author/Dev: <a target="_blank" href="https://github.com/rafaelcastrocouto/foda">Rafael</a>',
@@ -61,15 +63,17 @@ game.states.menu = {
         'Audio: <a target="_blank" href="https://www.youtube.com/user/kmmusic">Kevin MacLeod</a>',
         'Introduction Videos: <a target="_blank" href="https://www.youtube.com/user/SkylentGames">Skylent</a>',
         'Language (TU): <a target="_blank" href="https://github.com/ahmetozalp">Ahmet</a>',
+        'Language (RU): <a target="_blank" href="https://www.patreon.com/djcomps">DJComps</a>',
         'Hero (Venge): <a target="_blank" href="https://github.com/xinton">Washington</a>',
         'Help us: <a target="_blank" href="https://www.patreon.com/racascou">Become a Patreon</a>',
         'Thanks a lot to our supporters:',
         'Hatcrafter<br>Milokot'].join('<br>')));
-      box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
+      creditsbox.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
         game.overlay.hide();
         game.overlay.empty();
         return false;
       }));
+      game.overlay.show().append(creditsbox);
     });
   },
   start: function () {

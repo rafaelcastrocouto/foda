@@ -385,7 +385,7 @@
   color: #473936;
   border: 1.5px solid #2b2734;
   transform-origin: 50% 1%;
-  transform: rotateZ(2deg) translate3d(220px, 125px, 10px) scale(0.8);
+  transform: rotateX(2deg) rotateZ(2deg) translate3d(220px, 125px, 4px) scale(0.8);
   width: 90px;
   padding: 21px 10px 12px;
   border-radius: 5px 40px/50px 8px;
@@ -409,8 +409,8 @@
   animation: ranktwist 3s infinite;
 }
 @keyframes ranktwist {
-  0%, 100% {transform: rotateZ(2deg) translate3d(220px, 125px, 10px) scale(0.8);}
-  50% {transform: rotateZ(2deg) translate3d(220px, 125px, 10px) scale(0.8) rotateZ(-4deg);}
+  0%, 100% {transform: rotateX(2deg) rotateZ(2deg) translate3d(220px, 125px, 4px) scale(0.8);}
+  50% {transform: rotateX(2deg) rotateZ(2deg) translate3d(220px, 125px, 4px) scale(0.8) rotateZ(-4deg);}
 }
 .rank li {
   margin: 0;
@@ -455,6 +455,30 @@
   font-size: 13px;
 }
 
+
+.game-overlay .credits.box {
+  width: 480px;
+  padding: 0;
+}
+.credithide {
+  overflow: hidden;
+}
+.creditscroll {
+  height: 280px;
+  animation: credits 14s linear infinite;
+  position: relative;
+  padding: 40px 80px;
+}
+
+@keyframes credits {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -450px;
+  }
+}
+
 .credits .doll1 {
   position: absolute;
   width: 30px;
@@ -462,7 +486,7 @@
   background-image: url("../img/bkg/icons.png");
   background-position: -246px -94px;
   top: 120px;
-  left: 80px;
+  left: 100px;
 }
 
 .credits .doll2 {
@@ -481,8 +505,8 @@
   height: 46px;
   background-image: url("../img/bkg/icons.png");
   background-position: -324px -100px;
-  bottom: 180px;
-  right: 80px;
+  top: 170px;
+  right: 100px;
 }
 
 
@@ -492,8 +516,8 @@
   height: 42px;
   background-image: url("../img/bkg/supp1.png");
   background-size: cover;
-  top: 350px;
-  left: 140px;
+  top: 490px;
+  left: 150px;
 }
 
 .credits .supp2 {
@@ -502,7 +526,18 @@
   height: 42px;
   background-image: url("../img/bkg/supp2.png");
   background-size: cover;
-  top: 360px;
-  left: 300px;
+  top: 526px;
+  left: 290px;
+  border-radius: 50%;
+}
+
+.credits .supp3 {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background-image: url("../img/bkg/supp3.png");
+  background-size: cover;
+  top: 326px;
+  left: 360px;
   border-radius: 50%;
 }
