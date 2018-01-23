@@ -236,6 +236,9 @@
   line-height: 40px;
   transition: all 0.2s;
   animation: iconblink 4s infinite;
+  width: 240px;
+  position: relative;
+  left: -66px;
 }
 .menu .icon:hover span {
   opacity: 1;
