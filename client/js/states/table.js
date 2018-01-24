@@ -90,6 +90,7 @@ game.states.table = {
     game.map.clear();
     game.card.clearSelection();
     game.fx.clear();
+    game.audio.stopSong();
     $('.deck', game.states.table.el).remove();
     $('.card', game.states.table.el).remove();
     $('.card', game.hidden).remove();
