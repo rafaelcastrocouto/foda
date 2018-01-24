@@ -18,7 +18,7 @@ body, p, noscript, .card h1 {
 }
 
 .option-state span, .topbar *, .choose .counter, .vs.state .vsplayerinfo, .vs.state .vsenemyinfo {
-  font-family: "Julius Sans One", sans-serif;
+  font-family: "Julius Sans One", "Droid Sans", "Lucida Sans Unicode", "Lucida Grande", 'Segoe UI', Tahoma, Verdana, Arial, Helvetica, sans-serif;
 }
 
 @font-face {
@@ -29,7 +29,7 @@ body, p, noscript, .card h1 {
 }
 
 .card .buffs .buff span, .baloon .battle, .versus, .log b, .rank li {
-  font-family: "Sansita One", serif;
+  font-family: "Sansita One", Impact, sans-serif;;
 }
 
 @font-face {
