@@ -79,17 +79,18 @@ game.card = {
     else if (data.buff && data.buff['damage type'])
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['damage type']);
     if (data['cast range']) {
-      if (typeof (data['cast range']) == 'string')
-        $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + data['cast range']);
-      else if (data['cast range'] > 1) 
-        $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + game.map.getRangeStr(data['cast range']));
+      if (game.language.current == 'ru') $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + data['cast range']);
+      else if (data['cast range'] == 999) $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + game.map.getRangeStr(data['cast range']));
+      else $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + game.map.getRangeStr(data['cast range']) +' ('+ data['cast range'] + ')');
     }
     if (data.aoe) {
       if (typeof(data['aoe width']) == 'number') $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + data['aoe range']+'/' + ((data['aoe width']*2)+1) + ')');
       else $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + game.map.getRangeStr(data['aoe range']) +')');
     }
     if (data.range)
-      $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range);
+      if (game.language.current == 'ru') $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range);
+      else if (data.range == 999) $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + game.map.getRangeStr(data.range));
+      else $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range +  ' (' + game.map.getRangeStr(data.range)+')');
     if (data.armor) {
       $('<p>').appendTo(desc).text(game.data.ui.armor + ': ' + data.armor).addClass('armor');
       data['current armor'] = data.armor;

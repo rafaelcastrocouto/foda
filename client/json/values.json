@@ -367,7 +367,7 @@
         }
       },
       "recall": {
-        "cast range": "global",
+        "cast range": 999,
         "delay": 1,
         "cards": 1,
         "buffdata": {

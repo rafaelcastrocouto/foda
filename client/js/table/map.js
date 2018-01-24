@@ -611,10 +611,10 @@ game.map = {
     if (range === game.data.ui.short) {
       r = 3;
     }
-    if (range === game.data.ui.ranged) {
+    if (range === game.data.ui.long) {
       r = 4;
     }
-    if (range === game.data.ui.long) {
+    if (range === game.data.ui.ranged) {
       r = 5;
     }
     if (range === game.data.ui.far) {
@@ -643,10 +643,10 @@ game.map = {
       range = game.data.ui.short;
     }
     if (r === 4) {
-      range = game.data.ui.ranged;
+      range = game.data.ui.long;
     }
     if (r === 5) {
-      range = game.data.ui.long;
+      range = game.data.ui.ranged;
     }
     if (r === 6) {
       range = game.data.ui.far;
