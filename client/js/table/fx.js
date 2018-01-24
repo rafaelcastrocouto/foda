@@ -128,6 +128,8 @@ game.fx = {
     } else if (cb) cb();
   },
   clear: function() {
+    $('.ultfx .star').addClass('hide');
+    game.states.table.ultfx.children('.fx').remove();
     $('.map .fx').remove();
     game.fx.ldult = false;
   }
