@@ -84,7 +84,7 @@ game.states.vs = {
       }
     });
     game.skill.calcMana('enemy');
-    this.enemyinfo.text('Cards per turn: '+game.enemy.cardsPerTurn/*+' Max: '+game.enemy.maxCards*/);
+    this.enemyinfo.text(game.data.ui.cardsperturn+': '+game.enemy.cardsPerTurn/*+' Max: '+game.enemy.maxCards*/);
   },
   playerPicks: function () {
     if (game.mode == 'library') {
