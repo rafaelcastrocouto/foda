@@ -57,10 +57,10 @@ game.states.vs = {
       }
     });
     game.skill.calcMana('player');
-    if (game.mode != 'library') this.playerinfo.text('Cards per turn: '+game.player.cardsPerTurn/*+' Max: '+game.player.maxCards*/);
+    if (game.mode != 'library') this.playerinfo.text(game.data.ui.cardsperturn+': '+game.player.cardsPerTurn/*+' Max: '+game.player.maxCards*/);
     else {
       game.player.cardsPerTurn = 10;
-      this.playerinfo.text('Mana: '+$('.vsplayerdeck .card').data('mana')/*+' Max: '+game.player.maxCards*/);
+      this.playerinfo.text(game.data.ui.mana + ': '+$('.vsplayerdeck .card').data('mana')/*+' Max: '+game.player.maxCards*/);
     }
   },
   buildEnemy: function () {
