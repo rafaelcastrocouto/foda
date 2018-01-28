@@ -55,6 +55,26 @@
   background: rgba(255,255,100,0.15);
 }
 
+.map .spot.jungle:after {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 130px;
+  border: 6px solid white;
+  border-radius: 50%;
+  background-image: url("../img/trees/forest.png");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 85%;
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  opacity: 0.3;
+}
+.map .spot.jungle:hover:after {
+  opacity: 0.8;
+}
+
 .map .spot.jungle:hover {
   background: rgba(255,255,100,0.25);
 }

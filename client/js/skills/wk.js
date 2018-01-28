@@ -71,7 +71,7 @@ game.skills.wk = {
       var wk = eventdata.target;
       var spot = eventdata.spot;
       var side = wk.side();
-      spot.addClass('cript block');
+      spot.addClass('cript block').removeClass('free');
       wk.on(side + 'turnstart.wk-ult', game.skills.wk.ult.turnstart);
       wk.data('wk-ult-spot', spot);
     },
@@ -87,7 +87,7 @@ game.skills.wk = {
       game.timeout(900, function (wk, spot) { //console.log(wk, spot)
         game.shake();
         wk.reborn(spot);
-        spot.removeClass('cript block');
+        spot.removeClass('cript block').addClass('free');
       }.bind(this, wk, spot));
       wk.opponentsInRange(range, function (target) {
         wk.addBuff(target, skill, 'ult-targets');
