@@ -70,9 +70,22 @@
   top: 86px;
   left: 30px;
   opacity: 0.3;
+  background-color: transparent;
 }
 .map .spot.jungle:hover:after {
   opacity: 0.8;
+}
+
+
+.map .spot.jungle.targetarea:after {
+  animation: none;
+  border: 10px solid dodgerblue;
+  opacity: 1;
+}
+
+.map .spot.jungle.targetarea:hover:after {
+  animation: none;
+  border: 6px solid doggerblue;
 }
 
 .map .spot.jungle:hover {

@@ -72,7 +72,7 @@ game.local = {
     });
   },
   countEnd: function (turn) {
-    if (turn == 'player-turn') { 
+    if (turn == 'player') { 
        game.local.endPlayer();
     } else {
       game.local.endEnemy();
@@ -80,7 +80,7 @@ game.local = {
   },
   beginPlayer: function () {
     game.turn.beginPlayer(function () {
-      game.local.startTurn('player-turn');
+      game.local.startTurn('player');
       if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
       }
@@ -97,12 +97,12 @@ game.local = {
   },
   endPlayer: function () {
     if (game.selectedCard) game.selectedCard.unselect();
-    game.turn.end('player-turn', game.local.beginEnemy);
+    game.turn.end('player', game.local.beginEnemy);
   },
 
   beginEnemy: function () { 
     game.turn.beginEnemy(function () {
-      game.local.startTurn('enemy-turn');
+      game.local.startTurn('enemy');
       if (game.selectedCard) game.selectedCard.reselect();
       if (game.enemy.turn === game.ultTurn) {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
@@ -113,7 +113,7 @@ game.local = {
   },
   endEnemy: function () {
     if (game.selectedCard) game.selectedCard.unselect();
-    game.turn.end('enemy-turn', game.local.beginPlayer);
+    game.turn.end('enemy', game.local.beginPlayer);
   },
   win: function () {
     game.turn.stopCount();

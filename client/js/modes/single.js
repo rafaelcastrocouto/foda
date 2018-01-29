@@ -46,20 +46,20 @@ game.single = {
     }
   },
   startTurn: function (turn) {
-    if (turn == 'player-turn') game.turn.counter = game.timeToPlay;
+    if (turn == 'player') game.turn.counter = game.timeToPlay;
     else game.turn.counter = game.ai.timeToPlay;
     game.timeout(1000, function () { 
       game.turn.count(turn, game.single.countEnd); 
     });
   },
   countEnd: function (turn) {
-    if (turn == 'player-turn') { 
+    if (turn == 'player') { 
        game.single.endPlayerTurn();
     }
   },
   beginPlayer: function () {
     game.turn.beginPlayer(function () {
-      game.single.startTurn('player-turn');
+      game.single.startTurn('player');
       if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
       }
@@ -71,11 +71,11 @@ game.single = {
     game.single.endPlayerTurn();
   },
   endPlayerTurn: function () {
-    game.turn.end('player-turn', game.single.beginEnemy);
+    game.turn.end('player', game.single.beginEnemy);
   },
   beginEnemy: function () {
     game.turn.beginEnemy(function () {
-      game.single.startTurn('enemy-turn');
+      game.single.startTurn('enemy');
       if (game.enemy.turn === game.ultTurn) {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
       }
@@ -86,7 +86,7 @@ game.single = {
   },
   endEnemyTurn: function () {
     game.turn.stopCount();
-    game.turn.end('enemy-turn', game.single.beginPlayer);
+    game.turn.end('enemy', game.single.beginPlayer);
   },
   win: function () {
     game.turn.stopCount();

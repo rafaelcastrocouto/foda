@@ -223,7 +223,7 @@ game.online = {
   startTurn: function (turn) {
     game.turn.counter = game.timeToPlay;
     var t = 1000;
-    if (turn == 'enemy-turn') {
+    if (turn == 'enemy') {
       t = 3000;
       game.loader.addClass('loading');
     }
@@ -232,10 +232,10 @@ game.online = {
     });
   },
   countEnd: function (turn) {
-    if (turn == 'player-turn') { 
+    if (turn == 'player') { 
       game.online.endPlayerTurn();
     }
-    if (turn == 'enemy-turn') {
+    if (turn == 'enemy') {
       game.tries = 0;
       game.loader.addClass('loading');
       game.message.text(game.data.ui.loadingturn);
@@ -245,7 +245,7 @@ game.online = {
 
   beginPlayer: function () {
     game.turn.beginPlayer(function () {
-      game.online.startTurn('player-turn');
+      game.online.startTurn('player');
       if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
       } 
@@ -268,7 +268,7 @@ game.online = {
     game.online.endPlayerTurn();
   },
   endPlayerTurn: function () {
-    game.turn.end('player-turn', game.online.sendTurnData);
+    game.turn.end('player', game.online.sendTurnData);
   },
   sendTurnData: function () {
     var challengeTurn = game.player.type + 'Turn';
@@ -289,7 +289,7 @@ game.online = {
 
   beginEnemy: function () {
     game.turn.beginEnemy(function () {
-      game.online.startTurn('enemy-turn');
+      game.online.startTurn('enemy');
       if (game.enemy.turn === game.ultTurn) {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
       }
@@ -297,7 +297,7 @@ game.online = {
     });
   },
   preGetTurnData: function (turn) {
-    if (turn == 'enemy-turn') {
+    if (turn == 'enemy') {
       game.db({ 'get': game.id }, function (data) {
         var challengeTurn = game.enemy.type + 'Turn';
         if (data[challengeTurn] === game.enemy.turn) 
@@ -334,7 +334,7 @@ game.online = {
     }
   },
   endEnemyTurn: function () {
-    game.turn.end('enemy-turn', game.online.beginPlayer);
+    game.turn.end('enemy', game.online.beginPlayer);
   },
   win: function () {
     game.turn.stopCount();

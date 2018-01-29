@@ -22,7 +22,7 @@ game.turn = {
       game.currentTurnSide = 'player';
       game.message.text(game.data.ui.yourturn);
       game.turn.el.text(game.data.ui.yourturn).addClass('show');
-      game.turn.start('player-turn', cb);
+      game.turn.start('player', cb);
     }
   },
   beginEnemy: function (cb) {
@@ -30,7 +30,7 @@ game.turn = {
       game.enemy.turn += 1;
       game.currentTurnSide = 'enemy';
       game.message.text(game.data.ui.enemyturn);
-      game.turn.start('enemy-turn', cb);
+      game.turn.start('enemy', cb);
     }
   },
   start: function (turn, cb) {
@@ -45,25 +45,22 @@ game.turn = {
     $('.table .card').each(function () {
       var card = $(this);
       card.trigger('turnstart', { target: card });
-      if (turn == 'player-turn') card.trigger('playerturnstart', { target: card });
-      if (turn == 'enemy-turn') card.trigger('enemyturnstart', { target: card });
+      card.trigger(turn+'turnstart', { target: card });
     });
     game.timeout(400, game.turn.tickTime);
     game.timeout(800, function () {
       game.turn.el.removeClass('show');
-      if (turn == 'player-turn' || game.mode == 'local') {
+      if (turn == 'player' || game.mode == 'local') {
         game.timeout(400, function () {
           if (game.mode == 'local') {
-            if (turn == 'player-turn') game.states.table.el.addClass('turn');
+            if (turn == 'player') game.states.table.el.addClass('turn');
             else game.states.table.el.addClass('unturn');
           } else //other game modes
             game.states.table.el.addClass('turn');
           game.loader.removeClass('loading');
           $('.map .card.done').removeClass('done');
-          $('.map .card.player:not(.towers, .ghost)').each(function () {
-            var unit = $(this);
-            if (unit.canAttack()) unit.addClass('can-attack');
-          });
+          game.turn.enableAttack(turn);
+          if (game.mode == 'library') game.turn.enableAttack('enemy');
           game.states.table.skip.attr('disabled', false);
           game.highlight.map();
         });
@@ -78,8 +75,8 @@ game.turn = {
   count: function (turn, endCallback, countCallback) {
     if (game.turn.counter >= 0) {
       var turncount;
-      if (turn === 'player-turn') turncount = game.data.ui.yourturncount;
-      if (turn === 'enemy-turn') turncount = game.data.ui.enemyturncount;
+      if (turn === 'player') turncount = game.data.ui.yourturncount;
+      if (turn === 'enemy') turncount = game.data.ui.enemyturncount;
       game.message.text(turncount + ' ' + game.turn.counter + ' ' + game.data.ui.seconds);
       if (game.turn.counter > 0) {
         if (countCallback) countCallback(turn);
@@ -106,18 +103,19 @@ game.turn = {
       game.moves.push(game.currentMoves.join('|'));
       $('.map .card').each(function (i, el) {
         var card = $(el);
+        card.removeClass('can-attack');
         game.turn.channel(card);
         game.buff.turn(card);
         card.trigger('turnend', { target: card });
       });
-      if (turn == 'player-turn' && game.mode !== 'local') {
+      if (turn == 'player' && game.mode !== 'local') {
         game.states.table.el.removeClass('turn');
         game.states.table.skip.attr('disabled', true);
       }
       if (game.mode == 'local') {
         game.states.table.el.removeClass('turn unturn');
       }
-      if (turn == 'enemy-turn' && game.mode !== 'library') { 
+      if (turn == 'enemy' && game.mode !== 'library') { 
         game.states.table.el.removeClass('unturn');
         game.turn.el.text(game.data.ui.enemyturn).addClass('show');
         game.timeout(800, function () { game.turn.el.removeClass('show'); });
@@ -135,6 +133,12 @@ game.turn = {
         if (duration === 0) hero.stopChanneling();
       }
     }
+  },
+  enableAttack: function(turn) {
+    $('.map .card.'+turn+':not(.towers, .ghost)').each(function () {
+      var unit = $(this);
+      if (unit.canAttack()) unit.addClass('can-attack');
+    });
   },
   noAvailableMoves: function () {
     var mapdone = ($('.map .player.card:not(.towers, .ghost)').length == $('.map .player.card.done:not(.towers, .ghost)').length);

@@ -73,7 +73,9 @@
 .vs .card {
   margin-right: -164px;
 }
-
+.vs .card .speed {
+  display: none;
+}
 .vs .card:hover {
   z-index: 1;
 }

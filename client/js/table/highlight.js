@@ -15,18 +15,16 @@ game.highlight = {
   map: function(event) {
     game.highlight.clearMap();
     if (game.selectedCard) {
-      if (game.selectedCard.hasClasses('heroes units')) {
-        if (game.canPlay() && !game.selectedCard.hasClass('nohighlight')) {
-          if (game.mode == 'tutorial') {
-            if (game.tutorial.lesson == 'Move') {
-              game.selectedCard.highlightMove();
-            } else if (game.tutorial.lesson == 'Attack') {
-              game.selectedCard.highlightAttack();
-            }
-          } else {
+      if (game.selectedCard.hasClasses('heroes units') && !game.selectedCard.hasClass('nohighlight')) {
+        if (game.mode == 'tutorial') {
+          if (game.tutorial.lesson == 'Move') {
             game.selectedCard.highlightMove();
+          } else if (game.tutorial.lesson == 'Attack') {
             game.selectedCard.highlightAttack();
           }
+        } else {
+          game.selectedCard.highlightMove();
+          game.selectedCard.highlightAttack();
         }
       }
       if (game.selectedCard.hasClass('skills')) {
@@ -220,7 +218,7 @@ game.highlight = {
   },
   move: function() {
     var card = this, speed;
-    if (game.highlight.isTurn(card) && card.hasClasses('units heroes') && card.canMove()) {
+    if (game.canPlay() && game.highlight.isTurn(card) && card.hasClasses('units heroes') && card.canMove()) {
       if (card.hasClass('selected'))
         card.addClass('draggable');
       speed = card.data('current speed');
@@ -235,8 +233,11 @@ game.highlight = {
     return card;
   },
   attack: function() {
-    var source = this, pos, range;
-    if ( source.hasClasses('can-attack enemy') && game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack()) {
+    var source = this, pos, range, highlightUnit = source.hasClasses('can-attack');
+    if ((game.mode == 'local' && game.currentTurnSide != source.side()) || source.side() == 'enemy') {
+        source.strokeAttack();
+    }
+    if ( highlightUnit && game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack()) {
       if (source.hasClass('selected'))
         source.addClass('draggable');
       source.strokeAttack();

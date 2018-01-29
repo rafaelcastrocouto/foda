@@ -269,20 +269,21 @@
   height: 220px;
   border: 10px solid springgreen;
   border-radius: 50%;
-  transform: rotateX(20deg) translate3d(-22px, 20px, -50px);
+  transform: rotateX(20deg) translate3d(-22px, 20px, -40px);
   animation: selectedani 0.7s infinite;
   pointer-events: none;
+  background-image: none;
 }
 @keyframes selectedani {
-  0%, 100% {transform: rotateX(20deg) translate3d(-22px, 20px, -50px);}
-  50% {transform: rotateX(20deg) translate3d(-22px, 20px, -55px);}
+  0%, 100% {transform: rotateX(20deg) translate3d(-22px, 20px, -30px);}
+  50% {transform: rotateX(20deg) translate3d(-22px, 20px, -15px);}
 }
 
 .states .map .card.enemy.heroes.selected, .states .map .card.enemy.towers.selected {
   /*box-shadow: 0 0 0 10px orangered;*/
   z-index: 2;
 }
-.states .map .card.enemy.heroes.selected:after, .states .map .card.enemy.towers.selected:after {
+.states .map .card.enemy.heroes.selected:after, .states .map .card.enemy.towers.selected:after, .states .map .card.enemy.units.selected:after {
   border: 10px solid orangered;
 }
 
@@ -799,7 +800,7 @@
 .map .card .buffs,
 .fromMap.card .buffs {
   position: relative;
-  top: -28px;
+  top: -40px;
   left: 0px;
 }
 

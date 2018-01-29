@@ -202,7 +202,6 @@ game.ai = {
       cardData['can-move'] = true;
     }
     card.around(range, function (spot) {
-      // if can attack next turn
       if (side != game.ai.side) {
         var spotData = spot.data('ai');
         spotData.priority -= (card.data('current damage'));
@@ -212,24 +211,24 @@ game.ai = {
       var opponentCard = $('.card.'+opponent+':not(.invisible, .dead, .ghost)', spot);
       if (opponentCard.length) {
         //there is one opponent in range 
-        if (card.canAttack()) {
+        if (card.canAttack() && card.hasClass('can-attack')) {
           cardData['can-attack'] = true;
+          cardData.strats.attack += 10;
+          // attack target
+          cardData['attack-targets'].push({
+            priority: 50 - (opponentCard.data('current armor')*2) - (opponentCard.data('current hp')/2) + (opponentCard.data('ai priority bonus') || 0),
+            target: opponentCard
+          });
+          // attack towers
+          if ( opponentCard.hasClass('towers')) {
+            cardData.strats.attack += 30;
+            cardData['can-attack-tower'] = true;
+          }
         }
-        // attack target
-        cardData.strats.attack += 10;
-        cardData['attack-targets'].push({
-          priority: 50 - (opponentCard.data('current armor')*2) - (opponentCard.data('current hp')/2) + (opponentCard.data('ai priority bonus') || 0),
-          target: opponentCard
-        });
         // retreat if in enemy range
         var opponentData = opponentCard.data('ai');
         opponentData['can-be-attacked'] = true;
         opponentData.strats.retreat += 15;
-        // attack towers
-        if ( opponentCard.hasClass('towers') ) {
-          cardData.strats.attack += 30;
-          cardData['can-attack-tower'] = true;
-        }
         //check death
         var hp = opponentCard.data('current hp');
         var damage = card.data('current damage');
