@@ -91,7 +91,7 @@ game.skills.kotl = {
     cast: function (skill, source) {
       var side = source.side();
       var bonus = skill.data('bonus cards');
-      game[side].buyCards(bonus);
+      game.skill.buyCards(bonus, side);
     }
   },
   ult: {

@@ -68,7 +68,7 @@ game.library = {
     game.timeout(400, function () {
       game.skill.build('enemy');
       game.skill.build('player', 0, function () {
-        game.player.buyCreeps(true);
+        game.units.buyCreeps('player', true);
         game.library.buildHand();
         game.library.beginPlayerTurn();
         $('.map .player.card.'+game.library.hero).select();
@@ -84,7 +84,7 @@ game.library = {
   beginPlayerTurn: function () { 
     game.turn.beginPlayer(function () {
       game.tower.attack('enemy');
-      if (game.player.turn > 1) game.player.buyHand();
+      if (game.player.turn > 1) game.skill.buyHand('player');
     });
   },
   buildHand: function () {
@@ -99,7 +99,7 @@ game.library = {
     });
   },
   action: function () {
-    /*game.timeout(400, function () {
+    /*game.timeout(10000, function () {
       if ( game.turn.noAvailableMoves() ) {
         game.library.endPlayerTurn();
       }
@@ -116,7 +116,7 @@ game.library = {
   beginEnemyTurn: function () {
     game.turn.beginEnemy(function () {
       game.loader.addClass('loading');
-      game.enemy.buyHand();
+      game.skill.buyHand('enemy');
       game.tower.attack('player');
       game.library.endEnemyTurn();
     });

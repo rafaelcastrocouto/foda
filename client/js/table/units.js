@@ -10,6 +10,15 @@ game.units = {
       }
     });
   },
+  buyCreeps: function(side, force, catapultforce) {
+    var ranged, melee, catapult;
+    if (game[side].turn === game.creepTurn || force) {
+      game.units.buy(side);
+    }
+    if (game[side].turn === game.catapultTurn || catapultforce) {
+      game.units.buyCatapult(side);
+    }
+  },
   clone: function (cardEl) {
     var card = $(cardEl);
     return card.clone().data(card.data());
@@ -55,11 +64,6 @@ game.units = {
       catapult.addClass('flipped');
       if (summon) summon.addClass('flipped');
     }
-  },
-  forestSpot: function () {
-    var spot = 'A2';
-    $('#' + spot).addClass('jungle').attr({title: 'Jungle'});
-    $('#' + game.map.mirrorPosition(spot)).addClass('jungle').attr({title: 'Jungle'});
   },
   forestCreep: function (side, target) {
     var forestCreeps = game[side].unitsDeck.children('.forest');

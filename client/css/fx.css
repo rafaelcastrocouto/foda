@@ -465,7 +465,7 @@
 }
 
 .map .fx.cm-slow {
-  transform: rotateX(-37deg) translate3d(40px,80px,140px) scale(7);
+  transform: rotateX(-37deg) translate3d(45px,20px,70px) scale(7);
   width: 128px;
   height: 128px;
   animation: cm-slow-sprite 1.2s steps(20) 1;

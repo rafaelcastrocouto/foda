@@ -18,44 +18,6 @@ game.enemy = {
       }
     });
   },
-  buyCard: function() {
-    var availableSkills = $('.table .enemy .skills.available .card'), card, heroid, hero, to, skillid;
-    if (availableSkills.length < game.enemy.cardsPerTurn + 1) {
-      $('.table .enemy .skills.cemitery .card').appendTo(game.enemy.skills.deck);
-      availableSkills = $('.table .enemy .skills.available .card');
-    }
-    card = availableSkills.randomCard();
-    if (card.data('hand') === game.data.ui.right) {
-      if (game.enemy.skills.hand.children().length < game.maxSkillCards) {
-        card.appendTo(game.enemy.skills.hand);
-      }
-    } else if (game.enemy.skills.sidehand.children().length < game.maxSkillCards) {
-      card.appendTo(game.enemy.skills.sidehand);
-    }
-  },
-  buyHand: function() {
-    //if (!game.debug) {
-    //  game.enemy.buyCards(4);
-    //} else {
-    game.enemy.buyCreeps();
-    if (game.enemy.turn > 1)
-      game.enemy.buyCards(game.enemy.cardsPerTurn);
-    //}
-  },
-  buyCreeps: function(force, catapultforce) {
-    var ranged, melee, catapult;
-    if (game.enemy.turn === game.creepTurn || force) {
-      game.units.buy('enemy');
-    }
-    if (game.enemy.turn === game.catapultTurn || catapultforce) {
-      game.units.buyCatapult('enemy');
-    }
-  },
-  buyCards: function(n) {
-    for (var i = 0; i < n; i++) {
-      game.enemy.buyCard();
-    }
-  },
   startMoving: function(cb) {
     game.message.text(game.data.ui.enemymove);
     if (typeof (game.currentData.moves) == 'string')
@@ -155,10 +117,9 @@ game.enemy = {
   attack: function(from, to) {
     var source = $('#' + from + ' .card');
     var target = $('#' + to + ' .card');
-    if (to && !source.hasClass('done') && source.hasClass('enemy') && source.attack && target) {
+    if (to && source.hasClass('enemy') && source.attack && target) {
       source.addClass('enemyMoveHighlight');
       source.attack(to);
-      source.addClass('done');
       target.addClass('enemyMoveHighlightTarget');
     }
   },

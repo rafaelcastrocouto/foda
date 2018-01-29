@@ -147,7 +147,7 @@ game.skills.ld = {
         skill.addClass('on');
         cry.appendTo(game[side].skills.hand);
         source.selfBuff(skill);
-        source.data('range', game.data.ui.melee);
+        source.setRange(game.data.ui.melee);
         if (!game.fx.ldult) {
           game.fx.ult(skill);
           game.fx.ldult = true;
@@ -157,7 +157,7 @@ game.skills.ld = {
         skill.removeClass('on');
         cry.discard();
         source.removeBuff('ld-ult');
-        source.data('range', game.data.ui.short);
+        source.setRange(game.data.ui.long);
       }
       source.data('ai ult limit', source.data('ai ult limit') + 1);
     }

@@ -16,7 +16,6 @@ game.highlight = {
     game.highlight.clearMap();
     if (game.selectedCard) {
       if (game.selectedCard.hasClasses('heroes units')) {
-        game.selectedCard.strokeAttack();
         if (game.canPlay() && !game.selectedCard.hasClass('nohighlight')) {
           if (game.mode == 'tutorial') {
             if (game.tutorial.lesson == 'Move') {
@@ -237,9 +236,10 @@ game.highlight = {
   },
   attack: function() {
     var source = this, pos, range;
-    if (game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack()) {
+    if (game.highlight.isTurn(source) && source.hasClass('can-attack') && source.hasClasses('units heroes') && source.canAttack()) {
       if (source.hasClass('selected'))
         source.addClass('draggable');
+      source.strokeAttack();
       range = source.data('range');
       source.inRange(range, function(neighbor) {
         var card = $('.card', neighbor);

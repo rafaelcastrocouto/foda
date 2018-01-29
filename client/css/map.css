@@ -67,8 +67,8 @@
   background-position: 50%;
   background-size: 85%;
   position: absolute;
-  top: 80px;
-  left: 20px;
+  top: 86px;
+  left: 30px;
   opacity: 0.3;
 }
 .map .spot.jungle:hover:after {
@@ -76,11 +76,43 @@
 }
 
 .map .spot.jungle:hover {
-  background: rgba(255,255,100,0.25);
+  background: rgba(100,255,100,0.25);
 }
 
-.map .card.player.done,
-.map .card.enemy.done,
+.map .spot.fountain {
+  background: rgba(100,255,190,0.15);
+}
+.map .enemyarea.spot.fountain {
+  background: rgba(255,80,80,0.3);
+}
+.map .spot.fountain:after {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 130px;
+  border: 6px solid white;
+  border-radius: 50%;
+  background-image: url("../img/trees/fountain.png");
+  background-repeat: no-repeat;
+  background-position: 50% 60%;
+  background-size: 60%;
+  position: absolute;
+  top: 86px;
+  left: 30px;
+  opacity: 0.3;
+}
+.map .spot.fountain:hover:after {
+  opacity: 0.8;
+}
+
+.map .spot.fountain:hover {
+  background: rgba(100,255,100,0.25);
+}
+.map .enemyarea.spot.fountain:hover {
+  background: rgba(255,80,80,0.4);
+}
+
+.map .card.done,
 .map .card.stunned,
 .map .card.disabled {
   background: silver;

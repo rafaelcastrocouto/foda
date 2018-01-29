@@ -28,7 +28,8 @@ game.states.table = {
       game.states.table.setup = true;
       game.tower.place();
       game.tree.place();
-      game.units.forestSpot();
+      this.forestSpot();
+      this.fountainSpot();
       game[game.mode].setTable();
     }
   },
@@ -44,6 +45,15 @@ game.states.table = {
         if (game.mode && game[game.mode].unselected) game[game.mode].unselected();
       }
     });
+  },
+  forestSpot: function () {
+    var spot = 'A2';
+    $('#' + spot + ', #' + game.map.mirrorPosition(spot)).addClass('jungle').attr({title: game.data.ui.jungle});
+  },
+  fountainSpot: function () {
+    var spot = 'B7';
+    $('#' + spot + ', #' + game.map.mirrorPosition(spot)).addClass('fountain').attr({title: game.data.ui.heal});
+
   },
   skipClick: function () {
     if (!game.states.table.skip.attr('disabled') && game.canPlay()) {

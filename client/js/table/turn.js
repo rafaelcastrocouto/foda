@@ -41,6 +41,7 @@ game.turn = {
         dead.reborn();
       }
     });
+    $('.map .fountain.enemyarea .card.enemy, .map .fountain.playerarea .card.player').heal(game.fountainHeal);
     $('.table .card').each(function () {
       var card = $(this);
       card.trigger('turnstart', { target: card });
@@ -58,7 +59,11 @@ game.turn = {
           } else //other game modes
             game.states.table.el.addClass('turn');
           game.loader.removeClass('loading');
-          $('.map .card').removeClass('done');
+          $('.map .card.done').removeClass('done');
+          $('.map .card.player:not(.towers, .ghost)').each(function () {
+            var unit = $(this);
+            if (unit.canAttack()) unit.addClass('can-attack');
+          });
           game.states.table.skip.attr('disabled', false);
           game.highlight.map();
         });
@@ -132,7 +137,10 @@ game.turn = {
     }
   },
   noAvailableMoves: function () {
-    return $('.map .player.card:not(.towers, .ghost)').length == $('.map .player.card.done:not(.towers, .ghost)').length;
+    var mapdone = ($('.map .player.card:not(.towers, .ghost)').length == $('.map .player.card.done:not(.towers, .ghost)').length);
+    var skilldone = $('.table .player .skills.hand .card, .table .player .skills.sidehand .card').length;
+    var moves = mapdone && skilldone;
+    return moves;
   },
   tickTime: function () { 
     game.time += 0.5; // console.trace('t', game.time, game.turn.hours() );

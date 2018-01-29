@@ -26,40 +26,6 @@ game.player = {
       }
     });
   },
-  buyCard: function() {
-    var availableSkills = $('.table .player .skills.available .card'), card, heroid, hero, to, skillid;
-    if (availableSkills.length < game.player.cardsPerTurn + 1) {
-      $('.table .player .skills.cemitery .card').appendTo(game.player.skills.deck);
-      availableSkills = $('.table .player .skills.available .card');
-    }
-    card = availableSkills.randomCard();
-    if (card.data('hand') === game.data.ui.right) {
-      if (game.player.skills.hand.children().length < game.maxSkillCards) {
-        card.appendTo(game.player.skills.hand);
-      }
-    } else if (game.player.skills.sidehand.children().length < game.maxSkillCards) {
-      card.appendTo(game.player.skills.sidehand);
-    }
-  },
-  buyHand: function() {
-    game.player.buyCreeps();
-    if (game.player.turn > 1)
-      game.player.buyCards(game.player.cardsPerTurn);
-  },
-  buyCreeps: function(force, catapultforce) {
-    var ranged, melee, catapult;
-    if (game.player.turn === game.creepTurn || force) {
-      game.units.buy('player');
-    }
-    if (game.player.turn === game.catapultTurn || catapultforce) {
-      game.units.buyCatapult('player');
-    }
-  },
-  buyCards: function(n) {
-    for (var i = 0; i < n; i++) {
-      game.player.buyCard();
-    }
-  },
   move: function(event) {
     var spot = $(this);
     var card = game.selectedCard;
@@ -77,9 +43,8 @@ game.player = {
     var source = game.selectedCard;
     var from = source.getPosition();
     var to = target.getPosition();
-    if (game.canPlay() && source.data('damage') && from !== to && !source.hasClass('done') && target.data('current hp')) {
+    if (game.canPlay() && source.data('damage') && from !== to && target.data('current hp')) {
       source.attack(target);
-      source.addClass('done').removeClass('draggable');
       if (game.mode == 'online')
         game.currentMoves.push('A:' + from + ':' + to);
     }

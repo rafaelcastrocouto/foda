@@ -249,16 +249,16 @@ game.online = {
       if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
       } 
-      game.player.buyHand();
+      game.skill.buyHand('player');
       game.tower.attack('enemy');
     });
   },
   action: function () {
-    game.timeout(400, function () {
+    /*game.timeout(10000, function () {
       if (game.turn.noAvailableMoves()) {
         game.online.preEndPlayer();
       }
-    });
+    });*/
   },
   skip: function () {
     game.online.preEndPlayer();
@@ -293,7 +293,7 @@ game.online = {
       if (game.enemy.turn === game.ultTurn) {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
       }
-      game.enemy.buyHand();
+      game.skill.buyHand('enemy');
     });
   },
   preGetTurnData: function (turn) {

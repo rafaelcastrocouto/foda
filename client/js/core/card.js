@@ -22,6 +22,7 @@ game.card = {
       setHp: game.card.setHp,
       setCurrentHp: game.card.setCurrentHp,
       setSpeed: game.card.setSpeed,
+      setRange: game.card.setRange,
       shake: game.card.shake,
       die: game.card.die,
       reborn: game.card.reborn
@@ -87,10 +88,10 @@ game.card = {
       if (typeof(data['aoe width']) == 'number') $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + data['aoe range']+'/' + ((data['aoe width']*2)+1) + ')');
       else $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + game.map.getRangeStr(data['aoe range']) +')');
     }
-    if (data.range)
-      if (game.language.current == 'ru') $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range);
-      else if (data.range == 999) $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + game.map.getRangeStr(data.range));
-      else $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range +  ' (' + game.map.getRangeStr(data.range)+')');
+    if (data.range) {
+      if (typeof data.range == 'number') data.range = game.map.getRangeStr(data.range);
+      $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range).addClass('range');
+    }
     if (data.armor) {
       $('<p>').appendTo(desc).text(game.data.ui.armor + ': ' + data.armor).addClass('armor');
       data['current armor'] = data.armor;
@@ -103,9 +104,9 @@ game.card = {
       $('<p>').appendTo(desc).text(game.data.ui.mana + ': ' + data.mana);
     if (data.speed) {
       data['current speed'] = data.speed;
-      //$('<p>').appendTo(desc).text(game.data.ui.speed + ': ' + data.speed);
+      if (typeof(data.speed) == 'number') data.speed = game.map.getRangeStr(data.speed);
+      $('<p>').appendTo(desc).text(game.data.ui.speed + ': ' + data.speed).addClass('speed');
     }
-
     if (data['bonus cards']) 
       $('<p>').appendTo(desc).text(game.data.ui.bonus + ' ' + game.data.ui.cards + ': ' + data['bonus cards']);
     if (data.type == game.data.ui.channel)
@@ -214,7 +215,7 @@ game.card = {
     game.highlight.map(event);
     game.states.table.selectedClone = card.clone()
       .css({'transform': '' })
-      .removeClass('selected melee-attack blink done dead draggable dragTarget shake enemyMoveHighlight enemyMoveHighlightTarget')
+      .removeClass('selected melee-attack can-attack blink done dead draggable dragTarget shake enemyMoveHighlight enemyMoveHighlightTarget')
       .clearEvents()
       .appendTo(game.states.table.selectedCard)
       .on('mouseup', function () {
@@ -351,16 +352,21 @@ game.card = {
   },
   setSpeed: function(speed) {
     this.data('current speed', speed);
+    if (typeof(speed) == 'number') speed = game.map.getRangeStr(speed);
+    this.find('.desc .speed').text(game.data.ui.speed + ': ' + speed);
     return this;
+  },
+  setRange: function(range) {
+    this.find('.desc .range').text(game.data.ui.range + ': ' + range);
+    this.data('range', range);
   },
   shake: function() {
     this.addClass('shake');
     game.timeout(380, this.removeClass.bind(this, 'shake'));
   },
-  canAttack: function(force) {
-    if (force && this.data('current hp') <= 0) return false;
+  canAttack: function() {
+    if (this.data('current hp') <= 0) return false;
     var classes = 'dead stunned rooted disarmed disabled';
-    if (!force) classes += ' done';
     return !this.hasClasses(classes);
   },
   attack: function(target, force, ult) {
@@ -371,7 +377,7 @@ game.card = {
     var damage = source.data('current damage'); 
     var from = source.getPosition(), to = target.getPosition();
     var name;
-    if (damage && from !== to && target.data('current hp') && source.canAttack(force)) {
+    if (damage && from !== to && target.data('current hp') && source.canAttack()) {
       source.stopChanneling();
       var evt = {
         type: 'attack',
@@ -396,6 +402,7 @@ game.card = {
       //clear bonus
       source.data('critical-attack', false);
       evt.bonus = 0;
+      source.removeClass('can-attack');
       if (game.selectedCard) game.timeout(10, game.selectedCard.reselect.bind(game.selectedCard));
       //melee fx
       if (source.data('range') < 3) {
@@ -579,7 +586,7 @@ game.card = {
     dead.stopChanneling();
     dead.clearBuffs();
     dead.find('.damaged, .heal, .fx').remove();
-    dead.addClass('dead').removeClass('target done stunned rooted silenced hexed disabled sleeping cycloned taunted entangled disarmed ai');
+    dead.addClass('dead').removeClass('target done can-attack stunned rooted silenced hexed disabled sleeping cycloned taunted entangled disarmed ai');
     var pos = evt.position, deaths, spot = $('#' + pos), side = dead.side();
     if (!spot.hasClass('cript')) {
       spot.addClass('free');
@@ -605,6 +612,8 @@ game.card = {
         deaths = dead.data('deaths') + 1;
         dead.data('deaths', deaths);
         dead.find('.deaths').text(deaths);
+        if (game.mode != 'library') 
+          $('.table .'+side+' .skills.hand .card.'+dead.data('hero')+', .table .'+side+' .skills.sidehand .card.'+dead.data('hero')).discard();
       }
       $('.card', game[side].skills.hand).each(function (i, el) {
         var skill = $(el);

@@ -162,7 +162,7 @@ game.tutorial = {
     game.tutorial.axe.removeClass('left');
     game.tutorial.axebaloon.hide().delay(800).fadeIn('slow');
     game.tutorial.letter(game.data.ui.axecreep);
-    game.player.buyCreeps(true);
+    game.units.buyCreeps('player', true);
     $('.player .sidehand .card').addClass('blink').on('select', game.tutorial.selected);
   },
   selectedCreep: function (card) {
@@ -227,7 +227,7 @@ game.tutorial = {
     game.turn.el.removeClass('show');
     game.tutorial.axebaloon.fadeIn('slow');
     game.tutorial.letter(game.data.ui.axedone);
-    game.enemy.buyCreeps(true);
+    game.units.buyCreeps('enemy', true);
     $('.enemy .ld-rabid').first().appendTo(game.enemy.skills.hand).addClass('flipped');
     $('.enemy .am-blink').first().appendTo(game.enemy.skills.hand).addClass('flipped');
     $('.enemy .kotl-leak').first().appendTo(game.enemy.skills.hand).addClass('flipped');

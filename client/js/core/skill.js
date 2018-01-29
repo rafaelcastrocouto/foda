@@ -49,6 +49,41 @@ game.skill = {
     });
     game[side].cardsPerTurn = Math.round(game[side].mana / 5);
   },
+  buyCard: function(side) {
+    var availableSkills = $('.table .'+side+' .skills.available .card'), card, heroid, hero, to, skillid, skills = [], liveheroes = [];
+    if (availableSkills.length < game[side].cardsPerTurn + 1) {
+      $('.table .'+side+' .skills.cemitery .card').appendTo(game[side].skills.deck);
+      availableSkills = $('.table .'+side+' .skills.available .card');
+    }
+    $('.table .map .'+side+'.heroes.card').each(function () {
+      var hero = $(this).data('hero');
+      if (hero) liveheroes.push(hero);
+    });
+    for (var i=0; i<availableSkills.length; i++) {
+      var skill = $(availableSkills[i]);
+      if (liveheroes.indexOf(skill.data('hero')) >= 0) {
+        skills.push(skill);
+      }
+    };
+    card = $(skills).randomCard();
+    if (card.data('hand') === game.data.ui.right) {
+      if (game[side].skills.hand.children().length < game.maxSkillCards) {
+        card.appendTo(game[side].skills.hand);
+      }
+    } else if (game[side].skills.sidehand.children().length < game.maxSkillCards) {
+      card.appendTo(game[side].skills.sidehand);
+    }
+  },
+  buyHand: function(side) {
+    game.units.buyCreeps(side);
+    if (game[side].turn > 1)
+      game.skill.buyCards(game[side].cardsPerTurn, side);
+  },
+  buyCards: function(n, side) {
+    for (var i = 0; i < n; i++) {
+      game.skill.buyCard(side);
+    }
+  },
   canCast: function (skill) {
     if (skill && skill.length) {
       var c = !this.hasClasses('dead stunned silenced hexed disabled sleeping cycloned taunted');

@@ -73,6 +73,10 @@
   background: #898;
 }
 
+.card.can-attack {
+  box-shadow: 0 0 0 6px yellow;
+}
+
 .card:hover {
   z-index: 10;
 }
@@ -234,6 +238,10 @@
   background-color: #277cd6;
 }
 
+.skills .card.selected {
+  box-shadow: 0 0 0 3px white;
+}
+
 .card.left-hand.skills, .card.left-hand.skills .portrait {
   background-color: #4db2dc;
 }
@@ -244,14 +252,36 @@
 
 .states .map .card.player.heroes.selected, .states .map .card.player.towers.selected {
   /* animation: none; */
-  box-shadow: 0 0 0 10px springgreen;
+  /**box-shadow: 0 0 0 10px springgreen;**/
   z-index: 2;
+}
+.states .map .card.player.heroes.selected:after, .states .map .card.player.towers.selected:after,
+.states .map .card.enemy.heroes.selected:after, .states .map .card.enemy.towers.selected:after,
+.states .map .card.trees.selected:after {
+  content:"";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  border: 10px solid springgreen;
+  border-radius: 50%;
+  transform: rotateX(20deg) translate3d(-22px, 30px, -50px);
+  animation: selectedani 0.7s infinite;
+  pointer-events: none;
+}
+@keyframes selectedani {
+  0%, 100% {transform: rotateX(20deg) translate3d(-22px, 30px, -50px);}
+  50% {transform: rotateX(20deg) translate3d(-22px, 30px, -55px);}
 }
 
 .states .map .card.enemy.heroes.selected, .states .map .card.enemy.towers.selected {
-  /* animation: none; */
-  box-shadow: 0 0 0 10px orangered;
+  /*box-shadow: 0 0 0 10px orangered;*/
   z-index: 2;
+}
+.states .map .card.enemy.heroes.selected:after, .states .map .card.enemy.towers.selected:after {
+  border: 10px solid orangered;
 }
 
 .states .map .card.skills.selected {
@@ -261,7 +291,8 @@
 }
 
 .states .map .card.trees.selected {
-  box-shadow: 0 0 0 10px palegreen;
+  /*box-shadow: 0 0 0 10px palegreen;*/
+  z-index: 2;
 }
 
 .card.enemy.attacktarget {
@@ -564,7 +595,7 @@
   transform-origin: 100% 0%;
   transform: translate3d(-80px, -180px, 1px) scale(1.2);
   cursor: default;
-  transition: all 0s;
+  transition: all 0s, transform 0.1s;
 }
 .table .selectedarea .selectedcard.flip .card.zoom {
    transform: translate(-78px, -182px) scale(1.9);
@@ -649,10 +680,11 @@
   transform-style: preserve-3d;
 }
 
-.map .card.invisible {
+.map .card.invisible .portrait {
   opacity: 0.7;
 }
-.map .enemyarea .card.player.invisible {
+.map .enemyarea .card.player.invisible .portrait,
+.map .playerarea .card.enemy.invisible .portrait {
   opacity: 1;
 }
 
@@ -669,10 +701,8 @@
   display: inline-block;
 }
 
-.states .table .map .card:hover, 
-.states .table .map .card.selected, 
-.states .table .map .card.source {
-  transform: translate3d(-50%, -50%, 30px) rotateX(-10deg);
+.states .table .map .card:hover, .states .table .map .card.selected {
+  transform: translate3d(-50%, -52%, 30px) rotateX(-12deg);
 }
 
 .map .card.enemy .current .hp span {
@@ -705,7 +735,7 @@
 }
 
 /*DRAG*/
-.vs .card .kd, .bkgdeck .card .kd, .choose .card .kd, .card.dragTargetClone.choose .kd, .choose .card .damaged, .choose .card .heal {
+.vs .card .kd, .bkgdeck .card .kd, .choose .card .kd, .card.dragTargetClone.choose .kd, .choose .card .damaged, .choose .card .heal, .choose .card .speed {
   display: none;
 }
 

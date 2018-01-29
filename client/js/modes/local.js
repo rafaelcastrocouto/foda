@@ -84,7 +84,7 @@ game.local = {
       if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
       }
-      game.player.buyHand();
+      game.skill.buyHand('player');
       game.tower.attack('enemy');
     });
   },
@@ -107,7 +107,7 @@ game.local = {
       if (game.enemy.turn === game.ultTurn) {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
       }
-      game.enemy.buyHand();
+      game.skill.buyHand('enemy');
       game.tower.attack('player');
     });
   },
