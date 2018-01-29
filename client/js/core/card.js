@@ -273,6 +273,7 @@ game.card = {
         }).prependTo(destiny).on('mousedown touchstart', game.card.select);
         card.trigger('moved', evt);
         if (game.canPlay()) game.highlight.clearMap();
+        $('.map .movesource, .map .movetarget').removeClass('movesource movetarget');
         if (game.selectedCard) game.selectedCard.reselect();
       }.bind(this, card, destiny);
       if (!this.hasClass('dragTarget')) game.timeout(300, end);
