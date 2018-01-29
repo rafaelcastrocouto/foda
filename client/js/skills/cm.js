@@ -34,7 +34,7 @@ game.skills.cm = {
   },
   freeze: {
     cast: function (skill, source, target) {
-      target.addClass('rooted disarmed');
+      target.addClass('rooted disarmed').removeClass('can-attack');
       target.stopChanneling();
       var buff = source.addBuff(target, skill);
       source.damage(buff.data('dot'), target, buff.data('damage type'));

@@ -115,7 +115,7 @@ game.skills.pud = {
       source.selfBuff(skill, 'ult-source');
       source.addBuff(target, skill, 'ult-target');
       source.addClass('pud-ult');
-      target.addClass('disabled');
+      target.addClass('disabled').removeClass('can-attack');
       target.data('pud-ult-source', source);
       target.on('death.pud-ult', this.death);
       game.skills.pud.ult.bite(source, target, skill);

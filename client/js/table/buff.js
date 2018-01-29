@@ -15,6 +15,7 @@ game.buff = {
     if (!target.hasClass('towers')) {
       var stun = skill.data('stun');
       target.stopChanneling();
+      target.removeClass('can-attack');
       if (bonus) stun += bonus;
       if (target.hasClass('stunned')) {
         target.removeBuff('stun');
