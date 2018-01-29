@@ -15,6 +15,7 @@ game.map = {
       // in range include self
       opponentsInRange: game.map.opponentsInRange,
       alliesInRange: game.map.alliesInRange,
+      inAttackRange: game.map.inAttackRange,
       inMovementRange: game.map.inMovementRange,
       inCross: game.map.inCross,
       opponentsInCross: game.map.opponentsInCross,
@@ -248,7 +249,6 @@ game.map = {
       , range = r;
     if (typeof (r) == 'string')
       range = game.map.getRangeInt(r);
-    spot.atRange(range, cb);
     if (range === 3) {
       spot.atRange(game.map.getRangeStr(1), cb);
     }
@@ -273,11 +273,20 @@ game.map = {
       spot.atRange(game.map.getRangeStr(4), cb);
       spot.atRange(game.map.getRangeStr(6), cb);
     }
+    spot.atRange(range, cb);
   },
   inRange: function(range, cb) {
     // in range and self
     this.atRange(game.map.getRangeStr(0), cb);
     this.around(range, cb);
+  },
+  inAttackRange: function (target) {
+    var inrange = false;
+    this.around(this.data('range'), function(spot) {
+      var enemyinrange = $('.card', spot);
+      if (enemyinrange[0] == target[0]) inrange = true;
+    });
+    return inrange;
   },
   inCross: function(range, width, cb, offset) {
     var spot = $(this).closest('.spot');

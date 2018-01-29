@@ -234,8 +234,11 @@ game.highlight = {
   },
   attack: function() {
     var source = this, pos, range, highlightUnit = source.hasClasses('can-attack');
-    if ((game.mode == 'local' && game.currentTurnSide != source.side()) || source.side() == 'enemy') {
-        source.strokeAttack();
+    if (game.mode == 'local' && game.currentTurnSide != source.side()) {
+      source.strokeAttack();
+    }
+    if (game.mode !== 'library' && game.mode != 'local' && source.side() == 'enemy') {
+      source.strokeAttack();
     }
     if ( highlightUnit && game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack()) {
       if (source.hasClass('selected'))
@@ -247,9 +250,10 @@ game.highlight = {
         if (card.hasClass(source.opponent()) && !card.hasClass('invisible')) {
           card.addClass('attacktarget').on('mouseup.highlight', game.player.attack);
         }
-        if (card[0] !== source[0] && card.hasAllClasses(source.side() + ' units') && card.data('current hp') < Math.floor(card.data('hp') / 2)) {
+        if (card[0] !== source[0] && card.hasAllClasses(source.side() + ' units') && card.data('current hp') < Math.floor(card.data('hp') / 3)) {
           card.addClass('attacktarget').on('mouseup.highlight', game.player.attack);
         }
+        
       });
     }
     return source;

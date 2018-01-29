@@ -42,15 +42,15 @@ game.skills.com = {
     },
     attacked: function (event, eventdata) {
       var source = eventdata.source;
-      var target = eventdata.target;
+      var legion = eventdata.target;
       var damage = eventdata.damage;
-      var buff = target.getBuff('com-counter');
+      var buff = legion.getBuff('com-counter');
       var lifesteal = buff.data('lifesteal') / 100;
       var chance = buff.data('chance') / 100;
-      if ( game.random() < chance && target.side() == source.opponent() ) {
+      if ( legion.inAttackRange(source) && game.random() < chance && legion.side() == source.opponent() ) {
         game.audio.play('com/counter');
-        target.attack(source, 'force');
-        target.heal(damage * lifesteal);
+        legion.attack(source, 'force');
+        legion.heal(damage * lifesteal);
       }
     }
   },

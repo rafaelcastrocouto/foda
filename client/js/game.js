@@ -6,7 +6,7 @@ var game = {
   message: $('<span>').addClass('message'),
   triesCounter: $('<small>').addClass('triescounter'),
   timeToPick: 40,
-  timeToPlay: 80,
+  timeToPlay: 99,
   waitLimit: 5,
   connectionLimit: 30,
   dayLength: 12,

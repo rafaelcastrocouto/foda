@@ -25,7 +25,7 @@ game.skills.en = {
         if (target.hasAllClasses(opponent +' heroes') || target.hasAllClasses(opponent +' ld-summon')) {
           source.addBuff(target, skill);
         } else if (target.hasAllClasses(opponent +' units')) {
-          target.removeClass(opponent).addClass(side);
+          target.removeClass(opponent+' attacktarget').addClass(side);
         }
       }
     }
