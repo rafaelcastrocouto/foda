@@ -10,10 +10,9 @@
   background-image: url("../img/heroes/en.jpg");
 }
 
-.map .en.heroes .portrait,
-.fromMap.en.heroes .portrait,
-.slot .en.heroes .portrait {
-  background-position: 20% 0%;
+.map .en.heroes .portrait .img, .fromMap.en.heroes .portrait .img, .slot .en.heroes .portrait .img {
+  background-size: 260%;
+  background-position: 15% 0%;
 }
 
 .en-passive .img, .buffs .buff.en-passive .img {
@@ -32,15 +31,10 @@
   background-image: url("../img/skills/en/ult.jpg");
 }
 
-.slot .en.heroes .portrait ,
-.map .en.heroes .portrait,
-.fromMap.en.heroes .portrait {
-  background-position: 20% 50%;
-}
-
 .am, .am .portrait {
   background-color: #544677;
 }
+
 .am .portrait {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjA4NDAxMDRDMDA2MTFFNzhDMERCOUJDOThFODJBOTQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjA4NDAxMDNDMDA2MTFFNzhDMERCOUJDOThFODJBOTQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjIwMDI1RjlGMUQxN0JDOTUzRkMyMzE1MDU0MjMxOEMxIiBzdFJlZjpkb2N1bWVudElEPSIyMDAyNUY5RjFEMTdCQzk1M0ZDMjMxNTA1NDIzMThDMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pqux/XkAAAA+SURBVHjaADAAz/8BWEN1Cwn7CAcDUGZntJ+rAv7+A1lcMB0X/d7r6TdGNQPnDhkJ9wLj//2fv8S/2dwCDADEwhZRizBmZwAAAABJRU5ErkJggg==');
 }
@@ -65,15 +59,14 @@
   background-image: url("../img/skills/am/ult.jpg");
 }
 
-.slot .am.heroes .portrait,
-.map .am.heroes .portrait,
-.fromMap.am.heroes .portrait {
-  background-position: 40% 50%;
+.slot .am.heroes .portrait .img, .map .am.heroes .portrait .img, .fromMap.am.heroes .portrait .img {
+  background-position: 30% 50%;
 }
 
 .cm, .cm .portrait {
   background-color: #3c9ab7;
 }
+
 .cm .portrait {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NjZFQ0E5REJDMDA2MTFFN0EzMUZEQUIwRTU5NEQzMDEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NjZFQ0E5REFDMDA2MTFFN0EzMUZEQUIwRTU5NEQzMDEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IkU0Qzg4MDVDOUUxQjRBRDcxODAyQUY3Qjc2MjQ0NEE0IiBzdFJlZjpkb2N1bWVudElEPSJFNEM4ODA1QzlFMUI0QUQ3MTgwMkFGN0I3NjI0NDRBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpIXeEUAAAA+SURBVHjaADAAz/8EiZTVOB24sKcOzewfMEM9AuEB4e7l9A4oBSUbCQsBAQFDxMcNw/cS6vn5QCr29/QCDADv5hXdQkEvzgAAAABJRU5ErkJggg==');
 }
@@ -82,9 +75,7 @@
   background-image: url("../img/heroes/cm.jpg");
 }
 
-.map .cm.heroes .portrait,
-.fromMap.cm.heroes .portrait,
-.slot .cm.heroes .portrait {
+.map .cm.heroes .portrait .img, .fromMap.cm.heroes .portrait .img, .slot .cm.heroes .portrait .img {
   background-position: 20%;
 }
 
@@ -104,10 +95,8 @@
   background-image: url("../img/skills/cm/ult.jpg");
 }
 
-.slot .cm.heroes .portrait,
-.map .cm.heroes .portrait,
-.fromMap.cm.heroes .portrait {
-  background-position: 25% 50%;
+.slot .cm.heroes .portrait .img, .map .cm.heroes .portrait .img, .fromMap.cm.heroes .portrait .img {
+  background-position: 15% 50%;
 }
 
 .map .cm.heroes.cm-ult .portrait .img {
@@ -118,6 +107,9 @@
 
 .kotl, .kotl .portrait {
   background-color: #E5BC53;
+}
+.map .kotl.heroes .portrait .img, .fromMap.kotl.heroes .portrait .img, .slot .kotl.heroes .portrait .img {
+  background-position: 30% 0%;
 }
 
 .kotl .portrait {
@@ -131,9 +123,11 @@
 .kotl-illuminate .img, .map .kotl.illuminating .img, .buffs .buff.kotl-illuminate .img {
   background-image: url("../img/skills/kotl/illuminate.jpg");
 }
+
 .map .kotl.illuminating .img {
   background-position: 20% 50%;
 }
+
 .kotl-illuminate.spiritform .img {
   background-image: url("../img/skills/kotl/illuminate-spirit.jpg");
 }
@@ -142,7 +136,8 @@
   content: "";
   display: block;
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -181,7 +176,6 @@
   }
 }
 
-
 .map .casttarget.illuminating:hover:after {
   animation: illuminating 1s infinite;
 }
@@ -192,6 +186,7 @@
   pointer-events: none;
   opacity: 0.5;
 }
+
 .illuminate-ghost .current {
   display: none;
 }
@@ -224,6 +219,10 @@
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3NTQ5NkQzRkY1QkZFNzExQUJGNUEyMkIzRDU5ODExMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1RjhCRUIxNEMwMDAxMUU3OTI2M0ZCRkQ2N0IzMzRGOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1RjhCRUIxM0MwMDAxMUU3OTI2M0ZCRkQ2N0IzMzRGOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjc2NDk2RDNGRjVCRkU3MTFBQkY1QTIyQjNENTk4MTEwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjc1NDk2RDNGRjVCRkU3MTFBQkY1QTIyQjNENTk4MTEwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jj5alQAAAD5JREFUeNoAMADP/wECaGZNKS0C+P8J18MGHRwEPAQDTwIKCRIU+h7jwQsFAb2wm9Tm/e3d9AoS/8IP+gIMAHsNE1H0H57qAAAAAElFTkSuQmCC');
 }
 
+.map .ld.heroes .portrait .img, .fromMap.ld.heroes .portrait .img, .slot .ld.heroes .portrait .img {
+  background-position: 35% 0%;
+}
+
 .ld.heroes .img, .ld-ult.on .img {
   background-image: url("../img/heroes/ld.jpg");
 }
@@ -240,14 +239,11 @@
   background-image: url("../img/skills/ld/summon.jpg");
 }
 
-.map .ld-summon .portrait .img,
-.fromMap.ld-summon .portrait .img,
-.selectedarea .ld-summon .img {
+.map .ld-summon .portrait .img, .fromMap.ld-summon .portrait .img, .selectedarea .ld-summon .img {
   background-image: url("../img/skills/ld/bear.jpg");
 }
 
-.map .ld-summon .portrait .img,
-.fromMap.ld-summon .portrait .img {
+.map .ld-summon .portrait .img, .fromMap.ld-summon .portrait .img {
   background-position: 76% 0%;
   background-size: 300%;
 }
@@ -268,9 +264,7 @@
   background-image: url("../img/skills/ld/cry.jpg");
 }
 
-.ld-summon.entangle-source .img, 
-.buffs .buff.ld-summon.entangle-source .img, 
-.buffs .buff.ld-summon.entangle-target .img {
+.ld-summon.entangle-source .img, .buffs .buff.ld-summon.entangle-source .img, .buffs .buff.ld-summon.entangle-target .img {
   background-image: url("../img/skills/ld/entangle.jpg");
 }
 
@@ -281,6 +275,7 @@
 .nyx, .nyx .portrait {
   background-color: #4e2846;
 }
+
 .nyx .portrait {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzEyMEUwRDNDMDA4MTFFNzgwREVFQjVBNzc0RkJEQkIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzEyMEUwRDJDMDA4MTFFNzgwREVFQjVBNzc0RkJEQkIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjVEMjk3QTkxMzU0M0E5Q0ZFMjY3NjFCQzUyOUUwMzlBIiBzdFJlZjpkb2N1bWVudElEPSI1RDI5N0E5MTM1NDNBOUNGRTI2NzYxQkM1MjlFMDM5QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtC9emIAAAA8SURBVHjaYhEVVxTkZJRhY3v18ccnNlamv/8YdGWlfC21DfX0fv7+zcTPxsTwn/0FqzCPkhoHOzdAgAEAVEoNgGbf6vwAAAAASUVORK5CYII=');
 }
@@ -339,7 +334,7 @@
 }
 
 .slot .pud.heroes .portrait .img, .map .pud.heroes .portrait .img, .fromMap.pud.heroes .portrait .img {
-  background-position: 25% 50%;
+  background-position: 16% 50%;
 }
 
 .map .pud-rot.heroes .portrait .img, .fromMap.pud-rot.heroes .portrait .img {
@@ -357,6 +352,11 @@
 
 .wk, .wk .portrait {
   background-color: #326f73;
+}
+
+.slot .wk.heroes .portrait .img, .map .wk.heroes .portrait .img, .fromMap.wk.heroes .portrait .img {
+  background-size: 300%;
+  background-position: 56% 00%;
 }
 
 .wk .portrait {
@@ -383,9 +383,12 @@
   background-image: url("../img/skills/wk/ult.jpg");
 }
 
-
 .lina, .lina .portrait {
   background-color: #e08725;
+}
+.slot .lina.heroes .portrait .img, .map .lina.heroes .portrait .img, .fromMap.lina.heroes .portrait .img {
+  background-size: 280%;
+  background-position: 36% 0%;
 }
 .lina .portrait {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjM1QzU5NDdDMDA2MTFFNzhBNDhENDNBNjFGMjJFNTQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjM1QzU5NDZDMDA2MTFFNzhBNDhENDNBNjFGMjJFNTQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjRDNjgzMUE4RkUzRDJFMDJCNTE2RkFFRDBGOTZDQ0NFIiBzdFJlZjpkb2N1bWVudElEPSI0QzY4MzFBOEZFM0QyRTAyQjUxNkZBRUQwRjk2Q0NDRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PshLRrYAAAA+SURBVHjaADAAz/8BuIAttMD9DA8I7vrrVjwaAxoN/eHvHHRdR/n/AczW7QPCsEgE8+a0rwAK8PYrKOgCDAA6zBhVxXUk4wAAAABJRU5ErkJggg==');
@@ -410,7 +413,6 @@
 .lina-ult .img {
   background-image: url("../img/skills/lina/ult.jpg");
 }
-
 
 .cat, .cat .portrait {
   background-color: #5a4c8b;
@@ -440,7 +442,6 @@
   background-image: url("../img/skills/cat/ult.jpg");
 }
 
-
 .wind, .wind .portrait {
   background-color: #53946f;
 }
@@ -467,6 +468,10 @@
 
 .com, .com .portrait {
   background-color: #a95747;
+}
+
+.map .com.heroes .portrait .img, .fromMap.com.heroes .portrait .img, .slot .com.heroes .portrait .img {
+  background-position: 10% 0%;
 }
 
 .com.heroes .img {

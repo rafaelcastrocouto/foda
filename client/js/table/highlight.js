@@ -236,7 +236,7 @@ game.highlight = {
   },
   attack: function() {
     var source = this, pos, range;
-    if (game.highlight.isTurn(source) && source.hasClass('can-attack') && source.hasClasses('units heroes') && source.canAttack()) {
+    if ( source.hasClasses('can-attack enemy') && game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack()) {
       if (source.hasClass('selected'))
         source.addClass('draggable');
       source.strokeAttack();

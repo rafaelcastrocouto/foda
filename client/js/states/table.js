@@ -47,11 +47,11 @@ game.states.table = {
     });
   },
   forestSpot: function () {
-    var spot = 'A2';
+    var spot = 'A1';
     $('#' + spot + ', #' + game.map.mirrorPosition(spot)).addClass('jungle').attr({title: game.data.ui.jungle});
   },
   fountainSpot: function () {
-    var spot = 'B7';
+    var spot = 'A7';
     $('#' + spot + ', #' + game.map.mirrorPosition(spot)).addClass('fountain').attr({title: game.data.ui.heal});
 
   },

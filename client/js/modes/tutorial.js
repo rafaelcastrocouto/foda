@@ -243,7 +243,7 @@ game.tutorial = {
       'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E3'),
       'C:'+game.map.mirrorPosition('E3')+':'+game.map.mirrorPosition('E4')+':summon:ld',
       'C:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition(target)+':blink:am',
-      'S:'+game.map.mirrorPosition('J3')+':melee'
+      'S:'+game.map.mirrorPosition('K5')+':melee'
       //'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),
       //'C:'+game.map.mirrorPosition('F1')+':'+game.map.mirrorPosition('F1')+':mana:kotl',
     ].join('|');
@@ -267,7 +267,7 @@ game.tutorial = {
     game.enemy.skills.deck.removeClass('slide');
     $('.enemy.skills .card').fadeOut(400);
     game.tutorial.lesson = 'Attack';
-    $('.map .player.heroes, .map .player.units').removeClass('done');
+    $('.map .player.heroes, .map .player.units').removeClass('done').addClass('can-attack');
     $('.map .player.heroes, .map .player.units').each(function (i, card) {
       var hero = $(card),
           range = hero.data('range');

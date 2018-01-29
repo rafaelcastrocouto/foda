@@ -57,6 +57,9 @@ game.skills.venge = {
       var targetPosition = target.getPosition();
       target.place(sourcePosition);
       source.place(targetPosition);
+      game.timeout(1, function() {
+        this.reselect();
+      }.bind(source));
     }
   }
 };

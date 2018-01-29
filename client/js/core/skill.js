@@ -64,7 +64,7 @@ game.skill = {
       if (liveheroes.indexOf(skill.data('hero')) >= 0) {
         skills.push(skill);
       }
-    };
+    }
     card = $(skills).randomCard();
     if (card.data('hand') === game.data.ui.right) {
       if (game[side].skills.hand.children().length < game.maxSkillCards) {

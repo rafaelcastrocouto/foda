@@ -255,25 +255,27 @@
   /**box-shadow: 0 0 0 10px springgreen;**/
   z-index: 2;
 }
-.states .map .card.player.heroes.selected:after, .states .map .card.player.towers.selected:after,
-.states .map .card.enemy.heroes.selected:after, .states .map .card.enemy.towers.selected:after,
+.states .map .card.player.heroes.selected:after, .states .map .card.player.towers.selected:after, .states .map .card.player.units.selected:after,
+.states .map .card.enemy.heroes.selected:after, .states .map .card.enemy.towers.selected:after, .states .map .card.enemy.units.selected:after,
 .states .map .card.trees.selected:after {
   content:"";
   display: block;
   position: absolute;
+  top: auto;
+  right: auto;
   bottom: 0;
   left: 0;
   width: 220px;
   height: 220px;
   border: 10px solid springgreen;
   border-radius: 50%;
-  transform: rotateX(20deg) translate3d(-22px, 30px, -50px);
+  transform: rotateX(20deg) translate3d(-22px, 20px, -50px);
   animation: selectedani 0.7s infinite;
   pointer-events: none;
 }
 @keyframes selectedani {
-  0%, 100% {transform: rotateX(20deg) translate3d(-22px, 30px, -50px);}
-  50% {transform: rotateX(20deg) translate3d(-22px, 30px, -55px);}
+  0%, 100% {transform: rotateX(20deg) translate3d(-22px, 20px, -50px);}
+  50% {transform: rotateX(20deg) translate3d(-22px, 20px, -55px);}
 }
 
 .states .map .card.enemy.heroes.selected, .states .map .card.enemy.towers.selected {
@@ -701,8 +703,8 @@
   display: inline-block;
 }
 
-.states .table .map .card:hover, .states .table .map .card.selected {
-  transform: translate3d(-50%, -52%, 30px) rotateX(-12deg);
+.states .table .map .spot:hover .card, .states .table .map .card.selected {
+  transform: translate3d(-50%, -51%, 30px) rotateX(-14deg);
 }
 
 .map .card.enemy .current .hp span {

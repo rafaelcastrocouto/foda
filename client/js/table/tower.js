@@ -5,7 +5,7 @@ game.tower = {
       side: side,
       name: game.data.ui.tower,
       attribute: game.data.ui.building,
-      range: game.data.ui.ranged,
+      range: game.data.ui.far,
       description: game.data.ui.towerDescription,
       buffsBox: true,
       armor: 10,
@@ -21,7 +21,7 @@ game.tower = {
     return tower;
   },
   place: function () {
-    var p = 'C7';
+    var p = 'B6';
     game.player.tower = game.tower.build('player', p);
     game.enemy.tower = game.tower.build('enemy', game.map.mirrorPosition(p));
   },
