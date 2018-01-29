@@ -272,8 +272,8 @@ game.card = {
           transform: ''
         }).prependTo(destiny).on('mousedown touchstart', game.card.select);
         card.trigger('moved', evt);
-        game.highlight.clearMap();
-        card.reselect();
+        if (game.canPlay()) game.highlight.clearMap();
+        else if (game.selectedCard) game.selectedCard.reselect();
       }.bind(this, card, destiny);
       if (!this.hasClass('dragTarget')) game.timeout(300, end);
       else game.timeout(25, end);

@@ -78,7 +78,8 @@ game.units = {
   summonCreep: function(target, to, creep, event) {
     if (target.hasClass('free')) {
       game.audio.play('activate');
-      game.highlight.clearMap();
+      if (game.canPlay()) game.highlight.clearMap();
+      else if(game.selectedCard) game.selectedCard.reselect();
       var end = function() {
         this.creep.addClass('done');
         this.creep.place(this.target);

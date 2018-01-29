@@ -59,12 +59,12 @@ game.turn = {
             game.states.table.el.addClass('turn');
           game.loader.removeClass('loading');
           $('.map .card.done').removeClass('done');
-          game.turn.enableAttack(turn);
           if (game.mode == 'library') game.turn.enableAttack('enemy');
           game.states.table.skip.attr('disabled', false);
           game.highlight.map();
         });
       }
+      game.turn.enableAttack(turn);
       if (cb) {
         var t = 100;
         if (game.mode == 'local') t = 2000;

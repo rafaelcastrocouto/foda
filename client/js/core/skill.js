@@ -204,8 +204,10 @@ game.skill = {
       target.shake();
       var end = function (target) {
         this.appendTo(game.hidden);
-        game.highlight.clearMap();
-        if (game.canPlay()) target.select();
+        if (game.canPlay()) {
+          game.highlight.clearMap();
+          target.select();
+        } else if (game.selectedCard) game.selectedCard.reselect();
       }.bind(skill, target);
       if (!skill.hasClass('dragTarget')) game.timeout(400, end);
       else end();
