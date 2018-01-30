@@ -26,11 +26,18 @@ game.screen = {
     $('input[name=resolution][value='+res+']').attr('checked', true);
     game.screen.changeResolution(res);
   },
+  scales: {
+    high: 1.5,
+    medium: 1.2,
+    default: 1,
+    low: 0.75
+  },
   changeResolution: function (resolution) {
     if (!resolution || resolution.constructor.name !== 'String') {
       resolution = $('input[name=resolution]:checked', '.screenresolution').val() || 'default';
       game.screen.resolution = resolution;
     }
+    if (resolution !== 'auto') game.screen.scale = game.screen.scales[resolution];
     game.container.removeClass(game.screen.resolutions.join(' ')).addClass(resolution);
     localStorage.setItem('resolution', resolution);
   },

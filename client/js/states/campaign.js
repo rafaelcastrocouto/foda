@@ -240,7 +240,9 @@ game.states.campaign = {
     }
   },
   createPath: function (source, target, cl) {
+    //game.screen.resize();
     var scale = Number(game.screen.scale);
+    //if (!game.screen.resolution) scale = 1;
     var dash = 18, dotsize = 4;
     var s = source.position(), t = target.position();
     var sourcesize = (source.width()/scale) / 2;
