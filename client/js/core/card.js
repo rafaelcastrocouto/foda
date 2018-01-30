@@ -423,8 +423,8 @@ game.card = {
         //console.log(angle)
         game.projectile.data('rotate', angle).appendTo(game.map.el);
         game.card.projectile.apply(source);
-        game.timeout(50, game.card.projectile.bind(target));
-        game.timeout(500,game.projectile.remove.bind(game.projectile));
+        game.timeout(64, game.card.projectile.bind(target));
+        game.timeout(364,game.projectile.remove.bind(game.projectile));
       }
       // miss fx
       if (source.data('miss-attack')) {
