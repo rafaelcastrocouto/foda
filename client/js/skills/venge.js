@@ -53,13 +53,15 @@ game.skills.venge = {
     cast: function (skill, source, target) {
       if (target.side() == source.side()) target.purge();
       target.stopChanneling();
+      game.timeout(300, function(source, target) {
       var sourcePosition = source.getPosition();
       var targetPosition = target.getPosition();
       target.place(sourcePosition);
       source.place(targetPosition);
-      game.timeout(1, function() {
-        this.reselect();
-      }.bind(source));
+        game.timeout(1, function() {
+          this.reselect();
+        }.bind(source));
+      }.bind(this, source, target));
     }
   }
 };

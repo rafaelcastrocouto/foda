@@ -610,6 +610,7 @@ game.map = {
     }
   },
   getRangeInt: function(range) {
+    if (typeof(range)=='number') return range;
     var r = 0;
     if (range === game.data.ui.small) {
       r = 1;
@@ -641,6 +642,7 @@ game.map = {
     return r;
   },
   getRangeStr: function(r) {
+    if (typeof(r)=='string') return r;
     var range = '';
     if (r === 1) {
       range = game.data.ui.small;
@@ -674,6 +676,7 @@ game.map = {
   clear: function() {
     game.highlight.clearMap();
     game.map.el.removeClass('night');
+    $('.map .projectile').remove();
     $('.map .spot').removeClass('block playerarea enemyarea jungle cript').addClass('free');
   },
   cardsInRange: function(range, cb) {

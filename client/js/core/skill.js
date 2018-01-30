@@ -289,7 +289,7 @@ game.skill = {
         game.highlight.clearMap();
         if (source && game.canPlay()) source.select();
         else game.card.unselect();
-      }
+      } else if (game.selectedCard) game.selectedCard.reselect();
       this.trigger('discard', {target: this});
       var side = this.side();
       if (this.data('deck') === game.data.ui.temp) this.appendTo(game[side].skills.temp);

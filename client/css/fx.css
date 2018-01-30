@@ -608,7 +608,7 @@
   transform: translate3d(90px,500px,10px) scale(4);
   width: 30px;
   height: 243px;
-  animation: cat-arrow-sprite 1.3s steps(7) 1;
+  animation: cat-arrow-sprite 1.2s steps(7) 1;
   background-image: url('../img/fx/cat/arrow.png');
 }
 @keyframes cat-arrow-sprite {

@@ -89,8 +89,7 @@ game.card = {
       else $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + game.map.getRangeStr(data['aoe range']) +')');
     }
     if (data.range) {
-      if (typeof data.range == 'number') data.range = game.map.getRangeStr(data.range);
-      $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + data.range).addClass('range');
+      $('<p>').appendTo(desc).text(game.data.ui.range + ': ' + game.map.getRangeStr(data.range)).addClass('range');
     }
     if (data.armor) {
       $('<p>').appendTo(desc).text(game.data.ui.armor + ': ' + data.armor).addClass('armor');
@@ -182,6 +181,7 @@ game.card = {
       target = $('#' + target);
     this.getSpot().addClass('free');
     this.appendTo(target.removeClass('free'));
+    this.reselect();
     return this;
   },
   select: function(event) {
@@ -406,19 +406,22 @@ game.card = {
       source.removeClass('can-attack');
       if (game.selectedCard) game.timeout(10, game.selectedCard.reselect.bind(game.selectedCard));
       //melee fx
-      if (source.data('range') < 3) {
+      var range = game.map.getRangeInt(source.data('range'));
+      if (range < 3) {
         source.addClass('melee-attack');
         game.timeout(300, source.removeClass.bind(source, 'melee-attack'));
       }
       //ranged fx
-      if (source.data('range') > 2) {
+      if (range > 2) {
         // launch projectile
         var cl = source.data('hero');
         if (source.hasClass('towers')) cl = 'towers ' + source.side();
         if (source.hasClass('units')) cl = 'units ' + source.data('id');
         if (ult) cl += ' ult';
         game.projectile = $('<div>').addClass('projectile ' + cl);
-        game.projectile.appendTo(game.map.el);
+        var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
+        //console.log(angle)
+        game.projectile.data('rotate', angle).appendTo(game.map.el);
         game.card.projectile.apply(source);
         game.timeout(50, game.card.projectile.bind(target));
         game.timeout(500,game.projectile.remove.bind(game.projectile));
@@ -444,10 +447,11 @@ game.card = {
     return this;
   },
   projectile: function() {
+    var rotate = game.projectile.data('rotate') || 0;
     var x = this.getX();
     var y = this.getY();
     game.projectile.css({
-      'transform': 'translate3d('+(110 + (x * 210))+'px,'+(140 + (y * 310))+'px, 60px)'
+      'transform': 'translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale(2.5)'
     });
   },
   damage: function(damage, target, type) {
