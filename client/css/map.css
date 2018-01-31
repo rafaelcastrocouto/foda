@@ -175,18 +175,25 @@
 }
 
 .projectile.units.ranged {
-  background: #85d8ac;
+  background: #54a078;
   width: 20px;
   height: 30px;
+  box-shadow: inset 0 -4px 0 4px #b9e8d0;
+}
+.projectile.units.ranged.enemy {
+  background: #dc5b19;
+  box-shadow: inset 0 -4px 0 4px #f7a55b;
 }
 .projectile.cm {
-  background: #bdfeff;
+  background: white;
   width: 20px;
   height: 20px;
+  box-shadow: inset -2px 1px 0 4px #6ad0d2;
 }
 .projectile.cat {
   width: 8px;
   height: 60px;
+  margin-left: 10px;
 }
 .projectile.en {
   width: 8px;
@@ -197,17 +204,19 @@
   box-shadow: 0 -10px 10px 5px white;
 }
 .projectile.ld {
-  /*background-color: tan;*/
   background-color: transparent;
-  box-shadow: inset 0 0 0 8px tan;
+  box-shadow: 0 0 0 4px #ccc, inset 0 0 0 8px tan;
+  margin-left: 8px;
 }
 .projectile.kotl {
   width: 10px;
   height: 10px;
   box-shadow: 0 0 20px 12px white;
+  margin-left: 8px;
 }
-.projectile.lina {
-  /*background-color: orange;*/
+.projectile.lina,
+.projectile.towers.enemy {
+  margin-left: 10px;
   background-color: transparent;
   width: 34px;
   height: 50px;
@@ -220,21 +229,20 @@
   background: #f4deb1;
 }
 .projectile.venge {
-  width: 60px;
+  width: 70px;
   height: 60px;
   background: transparent;
   box-shadow: 0 15px 0 0 #ed7edc;
+  margin-left: 8px;
 }
 .projectile.catapult {
   background: #7d5d3f;
 }
 .projectile.towers.player {
-  width: 20px;
-  height: 35px;
+  width: 24px;
+  height: 40px;
   background: #6cffb7;
-}
-.projectile.towers.enemy {
-  background: #ff3f00;
+  box-shadow: inset 0 -6px 0 4px white;
 }
 
 .debug .map .ai {

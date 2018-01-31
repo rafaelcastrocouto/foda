@@ -416,7 +416,7 @@ game.card = {
         // launch projectile
         var cl = source.data('hero');
         if (source.hasClass('towers')) cl = 'towers ' + source.side();
-        if (source.hasClass('units')) cl = 'units ' + source.data('id');
+        if (source.hasClass('units')) cl = 'units ' + source.data('id') +' '+ source.side();
         if (ult) cl += ' ult';
         game.projectile = $('<div>').addClass('projectile ' + cl);
         var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
@@ -451,7 +451,7 @@ game.card = {
     var x = this.getX();
     var y = this.getY();
     game.projectile.css({
-      'transform': 'translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale(2.5)'
+      'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale(2.5)'
     });
   },
   damage: function(damage, target, type) {
