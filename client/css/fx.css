@@ -300,7 +300,7 @@
 .map .fx.lina-fire {
   width: 96px;
   height: 192px;
-  animation: lina-fire-sprite 1.5s steps(15) infinite;
+  animation: lina-fire-sprite 1.5s steps(15) 1;
   background-image: url('../img/fx/lina/fire.png');
   background-repeat: no-repeat;
   transform: translate3d(60px,-400px,100px) scale(7);
@@ -313,19 +313,19 @@
 
 .map .fx.lina-fire.bottom {
   transform: rotate(180deg) translate3d(-65px,-450px,100px) scale(7);
-  animation: lina-fire-sprite 1.5s steps(15) infinite;
+  animation: lina-fire-sprite 1.5s steps(15) 1;
 }
 
 .map .fx.lina-fire.left {
   transform: translate3d(-200px,0px,100px) rotateZ(-90deg) scaleX(8) scaleY(5);
   background-position: 0px 135px;
-  animation: lina-fire-sprite 1.5s steps(15) infinite;
+  animation: lina-fire-sprite 1.5s steps(15) 1;
 }
 
 
 .map .fx.lina-fire.right {
   transform: translate3d(340px,0px,100px) rotateZ(90deg) scaleX(8) scaleY(5);
-  animation: lina-fire-sprite 1.5s steps(15) infinite;
+  animation: lina-fire-sprite 1.5s steps(15) 1;
   background-position: 0px 135px;
 }
 

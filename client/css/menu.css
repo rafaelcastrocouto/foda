@@ -255,6 +255,8 @@
 
 .menu .icon.online span {
   animation-delay: 0.3s;
+  left: -50px;
+  top: 10px;
 }
 .menu .icon.tutorial span {
   animation-delay: 0.6s;
@@ -264,6 +266,7 @@
 }
 .menu .icon.library span {
   animation-delay: 1.2s;
+  left: -54px;
 }
 .menu .icon.credits span {
   animation-delay: 1.5s;
