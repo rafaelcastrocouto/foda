@@ -231,16 +231,16 @@
   background-image: url("../img/skills/ld/ult.jpg");
 }
 
-.map .ld.transformed .img, .fromMap.ld.transformed .img {
+.map .ld.transformed .portrait .img, .fromMap.ld.transformed .img, .selectedarea .ld.transformed .img {
   background-image: url("../img/skills/ld/ult-form.jpg");
 }
-
-.ld-summon .img, .buffs .buff.ld-summon .img {
-  background-image: url("../img/skills/ld/summon.jpg");
+.map .ld.transformed .portrait .img, .fromMap.ld.transformed .img {
+  background-position: 50% 0%;
+  background-size: 300%;  
 }
 
-.map .ld-summon .portrait .img, .fromMap.ld-summon .portrait .img, .selectedarea .ld-summon .img {
-  background-image: url("../img/skills/ld/bear.jpg");
+.ld-summon .img, .buffs .buff.ld-summon .img, .map .ld-summon .portrait .img, .fromMap.ld-summon .portrait .img, .selectedarea .ld-summon .img {
+  background-image: url("../img/skills/ld/summon.jpg");
 }
 
 .map .ld-summon .portrait .img, .fromMap.ld-summon .portrait .img {
@@ -266,10 +266,13 @@
 
 .ld-summon.entangle-source .img, .buffs .buff.ld-summon.entangle-source .img, .buffs .buff.ld-summon.entangle-target .img {
   background-image: url("../img/skills/ld/entangle.jpg");
+  background-position: 25%;
 }
 
 .ld-summon.demolish-source .img, .ld-summon.demolish-target .img, .buffs .buff.ld-summon.demolish-source .img, .buffs .buff.ld-summon.demolish-target .img {
   background-image: url("../img/skills/ld/demolish.jpg");
+  background-size: 220%;
+  background-position: 40%;
 }
 
 .nyx, .nyx .portrait {

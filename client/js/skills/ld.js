@@ -82,9 +82,11 @@ game.skills.ld = {
     cast: function (skill, source) {
       source.selfBuff(skill);
       source.shake();
+      game.fx.add('ld-rabid', source);
       var bear = source.data('bear');
       if (bear) {
         source.addBuff(bear, skill);
+        game.fx.add('ld-rabid', bear);
         bear.shake();
       }
     }
@@ -95,6 +97,7 @@ game.skills.ld = {
         target.damage(skill.data('damage'), card, skill.data('damage type'));
         card.stopChanneling();
       });
+      game.fx.add('ld-roar', target);
       this.opponent = source.opponent();
       var range = skill.data('aoe range');
       var x = game.map.getX(target);
@@ -118,7 +121,7 @@ game.skills.ld = {
         this.scare(game.map.getSpot(  x  , y + 1));// bottom
         this.scare(game.map.getSpot(x - 1, y + 1));// bottom left
       }
-      target.select();
+      target.reselect();
     },
     scare: function (spot) { 
       if (spot) {
@@ -145,7 +148,13 @@ game.skills.ld = {
       if (!source.hasClass('transformed')) {
         source.addClass('transformed');
         skill.addClass('on');
-        cry.appendTo(game[side].skills.hand);
+        if (!source.data('ld-cry')) {
+          cry.appendTo(game[side].skills.hand);
+          source.data('ld-cry', true);
+          source.on('turnstart', function () {
+            $(this).data('ld-cry', false);
+          });
+        }
         source.selfBuff(skill);
         source.setRange(game.data.ui.melee);
         if (!game.fx.ldult) {
@@ -166,9 +175,11 @@ game.skills.ld = {
     cast: function (skill, source) {
       source.selfBuff(skill);
       source.shake();
+      game.fx.add('ld-cry', source);
       var bear = source.data('bear');
       if (bear) {
         source.addBuff(bear, skill);
+        game.fx.add('ld-cry', bear);
         bear.shake();
       }
       source.select();

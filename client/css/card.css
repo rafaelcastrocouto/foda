@@ -358,7 +358,7 @@
 }
 
 .selectedarea .card .buffs .buff:hover {
-  transform: scale(2.5);
+  transform: translateY(-16px) scale(2.5);
   z-index: 10;
 }
 
@@ -376,6 +376,7 @@
   height: 32px;
   position: absolute;
   border: 1px solid #fff;
+  background-position: 50%;
 }
 .map .card .buffs .buff , .fromMap .card .buffs .buff {
   transform: scale(1.4);

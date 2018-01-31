@@ -1,5 +1,10 @@
 game.fx = {
   heroes: {
+    ld: {
+      rabid: ['rabid'],
+      roar: ['roar'],
+      cry: ['cry']
+    },
     lina: {
       fire: ['fire'],
       stun: ['stun'],
@@ -64,7 +69,7 @@ game.fx = {
     var hero = a[0];
     var skill = a[1];
     //console.log(game.fx.heroes[hero][skill])
-    if (game.fx.heroes[hero][skill]) {
+    if (game.fx.heroes[hero] && game.fx.heroes[hero][skill]) {
       game.fx.stop(name, source);
       var fx = $('<div>').addClass(name + ' fx fx-' + hero);
       var dirX = source.getX() - target.getX();
@@ -106,7 +111,7 @@ game.fx = {
   },
   hide: function(fx) {
     game.fx.pause(fx);
-    fx.removeClass('top bottom right left r-1-1 r-10 r-11 r0-1 r00 r01 r1-1 r10 r11 r-21 r-20 r-2-1 r21 r20 r2-1 r-1-2 r0-2 r1-2 r-12 r02 r12').appendTo(game.hidden);
+    fx.removeClass('top bottom right left far close r-1-1 r-10 r-11 r0-1 r00 r01 r1-1 r10 r11 r-21 r-20 r-2-1 r21 r20 r2-1 r-1-2 r0-2 r1-2 r-12 r02 r12').appendTo(game.hidden);
   },
   stop: function(name, source) {
     var fx = source.find('.fx.'+name);
