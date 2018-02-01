@@ -249,7 +249,7 @@ game.card = {
       destiny = $('#' + destiny);
     }
     var card = this, t, d, from = card.getPosition(), to = destiny.getPosition();
-    if (destiny.hasClass('free') && !destiny.hasClass('block') && from !== to) {
+    if (destiny.hasClass('free') && !destiny.hasClasses('block cript') && from !== to) {
       card.removeClass('draggable').off('mousedown touchstart');
       $('.map .movearea').addClass('moving');
       card.parent().addClass('movesource');
@@ -576,7 +576,6 @@ game.card = {
     }
     evt.position = target.getPosition();
     target.addClass('dead');
-    if (!spot.hasClass('cript')) spot.addClass('free');
     game.timeout(900, function() {
       this.source.trigger('kill', this);
       this.target.die(this);
@@ -619,13 +618,13 @@ game.card = {
         dead.find('.deaths').text(deaths);
         if (game.mode != 'library') 
           $('.table .'+side+' .skills.hand .card.'+dead.data('hero')+', .table .'+side+' .skills.sidehand .card.'+dead.data('hero')).discard();
+        $('.card', game[side].skills.hand).each(function (i, el) {
+          var skill = $(el);
+          if (skill.data('deck') === game.data.ui.temp) {
+            skill.discard();
+          }
+        });
       }
-      $('.card', game[side].skills.hand).each(function (i, el) {
-        var skill = $(el);
-        if (skill.data('deck') === game.data.ui.temp) {
-          skill.discard();
-        }
-      });
       $('.card', game[side].skills.sidehand).each(function (i, el) {
         var skill = $(el);
         if (skill.hasClass('on')) {

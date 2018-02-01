@@ -163,21 +163,21 @@ game.highlight = {
   jungle: function(source, skill) {
     var range = skill.data('cast range');
     source.inRange(range, function(neighbor) {
-      if (neighbor.hasAllClasses('jungle free'))
+      if (neighbor.hasAllClasses('jungle free') && !neighbor.hasClasses('block cript'))
         neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
   summoner: function(source, skill) {
     var summoner = source.data(game.data.ui.summoner);
     summoner.around(skill.data('cast range'), function(neighbor) {
-      if (neighbor.hasClass('free')) {
+      if (neighbor.hasClass('free') && !neighbor.hasClasses('block cript')) {
         neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
       }
     });
   },
   freeSpots: function(source, skill) {
     source.around(skill.data('cast range'), function(neighbor) {
-      if (neighbor.hasClass('free') && !neighbor.hasClass('block')) {
+      if (neighbor.hasClass('free') && !neighbor.hasClasses('block cript')) {
         neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
       }
     });
@@ -188,7 +188,7 @@ game.highlight = {
       if (card.length && !card.hasClass('invisible')) {
         card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
       } else
-        neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
+        if (!neighbor.hasClasses('block cript')) neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
   linear: function(source, skill) {
@@ -199,14 +199,14 @@ game.highlight = {
       var card = neighbor.find('.card');
       if (card.length && !card.hasClass('invisible')) {
         card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      } else
+      } else if (!neighbor.hasClasses('block cript')) 
         neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
   atRange: function(source, skill, free) {
     var range = skill.data('cast range');
     source.atRange(range, function(spot) {
-      if (!free || (spot.hasClass('free') && !spot.hasClass('block')))
+      if (!free || (spot.hasClass('free') && !spot.hasClass('cript block')))
         spot.addClass('targetarea').on('mouseup.highlight', game.player.cast);
     });
   },
@@ -304,7 +304,7 @@ game.highlight = {
       $('.map .spot').removeClass('skillstroke skillhoverstroke stroke top right left bottom toparrow bottomarrow leftarrow rightarrow');
       $('.map .card').removeClass('toparrow bottomarrow leftarrow rightarrow');
       if (spot.hasClass('targetarea') || spot.find('.casttarget').length) {
-        game.highlight.strokeAtCursor(spot);
+        if (!spot.hasClasses('block cript')) game.highlight.strokeAtCursor(spot);
       } else
         game.highlight.strokeAtCaster();
     }
@@ -349,18 +349,18 @@ game.highlight = {
         dir = 'bottom';
       if (spot) {
         spot.around(range, function(neighbor) {
-          neighbor.addClass(dir + 'arrow');
+          if (!neighbor.hasClasses('block cript')) neighbor.addClass(dir + 'arrow');
           $('.card.' + opponent, neighbor).addClass(dir + 'arrow');
         });
       } else {
         if (game.highlight.possible(summon)) {
           summon.around(range, function(neighbor) {
-            neighbor.not(source.parent()).addClass(dir + 'arrow');
+            if (!neighbor.hasClasses('block cript')) neighbor.not(source.parent()).addClass(dir + 'arrow');
             $('.card.' + opponent, neighbor).addClass(dir + 'arrow');
           });
         }
         source.around(range, function(neighbor) {
-          neighbor.addClass(dir + 'arrow');
+          if (!neighbor.hasClasses('block cript')) neighbor.addClass(dir + 'arrow');
           $('.card.' + opponent, neighbor).addClass(dir + 'arrow');
         });
       }
@@ -377,7 +377,7 @@ game.highlight = {
             if (card.length)
               card.addClass(linedir + 'arrow');
             else
-              neighbor.addClass(linedir + 'arrow');
+              if (!neighbor.hasClasses('block cript')) neighbor.addClass(linedir + 'arrow');
           });
         }
       }
@@ -398,7 +398,7 @@ game.highlight = {
           if (card.length)
             card.addClass(dir + 'arrow');
           else
-            neighbor.addClass(dir + 'arrow');
+            if (!neighbor.hasClasses('block cript')) neighbor.addClass(dir + 'arrow');
         });
       }
     }
