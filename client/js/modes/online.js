@@ -338,7 +338,7 @@ game.online = {
   },
   win: function () {
     game.turn.stopCount();
-    game.winner = game.player.name;
+    game.winner = game.player.type;
     game.player.points += 10;
     localStorage.setItem('points', game.player.points);
     game.online.sendTurnData('over');
@@ -355,7 +355,7 @@ game.online = {
   },
   lose: function () {
     game.turn.stopCount();
-    game.winner = game.enemy.name;
+    game.winner = game.enemy.type;
     game.loader.removeClass('loading');
     game.states.changeTo('result');
   },

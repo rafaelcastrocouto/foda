@@ -91,7 +91,7 @@ game.single = {
   win: function () {
     game.turn.stopCount();
     game.nextStage = true;
-    game.winner = game.player.name;
+    game.winner = game.player.type;
     game.player.points += 1;
     localStorage.setItem('points', game.player.points);
     game.states.changeTo('result');
@@ -101,7 +101,7 @@ game.single = {
   },
   lose: function () {
     game.turn.stopCount();
-    game.winner = game.enemy.name;
+    game.winner = game.enemy.type;
     game.loader.removeClass('loading');
     game.states.changeTo('result');
   },

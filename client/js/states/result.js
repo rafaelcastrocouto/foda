@@ -36,15 +36,14 @@ game.states.result = {
     game.audio.stopSong();
     game.audio.loopSong('SneakyAdventure');
     if (game.mode == 'tutorial') game.tutorial.axe.addClass('show').appendTo(this.el);
-    var title = game.winner + ' ' + game.data.ui.victory;
-    if (game.mode == 'single' && game.winner != game.player.name)
-      title = game.data.ui.lose;
-    if (!game.winner) {
-      game.winner = game.player.name;
-      if (game.mode == 'local') game.winner = 'Good Game';
+    var message = game.data.ui.win;
+    var winnerName = game.player.name;
+    if (game.winner != game.player.type) {
+      message = game.data.ui.lose;
+      winnerName = game.enemy.name;
     }
-    if (game.winner == game.player.name) game.message.text(game.data.ui.win);
-    else game.message.text(game.data.ui.lose);
+    if (game.mode == 'local') message = game.data.ui.lose;
+    var title = winnerName + ' ' + game.data.ui.victory;
     $(game.player.heroesDeck.data('cards')).each(this.playerHeroResult);
     $(game.enemy.heroesDeck.data('cards')).each(this.enemyHeroResult);
     var ch = game.states.result.playerResults.children();
@@ -57,6 +56,7 @@ game.states.result = {
       return game.enemy.picks.indexOf($(b).data('hero')) - game.enemy.picks.indexOf($(a).data('hero')); 
     });
     game.states.result.enemyResults.append(ch);
+    game.message.text(message);
     this.title.text(title);
     this.towers.text(game.data.ui.towers + ' HP: ' + game.player.tower.data('current hp') + '/' + game.enemy.tower.data('current hp'));
     this.kills.text(game.data.ui.kills + ': ' + game.player.kills + '/' + game.enemy.kills);

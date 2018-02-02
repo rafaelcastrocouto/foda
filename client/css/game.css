@@ -528,10 +528,13 @@ label input {
 .log .remembername {
   cursor: pointer;
   font-size: 15px;
+  height: 28px;
+  width: 220px;
+  margin: 0 auto;
 }
 
 .log .remembername * {
-  vertical-align: bottom;
+  /* vertical-align: bottom; */
 }
 
 

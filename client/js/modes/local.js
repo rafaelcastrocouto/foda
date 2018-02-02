@@ -117,7 +117,7 @@ game.local = {
   },
   win: function () {
     game.turn.stopCount();
-    game.winner = game.player.name;
+    game.winner = game.player.type;
     game.states.changeTo('result');
   },
   surrender: function () {
@@ -126,7 +126,7 @@ game.local = {
   },
   lose: function () {
     game.turn.stopCount();
-    game.winner = game.enemy.name;
+    game.winner = game.enemy.type;
     game.states.changeTo('result');
   },
   clear: function () {

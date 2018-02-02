@@ -383,7 +383,7 @@ game.tutorial = {
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.letter(game.data.ui.axeend);
     game.audio.play('tutorial/axeah');
-    game.winner = game.player.name;
+    game.winner = game.player.type;
     game.player.points += 1;
     localStorage.setItem('points', game.player.points);
     localStorage.setItem('tutorial', 1);

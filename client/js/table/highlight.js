@@ -211,10 +211,11 @@ game.highlight = {
     });
   },
   isTurn: function(card) {
-    if (game.mode == 'library')
-      return true;
-    var side = card.side();
-    return side == game.currentTurnSide;
+    if (game.mode == 'library') return true;
+    if (card.side() == 'enemy') {
+      if (game.mode != 'local') return false;
+    }
+    return card.side() == game.currentTurnSide;
   },
   move: function() {
     var card = this, speed;

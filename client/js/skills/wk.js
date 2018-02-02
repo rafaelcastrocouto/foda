@@ -87,6 +87,7 @@ game.skills.wk = {
       game.timeout(900, function (wk, spot) { //console.log(wk, spot)
         game.shake();
         wk.reborn(spot);
+        wk.addClass('can-attack');
         spot.removeClass('cript block');
       }.bind(this, wk, spot));
       wk.opponentsInRange(range, function (target) {
