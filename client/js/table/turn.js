@@ -47,6 +47,7 @@ game.turn = {
       card.trigger('turnstart', { target: card });
       card.trigger(turn+'turnstart', { target: card });
     });
+    game.audio.play('activate');
     game.timeout(400, game.turn.tickTime);
     game.timeout(800, function () {
       game.turn.el.removeClass('show');

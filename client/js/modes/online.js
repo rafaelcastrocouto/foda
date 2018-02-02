@@ -178,8 +178,9 @@ game.online = {
         game.online.foundDeck(type, found);
       } else {
         game.triesCounter.text(game.tries += 1);
-        if (game.tries >= 10) game.states.choose.back.attr({disabled: false});
-        if (game.tries > game.connectionLimit) {
+        if (game.tries >= game.connectionLimit) {
+          game.states.choose.back.attr({disabled: false});
+        } else if (game.tries > 2 * game.connectionLimit) {
           game.reset('online.js 167: Unable to load enemy deck');
         } else { game.timeout(1000, game.online.loadDeck.bind(this, type)); }
       }

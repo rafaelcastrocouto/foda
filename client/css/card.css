@@ -207,7 +207,8 @@
   margin-bottom: 1px;
 }
 
-.table .card.heroes .description {
+.table .card.heroes .description,
+.table .card.units .description {
   display: none;
 }
 

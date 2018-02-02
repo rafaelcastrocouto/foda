@@ -98,43 +98,44 @@ game.skills.ld = {
         card.stopChanneling();
       });
       game.fx.add('ld-roar', target);
-      this.opponent = source.opponent();
       var range = skill.data('aoe range');
       var x = game.map.getX(target);
       var y = game.map.getY(target);
-      if (this.opponent === 'player') { //bottom to top to prevent blocking
-        this.scare(game.map.getSpot(x + 1, y + 1));// bottom right
-        this.scare(game.map.getSpot(  x  , y + 1));// bottom
-        this.scare(game.map.getSpot(x - 1, y + 1));// bottom left
-        this.scare(game.map.getSpot(x + 1,   y  ));// right
-        this.scare(game.map.getSpot(x - 1,   y  ));// left
-        this.scare(game.map.getSpot(x + 1, y - 1));// top right
-        this.scare(game.map.getSpot(  x  , y - 1));// top
-        this.scare(game.map.getSpot(x - 1, y - 1));// top left
+      if (source.opponent() === 'enemy') { //bottom to top to prevent blocking
+        this.scare(source, game.map.getSpot(x + 1, y - 1));// top right
+        this.scare(source, game.map.getSpot(  x  , y - 1));// top
+        this.scare(source, game.map.getSpot(x - 1, y - 1));// top left
+        this.scare(source, game.map.getSpot(x + 1,   y  ));// right
+        this.scare(source, game.map.getSpot(x - 1,   y  ));// left
+        this.scare(source, game.map.getSpot(x + 1, y + 1));// bottom right
+        this.scare(source, game.map.getSpot(  x  , y + 1));// bottom
+        this.scare(source, game.map.getSpot(x - 1, y + 1));// bottom left
       } else { //top to bottom to prevent blocking)
-        this.scare(game.map.getSpot(x + 1, y - 1));// top right
-        this.scare(game.map.getSpot(  x  , y - 1));// top
-        this.scare(game.map.getSpot(x - 1, y - 1));// top left
-        this.scare(game.map.getSpot(x + 1,   y  ));// right
-        this.scare(game.map.getSpot(x - 1,   y  ));// left
-        this.scare(game.map.getSpot(x + 1, y + 1));// bottom right
-        this.scare(game.map.getSpot(  x  , y + 1));// bottom
-        this.scare(game.map.getSpot(x - 1, y + 1));// bottom left
+        this.scare(source, game.map.getSpot(x + 1, y + 1));// bottom right
+        this.scare(source, game.map.getSpot(  x  , y + 1));// bottom
+        this.scare(source, game.map.getSpot(x - 1, y + 1));// bottom left
+        this.scare(source, game.map.getSpot(x + 1,   y  ));// right
+        this.scare(source, game.map.getSpot(x - 1,   y  ));// left
+        this.scare(source, game.map.getSpot(x + 1, y - 1));// top right
+        this.scare(source, game.map.getSpot(  x  , y - 1));// top
+        this.scare(source, game.map.getSpot(x - 1, y - 1));// top left
       }
       target.reselect();
     },
-    scare: function (spot) { 
+    scare: function (source, spot) {
+      var opponent = source.opponent();
       if (spot) {
-        var target = spot.find('.card.' + this.opponent);
+        var target = spot.find('.card.' + opponent);
         if (target.length) {// console.log(target)
           var x = game.map.getX(spot),
               y = game.map.getY(spot);
           var ny = 1;
-          if (this.opponent === 'enemy') ny = -1;
+          if (opponent === 'enemy') ny = -1;
           var upSpot = game.map.getSpot(x, y + ny);
           if (upSpot && upSpot.hasClass('free')) {
             target.stopChanneling();
             target.move(upSpot);
+            target.parent().addClass('free');
             target.shake();
           }
         }
