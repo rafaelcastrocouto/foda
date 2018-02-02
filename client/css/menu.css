@@ -471,79 +471,75 @@
 }
 .creditscroll {
   height: 280px;
-  animation: credits 14s linear infinite;
+  animation: credits 20s linear infinite;
   position: relative;
   padding: 40px 80px;
 }
 
 @keyframes credits {
   0% {
-    top: 0;
+    top: 320px;
   }
-  100% {
-    top: -450px;
+  80%, 100% {
+    top: -500px;
   }
+}
+.credits p {
+  position: relative;
+}
+.credits .thumb {
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
 }
 
 .credits .doll1 {
-  position: absolute;
   width: 30px;
   height: 46px;
   background-image: url("../img/bkg/icons.png");
   background-position: -246px -94px;
-  top: 120px;
-  left: 100px;
+  left: 30px;
 }
 
 .credits .doll2 {
-  position: absolute;
   width: 30px;
   height: 46px;
   background-image: url("../img/bkg/icons.png");
   background-position: -294px -94px;
-  right: 110px;
-  top: 80px;
+  right: 20px;
 }
 
 .credits .doll3 {
-  position: absolute;
   width: 30px;
   height: 46px;
   background-image: url("../img/bkg/icons.png");
   background-position: -324px -100px;
-  top: 170px;
-  right: 100px;
+  right: 10px;
 }
 
 
 .credits .supp1 {
-  position: absolute;
   width: 42px;
   height: 42px;
   background-image: url("../img/bkg/supp1.png");
   background-size: cover;
-  top: 490px;
-  left: 150px;
+  left: 60px;
 }
 
 .credits .supp2 {
-  position: absolute;
   width: 42px;
   height: 42px;
   background-image: url("../img/bkg/supp2.png");
   background-size: cover;
-  top: 526px;
-  left: 290px;
+  right: 60px;
   border-radius: 50%;
 }
 
 .credits .supp3 {
-  position: absolute;
   width: 42px;
   height: 42px;
   background-image: url("../img/bkg/supp3.png");
   background-size: cover;
-  top: 326px;
-  left: 360px;
+  left: 5px;
   border-radius: 50%;
 }

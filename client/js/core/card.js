@@ -227,10 +227,6 @@ game.card = {
     card.trigger('select', {
       card: card
     });
-    if (!card.hasClasses('done stunned disabled rooted trees towers') &&
-      (game.mode == 'library' || game.mode == 'local' || card.hasClass('player'))) {
-      card.addClass('draggable');
-    }
     game.states.table.el.removeClass('player enemy').addClass(card.side());
   },
   unselect: function() {

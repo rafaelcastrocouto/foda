@@ -128,18 +128,18 @@
   }
 }
 
-.map .blink {
-  box-shadow: 0 0 0 16px white;
+.table .map .blink {
+  box-shadow: 0 0 0 20px white;
   animation: mapblink 1s infinite;
 }
 
 @keyframes mapblink {
   0%, 100% {
-    box-shadow: 0 0 0 16px rgba(0,0,0,0);
+    box-shadow: 0 0 0 20px rgba(0,0,0,0);
   }
 
   50% {
-    box-shadow: 0 0 0 16px white;
+    box-shadow: 0 0 0 20px white;
   }
 }
 
@@ -160,7 +160,7 @@
 
 .tutorial.axe.left, .left-side .tutorial.axe {
   right: auto;
-  left: -160px;
+  left: -180px;
   transform: scaleX(-1);
 }
 

@@ -523,7 +523,7 @@
 }
 
 .map .fx.cm-ult {
-  transform: rotateX(-37deg) translate3d(80px,-500px,10px) scale(4);
+  transform: rotateX(-37deg) translate3d(80px,-500px,10px) scale(4.5);
   width: 64px;
   height: 173px;
   animation: cm-ult-sprite 1.1s steps(13) 1;

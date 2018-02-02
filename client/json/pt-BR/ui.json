@@ -42,6 +42,8 @@
   "axeattack": "<b>Selecione</b> um herói do seu time próximo ao inimigo e <b>clique</b> em uma <b>seta vermelha</b> para <b>atacar</b>",
   "axeskillselect": "Assim que se faz! As <b>cartas de habilidades</b> são escolhidas no início o turno. <b>Clique</b> para selecionar a habilidade",
   "axeskill": "<b>Arraste ou clique</b> nas <b>setas azuis</b> para usar suas habilidades",
+  "axejungle": "Selecione a <b>Bambi</b> e vamos para a <b>floresta</b>",
+  "axesummonjungle": "Selecione <b>Sedução</b> e use na <b>floresta</b> para invocar uma criatura",
   "axetoggle": "Habilidades <b>alternáveis</b> ficam na mão esquerda. Elas são livres pra alternar",
   "axetoggleoff": "Habilidades <b>alternáveis</b> podem ser desligadas a qualquer momento",
   "axecast": "Habilidades <b>ativas</b> precisam de <b>mana</b> e ficam na <b>mão direita</b>",

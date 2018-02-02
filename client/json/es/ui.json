@@ -42,6 +42,8 @@
   "axeattack": "<b> Seleccione </ b> una de sus cartas cerca del enemigo y <b> haga clic en </ b> en la <b> flecha roja </ b> para atacar",
   "axeskillselect": "Sus <b> cartas de habilidad </ b> se eligen al principio de su turno. <b> Haga clic en </ b> para seleccionar una habilidad pasiva",
   "axeskill": "<b> Arrastrar o hacer clic </ b> en una <b> flecha azul </ b> para usar las cartas de habilidad. Las habilidades pasivas van a su <b> mano izquierda </ b>",
+  "axejungle": "Seleccione la <b>Bambi</b> y vamos al <b>bosque</b>",
+  "axesummonjungle": "Selecciona <b>Seducción</b> y usa en el <b>bosque</b> para invocar a una criatura",
   "axetoggle": "<b> Toggle habilidades </ b> también <br> también vaya a su mano izquierda, puede utilizarlos gratis",
   "axetoggleoff": "<b> Habilitar habilidades </ b> también se puede desactivar en cualquier momento",
   "axecast": "Las habilidades <b> Activas </ b> requieren <b> mana </ b>, por lo que permanecen en su <b> mano derecha </ b>",

@@ -76,7 +76,7 @@ game.skill = {
   },
   buyHand: function(side) {
     game.units.buyCreeps(side);
-    if (game[side].turn > 1)
+    if (game[side].type == 'challenger' || game[side].turn > 1)
       game.skill.buyCards(game[side].cardsPerTurn, side);
   },
   buyCards: function(n, side) {
