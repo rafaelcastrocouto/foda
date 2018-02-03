@@ -303,6 +303,7 @@ game.skill = {
       if (this.closest('.map').length) this.parent().addClass('free');
       this.appendTo(game.hidden);
     }
+    this.data('casted', false);
     if (cb) cb();
     return this;
   }

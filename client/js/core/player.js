@@ -84,8 +84,9 @@ game.player = {
     var to = target.getPosition();
     var hero = skill.data('hero');
     var skillid = skill.data('skill');
-    if (game.canPlay() && hero && skillid && from && to) {
+    if (game.canPlay() && hero && skillid && from && to && !skill.data('casted')) {
       source.cast(skill, to);
+      skill.data('casted', true);
       if (skill.data('type') == game.data.ui.summon) {
         target.addClass('done').removeClass('draggable');
       }
