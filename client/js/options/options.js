@@ -10,7 +10,7 @@ game.options = {
     $('<label>').appendTo(this.screen).append(this.fullscreen).append($('<span>').text(game.data.ui.fullscreen));
     //side
     this.side = $('<input>').attr({type: 'checkbox', name: 'side'});
-    $('<label>').appendTo(this.screen).append(this.side).append($('<span>').text(game.data.ui.left));
+    $('<label>').appendTo(this.screen).append(this.side).append($('<span>').text(game.data.ui.leftmode));
     if (localStorage.getItem('left-side') == 'true') {
       $(document.body).addClass('left-side');
       this.side.prop('checked', true);
