@@ -31,7 +31,7 @@ game.player = {
     var card = game.selectedCard;
     var from = card.getPosition();
     var to = spot.getPosition();
-    if (game.canPlay() && spot.hasClass('free') && from !== to && !card.hasClass('done')) {
+    if (card.canPlay() && spot.hasClass('free') && from !== to && !card.hasClass('done')) {
       card.move(to);
       card.removeClass('draggable').addClass('done');
       if (game.mode == 'online')
@@ -43,7 +43,7 @@ game.player = {
     var source = game.selectedCard;
     var from = source.getPosition();
     var to = target.getPosition();
-    if (game.canPlay() && source.data('damage') && from !== to && target.data('current hp')) {
+    if (source.canPlay() && source.data('damage') && from !== to && target.data('current hp')) {
       source.attack(target);
       if (game.mode == 'online')
         game.currentMoves.push('A:' + from + ':' + to);
@@ -55,7 +55,7 @@ game.player = {
     var hero = skill.data('hero');
     var skillid = skill.data('skill');
     var to = target.getPosition();
-    if (game.canPlay() && hero && skillid) {
+    if (skill.canPlay() && hero && skillid) {
       skill.passive(target);
       if (game.mode == 'online')
         game.currentMoves.push('P:' + to + ':' + skillid + ':' + hero);
@@ -68,7 +68,7 @@ game.player = {
     var hero = skill.data('hero');
     var skillid = skill.data('skill');
     var to = target.getPosition();
-    if (game.canPlay() && hero && skillid) {
+    if (skill.canPlay() && hero && skillid) {
       skill.toggle(target);
       if (game.mode == 'online')
         game.currentMoves.push('T:' + to + ':' + skillid + ':' + hero);
@@ -84,7 +84,7 @@ game.player = {
     var to = target.getPosition();
     var hero = skill.data('hero');
     var skillid = skill.data('skill');
-    if (game.canPlay() && hero && skillid && from && to && !skill.data('casted')) {
+    if (skill.canPlay() && hero && skillid && from && to && !skill.data('casted')) {
       source.cast(skill, to);
       skill.data('casted', true);
       if (skill.data('type') == game.data.ui.summon) {
@@ -104,8 +104,9 @@ game.player = {
   summonCreep: function(event) {
     var target = $(this);
     var to = target.getPosition();
-    var creep = game.selectedCard.data('unit');
-    if (game.canPlay()) {
+    var card = game.selectedCard;
+    var creep = card.data('unit');
+    if (card.canPlay()) {
       if (game.mode == 'online')
         game.currentMoves.push('S:' + to + ':' + creep);
       game.units.summonCreep(target, to, creep, event);

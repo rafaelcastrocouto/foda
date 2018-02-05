@@ -14,38 +14,39 @@ game.highlight = {
   },
   map: function(event) {
     game.highlight.clearMap();
+    var card = game.selectedCard;
     if (game.selectedCard) {
-      if (game.selectedCard.hasClasses('heroes units') && !game.selectedCard.hasClass('nohighlight')) {
+      if (card.hasClasses('heroes units') && !card.hasClass('nohighlight')) {
         if (game.mode == 'tutorial') {
           if (game.tutorial.lesson == 'Move') {
-            game.selectedCard.highlightMove();
+            card.highlightMove();
           } else if (game.tutorial.lesson == 'Attack') {
-            game.selectedCard.highlightAttack();
+            card.highlightAttack();
           }
         } else {
-          game.selectedCard.highlightMove();
-          game.selectedCard.highlightAttack();
+          card.highlightMove();
+          card.highlightAttack();
         }
       }
-      if (game.selectedCard.hasClass('skills')) {
-        game.selectedCard.highlightSource();
-        if (!game.selectedCard.hasClass('channel-on'))
-          game.selectedCard.strokeSkill();
-        if (game.canPlay()) {
-          game.selectedCard.highlightArrows();
-          game.selectedCard.highlightTargets(event);
+      if (card.hasClass('skills')) {
+        card.highlightSource();
+        if (!card.hasClass('channel-on'))
+          card.strokeSkill();
+        if (card.canPlay()) {
+          card.highlightArrows();
+          card.highlightTargets(event);
         }
-        if (game.selectedCard.closest('.hand').length && (game.mode != 'tutorial' || game.mode != 'library') && game.canPlay()) {
+        if (card.closest('.hand').length && (game.mode != 'tutorial' || game.mode != 'library') && card.canPlay()) {
           game.states.table.discard.attr('disabled', false);
         }
       }
-      if (game.selectedCard.hasClass('towers')) {
-        game.selectedCard.strokeAttack();
+      if (card.hasClass('towers')) {
+        card.strokeAttack();
       }
-      if (game.selectedCard.hasClass('units') && game.selectedCard.parent().is('.sidehand')) {
-        game[game.selectedCard.side()].tower.strokeAttack();
-        if (game.canPlay())
-          game.selectedCard.highlightCreep();
+      if (card.hasClass('units') && card.parent().is('.sidehand')) {
+        game[card.side()].tower.strokeAttack();
+        if (card.canPlay())
+          card.highlightCreep();
       }
     }
   },
@@ -219,7 +220,7 @@ game.highlight = {
   },
   move: function() {
     var card = this, speed;
-    if (game.canPlay() && game.highlight.isTurn(card) && card.hasClasses('units heroes') && card.canMove()) {
+    if (card.canPlay() && card.hasClasses('units heroes') && card.canMove()) {
       if (card.hasClass('selected'))
         card.addClass('draggable');
       speed = card.data('current speed');
@@ -234,14 +235,14 @@ game.highlight = {
     return card;
   },
   attack: function() {
-    var source = this, pos, range, highlightUnit = source.hasClasses('can-attack');
+    var source = this, pos, range;
     if (game.mode == 'local' && game.currentTurnSide != source.side()) {
       source.strokeAttack();
     }
     if (game.mode !== 'library' && game.mode != 'local' && source.side() == 'enemy') {
       source.strokeAttack();
     }
-    if ( highlightUnit && game.highlight.isTurn(source) && source.hasClasses('units heroes') && source.canAttack()) {
+    if ( source.canAttack() && source.canPlay() && source.hasClasses('units heroes')) {
       if (source.hasClass('selected'))
         source.addClass('draggable');
       source.strokeAttack();

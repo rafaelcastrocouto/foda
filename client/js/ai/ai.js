@@ -1,16 +1,16 @@
 game.ai = {
-  timeToPlay: 30,
+  timeToPlay: 40,
   side: 'enemy',
   start: function () {
     if (!game.currentData) game.currentData = {};
-    game.currentData.moves = [];
+    game.ai.moves = [];
     if (game.ai.mode == 'very-easy') game.ai.level = 3;
     if (game.ai.mode == 'easy')      game.ai.level = 4;
     if (game.ai.mode == 'normal')    game.ai.level = 5;
     if (game.ai.mode == 'hard')      game.ai.level = 6;
     if (game.ai.mode == 'very-hard') game.ai.level = 8;
-    game.ai.timeToPlay = 10 * game.ai.level;
     if (game.debug) game.ai.level = 9;
+    game.ai.timeToPlay = (10 * game.ai.level) + 10;
   },
   turnStart: function () { //console.log('ai start turn')
     // remember ai is playing the enemy cards
@@ -111,7 +111,7 @@ game.ai = {
       var card = $(el);
       game.ai.skillsDiscard(card);
     });
-    //console.log(game.currentData.moves)
+    //console.log(game.ai.moves)
     game.ai.autoMove(game.ai.endTurn);
   },
   endTurn: function () {
@@ -124,9 +124,9 @@ game.ai = {
   },
   autoMove: function (cb) {
     if (game.turn.counter > 1) {
-      if (game.currentData.moves.length) {
+      if (game.ai.moves.length) {
         game.enemy.moveEndCallback = cb;
-        game.currentMoves = game.currentData.moves;
+        game.currentMoves = game.ai.moves;
         game.enemy.autoMoveCount = 0;
         game.enemy.autoMove();
       } else cb();
@@ -140,14 +140,14 @@ game.ai = {
       var hero = $('.map .card.enemy.heroes.'+heroId+':not(.dead, .ghost)');
       if (hero.length) {
         var spotId = hero.getSpot().attr('id');
-        if (spotId && skillId && heroId) game.currentData.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
+        if (spotId && skillId && heroId) game.ai.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
       }
     }
   },
   resetData: function () { 
     //console.log('reset ai')
     // todo: ai.history
-    game.currentData.moves = [];
+    game.ai.moves = [];
     $('.map .card:not(.dead, .ghost)').each(function (i, el) {
       var card = $(el);
       card.data('ai', game.ai.newData(card));
@@ -211,7 +211,7 @@ game.ai = {
       var opponentCard = $('.card.'+opponent+':not(.invisible, .dead, .ghost)', spot);
       if (opponentCard.length) {
         //there is one opponent in range 
-        if (card.canAttack() && card.hasClass('can-attack')) {
+        if (card.canAttack()) {
           cardData['can-attack'] = true;
           cardData.strats.attack += 10;
           // attack target
@@ -510,7 +510,7 @@ game.ai = {
       }
     }
     //console.log(move);
-    game.currentData.moves.push(move.join(':'));
+    game.ai.moves.push(move.join(':'));
     card.data('ai', cardData);
   },
   checkAttack: function (card) { 
@@ -521,7 +521,7 @@ game.ai = {
       var target = game.ai.chooseTarget(cardData['attack-targets']);
       if (target && target.target) {
         //console.log(card,target.target)
-        game.currentData.moves.push('A:'+
+        game.ai.moves.push('A:'+
           game.map.mirrorPosition(card.getSpot().attr('id'))+':'+
           game.map.mirrorPosition(target.target.getSpot().attr('id')));
       }
@@ -546,7 +546,7 @@ game.ai = {
       var spot = game.ai.choose(spots);
       if (spot) {
         var to = spot.target.getPosition();
-        game.currentData.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
+        game.ai.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
         spot.data.blocked = true;
         spot.target.data('ai', spot.data);
       }
@@ -562,7 +562,7 @@ game.ai = {
     } else if (n <= 0) {
       var skillId = card.data('skill');
       var heroId = card.data('hero');
-      game.currentData.moves.push('D:'+skillId+':'+heroId);
+      game.ai.moves.push('D:'+skillId+':'+heroId);
       n = undefined;
     }
     card.data('ai discard', n);

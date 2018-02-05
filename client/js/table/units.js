@@ -71,15 +71,16 @@ game.units = {
     var creep = game.units.clone(forestCreeps[r]);
     creep.addClass(side);
     creep.appendTo(target);
-    if (game.canPlay()) creep.on('mousedown touchstart', game.card.select);
+    creep.on('mousedown touchstart', game.card.select);
     //if (side == 'enemy') creep.addClass('flipped');
     return creep;
   },
   summonCreep: function(target, to, creep, event) {
+    var card = game.selectedCard;
     if (target.hasClass('free')) {
       game.audio.play('activate');
-      if (game.canPlay()) game.highlight.clearMap();
-      else if(game.selectedCard) game.selectedCard.reselect();
+      if (card.canPlay()) game.highlight.clearMap();
+      else if (game.selectedCard) game.selectedCard.reselect();
       var end = function() {
         this.creep.addClass('done');
         this.creep.place(this.target);

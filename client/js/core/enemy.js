@@ -183,8 +183,9 @@ game.enemy = {
   summonCreep: function(event) {
     var target = $(this);
     var to = target.getPosition();
-    var creep = game.selectedCard.data('unit');
-    if (game.currentTurnSide == 'enemy' || game.mode == 'library') {
+    var card = game.selectedCard;
+    var creep = card.data('unit');
+    if (card.canPlay() || game.mode == 'library') {
       game.units.summonCreep(target, to, creep, event);
     }
   },

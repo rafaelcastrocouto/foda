@@ -3,6 +3,7 @@ game.card = {
     $.fn.extend({
       side: game.card.side,
       opponent: game.card.opponent,
+      canPlay: game.card.canPlay,
       place: game.card.place,
       select: game.card.select,
       unselect: game.card.unselect,
@@ -176,6 +177,12 @@ game.card = {
     if (this.hasClass('enemy'))
       return 'player';
   },
+  canPlay: function() {
+    var card = $(this);
+    var can = game.currentTurnSide == 'player';
+    if (game.mode == 'local') can = (card.side() == game.currentTurnSide);
+    return can;
+  },
   place: function(target) {
     if (!target.addClass)
       target = $('#' + target);
@@ -237,8 +244,10 @@ game.card = {
   reselect: function () {
     if (this.hasClass('selected')) this.select();
   },
-  canMove: function() {
-    return !this.hasClasses('done static dead stunned rooted entangled disabled sleeping cycloned taunted');
+  canMove: function(force) {
+    var str = '';
+    if (!force) str = 'done ';
+    return !this.hasClasses(str+'static dead stunned rooted entangled disabled sleeping cycloned taunted');
   },
   move: function(destiny) {
     if (typeof destiny === 'string') {
@@ -268,7 +277,7 @@ game.card = {
           transform: ''
         }).prependTo(destiny).on('mousedown touchstart', game.card.select);
         card.trigger('moved', evt);
-        if (game.canPlay()) game.highlight.clearMap();
+        game.highlight.map();
         $('.map .movesource, .map .movetarget').removeClass('movesource movetarget');
         if (game.selectedCard) game.selectedCard.reselect();
       }.bind(this, card, destiny);
@@ -361,10 +370,11 @@ game.card = {
     this.addClass('shake');
     game.timeout(380, this.removeClass.bind(this, 'shake'));
   },
-  canAttack: function() {
+  canAttack: function(force) {
     if (this.data('current hp') <= 0) return false;
-    var classes = 'dead stunned rooted disarmed disabled';
-    return !this.hasClasses(classes);
+    var c = !this.hasClasses('dead stunned rooted disarmed disabled');
+    if (!force) return (this.hasClass('can-attack') && c);
+    else return c;
   },
   attack: function(target, force, ult) {
     if (typeof target === 'string') {
@@ -374,7 +384,7 @@ game.card = {
     var damage = source.data('current damage'); 
     var from = source.getPosition(), to = target.getPosition();
     var name;
-    if (damage && from !== to && target.data('current hp') && source.canAttack()) {
+    if (damage && from !== to && target.data('current hp') && source.canAttack(force)) {
       source.stopChanneling();
       var evt = {
         type: 'attack',

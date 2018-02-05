@@ -270,14 +270,14 @@
   height: 220px;
   border: 10px solid springgreen;
   border-radius: 50%;
-  transform: rotateX(20deg) translate3d(-22px, 20px, -40px);
+  transform: rotateX(14deg) translate3d(-22px, -40px, 0px);
   animation: selectedani 0.7s infinite;
   pointer-events: none;
   background-image: none;
 }
 @keyframes selectedani {
-  0%, 100% {transform: rotateX(20deg) translate3d(-22px, 20px, -30px);}
-  50% {transform: rotateX(20deg) translate3d(-22px, 20px, -15px);}
+  0%, 100% {transform: rotateX(20deg) translate3d(-22px, -40px, 0px);}
+  50% {transform: rotateX(20deg) translate3d(-22px, -40px, 20px);}
 }
 
 .states .map .card.enemy.heroes.selected, .states .map .card.enemy.towers.selected {

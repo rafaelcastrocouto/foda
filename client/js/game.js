@@ -77,9 +77,10 @@ var game = {
     game.currentData[item] = data;
     localStorage.setItem('data', JSON.stringify(game.currentData));
   },
-  canPlay: function() {
-    if (game.mode == 'local') return game.states.table.el.hasClasses('turn unturn');
-    return game.states.table.el.hasClass('turn');
+  canPlay: function () {
+    var can = (game.currentTurnSide == 'player');
+    if (game.mode == 'local') can = game.currentTurnSide;
+    return can;
   },
   opponent: function(side) {
     return (side == 'player') ? 'enemy' : 'player';

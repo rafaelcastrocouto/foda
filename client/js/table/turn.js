@@ -14,64 +14,52 @@ game.turn = {
     game.player.deaths = 0;
     game.enemy.deaths = 0;
     game.moves = [];
-    game.turn.tickTime();
+    game.turn.tickTime(true);
   },
   beginPlayer: function (cb) {
     if (game.currentState == 'table') {
       game.player.turn += 1;
-      game.currentTurnSide = 'player';
       game.message.text(game.data.ui.yourturn);
       game.turn.el.text(game.data.ui.yourturn).addClass('show');
-      game.turn.start('player', cb);
+      game.turn.beforeStart('player', cb);
     }
   },
   beginEnemy: function (cb) {
     if (game.currentState == 'table') {
       game.enemy.turn += 1;
-      game.currentTurnSide = 'enemy';
       game.message.text(game.data.ui.enemyturn);
-      game.turn.start('enemy', cb);
+      game.turn.el.text(game.data.ui.enemyturn).addClass('show');
+      game.turn.beforeStart('enemy', cb);
     }
   },
-  start: function (turn, cb) {
+  beforeStart: function (turn, cb) {
     game.currentMoves = [];
-    $('.table .card.dead').each(function () {
-      var dead = $(this);
-      if (game.time > dead.data('reborn') && !dead.hasBuff('wk-ult') ) { 
-        dead.reborn();
-      }
-    });
+    $('.table .card.dead').each(game.turn.reborn);
     $('.map .fountain.enemyarea .card.enemy, .map .fountain.playerarea .card.player').heal(game.fountainHeal);
     $('.table .card').each(function () {
-      var card = $(this);
-      card.trigger('turnstart', { target: card });
-      card.trigger(turn+'turnstart', { target: card });
+      game.turn.triggerStart(this, turn);
     });
-    game.audio.play('activate');
-    game.timeout(400, game.turn.tickTime);
-    game.timeout(800, function () {
+    var t = 800;
+    if (game.mode == 'local') t = 2800;
+    game.timeout(t, function () {
       game.turn.el.removeClass('show');
-      if (turn == 'player' || game.mode == 'local') {
-        game.timeout(400, function () {
-          if (game.mode == 'local') {
-            if (turn == 'player') game.states.table.el.addClass('turn');
-            else game.states.table.el.addClass('unturn');
-          } else //other game modes
-            game.states.table.el.addClass('turn');
-          game.loader.removeClass('loading');
-          $('.map .card.done').removeClass('done');
-          if (game.mode == 'library') game.turn.enableAttack('enemy');
-          game.states.table.skip.attr('disabled', false);
-          game.highlight.map();
-        });
-      }
-      game.turn.enableAttack(turn);
-      if (cb) {
-        var t = 100;
-        if (game.mode == 'local') t = 2000;
-        game.timeout(100, cb.bind(this, turn));
-      }
+      game.timeout(400, game.turn.start.bind(this, turn, cb));
     });
+  },
+  start: function (turn, cb) {
+    game.currentTurnSide = turn;
+    if (game.mode == 'library') {
+      if (turn != 'enemy') game.turn.enableAttack('enemy');
+    } else game.turn.enableAttack(turn);
+    $('.map .card.done').each(game.turn.enableMove);
+    if (turn == 'player') game.states.table.el.addClass('turn');
+    if (turn == 'enemy' && game.mode == 'local') game.states.table.el.addClass('unturn');
+    game.loader.removeClass('loading');
+    game.states.table.skip.attr('disabled', false);
+    game.highlight.map();
+    if (cb) {
+      game.timeout(400, cb.bind(this, turn));
+    }
   },
   count: function (turn, endCallback, countCallback) {
     if (game.turn.counter >= 0) {
@@ -99,9 +87,9 @@ game.turn = {
   end: function (turn, cb) {
     if (game.currentState == 'table') {
       game.currentTurnSide = false;
-      game.turn.tickTime();
       game.message.text(game.data.ui.turnend);
       game.moves.push(game.currentMoves.join('|'));
+      game.states.table.skip.attr('disabled', true);
       $('.map .card').each(function (i, el) {
         var card = $(el);
         card.removeClass('can-attack');
@@ -109,20 +97,30 @@ game.turn = {
         game.buff.turn(card);
         card.trigger('turnend', { target: card });
       });
-      if (turn == 'player' && game.mode !== 'local') {
+      if (turn == 'player') {
         game.states.table.el.removeClass('turn');
-        game.states.table.skip.attr('disabled', true);
       }
       if (game.mode == 'local') {
         game.states.table.el.removeClass('turn unturn');
       }
-      if (turn == 'enemy' && game.mode !== 'library') { 
+      if (turn == 'enemy' && game.mode !== 'library') {
         game.states.table.el.removeClass('unturn');
-        game.turn.el.text(game.data.ui.enemyturn).addClass('show');
-        game.timeout(800, function () { game.turn.el.removeClass('show'); });
       }
+      game.audio.play('activate');
+      game.turn.tickTime();
       if (cb) cb(turn);
     }
+  },
+  reborn: function () {
+    var dead = $(this);
+    if (game.time > dead.data('reborn') && !dead.hasBuff('wk-ult') ) { 
+      dead.reborn();
+    }
+  },
+  triggerStart: function (el, turn) {
+    var card = $(el);
+    card.trigger('turnstart', { target: card });
+    card.trigger(turn+'turnstart', { target: card });
   },
   channel: function (hero) {
     if (hero.hasClass('channeling')) {
@@ -138,8 +136,12 @@ game.turn = {
   enableAttack: function(turn) {
     $('.map .card.'+turn+':not(.towers, .ghost)').each(function () {
       var unit = $(this);
-      if (unit.canAttack()) unit.addClass('can-attack');
+      if (unit.canAttack(true)) unit.addClass('can-attack');
     });
+  },
+  enableMove: function() {
+    var unit = $(this);
+    if (unit.canMove(true)) unit.removeClass('done');
   },
   noAvailableMoves: function () {
     var mapdone = ($('.map .player.card:not(.towers, .ghost)').length == $('.map .player.card.done:not(.towers, .ghost)').length);
@@ -147,8 +149,8 @@ game.turn = {
     var moves = mapdone && skilldone;
     return moves;
   },
-  tickTime: function () { 
-    game.time += 0.5; // console.trace('t', game.time, game.turn.hours() );
+  tickTime: function (build) { 
+    if (!build) game.time += 0.5; // console.trace('t', game.time, game.turn.hours() );
     game.totalTurns = Math.floor(game.player.turn + game.enemy.turn);
     game.turn.msg.text(game.data.ui.turns + ': ' + game.player.turn + '/' + game.enemy.turn + ' (' + game.totalTurns + ')');
     game.turn.time.html(game.data.ui.time + ': ' + game.turn.hours() + ' ' + game.turn.dayNight());
