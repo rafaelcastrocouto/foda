@@ -235,6 +235,29 @@
   box-shadow: 0 15px 0 0 #ed7edc;
   margin-left: 8px;
 }
+.projectile.wk {
+  background-color: transparent;
+}
+.projectile.wk:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 34px;
+  height: 50px;
+  transform: scale(1.4);
+  background-image: url("../img/fx/wk/stun.png");
+  animation: lina-passive-sprite 0.8s steps(8) infinite;
+}
+.projectile.wk:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 2px;
+  top: 20px;
+  background-image: url("../img/fx/wk/skull.png");
+}
 .projectile.catapult {
   background: #7d5d3f;
 }

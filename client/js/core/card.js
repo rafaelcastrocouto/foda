@@ -420,17 +420,7 @@ game.card = {
       //ranged fx
       if (range > 2) {
         // launch projectile
-        var cl = source.data('hero');
-        if (source.hasClass('towers')) cl = 'towers ' + source.side();
-        if (source.hasClass('units')) cl = 'units ' + source.data('id') +' '+ source.side();
-        if (ult) cl += ' ult';
-        game.projectile = $('<div>').addClass('projectile ' + cl);
-        var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
-        //console.log(angle)
-        game.projectile.data('rotate', angle).appendTo(game.map.el);
-        game.card.projectile.apply(source);
-        game.timeout(64, game.card.projectile.bind(target));
-        game.timeout(364,game.projectile.remove.bind(game.projectile));
+        game.card.projectile(source, target, ult);
       }
       // miss fx
       if (source.data('miss-attack')) {
@@ -452,7 +442,20 @@ game.card = {
     }
     return this;
   },
-  projectile: function() {
+  projectile: function (source, target, extraclass) {
+    var cl = source.data('hero');
+    if (source.hasClass('towers')) cl = 'towers ' + source.side();
+    if (source.hasClass('units')) cl = 'units ' + source.data('id') +' '+ source.side();
+    if (extraclass) cl += ' '+extraclass;
+    game.projectile = $('<div>').addClass('projectile ' + cl);
+    var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
+    //console.log(angle)
+    game.projectile.data('rotate', angle).appendTo(game.map.el);
+    game.card.projectileMove.apply(source);
+    game.timeout(64, game.card.projectileMove.bind(target));
+    game.timeout(364,game.projectile.remove.bind(game.projectile));
+  },
+  projectileMove: function() {
     var rotate = game.projectile.data('rotate') || 0;
     var x = this.getX();
     var y = this.getY();

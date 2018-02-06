@@ -420,13 +420,15 @@ game.map = {
         }
       };
       card.around(range, function(spot) {
-        game.map.updateGrid();
         var ex = game.map.getX(spot)
-          , ey = game.map.getY(spot)
-          , path = game.map.finder.findPath(ox, oy, ex, ey, game.map.grid);
-        if (path.length && (path.length - 1) <= Math.ceil(range / 2)) {
-          fil(ex, ey);
-        }
+          , ey = game.map.getY(spot);
+        if (range > 2) {
+          game.map.updateGrid();
+          var path = game.map.finder.findPath(ox, oy, ex, ey, game.map.grid);
+          if (path.length && (path.length - 1) <= Math.ceil(range / 2)) {
+            fil(ex, ey);
+          }
+        } else fil(ex, ey);
       });
     }
   },

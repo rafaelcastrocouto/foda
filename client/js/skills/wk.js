@@ -2,13 +2,16 @@ game.skills.wk = {
   stun: {
     cast: function (skill, source, target) {
       source.addStun(target, skill);
-      source.damage(skill.data('damage'), target, skill.data('damage type'));
       target.data('wk-dot-count', 3);
       target.on('turnend.wk-stun', this.turnend.bind(this, {
         source: source,
         target: target,
         skill: skill
       }));
+      game.card.projectile(source, target);
+      game.timeout(400, function() {
+        source.damage(skill.data('damage'), target, skill.data('damage type'));
+      });
     },
     turnend: function (skillData) { 
       var target = skillData.target;
