@@ -4,6 +4,8 @@ game.single = {
       game.single.builded = false;
       game.newId();
     }
+    game.player.type = 'challenged';
+    game.enemy.type = 'challenger';
   },
   chooseStart: function (hero) {
     game.states.choose.randombt.show();
@@ -16,12 +18,14 @@ game.single = {
     if (!availableSlots) {
       game.loader.addClass('loading');
       game.states.choose.back.attr('disabled', true);
-      game.timeout(400, game.single.chooseEnd);
+      game.single.chooseEnd('picked');
     }
   },
-  chooseEnd: function () {
-    game.states.choose.fillPicks('player');
-    game.states.changeTo('vs');
+  chooseEnd: function (picked) {
+    game.states.choose.fillPicks('player', picked);
+    game.timeout(400, function () {
+      game.states.changeTo('vs');
+    });
   },
   setTable: function () {
     if (!game.single.started) {
@@ -58,7 +62,7 @@ game.single = {
     }
   },
   beginPlayer: function () {
-    game.turn.beginPlayer(function () {
+    game.turn.begin('player', function () {
       game.single.startTurn('player');
       if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
@@ -74,7 +78,7 @@ game.single = {
     game.turn.end('player', game.single.beginEnemy);
   },
   beginEnemy: function () {
-    game.turn.beginEnemy(function () {
+    game.turn.begin('enemy', function () {
       game.single.startTurn('enemy');
       if (game.enemy.turn === game.ultTurn) {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
@@ -93,7 +97,7 @@ game.single = {
     game.nextStage = true;
     game.winner = game.player.type;
     game.player.points += 1;
-    localStorage.setItem('points', game.player.points);
+    game.setData('points', game.player.points);
     game.states.changeTo('result');
   },
   surrender: function () {

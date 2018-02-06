@@ -222,11 +222,9 @@ game.states.campaign = {
       $('<p>').addClass('achieve').text(txt).appendTo(game.states.campaign.desc);
     });
     var ch = $('<div>').addClass('campaign-heroes').appendTo(this.desc);
-    game.enemy.picks = data.picks;
-    localStorage.setItem('enemydeck', data.picks);
-    game.enemy.picks = data.picks;
-    for (var i = game.enemy.picks.length-1; i > -1; i--) {
-      var hero = game.enemy.picks[i];
+    game.single.enemypicks = data.picks;
+    for (var i =  game.single.enemypicks.length-1; i > -1; i--) {
+      var hero =  game.single.enemypicks[i];
       var portrait = $('<div>').addClass('portrait').append($('<div>').addClass('img'));
       $('<div>').addClass('heroes '+ hero).append(portrait).appendTo(ch);
     }

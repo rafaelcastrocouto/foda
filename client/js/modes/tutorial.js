@@ -18,6 +18,8 @@ game.tutorial = {
     game.message.text(game.data.ui.waiting);
     game.states.choose.enablePick();
     game.tutorial.axeshow();
+    game.player.type = 'challenged';
+    game.enemy.type = 'challenger';
   },
   axeshow: function () {
     game.tutorial.letter(game.data.ui.axepick);
@@ -235,7 +237,7 @@ game.tutorial = {
     game.tutorial.letter(game.data.ui.axeenemymove);
     game.message.html(game.data.ui.enemymove);
     var target = $('#G6').firstFreeSpotInLine($('#G5'), 8).getPosition();
-    game.currentData.moves = [
+    var moves = [
       'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E3'),
       'C:'+game.map.mirrorPosition('E3')+':'+game.map.mirrorPosition('E4')+':summon:ld',
       'C:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition(target)+':blink:am',
@@ -243,7 +245,7 @@ game.tutorial = {
       //'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),
       //'C:'+game.map.mirrorPosition('F1')+':'+game.map.mirrorPosition('F1')+':mana:kotl',
     ].join('|');
-    game.enemy.startMoving(game.tutorial.endTurn);
+    game.enemy.autoMove(moves, game.tutorial.endTurn);
   },
   endTurn: function () {
     game.camera.removeClass('night');
@@ -384,8 +386,8 @@ game.tutorial = {
     game.audio.play('tutorial/axeah');
     game.winner = game.player.type;
     game.player.points += 1;
-    localStorage.setItem('points', game.player.points);
-    localStorage.setItem('tutorial', 1);
+    game.setData('points', game.player.points);
+    game.setData('tutorial', 'done');
     game.states.changeTo('result');
   },
   clear: function () {
@@ -393,7 +395,6 @@ game.tutorial = {
     game.tutorial.lesson = '';
     game.tutorial.started = false;
     game.states.choose.back.attr('disabled', false);
-    localStorage.removeItem('mode');
     if (game.tutorial.axe) {
       game.tutorial.axe.appendTo(game.states.choose.el);
       game.tutorial.axe.removeClass('up');

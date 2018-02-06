@@ -18,7 +18,10 @@ game.skills.ld = {
       bear.data('return').appendTo(game[side].skills.sidehand);
       bear.setCurrentHp(bear.data('hp'));
       bear.addClass('done');
-      bear.place(target);
+      game.fx.add('ld-return-target', target);
+      game.timeout(400, function () {
+        bear.place(target);
+      });
     },
     attack: function (event, eventdata) { 
       var target = eventdata.target;
@@ -75,7 +78,14 @@ game.skills.ld = {
   bearreturn: {
     cast: function (skill, source, target) {
       var bear = source.data('bear');
-      bear.place(target);
+      game.fx.add('ld-return', bear.parent());
+      game.timeout(400, function() {
+        bear.addClass('hidden');
+        game.fx.add('ld-return-target', target);
+      });
+      game.timeout(800, function() {
+        bear.removeClass('hidden').place(target);
+      });
     }
   },
   rabid: {

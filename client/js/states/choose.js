@@ -18,7 +18,7 @@ game.states.choose = {
   start: function () {
     $('.choose .buttonbox .button').not('.back').hide();
     game.audio.loopSong('SneakyAdventure');
-    var hero = localStorage.getItem('choose');
+    var hero = game.getData('choose');
     this.sort();
     if (game.mode != 'library') this.selectFirst();
     if (game.mode && game[game.mode].chooseStart) game[game.mode].chooseStart(hero);
@@ -64,7 +64,7 @@ game.states.choose = {
       var size = game.states.choose.size;
       if (game.mode == 'tutorial') size = 0;
       game.states.choose.pickDeck.css('margin-left', index * -1 * size);
-      if (!card.hasClass('dead')) localStorage.setItem('choose', card.data('hero'));
+      if (!card.hasClass('dead')) game.setData('choose', card.data('hero'));
     }
   },
   enablePick: function () {
@@ -115,7 +115,7 @@ game.states.choose = {
   savedDeck:  function () {
     if (!$(this).attr('disabled')) {
       $(this).attr('disabled', true);
-      var deck = localStorage.getItem('mydeck');
+      var deck = game.getData('mydeck');
       if (deck) deck = deck.split(',');
       if (deck && deck.length == 5) {
         game.states.choose.remember(deck);
@@ -160,16 +160,16 @@ game.states.choose = {
     game.states.choose.selectFirst();
     if (cb) cb();
   },
-  fillPicks: function (side) {
+  fillPicks: function (side, picked) {
     if (!side) side = 'player';
-    game[side].picks = [];
-    $('.slot').each(function () { 
-      var slot = $(this), card = slot.find('.card');
-      game[side].picks[slot.data('slot')] = card.data('hero');
-      if (game[side].picks.length === 5 && side == 'player') {
-        localStorage.setItem('mydeck', game[side].picks);
-      }
-    });
+    if (!game[side].picks) {
+      game[side].picks = [];
+      $('.slot').each(function () { 
+        var slot = $(this), card = slot.find('.card');
+        game[side].picks[slot.data('slot')] = card.data('hero');
+      });
+    }
+    if (picked && side == 'player') game.setData('mydeck', game.player.picks.join('|'));
   },
   playVideo: function (link) {
     //library only
@@ -196,6 +196,7 @@ game.states.choose = {
     return false;
   },
   backClick: function () {
+    game.setData('mode', false);
     if (!$(this).attr('disabled')) {
       if (game.mode == 'online') {
         game.online.backClick();
@@ -209,20 +210,18 @@ game.states.choose = {
     game.clear();
     game.states.changeTo('menu');
   },
-  clear: function () {
-    setTimeout(function () {
-      $('.slot .card.skills').appendTo(game.library.skills);
-      $('.pickbox .card').removeClass('hidden');
-      $('.slot').addClass('available').show();
-      if (this.mydeck) this.mydeck.attr('disabled', false);
-      if (this.randombt) this.randombt.attr('disabled', false);
-      if (this.back) this.back.attr({disabled: false});
-      if (this.counter) this.counter.hide();
-      if (this.pickedbox) this.pickedbox.hide();
-      $('.choose .buttonbox .button').not('.back').hide();
-      if (this.video) this.playVideo(); //clear video iframe
-      $('.slot .card.heroes').prependTo(this.pickDeck).on('mousedown.choose touchstart.choose', game.states.choose.select);
-      this.sort();
-    }.bind(game.states.choose), 100);
+  clear: function (fast) {
+    $('.slot .card.skills').appendTo(game.library.skills);
+    $('.pickbox .card').removeClass('hidden');
+    $('.slot').addClass('available').show();
+    if (this.mydeck) this.mydeck.attr('disabled', false);
+    if (this.randombt) this.randombt.attr('disabled', false);
+    if (this.back) this.back.attr({disabled: false});
+    if (this.counter) this.counter.hide();
+    if (this.pickedbox) this.pickedbox.hide();
+    $('.choose .buttonbox .button').not('.back').hide();
+    if (this.video) this.playVideo(); //clear video iframe
+    $('.slot .card.heroes').prependTo(this.pickDeck).on('mousedown.choose touchstart.choose', game.states.choose.select);
+    this.sort();
   }
 };

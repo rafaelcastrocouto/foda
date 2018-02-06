@@ -18,21 +18,21 @@ game.enemy = {
       }
     });
   },
-  startMoving: function(cb) {
-    game.message.text(game.data.ui.enemymove);
-    if (typeof (game.currentData.moves) == 'string')
-      game.currentMoves = game.currentData.moves.split('|');
+  autoMove: function(moves, cb) {
+    if (game.recovering) game.message.text(game.data.ui.enemymove);
+    if (typeof (moves) == 'string')
+      game.currentMoves = moves.split('|');
     else
-      game.currentMoves = game.currentData.moves;
+      game.currentMoves = moves;
     //console.log(game.currentMoves)
     game.enemy.autoMoveCount = 0;
     game.enemy.moveEndCallback = cb;
     if (game.currentMoves.length && game.currentMoves[0].length)
-      game.timeout(1000, game.enemy.autoMove);
+      game.timeout(1000, game.enemy.autoMoving);
     else
       game.timeout(1000, game.enemy.movesEnd);
   },
-  autoMove: function() {
+  autoMoving: function() {
     var from, to, hero, skillid, move;
     var m = game.currentMoves[game.enemy.autoMoveCount];
     if (m && m.length)
@@ -44,9 +44,12 @@ game.enemy = {
       game.enemy.moveAnimation = 1600;
       //console.log(move)
       if (move[1]) {
-        from = game.map.mirrorPosition(move[1]);
-        if (move[2])
-          to = game.map.mirrorPosition(move[2]);
+        if (game.recovering) from = move[1];
+        else from = game.map.mirrorPosition(move[1]);
+        if (move[2]) {
+          if (game.recovering) to = move[2];
+          elseto = game.map.mirrorPosition(move[2]);
+        }
         if (move[0] === 'M') {
           game.enemy.move(from, to);
         }
@@ -60,19 +63,22 @@ game.enemy = {
           game.enemy.moveAnimation = 3600;
         }
         if (move[0] === 'P') {
-          to = game.map.mirrorPosition(move[1]);
+          if (game.recovering) to = move[1];
+          else to = game.map.mirrorPosition(move[1]);
           skillid = move[2];
           hero = move[3];
           game.enemy.passive(to, hero, skillid);
         }
         if (move[0] === 'T') {
-          to = game.map.mirrorPosition(move[1]);
+          if (game.recovering) to = move[1];
+          else to = game.map.mirrorPosition(move[1]);
           skillid = move[2];
           hero = move[3];
           game.enemy.toggle(to, hero, skillid);
         }
         if (move[0] === 'S') {
-          to = game.map.mirrorPosition(move[1]);
+          if (game.recovering) to = move[1];
+          else to = game.map.mirrorPosition(move[1]);
           creep = move[2];
           game.enemy.summonCreepMove(to, creep);
         }
@@ -85,13 +91,16 @@ game.enemy = {
         if (move[0] === 'G') {
           game.enemy.stopChanneling(from);
         }
+        if (move[0] === 'U') {
+          var cb = game[game.mode].endPlayer;
+          if (move[1] == 'enemy') cb = game[game.mode].endEnemy;
+          cb();
+        }
       }
       game.enemy.autoMoveCount++;
-      if (game.enemy.autoMoveCount < game.currentMoves.length) {
-        if (game.mode == 'single' && game.turn.counter < 1)
-          game.timeout(game.enemy.moveAnimation, game.enemy.movesEnd);
-        else
-          game.timeout(game.enemy.moveAnimation, game.enemy.autoMove);
+      if ( (game.enemy.autoMoveCount < game.currentMoves.length) && 
+          !(game.mode == 'single' && game.turn.counter < 1) ) {
+          game.timeout(game.enemy.moveAnimation, game.enemy.autoMoving);
       } else
         game.timeout(game.enemy.moveAnimation, game.enemy.movesEnd);
     }
@@ -108,26 +117,28 @@ game.enemy = {
   move: function(from, to) {
     var target = $('#' + from + ' .card')
       , destiny = $('#' + to);
-    if (to && !target.hasClass('done') && target.hasClass('enemy') && target.move && destiny.hasClass('free')) {
+    var canMove = !target.hasClass('done') && target.hasClass('enemy');
+    if (to && (canMove || game.recovering) && target.move && destiny.hasClass('free')) {
       target.addClass('enemyMoveHighlight');
-      target.move(to);
       target.addClass('done');
+      target.move(to);
     }
   },
   attack: function(from, to) {
     var source = $('#' + from + ' .card');
     var target = $('#' + to + ' .card');
-    if (to && source.hasClass('enemy') && source.attack && target) {
+    if (to && (source.hasClass('enemy') || game.recovering) && source.attack && target) {
       source.addClass('enemyMoveHighlight');
       source.attack(to);
       target.addClass('enemyMoveHighlightTarget');
     }
   },
-  cast: function(from, to, hero, skillid) {
+  cast: function(from, to, hero, skillid) {// console.log('cast')
     var source = $('#' + from + ' .card');
     var target = $('#' + to);
     var s = hero + '-' + skillid;
     var skill = $('.enemydecks .hand .skills.' + s + ', .enemydecks .sidehand .skills.' + s).first();
+    if (game.recovering) skill = $('.'+game.currentTurnSide+'decks .hand .skills.' + s + ', .'+game.currentTurnSide+'decks .sidehand .skills.' + s).first();
     var targets = skill.data('targets');
     var card;
     if (targets) {
@@ -143,19 +154,19 @@ game.enemy = {
       target.addClass('enemyMoveHighlightTarget');
     if (game.mode == 'single')
       skill.data('ai discard', undefined);
-    setTimeout(function(skill, target, hero, skillid) {
-      //console.log(skill, target, hero, skillid)
-      if (game.skills[hero] && game.skills[hero][skillid] && game.skills[hero][skillid].cast && skill && source.hasClass('enemy') && source.cast) {
+    game.timeout(game.enemy.moveAnimation, function(skill, target, hero, skillid) {
+      if (game.skills[hero] && game.skills[hero][skillid] && game.skills[hero][skillid].cast && skill && (source.hasClass('enemy') || game.recovering) && source.cast) {
         source.cast(skill, target);
       }
     }
-    .bind(this, skill, target, hero, skillid), game.enemy.moveAnimation);
+    .bind(this, skill, target, hero, skillid));
   },
   passive: function(to, hero, skillid) {
     // console.log(game.currentData.moves)
     var target = $('#' + to + ' .card');
     var s = hero + '-' + skillid;
     var skill = $('.enemydecks .hand .skills.' + s + ', .enemydecks .sidehand .skills.' + s).first();
+    if (game.recovering) skill = $('.'+game.currentTurnSide+'decks .hand .skills.' + s + ', .'+game.currentTurnSide+'decks .sidehand .skills.' + s).first();
     skill.addClass('showMoves');
     target.addClass('enemyMoveHighlight');
     game.timeout(game.enemy.moveAnimation, function(skill, target, hero, skillid) {
@@ -170,6 +181,7 @@ game.enemy = {
     var target = $('#' + to + ' .card');
     var s = hero + '-' + skillid;
     var skill = $('.enemydecks .hand .skills.' + s + ', .enemydecks .sidehand .skills.' + s).first();
+    if (game.recovering) skill = $('.'+game.currentTurnSide+'decks .hand .skills.' + s + ', .'+game.currentTurnSide+'decks .sidehand .skills.' + s).first();
     skill.addClass('showMoves');
     target.addClass('enemyMoveHighlight');
     game.timeout(game.enemy.moveAnimation, function(skill, target, hero, skillid) {
@@ -192,11 +204,13 @@ game.enemy = {
   summonCreepMove: function(to, creep) {
     var target = $('#' + to);
     var creepCard = game.enemy.skills.sidehand.children('.' + creep).first();
+    if (game.recovering) creepCard = game[game.currentTurnSide].skills.sidehand.children('.' + creep).first();
     if (target.hasClass('free') && creepCard.length) {
       game.audio.play('activate');
       creepCard.addClass('showMoves');
       game.timeout(game.enemy.moveAnimation, function() {
-        creepCard.removeClass('showMoves flipped').addClass('done').place(target);
+        creepCard.removeClass('showMoves flipped').place(target);
+        if (!game.recovering) creepCard.addClass('done');
         creepCard.trigger('summon');
       });
     }

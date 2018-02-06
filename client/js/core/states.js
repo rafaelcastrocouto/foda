@@ -35,19 +35,19 @@ game.states = {
       if (oldstate) {
         if (oldstate.end) oldstate.end();
         if (oldstate.el) oldstate.el.hide();
-      }    
+      }
       game.timeout(200, function (state, recover) {
         game.clearTimeouts();
         game.states.buildState(state);
         var newstate, old = game.currentState;
         newstate = game.states[state];
         if (newstate.el) {
-          localStorage.setItem('state', state);
+          game.setData('state', state);
           newstate.el.fadeIn();
         }
         game.currentState = state;
         if (old != 'loading' && old != 'noscript') {
-          localStorage.setItem('backstate', old);
+          game.setData('backstate', old);
           game.backState = old;
         }
         if (newstate.start) newstate.start(recover);
@@ -56,7 +56,7 @@ game.states = {
     }
   },
   back: function () {
-    if (!game.backState) game.backState = localStorage.getItem('backstate');
+    if (!game.backState) game.backState = game.getData('backstate');
     game.states.changeTo(game.backState);
   }
 };

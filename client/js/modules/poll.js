@@ -38,7 +38,7 @@ game.poll = {
     return false;
   },
   voted: function (pollResults) { //console.log(poll)
-    localStorage.setItem('voted', game.poll.votedHero);
+    game.setData('voted', game.poll.votedHero);
     game.poll[game.poll.votedHero].addClass('vote-send');
     game.poll.title.text(game.data.ui.thanksvote);
     if (pollResults) {

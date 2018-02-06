@@ -4,7 +4,7 @@ game.language = {
   names: ['English US', 'Português BR', 'Español ES', 'Türk TR', 'Pусский RU'],
   dir: '',
   load: function (cb) {
-    var lang = localStorage.getItem('lang');
+    var lang = game.getData('lang');
     if (lang) {
       game.language.set(lang);
       if (cb) { cb(); }
@@ -25,21 +25,20 @@ game.language = {
     if (detectLanguage > 0) {
       game.language.current = lang;
       game.language.dir = lang + '/';
-      localStorage.setItem('lang', lang);
+      game.setData('lang', lang);
     }
   },
   select: function () {
     var s = $('<select>').on('change', game.language.click);
     $(game.language.available).each(function (i, lang) {
-      $('<option>').val(lang).text(game.language.names[i]).appendTo(s).attr('selected', lang == localStorage.getItem('lang'));
+      $('<option>').val(lang).text(game.language.names[i]).appendTo(s).attr('selected', lang == game.getData('lang'));
     });
     return s;
   },
   click: function () {
     var lang = $(this).val();
         detectLanguage = game.language.available.indexOf(lang);
-    if (detectLanguage >= 0) localStorage.setItem('lang', lang);
-    else localStorage.removeItem('lang');
+    if (detectLanguage >= 0) game.setData('lang', lang);
     game.options.backClick();
     game.confirm(function () { location.reload(); });
   }

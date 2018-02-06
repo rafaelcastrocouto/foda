@@ -14,9 +14,9 @@ game.highlight = {
   },
   map: function(event) {
     game.highlight.clearMap();
-    var card = game.selectedCard;
+    var card = game.selectedCard;  
     if (game.selectedCard) {
-      if (card.hasClasses('heroes units') && !card.hasClass('nohighlight')) {
+      if (card.hasClasses('heroes units') && !card.hasClass('nohighlight') && !game.lockHighlight) {
         if (game.mode == 'tutorial') {
           if (game.tutorial.lesson == 'Move') {
             card.highlightMove();

@@ -1,6 +1,6 @@
 game.skills.pud = {
   hook: {
-    cast: function (skill, source, target) {
+    cast: function (skill, source, target) {// console.log('cast')
       var range = skill.data('aoe range'),
           hooked = source.firstCardInLine(target, range),
           targetSpot = source.firstFreeSpotInLine(target, range);
@@ -17,17 +17,16 @@ game.skills.pud = {
       var fx = game.fx.add('pud-hook', source, hooked, 'linear', source.parent());
       if (fx.hasClass('d1')) targetSpot = false;
       
-      source.addClass('nohighlight');
-      game.lockSelection = true;
+      game.lockHighlight = true;
+      
       game.timeout(700, function (hooked, targetSpot, source) {
         if (!hooked.hasClass('ghost') &&
             targetSpot && 
             targetSpot.getPosition() != hooked.getPosition()) hooked.move(targetSpot);
         game.timeout(300, function (hooked, source) {
           if (hooked.hasClass('ghost')) hooked.remove();
-          source.removeClass('nohighlight');
-          game.lockSelection = false;
-          source.reselect();
+          game.lockHighlight = false;
+          game.highlight.map();
         }.bind(this, hooked, source));
       }.bind(this, hooked, targetSpot, source, target));
     }

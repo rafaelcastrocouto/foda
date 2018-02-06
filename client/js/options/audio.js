@@ -162,19 +162,23 @@ game.audio = {
       }
       game.audio.sources[name] = audio;
       audio.loop = loop;
-      audio.start();
+      if (!game.recovering) {
+        audio.start();
+        audio.started = true;
+      }
       if (cb) setTimeout(cb, game.audio.buffers[name].duration * 1000);
       return audio;
     }
   },
   stop: function (str) {
     var audio = game.audio.sources[str];
-    if (audio) audio.stop();
+    if (audio && audio.started && !game.recovering) audio.stop();
   },
   stopSong: function () {
-    if (game.audio.songSource) {
+    var audio = game.audio.songSource;
+    if (audio) {
       game.audio.loopingSong = false;
-      game.audio.songSource.stop();
+      if (audio && audio.started && !game.recovering) audio.stop();
     }
   },
   mute: function () {
@@ -203,15 +207,15 @@ game.audio = {
       //game.audio[target + 'Node'].gain.value = vol;
       game.audio[target + 'Node'].gain.setTargetAtTime(vol, game.audio.context.currentTime + 1, 0.01);
       game.options[target + 'control'].css('transform', 'scale(' + vol + ')');
-      localStorage.setItem(target, vol);
+      game.setData(target, vol);
     }
   },
   rememberVolume: function () {
-    var volume = localStorage.getItem('volume') || game.audio.defaultVolume;
+    var volume = game.getData('volume') || game.audio.defaultVolume;
     game.audio.setVolume('volume', volume);
-    var music = localStorage.getItem('music') || game.audio.defaultMusic;
+    var music = game.getData('music') || game.audio.defaultMusic;
     game.audio.setVolume('music', music);
-    var sounds = localStorage.getItem('sounds') || game.audio.defaultSounds;
+    var sounds = game.getData('sounds') || game.audio.defaultSounds;
     game.audio.setVolume('sounds', sounds);
   },
   volumeMouseDown: function (event) {

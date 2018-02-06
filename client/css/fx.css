@@ -900,3 +900,30 @@
     background-position: -3600px;
   }
 }
+
+.map .fx.ld-return {
+  transform: rotateX(-20deg) translate3d(60px,-120px,80px) scale(5.5);
+  width: 112px;
+  height: 112px;
+  animation: ld-return-sprite 1.0s steps(11) 1;
+  background-image: url('../img/fx/ld/return.png');
+}
+
+@keyframes ld-return-sprite {
+  100% {
+    background-position: -1232px;
+  }
+}
+.map .fx.ld-return-target {
+  transform: rotateX(-20deg) translate3d(60px,-120px,80px) scale(5.5);
+  width: 112px;
+  height: 112px;
+  animation: ld-return-sprite-target 1.1s steps(12) 1;
+  background-image: url('../img/fx/ld/return-target.png');
+}
+
+@keyframes ld-return-sprite-target {
+  100% {
+    background-position: -1344px;
+  }
+}

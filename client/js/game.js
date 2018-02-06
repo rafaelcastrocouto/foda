@@ -30,7 +30,7 @@ var game = {
   skills: {},
   data: {},//json {heroes, skills, ui, units, campaign}
   mode: '', //online, tutorial, single, library
-  currentData: {}, // game.currentData.moves should be a clone in online mode
+  currentData: {}, // all game info and moves. should be able to recreate a table
   currentState: 'noscript', //unsupported, loading, log, menu, campaign, choose, vs, table, results
   heroesAI: {}, // heroes default AI behaviour
   start: function() {
@@ -61,7 +61,7 @@ var game = {
   },
   newSeed: function() {
     game.seed = Math.floor(Math.random() * 1E16);
-    localStorage.setItem('seed', game.seed);
+    game.setData('seed', game.seed);
   },
   setSeed: function(id) {
     //console.trace(id);
@@ -69,13 +69,20 @@ var game = {
       var n = id.split('|');
       if (n[0].length) {
         game.seed = parseInt(atob(n[0]), 10);
-        localStorage.setItem('seed', game.seed);
+        game.setData('seed', game.seed);
       }
     }
   },
   setData: function(item, data) {
     game.currentData[item] = data;
     localStorage.setItem('data', JSON.stringify(game.currentData));
+  },
+  getData: function(item) {
+    if (!game.currentData[item]) {
+      var saved = localStorage.getItem('data');
+      if (saved) game.currentData = JSON.parse(saved);
+    }
+    return game.currentData[item];
   },
   canPlay: function () {
     var can = (game.currentTurnSide == 'player');
@@ -123,7 +130,7 @@ var game = {
   setMode: function(mode, recover) {
     if (mode && game[mode] && game[mode].build && game.validModes.indexOf(mode) >= 0) {
       game.mode = mode;
-      localStorage.setItem('mode', mode);
+      game.setData('mode', mode);
       game.container.removeClass(game.validModes.join(' '));
       game.container.addClass(mode);
       game[mode].build(recover);
@@ -140,7 +147,14 @@ var game = {
     game.states.result.clear();
     game.container.removeClass(game.validModes.join(' '));
     game.mode = false;
-    localStorage.removeItem('mode');
+    game.setData('mode', false);
+    game.player.picks = false;
+    game.enemy.picks = false;
+    game.setData('challenger', false);
+    game.setData('challenged', false);
+    game.setData('challengerDeck', false);
+    game.setData('challengedDeck', false);
+    game.setData('matchData', false);
   },
   alert: function(txt, cb) {
     var box = $('<div>').addClass('box');
@@ -196,7 +210,7 @@ var game = {
     game.error(details, function(confirmed) {
       if (confirmed) {
         game.clear();
-        localStorage.setItem('state', 'menu');
+        game.setData('state', 'menu');
         location.reload(true);
       }
     });

@@ -145,7 +145,13 @@ game.skill = {
           }.bind(this, skill));
         }.bind(this, skill, source, target);
         if (skill.hasClass('dragTarget')) skill.discard(source, skillend);
-        else game.timeout(400, skill.discard.bind(skill, source, skillend));
+        else {
+          game.lockHighlight = true;
+          game.timeout(400, function () {
+            skill.discard(source, skillend);
+            game.lockHighlight = false;
+          }.bind(this, skill, source, skillend));
+        }
       }
     }
     return this;

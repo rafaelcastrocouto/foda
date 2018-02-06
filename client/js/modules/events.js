@@ -151,7 +151,7 @@ game.events = {
     game.logError(details);
     game.error(details, function () {
       game.clear();
-      localStorage.setItem('state', 'menu');
+      game.setData('state', 'menu');
       location.reload(true);
     });
     //game.reset(details);

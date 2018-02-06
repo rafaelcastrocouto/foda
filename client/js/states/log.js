@@ -9,7 +9,7 @@ game.states.log = {
     this.rememberlabel = $('<label>').addClass('remembername').appendTo(this.form).append($('<span>').text(game.data.ui.remember));
     this.remembercheck = $('<input>').attr({type: 'checkbox', name: 'remember', checked: true}).change(this.remember).appendTo(this.rememberlabel);
     this.out = $('<small>').addClass('logout').hide().insertAfter(game.message).text(game.data.ui.logout).on('mouseup touchend', this.logout);
-    var rememberedname = localStorage.getItem('name');
+    var rememberedname = game.getData('name');
     if (rememberedname) { this.input.val(rememberedname); }
     this.el.append(this.box);
   },
@@ -22,7 +22,7 @@ game.states.log = {
     if (!game.states.log.alert) {
       game.states.log.alert = true;
       game.states.log.alertBox();
-      if (!localStorage.getItem('voted')) game.poll.addButton();
+      if (!game.getData('voted')) game.poll.addButton();
     }
   },
   alertBox: function () {
@@ -46,12 +46,11 @@ game.states.log = {
       game.player.name = name;
       game.rank.start();
       if (game.states.log.remembername) {
-        localStorage.setItem('name', name);
+        game.setData('name', name);
       } else {
-        localStorage.removeItem('name');
+        game.setData('name', false);
       }
-      localStorage.setItem('log', name);
-      localStorage.setItem('logged', 'true');
+      game.setData('logged', true);
       game.states.log.button.attr('disabled', true);
       game.chat.set(game.data.ui.joined);
       game.chat.build();
@@ -67,7 +66,7 @@ game.states.log = {
     game.confirm(function (confirmed) {
       if (confirmed) {
         game.audio.stopSong();
-        localStorage.setItem('logged', 'false');
+        game.setData('logged', false);
         game.clear();
         game.chat.el.hide();
         game.states.changeTo('log');

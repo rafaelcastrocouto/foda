@@ -39,11 +39,14 @@ game.tower = {
       }
     });
     if (!lowestHp.notfound) {
-      game[attacker].tower.attack(lowestHp);
+      game[attacker].tower.attack(lowestHp, true);
       if (game.mode === 'online') {
         from = game[attacker].tower.getPosition();
         to = lowestHp.getPosition();
-        game.currentMoves.push('A:' + from + ':' + to);
+        var move = 'A:' + from + ':' + to;
+        game.history.saveMove(move);
+        if (game.mode == 'online') 
+          game.currentMoves.push(move);
       }
     }
   }

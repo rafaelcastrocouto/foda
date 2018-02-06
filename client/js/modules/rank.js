@@ -3,9 +3,8 @@ game.rank = {
     game.rank.list = $('<ol>').appendTo(game.states.menu.el).addClass('rank').hide();
   },
   start: function () {
-    var p = parseInt(localStorage.getItem('points'));
+    var p = parseInt(game.getData('points'));
     if ( typeof(p) == 'number') game.player.points = p;
-    else game.player.points = 0;
   },
   send: function () {
     if (!game.debug) game.db({

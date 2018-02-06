@@ -2,19 +2,30 @@ game.local = {
   build: function () {
     game.seed = new Date().valueOf();
     game.id = btoa(game.seed);
+    game.player.type = 'challenged';
+    game.enemy.type = 'challenger';
+    game.setData('challenged', game.player.name);
+    game.setData('challenger', game.enemy.name);
   },
   chooseStart: function (hero, sec) {
-    game.loader.removeClass('loading');
-    game.states.choose.pickedbox.show();
-    game.states.choose.randombt.show();
-    game.states.choose.mydeck.show();
-    game.states.choose.enablePick();
-    game.states.choose.counter.show().text(game.data.ui.clickpick);
-    $('.slot').addClass('available');
-    if (!sec) game.message.text('Select player 1 deck');
-    else game.message.text('Now, select player 2 deck');
-    if (hero) game.states.choose.selectHero(hero, 'force');
-    else game.states.choose.selectFirst('force');
+    var playerDeck = game.getData(game.player.type+'Deck');
+    if (!sec && playerDeck) {
+      // recovering
+      game.player.picks = playerDeck.split('|');
+      game.local.secondDeck();
+    } else {
+      game.loader.removeClass('loading');
+      game.states.choose.pickedbox.show();
+      game.states.choose.randombt.show();
+      game.states.choose.mydeck.show();
+      game.states.choose.enablePick();
+      game.states.choose.counter.show().text(game.data.ui.clickpick);
+      $('.slot').addClass('available');
+      if (!sec) game.message.text('Select player 1 deck');
+      else game.message.text('Now, select player 2 deck');
+      if (hero) game.states.choose.selectHero(hero, 'force');
+      else game.states.choose.selectFirst('force');
+    }
   },
   pick: function () {
     var availableSlots = $('.slot.available').length;
@@ -30,6 +41,7 @@ game.local = {
   secondDeck: function () {
     game.local.firstDeck = true;
     game.states.choose.fillPicks('player');
+    game.setData(game.player.type + 'Deck', game.player.picks.join('|'));
     game.states.choose.clear();
     game.timeout(100, function () {
       game.local.chooseStart(false, true);
@@ -39,10 +51,11 @@ game.local = {
     if (!game.local.firstDeck) {
       game.timeout(100, game.local.secondDeck);
     } else {
-      game.local.firstDeck = false;
       game.states.choose.fillPicks('enemy');
+      game.setData(game.enemy.type + 'Deck', game.enemy.picks.join('|'));
       game.timeout(100, function () {
         game.states.choose.clear();
+        game.local.firstDeck = false;
         game.states.changeTo('vs');
       });
     }
@@ -59,7 +72,7 @@ game.local = {
     game.turn.build(6);
     game.timeout(400, function () {
       game.skill.build('enemy');
-      game.skill.build('player', 0, function () {
+      game.skill.build('player', false, function () {
         game.timeout(1000, game.local.beginPlayer);
       });
     });
@@ -79,7 +92,7 @@ game.local = {
     }
   },
   beginPlayer: function () {
-    game.turn.beginPlayer(function () {
+    game.turn.begin('player', function () {
       game.local.startTurn('player');
       if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
@@ -101,7 +114,7 @@ game.local = {
   },
 
   beginEnemy: function () { 
-    game.turn.beginEnemy(function () {
+    game.turn.begin('enemy', function () {
       game.local.startTurn('enemy');
       if (game.selectedCard) game.selectedCard.reselect();
       if (game.enemy.turn === game.ultTurn) {
@@ -130,8 +143,8 @@ game.local = {
     game.states.changeTo('result');
   },
   clear: function () {
+    game.local.firstDeck = false;
     game.seed = 0;
     game.id = null;
-    game.moves = [];
   }
 };

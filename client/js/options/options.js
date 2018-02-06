@@ -6,17 +6,17 @@ game.options = {
     this.row = $('<div>').appendTo(this.box);
     //screen
     this.screen = $('<div>').appendTo(this.row).addClass('screenresolution').append($('<h2>').text(game.data.ui.screenres));
-    this.fullscreen = $('<input>').attr({type: 'checkbox', name: 'fullscreen'});
+    this.fullscreen = $('<input>').attr({type: 'checkbox', name: 'fullscreen', disabled: true});
     $('<label>').appendTo(this.screen).append(this.fullscreen).append($('<span>').text(game.data.ui.fullscreen));
     //side
     this.side = $('<input>').attr({type: 'checkbox', name: 'side'});
     $('<label>').appendTo(this.screen).append(this.side).append($('<span>').text(game.data.ui.leftmode));
-    if (localStorage.getItem('left-side') == 'true') {
+    if (game.getData('left-side') == 'true') {
       $(document.body).addClass('left-side');
       this.side.prop('checked', true);
     }
     //resolution
-    this.auto = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', checked: true, value: 'auto'})).append($('<span>').text(game.data.ui.auto));
+    this.auto = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'auto'})).append($('<span>').text(game.data.ui.auto));
     this.high = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'high'})).append($('<span>').text(game.data.ui.high + ' 1920x1080'));
     this.medium = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'medium'})).append($('<span>').text(game.data.ui.medium + ' 1366x768'));
     this.default = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'default'})).append($('<span>').text(game.data.ui['default'] + ' 1024x768'));
@@ -35,15 +35,8 @@ game.options = {
     //back
     this.back = $('<div>').addClass('back button').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.box);
      // start
-    game.screen.resize();
     game.screen.rememberResolution();
-    BigScreen.onenter = function () {
-      $('input[name=fullscreen]', '.screenresolution')[0].checked = true;
-    };
-    BigScreen.onexit = BigScreen.onerror = function() {
-      $('input[name=fullscreen]', '.screenresolution')[0].checked = false;
-      $(document.body).prepend(game.container);
-    };
+    game.screen.FSEvents();
     if (window.AudioContext) game.audio.rememberVolume();
   },
   events: function () {

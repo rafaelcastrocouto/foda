@@ -3,6 +3,10 @@ game.library = {
     game.library.buildSkills();
     game.seed = new Date().valueOf();
     game.id = btoa(game.seed);
+    game.player.type = 'challenged';
+    game.enemy.type = 'challenger';
+    game.setData('challenged', game.player.name);
+    game.setData('challenger', game.enemy.name);
   },
   buildSkills: function (cb) {
     if (!game.library.skills) {
@@ -25,6 +29,7 @@ game.library = {
     game.states.choose.librarytest.show();
     game.loader.removeClass('loading');
     $('.slot').removeClass('available');
+    game.recovering = false;
     game.message.text(game.data.ui.library);
     if (hero) game.states.choose.selectHero(hero, 'force');
     else game.states.choose.selectFirst('force');
@@ -46,7 +51,7 @@ game.library = {
       $('.slot:empty').hide();
       if (!card.data('disable')) {
         game.library.hero = card.data('hero');
-        localStorage.setItem('choose', game.library.hero);
+        game.setData('choose', game.library.hero);
       }
       game.states.choose.intro.attr('disabled', !game.data.heroes[game.library.hero].intro);
       game.states.choose.librarytest.attr('disabled', !!card.data('disable'));
@@ -67,10 +72,10 @@ game.library = {
     game.turn.build(11);
     game.timeout(400, function () {
       game.skill.build('enemy');
-      game.skill.build('player', 0, function () {
+      game.skill.build('player', false, function () {
         game.units.buyCreeps('player', true);
         game.library.buildHand();
-        game.library.beginPlayerTurn();
+        game.library.beginPlayer();
         $('.map .player.card.'+game.library.hero).select();
       });
     });
@@ -81,8 +86,8 @@ game.library = {
     if (link && !$(this).attr('disabled')) game.states.choose.playVideo(link);
     return false;
   },
-  beginPlayerTurn: function () { 
-    game.turn.beginPlayer(function () {
+  beginPlayer: function () { 
+    game.turn.begin('player', function () {
       game.tower.attack('enemy');
       if (game.player.turn > 1) game.skill.buyHand('player');
     });
@@ -101,28 +106,28 @@ game.library = {
   action: function () {
     /*game.timeout(10000, function () {
       if ( game.turn.noAvailableMoves() ) {
-        game.library.endPlayerTurn();
+        game.library.endPlayer();
       }
     });*/
   },
   skip: function () {
     if ( game.currentTurnSide == 'player' ) {
-      game.library.endPlayerTurn();
+      game.library.endPlayer();
     }
   },
-  endPlayerTurn: function () {
-    game.turn.end('player-turn', game.library.beginEnemyTurn);
-  },
-  beginEnemyTurn: function () {
-    game.turn.beginEnemy(function () {
+  endPlayer: function () {
+    game.turn.end('player', game.library.beginEnemy);
+  }, 
+  beginEnemy: function () {
+    game.turn.begin('enemy', function () {
       game.loader.addClass('loading');
       game.skill.buyHand('enemy');
       game.tower.attack('player');
-      game.library.endEnemyTurn();
+      game.library.endEnemy();
     });
   },
-  endEnemyTurn: function () {
-    game.turn.end('enemy-turn', game.library.beginPlayerTurn);
+  endEnemy: function () {
+    game.turn.end('enemy', game.library.beginPlayer);
   },
   win: function () {
     game.states.table.clear();
@@ -131,6 +136,5 @@ game.library = {
   clear: function () {
     game.seed = 0;
     game.id = null;
-    game.moves = [];
   }
 };

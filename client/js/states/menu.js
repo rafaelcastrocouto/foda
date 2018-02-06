@@ -34,8 +34,8 @@ game.states.menu = {
       game.setMode('online');
       game.states.changeTo('choose');
     });
-    if (!localStorage.getItem('tutorial')) this.tutorial.addClass('highlight');
-    else if (!localStorage.getItem('campaign')) this.campaign.addClass('highlight');
+    if (!game.getData('tutorial')) this.tutorial.addClass('highlight');
+    else if (!game.getData('campaign')) this.campaign.addClass('highlight');
     else this.online.addClass('highlight');
     this.local = $('<div>').addClass('local icon').appendTo(this.el).attr({ title: game.data.ui.chooselocal}).append($('<span>').text(game.data.ui.local)).on('mouseup touchend', function () {
       game.setMode('local');

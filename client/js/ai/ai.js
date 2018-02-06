@@ -125,10 +125,7 @@ game.ai = {
   autoMove: function (cb) {
     if (game.turn.counter > 1) {
       if (game.ai.moves.length) {
-        game.enemy.moveEndCallback = cb;
-        game.currentMoves = game.ai.moves;
-        game.enemy.autoMoveCount = 0;
-        game.enemy.autoMove();
+        game.enemy.autoMove(game.ai.moves, cb);
       } else cb();
     } else game.ai.endTurn();
   },

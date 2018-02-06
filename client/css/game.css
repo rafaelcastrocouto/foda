@@ -281,7 +281,7 @@ noscript .box a {
 input {
   border-radius: 3px;
   letter-spacing: -1px;
-  word-spacing: -1px;
+  word-spacing: 2px;
   font-size: 17px;
   color: #4d4843;
   outline: 0;

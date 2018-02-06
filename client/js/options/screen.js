@@ -16,11 +16,11 @@ game.screen = {
     game.container.css('transform', 'translate3d(-50%, -50%, 0) scale('+scale+')');
   },
   rememberResolution: function () {
-    var res, rememberedres = localStorage.getItem('resolution');
+    var res, rememberedres = game.getData('resolution');
     if (rememberedres && game.screen.resolutions.indexOf(rememberedres) > -1) res = rememberedres;
-    if (res) {
-      game.screen.setResotution(res);
-    }
+    if (res) game.screen.setResotution(res);
+    else if (window.innerWidth < 970) game.screen.setResotution('auto');
+    else game.screen.setResotution('default');
   },
   setResotution: function (res) {
     $('input[name=resolution][value='+res+']').attr('checked', true);
@@ -39,17 +39,27 @@ game.screen = {
     }
     if (resolution !== 'auto') game.screen.scale = game.screen.scales[resolution];
     game.container.removeClass(game.screen.resolutions.join(' ')).addClass(resolution);
-    localStorage.setItem('resolution', resolution);
+    game.setData('resolution', resolution);
   },
   toggleFS: function () {
     if (BigScreen.enabled) {
       BigScreen.toggle();
     }
-    else $(this).attr('disabled', true);
+    else game.options.fullscreen.attr('disabled', true);
+  },
+  FSEvents: function () {
+    if (BigScreen.enabled) game.options.fullscreen.attr('disabled', false);
+    BigScreen.onenter = function () {
+      game.options.fullscreen[0].checked = true;
+    };
+    BigScreen.onexit = BigScreen.onerror = function() {
+      game.options.fullscreen[0].checked = false;
+      //$(document.body).prepend(game.container);
+    };
   },
   toggleSide: function () {
     var checked = $('.screenresolution input[name=side]').prop('checked');
     $(document.body).toggleClass('left-side', checked);
-    localStorage.setItem('left-side', checked);
+    game.setData('left-side', checked);
   }
 };

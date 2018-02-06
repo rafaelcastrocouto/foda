@@ -68,6 +68,7 @@ game.states.vs = {
     if (game.mode == 'library') game.enemy.name = game.data.ui.library;
     if (game.mode == 'single') game.enemy.name = game.states.campaign.stage.name;
     if (game.mode == 'local') game.enemy.name = 'Challenger';
+    game.setData('enemyname', game.enemy.name);
     this.enemyname.text(game.enemy.name);
     if (!game.enemy.type) game.enemy.type = 'challenger';
     game.enemy.picks = game.states.vs.enemyPicks();
@@ -92,14 +93,14 @@ game.states.vs = {
       if (game.library.hero) {
         hero = game.library.hero;
       } else {
-        hero = localStorage.getItem('choose');
+        hero = game.getData('choose');
         game.library.hero = hero;
       }
       return [hero];
     } else {
       var picks = game.player.picks;
+      if (!picks && game.recovering) picks = game.getData(game.player.type+'Deck').split('|');
       if (picks && picks.length === 5) return picks;
-      else return localStorage.getItem('mydeck').split(',');
     }
   },
   enemyPicks: function () {
@@ -110,21 +111,19 @@ game.states.vs = {
     if (game.mode == 'tutorial') {
       return [ 'wk', 'cm', 'am', 'pud', 'ld' ];
     }
-    if (game.mode == 'online') {
-      picks = game.enemy.picks;
-      if (picks && picks.length === 5) return picks;
-      else return localStorage.getItem('enemydeck').split(',');
-    }
     if (game.mode == 'single') {
-      picks = game.enemy.picks;
-      if (!picks || picks.length !== 5) picks = localStorage.getItem('enemydeck').split(',');
-      //if (game.debug) picks = ['wk'];
-      return picks;
+      return game.single.enemypicks;
     }
-    if (game.mode == 'local') return game.enemy.picks;
+    if (game.mode == 'online' || game.mode == 'local') {
+      picks = game.enemy.picks;
+      if (!picks && game.recovering) picks = game.getData(game.enemy.type+'Deck').split('|');
+      if (picks && picks.length === 5) return picks;
+    }
   },
   toTable: function () {
     game.states.vs.clear();
+    game.setData(game.player.type + 'Deck', game.player.picks.join('|'));
+    game.setData(game.enemy.type + 'Deck', game.enemy.picks.join('|'));
     game.states.changeTo('table');
   },
   clear: function () {

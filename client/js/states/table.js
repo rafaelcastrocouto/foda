@@ -28,8 +28,15 @@ game.states.table = {
       game.states.table.setup = true;
       game.tower.place();
       game.tree.place();
-      this.forestSpot();
-      this.fountainSpot();
+      game.states.table.forestSpot();
+      game.states.table.fountainSpot();
+    }
+    game.states.table.recover();
+  },
+  recover: function () {
+    if (game.recovering && game.getData(game.player.type+'Deck')) {
+      game.history.recoverMatch();
+    } else {
       game[game.mode].setTable();
     }
   },
@@ -59,9 +66,8 @@ game.states.table = {
     if (!game.states.table.skip.attr('disabled') && game.canPlay()) {
       game.states.table.skip.attr('disabled', true);
       game.turn.stopCount();
-      game.highlight.clearMap();
-      if (game.mode !== 'library') game.turn.el.text(game.data.ui.enemyturn).addClass('show');
       if (game[game.mode].skip) game[game.mode].skip();
+      game.highlight.clearMap();
       if (game.selectedCard) game.selectedCard.reselect();
     }
     return false;
@@ -78,6 +84,8 @@ game.states.table = {
   backClick: function () {
     //library only
     game.audio.stopSong();
+    game.recovering = false;
+    game.setData('matchData', false);
     game.states.table.clear();
     //game.setMode('library');
     game.states.changeTo('choose');
@@ -108,7 +116,7 @@ game.states.table = {
     this.el.removeClass('turn');
     if (game.turn.el) game.turn.el.removeClass('show');
     game.states.table.el.removeClass('turn');
-    localStorage.setItem('seed', false);
+    game.setData('seed', false);
     game.clearTimeouts();
   },
   end: function () {

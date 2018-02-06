@@ -215,7 +215,7 @@ game.card = {
       game.selectedCard = null;
     }
   },
-  setSelection: function(card, event) { //console.log(card)
+  setSelection: function(card, event) {
     game.card.clearSelection();
     game.selectedCard = card;
     card.addClass('selected');
@@ -277,8 +277,8 @@ game.card = {
           transform: ''
         }).prependTo(destiny).on('mousedown touchstart', game.card.select);
         card.trigger('moved', evt);
-        game.highlight.map();
         $('.map .movesource, .map .movetarget').removeClass('movesource movetarget');
+        game.highlight.map();
         if (game.selectedCard) game.selectedCard.reselect();
       }.bind(this, card, destiny);
       if (!this.hasClass('dragTarget')) game.timeout(300, end);
