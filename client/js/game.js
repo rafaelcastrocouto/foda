@@ -136,6 +136,18 @@ var game = {
       game[mode].build(recover);
     }
   },
+  matchClear: function () {
+    game.recovering = false;
+    game.player.picks = false;
+    game.enemy.picks = false;
+    game.setData('challenger', false);
+    game.setData('challenger', false);
+    game.setData('challenged', false);
+    game.setData('challengerDeck', false);
+    game.setData('challengedDeck', false);
+    game.setData('matchData', false);
+    game.setData('seed', false);
+  },
   clear: function() {
     game.message.html('');
     if (game.mode && game[game.mode] && game[game.mode].clear) {
@@ -148,13 +160,6 @@ var game = {
     game.container.removeClass(game.validModes.join(' '));
     game.mode = false;
     game.setData('mode', false);
-    game.player.picks = false;
-    game.enemy.picks = false;
-    game.setData('challenger', false);
-    game.setData('challenged', false);
-    game.setData('challengerDeck', false);
-    game.setData('challengedDeck', false);
-    game.setData('matchData', false);
   },
   alert: function(txt, cb) {
     var box = $('<div>').addClass('box');

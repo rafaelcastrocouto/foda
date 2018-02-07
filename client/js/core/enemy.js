@@ -77,7 +77,7 @@ game.enemy = {
           game.enemy.toggle(to, hero, skillid);
         }
         if (move[0] === 'S') {
-          if (game.recovering) to = move[1];
+          if (game.recovering && game.currentTurnSide == 'player') to = move[1];
           else to = game.map.mirrorPosition(move[1]);
           creep = move[2];
           game.enemy.summonCreepMove(to, creep);

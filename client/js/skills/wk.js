@@ -13,7 +13,7 @@ game.skills.wk = {
         source.damage(skill.data('damage'), target, skill.data('damage type'));
       });
     },
-    turnend: function (skillData) { 
+    turnend: function (skillData) {
       var target = skillData.target;
       var source = skillData.source;
       var skill = skillData.skill;

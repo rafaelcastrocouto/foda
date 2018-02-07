@@ -84,10 +84,7 @@ game.states.table = {
   backClick: function () {
     //library only
     game.audio.stopSong();
-    game.recovering = false;
-    game.setData('matchData', false);
     game.states.table.clear();
-    //game.setMode('library');
     game.states.changeTo('choose');
     return false;
   },
@@ -106,6 +103,7 @@ game.states.table = {
     if (this.selectedCard) this.selectedCard.removeClass('flip');
     game.states.table.setup = false;
     game.map.clear();
+    game.matchClear();
     game.card.clearSelection();
     game.fx.clear();
     game.audio.stopSong();
@@ -116,7 +114,6 @@ game.states.table = {
     this.el.removeClass('turn');
     if (game.turn.el) game.turn.el.removeClass('show');
     game.states.table.el.removeClass('turn');
-    game.setData('seed', false);
     game.clearTimeouts();
   },
   end: function () {

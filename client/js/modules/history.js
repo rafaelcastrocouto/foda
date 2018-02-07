@@ -26,10 +26,12 @@ game.history = {
         game.chat.build();
         setTimeout(game.chat.set.bind(game.chat, game.data.ui.reconnected), 200);
       }
-      if (game.debug) {
-        if (state == 'loading') state = 'log';
-        //if (state == 'table') state = 'vs';
-        if (state == 'result') state = 'menu';
+      if (state == 'loading') state = 'log';
+      if (state == 'result') {
+        mode = false;
+        state = 'menu';
+      }
+      if (game.debug || mode == 'library' || mode == 'local') {
         if (mode) {
           var picks = game.getData(game.player.type+'Deck');
           if (picks) game.player.picks = picks.split('|');

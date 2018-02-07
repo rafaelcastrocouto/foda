@@ -179,8 +179,9 @@ game.card = {
   },
   canPlay: function() {
     var card = $(this);
-    var can = game.currentTurnSide == 'player';
+    var can = card.hasClass('player') && game.currentTurnSide == 'player';
     if (game.mode == 'local') can = (card.side() == game.currentTurnSide);
+    if (game.mode == 'library') can = (game.currentTurnSide == 'player');
     return can;
   },
   place: function(target) {
@@ -443,25 +444,32 @@ game.card = {
     return this;
   },
   projectile: function (source, target, extraclass) {
-    var cl = source.data('hero');
-    if (source.hasClass('towers')) cl = 'towers ' + source.side();
-    if (source.hasClass('units')) cl = 'units ' + source.data('id') +' '+ source.side();
-    if (extraclass) cl += ' '+extraclass;
-    game.projectile = $('<div>').addClass('projectile ' + cl);
-    var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
-    //console.log(angle)
-    game.projectile.data('rotate', angle).appendTo(game.map.el);
-    game.card.projectileMove.apply(source);
-    game.timeout(64, game.card.projectileMove.bind(target));
-    game.timeout(364,game.projectile.remove.bind(game.projectile));
+    if (!game.recovering) {
+      var cl = source.data('hero');
+      if (source.hasClass('towers')) cl = 'towers ' + source.side();
+      if (source.hasClass('units')) cl = 'units ' + source.data('id') +' '+ source.side();
+      if (extraclass) cl += ' '+extraclass;
+      game.projectile = $('<div>').addClass('projectile ' + cl);
+      var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
+      //console.log(angle)
+      game.projectile.data('rotate', angle).appendTo(game.map.el);
+      game.card.projectileMove.apply(source);
+      game.timeout(64, game.card.projectileMove.bind(target));
+      game.timeout(364, function () {
+        game.projectile.remove();
+        game.projectile = false;
+      });
+    }
   },
   projectileMove: function() {
-    var rotate = game.projectile.data('rotate') || 0;
-    var x = this.getX();
-    var y = this.getY();
-    game.projectile.css({
-      'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale(2.5)'
-    });
+    if (game.projectile) {
+      var rotate = game.projectile.data('rotate') || 0;
+      var x = this.getX();
+      var y = this.getY();
+      game.projectile.css({
+        'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale(2.5)'
+      });
+    }
   },
   damage: function(damage, target, type) {
     var source = this, evt, x, y, position, spot, resistance, armor, hp, finalDamage = damage;

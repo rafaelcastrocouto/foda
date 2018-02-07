@@ -70,7 +70,7 @@ game.fx = {
     var hero = a[0];
     var skill = a[1];
     //console.log(game.fx.heroes[hero][skill])
-    if (game.fx.heroes[hero] && game.fx.heroes[hero][skill]) {
+    if ( !game.recovering && game.fx.heroes[hero] && game.fx.heroes[hero][skill]) {
       game.fx.stop(name, source);
       var fx = $('<div>').addClass(name + ' fx fx-' + hero);
       var dirX = source.getX() - target.getX();
