@@ -58,7 +58,7 @@ game.single = {
   },
   countEnd: function (turn) {
     if (turn == 'player') { 
-       game.single.endPlayerTurn();
+       game.single.endPlayer();
     }
   },
   beginPlayer: function () {
@@ -72,9 +72,9 @@ game.single = {
     });
   },
   skip: function () {
-    game.single.endPlayerTurn();
+    game.single.endPlayer();
   },
-  endPlayerTurn: function () {
+  endPlayer: function () {
     game.turn.end('player', game.single.beginEnemy);
   },
   beginEnemy: function () {
@@ -88,7 +88,7 @@ game.single = {
       game.timeout(2000, game.ai.turnStart);
     });
   },
-  endEnemyTurn: function () {
+  endEnemy: function () {
     game.turn.stopCount();
     game.turn.end('enemy', game.single.beginPlayer);
   },

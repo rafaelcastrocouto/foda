@@ -46,7 +46,7 @@ game.turn = {
     if (side == 'player') game.states.table.el.addClass('turn');
     if (side == 'enemy' && game.mode == 'local') game.states.table.el.addClass('unturn');
     game.loader.removeClass('loading');
-    game.states.table.skip.attr('disabled', false);
+    if (game.canPlay()) game.states.table.skip.attr('disabled', false);
     game.highlight.map();
     if (cb) {
       game.timeout(400, cb.bind(this, side));

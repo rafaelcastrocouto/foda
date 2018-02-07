@@ -120,7 +120,7 @@ game.ai = {
     $('.card').data('ai count', 0);
     $('.source').removeClass('source');
     $('.ai-max').removeClass('ai-max');
-    game.single.endEnemyTurn();
+    game.single.endEnemy();
   },
   autoMove: function (cb) {
     if (game.turn.counter > 1) {

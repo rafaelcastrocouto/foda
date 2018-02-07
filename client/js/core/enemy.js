@@ -48,7 +48,7 @@ game.enemy = {
         else from = game.map.mirrorPosition(move[1]);
         if (move[2]) {
           if (game.recovering) to = move[2];
-          elseto = game.map.mirrorPosition(move[2]);
+          else to = game.map.mirrorPosition(move[2]);
         }
         if (move[0] === 'M') {
           game.enemy.move(from, to);
@@ -110,7 +110,7 @@ game.enemy = {
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.source').removeClass('source');
     if (game.mode == 'single' && game.turn.counter < 1)
-      game.single.endEnemyTurn();
+      game.ai.endTurn();
     else
       game.timeout(1000, game.enemy.moveEndCallback);
   },

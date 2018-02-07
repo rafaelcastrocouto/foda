@@ -230,7 +230,7 @@ game.online = {
   },
   countEnd: function (turn) {
     if (turn == 'player') { 
-      game.online.endPlayerTurn();
+      game.online.endPlayer();
     }
     if (turn == 'enemy') {
       game.tries = 0;
@@ -253,18 +253,16 @@ game.online = {
   action: function () {
     /*game.timeout(10000, function () {
       if (game.turn.noAvailableMoves()) {
-        game.online.preEndPlayer();
+        game.turn.stopCount();
+        game.online.endPlayer();
       }
     });*/
   },
   skip: function () {
-    game.online.preEndPlayer();
-  },
-  preEndPlayer: function () {
     game.turn.stopCount();
-    game.online.endPlayerTurn();
+    game.online.endPlayer();
   },
-  endPlayerTurn: function () {
+  endPlayer: function () {
     game.turn.end('player', game.online.sendTurnData);
   },
   sendTurnData: function () {
@@ -297,14 +295,12 @@ game.online = {
     if (turn == 'enemy') {
       game.db({ 'get': game.id }, function (data) {
         var challengeTurn = game.enemy.type + 'Turn';
-        if (data[challengeTurn] === game.enemy.turn) 
-          game.online.preEndEnemy(data);
+        if (data[challengeTurn] === game.enemy.turn) {
+          game.turn.stopCount();
+          game.online.beginEnemyMoves(data, 'pre');
+        }
       });
     }
-  },
-  preEndEnemy: function (data) {
-    game.turn.stopCount();
-    game.online.beginEnemyMoves(data, 'pre');
   },
   getTurnData: function () {
     game.db({ 'get': game.id }, function (data) {
@@ -327,10 +323,10 @@ game.online = {
       game.triesCounter.text('');
       game.setData(game.enemy.type, game.enemy.turn);
       game.setData('moves', data.moves);
-      game.enemy.autoMove(data.moves, game.online.endEnemyTurn);
+      game.enemy.autoMove(data.moves, game.online.endEnemy);
     }
   },
-  endEnemyTurn: function () {
+  endEnemy: function () {
     game.turn.end('enemy', game.online.beginPlayer);
   },
   win: function () {
