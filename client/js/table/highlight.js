@@ -33,6 +33,7 @@ game.highlight = {
         if (!card.hasClass('channel-on'))
           card.strokeSkill();
         if (card.canPlay()) {
+          card.addClass('draggable');
           card.highlightArrows();
           card.highlightTargets(event);
         }
@@ -420,5 +421,9 @@ game.highlight = {
     game.skill.summonHover = null;
     game.map.el.removeClass('aoe');
     $('.map .card, .map .spot').clearEvents('highlight').removeClass('source stroke attacktarget casttarget movearea movetarget movesource moving targetarea stroke playerattack enemyattack skillhoverstroke skillstroke top bottom left right toparrow bottomarrow leftarrow rightarrow');
+  },
+  refresh: function () {
+    if (game.selectedCard) game.selectedCard.reselect();
+    else game.highlight.map();
   }
 };

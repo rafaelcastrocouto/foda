@@ -67,8 +67,7 @@ game.states.table = {
       game.states.table.skip.attr('disabled', true);
       game.turn.stopCount();
       if (game[game.mode].skip) game[game.mode].skip();
-      game.highlight.clearMap();
-      if (game.selectedCard) game.selectedCard.reselect();
+      game.highlight.refresh();
     }
     return false;
   },

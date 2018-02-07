@@ -9,9 +9,9 @@ game.skills.wk = {
         skill: skill
       }));
       game.card.projectile(source, target);
-      game.timeout(400, function() {
+      game.timeout(400, function(source, target, skill) {
         source.damage(skill.data('damage'), target, skill.data('damage type'));
-      });
+      }.bind(this, source, target, skill));
     },
     turnend: function (skillData) {
       var target = skillData.target;

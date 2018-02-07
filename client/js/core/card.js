@@ -279,8 +279,7 @@ game.card = {
         }).prependTo(destiny).on('mousedown touchstart', game.card.select);
         card.trigger('moved', evt);
         $('.map .movesource, .map .movetarget').removeClass('movesource movetarget');
-        game.highlight.map();
-        if (game.selectedCard) game.selectedCard.reselect();
+        game.highlight.refresh();
       }.bind(this, card, destiny);
       if (!this.hasClass('dragTarget')) game.timeout(300, end);
       else game.timeout(25, end);
@@ -410,8 +409,8 @@ game.card = {
       //clear bonus
       source.data('critical-attack', false);
       evt.bonus = 0;
-      source.removeClass('can-attack');
-      if (game.selectedCard) game.timeout(10, game.selectedCard.reselect.bind(game.selectedCard));
+      source.removeClass('can-attack draggable');
+      game.highlight.refresh();
       //melee fx
       var range = game.map.getRangeInt(source.data('range'));
       if (range < 3) {

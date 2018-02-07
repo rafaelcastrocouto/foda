@@ -137,6 +137,7 @@ game.skill = {
             }
           });
         }
+        skill.removeClass('draggable');
         var skillend = function (skill, source, target) {
           game.fx.ult(skill, function (skill) {
             var hero = skill.data('hero'),
@@ -208,10 +209,11 @@ game.skill = {
       }
       game.audio.play('activate');
       target.shake();
+      skill.removeClass('draggable');
       var end = function (target) {
         this.appendTo(game.hidden);
         if (target.canPlay()) target.select();
-        else if (game.selectedCard) game.selectedCard.reselect();
+        else game.highlight.refresh();
       }.bind(skill, target);
       if (!skill.hasClass('dragTarget')) game.timeout(400, end);
       else end();
@@ -240,6 +242,7 @@ game.skill = {
         else game.audio.play(hero + '/' + skillid);
       }
       target.shake();
+      skill.removeClass('draggable');
       if (skill.hasClass('enemy')) {
         game.enemy.hand -= 1;
       } else if (skill.hasClass('selected')) {
@@ -251,6 +254,7 @@ game.skill = {
     return this;
   },
   summon: function (skill) {
+    skill.removeClass('draggable');
     var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped dragTarget').on('mousedown touchstart', game.card.select).css({transform: ''});
     if (game.mode == 'library') unit.on('action', game.library.action);
     unit.find('legend').text(skill.data('summon name'));
@@ -290,10 +294,10 @@ game.skill = {
   discard: function (source, cb) {
     if (this.hasClass('skills')) {
       if (this.hasClass('selected')) {
-        game.highlight.clearMap();
         if (source && source.canPlay()) source.select();
         else game.card.unselect();
-      } else if (game.selectedCard) game.selectedCard.reselect();
+      }
+      this.removeClass('draggable');
       this.trigger('discard', {target: this});
       var side = this.side();
       if (this.data('deck') === game.data.ui.temp) this.appendTo(game[side].skills.temp);

@@ -94,6 +94,7 @@ game.local = {
   beginPlayer: function () {
     game.turn.begin('player', function () {
       game.local.startTurn('player');
+      game.highlight.refresh();
       if (game.player.turn === game.ultTurn) {
         $('.card', game.player.skills.ult).appendTo(game.player.skills.deck);
       }
@@ -116,7 +117,7 @@ game.local = {
   beginEnemy: function () { 
     game.turn.begin('enemy', function () {
       game.local.startTurn('enemy');
-      if (game.selectedCard) game.selectedCard.reselect();
+      game.highlight.refresh();
       if (game.enemy.turn === game.ultTurn) {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
       }

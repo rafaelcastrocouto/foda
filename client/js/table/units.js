@@ -80,7 +80,7 @@ game.units = {
     if (target.hasClass('free')) {
       game.audio.play('activate');
       if (card.canPlay()) game.highlight.clearMap();
-      else if (game.selectedCard) game.selectedCard.reselect();
+      else game.highlight.refresh();
       var end = function() {
         this.creep.addClass('done');
         this.creep.place(this.target);
