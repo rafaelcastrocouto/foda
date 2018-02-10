@@ -101,6 +101,9 @@
   transform: translate3d(-280px,150px,-250px) rotate(-180deg) translate(0px, 550px) scale(1.4);
 }
 @keyframes sun {
+  22% { background-color: #ffffa4; }
+  30% { background-color: #ff679f; }
+  32% { background-color: #ffe755; }
   48%, 100% {
     transform: translate3d(-280px,150px,-250px) rotate(-45deg) translate(0px, 550px) scale(1.4);
   }
