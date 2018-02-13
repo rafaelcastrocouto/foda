@@ -28,19 +28,18 @@ game.skills.kotl = {
     },
     channelend: function (event, eventdata) { 
       var source = $(this);
-      var skill = source.data('illuminate');
-      game.skills.kotl.illuminate.release(skill, source);
+      game.skills.kotl.illuminate.release(source);
     },
-    release: function (skill, source) { 
+    release: function (source) { 
       var kotl = source.data('illuminate-source') || source;
       var target = source.data('illuminate-target');
-      var damage = skill.data('damage');
-      var range = skill.data('aoe range');
-      var width = skill.data('aoe width');
-      var time = skill.data('channel') - source.data('channeling') + 1;
-      skill.removeClass('channel-on');
+      var skill = game.data.skills.kotl.illuminate;
+      var damage = skill.damage;
+      var range = skill['aoe range'];
+      var width = skill['aoe width'];
+      var time = skill.channel - source.data('channeling') + 1;
       source.opponentsInLine(target, range, width, function (card) {
-        kotl.damage(damage * time, card, skill.data('damage type'));
+        kotl.damage(damage * time, card, skill['damage type']);
       });
       if (source.hasClass('ghost')) {
         source.alliesInLine(target, range, width, function (card) {
@@ -49,14 +48,13 @@ game.skills.kotl = {
       }
       game.audio.stop('kotl/illuminate');
       game.audio.play('kotl/illuminaterelease');
-      kotl.data('illuminate-start', null);
       kotl.data('illuminate-target', null);
       kotl.data('illuminate-ghost', null);
       kotl.off('turnend.kotl-illuminate');
       kotl.removeBuff('kotl-illuminate');
       kotl.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
       if (source.hasClass('ghost')) source.discard();
-      skill.discard();
+      $('.skills.kotl-illuminate.'+kotl.side()).removeClass('channel-on').discard();
     }
   },
   leak: {
