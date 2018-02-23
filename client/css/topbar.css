@@ -90,7 +90,7 @@
 }
 
 .topbar .time {
-  left: 50%;
+  left: 460px;
   transform: translateX(-50%);
 }
 
@@ -100,7 +100,7 @@
 }
 
 .topbar .turns {
-  right: 180px;
+  right: 200px;
 }
 
 .topbar .opt {

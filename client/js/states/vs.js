@@ -31,7 +31,7 @@ game.states.vs = {
       game.units.build('player');
       game.units.build('enemy');
       var t = 4600;
-      if (game.mode == 'library') t = 1800;
+      if (game.mode == 'library') t = 1400;
       game.timeout(t - 300, function () {
         this.player.addClass('slide');
         this.enemy.addClass('slide');

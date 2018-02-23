@@ -4,6 +4,7 @@ game.skills.com = {
       var opponent = source.opponent();
       var totalDamage = skill.data('damage');
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       target.inRange(range, function (spot) {
         var card = spot.find('.card');
         if (card.hasClass(opponent)) {

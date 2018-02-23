@@ -61,29 +61,26 @@ game.heroesAI.ld = {
     }
     if (card.canCast(ult)) {
       cardData['can-cast'] = true;
-      var inMelee = 0, inRange = 0,
-          limit = (card.data('ai ult limit') < 3);
-      if (limit) {
-        card.opponentsInRange(2, function (cardInRange) {
-          if (!cardInRange.hasClasses('invisible ghost dead')) inMelee++;
+      var inMelee = 0, inRange = 0;
+      card.opponentsInRange(2, function (cardInRange) {
+        if (!cardInRange.hasClasses('invisible ghost dead')) inMelee++;
+      });
+      if (!ult.hasClass('on')) { 
+        // turn on
+        if (!card.hasBuff('ld-cry') || inMelee) cardData['cast-strats'].push({
+          priority: 10 + (10 * inMelee),
+          skill: 'ult',
+          card: ult,
+          target: card
         });
-        if (!ult.hasClass('on')) { 
-          // turn on
-          if (!card.hasBuff('ld-cry') || inMelee) cardData['cast-strats'].push({
-            priority: 10 + (10 * inMelee),
-            skill: 'ult',
-            card: ult,
-            target: card
-          });
-        } else if ((!card.hasBuff('ld-cry') && !cry.length) || (cardData['can-attack'] && !inMelee && inRange)) { 
-          // turn off
-          cardData['cast-strats'].push({
-            priority: 5,
-            skill: 'ult',
-            card: ult,
-            target: card
-          });
-        }
+      } else if ((!card.hasBuff('ld-cry') && !cry.length) || (cardData['can-attack'] && !inMelee && inRange)) { 
+        // turn off
+        cardData['cast-strats'].push({
+          priority: 5,
+          skill: 'ult',
+          card: ult,
+          target: card
+        });
       }
     }
     if (card.canCast(cry)) {

@@ -20,7 +20,9 @@ var game = {
   creepDeathDamage: 1,
   treeRespawn: 4,
   defaultSpeed: 3,
+  jungleFarm: 50,
   fountainHeal: 12,
+  maxMoney: 99999,
   width: 13,
   height: 7,
   tries: 0,
@@ -124,7 +126,7 @@ var game = {
     setTimeout(function() {
       this.removeClass('shake');
     }
-    .bind(state), 320);
+    .bind(state), 260);
   },
   validModes: ['tutorial', 'online', 'library', 'single', 'local'],
   setMode: function(mode, recover) {

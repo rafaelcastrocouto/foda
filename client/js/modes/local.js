@@ -65,9 +65,6 @@ game.local = {
     game.enemy.placeHeroes();
     game.audio.play('horn');
     game.message.text(game.data.ui.battle);
-    game.states.table.surrender.show();
-    game.states.table.skip.attr('disabled', true).show();
-    game.states.table.discard.attr('disabled', true).show();
     game.states.table.enableUnselect();
     game.turn.build(6);
     game.timeout(400, function () {

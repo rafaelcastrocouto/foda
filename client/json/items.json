@@ -1,0 +1,474 @@
+{
+  "healing": {
+    "faerie": {
+      "name": "Faerie",
+      "attribute": "Consumable",
+      "targets": ["Ally"],
+      "description": "Basic healing. Instant heals a target unit"
+    },
+    "tango": {
+      "name": "Tango",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes", "Tree"],
+      "description": "Heals a unit over time. Can be used to destroy a tree",
+      "buff": {
+        "description": "Healing over time"
+      }
+    },
+    "vitality": {
+      "name": "Vitality Booster",
+      "attribute": "Buff",
+      "targets": ["Ally"],
+      "description": "Target hero gains extra HP",
+      "buff": {
+        "description": "Bonus HP"
+      }
+    },
+    "meka": {
+      "name": "Meka",
+      "attribute": "Consumable",
+      "targets": ["Ally"],
+      "description": "Heals all player units"
+    },
+    "heart": {
+      "name": "Heart of Tarrasque",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Heals target every turn",
+      "buff": {
+        "description": "Heals every turn"
+      }
+    }
+  },
+  "mana": {
+    "clarity": {
+      "name": "Clarity",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Temporarily buys one extra skill card from the hero. Effect is loss if hero is attacked",
+      "buff": {
+        "description": "Player buys one extra skill card from this hero. Effect is loss if attacked"
+      }
+    },
+    "soul": {
+      "name": "Soul Ring",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Buys cards from a target hero, but damages the target. Cannot kill"
+    },
+    "void": {
+      "name": "Void Stone",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Player buys one extra skill card per turn",
+      "buff": {
+        "description": "Player buys one extra skill card from this hero"
+      }
+    },
+    "diffusal": {
+      "name": "Diffusal Blade",
+      "attribute": "Consumable",
+      "targets": ["Enemy", "Heroes"],
+      "description": "Enemy discards all right hand skill from the target hero"
+    },
+    "refresher": {
+      "name": "Refresher Orb",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Player buys skill cards from the target hero"
+    }
+  },
+  "armor": {
+    "ring": {
+      "name": "Ring of Protection",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases target armor",
+      "buff": {
+        "description": "Increased armor"
+      }
+    },
+    "buckler": {
+      "name": "Buckler",
+      "attribute": "Consumable",
+      "targets": ["Ally"],
+      "description": "Temporarily increases all units armor",
+      "buff": {
+        "description": "Increased armor"
+      }
+    },
+    "medallion": {
+      "name": "Medallion of Courage",
+      "attribute": "Consumable",
+      "targets": ["Ally"],
+      "description": "Temporarily increases target armor",
+      "buff": {
+        "description": "Increased armor"
+      }
+    },
+    "talisman": {
+      "name": "Talisman of Evasion",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Grants evasion",
+      "buff": {
+        "description": "Evasion"
+      }
+    },
+    "blademail": {
+      "name": "Blade Mail",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Temporarily returns all damage targeted at the hero",
+      "buff": {
+        "description": "Returns all target damage"
+      }
+    }
+  },
+  "attack": {
+    "quelling": {
+      "name": "Quelling Blade",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases damage against units. Target can destroy trees",
+      "buff": {
+        "description": "Increased damage. Can destroy trees"
+      }
+    },
+    "broadsword": {
+      "name": "Broadsword",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases damage of a target hero",
+      "buff": {
+        "description": "Increased damage"
+      }
+    },
+    "madness": {
+      "name": "Mask of Madness",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Temporarily increases damage but reduces armor and resistance",
+      "buff": {
+        "description": "Increased damage, reduced armor and resistance"
+      }
+    },
+    "crystalys": {
+      "name": "Crystalys",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Chance to strike critical damage",
+      "buff": {
+        "description": "Critical strike"
+      }
+    },
+    "echo": {
+      "name": "Echo Sabre",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Attack twice the same target",
+      "buff": {
+        "description": "Double attack"
+      }
+    }
+  },
+  "resistance": {
+    "cloak": {
+      "name": "Cloak",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases magic resistance",
+      "buff": {
+        "description": "Increased magic resistance"
+      }
+    },
+    "pipe": {
+      "name": "Pipe of Insight",
+      "attribute": "Consumable",
+      "targets": ["Ally"],
+      "description": "Temporarily increases all units magic resistance",
+      "buff": {
+        "description": "Increased magic resistance"
+      }
+    },
+    "linken": {
+      "name": "Linken Sphere",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Blocks next skill targeted at the hero",
+      "buff": {
+        "description": "Blocks one target skill"
+      }
+    },
+    "lotus": {
+      "name": "Lotus Orb",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Temporarily reflects all effects of skills targeted at the hero",
+      "buff": {
+        "description": "Reflects target skills"
+      }
+    },
+    "bkb": {
+      "name": "Black King Bar",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Grants magic immunity. Hero cannot be targeted by skills and receives no magical damage",
+      "buff": {
+        "description": "Magic immune, cannot be targeted by skills and receives no magical damage"
+      }
+    }
+  },
+  "arcane": {
+    "dust": {
+      "name": "Dust of Appearence",
+      "attribute": "Consumable",
+      "targets": ["Ally"],
+      "aoe": "Radial",
+      "description": "Reveals invisible units"
+    },
+    "glimmer": {
+      "name": "Glimmer Cape",
+      "attribute": "Consumable",
+      "targets": ["Ally"],
+      "description": "Grants invisibility",
+      "buff": {
+        "description": "Invisible"
+      }
+    },
+    "ethereal": {
+      "name": "Ethereal Blade",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Enemy"],
+      "description": "Grants attacks immunity but disarms and reduces resistance",
+      "buff": {
+        "description": "Immune to attacks, disarmed and reduced magic resistance"
+      }
+    },
+    "sheepstick": {
+      "name": "Sheep Stick",
+      "attribute": "Consumable",
+      "targets": ["Enemy"],
+      "description": "Turns target into a sheep. Silences, slows and disarms",
+      "buff": {
+        "description": "Silenced, muted and disarmed. Baaahhh"
+      }
+    },
+    "kaya": {
+      "name": "Kaya",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases target skill damage",
+      "buff": {
+        "description": "Increased skill damage"
+      }
+    }
+  },
+  "movement": {
+    "windlace": {
+      "name": "Wind Lace",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Temporarily increases target movement speed",
+      "buff": {
+        "description": "Increased speed"
+      }
+    },
+    "boots": {
+      "name": "Boots of Speed",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases target movement speed",
+      "buff": {
+        "description": "Increased speed"
+      }
+    },
+    "drums": {
+      "name": "Drums of Endurance",
+      "attribute": "Consumable",
+      "targets": ["Ally"],
+      "description": "Temporarily increases all unis movement speed",
+      "buff": {
+        "description": "Increased speed"
+      }
+    },
+    "skadi": {
+      "name": "Skadi",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Reduces the target speed on attack",
+      "buffs": {
+        "skadi": {
+          "target": {
+            "description": "Reduces the target speed on attack"
+          },
+          "attacked": {
+            "description": "Slow"
+          }
+        }
+      }
+    },
+    "phase": {
+      "name": "Phase Boots",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases target movement speed and grants phase",
+      "buff": {
+        "description": "Increased speed and able to through units"
+      }
+    }
+  },
+  "range": {
+    "tp": {
+      "name": "Town Portal",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Channel teleport to the fountain or to a random spot around the tower",
+      "buff": {
+        "description": "Teleporting home"
+      }
+    },
+    "rod": {
+      "name": "Rod of Atos",
+      "attribute": "Consumable",
+      "targets": ["Enemy"],
+      "description": "Root a target in place",
+      "buff": {
+        "description": "Rooted"
+      }
+    },
+    "blinkdagger": {
+      "name": "Blink Dagger",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "secondary targets": ["Spot", "Free"],
+      "description": "Teleport to a target point"
+    },
+    "lens": {
+      "name": "Aether Lens",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases target skills range",
+      "buff": {
+        "description": "Increased skill range"
+      }
+    },
+    "dragon": {
+      "name": "Dragon Bow",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Increases target attack range",
+      "buff": {
+        "description": "Increased attack range"
+      }
+    }
+  },
+  "relic": {
+    "eul": {
+      "name": "Eul Scepter",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Enemy"],
+      "description": "Cast a cyclone at the target location protecting the target. Target is purged if ally or damaged on the fall if enemy",
+      "buff": {
+        "description": "Cylone is protecting target"
+      }
+    },
+    "morbid": {
+      "name": "Morbid Mask",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Grants attack lifesteal. Every attack will heal by a percentage of the damage",
+      "buff": {
+        "description": "Drain life on every attack"
+      }
+    },
+    "halberd": {
+      "name": "Heaven Halberd",
+      "attribute": "Consumable",
+      "targets": ["Enemy"],
+      "description": "Disarms the target unit rendering it unable to attacking",
+      "buff": {
+        "description": "Disarmed, unable to attack."
+      }
+    },
+    "shivas": {
+      "name": "Shivas Guard",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "aoe": "Radial",
+      "description": "Damages and slow units in the area",
+      "buff": {
+        "description": "Slowed"
+      }
+    },
+    "meteor": {
+      "name": "Meteor Hammer",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "secondary targets": ["Spot", "Self"],
+      "aoe": "Radial",
+      "description": "Area of effect damage and stun and apply damage over time",
+      "buff": {
+        "damage type": "Magical",
+        "description": "Damage over time"
+      }
+    }
+  },
+  "armaments": {
+    "vennon": {
+      "name": "Vennon",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Poison attack. Applies damage over time on attack",
+      "buffs": {
+        "vennon": {
+          "target": {
+            "description": "Poison attack. Applies damage over time on attack"
+          },
+          "attacked": {
+            "damage type": "Magical",
+            "description": "Damage over time"
+          }
+        }
+      }
+    },
+    "desolator": {
+      "name": "Desolator",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Reduces the armor of the attack target",
+      "buffs": {
+        "desolator": {
+          "target": {
+            "description": "Reduces the armor of the attack target"
+          },
+          "attacked": {
+            "description": "Reduced armor"
+          }
+        }
+      }
+    },
+    "manta": {
+      "name": "Manta Style",
+      "attribute": "Consumable",
+      "targets": ["Ally", "Heroes"],
+      "description": "Creates 2 illusions of the target. Illusions have half damage and are destroyed on damage"
+    },
+    "basher": {
+      "name": "Basher",
+      "attribute": "Consumable",
+      "targets": ["Enemy"],
+      "description": "Stuns the target enemy"
+    },
+    "radiance": {
+      "name": "Radiance",
+      "attribute": "Buff",
+      "targets": ["Ally", "Heroes"],
+      "description": "Damage per turn to all enemies around the target",
+      "buff": {
+        "description": "Damage per turn to all enemies around",
+        "damage type": "Magical"
+      }
+    }
+  }
+}

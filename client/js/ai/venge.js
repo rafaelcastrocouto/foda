@@ -53,7 +53,7 @@ game.heroesAI.venge = {
     if (card.canCast(ult)) {
       cardData['can-cast'] = true;
       // use ult to attack
-      if (!card.hasClass('done') && 
+      if (card.hasClass('can-move') && 
           cardData['can-attack'] && 
           card.data('current hp') > 25) {
         card.around(ult.data('cast range'), function (spot) {
@@ -84,7 +84,7 @@ game.heroesAI.venge = {
       //use ult to escape
       if (cardData['can-be-attacked'] && 
           card.data('current hp') < 25 &&
-          (card.hasClass('done') || !cardData['can-make-action']) ) {
+          (!card.hasClass('can-move') || !cardData['can-make-action']) ) {
         card.alliesInRange(ult.data('cast range'), function (cardInRange) {
           if (cardInRange.hasClass('units')) p += 30;
           cardData['cast-strats'].push({

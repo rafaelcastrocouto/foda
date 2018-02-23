@@ -36,9 +36,6 @@ game.single = {
       game.loader.removeClass('loading');
       game.player.placeHeroes();
       game.enemy.placeHeroes();
-      game.states.table.surrender.show();
-      game.states.table.skip.show().attr('disabled', true);
-      game.states.table.discard.attr('disabled', true).show();
       game.turn.build(6);
       game.ai.start();
       game.timeout(400, function () {

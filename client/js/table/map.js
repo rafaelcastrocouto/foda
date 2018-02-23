@@ -30,9 +30,6 @@ game.map = {
       firstCardInLine: game.map.firstCardInLine,
       getPosition: game.map.getPosition,
       cardsInRange: game.map.cardsInRange,
-      radialStroke: game.map.radialStroke,
-      crossStroke: game.map.crossStroke,
-      linearStroke: game.map.linearStroke,
       behindTarget: game.map.behindTarget
     });
   },
@@ -60,12 +57,17 @@ game.map = {
     game.map.el = map;
     return map;
   },
-  updateGrid: function() {
+  updateGrid: function(phase) {
     game.map.grid = new PF.Grid(game.width,game.height);
     for (var h = 0; h < game.height; h += 1) {
       for (var w = 0; w < game.width; w += 1) {
         if (!game.map.spots[h][w].hasClass('free')) {
-          game.map.grid.setWalkableAt(w, h, false);
+          if (phase) {
+            var card = $('.card', game.map.spots[h][w]);
+            if (card.hasClass('trees')) game.map.grid.setWalkableAt(w, h, false);
+          } else {
+            game.map.grid.setWalkableAt(w, h, false);
+          }
         }
       }
     }
@@ -423,192 +425,13 @@ game.map = {
         var ex = game.map.getX(spot)
           , ey = game.map.getY(spot);
         if (range > 2) {
-          game.map.updateGrid();
+          game.map.updateGrid(card.hasClass('phased'));
           var path = game.map.finder.findPath(ox, oy, ex, ey, game.map.grid);
           if (path.length && (path.length - 1) <= Math.ceil(range / 2)) {
             fil(ex, ey);
           }
         } else fil(ex, ey);
       });
-    }
-  },
-  radialStroke: function(r, cl) {
-    //console.log(r,cl)
-    var spot = this
-      , range = r
-      , cls = 'left right top bottom';
-    if (typeof (r) == 'string')
-      range = game.map.getRangeInt(r);
-    var radius, x, y, r2, l, fil = function(x, y, border) {
-      var spot = game.map.getSpot(x, y);
-      if (spot) {
-        spot.addClass(cl + ' stroke ' + border);
-      }
-    }, w = game.map.getX(spot), h = game.map.getY(spot);
-    if (range === 0) {
-      return fil(w, h, 'left right top bottom');
-    }
-    radius = game.map.rangeArray[range];
-    r = Math.round(radius);
-    r2 = radius * radius;
-    l = Math.ceil(radius) * Math.cos(Math.PI / 4);
-    if (range % 2 === 0) {
-      fil(w, h + r, 'bottom');
-      fil(w, h - r, 'top');
-      fil(w - r, h, 'left');
-      fil(w + r, h, 'right');
-    } else if (range % 2 === 1) {
-      fil(w, h + r, 'bottom left right');
-      fil(w, h - r, 'top  left right');
-      fil(w - r, h, 'left top bottom');
-      fil(w + r, h, 'right top bottom');
-    }
-    if (range === 2 || range === 3) {
-      for (x = 1; x <= l; x += 1) {
-        y = 1;
-        fil(w + x, h + y, 'right bottom');
-        fil(w + x, h - y, 'right top');
-        fil(w - x, h + y, 'left bottom');
-        fil(w - x, h - y, 'left top');
-      }
-    } else if (range === 4 || range === 6 || range === 8) {
-      for (x = 1; x <= l; x += 1) {
-        y = Math.round(Math.sqrt(r2 - x * x));
-        fil(w + x, h + y, 'right bottom');
-        fil(w + y, h + x, 'right bottom');
-        fil(w + x, h - y, 'right top');
-        fil(w + y, h - x, 'right top');
-        fil(w - x, h + y, 'left bottom');
-        fil(w - y, h + x, 'left bottom');
-        fil(w - x, h - y, 'left top');
-        fil(w - y, h - x, 'left top');
-      }
-    } else if (range >= 5) {
-      for (x = 1; x <= l; x += 1) {
-        y = Math.round(Math.sqrt(r2 - x * x));
-        fil(w + x, h + y, 'bottom');
-        fil(w - x, h + y, 'bottom');
-        fil(w + x, h - y, 'top');
-        fil(w - x, h - y, 'top');
-        fil(w - y, h + x, 'left');
-        fil(w - y, h - x, 'left');
-        fil(w + y, h - x, 'right');
-        fil(w + y, h + x, 'right');
-      }
-    }
-    if (range === 7) {
-      fil(w + 3, h + 2, 'bottom');
-      fil(w - 3, h + 2, 'bottom');
-      fil(w + 3, h - 2, 'top');
-      fil(w - 3, h - 2, 'top');
-      fil(w - 2, h + 3, 'left');
-      fil(w - 2, h - 3, 'left');
-      fil(w + 2, h + 3, 'right');
-      fil(w + 2, h - 3, 'right');
-    }
-  },
-  crossStroke: function(range, width, cl) {
-    var spot = this;
-    var radius, x, y, r, fil = function(x, y, border) {
-      var spot = game.map.getSpot(x, y);
-      if (spot) {
-        spot.addClass(cl + ' stroke ' + border);
-      }
-    }, w = game.map.getX(spot), h = game.map.getY(spot);
-    if (range === 0) {
-      return fil(w, h, 'left right top bottom');
-    }
-
-    fil(w, h + range, 'bottom');
-    fil(w, h - range, 'top');
-    fil(w - range, h, 'left');
-    fil(w + range, h, 'right');
-
-    if (width == 1) {
-      fil(w + width, h + range, 'bottom');
-      fil(w - width, h + range, 'bottom');
-      fil(w + width, h - range, 'top');
-      fil(w - width, h - range, 'top');
-      fil(w - range, h + width, 'left');
-      fil(w - range, h - width, 'left');
-      fil(w + range, h + width, 'right');
-      fil(w + range, h - width, 'right');
-    }
-
-    for (r = 1 + width; r <= range; r += 1) {
-      fil(w - width, h + r, 'left');
-      fil(w + width, h + r, 'right');
-    }
-    for (r = 1 + width; r <= range; r += 1) {
-      fil(w - width, h - r, 'left');
-      fil(w + width, h - r, 'right');
-    }
-    for (r = 1 + width; r <= range; r += 1) {
-      fil(w + r, h - width, 'top');
-      fil(w + r, h + width, 'bottom');
-    }
-    for (r = 1 + width; r <= range; r += 1) {
-      fil(w - r, h - width, 'top');
-      fil(w - r, h + width, 'bottom');
-    }
-
-  },
-  linearStroke: function(range, width, cl) {
-    var spot = this;
-    var radius, x, y, r, fil = function(x, y, border) {
-      var spot = game.map.getSpot(x, y);
-      if (spot) {
-        spot.addClass(cl + ' stroke ' + border);
-      }
-    }, cw = game.map.getX(spot), ch = game.map.getY(spot), w = game.map.getX(game.skill.castsource), h = game.map.getY(game.skill.castsource);
-    if (ch - h > 0) {
-      fil(w, h + range, 'bottom');
-      if (width == 1) {
-        fil(w + 1, h + 1, 'top');
-        fil(w - 1, h + 1, 'top');
-        fil(w + 1, h + range, 'bottom');
-        fil(w - 1, h + range, 'bottom');
-      }
-      for (r = 1; r <= range; r += 1) {
-        fil(w - width, h + r, 'left');
-        fil(w + width, h + r, 'right');
-      }
-    } else if (ch - h < 0) {
-      fil(w, h - range, 'top');
-      if (width == 1) {
-        fil(w + 1, h - 1, 'bottom');
-        fil(w - 1, h - 1, 'bottom');
-        fil(w + 1, h - range, 'top');
-        fil(w - 1, h - range, 'top');
-      }
-      for (r = 1; r <= range; r += 1) {
-        fil(w - width, h - r, 'left');
-        fil(w + width, h - r, 'right');
-      }
-    } else if (cw - w > 0) {
-      fil(w + range, h, 'right');
-      if (width == 1) {
-        fil(w + 1, h - 1, 'left');
-        fil(w + 1, h + 1, 'left');
-        fil(w + range, h - 1, 'right');
-        fil(w + range, h + 1, 'right');
-      }
-      for (r = 1; r <= range; r += 1) {
-        fil(w + r, h - width, 'top');
-        fil(w + r, h + width, 'bottom');
-      }
-    } else if (cw - w < 0) {
-      fil(w - range, h, 'left');
-      if (width == 1) {
-        fil(w - 1, h - 1, 'right');
-        fil(w - 1, h + 1, 'right');
-        fil(w - range, h - 1, 'left');
-        fil(w - range, h + 1, 'left');
-      }
-      for (r = 1; r <= range; r += 1) {
-        fil(w - r, h - width, 'top');
-        fil(w - r, h + width, 'bottom');
-      }
     }
   },
   getRangeInt: function(range) {
@@ -717,14 +540,14 @@ game.map = {
         return spot;
     }
   },
-  firstFreeSpotInLine: function(target, range) {
+  firstFreeSpotInLine: function(target, range, limit) {
     var source = this
       , dir = source.getDirectionObj(target);
     for (var i = 1; i <= range; i += 1) {
       var x = game.map.getX(source) + (i * dir.x)
         , y = game.map.getY(source) + (i * dir.y);
       var spot = game.map.getSpot(x, y);
-      if (spot && spot.hasClass('free') && !spot.hasClass('block'))
+      if (x == limit.getX() && y == limit.getY() || (spot && spot.hasClass('free') && !spot.hasClass('block')))
         return spot;
     }
   },
@@ -759,7 +582,7 @@ game.map = {
       var spot = game.map.getSpot(x, y);
       if (spot) {
         var card = spot.find('.card');
-        if (card.length)
+        if (card.length && !card.hasClass('cycloned'))
           return card;
       }
     }
@@ -772,7 +595,7 @@ game.map = {
     var behind = game.map.getSpot(dir.x, dir.y);
     if (behind) {
       var card = behind.children('.card');
-      if (card.length)
+      if (card.length && !card.hasClass('cycloned'))
         return card;
     }
   }

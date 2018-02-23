@@ -201,9 +201,6 @@ game.online = {
       game.audio.play('horn');
       game.player.placeHeroes();
       game.enemy.placeHeroes();
-      game.states.table.surrender.show();
-      game.states.table.discard.attr('disabled', true).show();
-      game.states.table.skip.show();
       game.turn.build(6);
       game.timeout(400, function () {
         game.skill.build('enemy');
@@ -249,14 +246,6 @@ game.online = {
       game.skill.buyHand('player');
       game.tower.attack('enemy');
     });
-  },
-  action: function () {
-    /*game.timeout(10000, function () {
-      if (game.turn.noAvailableMoves()) {
-        game.turn.stopCount();
-        game.online.endPlayer();
-      }
-    });*/
   },
   skip: function () {
     game.turn.stopCount();

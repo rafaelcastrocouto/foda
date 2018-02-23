@@ -3,12 +3,13 @@ game.skills.cm = {
     cast: function (skill, source, target) {
       var opponent = source.opponent();
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       game.fx.add('cm-slow', source, target);
       target.inRange(range, function (spot) {
         var card = spot.find('.card');
         if (card.hasClass(opponent)) {
           game.timeout(900, source.damage.bind(source, skill.data('damage'), card, skill.data('damage type')));
-          source.addBuff(card, skill);
+          if (!card.hasClass('bkb')) source.addBuff(card, skill);
         }
       });
     }
@@ -34,7 +35,7 @@ game.skills.cm = {
   },
   freeze: {
     cast: function (skill, source, target) {
-      target.addClass('rooted disarmed').removeClass('can-attack');
+      target.addStack('rooted').addStack('disarmed').removeClass('can-attack');
       target.stopChanneling();
       var buff = source.addBuff(target, skill);
       source.damage(buff.data('dot'), target, buff.data('damage type'));
@@ -52,7 +53,7 @@ game.skills.cm = {
     expire: function (event, eventdata) {
       var target = eventdata.target;
       game.fx.stop('cm-freeze', target);
-      target.removeClass('rooted disarmed');
+      target.removeStack('rooted').removeStack('disarmed');
     }
   },
   ult: {
@@ -65,18 +66,22 @@ game.skills.cm = {
     },
     channel: function (event, eventdata) {
       var source = eventdata.source;
-      if ( source.data('channeling') === 0) {
+      var skill = eventdata.skill;
+      if ( source.data('channeling') !== skill.data('channel')) {
         game.audio.play('cm/ult');
-        game.skills.cm.ult.damage(source, eventdata.skill);
+        game.skills.cm.ult.damage(source, skill);
       }
     },
     damage: function (source, skill) {
       game.shake();
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       source.opponentsInRange(range, function (target) {
         game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
-        source.addBuff(target, skill, 'ult-targets');
-        game.fx.add('cm-ult', source, target, 'random');
+        if (!target.hasClasses('bkb cycloned')) {
+          source.addBuff(target, skill, 'ult-targets');
+          game.fx.add('cm-ult', source, target, 'random');
+        }
       });
     },
     channelend: function (event, eventdata) {

@@ -482,7 +482,7 @@
       "targets": ["Spot"],
       "aoe": "Linear",
       "damage type": "Pure",
-      "description": "Launches a bloody hook that will snag the first unit it encounters, dragging the unit and dealing damage if enemy. Interrupts enemy channel"
+      "description": "Launches a hook that will snag the first unit it encounters, dragging the unit and dealing damage if enemy. Interrupts enemy channel. Damage blocked by Black King Bar"
     },
     "rot": {
       "name": "Stink",
@@ -556,7 +556,7 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "description": "Every attack will drain a percentage of the enemy life",
+      "description": "Grants attack lifesteal. Every attack will heal by a percentage of the damage",
       "buff": {
         "description": "Drain life on every attack"
       }

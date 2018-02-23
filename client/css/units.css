@@ -4,18 +4,18 @@
 .enemy.skills[class*="summon"], .enemy.skills[class*="summon"] .portrait {
   background: #a74a6a;
 }
-.units.cent .img {
+.units.forest-cent .img {
   background-image: url("../img/units/cent.jpg");
 }
 
-.units.golem .img {
+.units.forest-golem .img {
   background-image: url("../img/units/golem.jpg");
 }
 
-.units.tomato .img {
+.units.forest-tomato .img {
   background-image: url("../img/units/tomato.jpg");
 }
 
-.units.satyr .img {
+.units.forest-satyr .img {
   background-image: url("../img/units/satyr.jpg");
 }

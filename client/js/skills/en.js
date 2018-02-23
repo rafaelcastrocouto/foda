@@ -32,14 +32,15 @@ game.skills.en = {
   },
   heal: {
     cast: function (skill, source) {
-      var range = skill.data('cast range'),
-          side = source.side(),
+      var range = skill.data('cast range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
+      var side = source.side(),
           buff = source.selfBuff(skill),
           allies = [], targets = [];
       source.on('death', this.death);
       source.around(range, function (spot) {
         var target = $('.card', spot);
-        if (target.hasClass(side) && !target.hasClass('towers')) allies.push(target);
+        if (target.hasClass(side) && !target.hasClasses('towers bkb cycloned')) allies.push(target);
       });
       if (allies.length) {
         if (allies.length > skill.data('max targets')) {

@@ -6,19 +6,19 @@
   top: 0;
   right: 0;
   font-size: 150px;
-  animation: slideup 2s cubic-bezier(0.4, 0, 1, 1);
+  animation: slideup 2.5s cubic-bezier(0.4, 0, 1, 1);
   transform: translateZ(50px);
   text-shadow: 5px 0 #ffa, -5px 0 #ffa, 0 5px #ffa, 0 -5px #ffa, 5px 5px #ffa, -5px 5px #ffa, 5px -5px #ffa, -5px -5px #ffa;
 }
 
 .card .damaged.critical, .card .missed {
   color: orangered;
-  animation: slideup 5s cubic-bezier(0.4, 0, 1, 1);
+  animation: slideup 2.5s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .card .missed {
-  animation: slideup 5s cubic-bezier(0.4, 0, 1, 1);
-  font-size: 80px;
+  animation: slideup 3s cubic-bezier(0.4, 0, 1, 1);
+  font-size: 100px;
   text-shadow: 4px 0 white, -4px 0 white, 0 4px white, 0 -4px white, 4px 4px white, -4px 4px white, 4px -4px white, -4px -4px white;
 }
 
@@ -30,7 +30,7 @@
   top: 0;
   left: 0;
   font-size: 150px;
-  animation: slideup 5s cubic-bezier(0.4, 0, 1, 1);
+  animation: slideup 3s cubic-bezier(0.4, 0, 1, 1);
   text-shadow: 5px 0 #afa, -5px 0 #afa, 0 5px #afa, 0 -5px #afa, 5px 5px #afa, -5px 5px #afa, 5px -5px #afa, -5px -5px #afa;
 }
 
@@ -523,7 +523,7 @@
 }
 
 .map .fx.cm-ult {
-  transform: rotateX(-37deg) translate3d(80px,-500px,10px) scale(4.5);
+  transform: rotateX(-37deg) translate3d(80px,-500px,10px) scale(5);
   width: 64px;
   height: 173px;
   animation: cm-ult-sprite 1.1s steps(13) 1;
@@ -577,7 +577,7 @@
 }
 
 .map .fx.cat-leap-path {
-  transform: translate3d(85px,300px,10px) scale(4);
+  transform: translate3d(85px,340px,10px) scale(4);
   width: 28px;
   height: 157px;
   animation: cat-leap-path-sprite 0.8s steps(6) 1;
@@ -589,56 +589,87 @@
     background-position: -168px;
   }
 }
-
-.map .fx.cat-leap-path.r-12 {
-  transform: rotateZ(20deg) translate3d(120px,320px,10px) scale(4);
+.map .fx.cat-leap-path.r03 {
+  transform: translate3d(85px,440px,10px) scale(4);
 }
-
+.map .fx.cat-leap-path.r-13 {
+  transform: rotateZ(14deg) translate3d(90px,450px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r13 {
+  transform: rotateZ(-14deg) translate3d(80px,490px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r-12 {
+  transform: rotateZ(20deg) translate3d(100px,320px,10px) scale(4);
+}
 .map .fx.cat-leap-path.r12 {
   transform: rotateZ(-20deg) translate3d(50px,380px,10px) scale(4);
 }
-
+.map .fx.cat-leap-path.r-22 {
+  transform: rotateZ(38deg) translate3d(90px,340px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r22 {
+  transform: rotateZ(-38deg) translate3d(50px,460px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r-21, .map .fx.cat-leap-path.r-31 {
+  transform: rotateZ(64deg) translate3d(30px,280px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r21, .map .fx.cat-leap-path.r31 {
+  transform: rotateZ(-64deg) translate3d(40px,420px,10px) scale(3.5);
+}
 .map .fx.cat-leap-path.r-20 {
   transform: rotateZ(90deg) translate3d(10px,140px,10px) scale(3.5);
 }
-
-.map .fx.cat-leap-path.r-21 {
-  transform: rotateZ(55deg) translate3d(50px,220px,10px) scale(3.5);
+.map .fx.cat-leap-path.r-30 {
+  transform: rotateZ(90deg) translate3d(10px,280px,10px) scale(3.5);
 }
-
-.map .fx.cat-leap-path.r-2-1 {
-  transform: rotateZ(125deg) translate3d(-50px,200px,10px) scale(3.5);
-}
-
 .map .fx.cat-leap-path.r20 {
   transform: rotateZ(-90deg) translate3d(-10px,320px,10px) scale(3.5);
 }
-
+.map .fx.cat-leap-path.r30 {
+  transform: rotateZ(-90deg) translate3d(-10px,440px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r-2-1 {
+  transform: rotateZ(125deg) translate3d(-50px,200px,10px) scale(3.5);
+}
+.map .fx.cat-leap-path.r-3-1 {
+  transform: rotateZ(116deg) translate3d(-100px,320px,10px) scale(3.5);
+}
 .map .fx.cat-leap-path.r2-1 {
-  transform: rotateZ(-125deg) translate3d(-50px,350px,10px) scale(3.5);
+  transform: rotateZ(-116deg) translate3d(20px,470px,10px) scale(3.5);
 }
-
-.map .fx.cat-leap-path.r21 {
-  transform: rotateZ(-55deg) translate3d(40px,360px,10px) scale(3.5);
+.map .fx.cat-leap-path.r3-1 {
+  transform: rotateZ(-116deg) translate3d(20px,470px,10px) scale(3.5);
 }
-
-.map .fx.cat-leap-path.r0-2 {
-  transform: rotateZ(180deg) translate3d(-90px,320px,10px) scale(4);
+.map .fx.cat-leap-path.r2-2 {
+  transform: rotateZ(-144deg) translate3d(-50px,480px,10px) scale(3.5);
 }
-
+.map .fx.cat-leap-path.r-2-2 {
+  transform: rotateZ(144deg) translate3d(-100px,360px,10px) scale(3.5);
+}
 .map .fx.cat-leap-path.r-1-2 {
   transform: rotateZ(160deg) translate3d(-100px,320px,10px) scale(4);
 }
-
+.map .fx.cat-leap-path.r-1-3 {
+  transform: rotateZ(166deg) translate3d(-100px,500px,10px) scale(4);
+}
 .map .fx.cat-leap-path.r1-2 {
-  transform: rotateZ(200deg) translate3d(-80px,400px,10px) scale(4);
+  transform: rotateZ(-160deg) translate3d(-80px,380px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r1-3 {
+  transform: rotateZ(-166deg) translate3d(-70px,540px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r0-2 {
+  transform: rotateZ(180deg) translate3d(-90px,320px,10px) scale(4);
+}
+.map .fx.cat-leap-path.r0-3 {
+  transform: rotateZ(180deg) translate3d(-90px,500px,10px) scale(4);
 }
 
 .map .fx.cat-arrow {
   transform: translate3d(90px,500px,10px) scale(4);
   width: 30px;
   height: 243px;
-  animation: cat-arrow-sprite 1.2s steps(7) 1;
+  animation: cat-arrow-sprite 0.9s steps(7) 1;
   background-image: url('../img/fx/cat/arrow.png');
 }
 
@@ -768,7 +799,7 @@
   transform-origin: 0% 0%;
 }
 
-.map .fx.pud-hook.d4 {
+.map .fx.pud-hook.d4, .map .fx.pud-hook.d5 {
   animation: pud-hook-d4 1s steps(10) 1;
   width: 0;
 }
@@ -926,4 +957,12 @@
   100% {
     background-position: -1344px;
   }
+}
+
+.map .fx.meteor-cast {
+  transform: rotateX(-37deg) translate3d(80px,-500px,10px) scale(7);
+  width: 64px;
+  height: 173px;
+  animation: cm-ult-sprite 1.1s steps(13) 1;
+  background-image: url('../img/fx/cm/ult.png');
 }

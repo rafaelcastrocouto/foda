@@ -23,6 +23,7 @@ game.deck = {
     if (name === 'heroes') { game.deck.createHeroesDeck(deck, cb, filter); }
     if (name === 'units') { game.deck.createUnitsDeck(deck, cb, filter); }
     if (name === 'skills') { game.deck.createSkillsDeck(deck, cb, filter, multi, deckFilter); }
+    if (name === 'items') { game.deck.createItemsDeck(deck, cb, filter, multi, deckFilter); }
   },
   createHeroesDeck: function (deck, cb, filter) {
     var deckData = game.data.heroes,
@@ -72,9 +73,9 @@ game.deck = {
           unitdata.speed = game.defaultSpeed;
           unitdata.buffsBox = true;
           unitdata.className = [
-            unitid,
-            'units',
-            unittype
+            unittype+'-'+unitid,
+            unittype,
+            'units'
           ].join(' ');
           Object.assign(unitdata, game.data.values.units[unittype][unitid]);
           card = game.card.build(unitdata).appendTo(deck);
@@ -128,6 +129,41 @@ game.deck = {
           }
         });
       }
+    });
+    deck.data('cards', cards);
+    if (cb) { cb(deck); }
+  },
+  createItemsDeck: function (deck, cb) {
+    var deckData = game.data.items,
+      cards = [];
+    $.each(deckData, function (itemtype, itemtypes) {
+      var typeContainer = $('<div>').addClass(itemtype).appendTo(deck);
+      $.each(itemtypes, function (item, itemData) {
+        var k;
+        var cl = 'items';
+        if (itemData.attribute == game.data.ui.consumable) cl += ' consumable';
+        itemData.item = item;
+        itemData.itemtype = itemtype;
+        itemData.className = [
+          item,
+          itemtype,
+          cl
+        ].join(' ');
+        Object.assign(itemData, game.data.values.items[itemtype][item]);
+        if (itemData.buff) {
+          itemData.buff.buffId = item;
+          itemData.buff.className = item;
+          Object.assign(itemData.buff, game.data.values.items[itemtype][item].buffdata);
+        }
+        if (itemData.buffs) for (var buffs in itemData.buffs) {
+          for (var buff in itemData.buffs[buffs]) {
+            itemData.buffs[buffs][buff].buffId = item +'.'+ buffs +'-'+ buff;
+            itemData.buffs[buffs][buff].className = item +' '+ buffs +'-'+ buff;
+            Object.assign(itemData.buffs[buffs][buff], game.data.values.items[itemtype][item].buffsdata[buffs][buff]);
+          }
+        }
+        cards.push(game.card.build(itemData).appendTo(typeContainer));
+      });
     });
     deck.data('cards', cards);
     if (cb) { cb(deck); }

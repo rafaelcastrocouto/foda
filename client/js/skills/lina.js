@@ -3,6 +3,7 @@ game.skills.lina = {
     cast: function (skill, source, target) {
       game.fx.add('lina-fire', source, target, 'linear');
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
       source.opponentsInLine(target, range, width, function (card) {
@@ -13,13 +14,14 @@ game.skills.lina = {
   stun: {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var opponent = source.opponent();
       var damage = skill.data('damage');
       game.fx.add('lina-stun', source, target);
       target.cardsInRange(range, function (card) {
         if (card.hasClass(opponent)) {
           game.timeout(900, source.damage.bind(source, damage, card, skill.data('damage type')));
-          source.addStun(card, skill);
+          if (!target.hasClass('bkb')) source.addStun(card, skill);
         }
         if (card.hasClass('trees')) {
           game.tree.destroy(card);

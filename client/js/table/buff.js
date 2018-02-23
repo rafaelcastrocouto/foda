@@ -12,7 +12,7 @@ game.buff = {
     });
   },
   addStun: function(target, skill, bonus) {
-    if (!target.hasClass('towers')) {
+    if (!target.hasClass('towers') && !target.hasClass('cycloned')) {
       var stun = skill.data('stun');
       target.stopChanneling();
       target.removeClass('can-attack');
@@ -39,7 +39,7 @@ game.buff = {
   addBuff: function(target, skill, buffs, towerForce, fxOff) {
     var source = $(this);
     //console.trace(target, skill, buffs)
-    if (!target.hasClass('towers') || towerForce) {
+    if (!target.hasClass('cycloned') && (!target.hasClass('towers') || towerForce)) {
       // get buff data
       var data = skill;
       if (buffs) {
@@ -55,10 +55,10 @@ game.buff = {
       if (!data.skill) data.skill = skill;
       if (!data.target) data.target = target;
       if (!data.description) data.description = skill.data('description');
-      if (data.duration) {
-        data.className += ' purgeable ' + source.side();
-        data.temp = true;
+      if (data.duration && !data.unpurgeable) {
+        data.className += ' purgeable ' + (source.side() || game.selectedCard.side());
       }
+      if (skill.hasClass && skill.hasClass('items')) data.className += ' items '+skill.data('itemtype'); 
       // remove duplicated buff
       target.removeBuff(data.buffId);
       // create new buff
@@ -68,7 +68,9 @@ game.buff = {
       buff.data(data);
       $('<div>').appendTo(buff).addClass('img');
       $('<div>').appendTo(buff).addClass('overlay');
-      if (data.temp) buff.append($('<span>').text(data.duration));
+      if (data.duration) {
+        buff.append($('<span>').text(data.duration));
+      }
       // apply buff effects
       if (!fxOff) {
         if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
@@ -85,6 +87,8 @@ game.buff = {
           target.setArmor(target.data('current armor') - data['armor reduction']);
         if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
           target.setResistance(target.data('current resistance') + data['resistance bonus']);
+        if (data['resistance reduction'] && typeof (data['resistance reduction']) == 'number')
+          target.setResistance(target.data('current resistance') - data['resistance reduction']);
         if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
           target.setSpeed(target.data('current speed') + data['speed bonus']);
         if (data['speed slow'] && typeof (data['speed slow']) == 'number')
@@ -106,9 +110,12 @@ game.buff = {
   removeBuff: function(buffs, multi) {
     var target = this;
     var b;
-    if (!multi) b = buffs.split(' ');
-    if (multi == 'all') b = $('.buff:not([class*=aura])', target);
-    if (multi == 'purge') b = $('.buff.purgeable.' + target.opponent(), target);
+    if (buffs.hasClass && buffs.hasClass('buff')) {
+      b = buffs;
+      multi = true;
+    } else if (!multi) b = buffs.split(' ');
+    else if (multi == 'all') b = $('.buff:not([class*=aura])', target);
+    else if (multi == 'purge') b = $('.buff.purgeable.' + target.opponent(), target);
     $.each(b, function(i, buffId) {
       var buff;
       if (!multi) buff = target.find('.buffs > .' + buffId);
@@ -133,6 +140,8 @@ game.buff = {
             target.setArmor(target.data('current armor') + data['armor reduction']);
           if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
             target.setResistance(target.data('current resistance') - data['resistance bonus']);
+          if (data['resistance reduction'] && typeof (data['resistance reduction']) == 'number')
+            target.setResistance(target.data('current resistance') + data['resistance reduction']);
           if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
             target.setSpeed(target.data('current speed') - data['speed bonus']);
           if (data['speed slow'] && typeof (data['speed slow']) == 'number')
@@ -140,8 +149,15 @@ game.buff = {
         }
         buff.remove();
       }
-      target.reselect();
     });
+    if (multi == 'purge') {
+      var eul = $('.buff.eul', target);
+      if (eul.length) {
+        target.removeClass('cycloned');
+        eul.remove();
+      }
+    }
+    target.reselect();
     return this;
   },
   clearBuffs: function () {
@@ -163,7 +179,7 @@ game.buff = {
         $('span', buff).text(duration);
         var s = buff.closest('.card');
         s.reselect();
-      } else if (data && data.temp && data.buffId) {
+      } else if (data && data.duration && data.buffId) {
         buff.trigger('expire', {target: card, buff: buff});
         card.removeBuff(data.buffId);
       }

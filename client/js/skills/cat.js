@@ -2,6 +2,7 @@ game.skills.cat = {
   arrow: {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var damageBonus = skill.data('distance damage bonus');
       var stunBonus = skill.data('distance stun bonus');
       var damage = skill.data('damage');
@@ -15,7 +16,7 @@ game.skills.cat = {
           game.fx.add('cat-arrow-impact', source, arrowTarget);
           game.audio.play('cat/arrowhit');
           arrowTarget.shake();
-          source.addStun(arrowTarget, skill, (distance * stunBonus));
+          if (!target.hasClass('bkb')) source.addStun(arrowTarget, skill, (distance * stunBonus));
           source.damage(damage + (distance * damageBonus), arrowTarget, skill.data('damage type'));
         });
       } else {
@@ -36,10 +37,13 @@ game.skills.cat = {
   star: {
     cast: function (skill, source) {
       var range = skill.data('cast range'), targets = [];
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       source.opponentsInRange(range, function (target) {
-        game.fx.add('cat-star', source, target, 'random');
-        game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
-        targets.push(target);
+        if (!target.hasClass('cycloned')) {
+          game.fx.add('cat-star', source, target, 'random');
+          game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
+          targets.push(target);
+        }
       });
       if (targets.length) {
         var target = targets[Math.floor(game.random() * targets.length)];
@@ -53,7 +57,7 @@ game.skills.cat = {
   ult: {
     cast: function (skill, source) {
       var side = source.side();
-      $('.map .heroes.'+side).each(function () {
+      $('.map .heroes.'+side+':not(.bkb)').each(function () {
         var ally = $(this);
         var buff = source.addBuff(ally, skill);
         buff.on('expire', game.skills.cat.ult.expire);

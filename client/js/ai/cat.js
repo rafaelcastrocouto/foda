@@ -53,7 +53,7 @@ game.heroesAI.cat = {
     if (card.canCast(leap)) {
       cardData['can-cast'] = true;
       // use leap to attack
-      if (!card.hasClass('done') && 
+      if (card.hasClass('can-move') && 
           cardData['can-attack'] && 
           card.data('current hp') > 25) {
         card.atRange(leap.data('cast range'), function (spot) {
@@ -83,7 +83,7 @@ game.heroesAI.cat = {
       //use leap to escape
       if (cardData['can-be-attacked'] && 
           card.data('current hp') < 25 &&
-          (card.hasClass('done') || !cardData['can-make-action']) ) {
+          (!card.hasClass('can-move') || !cardData['can-make-action']) ) {
         card.atRange(leap.data('cast range'), function (spot) {
           if (spot.hasClass('free') && !spot.hasClass('playerarea')) {
             cardData['cast-strats'].push({

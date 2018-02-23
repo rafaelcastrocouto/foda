@@ -2,13 +2,14 @@ game.skills.nyx = {
   stun: {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
       var dmgType = skill.data('damage type');
       game.shake();
       source.opponentsInLine(target, range, width, function (card) {
         source.damage(damage, card, dmgType);
-        source.addStun(card, skill);
+        if (!target.hasClass('bkb')) source.addStun(card, skill);
       });
     }
   },
@@ -53,9 +54,8 @@ game.skills.nyx = {
     cast: function (skill, source) {
       var buff = source.selfBuff(skill);
       buff.on('expire', this.expire);
-      source.on('invisibilityLoss', this.invisibilityLoss);
       source.on('pre-attack.nyx-ult', this.attack);
-      source.addInvisibility();
+      source.addInvisibility(buff);
       source.addClass('nyx-ult');
     },
     attack: function (event, eventdata) {
@@ -67,17 +67,10 @@ game.skills.nyx = {
         eventdata.bonus = -buff.data('damage bonus') + 1;
       } else game.audio.play('nyx/ultattack');
     },
-    invisibilityLoss: function (event, eventdata) {
-      var source = eventdata.target;
-      source.removeBuff('nyx-ult');
-      source.removeClass('nyx-ult');
-      source.off('attack.nyx-ult');
-    },
     expire: function (event, eventdata) {
       var source = eventdata.target;
-      source.removeInvisibility();
       source.removeClass('nyx-ult');
-      source.off('attack.nyx-ult');
+      source.off('pre-attack.nyx-ult');
     }
   }
 };

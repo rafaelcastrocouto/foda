@@ -66,8 +66,8 @@ game.library = {
     game.player.placeHeroes();
     game.enemy.placeHeroes();
     game.states.table.back.show();
-    game.states.table.skip.attr('disabled', true).show();
-    game.states.table.discard.attr('disabled', true).show();
+    game.states.table.surrender.hide();
+    game.items.enableShop();
     game.states.table.enableUnselect();
     game.turn.build(11);
     game.timeout(400, function () {
@@ -90,6 +90,7 @@ game.library = {
     game.turn.begin('player', function () {
       game.tower.attack('enemy');
       if (game.player.turn > 1) game.skill.buyHand('player');
+      game.items.addMoney('player', 800);
     });
   },
   buildHand: function () {
@@ -102,13 +103,6 @@ game.library = {
         card.appendTo(game.player.skills.sidehand);
       }
     });
-  },
-  action: function () {
-    /*game.timeout(10000, function () {
-      if ( game.turn.noAvailableMoves() ) {
-        game.library.endPlayer();
-      }
-    });*/
   },
   skip: function () {
     if ( game.currentTurnSide == 'player' ) {

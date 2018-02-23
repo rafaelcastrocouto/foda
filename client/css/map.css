@@ -125,7 +125,6 @@
   background: rgba(255,80,80,0.4);
 }
 
-.map .card.done,
 .map .card.stunned,
 .map .card.disabled {
   background: silver;

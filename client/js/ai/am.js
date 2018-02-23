@@ -15,7 +15,7 @@ game.heroesAI.am = {
     if (card.canCast(blinks.first())) {
       cardData['can-cast'] = true;
       // use blink to attack
-      if (!card.hasClass('done') && 
+      if (card.hasClass('can-move') && 
           cardData['can-attack'] && 
           card.data('current hp') > 25) {
         card.around(blinks.first().data('cast range'), function (spot) {
@@ -45,7 +45,7 @@ game.heroesAI.am = {
       //use blink to escape
       if (cardData['can-be-attacked'] && 
           card.data('current hp') < 25 &&
-          (card.hasClass('done') || !cardData['can-make-action']) ) {
+          (!card.hasClass('can-move') || !cardData['can-make-action']) ) {
         card.around(blinks.first().data('cast range'), function (spot) {
           if (spot.hasClass('free') && !spot.hasClass('playerarea')) {
             cardData['cast-strats'].push({

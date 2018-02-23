@@ -19,7 +19,6 @@ game.ai = {
     // add combo data and strats
     //game.ai.comboData();
     // activate all passives, other sidehand skills strats per hero
-    $('.map .ld.'+game.ai.side).data('ai ult limit', 0);
     $('.enemydecks .sidehand .skills').each(function (i, el) {
       var card = $(el);
       game.ai.passives(card);

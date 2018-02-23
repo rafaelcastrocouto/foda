@@ -231,10 +231,10 @@
   background-image: url("../img/skills/ld/ult.jpg");
 }
 
-.map .ld.transformed .portrait .img, .fromMap.ld.transformed .img, .selectedarea .ld.transformed .img {
+.map .ld.transformed .portrait .img, .fromMap.ld.transformed .portrait .img, .selectedarea .ld.transformed .portrait .img {
   background-image: url("../img/skills/ld/ult-form.jpg");
 }
-.map .ld.transformed .portrait .img, .fromMap.ld.transformed .img {
+.map .ld.transformed .portrait .img, .fromMap.ld.transformed .portrait .img {
   background-position: 50% 0%;
   background-size: 300%;  
 }

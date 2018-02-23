@@ -1,13 +1,14 @@
 game.skills.pud = {
   hook: {
     cast: function (skill, source, target) {// console.log('cast')
-      var range = skill.data('aoe range'),
-          hooked = source.firstCardInLine(target, range),
-          targetSpot = source.firstFreeSpotInLine(target, range);
+      var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
+      var hooked = source.firstCardInLine(target, range),
+          targetSpot = source.firstFreeSpotInLine(target, range, hooked);
       if (hooked && hooked.hasClasses('heroes units') && !hooked.hasClasses('ghost towers')) {
         hooked.shake();
         if (hooked.side() == source.opponent()) {
-          source.damage(skill.data('damage'), hooked, skill.data('damage type'));
+          if (!target.hasClass('bkb')) source.damage(skill.data('damage'), hooked, skill.data('damage type'));
           hooked.stopChanneling();
         }
       } else {
@@ -15,7 +16,7 @@ game.skills.pud = {
         hooked = $('<div>').addClass('fx ghost').appendTo(last);
       }
       var fx = game.fx.add('pud-hook', source, hooked, 'linear', source.parent());
-      if (fx.hasClass('d1')) targetSpot = false;
+      if (hooked.getSpot() == targetSpot.getSpot()) targetSpot = false;
       
       game.lockHighlight = true;
       
@@ -126,7 +127,7 @@ game.skills.pud = {
       var source = eventdata.source;
       var target = eventdata.target;
       var skill = eventdata.skill;
-      if ( source.data('channeling') === 0) game.skills.pud.ult.bite(source, target, skill);
+      if ( source.data('channeling') !== skill.data('channel')) game.skills.pud.ult.bite(source, target, skill);
     },
     bite: function (source, target, skill) {
       game.audio.play('pud/ult-channel');

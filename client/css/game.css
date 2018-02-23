@@ -383,7 +383,7 @@ input:focus {
 }
 
 .button:hover, button:hover, input[type=button]:hover, input[type=submit]:hover {
-  background: #aab2a3;
+  background: #abb7b1;
   z-index: 20;
 }
 
@@ -434,28 +434,19 @@ input:focus {
 }
 
 .button.alert, .button.alert[disabled]:active  {
-  background: tomato;
-  box-shadow: 0 4px 0 #df4327;
+  background: #e66d58;
+  box-shadow: 0 4px 0 #a23f2e;
 }
 .button.alert:active {
-  box-shadow: 0 1px 0 #df4327;
+  box-shadow: 0 1px 0 #a23f2e;
 }
 .button.alert:hover {
-  background: #ff7357;
+  background: #f5735d;
 }
 
 input[type="checkbox"], input[type="radio"] {
   transform: scale(1.3);
   cursor: pointer;
-}
-
-.button.surrender, .button.surrender[disabled]:hover {
-  background: #da7664;
-  box-shadow: 0 4px 0 #ca5c48;
-}
-
-.button.surrender:hover {
-  background: #d27870;
 }
 
 .button:after {
@@ -542,20 +533,3 @@ label input {
   transition: all 0.4s;
 }
 
-/*BUFFS*/
-.table .buffs .buff.stun .img {
-  background-image: url("../img/skills/stun.gif");
-  background-size: 100%;
-}
-
-.silence .img {
-  background-image: url("../img/skills/silence.jpg");
-}
-
-.magicimmune .img {
-  background-image: url("../img/skills/magicimmune.jpg");
-}
-
-.ethereal .img {
-  background-image: url("../img/skills/ethereal.jpg")
-}

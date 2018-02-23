@@ -30,6 +30,9 @@ game.fx = {
       star: ['star'],
       leap: ['leap', 'leap-path'],
       ult: ['ult']
+    },
+    meteor: {
+      cast: ['ult']
     }
   },
   build: function() {
@@ -99,6 +102,7 @@ game.fx = {
         else fx.appendTo(target);
         game.fx.play(fx);
       }
+      //console.log(fx)
       if (tag != 'keep') fx.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () { this.remove(); });
       target.closest('.card').reselect();
       return fx;
@@ -118,7 +122,54 @@ game.fx = {
     var fx = source.find('.fx.'+name);
     fx.remove();
   },
-  ult: function(skill, cb) {
+  projectile: function (source, target, tag) {
+    if (!game.recovering) {
+      var cl = source.data('hero');
+      if (source.hasClass('towers')) cl = 'towers ' + source.side();
+      if (source.hasClass('units')) cl = 'units ' + source.data('id') +' '+ source.side();
+      if (tag) {
+        if (typeof(tag) == 'string') cl += ' '+tag;
+        else cl = tag.data('hero');
+      }
+      var projectile = $('<div>').addClass('projectile ' + cl);
+      var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
+      //console.log(angle)
+      projectile.data('rotate', angle).appendTo(game.map.el);
+      game.fx.projectileMove(projectile, source);
+      game.timeout(64, game.fx.projectileMove.bind(this, projectile, target));
+      game.timeout(364, projectile.remove.bind(projectile));
+      return projectile;
+    }
+  },
+  projectileMove: function(projectile, target) {
+    if (projectile && target) {
+      var rotate = projectile.data('rotate') || 0;
+      var x = target.getX();
+      var y = target.getY();
+      projectile.css({
+        'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale(2.5)'
+      });
+    }
+  },
+  textDelay: 600,
+  text: function (card, color, val, t) {
+    if (val > 0 || typeof(val) == 'string') {
+      var textFx = $('<span>').addClass(color).text(val);
+      var currentDelay = card.data('textFxDelay');
+      if (!currentDelay) {
+        textFx.appendTo(card);
+        card.data('textFxDelay', game.fx.textDelay);
+      } else {
+        game.timeout(currentDelay, textFx.appendTo.bind(textFx, card));
+        card.data('textFxDelay', currentDelay + game.fx.textDelay);
+      }
+      game.timeout(game.fx.textDelay, function () {
+        this.data('textFxDelay', this.data('textFxDelay') - game.fx.textDelay);
+      }.bind(card));
+      game.timeout(t, textFx.remove.bind(textFx));
+    }
+  },
+  ult: function(skill, cb, str) {
     var skillid = skill.data('skill');
     if (skillid == 'ult') {
       $('.ultfx .star').removeClass('hide');
@@ -129,6 +180,7 @@ game.fx = {
       });
       game.timeout(2100, function () {
         game.states.table.ultfx.children('.fx').remove();
+        if (str) game.audio.play(str);
         if (cb) cb();
       });
     } else if (cb) cb();

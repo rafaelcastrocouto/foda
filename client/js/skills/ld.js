@@ -17,7 +17,6 @@ game.skills.ld = {
       }
       bear.data('return').appendTo(game[side].skills.sidehand);
       bear.setCurrentHp(bear.data('hp'));
-      bear.addClass('done');
       game.fx.add('ld-return-target', target);
       game.timeout(400, function () {
         bear.place(target);
@@ -35,7 +34,7 @@ game.skills.ld = {
           var chance = entangle.data('chance') / 100;
           if (game.random() < chance) {
             game.audio.play('bear/entangle');
-            target.addClass('rooted');
+            target.addStack('rooted');
             target.on('turnend.entangle-target', game.skills.ld.summon.turnend);
             var targetBuff = source.addBuff(target, game.data.skills.ld.summon.buffs.entangle.target);
             targetBuff.data('source', source);
@@ -51,7 +50,7 @@ game.skills.ld = {
         var source = targetBuff.data('source');
         source.damage(targetBuff.data('dot'), target, targetBuff.data('damage type'));
       } else {
-        target.removeClass('rooted');
+        target.removeStack('rooted');
         target.off('turnend.entangle-target');
       }
     },
@@ -94,7 +93,7 @@ game.skills.ld = {
       source.shake();
       game.fx.add('ld-rabid', source);
       var bear = source.data('bear');
-      if (bear) {
+      if (bear && !bear.hasClass('cycloned')) {
         source.addBuff(bear, skill);
         game.fx.add('ld-rabid', bear);
         bear.shake();
@@ -134,7 +133,7 @@ game.skills.ld = {
     },
     scare: function (source, spot) {
       var opponent = source.opponent();
-      if (spot) {
+      if (spot && !target.hasClasses('bkb cycloned')) {
         var target = spot.find('.card.' + opponent);
         if (target.length) {// console.log(target)
           var x = game.map.getX(spot),
@@ -179,7 +178,6 @@ game.skills.ld = {
         source.removeBuff('ld-ult');
         source.setRange(game.data.ui.long);
       }
-      source.data('ai ult limit', source.data('ai ult limit') + 1);
     }
   },
   cry: {

@@ -11,7 +11,7 @@ game.skills.am = {
       var hero = target.data('hero');
       var opponent = target.side();
       var mana = target.data('mana');
-      if (opponent == source.opponent() && !source.data('miss-attack') && mana) {
+      if (opponent == source.opponent() && !source.data('miss-attack') && mana && !target.hasClass('bkb')) {
         source.data('attack bonus', mana);
         $('.'+opponent+' .hand .'+hero).randomCard().discard();
         game.audio.play('am/burn');
@@ -31,6 +31,7 @@ game.skills.am = {
   ult: {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var opponent = source.opponent();
       var damage = skill.data('damage');
       var mana = target.data('mana');

@@ -7,7 +7,7 @@ game.skills.kotl = {
       skill.addClass('channel-on');
       kotl.selfBuff(skill, 'illuminate-channel');
       if (kotl.hasBuff('kotl-ult')) {
-        var ghost = kotl.clone().removeClass('selected heroes');
+        var ghost = kotl.clone().removeClass('selected heroes can-attack can-move');
         ghost.addClass('illuminate-ghost ghost channeling');
         ghost.insertAfter(kotl);
         kotl.data('deck', game.data.ui.summon);
@@ -20,11 +20,7 @@ game.skills.kotl = {
       source.data('illuminate', skill);
       source.data('illuminate-target', target);
       source.on('channelend', this.channelend);
-      game.timeout(400, game.skills.kotl.illuminate.sidehand.bind(skill, side));
-    },
-    sidehand: function (side) {
-      this.data('cancel-discard', true);
-      this.appendTo(game[side].skills.sidehand);
+      skill.data('discard-to', game[side].skills.sidehand);
     },
     channelend: function (event, eventdata) { 
       var source = $(this);
@@ -33,13 +29,14 @@ game.skills.kotl = {
     release: function (source) { 
       var kotl = source.data('illuminate-source') || source;
       var target = source.data('illuminate-target');
-      var skill = game.data.skills.kotl.illuminate;
-      var damage = skill.damage;
-      var range = skill['aoe range'];
-      var width = skill['aoe width'];
-      var time = skill.channel - source.data('channeling') + 1;
+      var skill = $('.table .skills .kotl-illuminate.'+kotl.side());
+      var damage = skill.data('damage');
+      var range = skill.data('aoe range');
+      if (kotl.data('skill range bonus')) range += kotl.data('skill range bonus');
+      var width = skill.data('aoe width');
+      var time = skill.data('channel') - source.data('channeling') + 1;
       source.opponentsInLine(target, range, width, function (card) {
-        kotl.damage(damage * time, card, skill['damage type']);
+        kotl.damage(damage * time, card, skill.data('damage type'));
       });
       if (source.hasClass('ghost')) {
         source.alliesInLine(target, range, width, function (card) {
@@ -54,7 +51,8 @@ game.skills.kotl = {
       kotl.removeBuff('kotl-illuminate');
       kotl.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
       if (source.hasClass('ghost')) source.discard();
-      $('.skills.kotl-illuminate.'+kotl.side()).removeClass('channel-on').discard();
+      skill.data('discard-to', false);
+      skill.removeClass('channel-on').discard();
     }
   },
   leak: {
@@ -151,7 +149,7 @@ game.skills.kotl = {
       if (card.hasClass(opponent)) game.skills.kotl.blind.target(skill, source, card);
       target.inCross(1, 0, function (spot, dir) {
         var card = $('.card.'+opponent, spot);
-        if (card.length && !card.hasClasses('tower ghost')) {
+        if (card.length && !card.hasClasses('tower ghost bkb')) {
           game.skills.kotl.blind.target(skill, source, card);
           var destiny = card.getDirSpot(dir);
           if (destiny && destiny.hasClass('free')) {
@@ -194,7 +192,7 @@ game.skills.kotl = {
       source.around(game.data.ui.melee, function (spot) {
         if (spot.hasClass('free') && target.data('recall-skill')) destiny = spot;
       });
-      if (destiny) {
+      if (destiny && !target.hasClasses('bkb cycloned')) {
         target.stopChanneling();
         target.place(destiny);
         game.audio.play('kotl/recallend');

@@ -3,7 +3,7 @@ game.skills.wind = {
     cast: function (skill, source, target) {
       source.shake();
       var secTarget = source.behindTarget(target);
-      if (secTarget && !secTarget.hasClasses('ghost dead towers')) {
+      if (secTarget && !secTarget.hasClasses('ghost dead towers bkb')) {
         secTarget.shake();
         game.audio.play('wind/stunhit');
         if (secTarget.side() == source.opponent()) {
@@ -21,6 +21,7 @@ game.skills.wind = {
   arrow: {
     cast: function (skill, source, target) {
       var range = skill.data('aoe range');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var width = skill.data('aoe width');
       var targets = [];
       source.inLine(target, range, width, function (spot) {

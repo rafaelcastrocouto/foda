@@ -32,21 +32,24 @@ game.turn = {
   play: function (side, cb) {
     game.currentTurnSide = side;
     $('.map .fountain.enemyarea .card.enemy, .map .fountain.playerarea .card.player').heal(game.fountainHeal);
+    $('.map .jungle .card.heroes').each(game.turn.jungle);
     $('.table .card.dead').each(game.turn.reborn);
     $('.table .card').each(function () {
       game.turn.triggerStart(this, side);
     });
     if (game.mode == 'library') {
       if (side == 'player') {
-        game.turn.enableAttack('player');
-        game.turn.enableAttack('enemy');
+        game.turn.enableAttackMove('player');
+        game.turn.enableAttackMove('enemy');
       }
-    } else game.turn.enableAttack(side);
-    $('.map .card.done').each(game.turn.enableMove);
+    } else game.turn.enableAttackMove(side);
     if (side == 'player') game.states.table.el.addClass('turn');
     if (side == 'enemy' && game.mode == 'local') game.states.table.el.addClass('unturn');
     game.loader.removeClass('loading');
-    if (game.canPlay()) game.states.table.skip.attr('disabled', false);
+    if (game.canPlay()) {
+      game.states.table.skip.attr('disabled', false);
+      game.states.table.surrender.attr('disabled', false);
+    }
     game.highlight.map();
     if (cb) {
       game.timeout(400, cb.bind(this, side));
@@ -82,7 +85,7 @@ game.turn = {
       game.states.table.skip.attr('disabled', true);
       $('.map .card').each(function (i, el) {
         var card = $(el);
-        card.removeClass('can-attack');
+        card.removeClass('can-attack can-move');
         game.turn.channel(card);
         game.buff.turn(card);
         card.trigger('turnend', { target: card });
@@ -105,9 +108,14 @@ game.turn = {
       if (cb) cb(side);
     }
   },
+  jungle: function () {
+    var hero = $(this);
+    var side = hero.side();
+    game.items.addMoney(side, game.jungleFarm);
+  },
   reborn: function () {
     var dead = $(this);
-    if (game.time > dead.data('reborn') && !dead.hasBuff('wk-ult') ) { 
+    if (game.time > dead.data('reborn') && !dead.data('wk-ult') ) { 
       dead.reborn();
     }
   },
@@ -127,21 +135,12 @@ game.turn = {
       }
     }
   },
-  enableAttack: function(side) {
+  enableAttackMove: function(side) {
     $('.map .card.'+side+':not(.towers, .ghost)').each(function () {
       var unit = $(this);
       if (unit.canAttack(true)) unit.addClass('can-attack');
+      if (unit.canMove(true)) unit.addClass('can-move');
     });
-  },
-  enableMove: function() {
-    var unit = $(this);
-    if (unit.canMove(true)) unit.removeClass('done');
-  },
-  noAvailableMoves: function () {
-    var mapdone = ($('.map .player.card:not(.towers, .ghost)').length == $('.map .player.card.done:not(.towers, .ghost)').length);
-    var skilldone = $('.table .player .skills.hand .card, .table .player .skills.sidehand .card').length;
-    var moves = mapdone && skilldone;
-    return moves;
   },
   tickTime: function (build) { 
     if (!build) game.time += 0.5; // console.trace('t', game.time, game.turn.hours() );

@@ -3,20 +3,13 @@ game.skills.wk = {
     cast: function (skill, source, target) {
       source.addStun(target, skill);
       target.data('wk-dot-count', 3);
-      target.on('turnend.wk-stun', this.turnend.bind(this, {
-        source: source,
-        target: target,
-        skill: skill
-      }));
-      game.card.projectile(source, target);
+      target.on('turnend.wk-stun', this.turnend.bind(this, source, target, skill));
+      game.fx.projectile(source, target, skill);
       game.timeout(400, function(source, target, skill) {
         source.damage(skill.data('damage'), target, skill.data('damage type'));
       }.bind(this, source, target, skill));
     },
-    turnend: function (skillData) {
-      var target = skillData.target;
-      var source = skillData.source;
-      var skill = skillData.skill;
+    turnend: function (source, target, skill) {
       var buff = skill.data('buff');
       var count = target.data('wk-dot-count');
       target.data('wk-dot-count', count - 1);
@@ -69,6 +62,7 @@ game.skills.wk = {
     passive: function (skill, source) {
       source.selfBuff(skill, 'ult-source');
       source.on('death.wk-ult', this.death);
+      source.data('wk-ult', skill);
     },
     death: function (event, eventdata) {
       var wk = eventdata.target;
@@ -80,21 +74,22 @@ game.skills.wk = {
     },
     turnstart: function (event, eventdata) {
       var wk = eventdata.target;
+      var spot = wk.data('wk-ult-spot');
+      var skill = wk.data('wk-ult');
+      game.audio.play('wk/ult');
+      game.fx.ult(skill, game.skills.wk.ult.reborn.bind(this, wk, spot, skill));
+    },
+    reborn: function (wk, spot, skill) { //console.log(wk, spot)
+      var side = wk.side();
       var buff = game.data.skills.wk.ult.buffs.ult.source;
       var range = buff.range;
-      var skill = buff.skill;
-      var spot = wk.data('wk-ult-spot');
-      var side = wk.side();
-      game.audio.play('wk/ult');
-      game.fx.ult(skill);
-      game.timeout(900, function (wk, spot) { //console.log(wk, spot)
-        game.shake();
-        wk.reborn(spot);
-        wk.addClass('can-attack');
-        spot.removeClass('cript block');
-      }.bind(this, wk, spot));
-      wk.opponentsInRange(range, function (target) {
-        wk.addBuff(target, skill, 'ult-targets');
+      if (wk.data('skill range bonus')) range += wk.data('skill range bonus');
+      game.shake();
+      wk.reborn(spot);
+      wk.addClass('can-attack');
+      spot.removeClass('cript block');
+      wk.opponentsInRange(range, function (target) { //console.log(target)
+        if (!target.hasClass('bkb')) wk.addBuff(target, skill, 'ult-targets');
       });
       wk.off(side + 'turnstart.wk-ult');
       wk.off('death.wk-ult');

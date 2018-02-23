@@ -11,7 +11,6 @@ game.card = {
       canMove: game.card.canMove,
       move: game.card.move,
       animateMove: game.card.animateMove,
-      stopChanneling: game.card.stopChanneling,
       reduceStun: game.card.reduceStun,
       canAttack: game.card.canAttack,
       attack: game.card.attack,
@@ -53,6 +52,8 @@ game.card = {
       $('<p>').addClass('hp').appendTo(current).html('HP <span>' + data.hp + '</span>');
       data['current hp'] = data.hp;
     }
+    if (data.buff && data.buff['hp bonus'])
+      $('<p>').addClass('hp').appendTo(current).html('HP <span>' + data.buff['hp bonus'] + '</span>');
     if (data.damage) {
       $('<p>').addClass('damage').appendTo(current).html('DMG <span>' + data.damage + '</span>');
       data['current damage'] = data.damage;
@@ -65,15 +66,21 @@ game.card = {
         $('<p>').appendTo(desc).text(game.data.ui.damage + ' ' + game.data.ui.bonus + ': ').addClass('dot').append($('<span>').text(data.buff['damage bonus']));
       if (data.buff.dot)
         $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(data.buff.dot));
+      if (data.buff['unit damage bonus'])
+        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(data.buff['unit damage bonus']));
+      if (data.buff.damage)
+        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(data.buff.damage));
     }
     if (data.buff) {
       if (data.buff['cast damage bonus'])
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ' per Cast: ').addClass('dot').append($('<span>').text(data.buff['cast damage bonus']));
+        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(data.buff['cast damage bonus'])).append('<i> * '+game.data.ui.skills+'</i>');
       if (data.buff['damage per kill'])
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ' per Kill: ').addClass('dot').append($('<span>').text(data.buff['damage per kill']));
+        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(data.buff['damage per kill'])).append('<i> * '+game.data.ui.kills+'</i>');
     }
     //if (data.hand)
     //  $('<p>').appendTo(desc).text(data.deck + ' (' + data.hand + ')');
+    if (data.price)
+      $('<p>').appendTo(desc).text(game.data.ui.price + ': $' + data.price).addClass('price');
     if (data.cards > 1)
       $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + data.cards);
     if (data['damage type'])
@@ -122,9 +129,9 @@ game.card = {
 
     if (data.buff) {
       if (data.buff['hp per kill'])
-        $('<p>').appendTo(desc).text(game.data.ui.hp + ' per Kill: ' + data.buff['hp per kill']);
+        $('<p>').appendTo(desc).html(game.data.ui.hp +': ' + data.buff['hp per kill']+ ' <i>* '+ game.data.ui.kills+'</i>');
       if (data.buff['cards per turn'])
-        $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + data.buff['cards per turn'] + ' per Turn');
+        $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + data.buff['cards per turn']);
       if (data.buff.chance)
         $('<p>').appendTo(desc).text(game.data.ui.chance + ': ' + data.buff.chance + '%');
       if (data.buff.percentage)
@@ -133,16 +140,19 @@ game.card = {
         $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + data.buff.lifesteal + '%');
       if (data.buff.multiplier)
         $('<p>').appendTo(desc).text(game.data.ui.multiplier + ': ' + data.buff.multiplier + 'X');
-      if (data.buff['hp bonus'])
-        $('<p>').appendTo(desc).text('HP ' + game.data.ui.bonus + ': ' + data.buff['hp bonus']);
       if (data.buff['armor bonus'])
         $('<p>').appendTo(desc).text(game.data.ui.armor + ' ' + game.data.ui.bonus + ': ' + data.buff['armor bonus']);
       if (data.buff['resistance bonus'])
         $('<p>').appendTo(desc).text(game.data.ui.resistance + ' ' + game.data.ui.bonus + ': ' + data.buff['resistance bonus']);
       if (data.buff.heal)
-        $('<p>').appendTo(desc).text(game.data.ui.heal + ' ' + game.data.ui.bonus + ': ' + data.buff.heal);
+        $('<p>').appendTo(desc).text(game.data.ui.buff + ' ' + game.data.ui.heal + ': ' + data.buff.heal);
     }
-    //if (data.cards)      $('<p>').appendTo(desc).text(game.data.ui.cards+': ' + data.cards);
+    if (data.heal) 
+      $('<p>').appendTo(desc).text(game.data.ui.heal + ': ' + data.heal);
+    if (data['cards per turn'])
+        $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + data['cards per turn']);
+    if (data['skill cards'])
+      $('<p>').appendTo(desc).text(game.data.ui.cards+': ' + data['skill cards']);
     if (data.description) {
       $('<p>').appendTo(desc).addClass('description').text('“'+data.description+'”');
       //card.attr({ title: data.name + ': ' + data.description });
@@ -208,10 +218,13 @@ game.card = {
     if (game.selectedCard) {
       game.highlight.clearMap();
       game.selectedCard.removeClass('selected draggable');
-      game.states.table.discard.attr('disabled', true);
+      game.skill.disableDiscard();
       if (game.states.table.selectedClone) {
         game.states.table.selectedClone.remove();
         game.states.table.selectedClone = null;
+      }
+      if (game.selectedCard.data('cast select') && game.selectedCard.data('source')) {
+        game.selectedCard.data('source', false);
       }
       game.selectedCard = null;
     }
@@ -223,7 +236,7 @@ game.card = {
     game.highlight.map(event);
     game.states.table.selectedClone = card.clone()
       .css({'transform': '' })
-      .removeClass('selected melee-attack can-attack blink done dead draggable dragTarget shake enemyMoveHighlight enemyMoveHighlightTarget')
+      .removeClass('selected melee-attack can-attack blink done dead draggable dragTarget shake enemyMoveHighlight enemyMoveHighlightTarget casttarget')
       .clearEvents()
       .appendTo(game.states.table.selectedCard)
       .on('mouseup', function () {
@@ -246,9 +259,9 @@ game.card = {
     if (this.hasClass('selected')) this.select();
   },
   canMove: function(force) {
-    var str = '';
-    if (!force) str = 'done ';
-    return !this.hasClasses(str+'static dead stunned rooted entangled disabled sleeping cycloned taunted');
+    var c = !this.hasClasses('static dead stunned rooted entangled disabled sleeping cycloned taunted');
+    if (!force) return (this.hasClass('can-move') && c);
+    else return c;
   },
   move: function(destiny) {
     if (typeof destiny === 'string') {
@@ -300,24 +313,6 @@ game.card = {
         transform: 'translate3d(' + (dx - 50) + '%, ' + (dy - 40) + '%, 100px) rotateX(-30deg)'
       });
     }
-  },
-  stopChanneling: function() {
-    var card = $(this);
-    if (card.hasClass('channeling')) {
-      card.trigger('channelend', card.data('channel event'));
-      $(card.data('channel skill')).removeClass('channel-on on');
-      card.data('channel', null).data('channeling', null).data('channel skill', null).data('channel event', null);
-      card.off('channel').off('channelend');
-      card.removeClass('channeling');
-      card.reselect();
-    }
-    return this;
-  },
-  activeStopChanneling: function () {
-    var card = $(this);
-    if (card.data('illuminate-ghost')) card = $(card.data('illuminate-ghost'));
-    card.stopChanneling();
-    if (card.side() == 'player') game.player.stopChanneling(card);
   },
   setDamage: function(damage) {
     damage = parseInt(damage, 10);
@@ -372,11 +367,11 @@ game.card = {
   },
   canAttack: function(force) {
     if (this.data('current hp') <= 0) return false;
-    var c = !this.hasClasses('dead stunned rooted disarmed disabled');
+    var c = !this.hasClasses('dead stunned disarmed disabled ethereal');
     if (!force) return (this.hasClass('can-attack') && c);
     else return c;
   },
-  attack: function(target, force, ult) {
+  attack: function(target, force, tag) {
     if (typeof target === 'string') {
       target = $('#' + target + ' .card');
     }
@@ -384,31 +379,40 @@ game.card = {
     var damage = source.data('current damage'); 
     var from = source.getPosition(), to = target.getPosition();
     var name;
-    if (damage && from !== to && target.data('current hp') && source.canAttack(force)) {
+    if (damage && from !== to && (target.data('current hp') || target.hasClass('trees')) && source.canAttack(force) && !target.hasClass('dead')) {
       source.stopChanneling();
-      var evt = {
-        type: 'attack',
-        source: source,
-        target: target,
-        damage: damage
-      };
-      source.trigger('pre-attack', evt);
-      target.trigger('pre-attacked', evt);
-      var dmgType = game.data.ui.physical;
-      if (source.data('critical-attack')) {
-        damage *= source.data('critical-attack');
-        dmgType = 'critical';
+      if (target.hasClass('trees')) {
+        game.timeout(500, game.tree.destroy.bind(this, target));
+      } else {
+        // damage calculation
+        var evt = {
+          type: 'attack',
+          source: source,
+          target: target,
+          damage: damage,
+          tag: tag
+        };
+        source.trigger('pre-attack', evt);
+        target.trigger('pre-attacked', evt);
+        var dmgType = game.data.ui.physical;
+        if (source.data('critical-attack')) {
+          damage *= source.data('critical-attack');
+          dmgType = 'critical';
+        }
+        if (target.hasClass('units') && source.data('unit damage bonus')) {
+          damage += source.data('unit damage bonus');
+        }
+        var bonus = evt.bonus || 0;
+        damage += bonus;
+        evt.damage = damage;
+        source.trigger('attack', evt).trigger('action', evt);
+        target.trigger('attacked', evt);
+        // DAMAGE
+        if (!source.data('miss-attack')) source.damage(damage, target, dmgType);
+        //clear bonus
+        source.data('critical-attack', false);
+        evt.bonus = 0;
       }
-      var bonus = evt.bonus || 0;
-      //console.log(evt)
-      damage += bonus;
-      evt.damage = damage;
-      source.trigger('attack', evt).trigger('action', evt);
-      target.trigger('attacked', evt);
-      if (!source.data('miss-attack')) source.damage(damage, target, dmgType);
-      //clear bonus
-      source.data('critical-attack', false);
-      evt.bonus = 0;
       source.removeClass('can-attack draggable');
       game.highlight.refresh();
       //melee fx
@@ -420,16 +424,11 @@ game.card = {
       //ranged fx
       if (range > 2) {
         // launch projectile
-        game.card.projectile(source, target, ult);
+        game.fx.projectile(source, target, tag);
       }
       // miss fx
       if (source.data('miss-attack')) {
-        source.data('miss-attack', false);
-        var missFx = target.find('.missed');
-        if (!missFx.length) {
-          missFx = $('<span>').text(game.data.ui.miss).addClass('missed').appendTo(target);
-        }
-        game.timeout(5000, missFx.remove.bind(missFx));
+        game.fx.text(source, 'missed', game.data.ui.miss, 3000);
       } else {
         // audio
         if (source.hasClass('towers')) name = 'tower';
@@ -442,44 +441,17 @@ game.card = {
     }
     return this;
   },
-  projectile: function (source, target, extraclass) {
-    if (!game.recovering) {
-      var cl = source.data('hero');
-      if (source.hasClass('towers')) cl = 'towers ' + source.side();
-      if (source.hasClass('units')) cl = 'units ' + source.data('id') +' '+ source.side();
-      if (extraclass) cl += ' '+extraclass;
-      game.projectile = $('<div>').addClass('projectile ' + cl);
-      var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
-      //console.log(angle)
-      game.projectile.data('rotate', angle).appendTo(game.map.el);
-      game.card.projectileMove.apply(source);
-      game.timeout(64, game.card.projectileMove.bind(target));
-      game.timeout(364, function () {
-        game.projectile.remove();
-        game.projectile = false;
-      });
-    }
-  },
-  projectileMove: function() {
-    if (game.projectile) {
-      var rotate = game.projectile.data('rotate') || 0;
-      var x = this.getX();
-      var y = this.getY();
-      game.projectile.css({
-        'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale(2.5)'
-      });
-    }
-  },
   damage: function(damage, target, type) {
-    var source = this, evt, x, y, position, spot, resistance, armor, hp, finalDamage = damage;
+    var source = this, evt, x, y, position, spot, resistance, armor, hp, finalDamage = damage, damageFx = 'damaged';
     if (damage > 0 && !target.hasClass('dead')) {
       if (!type) {
         type = game.data.ui.physical;
       }
       if (type === game.data.ui.magical) {
+        if (source.data('skillDamageBonus')) finalDamage = parseInt(finalDamage * source.data('skillDamageBonus'));
         resistance = target.data('current resistance');
         if (resistance)
-          finalDamage = damage - resistance;
+          finalDamage = finalDamage - resistance;
       }
       if (type === game.data.ui.physical || type === 'critical') {
         armor = target.data('current armor');
@@ -490,6 +462,10 @@ game.card = {
         finalDamage = 1;
       if (damage < 1)
         damage = 1;
+      if ((type === game.data.ui.magical && target.hasClass('bkb')) || target.hasClass('cycloned')) {
+        finalDamage = 0;
+        damage = 0;
+      }
       if (typeof target === 'string') {
         target = $('#' + target + ' .card');
       }
@@ -521,52 +497,24 @@ game.card = {
       if (type === 'critical') {
         source.data('critical-attack', true);
         game.audio.play('crit');
-        damageFx = $('<span>').addClass('damaged critical');
-      } else {
-        damageFx = $('<span>').addClass('damaged');
+        damageFx += ' critical';
       }
-      var delay = 850;
-      if (!target.data('damaged-timeout')) {
-        damageFx.text(finalDamage).appendTo(target);
-        target.data('damaged-timeout', delay);
-      } else {
-        game.timeout(target.data('damaged-timeout'), function (damageFx, finalDamage, target) {
-          damageFx.text(finalDamage).appendTo(target);
-        }.bind(this, damageFx, finalDamage, target));
-        target.data('damaged-timeout', target.data('damaged-timeout') + delay);
-      }
-      game.timeout(delay, function () {
-        target.data('damaged-timeout', target.data('damaged-timeout') - delay);
-      });
-      game.timeout(5000, damageFx.remove.bind(damageFx));
+      game.fx.text(target, damageFx, finalDamage, 2500);
     }
     return this;
   },
   heal: function(healhp) {
     if (healhp > 0) {
-      var healFx, currentHeal, currenthp = this.data('current hp'), maxhp = this.data('hp'), hp;
+      var currenthp = this.data('current hp'), maxhp = this.data('hp'), hp;
       healhp = parseInt(healhp);
       hp = currenthp + healhp;
       if (hp > maxhp) {
         healhp = maxhp - currenthp;
-        if (healhp === 0)
-          return;
-        this.setCurrentHp(maxhp);
+        if (healhp > 0) this.setCurrentHp(maxhp);
       } else {
         this.setCurrentHp(hp);
       }
-      healFx = this.find('.heal');
-      if (healFx.length && game.mode !== 'library') {
-        currentHeal = healFx.text();
-        healFx.text(currentHeal + healhp);
-      } else {
-        healFx.remove();
-        healFx = $('<span>').addClass('heal').text(healhp).appendTo(this);
-      }
-      game.timeout(2000, function() {
-        this.remove();
-      }
-      .bind(healFx));
+      game.fx.text(this, 'heal', healhp, 3000);
     }
     return this;
   },
@@ -669,6 +617,7 @@ game.card = {
     } else {
       dead.appendTo(game.hidden);
     }
+    game.highlight.refresh();
     return dead;
   },
   reborn: function(spot) {
