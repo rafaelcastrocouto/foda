@@ -190,5 +190,9 @@
   "buff": "Pulir",
   "stun": "Aturdir",
   "speed": "Velocidad",
-  "kills": "Muertes"
+  "kills": "Muertes",
+  "shop": "Shop",
+  "price": "Precio",
+  "sell": "Vender",
+  "consumable": "Consumible"
 }

@@ -190,5 +190,9 @@
   "buff": "Buff",
   "stun": "Stun",
   "speed": "Velocidade",
-  "kills": "Kills"
+  "kills": "Kills",
+  "shop": "Shop",
+  "price": "Preço",
+  "sell": "Vender",
+  "consumable": "Consumível"
 }

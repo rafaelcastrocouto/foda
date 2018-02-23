@@ -190,5 +190,9 @@
   "buff": "Buff",
   "stun": "Stun",
   "speed": "hız",
-  "kills": "öldürür"
+  "kills": "öldürür",
+  "shop": "Mağaza",
+  "price": "Fiyat",
+  "sell": "Satmak",
+  "consumable": "Tüketilir"
 }
