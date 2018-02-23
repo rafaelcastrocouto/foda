@@ -11,7 +11,7 @@
   background-color: rgba(0,0,0,0.8);
 }
 .camera .shop.show {
-  transform: translate(-50%, 8%) rotateX(16deg) scale(0.95);
+  transform: translate(-50%, 10%) rotateX(16deg) scale(0.95);
 }
 .table .items.deck {
   padding-top: 28px;

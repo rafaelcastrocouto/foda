@@ -31,6 +31,7 @@ game.single = {
     if (!game.single.started) {
       game.audio.play('horn');
       game.single.started = true;
+      game.items.enableShop();
       game.states.table.enableUnselect();
       game.message.text(game.data.ui.battle);
       game.loader.removeClass('loading');
@@ -49,7 +50,7 @@ game.single = {
   startTurn: function (turn) {
     if (turn == 'player') game.turn.counter = game.timeToPlay;
     else game.turn.counter = game.ai.timeToPlay;
-    game.timeout(1000, function () { 
+    game.timeout(1000, function () {
       game.turn.count(turn, game.single.countEnd); 
     });
   },
@@ -66,6 +67,7 @@ game.single = {
       }
       game.skill.buyHand('player');
       game.tower.attack('enemy');
+      game.items.addMoney('player', 50);
     });
   },
   skip: function () {
@@ -82,6 +84,7 @@ game.single = {
       }
       game.skill.buyHand('enemy');
       game.tower.attack('player');
+      game.items.addMoney('enemy', 50);
       game.timeout(2000, game.ai.turnStart);
     });
   },

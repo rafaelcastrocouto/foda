@@ -155,6 +155,7 @@ game.skill = {
             target: target
           };
           source.trigger('cast', evt).trigger('action', evt);
+          skill.trigger('cast', evt);
           if (!target.hasClass('spot')) target.trigger('casted', evt);
           if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
             str = hero + '/' + skillid;
@@ -404,7 +405,7 @@ game.skill = {
     return card.clone().data(card.data()).addClass('illusion').on('mousedown touchstart', game.card.select);
   },
   disableDiscard: function () {
-    if (game.mode == 'library') game.items.enableShop();
+    if (game.items.shopEnabled) game.items.enableShop();
     else game.states.table.shop.attr('disabled', true);
   },
   enableDiscard: function () {

@@ -199,6 +199,7 @@ game.online = {
       game.loader.addClass('loading');
       game.message.text(game.data.ui.battle);
       game.audio.play('horn');
+      game.items.enableShop();
       game.player.placeHeroes();
       game.enemy.placeHeroes();
       game.turn.build(6);
@@ -221,7 +222,7 @@ game.online = {
       t = 3000;
       game.loader.addClass('loading');
     }
-    game.timeout(t, function () { 
+    game.timeout(t, function () {
       game.turn.count(turn, game.online.countEnd, game.online.preGetTurnData);
     });
   },
@@ -245,6 +246,7 @@ game.online = {
       } 
       game.skill.buyHand('player');
       game.tower.attack('enemy');
+      game.items.addMoney('player', 50);
     });
   },
   skip: function () {
@@ -278,6 +280,8 @@ game.online = {
         $('.card', game.enemy.skills.ult).appendTo(game.enemy.skills.deck);
       }
       game.skill.buyHand('enemy');
+      game.tower.attack('player');
+      game.items.addMoney('enemy', 50); 
     });
   },
   preGetTurnData: function (turn) {

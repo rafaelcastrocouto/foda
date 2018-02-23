@@ -547,7 +547,7 @@ game.map = {
       var x = game.map.getX(source) + (i * dir.x)
         , y = game.map.getY(source) + (i * dir.y);
       var spot = game.map.getSpot(x, y);
-      if (x == limit.getX() && y == limit.getY() || (spot && spot.hasClass('free') && !spot.hasClass('block')))
+      if ((!limit || (x == limit.getX() && y == limit.getY())) || (spot && spot.hasClass('free') && !spot.hasClass('block')))
         return spot;
     }
   },

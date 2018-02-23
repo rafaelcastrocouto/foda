@@ -251,7 +251,7 @@
       "targets": ["Enemy"],
       "description": "Turns target into a sheep. Silences, slows and disarms",
       "buff": {
-        "description": "Silenced, muted and disarmed. Baaahhh"
+        "description": "Silenced, slowed and disarmed. Baaahhh"
       }
     },
     "kaya": {
@@ -396,6 +396,7 @@
       "attribute": "Consumable",
       "targets": ["Ally", "Heroes"],
       "aoe": "Radial",
+      "damage type": "Magical",
       "description": "Damages and slow units in the area",
       "buff": {
         "description": "Slowed"

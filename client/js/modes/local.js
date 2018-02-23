@@ -64,6 +64,7 @@ game.local = {
     game.player.placeHeroes();
     game.enemy.placeHeroes();
     game.audio.play('horn');
+    game.items.enableShop();
     game.message.text(game.data.ui.battle);
     game.states.table.enableUnselect();
     game.turn.build(6);
@@ -77,7 +78,7 @@ game.local = {
   startTurn: function (turn) {
     game.states.table.skip.attr('disabled', false);
     game.turn.counter = game.timeToPlay;
-    game.timeout(1000, function () { 
+    game.timeout(1000, function () {
       game.turn.count(turn, game.local.countEnd);
     });
   },
@@ -97,6 +98,7 @@ game.local = {
       }
       game.skill.buyHand('player');
       game.tower.attack('enemy');
+      game.items.addMoney('player', 50);
     });
   },
   skip: function () {
@@ -112,6 +114,7 @@ game.local = {
   },
 
   beginEnemy: function () { 
+    game.items.updateShop('enemy');
     game.turn.begin('enemy', function () {
       game.local.startTurn('enemy');
       game.highlight.refresh();
@@ -120,6 +123,7 @@ game.local = {
       }
       game.skill.buyHand('enemy');
       game.tower.attack('player');
+      game.items.addMoney('enemy', 50);
     });
   },
   endEnemy: function () {

@@ -19,12 +19,15 @@ game.items = {
     return card.clone().data(card.data()).on('mousedown touchstart', game.card.select);
   },
   enableShop: function () {
+    game.items.shopEnabled = true;
     var side = 'player';
     if (game.mode == 'local') side = game.currentTurnSide;
     game.states.table.shop.attr('disabled', false);
+    var money = '';
+    if (side) money = ' ($'+game[side].money+')';
     if (game.items.shopOpen) {
-      game.states.table.shop.text(game.data.ui.close + ' ($'+game[side].money+')');
-    } else game.states.table.shop.text(game.data.ui.shop + ' ($'+game[side].money+')');
+      game.states.table.shop.text(game.data.ui.close + money);
+    } else game.states.table.shop.text(game.data.ui.shop + money);
   },
   shopClick: function () {
     var side = 'player';
@@ -43,8 +46,10 @@ game.items = {
     }
   },
   updateShop: function (side) {
-    if (game.items.shopOpen) game.states.table.shop.text(game.data.ui.close + ' ($'+game[side].money+')');
-    else game.states.table.shop.text(game.data.ui.shop + ' ($'+game[side].money+')');
+    var money = '';
+    if (side) money = ' ($'+game[side].money+')';
+    if (game.items.shopOpen) game.states.table.shop.text(game.data.ui.close + money);
+    else game.states.table.shop.text(game.data.ui.shop + money);
     $.each(game.itemsDeck.data('cards'), function(i, card) {
       if (card.data('price') > game[side].money) card.addClass('expensive');
       else card.removeClass('expensive');
@@ -52,13 +57,17 @@ game.items = {
     if (game.selectedCard && game.selectedCard.hasClass('buy')) game.selectedCard.reselect();
   },
   hideShop: function (side) {
-    if (!game.items.sellMode) game.states.table.shop.text(game.data.ui.shop + ' ($'+game[side].money+')');
+    var money = '';
+    if (side) money = ' ($'+game[side].money+')';
+    if (!game.items.sellMode) game.states.table.shop.text(game.data.ui.shop + money);
     if (game.selectedCard && game.selectedCard.hasAllClasses('items buy')) game.card.unselect();
+    if (game.mode == 'tutorial') game.tutorial.hideShop();
   },
   disableShop: function () {
-    game.states.table.shop.text(game.data.ui.discard);
+    game.items.shopEnabled = false;
     game.items.shopOpen = false;
     game.items.sellMode = false;
+    game.states.table.shop.text(game.data.ui.discard);
     if (game.selectedCard && game.selectedCard.hasAllClasses('items buy')) game.card.unselect();
     if (game.items.shop) game.items.shop.removeClass('show');
   },
@@ -94,6 +103,7 @@ game.items = {
     }
     game.items.addMoney(game.currentTurnSide, -card.data('price'));
     game.card.unselect();
+    if (game.mode == 'tutorial') game.tutorial.buyItem();
   },
   sellItem: function () {
     var side = game.selectedCard.side();
