@@ -179,7 +179,7 @@ game.tutorial = {
   summonedCreep: function () {
     if (game.tutorial.lesson != 'Move') {
       game.tutorial.lesson = 'Move';
-      $('.map .heroes.player').addClass('blink can-move').on('move', game.tutorial.moveCount).on('select', game.tutorial.select);
+      $('.map .heroes.player').addClass('blink can-move').on('move.tutorial', game.tutorial.moveCount).on('select', game.tutorial.select);
     }
     $('.map .units.blink').removeClass('blink');      
     game.tutorial.axebaloon.hide().fadeIn('slow');
@@ -204,6 +204,7 @@ game.tutorial = {
     if (game.tutorial.moveCountValue < 3) game.tutorial.endTurnLesson();
   },
   endTurnLesson: function () {
+    $('.map .heroes.player').addClass('blink can-move').off('move.tutorial');
     $('.blink').removeClass('blink');
     game.states.table.skip.addClass('blink');
     game.tutorial.axebaloon.hide().fadeIn('slow');
@@ -239,7 +240,7 @@ game.tutorial = {
     game.items.addMoney('player', 800);
     game.items.enableShop();
     $('.table .card.items').hide();
-    $('.table .card.items.sheepstick').show().addClass('blink').on('cast.tutorial', game.tutorial.itemCast);
+    $('.table .card.items.sheepstick').show().addClass('blink');
     game.tutorial.letter(game.data.ui.axeshop);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.states.table.shop.addClass('blink');
@@ -288,11 +289,12 @@ game.tutorial = {
     game.message.text(game.data.ui.yourturn);
     game.tutorial.axe.removeClass('left');
     game.card.unselect();
-    $('.table .card.items.sheepstick').addClass('blink');
+    $('.table .card.items.sheepstick').addClass('blink').on('cast.tutorial', game.tutorial.itemCast);
     game.tutorial.axebaloon.fadeIn('slow');
     game.tutorial.letter(game.data.ui.axeUseItem);
   },
   itemCast: function () {
+     $('.table .card.items.sheepstick').off('cast.tutorial');
     game.timeout(400, game.tutorial.attack);
   },
   attack: function () {
