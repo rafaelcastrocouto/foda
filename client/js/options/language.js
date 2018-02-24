@@ -40,6 +40,6 @@ game.language = {
         detectLanguage = game.language.available.indexOf(lang);
     if (detectLanguage >= 0) game.setData('lang', lang);
     game.options.backClick();
-    game.confirm(function () { location.reload(); });
+    game.confirm(function (confirmed) { if (confirmed) location.reload(); });
   }
 };

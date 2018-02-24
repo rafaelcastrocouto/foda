@@ -31,7 +31,7 @@ game.history = {
         mode = false;
         state = 'menu';
       }
-      if (game.debug || mode == 'library' || mode == 'local') {
+      if (game.debug) {
         if (mode) {
           var picks = game.getData(game.player.type+'Deck');
           if (picks) game.player.picks = picks.split('|');
@@ -42,6 +42,8 @@ game.history = {
           game.setId(game.currentData.id);
         }
         game.history.jumpTo(state, recovering);
+      } else if (state == 'log' || (state == 'choose' && mode == 'library')) {
+        game.history.jumpTo(state, recovering);
       } else {
         game.history.jumpTo('menu', recovering);
       }
@@ -49,12 +51,10 @@ game.history = {
   },
   jumpTo: function (state, recover) {
     game.setData('last-activity', new Date().valueOf());
-    //if (!recover && game.history.state !== 'choose') game.clear();
-    //game.db({ 'get': 'server' }, function (server) {
-      //if (server.status === 'online') {
-        game.states.changeTo(state, recover);
-      //} else { game.reset('history.js 46: Server offline'); }
-    //});
+    game.confirm(function (confirmed) {
+      if (confirmed) game.states.changeTo(state, recover);
+      else game.states.changeTo('log');
+    }, game.data.ui.log+'?');
   },
   saveMove: function (move) {
     var matchData = game.getData('matchData');

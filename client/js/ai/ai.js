@@ -524,7 +524,7 @@ game.ai = {
     }
   },
   summon: function (card) {
-    var creep = card.data('unit');
+    var creep = card.data('id');
     var enemyarea = $('.spot.free.enemyarea');
     var spots = [];
     enemyarea.each(function () {
