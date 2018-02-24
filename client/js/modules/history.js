@@ -51,10 +51,13 @@ game.history = {
   },
   jumpTo: function (state, recover) {
     game.setData('last-activity', new Date().valueOf());
-    game.confirm(function (confirmed) {
-      if (confirmed) game.states.changeTo(state, recover);
-      else game.states.changeTo('log');
-    }, game.data.ui.log+'?');
+    if (state == 'log') game.states.changeTo('log');
+    else game.confirm(function (confirmed) {
+      if (confirmed) {
+        if ('AudioContext' in window) game.audio.build();
+        game.states.changeTo(state, recover);
+      } else game.states.changeTo('log');
+    }, game.data.ui.welcome +' '+ game.getData('name') +'! '+ game.data.ui.log +'?');
   },
   saveMove: function (move) {
     var matchData = game.getData('matchData');
