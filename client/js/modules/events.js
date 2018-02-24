@@ -26,6 +26,7 @@ game.events = {
     game.container.on('touchend touchleave', game.events.touchend);
     game.container.on('mouseup mouseleave', game.events.end);
     game.container.on('contextmenu', game.events.rightclick);
+    game.container.on('click tap', '.button, .card', game.events.click);
   },
   getCoordinates: function(event) {
     var position = {
@@ -140,6 +141,15 @@ game.events = {
     }
     // enter: chat
     if (event.keyCode == 13) $('.chat').toggleClass('hover');
+  },
+  click: function () {
+    var target = $(this);
+    if (!target.attr('disabled')) {
+      target.attr('disabled', true);
+      setTimeout(function (target) {
+        target.attr('disabled', false);
+      }.bind(this, target), 300);
+    }
   },
   rightclick: function (event) {
     game.card.unselect();

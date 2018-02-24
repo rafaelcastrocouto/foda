@@ -24,6 +24,7 @@ game.online = {
     game.triesLoop = 0;
     game.loader.addClass('loading');
     game.message.text(game.data.ui.loading);
+    game.states.choose.back.attr({disabled: true});
   },
   ask: function () {//console.log('ask');
     game.db({
@@ -61,6 +62,7 @@ game.online = {
     });
   },
   searching: function () {
+    game.states.choose.back.attr({disabled: false});
     if (game.id && game.online.waiting) {
       game.db({ 'get': game.id }, function (found) {
         if (found.challenger) {
