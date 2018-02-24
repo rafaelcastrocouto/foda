@@ -31,9 +31,9 @@ game.turn = {
   },
   play: function (side, cb) {
     game.currentTurnSide = side;
-    $('.map .fountain.enemyarea .card.enemy, .map .fountain.playerarea .card.player').heal(game.fountainHeal);
+    $('.map .fountain.enemyarea .card.enemy').heal(game.fountainHeal);
+    $('.map .fountain.playerarea .card.player').heal(game.fountainHeal);
     $('.map .jungle .card.heroes').each(game.turn.jungle);
-    $('.table .card.dead').each(game.turn.reborn);
     $('.table .card').each(function () {
       game.turn.triggerStart(this, side);
     });
@@ -112,12 +112,6 @@ game.turn = {
     var hero = $(this);
     var side = hero.side();
     game.items.addMoney(side, game.jungleFarm);
-  },
-  reborn: function () {
-    var dead = $(this);
-    if (game.time > dead.data('reborn') && !dead.data('wk-ult') ) { 
-      dead.reborn();
-    }
   },
   triggerStart: function (el, side) {
     var card = $(el);

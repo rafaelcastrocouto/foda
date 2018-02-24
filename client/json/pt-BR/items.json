@@ -459,6 +459,7 @@
       "name": "Esmagador",
       "attribute": "Consumível",
       "targets": "Inimigo",
+      "damage type": "Físico",
       "description": "Atordoa a unidade alvo"
     },
     "radiance": {

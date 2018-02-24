@@ -459,6 +459,7 @@
       "name": "Basher",
       "attribute": "Consumible",
       "targets": "Enemigo",
+      "damage type": "Físico",
       "description": "Aturde al enemigo objetivo"
     },
     "radiance": {

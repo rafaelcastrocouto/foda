@@ -10,6 +10,7 @@ game.skills.pud = {
         if (hooked.side() == source.opponent()) {
           if (!target.hasClass('bkb')) source.damage(skill.data('damage'), hooked, skill.data('damage type'));
           hooked.stopChanneling();
+          hooked.removeInvisibility();
         }
       } else {
         var last = source.lastFreeSpotInLine(target, range);
@@ -133,6 +134,7 @@ game.skills.pud = {
       game.audio.play('pud/ult-channel');
       target.shake();
       target.stopChanneling();
+      target.removeInvisibility();
       source.damage(skill.data('dot'), target, skill.data('damage type'));
       source.heal(skill.data('dot'));
       game.fx.add('pud-ult', source, target);

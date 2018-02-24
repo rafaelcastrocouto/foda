@@ -459,6 +459,7 @@
       "name": "Basher",
       "attribute": "tüketilir",
       "targets": "Düşman",
+      "damage type": "Fiziksel",
       "description": "Hedef düşmanı düşürür"
     },
     "radiance": {

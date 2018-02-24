@@ -24,29 +24,27 @@ game.history = {
       if (state !== 'log') {
         game.bkgdeck.create();
         game.chat.build();
-        setTimeout(game.chat.set.bind(game.chat, game.data.ui.reconnected), 200);
       }
-      if (state == 'loading') state = 'log';
-      if (state == 'result') {
-        mode = false;
-        state = 'menu';
-      }
-      if (game.debug) {
-        if (mode) {
-          var picks = game.getData(game.player.type+'Deck');
-          if (picks) game.player.picks = picks.split('|');
-          picks = game.getData(game.enemy.type+'Deck');
-          if (picks) game.enemy.picks = picks.split('|');
-          game.recovering = true;
-          game.setMode(mode, recovering);
-          game.setId(game.currentData.id);
-        }
+      if (state == 'result')  mode = false;
+      if ((game.debug) || (state == 'choose' && mode == 'library')){
         game.history.jumpTo(state, recovering);
-      } else if (state == 'log' || (state == 'choose' && mode == 'library')) {
-        game.history.jumpTo(state, recovering);
+      } else if (state == 'log' || state == 'loading') {
+        game.history.jumpTo('log', recovering);
       } else {
         game.history.jumpTo('menu', recovering);
       }
+    }
+  },
+  jumpMode: function (mode, state, recover) {
+    if (mode) {
+      var picks = game.getData(game.player.type+'Deck');
+      if (picks) game.player.picks = picks.split('|');
+      picks = game.getData(game.enemy.type+'Deck');
+      if (picks) game.enemy.picks = picks.split('|');
+      game.recovering = true;
+      game.setMode(mode, recovering);
+      game.setId(game.currentData.id);
+      game.history.jumpTo(state, recover);
     }
   },
   jumpTo: function (state, recover) {
@@ -54,6 +52,7 @@ game.history = {
     if (state == 'log') game.states.changeTo('log');
     else game.confirm(function (confirmed) {
       if (confirmed) {
+        game.chat.set(game.data.ui.reconnected);
         if ('AudioContext' in window) game.audio.build();
         game.states.changeTo(state, recover);
       } else game.states.changeTo('log');

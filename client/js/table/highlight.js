@@ -15,15 +15,16 @@ game.highlight = {
       linearStroke: game.highlight.linearStroke,
     });
   },
-  map: function(event) {
+  map: function(event) { 
     game.highlight.clearMap();
-    var card = game.selectedCard;  
-    if (game.selectedCard) {
-      if (card.hasClasses('heroes units') && !card.hasClass('nohighlight') && !game.lockHighlight) {
+    var card = game.selectedCard;
+    if (game.selectedCard && !card.hasClass('nohighlight') && !game.lockHighlight) {
+      if (card.hasClasses('heroes units')) {
         if (game.mode == 'tutorial') {
-          if (game.tutorial.lesson == 'Move') {
+          if (game.tutorial.lesson !== 'Select' && game.tutorial.lesson !== 'Unselect' && game.tutorial.lesson !== 'Creep') {
             card.highlightMove();
-          } else if (game.tutorial.lesson == 'Attack') {
+          }
+          if (game.tutorial.lesson !== 'Select' && game.tutorial.lesson !== 'Unselect' && game.tutorial.lesson !== 'Creep' && game.tutorial.lesson !== 'Move') {
             card.highlightAttack();
           }
         } else {

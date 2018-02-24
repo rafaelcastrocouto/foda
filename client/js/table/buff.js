@@ -15,6 +15,7 @@ game.buff = {
     if (!target.hasClass('towers') && !target.hasClass('cycloned')) {
       var stun = skill.data('stun');
       target.stopChanneling();
+      target.removeInvisibility();
       target.removeClass('can-attack');
       if (bonus) stun += bonus;
       if (target.hasClass('stunned')) {

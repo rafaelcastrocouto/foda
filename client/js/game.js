@@ -10,7 +10,7 @@ var game = {
   waitLimit: 5,
   connectionLimit: 30,
   dayLength: 12,
-  deadLength: 4,
+  deadLength: 3,
   ultTurn: 4,
   maxSkillCards: 10,
   creepTurn: 1,

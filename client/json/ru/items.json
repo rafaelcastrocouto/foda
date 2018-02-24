@@ -459,6 +459,7 @@
       "name": "убийца",
       "attribute": "потребляемый",
       "targets": "враг",
+      "damage type": "Физический",
       "description": "Оглушает врага"
     },
     "radiance": {

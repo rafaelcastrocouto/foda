@@ -1053,7 +1053,8 @@
       },
       "basher": {
         "price": 450,
-        "stun": 2
+        "stun": 2,
+        "damage": 10
       },
       "radiance": {
         "price": 500,

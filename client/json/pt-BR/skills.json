@@ -466,7 +466,7 @@
       "deck": "Comprar",
       "targets": ["Próprio"],
       "damage type": "Físico",
-      "description": "Nyx Assassin fica invisível, mais rápido e o dano do seu próximo ataque é aumentado",
+      "description": "Fica invisível, mais rápido e o dano do seu próximo ataque é aumentado",
       "buff": {
         "description": "Invisível e com bonus de ataque e velocidade"
       }

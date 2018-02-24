@@ -567,16 +567,16 @@ game.card = {
         if (evt.target.side() != evt.source.side()) 
           evt.source.damage(damage, game[side].tower, game.data.ui.pure);
         var duration = game.deadLength;
-        if (game.mode === 'library') duration = 0;
-        dead.data('reborn', game.time + duration);
-        game[side].tower.selfBuff({
+        if (game.mode === 'library') duration = 1;
+        var buff = game[side].tower.selfBuff({
           buffId: dead.data('hero')+'-death',
           className: dead.data('hero') + ' heroes ' + dead.data('hero')+'-death',
           name: dead.data('name'),
           description: game.data.ui.death,
           temp: true,
-          duration: duration + 1
+          duration: duration
         }, false /*no extra buffs*/, true /*force tower buff*/);
+        buff.on('expire', game.card.reborn.bind(dead));
         deaths = dead.data('deaths') + 1;
         dead.data('deaths', deaths);
         dead.find('.deaths').text(deaths);
@@ -621,10 +621,10 @@ game.card = {
     return dead;
   },
   reborn: function(spot) {
-    if (spot && spot.hasClass)
-      spot = spot[0].id;
     var hp = this.data('hp'), x, y;
-    if (!spot) {
+    if (spot && spot.hasClass) {
+      spot = spot[0].id;
+    } else {
       if (this.hasClass('player')) {
         x = 3;
         y = 6;
@@ -649,7 +649,6 @@ game.card = {
       var side = this.side();
       if (game[side].tower.data('current hp') > game.heroRespawnDamage && !p.hasClass('cript'))
         game[game.opponent(side)].tower.damage(game.heroRespawnDamage, game[side].tower, game.data.ui.pure);
-      this.data('reborn', null);
       this.setCurrentHp(hp);
       this.removeClass('dead');
       this.place(spot);

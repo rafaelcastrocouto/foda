@@ -8,7 +8,8 @@
   transition: transform 0.2s;
   transform: translate(-50%, 100%) rotateX(16deg) scale(0.95);
   transform-style: preserve-3d;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.75);
+  box-shadow: inset 0 10px 0 16px rgba(10,40,50,0.3);
 }
 .camera .shop.show {
   transform: translate(-50%, 10%) rotateX(16deg) scale(0.95);
@@ -24,6 +25,7 @@
   padding: 32px 0 0 20px;
   transform: rotateX(-16deg);
   transform-style: preserve-3d;
+  box-shadow: 6px 55px 0 -6px rgba(0,0,0,0.2), 6px 70px 0 -6px rgba(10,28,30,0.3), 6px 72px 0 -6px rgba(255,255,255,0.04);
 }
 
 .table .items.deck .card {
@@ -327,11 +329,12 @@
   background-image: url("../img/skills/ethereal.jpg");
 }
 
-.card.sheep fieldset .portrait .img {
+.table .card.sheep fieldset .portrait .img {
   background-image: url("../img/items/sheep.jpg");
 }
 
-.map .card.sheep fieldset .portrait .img,
-.fromMap.card.sheep fieldset .portrait .img {
+.table .map .card.sheep fieldset .portrait .img,
+.table .fromMap.card.sheep fieldset .portrait .img {
   background-position: 45% 50%;
+  background-size: cover;
 }

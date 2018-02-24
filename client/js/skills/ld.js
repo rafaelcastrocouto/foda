@@ -93,7 +93,7 @@ game.skills.ld = {
       source.shake();
       game.fx.add('ld-rabid', source);
       var bear = source.data('bear');
-      if (bear && !bear.hasClass('cycloned')) {
+      if (bear && !bear.hasClasses('bkb cycloned')) {
         source.addBuff(bear, skill);
         game.fx.add('ld-rabid', bear);
         bear.shake();
@@ -143,6 +143,7 @@ game.skills.ld = {
           var upSpot = game.map.getSpot(x, y + ny);
           if (upSpot && upSpot.hasClass('free')) {
             target.stopChanneling();
+            target.removeInvisibility();
             target.move(upSpot);
             target.parent().addClass('free');
             target.shake();
@@ -186,7 +187,7 @@ game.skills.ld = {
       source.shake();
       game.fx.add('ld-cry', source);
       var bear = source.data('bear');
-      if (bear) {
+      if (bear && !bear.hasClasses('bkb cycloned')) {
         source.addBuff(bear, skill);
         game.fx.add('ld-cry', bear);
         bear.shake();

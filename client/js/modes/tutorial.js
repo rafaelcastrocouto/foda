@@ -211,6 +211,7 @@ game.tutorial = {
     game.tutorial.letter(game.data.ui.axeendturn);
   },
   skip: function () {
+    $('.map .player.card').removeClass('can-move');
     game.states.table.el.removeClass('turn');
     game.currentTurnSide = 'enemy';
     game.turn.time.text(game.data.ui.time + ': 1:30 ' + game.data.ui.night);
@@ -311,6 +312,7 @@ game.tutorial = {
     game.audio.play('tutorial/axeattack');
     $('.map .player.heroes, .map .player.units').on('attack.tutorial', function () {
       game.card.unselect();
+      $('.map .player.heroes, .map .player.units').off('attack.tutorial');
       game.timeout(100, game.tutorial.passiveLesson);
     });
   },

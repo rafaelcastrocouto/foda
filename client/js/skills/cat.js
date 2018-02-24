@@ -16,7 +16,7 @@ game.skills.cat = {
           game.fx.add('cat-arrow-impact', source, arrowTarget);
           game.audio.play('cat/arrowhit');
           arrowTarget.shake();
-          if (!target.hasClass('bkb')) source.addStun(arrowTarget, skill, (distance * stunBonus));
+          if (!arrowTarget.hasClass('bkb')) source.addStun(arrowTarget, skill, (distance * stunBonus));
           source.damage(damage + (distance * damageBonus), arrowTarget, skill.data('damage type'));
         });
       } else {
@@ -39,7 +39,7 @@ game.skills.cat = {
       var range = skill.data('cast range'), targets = [];
       if (source.data('skill range bonus')) range += source.data('skill range bonus');
       source.opponentsInRange(range, function (target) {
-        if (!target.hasClass('cycloned')) {
+        if (!target.hasClasses('cycloned invisible')) {
           game.fx.add('cat-star', source, target, 'random');
           game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
           targets.push(target);
