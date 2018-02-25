@@ -35,6 +35,13 @@ game.states.loading = {
       game.states.loading.finished();
     }
   },
+  preloadimgs: [
+    'bkg/sky.png',
+    'bkg/mountains.png',
+    'bkg/icons.png',
+    'bkg/bush.png',
+    'bkg/dolls.png'
+  ],
   finished: function () {
     game.options.build();
     game.container.append(game.topbar);
@@ -43,6 +50,9 @@ game.states.loading = {
       $('<img>').attr('src', '/img/bkg/ground.png').on('load', function () {
         game.states.menu.ground.addClass('loaded');
       }).appendTo(game.hidden);
+      $.each(game.states.loading.preloadimgs, function () {
+        $('<img>').attr('src', '/img/'+this).appendTo(game.hidden);
+      });
       game.timeout(400, game.history.recover);
     });
   },
