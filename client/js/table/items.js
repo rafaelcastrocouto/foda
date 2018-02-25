@@ -67,7 +67,7 @@ game.items = {
     game.items.shopEnabled = false;
     game.items.shopOpen = false;
     game.items.sellMode = false;
-    game.states.table.shop.text(game.data.ui.discard);
+    game.states.table.shop.text(game.data.ui.discard).attr('disabled', true);
     if (game.selectedCard && game.selectedCard.hasAllClasses('items buy')) game.card.unselect();
     if (game.items.shop) game.items.shop.removeClass('show');
   },

@@ -250,6 +250,7 @@ game.tutorial = {
   },
   hideShop: function () {
     if ($('.player .sidehand .card.items').length) {
+      game.items.disableShop();
       game.states.table.shop.removeClass('blink');
       game.timeout(1000, game.tutorial.enemyMove);
     }
