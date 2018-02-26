@@ -292,7 +292,7 @@ game.tutorial = {
     game.card.unselect();
     $('.table .card.items.sheepstick').addClass('blink').on('cast.tutorial', game.tutorial.itemCast);
     game.tutorial.axebaloon.fadeIn('slow');
-    game.tutorial.letter(game.data.ui.axeUseItem);
+    game.tutorial.letter(game.data.ui.axeuseitem);
   },
   itemCast: function () {
     $('.table .card.items.sheepstick').off('cast.tutorial');

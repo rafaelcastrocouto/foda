@@ -51,6 +51,8 @@
   "axeend": "Ah! Bom trabalho, agora vá encarar uma <br><b class='battle'>batalha</b>",
   "axecreep": "<b>Selecione</b> uma unidade ou creep no canto esquerdo. Todas as cartas que não precisam de mana ficam na mão esquerda",
   "axesummoncreep": "Clique na seta verde para <b>invocar</b>, a torre perde 1 de HP quando um creep morre",
+  "axeshop": "Enquanto isso, vamos comprar alguns itens. Clique no <b>Shop</b>",
+  "axeuseitem": "Clique no item, depois em uma <b>seta azul</b> para usar o item",
   "completedtutorial": "completou o tutorial",
   "online": "Jogo online",
   "local": "Local",
