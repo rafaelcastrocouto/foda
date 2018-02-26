@@ -671,7 +671,7 @@ game.items = {
     basher: {
       cast: function (skill, target) {
         var side = skill.side();
-        source.damage(skill.data('damage'), target, skill.data('damage type'));
+        game[side].tower.damage(skill.data('damage'), target, skill.data('damage type'));
         game[side].tower.addStun(target, skill);
       }
     },

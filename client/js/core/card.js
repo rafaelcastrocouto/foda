@@ -367,7 +367,7 @@ game.card = {
   },
   canAttack: function(force) {
     if (this.data('current hp') <= 0) return false;
-    var c = !this.hasClasses('dead stunned disarmed disabled ethereal');
+    var c = !this.hasClasses('dead stunned disarmed disabled ethereal cycloned');
     if (!force) return (this.hasClass('can-attack') && c);
     else return c;
   },

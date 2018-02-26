@@ -23,7 +23,7 @@ game.history = {
       game.player.name = name;
       if (state == 'result')  mode = false;
       if ((game.debug) || (state == 'choose' && mode == 'library')){
-        game.history.jumpTo(state, recovering);
+        game.history.jumpMode(state, recovering);
       } else if (state == 'log' || state == 'loading') {
         game.history.jumpTo('log', recovering);
       } else {
@@ -31,7 +31,7 @@ game.history = {
       }
     }
   },
-  jumpMode: function (mode, state, recover) {
+  jumpMode: function (mode, state, recovering) {
     if (mode) {
       var picks = game.getData(game.player.type+'Deck');
       if (picks) game.player.picks = picks.split('|');
@@ -40,7 +40,7 @@ game.history = {
       game.recovering = true;
       game.setMode(mode, recovering);
       game.setId(game.currentData.id);
-      game.history.jumpTo(state, recover);
+      game.history.jumpTo(state, recovering);
     }
   },
   jumpTo: function (state, recover) {

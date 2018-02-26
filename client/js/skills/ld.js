@@ -134,7 +134,7 @@ game.skills.ld = {
     scare: function (source, spot) {
       var opponent = source.opponent();
       var target = spot.find('.card.' + opponent);
-      if (spot && target.length && !target.hasClasses('ghost bkb cycloned')) {
+      if (spot && target.length && !target.hasClasses('ghost bkb cycloned rooted stunned disabled')) {
         // console.log(target)
         var x = game.map.getX(spot),
             y = game.map.getY(spot);
