@@ -3,13 +3,13 @@
     "faerie": {
       "name": "peri",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "description": "Temel şifa. Anında hedef birimi iyileştirir"
     },
     "tango": {
       "name": "Tango",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar", "Ağaç"],
       "description": "Birimi zamanla iyileştirir. Bir ağacı yok etmek için kullanılabilir",
       "buff": {
         "description": "Zamanla iyileşme"
@@ -18,7 +18,7 @@
     "vitality": {
       "name": "Canlılık arttırıcı",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "description": "Hedef kahraman fazladan HP kazanır",
       "buff": {
         "description": "Bonus HP"
@@ -27,13 +27,13 @@
     "meka": {
       "name": "Meka",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "description": "Tüm oyuncu birimlerini iyileştirir"
     },
     "heart": {
       "name": "Tarrasque Kalbi",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Her dönüşte hedefi iyileştirir",
       "buff": {
         "description": "Her dönüşte iyileşir"
@@ -44,7 +44,7 @@
     "clarity": {
       "name": "berraklık",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Geçici olarak bir kahraman ekstra beceri kartı satın alıyor. Kahramana saldırı yapılırsa etki kaybedilir",
       "buff": {
         "description": "Oyuncu bu kahramandan bir ekstra beceri kartı alıyor. Saldırıya uğradığında etki kaybıdır"
@@ -53,13 +53,13 @@
     "soul": {
       "name": "Ruh yüzüğü",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Kartları bir hedef kahraman alır, ancak hedefe zarar verir. Öldüremezsin"
     },
     "void": {
       "name": "Void Stone",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Oyuncu, dönüş başına bir ilave beceri kartı satın alıyor",
       "buff": {
         "description": "Oyuncu bu kahramandan bir ekstra beceri kartı satın alıyor"
@@ -68,13 +68,13 @@
     "diffusal": {
       "name": "Yaygın Bıçak",
       "attribute": "tüketilir",
-      "targets": "Düşman",
+      "targets": ["Düşman", "Kahramanlar"],
       "description": "Düşman hedef kahramanından sağ el becerisini atar."
     },
     "refresher": {
       "name": "Tazeleme Orb",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Oyuncu hedef kahramanından beceri kartları satın alıyor"
     }
   },
@@ -82,7 +82,7 @@
     "ring": {
       "name": "Koruma Yüzüğü",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Zırhını arttırır",
       "buff": {
         "description": "Arttırılmış zırh"
@@ -91,7 +91,7 @@
     "buckler": {
       "name": "kalkan",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "description": "Geçici olarak tüm birimleri zırh artırır",
       "buff": {
         "description": "Arttırılmış zırh"
@@ -100,7 +100,7 @@
     "medallion": {
       "name": "Cesaret Madalyonu",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "description": "Geçici olarak hedef zırhını arttırır",
       "buff": {
         "description": "Arttırılmış zırh"
@@ -109,7 +109,7 @@
     "talisman": {
       "name": "Kaçak Tılsımı",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Hibe kaçırma",
       "buff": {
         "description": "kaçırma"
@@ -118,7 +118,7 @@
     "blademail": {
       "name": "Blade Mail",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Kahraman hedefli tüm hasarları geçici olarak geri getirir",
       "buff": {
         "description": "Tüm hedef hasarı geri gönder"
@@ -129,7 +129,7 @@
     "quelling": {
       "name": "Bıçak Bıçağı",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Birimlere karşı hasar artar. Hedef ağaçları yok edebilir",
       "buff": {
         "description": "Hasar artışı. Ağaçları yok edebilir miyim"
@@ -138,7 +138,7 @@
     "broadsword": {
       "name": "pala",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Bir hedef kahramanın hasarını arttırır",
       "buff": {
         "description": "Hasar artışı"
@@ -147,7 +147,7 @@
     "madness": {
       "name": "Çılgınlığın Maskesi",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Geçici olarak hasarı arttırır, ancak zırh ve direnci azaltır",
       "buff": {
         "description": "Artan hasar, azaltılmış zırh ve direnç"
@@ -156,7 +156,7 @@
     "crystalys": {
       "name": "Crystalys",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Kritik hasar alma şansı",
       "buff": {
         "description": "Kritik vuruş"
@@ -165,7 +165,7 @@
     "echo": {
       "name": "Echo Sabre",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Aynı hedefin iki katı saldırı",
       "buff": {
         "description": "Çift atak"
@@ -176,7 +176,7 @@
     "cloak": {
       "name": "Pelerin",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Sihirli direnci arttırır",
       "buff": {
         "description": "Artan sihirli direnç"
@@ -185,7 +185,7 @@
     "pipe": {
       "name": "Insight'ın Borusu",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "description": "Geçici olarak bütün birimleri arttırır sihirli direnç",
       "buff": {
         "description": "Artan sihirli direnç"
@@ -194,7 +194,7 @@
     "linken": {
       "name": "Linken Sphere",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Kahraman hedefleyen bir sonraki skill'i bloke eder",
       "buff": {
         "description": "Bir hedef skill'i bloke eder"
@@ -203,7 +203,7 @@
     "lotus": {
       "name": "Lotus Orb",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Geçici olarak kahraman hedefli becerilerin tüm etkilerini yansıtır",
       "buff": {
         "description": "Hedef becerileri yansıtır"
@@ -212,7 +212,7 @@
     "bkb": {
       "name": "Black King Bar",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Büyülü bağışıklık kazandırır. Kahraman becerileri tarafından hedef alınamaz ve sihirli bir zarar görmez",
       "buff": {
         "description": "Sihirli bağışıklık, beceriler tarafından hedef alınamaz ve hiçbir sihirli hasar alınmaz"
@@ -223,14 +223,14 @@
     "dust": {
       "name": "Görünüm Tozu",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "aoe": "Radyal",
       "description": "Görünmez birimleri açığa vuruyor"
     },
     "glimmer": {
       "name": "Glimmer Cape",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "description": "Görünmezliği sağlıyor",
       "buff": {
         "description": "Görünmez"
@@ -239,7 +239,7 @@
     "ethereal": {
       "name": "Ethereal Blade",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Düşman"],
       "description": "Saldırı dokunulmazlığına izin verir, ancak direnci de etkisiz hale getirir ve azaltır.",
       "buff": {
         "description": "Saldırılara karşı bağışıklık, silahsızlanma ve sihirli direnci azaltma"
@@ -248,7 +248,7 @@
     "sheepstick": {
       "name": "Koyun Çubuğu",
       "attribute": "tüketilir",
-      "targets": "Düşman",
+      "targets": ["Düşman"],
       "description": "Hedefi koyun haline getirir. Sessizlikler, yavaşlar ve silahsızlandırır",
       "buff": {
         "description": "Susturuldu, susturuldu ve silahsızlandırıldı. Baaahhh"
@@ -257,7 +257,7 @@
     "kaya": {
       "name": "Kaya",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Hedef beceri hasarını arttırır",
       "buff": {
         "description": "Artan beceri hasarı"
@@ -268,7 +268,7 @@
     "windlace": {
       "name": "Rüzgar Dantel",
       "attribute": "Consumable",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Geçici olarak hedef hareket hızını arttırır",
       "buff": {
         "description": "Artan hız"
@@ -277,7 +277,7 @@
     "boots": {
       "name": "Hızlı Boots",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Hedef hareket hızını arttırır",
       "buff": {
         "description": "Artan hız"
@@ -286,7 +286,7 @@
     "drums": {
       "name": "Dayanıklılık Silindirleri",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik"],
       "description": "Tüm unis hareket hızını geçici olarak arttırır",
       "buff": {
         "description": "Artan hız"
@@ -295,7 +295,7 @@
     "skadi": {
       "name": "Skadi",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Atak hedef hızını azaltır",
       "buffs": {
         "skadi": {
@@ -311,7 +311,7 @@
     "phase": {
       "name": "Aşama Botları",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Hedef hareket hızını ve hibeler fazını artırır",
       "buff": {
         "description": "Arttırılmış hız ve birimler aracılığıyla mümkün"
@@ -322,7 +322,7 @@
     "tp": {
       "name": "Şehir Portalı",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Kanal, çeşmeye veya kulenin etrafında rastgele bir noktaya teleport yapabilir",
       "buff": {
         "description": "Eve ışınlama"
@@ -331,7 +331,7 @@
     "rod": {
       "name": "Atos çubuğu",
       "attribute": "tüketilir",
-      "targets": ["Enemy"],
+      "targets": ["Düşman"],
       "description": "Yerdeki bir hedefi köklendirme",
       "buff": {
         "description": "Köklü"
@@ -340,14 +340,14 @@
     "blinkdagger": {
       "name": "Göz Kırpması Hançeri",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "secondary targets": "Yer",
       "description": "Bir hedef noktaya ışınlanma"
     },
     "lens": {
       "name": "Aether Lens",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Hedef beceri aralığını arttırır",
       "buff": {
         "description": "Artan beceri aralığı"
@@ -356,7 +356,7 @@
     "dragon": {
       "name": "Dragon Bow",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Hedef saldırı aralığını arttırır",
       "buff": {
         "description": "Artan saldırı mesafesi"
@@ -367,7 +367,7 @@
     "eul": {
       "name": "Eul Sceptre",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Düşman"],
       "description": "Hedefi koruyan hedef yerde bir siklon atın. Hedef, müttefik olursa tasfiye edilir ya da düşmana zarar verirse düşman olur.",
       "buff": {
         "description": "Siklon koruma hedefi"
@@ -376,7 +376,7 @@
     "morbid": {
       "name": "Morbid Mask",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Saldırıya hayat verir. Her saldırıda hasarın bir yüzdesi iyileşir",
       "buff": {
         "description": "Her saldırıda hayat sürme"
@@ -385,7 +385,7 @@
     "halberd": {
       "name": "Cennet Halberd",
       "attribute": "tüketilir",
-      "targets": "Düşman",
+      "targets": ["Düşman"],
       "description": "Hedef birim silahsızlandırılarak silahsızlandırır.",
       "buff": {
         "description": "Silahsız, saldırı yapamıyor."
@@ -394,7 +394,7 @@
     "shivas": {
       "name": "Shivas Muhafızı",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "aoe": "Radyal",
       "damage type": "Büyülü",
       "description": "Hasar ve bölgedeki yavaş birimler",
@@ -405,7 +405,7 @@
     "meteor": {
       "name": "Meteor Hammer",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "secondary targets": "Yer",
       "aoe": "Radyal",
       "description": "Etki alanı hasar ve şok ve zamanla hasar uygulayınız.",
@@ -419,7 +419,7 @@
     "vennon": {
       "name": "Vennon",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Zehirli saldırı Saldırıya zamanla hasar uyguluyor",
       "buffs": {
         "vennon": {
@@ -436,7 +436,7 @@
     "desolator": {
       "name": "Desolator",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Saldırı hedefinin zırhını azaltır",
       "buffs": {
         "desolator": {
@@ -452,20 +452,20 @@
     "manta": {
       "name": "Manta Stili",
       "attribute": "tüketilir",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Hedefin 2 yanılsaması yaratır. İllüzyonların yarısı hasar görür ve hasar üzerine tahrip edilir"
     },
     "basher": {
       "name": "Basher",
       "attribute": "tüketilir",
-      "targets": "Düşman",
+      "targets": ["Düşman"],
       "damage type": "Fiziksel",
       "description": "Hedef düşmanı düşürür"
     },
     "radiance": {
       "name": "ışıma",
       "attribute": "devetüyü rengi",
-      "targets": "Müttefik",
+      "targets": ["Müttefik", "Kahramanlar"],
       "description": "Her turda hedefin çevresindeki tüm düşmanlara verilen hasar",
       "buff": {
         "description": "Her turdaki hasar çevresindeki tüm düşmanlara",

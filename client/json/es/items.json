@@ -3,13 +3,13 @@
     "faerie": {
       "name": "Faerie",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "Curación básica. Instantáneo cura una unidad objetivo"
     },
     "tango": {
       "name": "Tango",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes", "Árbol"],
       "description": "Cura una unidad a lo largo del tiempo. Se puede usar para destruir un árbol",
       "buff": {
         "description": "Curación en el tiempo"
@@ -18,7 +18,7 @@
     "vitality": {
       "name": "Vitality Booster",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "El héroe objetivo gana HP extra",
       "buff": {
         "description": "Bonificación HP"
@@ -27,13 +27,13 @@
     "meka": {
       "name": "Meka",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "Cura todas las unidades de jugador"
     },
     "heart": {
       "name": "Corazón de Tarrasque",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Cura objetivo cada turno",
       "buff": {
         "description": "Cura cada turno"
@@ -44,7 +44,7 @@
     "clarity": {
       "name": "Claridad",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Temporalmente compra una carta de habilidad extra del héroe. El efecto es la pérdida si el héroe es atacado",
       "buff": {
         "description": "El jugador compra una carta de habilidad extra de este héroe. Efecto es pérdida si es atacado"
@@ -53,13 +53,13 @@
     "soul": {
       "name": "Anillo del alma",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Compra cartas de un héroe objetivo, pero daña al objetivo. No se puede matar"
     },
     "void": {
       "name": "Void Stone",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "El jugador compra una carta de habilidad extra por turno",
       "buff": {
         "description": "El jugador compra una carta de habilidad adicional de este héroe"
@@ -68,13 +68,13 @@
     "diffusal": {
       "name": "Hoja difusa",
       "attribute": "Consumible",
-      "targets": "Enemigo",
+      "targets": ["Enemigo", "Héroes"],
       "description": "Enemigo descarta toda la habilidad de la mano derecha del héroe objetivo"
     },
     "refresher": {
       "name": "Orbe de actualización",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "El jugador compra cartas de habilidad del héroe objetivo"
     }
   },
@@ -82,7 +82,7 @@
     "ring": {
       "name": "Anillo de protección",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta la armadura objetivo",
       "buff": {
         "description": "Mayor armadura"
@@ -91,7 +91,7 @@
     "buckler": {
       "name": "Escudo",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "Aumenta temporalmente todas las unidades de armadura",
       "buff": {
         "description": "Mayor armadura"
@@ -100,7 +100,7 @@
     "medallion": {
       "name": "Medallón de coraje",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "Aumenta temporalmente la armadura objetivo",
       "buff": {
         "description": "Mayor armadura"
@@ -109,7 +109,7 @@
     "talisman": {
       "name": "Talismán de la evasión",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Gran evasión",
       "buff": {
         "description": "Evasión"
@@ -118,7 +118,7 @@
     "blademail": {
       "name": "Correo de la hoja",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Devuelve temporalmente todo el daño dirigido al héroe",
       "buff": {
         "description": "Devuelve todos los daños del objetivo"
@@ -129,7 +129,7 @@
     "quelling": {
       "name": "Quelling Blade",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta el daño contra las unidades. El objetivo puede destruir árboles",
       "buff": {
         "description": "Daño aumentado. Puede destruir árboles"
@@ -138,7 +138,7 @@
     "broadsword": {
       "name": "Sable",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta el daño de un héroe objetivo",
       "buff": {
         "description": "Daño aumentado"
@@ -147,7 +147,7 @@
     "madness": {
       "name": "Máscara de la locura",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta temporalmente el daño pero reduce la armadura y la resistencia",
       "buff": {
         "description": "Mayor daño, armadura reducida y resistencia"
@@ -156,7 +156,7 @@
     "crystalys": {
       "name": "Crystalys",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Posibilidad de atacar el daño crítico",
       "buff": {
         "description": "Golpe crítico"
@@ -165,7 +165,7 @@
     "echo": {
       "name": "Echo Sabre",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Ataca dos veces el mismo objetivo",
       "buff": {
         "description": "Doble ataque"
@@ -176,7 +176,7 @@
     "cloak": {
       "name": "Capa",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta la resistencia mágica",
       "buff": {
         "description": "Aumento de la resistencia a la magia"
@@ -185,7 +185,7 @@
     "pipe": {
       "name": "Pipe of Insight",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "Aumenta temporalmente todas las unidades de resistencia a la magia",
       "buff": {
         "description": "Aumento de la resistencia a la magia"
@@ -194,7 +194,7 @@
     "linken": {
       "name": "Esfera Linken",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Bloquea la siguiente habilidad dirigida al héroe",
       "buff": {
         "description": "Bloquea una habilidad objetivo"
@@ -203,7 +203,7 @@
     "lotus": {
       "name": "Lotus Orb",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Refleja temporalmente todos los efectos de las habilidades dirigidas al héroe",
       "buff": {
         "description": "Refleja las habilidades objetivo"
@@ -212,7 +212,7 @@
     "bkb": {
       "name": "Black King Bar",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Otorga inmunidad mágica. El héroe no puede ser objetivo de habilidades y no recibe daño mágico",
       "buff": {
         "description": "Magia inmune, no puede ser objetivo de habilidades y no recibe daño mágico"
@@ -223,14 +223,14 @@
     "dust": {
       "name": "Polvo de apariencia",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "aoe": "Radial",
       "description": "Revela unidades invisibles"
     },
     "glimmer": {
       "name": "Cabo Glimmer",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "Otorga invisibilidad",
       "buff": {
         "description": "Invisible"
@@ -239,7 +239,7 @@
     "ethereal": {
       "name": "Cuchilla etérea",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Enemigo"],
       "description": "Otorga inmunidad a los ataques, pero se desarma y reduce la resistencia",
       "buff": {
         "description": "Inmune a los ataques, desarmado y reducido a la resistencia a la magia"
@@ -248,7 +248,7 @@
     "sheepstick": {
       "name": "Sheep Stick",
       "attribute": "Consumible",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Convierte el objetivo en una oveja. Silencios, ralentiza y desarma",
       "buff": {
         "description": "Silenciado, silenciado y desarmado. Baaahhh"
@@ -257,7 +257,7 @@
     "kaya": {
       "name": "Kaya",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta el daño de habilidad objetivo",
       "buff": {
         "description": "Aumento del daño de habilidad"
@@ -268,7 +268,7 @@
     "windlace": {
       "name": "Cordón de viento",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta temporalmente la velocidad de movimiento del objetivo",
       "buff": {
         "description": "Mayor velocidad"
@@ -277,7 +277,7 @@
     "boots": {
       "name": "Botas de velocidad",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta la velocidad de movimiento del objetivo",
       "buff": {
         "description": "Mayor velocidad"
@@ -286,7 +286,7 @@
     "drums": {
       "name": "Tambores de resistencia",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "Aumenta temporalmente toda la velocidad de movimiento de unis",
       "buff": {
         "description": "Mayor velocidad"
@@ -295,7 +295,7 @@
     "skadi": {
       "name": "Skadi",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Reduce la velocidad objetivo en ataque",
       "buffs": {
         "skadi": {
@@ -311,7 +311,7 @@
     "phase": {
       "name": "Botas de fase",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta la velocidad de movimiento del objetivo y la fase de concesión",
       "buff": {
         "description": "Aumento de velocidad y capacidad de pasar unidades"
@@ -322,7 +322,7 @@
     "tp": {
       "name": "Portal de la ciudad",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Canal de teletransporte a la fuente o a un lugar al azar alrededor de la torre",
       "buff": {
         "description": "Teletransportarse a casa"
@@ -331,7 +331,7 @@
     "rod": {
       "name": "Rod de Atos",
       "attribute": "Consumible",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Rootear un objetivo en su lugar",
       "buff": {
         "description": "Arraigado"
@@ -340,14 +340,14 @@
     "blinkdagger": {
       "name": "Blink Dagger",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "secondary targets": "Lugar",
       "description": "Teletransportarse a un punto objetivo"
     },
     "lens": {
       "name": "Lente Aether",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta el rango de habilidades objetivo",
       "buff": {
         "description": "Mayor rango de habilidades"
@@ -356,7 +356,7 @@
     "dragon": {
       "name": "Dragon Bow",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Aumenta el rango de ataque objetivo",
       "buff": {
         "description": "Mayor rango de ataque"
@@ -367,7 +367,7 @@
     "eul": {
       "name": "Eul Scepter",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Enemigo"],
       "description": "Lanza un ciclón en la ubicación objetivo que protege el objetivo. El objetivo se purga si está aliado o dañado en la caída si el enemigo",
       "buff": {
         "description": "El ciclón está protegiendo el objetivo"
@@ -376,7 +376,7 @@
     "morbid": {
       "name": "Máscara morbosa",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Las subvenciones atacan a Lifesteal. Cada ataque se curará en un porcentaje del daño",
       "buff": {
         "description": "Drene la vida en cada ataque"
@@ -385,7 +385,7 @@
     "halberd": {
       "name": "Cielo Halberd",
       "attribute": "Consumible",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Desarma la unidad objetivo dejándola incapaz de atacar",
       "buff": {
         "description": "Desarmado, incapaz de atacar."
@@ -394,7 +394,7 @@
     "shivas": {
       "name": "Shivas Guard",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Daños y unidades lentas en el área",
@@ -405,7 +405,7 @@
     "meteor": {
       "name": "Martillo de meteorito",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "secondary targets": "Lugar",
       "aoe": "Radial",
       "description": "Daño y aturdimiento en el área de efecto y aplicar daño a lo largo del tiempo",
@@ -419,7 +419,7 @@
     "vennon": {
       "name": "Vennon",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Ataque de veneno Aplica daño con el tiempo en ataque",
       "buffs": {
         "vennon": {
@@ -436,7 +436,7 @@
     "desolator": {
       "name": "Desolator",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Reduce la armadura del objetivo de ataque",
       "buffs": {
         "desolator": {
@@ -452,20 +452,20 @@
     "manta": {
       "name": "Manta Style",
       "attribute": "Consumible",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Crea 2 ilusiones del objetivo. Las ilusiones tienen medio daño y se destruyen por daño"
     },
     "basher": {
       "name": "Basher",
       "attribute": "Consumible",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "damage type": "Físico",
       "description": "Aturde al enemigo objetivo"
     },
     "radiance": {
       "name": "Resplandor",
       "attribute": "Pulir",
-      "targets": "Aliado",
+      "targets": ["Aliado", "Héroes"],
       "description": "Daño por turno a todos los enemigos alrededor del objetivo",
       "buff": {
         "description": "Daño por turno a todos los enemigos alrededor",

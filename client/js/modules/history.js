@@ -21,10 +21,6 @@ game.history = {
       game.states.log.out.show();
       game.rank.start();
       game.player.name = name;
-      if (state !== 'log') {
-        game.bkgdeck.create();
-        game.chat.build();
-      }
       if (state == 'result')  mode = false;
       if ((game.debug) || (state == 'choose' && mode == 'library')){
         game.history.jumpTo(state, recovering);
@@ -52,6 +48,8 @@ game.history = {
     if (state == 'log') game.states.changeTo('log');
     else game.confirm(function (confirmed) {
       if (confirmed) {
+        game.bkgdeck.create();
+        game.chat.build();
         game.chat.set(game.data.ui.reconnected);
         if ('AudioContext' in window) game.audio.build();
         game.states.changeTo(state, recover);
