@@ -51,7 +51,7 @@ game.items = {
     if (game.items.shopOpen) game.states.table.shop.text(game.data.ui.close + money);
     else game.states.table.shop.text(game.data.ui.shop + money);
     $.each(game.itemsDeck.data('cards'), function(i, card) {
-      if (card.data('price') > game[side].money) card.addClass('expensive');
+      if (side && card.data('price') > game[side].money) card.addClass('expensive');
       else card.removeClass('expensive');
     });
     if (game.selectedCard && game.selectedCard.hasClass('buy')) game.selectedCard.reselect();
