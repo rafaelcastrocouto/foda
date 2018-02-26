@@ -43,62 +43,66 @@ game.buff = {
     if (!target.hasClass('cycloned') && (!target.hasClass('towers') || towerForce)) {
       // get buff data
       var data = skill;
-      if (buffs) {
+      if (buffs && typeof(buffs) == 'string') {
         var buffsId = buffs.split('-');
-        data = skill.data('buffs')[buffsId[0]][buffsId[1]];
+        if (skill.data && skill.data('buffs') && skill.data('buffs')[buffsId[0]]) {
+          data = skill.data('buffs')[buffsId[0]][buffsId[1]];
+        }
       } else if (skill.data && skill.data('buff')) {
         data = skill.data('buff');
       }
-      if (!data.buffId) data.buffId = buffs || data.skillId || skill.data('skillId');
-      if (!data.className) data.className = data.buffId;
-      if (!data.name) data.name = skill.data('name');
-      if (!data.source) data.source = this;
-      if (!data.skill) data.skill = skill;
-      if (!data.target) data.target = target;
-      if (!data.description) data.description = skill.data('description');
-      if (data.duration && !data.unpurgeable) {
-        data.className += ' purgeable ' + (source.side() || game.selectedCard.side());
-      }
-      if (skill.hasClass && skill.hasClass('items')) data.className += ' items '+skill.data('itemtype'); 
-      // remove duplicated buff
-      target.removeBuff(data.buffId);
-      // create new buff
-      var buff = $('<div>').addClass('buff ' + data.className).data('buff', data).attr({
-        title: data.name + ': ' + data.description
-      });
-      buff.data(data);
-      $('<div>').appendTo(buff).addClass('img');
-      $('<div>').appendTo(buff).addClass('overlay');
-      if (data.duration) {
-        buff.append($('<span>').text(data.duration));
-      }
-      // apply buff effects
-      if (!fxOff) {
-        if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
-          target.setHp(target.data('hp') + data['hp bonus']);
-          target.setCurrentHp(target.data('current hp') + data['hp bonus']);
+      if (data) {
+        if (!data.buffId) data.buffId = buffs || data.skillId || skill.data('skillId');
+        if (!data.className) data.className = data.buffId;
+        if (!data.name) data.name = skill.data('name');
+        if (!data.source) data.source = this;
+        if (!data.skill) data.skill = skill;
+        if (!data.target) data.target = target;
+        if (!data.description) data.description = skill.data('description');
+        if (data.duration && !data.unpurgeable) {
+          data.className += ' purgeable ' + (source.side() || game.selectedCard.side());
         }
-        if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
-          target.setDamage(target.data('current damage') + data['damage bonus']);
-        if (data['damage reduction'] && typeof (data['damage reduction']) == 'number')
-          target.setDamage(target.data('current damage') - data['damage reduction']);
-        if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
-          target.setArmor(target.data('current armor') + data['armor bonus']);
-        if (data['armor reduction'] && typeof (data['armor reduction']) == 'number')
-          target.setArmor(target.data('current armor') - data['armor reduction']);
-        if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
-          target.setResistance(target.data('current resistance') + data['resistance bonus']);
-        if (data['resistance reduction'] && typeof (data['resistance reduction']) == 'number')
-          target.setResistance(target.data('current resistance') - data['resistance reduction']);
-        if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
-          target.setSpeed(target.data('current speed') + data['speed bonus']);
-        if (data['speed slow'] && typeof (data['speed slow']) == 'number')
-          target.setSpeed(target.data('current speed') - data['speed slow']);
+        if (skill.hasClass && skill.hasClass('items')) data.className += ' items '+skill.data('itemtype'); 
+        // remove duplicated buff
+        target.removeBuff(data.buffId);
+        // create new buff
+        var buff = $('<div>').addClass('buff ' + data.className).data('buff', data).attr({
+          title: data.name + ': ' + data.description
+        });
+        buff.data(data);
+        $('<div>').appendTo(buff).addClass('img');
+        $('<div>').appendTo(buff).addClass('overlay');
+        if (data.duration) {
+          buff.append($('<span>').text(data.duration));
+        }
+        // apply buff effects
+        if (!fxOff) {
+          if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
+            target.setHp(target.data('hp') + data['hp bonus']);
+            target.setCurrentHp(target.data('current hp') + data['hp bonus']);
+          }
+          if (data['damage bonus'] && typeof (data['damage bonus']) == 'number')
+            target.setDamage(target.data('current damage') + data['damage bonus']);
+          if (data['damage reduction'] && typeof (data['damage reduction']) == 'number')
+            target.setDamage(target.data('current damage') - data['damage reduction']);
+          if (data['armor bonus'] && typeof (data['armor bonus']) == 'number')
+            target.setArmor(target.data('current armor') + data['armor bonus']);
+          if (data['armor reduction'] && typeof (data['armor reduction']) == 'number')
+            target.setArmor(target.data('current armor') - data['armor reduction']);
+          if (data['resistance bonus'] && typeof (data['resistance bonus']) == 'number')
+            target.setResistance(target.data('current resistance') + data['resistance bonus']);
+          if (data['resistance reduction'] && typeof (data['resistance reduction']) == 'number')
+            target.setResistance(target.data('current resistance') - data['resistance reduction']);
+          if (data['speed bonus'] && typeof (data['speed bonus']) == 'number')
+            target.setSpeed(target.data('current speed') + data['speed bonus']);
+          if (data['speed slow'] && typeof (data['speed slow']) == 'number')
+            target.setSpeed(target.data('current speed') - data['speed slow']);
+        }
+        // append buff
+        target.find('.buffs').append(buff);
+        target.reselect();
+        return buff;
       }
-      // append buff
-      target.find('.buffs').append(buff);
-      target.reselect();
-      return buff;
     }
   },
   hasBuff: function(buff) {

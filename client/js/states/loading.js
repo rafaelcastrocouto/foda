@@ -36,22 +36,26 @@ game.states.loading = {
     }
   },
   preloadimgs: [
+    'bkg/ground.png',
     'bkg/sky.png',
     'bkg/mountains.png',
     'bkg/icons.png',
     'bkg/bush.png',
     'bkg/dolls.png'
   ],
+  imgload: 0,
   finished: function () {
     game.options.build();
     game.container.append(game.topbar);
     game.states.build( function () {
       game.rank.build();
-      $('<img>').attr('src', '/img/bkg/ground.png').on('load', function () {
-        game.states.menu.ground.addClass('loaded');
-      }).appendTo(game.hidden);
       $.each(game.states.loading.preloadimgs, function () {
-        $('<img>').attr('src', '/img/'+this).appendTo(game.hidden);
+        $('<img>').attr('src', '/img/'+this).on('load', function () {
+          game.states.loading.imgload++;
+          if (game.states.loading.imgload == game.states.loading.preloadimgs.length) {
+            game.states.menu.el.addClass('loaded');
+          }
+        }).appendTo(game.hidden);
       });
       game.timeout(400, game.history.recover);
     });

@@ -18,7 +18,7 @@
   70% {background-color: #a238e6;}
   75% {background-color: #438bc5;}
 }
-.menu.cloud {
+.menu.loaded .cloud {
   animation: cloudwind 30s -5s linear infinite, cloudnight 60s -5s linear infinite;
   background-image: url("../img/bkg/sky.png");
   background-position: -870px 0;
@@ -107,9 +107,12 @@
   48%, 100% {
     transform: translate3d(-280px,150px,-250px) rotate(-45deg) translate(0px, 550px) scale(1.4);
   }
+  0% {opacity: 1;}
+  36% { opacity: 1; }
+  38%, 100% { opacity: 0; }
 }
 
-.menu.mountains {
+.menu.loaded .mountains {
   background-image: url("../img/bkg/mountains.png");
   transform: translateZ(-150px) scale(1.3);
   background-size: 970px 405px;
@@ -200,10 +203,10 @@
   }
 }
 
-.menu.ground.loaded {
+.menu.loaded .ground {
   background-image: url("../img/bkg/ground.png");
 }
-.menu.bush {
+.menu.loaded .bush {
   background-image: url("../img/bkg/bush.png");
   transform: scale(0.25) translate3d(-1070px,720px,140px);
   animation: night 60s infinite;

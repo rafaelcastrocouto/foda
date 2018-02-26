@@ -69,11 +69,11 @@ noscript {
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   color: #fff;
-  background-image: url("../img/banner.jpg");
   background-size: cover;
   background-position: 50%;
   background-color: #859890;
   overflow: hidden;
+  image-rendering: pixelated;
 }
 
 .game-container.campaign-state .states,
@@ -263,6 +263,7 @@ noscript .box a {
 .states {
   background-image: url(../img/banner.jpg);
   background-size: cover;
+  image-rendering: auto;
 }
 
 .states, .state {
