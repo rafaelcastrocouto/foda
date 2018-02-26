@@ -17,7 +17,10 @@ game.local = {
       game.loader.removeClass('loading');
       game.states.choose.pickedbox.show();
       game.states.choose.randombt.show();
-      game.states.choose.mydeck.show();
+      game.states.choose.mydeck.show().attr({disabled: true});
+      if (!sec && game.getData('mydeck')) game.states.choose.mydeck.attr({disabled: false});
+      if (sec && game.getData('mysecdeck')) game.states.choose.mydeck.attr({disabled: false});
+      if (game.getData('mydeck')) game.states.choose.mydeck.attr({disabled: false});
       game.states.choose.enablePick();
       game.states.choose.counter.show().text(game.data.ui.clickpick);
       $('.slot').addClass('available');
@@ -32,26 +35,26 @@ game.local = {
     if (!availableSlots) {
       if (!game.local.firstDeck) {
         game.loader.addClass('loading');
-        game.timeout(100, game.local.secondDeck);
+        game.timeout(100, game.local.secondDeck.bind(this, 'picked'));
       } else {
-        game.local.chooseEnd();
+        game.local.chooseEnd('picked');
       }
     }
   },
-  secondDeck: function () {
+  secondDeck: function (picked) {
     game.local.firstDeck = true;
-    game.states.choose.fillPicks('player');
+    game.states.choose.fillPicks('player', picked);
     game.setData(game.player.type + 'Deck', game.player.picks.join('|'));
     game.states.choose.clear();
     game.timeout(100, function () {
       game.local.chooseStart(false, true);
     });
   },
-  chooseEnd: function () {
+  chooseEnd: function (picked) {
     if (!game.local.firstDeck) {
       game.timeout(100, game.local.secondDeck);
     } else {
-      game.states.choose.fillPicks('enemy');
+      game.states.choose.fillPicks('enemy', picked);
       game.setData(game.enemy.type + 'Deck', game.enemy.picks.join('|'));
       game.timeout(100, function () {
         game.states.choose.clear();

@@ -295,7 +295,7 @@ game.tutorial = {
     game.tutorial.letter(game.data.ui.axeUseItem);
   },
   itemCast: function () {
-     $('.table .card.items.sheepstick').off('cast.tutorial');
+    $('.table .card.items.sheepstick').off('cast.tutorial');
     game.timeout(400, game.tutorial.attack);
   },
   attack: function () {

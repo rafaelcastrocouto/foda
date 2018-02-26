@@ -9,7 +9,8 @@ game.single = {
   },
   chooseStart: function (hero) {
     game.states.choose.randombt.show();
-    game.states.choose.mydeck.show();
+    game.states.choose.mydeck.attr({disabled: false}).show();
+    if (game.getData('mydeck')) game.states.choose.mydeck.attr({disabled: false});
     game.states.choose.enablePick();
     game.states.choose.counter.show().text(game.data.ui.clickpick);
   },

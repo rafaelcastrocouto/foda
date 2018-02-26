@@ -118,6 +118,7 @@ game.states.choose = {
       var deck = game.getData('mydeck');
       if (deck) deck = deck.split(',');
       if (deck && deck.length == 5) {
+        game.states.choose.randombt.attr('disabled', true);
         game.states.choose.remember(deck);
         if (game[game.mode].chooseEnd) {
           game.states.choose.selectFirst();
@@ -170,6 +171,7 @@ game.states.choose = {
       });
     }
     if (picked && side == 'player') game.setData('mydeck', game.player.picks.join('|'));
+    if (picked && side == 'enemy') game.setData('mysecdeck', game.enemy.picks.join('|'));
   },
   playVideo: function (link) {
     //library only

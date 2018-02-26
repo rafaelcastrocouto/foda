@@ -58,7 +58,7 @@ game.units = {
     melee.on('mousedown touchstart', game.card.select);
     catapult.on('mousedown touchstart', game.card.select);
     if (summon) summon.on('mousedown touchstart', game.card.select);
-    if (side == 'enemy') {
+    if (!(side == 'player' || game.mode == 'library' || game.mode == 'local')) {
       ranged.addClass('flipped');
       melee.addClass('flipped');
       catapult.addClass('flipped');
