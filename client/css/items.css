@@ -23,6 +23,7 @@
   width: 325px;
   float: left;
   padding: 32px 0 0 20px;
+  pointer-events: none;
   transform: rotateX(-16deg);
   transform-style: preserve-3d;
   box-shadow: 6px 55px 0 -6px rgba(0,0,0,0.2), 6px 70px 0 -6px rgba(10,28,30,0.3), 6px 72px 0 -6px rgba(255,255,255,0.04);

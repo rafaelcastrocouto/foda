@@ -16,7 +16,7 @@ game.local = {
     } else {
       game.loader.removeClass('loading');
       game.states.choose.pickedbox.show();
-      game.states.choose.randombt.show();
+      game.states.choose.randombt.show().attr({disabled: false});
       game.states.choose.mydeck.show().attr({disabled: true});
       if (!sec && game.getData('mydeck')) game.states.choose.mydeck.attr({disabled: false});
       if (sec && game.getData('mysecdeck')) game.states.choose.mydeck.attr({disabled: false});

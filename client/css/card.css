@@ -627,6 +627,7 @@
 .skills.card, .units.card, .items.card {
   transform-style: preserve-3d;
   backface-visibility: hidden;
+  pointer-events: all;
 }
 
 .items.card:before, .items.card:after,
