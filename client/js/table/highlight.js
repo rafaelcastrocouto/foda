@@ -154,7 +154,7 @@ game.highlight = {
   tree: function (side) {
     var t = 'rad';
     if (side == 'enemy') t = 'dire';
-    $('.map .trees.'+t).addClass('casttarget').on('mouseup.highlight', game.player.cast);
+    $('.map .card.trees.'+t).addClass('casttarget').on('mouseup.highlight', game.player.cast);
   },
   self: function(source) {
     if (!source.hasClass('cycloned')) source.addClass('casttarget').on('mouseup.highlight', game.player.cast);
@@ -199,8 +199,8 @@ game.highlight = {
   enemy: function(source, skill) {
     var range = skill.data('cast range');
     if (range === 'global' || !source) {
-      if (skill.data('cycloned')) $('.map .' + skill.opponent()).not('.dead, .towers, .source, .ghost, .bkb').addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      else $('.map .' + skill.opponent()).not('.dead, .towers, .source, .ghost, .bkb, .cycloned').addClass('casttarget').on('mouseup.highlight', game.player.cast);
+      if (skill.data('cycloned')) $('.map .card.' + skill.opponent()).not('.dead, .towers, .source, .ghost, .bkb').addClass('casttarget').on('mouseup.highlight', game.player.cast);
+      else $('.map .card.' + skill.opponent()).not('.dead, .towers, .source, .ghost, .bkb, .cycloned').addClass('casttarget').on('mouseup.highlight', game.player.cast);
     } else {
       if (source.data('skill range bonus') && !skill.data('fixed range')) 
         range += source.data('skill range bonus');
