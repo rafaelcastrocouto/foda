@@ -52,7 +52,8 @@ game.skills.cm = {
     },
     expire: function (event, eventdata) {
       var target = eventdata.target;
-      game.fx.stop('cm-freeze', target);
+      $('.fx.cm-freeze', target).addClass('reverse');
+      game.timeout(800, game.fx.stop.bind(this, 'cm-freeze', target));
       target.removeStack('rooted').removeStack('disarmed');
     }
   },
