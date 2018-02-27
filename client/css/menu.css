@@ -234,7 +234,7 @@
 }
 .menu .icon span {
   text-align: center;
-  opacity: 0.5;
+  opacity: 0.6;
   display: block;
   font-size: 28px;
   height: 60px;
@@ -248,6 +248,7 @@
 }
 .menu .icon:hover span {
   opacity: 1;
+  text-shadow: 2px 2px #777, -2px -2px #777, 2px -2px #777, -2px 2px #777;
 }
 
 @keyframes iconblink {

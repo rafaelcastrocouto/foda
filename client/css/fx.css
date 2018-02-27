@@ -967,6 +967,9 @@
   background-image: url('../img/fx/ld/root.png');
   background-position: -825px;
 }
+.map .fx.ld-root.reverse {
+  animation: ld-root-sprite-reverse 1.4s steps(11) 1;
+}
 
 @keyframes ld-root-sprite {
   0% {
@@ -974,6 +977,15 @@
   }
   100% {
     background-position: -900px;
+  }
+}
+
+@keyframes ld-root-sprite-reverse {
+  0% {
+    background-position: -825px;
+  }
+  100% {
+    background-position: 0px;
   }
 }
 

@@ -52,7 +52,8 @@ game.skills.ld = {
         source.damage(targetBuff.data('dot'), target, targetBuff.data('damage type'));
       } else {
         target.removeStack('rooted');
-        game.fx.stop('ld-root', target);
+        $('.fx.ld-root', target).addClass('reverse');
+        game.timeout(1400, game.fx.stop.bind(this, 'ld-root', target));
         target.off('turnend.entangle-target');
       }
     },

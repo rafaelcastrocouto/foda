@@ -20,7 +20,6 @@ game.local = {
       game.states.choose.mydeck.show().attr({disabled: true});
       if (!sec && game.getData('mydeck')) game.states.choose.mydeck.attr({disabled: false});
       if (sec && game.getData('mysecdeck')) game.states.choose.mydeck.attr({disabled: false});
-      if (game.getData('mydeck')) game.states.choose.mydeck.attr({disabled: false});
       game.states.choose.enablePick();
       game.states.choose.counter.show().text(game.data.ui.clickpick);
       $('.slot').addClass('available');
