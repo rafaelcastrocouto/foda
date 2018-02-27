@@ -413,7 +413,8 @@ game.card = {
         source.data('critical-attack', false);
         evt.bonus = 0;
       }
-      source.removeClass('can-attack draggable');
+      if (!force && tag != 'ult') source.removeClass('can-attack');
+      source.removeClass('draggable');
       game.highlight.refresh();
       //melee fx
       var range = game.map.getRangeInt(source.data('range'));

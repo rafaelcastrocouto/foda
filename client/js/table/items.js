@@ -317,15 +317,24 @@ game.items = {
     },
     echo: {
       cast: function (skill, target) {
-        target.selfBuff(skill);
+        var buff = target.selfBuff(skill);
+        buff.data('echo-enabled', true);
         target.on('attack.echo', game.items.attack.echo.attack);
+        target.on('turnend.echo', game.items.attack.echo.turnend);
       },
       attack: function (event, eventdata) {
         var source = eventdata.source;
         var target = eventdata.target;
-        if (target.side() == source.opponent() && eventdata.tag !== 'echo') {
+        var buff = source.getBuff('echo');
+        if (buff.data('echo-enabled') && (target.side() == source.opponent()) && (eventdata.tag !== 'echo')) {
           game.timeout(600, source.attack.bind(source, target, 'force', 'echo'));
+          buff.data('echo-enabled', false);
         }
+      },
+      turnend: function (event, eventdata) {//console.log(target, card)
+        var target = eventdata.target;
+        var buff = target.getBuff('echo');
+        buff.data('echo-enabled', true);
       }
     }
   },

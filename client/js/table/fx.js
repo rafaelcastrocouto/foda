@@ -4,7 +4,8 @@ game.fx = {
       rabid: ['rabid'],
       roar: ['roar'],
       cry: ['cry'],
-      return: ['return','return-target']
+      return: ['return','return-target'],
+      root: ['root']
     },
     lina: {
       fire: ['fire'],

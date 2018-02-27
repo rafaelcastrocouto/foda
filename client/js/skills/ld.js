@@ -35,6 +35,7 @@ game.skills.ld = {
           if (game.random() < chance) {
             game.audio.play('bear/entangle');
             target.addStack('rooted');
+            game.fx.add('ld-root', source, target, 'keep');
             target.on('turnend.entangle-target', game.skills.ld.summon.turnend);
             var targetBuff = source.addBuff(target, game.data.skills.ld.summon.buffs.entangle.target);
             targetBuff.data('source', source);
@@ -51,6 +52,7 @@ game.skills.ld = {
         source.damage(targetBuff.data('dot'), target, targetBuff.data('damage type'));
       } else {
         target.removeStack('rooted');
+        game.fx.stop('ld-root', target);
         target.off('turnend.entangle-target');
       }
     },

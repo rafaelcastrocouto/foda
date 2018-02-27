@@ -688,7 +688,7 @@
 }
 
 .states .table .map .spot:hover .card, .states .table .map .card.selected {
-  transform: translate3d(-50%, -51%, 30px) rotateX(-14deg);
+  transform: translate3d(-50%, -50%, 40px) rotateX(-14deg);
 }
 
 .map .card.enemy .current .hp span {

@@ -959,6 +959,24 @@
   }
 }
 
+.map .fx.ld-root {
+  transform: rotateX(-2deg) translate3d(70px,-220px,0px) scale(4);
+  width: 75px;
+  height: 110px;
+  animation: ld-root-sprite 1.8s steps(12) 1;
+  background-image: url('../img/fx/ld/root.png');
+  background-position: -825px;
+}
+
+@keyframes ld-root-sprite {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -900px;
+  }
+}
+
 .map .fx.meteor-cast {
   transform: rotateX(-37deg) translate3d(80px,-500px,10px) scale(7);
   width: 64px;
