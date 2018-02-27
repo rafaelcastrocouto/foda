@@ -67,6 +67,8 @@ game.skills.nyx = {
         eventdata.bonus = -buff.data('damage bonus') + 1;
       } else game.audio.play('nyx/ultattack');
       source.removeClass('nyx-ult');
+      source.off('pre-attack.nyx-ult');
+      source.removeBuff('nyx-ult');
     },
     expire: function (event, eventdata) {
       var source = eventdata.target;

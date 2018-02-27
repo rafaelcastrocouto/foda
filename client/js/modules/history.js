@@ -21,9 +21,9 @@ game.history = {
       game.states.log.out.show();
       game.rank.start();
       game.player.name = name;
-      if (state == 'result')  mode = false;
+      if (state == 'result') mode = false;
       if ((game.debug) || (state == 'choose' && mode == 'library')){
-        game.history.jumpMode(state, recovering);
+        game.history.jumpMode(mode, state, recovering);
       } else if (state == 'log' || state == 'loading') {
         game.history.jumpTo('log', recovering);
       } else {
@@ -40,15 +40,15 @@ game.history = {
       game.recovering = true;
       game.setMode(mode, recovering);
       game.setId(game.currentData.id);
-      game.history.jumpTo(state, recovering);
     }
+    game.history.jumpTo(state, recovering);
   },
   jumpTo: function (state, recover) {
-    game.setData('last-activity', new Date().valueOf());
     if (state == 'log') game.states.changeTo('log');
     else game.confirm(function (confirmed) {
       if (confirmed) {
         game.bkgdeck.create();
+        game.setData('last-activity', new Date().valueOf());
         game.chat.build();
         game.chat.set(game.data.ui.reconnected);
         if ('AudioContext' in window) game.audio.build();
