@@ -252,8 +252,11 @@
 }
 
 @keyframes iconblink {
-  46%, 64% {
-    opacity: 0.3;
+  40%, 60% {
+    opacity: 0.6;
+  }  
+  46% {
+    opacity: 0.4;
   }
   50% {
     opacity: 1;

@@ -4,9 +4,9 @@
   position: absolute;
   transform: translate3d(0%,0%, 1px);
   bottom: 4px;
-  left: -10px;
+  left: -4px;
   border-radius: 4px;
-  padding: 8px;
+  padding: 6px;
   padding-left: 16px;
   color: #4d4843;
   transition: width 0.4s;

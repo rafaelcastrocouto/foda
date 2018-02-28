@@ -188,6 +188,7 @@ var game = {
     box.append($('<div>').addClass('button').text(game.data.ui.no).on('mouseup touchend', function () {
       game.overlay.hide();
       game.overlay.empty();
+      cb(false);
       return false;
     }));
   },

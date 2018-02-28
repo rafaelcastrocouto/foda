@@ -1,4 +1,6 @@
 game.enemy = {
+  startX: 4,
+  startY: 6,
   money: 0,
   placeHeroes: function() {
     game.enemy.heroesDeck = game.deck.build({

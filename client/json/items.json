@@ -314,7 +314,7 @@
       "targets": ["Ally", "Heroes"],
       "description": "Increases target movement speed and grants phase",
       "buff": {
-        "description": "Increased speed and able to through units"
+        "description": "Increased speed and able to move through units"
       }
     }
   },

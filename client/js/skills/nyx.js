@@ -55,6 +55,7 @@ game.skills.nyx = {
       var buff = source.selfBuff(skill);
       buff.on('expire', this.expire);
       source.on('pre-attack.nyx-ult', this.attack);
+      source.on('invisibilityLoss.nyx-ult', this.invisibilityLoss);
       source.addInvisibility(buff);
       source.addClass('nyx-ult');
     },
@@ -69,6 +70,10 @@ game.skills.nyx = {
       source.removeClass('nyx-ult');
       source.off('pre-attack.nyx-ult');
       source.removeBuff('nyx-ult');
+    },
+    invisibilityLoss: function (event, eventdata) {
+      var source = eventdata.target;
+      source.removeClass('nyx-ult');
     },
     expire: function (event, eventdata) {
       var source = eventdata.target;

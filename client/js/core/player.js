@@ -1,4 +1,6 @@
 game.player = {
+  startX: 4,
+  startY: 6,
   points: 0,
   money: 0,
   placeHeroes: function(cb) {
@@ -12,8 +14,8 @@ game.player = {
           card.addClass('player').on('mousedown touchstart', game.card.select);
           card.place(game.map.toPosition(5, 4));
         } else {
-          var x = 4;
-          var y = 6;
+          var x = game.player.startX;
+          var y = game.player.startY;
           $.each(deck.data('cards'), function(i, card) {
             var p = game.player.picks.indexOf(card.data('hero'));
             card.addClass('player').on('mousedown touchstart', game.card.select);

@@ -45,16 +45,18 @@ game.history = {
   },
   jumpTo: function (state, recover) {
     if (state == 'log') game.states.changeTo('log');
-    else game.confirm(function (confirmed) {
-      if (confirmed) {
-        game.bkgdeck.create();
-        game.setData('last-activity', new Date().valueOf());
-        game.chat.build();
-        game.chat.set(game.data.ui.reconnected);
-        if ('AudioContext' in window) game.audio.build();
-        game.states.changeTo(state, recover);
-      } else game.states.changeTo('log');
-    }, game.data.ui.welcome +' '+ game.getData('name') +'! '+ game.data.ui.log +'?');
+    else {
+      game.confirm(function (confirmed) {
+        if (confirmed) {
+          game.bkgdeck.create();
+          game.setData('last-activity', new Date().valueOf());
+          game.chat.build();
+          game.chat.set(game.data.ui.reconnected);
+          if ('AudioContext' in window) game.audio.build();
+          game.states.changeTo(state, recover);
+        } else game.states.changeTo('log');
+      }, game.data.ui.welcome +' '+ game.getData('name') +'! '+ game.data.ui.log +'?');
+    }
   },
   saveMove: function (move) {
     var matchData = game.getData('matchData');

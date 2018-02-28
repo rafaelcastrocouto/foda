@@ -567,17 +567,7 @@ game.card = {
         if (final < 1) damage += final - 1;
         if (evt.target.side() != evt.source.side()) 
           evt.source.damage(damage, game[side].tower, game.data.ui.pure);
-        var duration = game.deadLength;
-        if (game.mode === 'library') duration = 1;
-        var buff = game[side].tower.selfBuff({
-          buffId: dead.data('hero')+'-death',
-          className: dead.data('hero') + ' heroes ' + dead.data('hero')+'-death',
-          name: dead.data('name'),
-          description: game.data.ui.death,
-          temp: true,
-          duration: duration
-        }, false /*no extra buffs*/, true /*force tower buff*/);
-        buff.on('expire', game.card.reborn.bind(dead));
+        game.card.rebornBuff(dead);
         deaths = dead.data('deaths') + 1;
         dead.data('deaths', deaths);
         dead.find('.deaths').text(deaths);
@@ -621,26 +611,47 @@ game.card = {
     game.highlight.refresh();
     return dead;
   },
+  rebornBuff: function (dead, duration) {
+    var side = dead.side();
+    if (!duration) {
+      duration = game.deadLength;
+      if (game.mode === 'library') duration = 1;
+    }
+    var buff = game[side].tower.selfBuff({
+      buffId: dead.data('hero')+'-death',
+      className: dead.data('hero') + ' heroes ' + dead.data('hero')+'-death',
+      name: dead.data('name'),
+      description: game.data.ui.death,
+      temp: true,
+      duration: duration
+    }, false /*no extra buffs*/, true /*force tower buff*/);
+    buff.on('expire', game.card.heroReborn.bind(dead));
+  },
+  heroReborn: function () {
+    if (!this.reborn()) {
+      game.timeout(200, game.card.rebornBuff.bind(this, this, 1));
+    }
+  },
   reborn: function(spot) {
-    var hp = this.data('hp'), x, y;
+    var hp = this.data('hp'), x, y, o = 0;
     if (spot && spot.hasClass) {
       spot = spot[0].id;
     } else {
       if (this.hasClass('player')) {
-        x = 3;
-        y = 6;
-        spot = game.map.toPosition(x, y);
-        while (!$('#' + spot).hasClass('free') && x <= 5) {
-          x += 1;
-          spot = game.map.toPosition(x, y);
+        x = game.player.startX;
+        y = game.player.startY;
+        spot = game.map.toPosition(x + o, y);
+        while (!$('#' + spot).hasClass('free') && o < 5) {
+          o += 1;
+          spot = game.map.toPosition(x + o, y);
         }
       } else if (this.hasClass('enemy')) {
-        x = 9;
-        y = 0;
-        spot = game.map.toPosition(x, y);
-        while (!$('#' + spot).hasClass('free') && x >= 2) {
-          x -= 1;
-          spot = game.map.toPosition(x, y);
+        x = game.enemy.startX;
+        y = game.enemy.startY;
+        spot = game.map.mirrorPosition(game.map.toPosition(x, y));
+        while (!$('#' + spot).hasClass('free') && o < 5) {
+          o += 1;
+          spot = game.map.mirrorPosition(game.map.toPosition(x + o, y));
         }
       }
     }
