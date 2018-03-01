@@ -24,7 +24,7 @@ game.events = {
     game.container.on('mousemove', game.events.move);
     game.container.on('touchmove', game.events.touchmove);
     game.container.on('touchend touchleave', game.events.touchend);
-    game.container.on('mouseup mouseleave', game.events.end);
+    game.container.on('mouseup mouseleave tap', game.events.end);
     game.container.on('contextmenu', game.events.rightclick);
     game.container.on('click tap', '.button, .card', game.events.click);
   },
@@ -131,14 +131,11 @@ game.events = {
     if (sc && sc.split) s = sc.split(',')[0];
     return Number(s);
   },
-  keyboard: function (event) { //console.log(event.keyCode)
+  keyboard: function (event) {//console.log(event.keyCode)
     // space: skip turn
-    if (event.keyCode == 32) $('.table .skip.button').mouseup();
-    // =: options
-    if (event.keyCode == 61) {
-      if (game.container.hasClass('option-state')) $('.game-overlay .back').mouseup();
-      else $('.topbar .opt').mouseup();
-    }
+    if (event.keyCode == 32) game.states.table.skipClick();
+    // options
+    if (event.keyCode == 111) game.options.keyboard();
     // enter: chat
     if (event.keyCode == 13) $('.chat').toggleClass('hover');
   },

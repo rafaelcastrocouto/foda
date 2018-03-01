@@ -30,6 +30,7 @@ game.history = {
         game.history.jumpTo('menu', recovering);
       }
     }
+    //console.log(mode, state, logged, name, valid, recent)
   },
   jumpMode: function (mode, state, recovering) {
     if (mode) {
@@ -46,10 +47,10 @@ game.history = {
   jumpTo: function (state, recover) {
     if (state == 'log') game.states.changeTo('log');
     else {
+      game.setData('last-activity', new Date().valueOf());
       game.confirm(function (confirmed) {
         if (confirmed) {
           game.bkgdeck.create();
-          game.setData('last-activity', new Date().valueOf());
           game.chat.build();
           game.chat.set(game.data.ui.reconnected);
           if ('AudioContext' in window) game.audio.build();

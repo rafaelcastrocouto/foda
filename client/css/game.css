@@ -337,9 +337,6 @@ input:focus {
   z-index: 29;
   transform: translateZ(1px);
 }
-.game-overlay {
-  display: none;
-}
 
 .game-overlay .box {
   z-index: 30;

@@ -47,6 +47,7 @@ game.states.loading = {
   imgload: 0,
   finished: function () {
     game.options.build();
+    game.states.loading.box.addClass('hidden');
     game.container.append(game.topbar);
     game.states.build( function () {
       game.rank.build();

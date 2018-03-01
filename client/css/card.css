@@ -415,7 +415,7 @@
   left: 500vw;
   top: 150%;
   pointer-events: none;
-  animation: enemyshowslide 2.1s 1;
+  animation: enemyshowslide 2.2s 1;
 }
 
 @keyframes enemyshowslide {

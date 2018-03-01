@@ -19,10 +19,10 @@ game.screen = {
     var res, rememberedres = game.getData('resolution');
     if (rememberedres && game.screen.resolutions.indexOf(rememberedres) > -1) res = rememberedres;
     if (res) game.screen.setResotution(res);
-    else if (window.innerWidth < 970) game.screen.setResotution('auto');
     else game.screen.setResotution('default');
   },
   setResotution: function (res) {
+    if (window.innerWidth < 970 * game.screen.scales[res]) res = 'auto';
     $('input[name=resolution][value='+res+']').attr('checked', true);
     game.screen.changeResolution(res);
   },

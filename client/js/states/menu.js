@@ -63,11 +63,11 @@ game.states.menu = {
       box.append($('<p>').html('Hatcrafter').append($('<span>').addClass('thumb supp1')));
       box.append($('<p>').html('Milokot').append($('<span>').addClass('thumb supp2')));
       creditsbox.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
-        game.overlay.hide();
+        game.overlay.addClass('hidden');
         game.overlay.empty();
         return false;
       }));
-      game.overlay.show().append(creditsbox);
+      game.overlay.removeClass('hidden').append(creditsbox);
     });
   },
   start: function () {

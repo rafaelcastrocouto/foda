@@ -46,7 +46,7 @@ var game = {
       game.events.build();
       game.history.build();
       game.hidden = $('<div>').addClass('hidden').appendTo(game.container);
-      game.overlay = $('<div>').addClass('game-overlay').appendTo(game.container);
+      game.overlay = $('<div>').addClass('game-overlay hidden').appendTo(game.container);
       game.topbar = $('<div>').addClass('topbar');
       game.topbar.append(game.loader, game.message, game.triesCounter);
       game.states.changeTo('loading');
@@ -165,11 +165,11 @@ var game = {
   },
   alert: function(txt, cb) {
     var box = $('<div>').addClass('box');
-    game.overlay.show().append(box);
+    game.overlay.removeClass('hidden').append(box);
     box.append($('<h1>').text(game.data.ui.warning));
     box.append($('<p>').text(txt));
     box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
-      game.overlay.hide();
+      game.overlay.addClass('hidden');
       game.overlay.empty();
       if (cb) cb(true);
       return false;
@@ -177,16 +177,16 @@ var game = {
   },
   confirm: function(cb, text) {
     var box = $('<div>').addClass('box');
-    game.overlay.show().append(box);
+    game.overlay.removeClass('hidden').append(box);
     box.append($('<h1>').text(text || game.data.ui.sure));
     box.append($('<div>').addClass('button alert').text(game.data.ui.yes).on('mouseup touchend', function () {
-      game.overlay.hide();
+      game.overlay.addClass('hidden');
       game.overlay.empty();
       cb(true);
       return false;
     }));
     box.append($('<div>').addClass('button').text(game.data.ui.no).on('mouseup touchend', function () {
-      game.overlay.hide();
+      game.overlay.addClass('hidden');
       game.overlay.empty();
       cb(false);
       return false;
@@ -194,11 +194,11 @@ var game = {
   },
   error: function(details, cb) {
     var box = $('<div>').addClass('box error');
-    game.overlay.show().append(box);
+    game.overlay.removeClass('hidden').append(box);
     box.append($('<h1>').text(game.data.ui.error));
     box.append($('<p>').html(details+'<br>'+game.data.ui.reload));
     box.append($('<div>').addClass('button alert').text(game.data.ui.ok).on('mouseup touchend', function () {
-      game.overlay.hide();
+      game.overlay.addClass('hidden');
       game.overlay.empty();
       if (cb) cb(true);
       return false;

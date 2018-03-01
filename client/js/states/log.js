@@ -27,7 +27,7 @@ game.states.log = {
   },
   alertBox: function () {
     var box = $('<div>').addClass('log box');
-    game.overlay.show().append(box);
+    game.overlay.removeClass('hidden').append(box);
     box.append($('<h1>').text(game.data.ui.warning));
     box.append($('<p>').html(game.data.ui.alphaalert + '<small class="version">' + game.version + '</small>'));
     game.poll.button = $('<div>').hide().addClass('button highlight large').text(game.data.ui.votenexthero).on('mouseup touchend', function () {
@@ -51,6 +51,7 @@ game.states.log = {
         game.setData('name', false);
       }
       game.setData('logged', true);
+      game.setData('last-activity', new Date().valueOf());
       game.states.log.button.attr('disabled', true);
       game.chat.set(game.data.ui.joined);
       game.chat.build();
