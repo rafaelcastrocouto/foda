@@ -108,7 +108,6 @@ var game = {
       type: 'GET',
       url: server,
       data: send,
-      timeout: game.waitLimit,
       complete: function(receive) {
         var data;
         if (cb && receive && receive.responseText) {
