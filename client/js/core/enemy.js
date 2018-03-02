@@ -218,6 +218,7 @@ game.enemy = {
       game.audio.play('activate');
       creepCard.addClass('showMoves');
       game.timeout(game.enemy.moveAnimation, function() {
+        game.fx.add('ld-return-target', target);
         creepCard.removeClass('showMoves flipped').place(target);
         creepCard.trigger('summon');
       });

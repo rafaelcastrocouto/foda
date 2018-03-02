@@ -306,7 +306,12 @@ game.online = {
         game.tries += 1;
         game.triesCounter.text(game.tries);
         if (game.tries > game.connectionLimit) {
-          game.reset('online.js 307: Unable to load enemy turn data');
+          if (game.debug) game.reset('online.js 307: Unable to load enemy turn data');
+          else {
+            game.db({ 'get': 'server' }, function (serverdata) {
+              if (serverdata.status == 'online') game.online.win();
+            });
+          }
         } else { game.timeout(1000, game.online.getTurnData); }
       }
     });
