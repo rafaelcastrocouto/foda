@@ -606,8 +606,8 @@ game.card = {
           game.timeout(1400, game[game.mode].win);
       }
     } else if (dead.hasClass('units')) {
-      if (dead.hasClass('creeps') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
-        evt.source.damage(game.creepDeathDamage, game[side].tower, game.data.ui.pure);
+      //if (dead.hasClass('creeps') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
+      //  evt.source.damage(game.creepDeathDamage, game[side].tower, game.data.ui.pure);
       dead.appendTo(game.hidden);
     } else {
       dead.appendTo(game.hidden);
@@ -663,8 +663,8 @@ game.card = {
     if ( spot && spot.length && 
      (p.hasClass('free') || p.hasClass('cript')) ) {
       var side = this.side();
-      if (game[side].tower.data('current hp') > game.heroRespawnDamage && !p.hasClass('cript'))
-        game[game.opponent(side)].tower.damage(game.heroRespawnDamage, game[side].tower, game.data.ui.pure);
+      //if (game[side].tower.data('current hp') > game.heroRespawnDamage && !p.hasClass('cript'))
+      //  game[game.opponent(side)].tower.damage(game.heroRespawnDamage, game[side].tower, game.data.ui.pure);
       this.setCurrentHp(hp);
       this.removeClass('dead');
       this.place(spot);

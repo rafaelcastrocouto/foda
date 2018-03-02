@@ -19,8 +19,8 @@ var game = {
   catapultTurn: 8,
   treeRespawn: 4,
   heroDeathDamage: 4, //HP
-  heroRespawnDamage: 1,
-  creepDeathDamage: 1,
+  //heroRespawnDamage: 1,
+  //creepDeathDamage: 1,
   fountainHeal: 12,
   heroBounty: 150, //money
   unitBounty: 50,

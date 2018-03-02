@@ -58,6 +58,11 @@ game.states.menu = {
       box.append($('<p>').html('Language (TU): <a target="_blank" href="https://github.com/ahmetozalp">Ahmet</a>'));
       box.append($('<p>').html('Language (RU): <a target="_blank" href="https://www.patreon.com/djcomps">DJComps</a>').append($('<span>').addClass('thumb supp3')));
       box.append($('<p>').html('Hero (Venge): <a target="_blank" href="https://github.com/xinton">Washington</a>'));
+      box.append($('<p>').html('<b>Beta testers:<b>'));
+      box.append($('<p>').html('Mr. Skeleton'));
+      box.append($('<p>').html('Fuzi'));
+      box.append($('<p>').html('Pingu'));
+      box.append($('<p>').html('Мастер'));
       box.append($('<p>').html('Help us: <a target="_blank" href="https://www.patreon.com/racascou">Become a Patreon</a>'));
       box.append($('<p>').html('Thanks a lot to our supporters:'));
       box.append($('<p>').html('Hatcrafter').append($('<span>').addClass('thumb supp1')));

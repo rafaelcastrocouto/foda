@@ -481,7 +481,7 @@
 }
 .creditscroll {
   height: 280px;
-  animation: credits 20s linear infinite;
+  animation: credits 40s linear infinite;
   position: relative;
   padding: 40px 80px;
 }
@@ -491,7 +491,7 @@
     top: 320px;
   }
   80%, 100% {
-    top: -500px;
+    top: -765px;
   }
 }
 .credits p {
