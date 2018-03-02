@@ -525,7 +525,10 @@ game.card = {
     var spot = target.parent();
     target.setCurrentHp(0);
     target.stopChanneling();
-    game.items.addMoney(source.side(), target.data('bounty'));
+    if (target.data('bounty')) {
+      game.items.addMoney(source.side(), target.data('bounty'));
+      game.fx.text(target.parent(), 'gold', '$'+target.data('bounty'), 2000);
+    }
     if (target.hasClass('heroes')) {
       game[target.side()].deaths += 1;
       var deaths = target.data('deaths') + 1;

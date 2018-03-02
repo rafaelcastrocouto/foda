@@ -167,6 +167,7 @@ game.fx = {
       game.timeout(game.fx.textDelay, function () {
         this.data('textFxDelay', this.data('textFxDelay') - game.fx.textDelay);
       }.bind(card));
+      if (!t) t = 2000;
       game.timeout(t, textFx.remove.bind(textFx));
     }
   },
