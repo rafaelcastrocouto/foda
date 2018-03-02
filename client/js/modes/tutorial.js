@@ -262,7 +262,7 @@ game.tutorial = {
     var target = $('#G6').firstFreeSpotInLine($('#G5'), 8).getPosition();
     var moves = [
       'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E3'),
-      'C:'+game.map.mirrorPosition('E3')+':'+game.map.mirrorPosition('E4')+':summon:ld',
+      'C:'+game.map.mirrorPosition('E3')+':'+game.map.mirrorPosition('E4')+':bear:ld',
       'C:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition(target)+':blink:am',
       'S:'+game.map.mirrorPosition('K5')+':melee'
       //'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),

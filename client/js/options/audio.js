@@ -76,7 +76,7 @@ game.audio = {
     'en/heal',
     'en/ult',
     'ld/attack',
-    'ld/summon',
+    'ld/bear',
     'ld/roar',
     'ld/cry',
     'ld/rabid',

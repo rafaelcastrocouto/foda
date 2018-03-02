@@ -7,7 +7,7 @@ game.heroesAI.ld = {
     // use return if bear is low hp
     // cardData['has-instant-attack-buff'] = true;
     card.data('ai', cardData);
-    var bear = $('.enemydecks .sidehand .skills.ld-summon');
+    var bear = $('.enemydecks .sidehand .skills.ld-bear');
     var rabid = $('.enemydecks .hand .skills.ld-rabid');
     var roar = $('.enemydecks .hand .skills.ld-roar');
     var ult = $('.enemydecks .sidehand .skills.ld-ult');
@@ -23,7 +23,7 @@ game.heroesAI.ld = {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({
             priority: 10 + (destiny.priority * 4) + (game.enemy.turn*2),
-            skill: 'summon',
+            skill: 'bear',
             card: bear,
             target: $(destiny.target)
           });

@@ -50,7 +50,6 @@ game.history = {
       game.setData('last-activity', new Date().valueOf());
       game.confirm(function (confirmed) {
         if (confirmed) {
-          game.bkgdeck.create();
           game.chat.build();
           game.chat.set(game.data.ui.reconnected);
           if ('AudioContext' in window) game.audio.build();

@@ -346,7 +346,7 @@
   },
 
   "ld": {
-    "summon": {
+    "bear": {
       "name": "Summon Bear",
       "summon name": "Bear",
       "type": "Yakarma",
@@ -567,10 +567,19 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "description": "Dead King saldırıları, kritik hasar bonusuna% 15 şans verecek",
+      "description": "Dead King saldırıları, kritik hasar bonusuna% 15 şans verecek. Birim kritik hasarlarla öldürüldüyse, oyuncu bir tane 'İskelet' kartı satın alır",
       "buff": {
-        "description": "Kritik Hasar Şansı"
+        "description": "Kritik Hasar Şansı. Birim kritik hasarlarla öldürüldüyse, oyuncu bir tane 'İskelet' kartı satın alır"
       }
+    },
+    "skeleton": {
+      "name": "İskelet çağır",
+      "summon name": "İskelet",
+      "type": "Yakarma",
+      "hand": "Sağ",
+      "deck": "Geçici",
+      "targets": ["Yer", "Bedava"],
+      "description": "İskelet çağır"
     },
     "ult": {
       "name": "Reincarnation",

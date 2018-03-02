@@ -56,7 +56,6 @@ game.states.log = {
       game.chat.set(game.data.ui.joined);
       game.chat.build();
       game.chat.el.show();
-      game.bkgdeck.create();
       if ('AudioContext' in window) game.audio.build();
       game.states.changeTo('menu');
     } else {

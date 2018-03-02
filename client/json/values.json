@@ -386,7 +386,7 @@
     },
 
     "ld": {
-      "summon": {
+      "bear": {
         "cards": 1,
         "cast range": 2,
         "hp": 58,
@@ -395,6 +395,7 @@
         "armor": 3,
         "resistance": 3,
         "death damage": 12,
+        "bounty": 300,
         "buffsdata": {
           "demolish": {
             "source": {
@@ -567,6 +568,15 @@
           "multiplier": 3
         }
       },
+      "skeleton": {
+        "cards": 1,
+        "cast range": 2,
+        "hp": 28,
+        "range": 2,
+        "damage": 6,
+        "armor": 1,
+        "resistance": 1
+      },
       "ult": {
         "cards": 1,
         "buffsdata": {
@@ -663,7 +673,8 @@
         "hp": 30,
         "damage": 18,
         "armor": 2,
-        "resistance": 1
+        "resistance": 1,
+        "bounty": 100
       },
       "ranged": {
         "range": 5,
@@ -671,14 +682,16 @@
         "damage": 14,
         "armor": 1,
         "mana": 4,
-        "resistance": 2
+        "resistance": 2,
+        "bounty": 150
       },
       "catapult": {
         "range": 7,
         "hp": 32,
         "damage": 14,
         "armor": 4,
-        "resistance": 6
+        "resistance": 6,
+        "bounty": 200
       }
     },
     "forest":{
@@ -687,28 +700,32 @@
         "hp": 38,
         "damage": 6,
         "armor": 2,
-        "resistance": 2
+        "resistance": 2,
+        "bounty": 100
        },
       "golem": {
         "range": 2,
         "hp": 34,
         "damage": 7,
         "armor": 4,
-        "resistance": 3
+        "resistance": 3,
+        "bounty": 100
       },
       "tomato": {
         "range": 2,
         "hp": 36,
         "damage": 8,
         "armor": 3,
-        "resistance": 2
+        "resistance": 2,
+        "bounty": 100
       },
       "satyr": {
         "range": 2,
         "hp": 32,
         "damage": 6,
         "armor": 2,
-        "resistance": 3
+        "resistance": 3,
+        "bounty": 100
       }
     }
   },

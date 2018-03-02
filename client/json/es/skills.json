@@ -5,7 +5,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar", "Yo"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Da vuelta a los números enemigos contra ellos, causando 1 daño por unidad o 3 por héroe"
@@ -15,7 +15,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo", "Aliado"],
       "description": "Purgar la unidad objetivo y concede daño extra y cura",
       "buff": {
         "description": "Daño aumentado en 6 y curación 8 de salud por turno"
@@ -26,7 +26,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Al ser atacado, existe la posibilidad de contraatacar inmediatamente con un 75%",
       "buff": {
         "description": "Al ser atacado, existe la posibilidad de contraatacar inmediatamente con un 75%"
@@ -37,7 +37,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Intercambia tres ataques con un enemigo objetivo. Si alguien muere, el asesino gana 4 daños extras permanentes"
     }
   },
@@ -48,7 +48,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Vincula el objetivo a una unidad o árbol enemigo detrás de él. Si no hay unidad o árbol presente, la duración del aturdimiento se reduce a la mitad"
     },
     "arrow": {
@@ -56,7 +56,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Mágico",
       "description": "Daña a los enemigos y destruye los árboles a lo largo de su camino. Para cada enemigo la flecha golpea, su daño se reduce en 2"
@@ -66,7 +66,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Aumenta la velocidad de movimiento y añade la evasión de todos los ataques",
       "buff": {
         "description": "Velocidad de movimiento aumentada y evasión de todos los ataques"
@@ -77,7 +77,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Ataca a un enemigo objetivo cuatro veces seguidas. El daño se reduce en cuatro puntos"
     }
   },
@@ -88,7 +88,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "damage type": "Mágico",
       "description": "Daña a los enemigos alrededor de la Dama del Gato. Un enemigo aleatorio será golpeado dos veces"
     },
@@ -97,7 +97,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Mágico",
       "description": "Stuns and damages a single target. The distance will increase the damage and the stun (Max Dmg 15, Max Stun: 4 turns)"
@@ -107,7 +107,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar", "Distancia", "Libre"],
       "description": "Saltar al punto de destino y recibir velocidad de bonificación",
       "buff": {
         "description": "Velocidad aumentada por 'Salto'"
@@ -118,7 +118,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Todos los héroes de los jugadores se vuelven invisibles",
       "buff": {
         "description": "Escondido por las 'Sombras de Remache'"
@@ -132,7 +132,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Mágico",
       "description": "Una columna de llamas daña a los enemigos en una línea"
@@ -142,7 +142,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar", "Yo"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Una bola de fuego aturde y daña a los enemigos en el área de destino. Puede destruir árboles"
@@ -152,7 +152,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Cada lanzamiento aumentará el daño de bonificación de fuego de apilamiento de ataque. Restablecer en el final de la vuelta",
       "buff": {
         "description": "Cada lanzamiento aumentará el daño de bonificación de fuego de apilamiento de ataque. Restablecer en el final de la vuelta"
@@ -163,7 +163,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "damage type": "Mágico",
       "description": "Dispara un rayo a una sola unidad enemiga"
     }
@@ -175,7 +175,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Cada ataque tiene bonus de daño igual al maná del blanco y hace que el enemigo descarte una carta de habilidad de mano derecha de ese héroe",
       "buff": {
         "description": "Daño aumentado por la maná del objetivo y hace que el enemigo descarte una carta de habilidad de mano derecha de ese héroe"
@@ -186,7 +186,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar", "Libre"],
       "description": "Teleportar Magino al objetivo"
     },
     "shield": {
@@ -194,7 +194,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Aumenta la resistencia mágica",
       "buff": {
         "description": "Aumento de la resistencia mágica"
@@ -205,7 +205,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "El área de daño con daño de bonificación es igual al maná del objetivo. Interrumpe el canal de destino"
@@ -218,7 +218,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar", "Yo"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Una ráfaga de heladas dañinas que retarda a los enemigos en el área objetivo",
@@ -231,7 +231,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Dar una tarjeta de habilidad de bonificación por turno",
       "buff": {
         "description": "El jugador compra una carta de habilidad adicional por turno"
@@ -242,7 +242,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Previene el movimiento y el ataque mientras se trata de daño con el tiempo. Interrumpe el canal de destino",
       "buff": {
         "damage type": "Mágico",
@@ -254,7 +254,7 @@
       "type": "Canal",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Canaliza una tormenta de explosiones heladas que daña a los enemigos que la rodean",
@@ -277,7 +277,7 @@
       "type": "Canal",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Mágico",
       "description": "Canales ligeros para dañar a los enemigos en una línea",
@@ -294,7 +294,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Fuerza un descarte en el yeso y en cada movimiento. Si el objetivo no tiene más habilidad",
       "buff": {
         "description": "Pierde una carta de habilidad cada vez que esta unidad se mueve"
@@ -305,7 +305,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Jugador ganancia tarjetas de habilidad de bonificación"
     },
     "ult": {
@@ -313,7 +313,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "¡Se convierte en uno con la luz! Gains 'Rescue' y 'Light Blast' y cambia 'Light Ball' en una habilidad activa que cura aliados",
       "buff": {
         "description": "Forma del Espíritu"
@@ -324,7 +324,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Temporal",
-      "targets": "Lugar",
+      "targets": ["Lugar", "Yo"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Derrota y enemigos ciegos, haciendo que pierdan 80% de ataques. Interrumpe el canal de destino",
@@ -337,7 +337,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Temporal",
-      "targets": "Aliado",
+      "targets": ["Aliado"],
       "description": "Si es ileso después del turno del enemigo, el objetivo es teletransportado a un lugar libre cerca de Light Keeper",
       "buff": {
         "description": "Siendo rescatado"
@@ -346,13 +346,13 @@
   },
 
   "ld": {
-    "summon": {
+    "bear": {
       "name": "Invocar oso",
       "summon name": "Oso",
-      "type": "Convocar",
+      "type": "Invocar",
       "hand": "Derecha",
-      "deck": "Convocar",
-      "targets": "Lugar",
+      "deck": "Invocar",
+      "targets": ["Lugar", "Libre"],
       "description": "El oso tiene 'garras de la naturaleza' y 'demolición'. Hace 12 puntos de daño al morir. Ganancias 'Retorno' tarjeta",
       "buffs": {
         "demolish": {
@@ -379,7 +379,7 @@
       "type": "Activo",
       "hand": "Izquierda",
       "deck": "Temporal",
-      "targets": "Lugar",
+      "targets": ["Lugar", "Libre"],
       "description": "Teletransporta al oso de nuevo al druida del oso. Debe ser desechado si el oso es asesinado"
     },
     "rabid": {
@@ -387,7 +387,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Aumenta el ataque y la velocidad de movimiento de Bear Druid y Spirit Bear",
       "buff": {
         "description": "Aumento de la velocidad de ataque y de movimiento"
@@ -398,7 +398,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo", "Invocar"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Los rugidos hacen que los enemigos huyan aterrorizados. La unidad retira un punto si la posición es libre. Interrumpe el canal de destinos"
@@ -408,7 +408,7 @@
       "type": "Palanca",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Bear Druid se transforma en un oso furioso con mayor HP y armadura. Gana la carta de 'Batalla Roar'",
       "buff": {
         "description": "Forma de oso activa"
@@ -419,7 +419,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Temporal",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Aumenta el ataque y la armadura de Syllabear y el Spirit Bear",
       "buff": {
         "description": "Ataque y armadura aumentados"
@@ -433,7 +433,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Mágico",
       "description": "Picos de roca irrumpen a lo largo de un camino recto, los enemigos golpeados son aturdidos y tomar daño"
@@ -443,7 +443,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "damage type": "Mágico",
       "description": "Daña una unidad enemiga por 4X es maná y hace que el jugador enemigo pierda una carta de ese héroe"
     },
@@ -452,7 +452,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "damage type": "Puro",
       "description": "Reflejar los daños recibidos y aturdir la fuente de daño",
       "buff": {
@@ -464,7 +464,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "damage type": "Físico",
       "description": "La mezcla se vuelve invisible y gana velocidad y daño",
       "buff": {
@@ -479,7 +479,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Puro",
       "description": "Lanza un gancho sangriento que enganchará la primera unidad que encuentre, arrastrando la unidad y causando daño si es enemigo. Interrumpe el canal enemigo"
@@ -489,7 +489,7 @@
       "type": "Palanca",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "aoe": "Radial",
       "damage type": "Mágico",
       "description": "Una nube apestosa que hace daño y frena enemigos. El daño se reparte al final del turno, el Carnicero también será dañado",
@@ -509,7 +509,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Da Carnicero de bonificación de HP y daños en cada matar y reduce el daño mágico",
       "buff": {
         "description": "HP y ataque aumentado por resistencia mágica de matanza y bonificación"
@@ -520,7 +520,7 @@
       "type": "Canal",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "damage type": "Mágico",
       "description": "Deshabilitar y hacer daño con el tiempo mientras se cura a sí mismo. Interrumpe el canal de destino",
       "buffs": {
@@ -542,7 +542,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "damage type": "Mágico",
       "description": "Daña y aturde a un objetivo y luego se ralentiza y hace daño con el tiempo",
       "buff": {
@@ -555,7 +555,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Cada ataque drenará un porcentaje de la vida del enemigo",
       "buff": {
         "description": "Drenar vida en cada ataque"
@@ -566,18 +566,27 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
-      "description": "Los ataques de Dead King tendrán la posibilidad de infligir bonos críticos",
+      "targets": ["Yo"],
+      "description": "Los ataques de Dead King tendrán la posibilidad de infligir bonos críticos. Si una unidad es asesinada con daño crítico, el jugador compra una carta 'Esqueleto'",
       "buff": {
-        "description": "Posibilidad de daño crítico"
+        "description": "Posibilidad de daño crítico. Si una unidad es asesinada con daño crítico, el jugador compra una carta 'Esqueleto'"
       }
+    },
+    "skeleton": {
+      "name": "Invocar Esqueleto",
+      "summon name": "Esqueleto",
+      "type": "Invocar",
+      "hand": "Derecha",
+      "deck": "Temporal",
+      "targets": ["Lugar", "Libre"],
+      "description": "Invocar un Esqueleto"
     },
     "ult": {
       "name": "Reencarnación",
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Dead King volverá al siguiente turno de jugador después de haber sido asesinado frenando enemigos alrededor. El pasivo es descartado",
       "buffs": {
         "ult": {
@@ -598,7 +607,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "damage type": "Mágico",
       "description": "Dañar y aturdir a un objetivo"
     },
@@ -607,7 +616,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Lugar",
+      "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Mágico",
       "description": "Debilita la armadura enemiga por 2 puntos",
@@ -620,7 +629,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Un aura que aumenta el daño de ataque de las unidades amigas cercanas. Si Venge muere, el bono de daño se duplicará",
       "buff": {
         "description": "Bono de ataque"
@@ -631,7 +640,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo", "Aliado"],
       "description": "Intercambia instantáneamente posiciones con un héroe objetivo, amigo o enemigo"
      }
    },
@@ -642,7 +651,7 @@
       "type": "Pasivo",
       "hand": "Izquierda",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "El atacante será maldecido y sufrirá daño reducido para el turno",
       "buffs": {
         "passive": {
@@ -660,7 +669,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo", "Selva"],
       "description": "Invocar un deslizamiento del bosque, toma el control sobre una unidad enemiga o ralentiza a un héroe enemigo",
       "buff": {
         "description": "Encantado"
@@ -671,7 +680,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Yo",
+      "targets": ["Yo"],
       "description": "Invoque 5 Healing Wisps para ella y unidades amigas cercanas",
       "buff": {
         "description": "Healing Wisp"
@@ -682,7 +691,7 @@
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": "Enemigo",
+      "targets": ["Enemigo"],
       "description": "Ataca a un enemigo objetivo con daño de bonificación igual al doble de la distancia"
      }
    }

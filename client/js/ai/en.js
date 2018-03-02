@@ -24,7 +24,7 @@ game.heroesAI.en = {
         var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
           cardData['can-cast'] = true;
-          if (cardInRange.hasClasses('heroes ld-summon')) {
+          if (cardInRange.hasClasses('heroes ld-bear')) {
             cardData['cast-strats'].push({
               priority: 12,
               skill: 'curse',

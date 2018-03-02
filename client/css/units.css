@@ -1,7 +1,7 @@
-.player.skills[class*="summon"], .player.skills[class*="summon"] .portrait {
+.player.skills.summon, .player.skills.summon .portrait {
   background-color: #249c88;
 }
-.enemy.skills[class*="summon"], .enemy.skills[class*="summon"] .portrait {
+.enemy.skills.summon, .enemy.skills.summon .portrait {
   background: #a74a6a;
 }
 .units.forest-cent .img {

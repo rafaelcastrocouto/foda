@@ -525,6 +525,7 @@ game.card = {
     var spot = target.parent();
     target.setCurrentHp(0);
     target.stopChanneling();
+    game.items.addMoney(source.side(), target.data('bounty'));
     if (target.hasClass('heroes')) {
       game[target.side()].deaths += 1;
       var deaths = target.data('deaths') + 1;
@@ -602,7 +603,7 @@ game.card = {
           game.timeout(1400, game[game.mode].win);
       }
     } else if (dead.hasClass('units')) {
-      if (!dead.hasClass('ld-summon') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
+      if (dead.hasClass('creeps') && evt.source.side() != side && game[side].tower.data('current hp') > game.creepDeathDamage)
         evt.source.damage(game.creepDeathDamage, game[side].tower, game.data.ui.pure);
       dead.appendTo(game.hidden);
     } else {

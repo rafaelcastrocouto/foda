@@ -239,11 +239,11 @@
   background-size: 300%;  
 }
 
-.ld-summon .img, .buffs .buff.ld-summon .img, .map .ld-summon .portrait .img, .fromMap.ld-summon .portrait .img, .selectedarea .ld-summon .img {
-  background-image: url("../img/skills/ld/summon.jpg");
+.ld-bear .img, .buffs .buff.ld-bear .img, .map .ld-bear .portrait .img, .fromMap.ld-bear .portrait .img, .selectedarea .ld-bear .img {
+  background-image: url("../img/skills/ld/bear.jpg");
 }
 
-.map .ld-summon .portrait .img, .fromMap.ld-summon .portrait .img {
+.map .ld-bear .portrait .img, .fromMap.ld-bear .portrait .img {
   background-position: 76% 0%;
   background-size: 300%;
 }
@@ -264,12 +264,12 @@
   background-image: url("../img/skills/ld/cry.jpg");
 }
 
-.ld-summon.entangle-source .img, .buffs .buff.ld-summon.entangle-source .img, .buffs .buff.ld-summon.entangle-target .img {
+.ld-bear.entangle-source .img, .buffs .buff.ld-bear.entangle-source .img, .buffs .buff.ld-bear.entangle-target .img {
   background-image: url("../img/skills/ld/entangle.jpg");
   background-position: 25%;
 }
 
-.ld-summon.demolish-source .img, .ld-summon.demolish-target .img, .buffs .buff.ld-summon.demolish-source .img, .buffs .buff.ld-summon.demolish-target .img {
+.ld-bear.demolish-source .img, .ld-bear.demolish-target .img, .buffs .buff.ld-bear.demolish-source .img, .buffs .buff.ld-bear.demolish-target .img {
   background-image: url("../img/skills/ld/demolish.jpg");
   background-size: 220%;
   background-position: 40%;
@@ -381,6 +381,15 @@
 .wk-crit .img, .buffs .buff.wk-crit .img {
   background-image: url("../img/skills/wk/crit.jpg");
 }
+
+.wk-skeleton .img, .buffs .buff.wk-skeleton .img, .map .wk-skeleton .portrait .img, .fromMap.wk-skeleton .portrait .img, .selectedarea .wk-skeleton .img {
+  background-image: url("../img/skills/wk/skeleton.jpg");
+}
+/*
+.map .wk-skeleton .portrait .img, .fromMap.wk-skeleton .portrait .img {
+  background-position: 76% 0%;
+  background-size: 300%;
+}*/
 
 .wk-ult .img, .buffs .buff.wk-ult .img {
   background-image: url("../img/skills/wk/ult.jpg");

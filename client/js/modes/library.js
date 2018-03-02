@@ -12,7 +12,7 @@ game.library = {
     if (!game.library.skills) {
       game.library.skills = game.deck.build({
         name: 'skills',
-        deckFilter: [game.data.ui.buy, game.data.ui.summon],
+        deckFilter: [game.data.ui.temp],
         cb: function (deck) {
           deck.addClass('library').hide().appendTo(game.states.choose.el);
           $.each(deck.data('cards'), function (i, skill) {

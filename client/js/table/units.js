@@ -20,7 +20,7 @@ game.units = {
     }
   },
   clone: function (cardEl) {
-    var card = $(cardEl);
+    var card = $(cardEl).first();
     return card.clone().data(card.data());
   },
   buy: function (side) {
@@ -33,7 +33,7 @@ game.units = {
     ranged.on('mousedown touchstart', game.card.select);
     melee1.on('mousedown touchstart', game.card.select);
     melee2.on('mousedown touchstart', game.card.select);
-    var summon = game.units.clone(game[side].unitsDeck.children('[class*="summon"]'));
+    var summon = game.units.clone(game[side].unitsDeck.children('.summon'));
     if (summon) {
       summon.appendTo(game[side].skills.sidehand);
       summon.on('mousedown touchstart', game.card.select);
@@ -52,7 +52,7 @@ game.units = {
     melee.appendTo(game[side].skills.sidehand);
     var catapult = game.units.clone(game[side].unitsDeck.children('.creeps-catapult'));
     catapult.appendTo(game[side].skills.sidehand);
-    var summon = game.units.clone(game[side].unitsDeck.children('[class*="summon"]'));
+    var summon = game.units.clone(game[side].unitsDeck.children('.summon'));
     if (summon) summon.appendTo(game[side].skills.sidehand);
     ranged.on('mousedown touchstart', game.card.select);
     melee.on('mousedown touchstart', game.card.select);
@@ -77,6 +77,7 @@ game.units = {
   },
   summonCreep: function(target, to, creep, event) {
     var card = game.selectedCard;
+    game.fx.add('ld-return-target', target);
     if (target.hasClass('free')) {
       game.audio.play('activate');
       if (card.canPlay()) game.highlight.clearMap();

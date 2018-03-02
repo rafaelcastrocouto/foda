@@ -314,7 +314,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "description": "Light Keeper se torna um com a luz! Recebe 'Resgate' e 'Luz Cegante' e a Bola de Luz passa a ser Ativa",
+      "description": "O Guardião se torna um com a luz! Recebe 'Resgate' e 'Luz Cegante' e a Bola de Luz passa a ser Ativa",
       "buff": {
         "description": "Forma Espiritual"
       }
@@ -346,7 +346,7 @@
   },
 
   "ld": {
-    "summon": {
+    "bear": {
       "name": "Invocar Urso",
       "summon name": "Urso",
       "type": "Invocação",
@@ -567,10 +567,19 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "description": "Os ataques do Wraith King têm chance de causar dano crítico",
+      "description": "Os ataques do Wraith King têm chance de causar dano crítico. Se uma unidade for morta com um dano crítico, o jogador compra uma carta 'Esqueleto'",
       "buff": {
-        "description": "Chance de dano crítico"
+        "description": "Chance de dano crítico. Se uma unidade for morta com um dano crítico, o jogador compra uma carta 'Esqueleto'"
       }
+    },
+    "skeleton": {
+      "name": "Invocar Esqueleto",
+      "summon name": "Esqueleto",
+      "type": "Invocação",
+      "hand": "Direita",
+      "deck": "Temporária",
+      "targets": ["Local", "Livre"],
+      "description": "Invoca um Esqueleto"
     },
     "ult": {
       "name": "Reencarnação",

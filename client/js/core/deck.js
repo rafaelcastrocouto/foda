@@ -39,6 +39,7 @@ game.deck = {
       if (found || !filter) {
         herodata.hero = heroid;
         herodata.speed = game.defaultSpeed;
+        herodata.bounty = game.heroBounty;
         herodata.kd = true;
         herodata.buffsBox = true;
         herodata.className = [
@@ -71,6 +72,7 @@ game.deck = {
           unitdata.id = unitid;
           unitdata.unit = unittype;
           unitdata.speed = game.defaultSpeed;
+          if (!unitdata.bounty) unitdata.bounty = game.unitBounty;
           unitdata.buffsBox = true;
           unitdata.className = [
             unittype+'-'+unitid,
@@ -98,7 +100,7 @@ game.deck = {
       }
       if (found || !filter) {
         $.each(skills, function (skill, skillData) {
-          if (!deckFilter || (deckFilter && deckFilter.indexOf(skillData.deck) >= 0 )) {
+          if (!deckFilter || (deckFilter && deckFilter.indexOf(skillData.deck) < 0 )) {
             var k;
             skillData.hero = hero;
             skillData.skill = skill;
@@ -108,6 +110,7 @@ game.deck = {
               'skills',
               hero
             ].join(' ');
+            if (skillData.type == game.data.ui.summon) skillData.className += ' summon';
             Object.assign(skillData, game.data.values.skills[hero][skill]);
             if (skillData.buff) {
               skillData.buff.buffId = hero + '-' + skill;

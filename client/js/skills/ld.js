@@ -1,5 +1,5 @@
 game.skills.ld = {
-  summon: {
+  bear: {
     cast: function (skill, source, target) {
       var bear = source.data('bear');
       var side = source.side();
@@ -36,8 +36,8 @@ game.skills.ld = {
             game.audio.play('bear/entangle');
             target.addStack('rooted');
             game.fx.add('ld-root', source, target, 'keep');
-            target.on('turnend.entangle-target', game.skills.ld.summon.turnend);
-            var targetBuff = source.addBuff(target, game.data.skills.ld.summon.buffs.entangle.target);
+            target.on('turnend.entangle-target', game.skills.ld.bear.turnend);
+            var targetBuff = source.addBuff(target, game.data.skills.ld.bear.buffs.entangle.target);
             targetBuff.data('source', source);
             target.stopChanneling();
           }

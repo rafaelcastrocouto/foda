@@ -50,12 +50,24 @@ game.skills.wk = {
       var source = eventdata.source;
       var target = eventdata.target;
       var damage = eventdata.damage;
+      var side = source.side();
       var buff = source.getBuff('wk-crit');
       var chance = buff.data('chance') / 100;
       var bonus = buff.data('multiplier');
       if (game.random() < chance && target.side() == source.opponent() && !source.data('miss-attack')) {
         source.data('critical-attack', bonus);
+        var skeleton = game.units.clone( $('.table .'+side+' .temp.skills .wk-skeleton') );
+        skeleton.appendTo('.table .'+side+' .sidehand.skills').on('mousedown touchstart', game.card.select);
       }
+    }
+  },
+  skeleton: {
+    cast: function (skill, source, target) {
+      var skeleton = source.summon(skill);
+      game.fx.add('ld-return-target', target);
+      game.timeout(400, function () {
+        skeleton.place(target);
+      });
     }
   },
   ult: {

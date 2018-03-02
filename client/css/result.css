@@ -113,11 +113,6 @@
 .bkgdeck {
   position: absolute;
   transform-style: preserve-3d;
-  display: none;
-}
-
-.result-state .bkgdeck {
-  display: block;
 }
 
 .bkgdeck .card {

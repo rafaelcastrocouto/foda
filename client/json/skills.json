@@ -346,14 +346,14 @@
   },
 
   "ld": {
-    "summon": {
+    "bear": {
       "name": "Summon Bear",
       "summon name": "Bear",
       "type": "Summon",
       "hand": "Right",
       "deck": "Summon",
       "targets": ["Spot", "Free"],
-      "description": "Summon a Bear with 'Nature claws' and 'Demolition'. Gains 'Return' card. Deals 12 damage on death. ",
+      "description": "Summon a Bear with 'Nature claws' and 'Demolition'. Gains 'Return' card. Deals 12 damage on death",
       "buffs": {
         "demolish": {
           "source": {
@@ -567,10 +567,19 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "description": "Dead King attacks will have a chance of inflicting critical damage bonus",
+      "description": "Dead King attacks will have a chance of inflicting critical damage bonus. If a unit is killed with critical damage, player buys one 'Skeleton' card",
       "buff": {
-        "description": "Chance of critical damage"
+        "description": "Chance of critical damage. If a unit is killed with critical damage, player buys one 'Skeleton' card"
       }
+    },
+    "skeleton": {
+      "name": "Summon Skeleton",
+      "summon name": "Skeleton",
+      "type": "Summon",
+      "hand": "Right",
+      "deck": "Temporary",
+      "targets": ["Spot", "Free"],
+      "description": "Summon a Skeleton"
     },
     "ult": {
       "name": "Reincarnation",
