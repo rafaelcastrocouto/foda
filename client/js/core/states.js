@@ -13,8 +13,8 @@ game.states = {
       state.builded = true;
       if (!state.el) {
         state.el = $('<div>').addClass('state ' + name).hide();
-        if (state.build) state.build();
         state.el.appendTo(game.states.el);
+        if (state.build) state.build();
       }
     }
   },

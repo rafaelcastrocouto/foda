@@ -299,7 +299,7 @@
         "cast range": 5,
         "cards": 1,
         "buffdata": {
-          "duration": 2,
+          "duration": 3,
           "dot": 8,
           "purgeable": true
         }

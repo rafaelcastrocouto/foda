@@ -232,7 +232,7 @@
 }
 
 .stages.easy.top {
-  top: 170px;
+  top: 190px;
   left: 30px;
 }
 
@@ -326,7 +326,7 @@
   height: 8px;
   position: absolute;
   border-radius: 50%;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .campaign-path.enabled {

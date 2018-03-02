@@ -1,4 +1,4 @@
-.card .damaged, .card .missed, .spot .gold {
+.card .damaged, .card .missed, .spot .gold, .spot .deny {
   z-index: 20;
   color: gold;
   position: absolute;
@@ -9,6 +9,11 @@
   animation: slideup 2.5s cubic-bezier(0.4, 0, 1, 1);
   transform: translateZ(50px);
   text-shadow: 5px 0 #fff, -5px 0 #fff, 0 5px #fff, 0 -5px #fff, 5px 5px #fff, -5px 5px #fff, 5px -5px #fff, -5px -5px #fff;
+}
+
+.spot .deny {
+  right: 65px;
+  font-size: 180px;
 }
 
 .spot .gold {
