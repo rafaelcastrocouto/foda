@@ -1,6 +1,9 @@
 game.states.campaign = {
   lane: ['m', 'm'],
   build: function() {
+    for (var stage in game.data.campaign) {
+      game.data.campaign[stage].id = stage;
+    }
     this.map = $('<div>').addClass('campaign-map');
     this.desc = $('<div>').addClass('campaign-box box');
     this.buttonbox = $('<div>').addClass('buttonbox');
@@ -65,59 +68,59 @@ game.states.campaign = {
     }
   },
   nextStage: function() {
-    switch (this.stage.name) {
-    case 'Last Stage':
+    switch (this.stage.id) {
+    case 'last':
       game.alert('Congratulation, you beat our best Artifial Intelligence! Thanks a lot for participating in our beta test!');
       this.stage = game.data.campaign.start;
       break;
-    case 'Rune Stage':
+    case 'rune':
       $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
       this.stage = game.data.campaign.normal;
       break;
-    case 'Shop Stage':
+    case 'shop':
       $('#sh').removeClass('blink enabled').addClass('done').off('mouseup touchend');
       this.stage = game.data.campaign.normal;
       break;
-    case 'Roshan Stage':
+    case 'roshan':
       $('#ro').removeClass('blink enabled').addClass('done').off('mouseup touchend');
       this.stage = game.data.campaign.normal;
       break;
-    case 'Optional Stage':
+    case 'optional':
       $('#o' + game.states.campaign.lane[0]).removeClass('blink enabled').addClass('done').off('mouseup touchend');
       this.stage = game.data.campaign.normal;
       break;
-    case 'Stage 4':
+    case 'last':
       this.stage = game.data.campaign.last;
       break;
-    case 'Stage 3':
+    case 'hard':
       this.stage = game.data.campaign.hard;
       break;
-    case 'Stage 2':
+    case 'normal':
       this.stage = game.data.campaign.normal;
       break;
-    default:
+    default: //start 
       this.stage = game.data.campaign.easy;
     }
-    if (this[this.stage.name + ' Show'])
-      this[this.stage.name + ' Show']();
+    if (this[this.stage.id + 'Show'])
+      this[this.stage.id + 'Show']();
   },
-  "Stage 1 Click": function() {
+  startClick: function() {
     $('.campaign-path').css('opacity', 0.2);
     $('.blink').removeClass('blink');
     game.states.campaign.st.addClass('blink');
     game.states.campaign.buildDesc(game.data.campaign.start);
   },
-  "Stage 2 Click": function() {
+  easyClick: function() {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.easy);
   },
-  "Stage 2 Show": function() {
-    this.st.removeClass('blink').on('mouseup touchend', this["Stage 1 Click"]).addClass('done');
+  easyShow: function() {
+    this.st.removeClass('blink').on('mouseup touchend', this.startClick).addClass('done');
     $('.campaign-path').css('opacity', 0.2);
-    $('.stages.easy').addClass('enabled blink').on('mouseup touchend', this["Stage 2 Click"]);
+    $('.stages.easy').addClass('enabled blink').on('mouseup touchend', this.easyClick);
     $('.campaign-path.et-nm').removeClass('hidden');
     $('.campaign-path.et-ot').removeClass('hidden');
     $('.campaign-path.et-ro').removeClass('hidden');
@@ -133,26 +136,26 @@ game.states.campaign = {
     $('.campaign-path.st-e' + game.states.campaign.lane[0]).css('opacity', 1);
     this.buildDesc(game.data.campaign.easy);
   },
-  "Stage 3 Click": function() {
+  normalClick: function() {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.normal);
   },
-  "Optional Stage Click": function() {
+  optionalClick: function() {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.optional);
   },
-  "Stage 3 Show": function() {
+  normalShow: function() {
     $('.stages.easy').removeClass('blink enabled').addClass('done').off('mouseup touchend');
-    $('#e' + game.states.campaign.lane[0]).addClass('enabled').on('mouseup touchend', this["Stage 2 Click"]);
-    this.nm.addClass('enabled blink').on('mouseup touchend', this["Stage 3 Click"]);
+    $('#e' + game.states.campaign.lane[0]).addClass('enabled').on('mouseup touchend', this.easyClick);
+    this.nm.addClass('enabled blink').on('mouseup touchend', this.normalClick);
     var opt = $('#o' + game.states.campaign.lane[0]);
-    opt.addClass('enabled').on('mouseup touchend', this["Optional Stage Click"]);
+    opt.addClass('enabled').on('mouseup touchend', this.optionalClick);
     if (!opt.hasClass('done'))
       opt.addClass('blink');
     $('.campaign-path').css('opacity', 0.2);
@@ -160,19 +163,19 @@ game.states.campaign = {
     $('.campaign-path.nm-hm').removeClass('hidden');
     $('.campaign-path.nm-hb').removeClass('hidden');
     if (game.states.campaign.lane[0] == 't') {
-      this.ro.addClass('enabled').on('mouseup touchend', this["Roshan Stage Click"]);
+      this.ro.addClass('enabled').on('mouseup touchend', this.roshanClick);
       $('.campaign-path.et-ro').css('opacity', 0.6);
       if (!this.ro.hasClass('done'))
         this.ro.addClass('blink');
     }
     if (game.states.campaign.lane[0] == 'm') {
-      this.sh.addClass('enabled').on('mouseup touchend', this["Shop Stage Click"]);
+      this.sh.addClass('enabled').on('mouseup touchend', this.shopClick);
       $('.campaign-path.em-sh').css('opacity', 0.6);
       if (!this.sh.hasClass('done'))
         this.sh.addClass('blink');
     }
     if (game.states.campaign.lane[0] == 'b') {
-      this.ru.addClass('enabled').on('mouseup touchend', this["Rune Stage Click"]);
+      this.ru.addClass('enabled').on('mouseup touchend', this.runeClick);
       $('.campaign-path.eb-ru').css('opacity', 0.6);
       if (!this.ru.hasClass('done'))
         this.ru.addClass('blink');
@@ -182,37 +185,37 @@ game.states.campaign = {
     $('.campaign-path.st-e' + game.states.campaign.lane[0]).css('opacity', 1);
     this.buildDesc(game.data.campaign.normal);
   },
-  "Stage 4 Click": function() {
+  hardClick: function() {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.hard);
   },
-  "Roshan Stage Click": function() {
+  roshanClick: function() {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.roshan);
   },
-  "Rune Stage Click": function() {
+  runeClick: function() {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.rune);
   },
-  "Shop Stage Click": function() {
+  shopClick: function() {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.shop);
   },
-  "Stage 4 Show": function() {
+  hardShow: function() {
     $('#nm').removeClass('blink').addClass('done');
-    $('.stages.hard').addClass('enabled blink').on('mouseup touchend', this["Stage 4 Click"]);
+    $('.stages.hard').addClass('enabled blink').on('mouseup touchend', this.hardClick);
     $('.stages.optional, #ro, #ru, #sh').removeClass('blink').addClass('done');
     $('.campaign-path').css('opacity', 0.2);
     $('.campaign-path.ht-fi').removeClass('hidden');
@@ -225,17 +228,17 @@ game.states.campaign = {
     $('.campaign-path.e' + game.states.campaign.lane[0] + '-nm').css('opacity', 1);
     this.buildDesc(game.data.campaign.hard);
   },
-  "Last Stage Click": function() {
+  lastClick: function() {
     var target = $(this);
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
     game.states.campaign.buildDesc(game.data.campaign.last);
   },
-  "Last Stage Show": function() {
+  lastShow: function() {
     $('.stages.hard').removeClass('blink enabled').addClass('done').off('mouseup touchend');
-    $('#h' + game.states.campaign.lane[1]).addClass('enabled').on('mouseup touchend', this["Stage 4 Click"]);
-    $('#fi').addClass('enabled blink').on('mouseup touchend', this["Last Stage Click"]);
+    $('#h' + game.states.campaign.lane[1]).addClass('enabled').on('mouseup touchend', this.hardClick);
+    $('#fi').addClass('enabled blink').on('mouseup touchend', this.lastClick);
     $('.campaign-path').css('opacity', 0.2);
     $('.campaign-path.st-e' + game.states.campaign.lane[0]).css('opacity', 1);
     $('.campaign-path.e' + game.states.campaign.lane[0] + '-nm').css('opacity', 1);

@@ -1,6 +1,7 @@
 .resultsbox {
-  width: 800px;
+  width: 720px;
   animation: slideresult 0.8s;
+  padding: 30px 60px;
 }
 
 @keyframes slideresult {
@@ -32,7 +33,7 @@
 
 .result .results {
   display: inline-block;
-  width: 320px;
+  width: 300px;
   text-align: right;
 }
 

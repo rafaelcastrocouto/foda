@@ -97,6 +97,12 @@ game.states.vs = {
         game.library.hero = hero;
       }
       return [hero];
+    } else if (game.mode == 'single') {
+      if (game.states.campaign.stage.id == 'start') {
+        picks = game.player.picks;
+        game.single.playerpicks = game.player.picks;
+      } else picks = game.single.playerpicks;
+      return picks;
     } else {
       var picks = game.player.picks;
       if (!picks && game.recovering) picks = game.getData(game.player.type+'Deck').split('|');
