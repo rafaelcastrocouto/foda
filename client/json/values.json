@@ -671,7 +671,7 @@
       "melee": {
         "range": 2,
         "hp": 30,
-        "damage": 18,
+        "damage": 14,
         "armor": 2,
         "resistance": 1,
         "bounty": 100
@@ -679,7 +679,7 @@
       "ranged": {
         "range": 5,
         "hp": 26,
-        "damage": 14,
+        "damage": 12,
         "armor": 1,
         "mana": 4,
         "resistance": 2,
@@ -688,7 +688,7 @@
       "catapult": {
         "range": 7,
         "hp": 32,
-        "damage": 14,
+        "damage": 16,
         "armor": 4,
         "resistance": 6,
         "bounty": 200
@@ -698,7 +698,7 @@
       "cent": {
         "range": 2,
         "hp": 38,
-        "damage": 6,
+        "damage": 10,
         "armor": 2,
         "resistance": 2,
         "bounty": 100
@@ -706,7 +706,7 @@
       "golem": {
         "range": 2,
         "hp": 34,
-        "damage": 7,
+        "damage": 8,
         "armor": 4,
         "resistance": 3,
         "bounty": 100
@@ -714,7 +714,7 @@
       "tomato": {
         "range": 2,
         "hp": 36,
-        "damage": 8,
+        "damage": 10,
         "armor": 3,
         "resistance": 2,
         "bounty": 100
@@ -722,7 +722,7 @@
       "satyr": {
         "range": 2,
         "hp": 32,
-        "damage": 6,
+        "damage": 8,
         "armor": 2,
         "resistance": 3,
         "bounty": 100
@@ -805,7 +805,7 @@
       "medallion": {
         "price": 300,
         "buffdata": {
-          "armor bonus": 6,
+          "armor bonus": 5,
           "duration": 2
         }
       },
@@ -833,13 +833,13 @@
       "broadsword": {
         "price": 200,
         "buffdata": {
-          "damage bonus": 6
+          "damage bonus": 4
         }
       },
       "madness": {
         "price": 300,
         "buffdata": {
-          "damage bonus": 8,
+          "damage bonus": 6,
           "armor reduction": 2,
           "resistance reduction": 2,
           "duration": 4
