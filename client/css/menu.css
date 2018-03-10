@@ -218,7 +218,7 @@
   background-image: url("../img/bkg/icons.png");
   position: absolute;
   z-index: 5;
-  transform: translateZ(4px);
+  transform: translateZ(14px);
 }
 .menu .icon.highlight span {
   opacity: 1;
@@ -229,8 +229,8 @@
   animation: twist 0.8s infinite;
 }
 @keyframes twist {
-  0%, 100% {transform: translateZ(4px) rotateZ(-2deg);}
-  50% {transform: translateZ(4px) rotateZ(2deg);}
+  0%, 100% {transform: translateZ(14px) rotateZ(-2deg);}
+  50% {transform: translateZ(14px) rotateZ(2deg);}
 }
 .menu .icon span {
   text-align: center;
@@ -387,27 +387,20 @@
   }
 }
 
-.menu-state .rank {
-  pointer-events: all;
-  opacity: 1;
-  transition: opacity 1s;
-}
-
 .rank {
-  opacity: 0;
-  pointer-events: none;
+  pointer-events: all;
   display: inline-block;
   background-color: #dccaa5;
   color: #473936;
   border: 1.5px solid #2b2734;
   transform-origin: 50% 1%;
-  transform: rotateX(2deg) rotateZ(2deg) translate3d(220px, 125px, 4px) scale(0.8);
-  width: 90px;
-  padding: 21px 10px 12px;
+  transform: translate3d(220px, 144px, 4px);
+  width: 75px;
+  padding: 9px;
+  padding-bottom: 4px;
   border-radius: 5px 40px/50px 8px;
-  counter-reset: item;
-  list-style-type: none;
   z-index: 5;
+  box-shadow:  inset;
 }
 .rank:before {
   content: "";
@@ -417,16 +410,29 @@
   position: absolute;
   background-color: #7d6762;
   border-radius: 50%;
-  left: 50px;
-  top: 6px;
+  left: 42px;
+  top: 4px;
   box-shadow: 1px 0 0 #111;
 }
 .rank:hover {
   animation: ranktwist 3s infinite;
 }
 @keyframes ranktwist {
-  0%, 100% {transform: rotateX(2deg) rotateZ(2deg) translate3d(220px, 125px, 4px) scale(0.8);}
-  50% {transform: rotateX(2deg) rotateZ(2deg) translate3d(220px, 125px, 4px) scale(0.8) rotateZ(-4deg);}
+  50% {transform: translate3d(220px, 144px, 4px) rotateZ(-4deg);}
+}
+.rank h1 {
+  font-size: 14px;
+  text-align: center;
+  padding: 0;
+  margin: 4px 0 0;
+  line-height: 16px;
+  border-bottom: 1px solid #bba988;
+}
+.rank ol {
+  counter-reset: item;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 .rank li {
   margin: 0;
@@ -441,7 +447,7 @@
   display: inline-block;
   vertical-align: top;
   margin-right: 2px;
-  font-size: 12px;
+  font-size: 11px;
 }
 .rank li:last-child {
   border: 0;
@@ -452,23 +458,23 @@
   overflow: hidden;
   margin-left: 4px;
   display: inline-block;
-  font-size: 13px;
+  font-size: 11px;
 }
 .rank span:last-child {
   float: right;
   max-width: 40px;
 }
 .rank li {
-  height: 19px;
+  height: 16px;
 }
 .rank li:before,
 .rank span {
-  line-height: 19px;
+  line-height: 15px;
   vertical-align: top;
 }
 
 .rank span:last-child {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 
