@@ -1018,6 +1018,7 @@
         "damage": 12,
         "aoe range": 5,
         "price": 450,
+        "cast": true,
         "buffdata": {
           "speed slow": 1,
           "duration": 2

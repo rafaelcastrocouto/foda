@@ -168,40 +168,25 @@ game.highlight = {
     var side = skill.side();
     var targets = skill.data('targets');
     if (range === 'global' || skill.hasClass('items')) {
-      if (skill.data('cycloned')) {
-        if (targets && targets.indexOf(game.data.ui.heroes) >= 0) $('.map .card.' + side).not('.unit, .dead, .towers, .source, .ghost, .bkb').addClass('casttarget').on('mouseup.highlight', game.player.cast);
-        else $('.map .card.' + side).not('.dead, .towers, .source, .ghost').addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      } else {
-        if (targets && targets.indexOf(game.data.ui.heroes) >= 0) $('.map .card.' + side).not('.unit, .dead, .towers, .source, .ghost, .bkb, cycloned').addClass('casttarget').on('mouseup.highlight', game.player.cast);
-        else $('.map .card.' + side).not('.dead, .towers, .source, .ghost, cycloned').addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      }
-      if (skill.hasClass('items') && game.mode == 'library') {
-        var opponent = skill.opponent();
-        if (targets && targets.indexOf(game.data.ui.heroes) >= 0) $('.map .card.' + opponent).not('.unit, .dead, .towers, .source, .ghost, .bkb').addClass('casttarget').on('mouseup.highlight', game.player.cast);
-        else $('.map .card.' + opponent).not('.dead, .towers, .source, .ghost, .bkb').addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      }
+      $('.map .card.' + side).each(function () {
+        game.highlight.card($(this), skill, side);
+      });
     } else {
       if (source.data('skill range bonus') && !skill.data('fixed range')) 
         range += source.data('skill range bonus');
       source.around(range, function(neighbor) {
         var card = $('.card', neighbor);
-        if (skill.data('cycloned')) {
-          if (card.hasClass(source.side()) && !card.hasClasses('dead towers ghost bkb')) {
-            card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
-          }
-        } else {
-          if (card.hasClass(source.side()) && !card.hasClasses('dead towers ghost bkb cycloned')) {
-            card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
-          }
-        }
+        if (card.length) game.highlight.card(card, skill, side);
       });
     }
   },
   enemy: function(source, skill) {
     var range = skill.data('cast range');
+    var side = source.opponent();
     if (range === 'global' || !source) {
-      if (skill.data('cycloned')) $('.map .card.' + skill.opponent()).not('.dead, .towers, .source, .ghost, .bkb').addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      else $('.map .card.' + skill.opponent()).not('.dead, .towers, .source, .ghost, .bkb, .cycloned').addClass('casttarget').on('mouseup.highlight', game.player.cast);
+      $('.map .card.' + side).each(function () {
+        game.highlight.card($(this), skill, side);
+      });
     } else {
       if (source.data('skill range bonus') && !skill.data('fixed range')) 
         range += source.data('skill range bonus');
@@ -209,14 +194,24 @@ game.highlight = {
         range += source.data('attack range bonus');
       source.inRange(range, function(neighbor) {
         var card = $('.card', neighbor);
-        if (skill.data('cycloned')) {
-          if (card.hasClass(source.opponent()) && !card.hasClasses('dead towers ghost bkb'))
-          card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
-        } else {
-          if (card.hasClass(source.opponent()) && !card.hasClasses('dead towers ghost bkb cycloned'))
-            card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
-        }
+        if (card.length) game.highlight.card(card, skill, side);
       });
+    }
+  },
+  card: function (card, skill, side) {
+    var filter = 'dead towers source ghost';
+    var targets = skill.data('targets');
+    if (skill.data('cast')) {
+      filter += ' stunned disabled silenced hexed taunted sleeping';
+    }
+    if (!skill.data('cycloned')) {
+      filter += ' cycloned';
+    }
+    if (targets && targets.indexOf(game.data.ui.heroes) >= 0) {
+      filter += ' units';
+    }
+    if (card.hasClass(side) && !card.hasClasses(filter) ) {
+      card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
     }
   },
   jungle: function(source, skill) {

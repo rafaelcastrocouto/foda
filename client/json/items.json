@@ -397,7 +397,7 @@
       "targets": ["Ally", "Heroes"],
       "aoe": "Radial",
       "damage type": "Magical",
-      "description": "Damages and slow units in the area",
+      "description": "Damages and slows units in the area",
       "buff": {
         "description": "Slowed"
       }
