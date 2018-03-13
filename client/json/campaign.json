@@ -45,7 +45,7 @@
       "Block Spawn (bonus)",
       "Kill 10 heroes (bonus)"
     ],
-    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+    "picks": [ "en", "lina", "cm", "wind", "pud" ]
   },
   "shop": {
     "name": "Shop Stage",
@@ -81,7 +81,7 @@
       "Don't die (bonus)",
       "Kill 5 heroes (bonus)"
     ],
-    "picks": [ "cm", "pud", "lina", "wk", "am" ]
+    "picks": [ "lina", "pud", "lina", "wk", "am" ]
   },
   "hard": {
     "name": "Stage 4",
@@ -93,7 +93,7 @@
       "Don't die (bonus)",
       "Kill 5 heroes (bonus)"
     ],
-    "picks": [ "cm", "pud", "lina", "wk", "am" ]
+    "picks": [ "cm", "wk", "com", "ld", "am" ]
   },
   "last": {
     "name": "Last Stage",
@@ -105,6 +105,6 @@
       "Don't die (bonus)",
       "Kill 5 heroes (bonus)"
     ],
-    "picks": [ "cm", "pud", "lina", "wk", "am" ]
+    "picks": [ "kotl", "cat", "cm", "venge", "en" ]
   }
 }

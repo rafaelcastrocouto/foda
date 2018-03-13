@@ -15,21 +15,21 @@ game.states.campaign = {
     this.buildPaths();
   },
   buildStages: function() {
-    this.st = $('<div>').attr('id', 'st').addClass('stages start blink').appendTo(this.map);
-    this.et = $('<div>').attr('id', 'et').addClass('stages easy top').appendTo(this.map);
-    this.em = $('<div>').attr('id', 'em').addClass('stages easy mid').appendTo(this.map);
-    this.eb = $('<div>').attr('id', 'eb').addClass('stages easy bot').appendTo(this.map);
-    this.ru = $('<div>').attr('id', 'ru').addClass('stages rune').appendTo(this.map);
-    this.ro = $('<div>').attr('id', 'ro').addClass('stages roshan').appendTo(this.map);
-    this.sh = $('<div>').attr('id', 'sh').addClass('stages shop').appendTo(this.map);
-    this.nm = $('<div>').attr('id', 'nm').addClass('stages normal mid').appendTo(this.map);
-    this.ht = $('<div>').attr('id', 'ht').addClass('stages hard top').appendTo(this.map);
-    this.hm = $('<div>').attr('id', 'hm').addClass('stages hard mid').appendTo(this.map);
-    this.hb = $('<div>').attr('id', 'hb').addClass('stages hard bot').appendTo(this.map);
-    this.fi = $('<div>').attr('id', 'fi').addClass('stages final').appendTo(this.map);
-    this.ot = $('<div>').attr('id', 'ot').addClass('stages optional top').appendTo(this.map);
-    this.om = $('<div>').attr('id', 'om').addClass('stages optional mid').appendTo(this.map);
-    this.ob = $('<div>').attr('id', 'ob').addClass('stages optional bot').appendTo(this.map);
+    this.st = $('<div>').attr('id','st').data('id','start').addClass('stages start blink').appendTo(this.map);
+    this.et = $('<div>').attr('id','et').data('id','easy').addClass('stages easy top').appendTo(this.map);
+    this.em = $('<div>').attr('id','em').data('id','easy').addClass('stages easy mid').appendTo(this.map);
+    this.eb = $('<div>').attr('id','eb').data('id','easy').addClass('stages easy bot').appendTo(this.map);
+    this.ru = $('<div>').attr('id','ru').data('id','rune').addClass('stages rune').appendTo(this.map);
+    this.ro = $('<div>').attr('id','ro').data('id','roshan').addClass('stages roshan').appendTo(this.map);
+    this.sh = $('<div>').attr('id','sh').data('id','shop').addClass('stages shop').appendTo(this.map);
+    this.nm = $('<div>').attr('id','nm').data('id','normal').addClass('stages normal mid').appendTo(this.map);
+    this.ht = $('<div>').attr('id','ht').data('id','hard').addClass('stages hard top').appendTo(this.map);
+    this.hm = $('<div>').attr('id','hm').data('id','hard').addClass('stages hard mid').appendTo(this.map);
+    this.hb = $('<div>').attr('id','hb').data('id','hard').addClass('stages hard bot').appendTo(this.map);
+    this.fi = $('<div>').attr('id','fi').data('id','final').addClass('stages final').appendTo(this.map);
+    this.ot = $('<div>').attr('id','ot').data('id','optional').addClass('stages optional top').appendTo(this.map);
+    this.om = $('<div>').attr('id','om').data('id','optional').addClass('stages optional mid').appendTo(this.map);
+    this.ob = $('<div>').attr('id','ob').data('id','optional').addClass('stages optional bot').appendTo(this.map);
   },
   buildPaths: function() {
     this.el.css({
@@ -71,38 +71,48 @@ game.states.campaign = {
     switch (this.stage.id) {
     case 'last':
       game.alert('Congratulation, you beat our best Artifial Intelligence! Thanks a lot for participating in our beta test!');
+      this.done = true;
       this.stage = game.data.campaign.start;
+      this.startShow();
+      break;
+    case 'hard':
+      this.stage = game.data.campaign.last;
       break;
     case 'rune':
-      $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+      if (!this.done) $('#ru').removeClass('blink enabled').addClass('done').off('mouseup touchend');
       this.stage = game.data.campaign.normal;
       break;
     case 'shop':
-      $('#sh').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+      if (!this.done) $('#sh').removeClass('blink enabled').addClass('done').off('mouseup touchend');
       this.stage = game.data.campaign.normal;
       break;
     case 'roshan':
-      $('#ro').removeClass('blink enabled').addClass('done').off('mouseup touchend');
+      if (!this.done) $('#ro').removeClass('blink enabled').addClass('done').off('mouseup touchend');
       this.stage = game.data.campaign.normal;
       break;
     case 'optional':
-      $('#o' + game.states.campaign.lane[0]).removeClass('blink enabled').addClass('done').off('mouseup touchend');
+      if (!this.done) $('#o' + game.states.campaign.lane[0]).removeClass('blink enabled').addClass('done').off('mouseup touchend');
       this.stage = game.data.campaign.normal;
       break;
-    case 'last':
-      this.stage = game.data.campaign.last;
-      break;
-    case 'hard':
+    case 'normal':
       this.stage = game.data.campaign.hard;
       break;
-    case 'normal':
+    case 'easy':
       this.stage = game.data.campaign.normal;
       break;
     default: //start 
       this.stage = game.data.campaign.easy;
     }
-    if (this[this.stage.id + 'Show'])
+    if (this[this.stage.id + 'Show'] && !this.done)
       this[this.stage.id + 'Show']();
+  },
+  startShow: function() {
+    $('.stages').removeClass('done');
+    $('.campaign-path').removeClass('hidden').css('opacity', 1);
+    $('.stages').addClass('enabled blink').each(function () {
+      var stage = $(this);
+      stage.on('mouseup touchend', game.states.campaign[stage.data('id')+'Click']);
+    });
   },
   startClick: function() {
     $('.campaign-path').css('opacity', 0.2);
@@ -145,6 +155,9 @@ game.states.campaign = {
   },
   optionalClick: function() {
     var target = $(this);
+    game.states.campaign.lane[0] = 'm';
+    if (target.hasClass('top')) game.states.campaign.lane[0] = 't';
+    if (target.hasClass('bot')) game.states.campaign.lane[0] = 'b';
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
@@ -194,6 +207,7 @@ game.states.campaign = {
   },
   roshanClick: function() {
     var target = $(this);
+    game.states.campaign.lane[0] = 't';
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
@@ -201,6 +215,7 @@ game.states.campaign = {
   },
   runeClick: function() {
     var target = $(this);
+    game.states.campaign.lane[0] = 'b';
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
@@ -208,6 +223,7 @@ game.states.campaign = {
   },
   shopClick: function() {
     var target = $(this);
+    game.states.campaign.lane[0] = 'm';
     $('.blink').removeClass('blink');
     target.addClass('blink');
     game.states.campaign.pathHighlight(target);
