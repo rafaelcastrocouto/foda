@@ -165,7 +165,7 @@ game.highlight = {
   },
   ally: function(source, skill) {
     var range = skill.data('cast range');
-    var side = skill.side();
+    var side = skill.side() || source.side();
     var targets = skill.data('targets');
     if (range === 'global' || skill.hasClass('items')) {
       $('.map .card.' + side).each(function () {
@@ -182,7 +182,7 @@ game.highlight = {
   },
   enemy: function(source, skill) {
     var range = skill.data('cast range');
-    var side = source.opponent();
+    var side = skill.opponent() || source.opponent();
     if (range === 'global' || !source) {
       $('.map .card.' + side).each(function () {
         game.highlight.card($(this), skill, side);

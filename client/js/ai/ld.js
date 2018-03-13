@@ -18,17 +18,17 @@ game.heroesAI.ld = {
       roar.data('ai discard', roar.data('ai discard') + 1);
     }
     if (card.canCast(bear)) {
-      if (cardData.advance.length) {
-        $.each(cardData.advance, function (i, destiny) {
+      card.around(bear.data('cast range'), function (destiny) {
+        if (destiny.hasClass('free')) {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({
-            priority: 10 + (destiny.priority * 4) + (game.enemy.turn*2),
+            priority: 10 + (destiny.data('priority') * 4) + (game.enemy.turn*2),
             skill: 'bear',
             card: bear,
-            target: $(destiny.target)
+            target: $(destiny)
           });
-        });
-      }
+        }
+      });
     }
     if (card.canCast(rabid)) {
       cardData['can-cast'] = true;
