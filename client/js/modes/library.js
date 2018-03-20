@@ -62,7 +62,7 @@ game.library = {
             card.addClass('zoom').removeClass('transparent');
             card.parent().removeClass('transparent');
           }
-          if (e.preventDefault) e.preventDefault();
+          if (e && e.preventDefault) e.preventDefault();
           return false;
         });
       });

@@ -227,6 +227,10 @@ game.card = {
         game.selectedCard.data('source', false);
       }
       game.selectedCard = null;
+      game.options.opt.removeClass('hidden');
+      game.states.log.out.removeClass('hidden');
+      game.turn.msg.removeClass('hidden');
+      game.topbar.removeClass('transparent');
     }
   },
   setSelection: function(card, event) {
@@ -240,6 +244,10 @@ game.card = {
       .clearEvents()
       .appendTo(game.states.table.selectedCard)
       .on('mouseup', function () {
+        game.options.opt.toggleClass('hidden');
+        game.states.log.out.toggleClass('hidden');
+        game.turn.msg.toggleClass('hidden');
+        game.topbar.toggleClass('transparent');
         $(this).toggleClass('zoom');
         game.selectedCardZoom = !game.selectedCardZoom;
       });

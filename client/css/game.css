@@ -15,7 +15,6 @@ body {
   background-size: 100% 20%;
   background-repeat: no-repeat;
   box-shadow: 0 -50px 100px rgba(0,0,0,0.7) inset;
-  /* overflow: hidden; */
   tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   backface-visibility: hidden;

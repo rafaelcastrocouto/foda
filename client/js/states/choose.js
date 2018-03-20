@@ -1,5 +1,6 @@
 game.states.choose = {
   size: 156,
+  event: 'mouseup.choose touchend.choose',
   build: function () {
     this.pickbox = $('<div>').addClass('pickbox').appendTo(this.el);
     this.pickedbox = $('<div>').addClass('pickedbox').hide();
@@ -32,13 +33,10 @@ game.states.choose = {
         $.each(pickDeck.data('cards'), function (i, card) {
           card[0].dataset.index = i;
           //if (card.data('disable')) card.addClass('dead');
-          card.on('mousedown.choose touchstart.choose', game.states.choose.select);
+          card.on(game.states.choose.event, game.states.choose.select);
         });
         pickDeck.width(game.states.choose.size * (pickDeck.children().length - 1));
-        /*$('.pickbox .card.dead').each(function (i, card) {
-          card.dataset.index += pickDeck.data('cards').length;
-          game.states.choose.pickDeck.append(card);
-        });*/
+        
       }
     });
   },
@@ -57,6 +55,7 @@ game.states.choose = {
         $('.choose .pickedbox').removeClass('transparent');
         game.topbar.removeClass('transparent');
         card.removeClass('zoom');
+        if(game.mode != 'library') card.addClass('draggable');
         game.states.choose.lockZoom=true;
         setTimeout(function () {game.states.choose.lockZoom=false;}, 200);
       } else if (force != 'force' && card.hasClass('selected') && !game.states.choose.lockZoom) {
@@ -79,7 +78,10 @@ game.states.choose = {
         if (!card.hasClass('dead')) game.setData('choose', card.data('hero')); 
       }
     }
-    if (force.preventDefault) force.preventDefault();
+    if (force && force.preventDefault) {
+      game.events.end(force);
+      force.preventDefault();
+    }
     return false;
   },
   enablePick: function () {
@@ -105,7 +107,7 @@ game.states.choose = {
         else card = pick.nextAll(':visible').first();
       } else {
         card = slot.children('.card');
-        card.on('mousedown.choose touchstart.choose', game.states.choose.select).insertBefore(pick);
+        card.on(game.states.choose.event, game.states.choose.select).insertBefore(pick);
       }
       pick.appendTo(slot).clearEvents('choose');
       game.states.choose.sort();
@@ -238,7 +240,7 @@ game.states.choose = {
     if (this.pickedbox) this.pickedbox.hide();
     $('.choose .buttonbox .button').not('.back').hide();
     if (this.video) this.playVideo(); //clear video iframe
-    $('.slot .card.heroes').prependTo(this.pickDeck).on('mousedown.choose touchstart.choose', game.states.choose.select);
+    $('.slot .card.heroes').prependTo(this.pickDeck).on(game.states.choose.event, game.states.choose.select);
     this.sort();
     $('.choose .card').removeClass('transparent zoom');
     $('.choose .pickedbox').removeClass('transparent');

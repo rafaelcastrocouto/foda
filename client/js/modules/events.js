@@ -53,7 +53,7 @@ game.events = {
       game.events.dragTarget = card;
       game.events.draggingPosition = position;
       game.events.dragClone = card.clone().removeClass('dragTarget').addClass('hidden dragTargetClone ' + game.currentState + cl).appendTo(game.container);
-      game.events.dragScale = card.getScale();
+      game.events.dragScale = card.getScale();  //console.log(event)
       game.events.dragOffset = {
         'left': (position.left - cardOffset.left) / game.events.dragScale,
         'top': (position.top - cardOffset.top) / game.events.dragScale
@@ -67,18 +67,20 @@ game.events = {
   },
   move: function(event) {
     var position = game.events.getCoordinates(event);
-    if (game.events.dragTarget && 
-        position.left !== game.events.draggingPosition.left &&
-        position.top !== game.events.draggingPosition.top) {
+    var tolerance = 3;
+    if (game.events.dragTarget &&
+       (position.left < game.events.draggingPosition.left - tolerance || position.top < game.events.draggingPosition.top - tolerance)  &&
+       (position.left > game.events.draggingPosition.left + tolerance || position.top > game.events.draggingPosition.top + tolerance)) {
       game.events.dragging = true;
-      game.events.dragTarget.addClass('dragTarget');
       var scale = game.events.dragClone.getScale();
       var scale2 = game.container.getScale();
       if (game.events.dragClone.hasClass('fromMap')) scale = 1;
+      game.events.dragTarget.addClass('dragTarget');
       game.events.dragClone.css({
         'left': ((position.left - game.offset.left) - (game.events.dragOffset.left * scale)) / scale2 + 'px',
         'top': ((position.top - game.offset.top) - (game.events.dragOffset.top * scale)) / scale2 + 'px'
-      }).removeClass('hidden');
+      });
+      setTimeout(function () {game.events.dragClone.removeClass('hidden');}, 80);
       var target = $(document.elementFromPoint(position.left, position.top));
       $('.drop').removeClass('drop');
       if (target.hasClasses('slot targetarea casttarget movearea attacktarget')) {

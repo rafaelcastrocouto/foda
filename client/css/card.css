@@ -24,13 +24,13 @@
 }
 
 .map .card.can-attack .current .hp span {
-  box-shadow: 5px 14px 0 -8px #ffbd00;
+  box-shadow: 5px 14px 0 -8px #ffbd00, 5px 16px 0 -8px #674f0c;
 }
 .map .card.can-move .current .hp span {
-  box-shadow: 5px 20px 0 -8px #41ce87;
+  box-shadow: 5px 21px 0 -8px #41ce87, 5px 23px 0 -8px #1c5f3d;
 }
 .map .card.can-move.can-attack .current .hp span {
-  box-shadow: 5px 20px 0 -8px #41ce87, 5px 14px 0 -8px #ffbd00;
+  box-shadow: 5px 21px 0 -8px #41ce87, 5px 23px 0 -8px #1c5f3d, 5px 14px 0 -8px #ffbd00, 5px 16px 0 -8px #674f0c;
 }
 
 .card:hover {
@@ -527,7 +527,7 @@
   transition: all 0s, transform 0.1s;
 }
 .table .selectedarea .selectedcard.flip .card.zoom {
-   transform: translate(-78px, -182px) scale(1.9);
+   transform: translate(-78px, -207px) scale(2);
 }
 
 .table .selectedarea .cardback:before, .skills.card:after, .units.card:after, .items.card:after {
@@ -588,17 +588,17 @@
   display: block;
   width: 200px;
   height: 300px;
+  position: absolute;
   top: 0;
   left: 0;
   transform: translate3d(0,0,-1px) rotateY(180deg);
   border-radius: 8px;
   z-index: 29;
   backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .skills.card:before, .units.card:before, .items.card:before {
-  position: absolute;
-  transform: translate3d(0,0,-1px) rotateY(180deg);
   background-color: #7d786b;
   background-size: cover;
 }

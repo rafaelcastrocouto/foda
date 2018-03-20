@@ -103,6 +103,9 @@
   right: 200px;
 }
 
+.topbar .turns.hidden {
+  display: none;
+}
 .topbar .opt {
   cursor: pointer;
   right: 0;
