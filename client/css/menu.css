@@ -394,7 +394,7 @@
   color: #473936;
   border: 1.5px solid #2b2734;
   transform-origin: 50% 1%;
-  transform: translate3d(220px, 144px, 4px);
+  transform: translate3d(220px, 144px, 4px) rotateX(-10deg);
   width: 75px;
   padding: 9px;
   padding-bottom: 4px;
@@ -418,7 +418,8 @@
   animation: ranktwist 3s infinite;
 }
 @keyframes ranktwist {
-  50% {transform: translate3d(220px, 144px, 4px) rotateZ(-4deg);}
+  40% {transform: translate3d(220px, 144px, 4px) rotateX(-10deg) rotateZ(-4deg);}
+  60% {transform: translate3d(220px, 144px, 4px) rotateX(-18deg) rotateZ(-4deg);}
 }
 .rank h1 {
   font-size: 14px;

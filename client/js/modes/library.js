@@ -46,7 +46,7 @@ game.library = {
         var skill = $(heroSkills[i]); 
         if (disabled) skill.addClass('dead');
         skill.appendTo(this);
-        skill.on('mouseup touchend', function () {
+        skill.on('mouseup touchend', function (e) {
           var card = $(this);
           if (card.hasClass('zoom')) {
             $('.choose .card').removeClass('transparent');
@@ -54,7 +54,7 @@ game.library = {
             $('.choose .pickedbox').removeClass('trans');
             game.topbar.removeClass('transparent');
             card.removeClass('zoom');
-          } else {
+          } else if (!game.states.choose.lockZoom) {
             $('.choose .card').addClass('transparent');
             $('.choose .slot').addClass('transparent');
             $('.choose .pickedbox').addClass('trans');
@@ -62,6 +62,8 @@ game.library = {
             card.addClass('zoom').removeClass('transparent');
             card.parent().removeClass('transparent');
           }
+          if (e.preventDefault) e.preventDefault();
+          return false;
         });
       });
       game.states.choose.pickedbox.hide().fadeIn();

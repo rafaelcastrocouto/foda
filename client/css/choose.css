@@ -160,6 +160,9 @@
 .library .pickedbox .card {
   transform: translate3d(-50%, -50%, 0) scale(0.7);
 }
+.library .pickedbox.transparent .card {
+  pointer-events: none;
+}
 
 @keyframes pickedboxslidedown {
   0% {

@@ -57,7 +57,9 @@ game.states.choose = {
         $('.choose .pickedbox').removeClass('transparent');
         game.topbar.removeClass('transparent');
         card.removeClass('zoom');
-      } else if (force != 'force' && card.hasClass('selected')) {
+        game.states.choose.lockZoom=true;
+        setTimeout(function () {game.states.choose.lockZoom=false;}, 200);
+      } else if (force != 'force' && card.hasClass('selected') && !game.states.choose.lockZoom) {
         $('.choose .card').addClass('transparent');
         $('.choose .pickedbox').addClass('transparent');
         game.topbar.addClass('transparent');
@@ -77,6 +79,8 @@ game.states.choose = {
         if (!card.hasClass('dead')) game.setData('choose', card.data('hero')); 
       }
     }
+    if (force.preventDefault) force.preventDefault();
+    return false;
   },
   enablePick: function () {
     game.states.choose.pickEnabled = true;
@@ -239,5 +243,6 @@ game.states.choose = {
     $('.choose .card').removeClass('transparent zoom');
     $('.choose .pickedbox').removeClass('transparent');
     game.topbar.removeClass('transparent');
+    game.states.choose.lockZoom=false;
   }
 };
