@@ -530,10 +530,11 @@ game.ai = {
     enemyarea.each(function () {
       var spot =  $(this);
       var spotData = spot.data('ai');
+      var x = spot.getX();
       var y = spot.getY();
       if (!spotData.blocked) spots.push({
         target: spot,
-        priority: spotData.priority + (spotData.unitPriority||0) + (15 * y),
+        priority: spotData.priority + (spotData.unitPriority||0) + ((game.width - x)*2) + (y * 2),
         data: spotData
       });
     });

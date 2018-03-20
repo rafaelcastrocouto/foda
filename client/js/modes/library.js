@@ -46,6 +46,23 @@ game.library = {
         var skill = $(heroSkills[i]); 
         if (disabled) skill.addClass('dead');
         skill.appendTo(this);
+        skill.on('mouseup touchend', function () {
+          var card = $(this);
+          if (card.hasClass('zoom')) {
+            $('.choose .card').removeClass('transparent');
+            $('.choose .slot').removeClass('transparent');
+            $('.choose .pickedbox').removeClass('trans');
+            game.topbar.removeClass('transparent');
+            card.removeClass('zoom');
+          } else {
+            $('.choose .card').addClass('transparent');
+            $('.choose .slot').addClass('transparent');
+            $('.choose .pickedbox').addClass('trans');
+            game.topbar.addClass('transparent');
+            card.addClass('zoom').removeClass('transparent');
+            card.parent().removeClass('transparent');
+          }
+        });
       });
       game.states.choose.pickedbox.hide().fadeIn();
       $('.slot:empty').hide();

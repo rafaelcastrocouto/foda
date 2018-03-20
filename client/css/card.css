@@ -6,56 +6,6 @@
   float: left;
 }
 
-.pickbox .card {
-  margin: 0px -62px;
-  top: 0;
-  left: 50%;
-  transform: translate3d(-50%, 0, 0) translateZ(0) scale(0.35);
-  /* filter: blur(1.5px); */
-  transition: all 0.18s;
-}
-
-.pickbox .card.selected {
-  margin: 0px 16px;
-  transform: translate3d(-50%, 0, 0) scale(1.1);
-  filter: blur(0);
-}
-
-.pickbox .card.half {
-  transform: translate3d(-50%, 0, 0) scale(0.5);
-  margin: 0px -50px;
-}
-.pickedbox .card {
-  animation: pickedboxslidedown 0.5s;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0) scale(0.6);
-}
-
-.library .pickedbox .card {
-  transform: translate3d(-50%, -50%, 0) scale(0.7);
-}
-
-@keyframes pickedboxslidedown {
-  0% {
-    top: 36%;
-  }
-
-  100% {
-    top: 50%;
-  }
-}
-
-.pickedbox .card.heroes h1, .pickedbox .card.heroes .current, .pickedbox .card.heroes .desc, .pickedbox .card.heroes .buff {
-  opacity: 0;
-}
-.pickedbox .card.heroes fieldset {
-  padding: 0;
-  background: transparent;
-}
-.pickedbox .card.heroes .portrait .img, .pickedbox .card.heroes .portrait .overlay {
-  height: 265px;
-}
 
 .card {
   position: relative;
@@ -363,19 +313,19 @@
 }
 
 .table .deck .card:hover {
-  transform: translate(-50%, -50%) scale(0.55);
+  transform: translate3d(-50%, -50%, 0) scale(0.55) rotate(0);
   z-index: 11;
 }
 
 .table .deck .card.on, .table .deck .card.channel-on {
-  transform: translate(-50%, -50%) scale(0.5) rotate(-5deg);
+  transform: translate3d(-50%, -50%, 0) scale(0.5) rotate(-5deg);
 }
 .table .deck .card.on:hover, .table .deck .card.channel-on:hover {
-  transform: translate(-50%, -50%) scale(0.6) rotate(-5deg);
+  transform: translate3d(-50%, -50%, 10px) scale(0.6) rotate(-5deg);
 }
 
 .table .deck .card.selected {
-  transform: translate(-50%, -50%) scale(0.55) rotate(0);
+  transform: translate3d(-50%, -50%, 0) scale(0.55) rotate(0);
   z-index: 11;
 }
 

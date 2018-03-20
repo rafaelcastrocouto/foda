@@ -12,7 +12,7 @@ game.history = {
         valid = game.states.validState(state),
         name = game.getData('name'),
         logged = (game.getData('logged') === true);
-    var delay = 1000 * 60 * 60 * 24 * 3; // 3 days
+    var delay = 1000 * 60 * 60 * 24 * 30; // 30 days
     var recent = (new Date().valueOf() - game.history.last) < delay; 
     var recovering = logged && name && valid && recent;
     if (!recovering) game.history.jumpTo('log');

@@ -51,6 +51,7 @@ game.states.loading = {
     game.container.append(game.topbar);
     game.states.build( function () {
       game.rank.build();
+      //preloadimgs
       $.each(game.states.loading.preloadimgs, function () {
         $('<img>').attr('src', '/img/'+this).on('load', function () {
           game.states.loading.imgload++;
@@ -59,6 +60,7 @@ game.states.loading = {
           }
         }).appendTo(game.hidden);
       });
+      game.achievements.build();
       game.timeout(400, game.history.recover);
     });
   },

@@ -6,24 +6,34 @@
 }
 
 .choose .pickbox {
-  width: 920px;
-  height: 340px;
+  width: 970px;
+  height: 600px;
   position: absolute;
-  top: 30px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
   padding: 0;
   text-align: center;
-  border-radius: 4px;
-  background: rgba(0,0,0,0.7);
 }
 
+.choose .pickbox:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 970px;
+  height: 340px;
+  top: 28px;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
 .choose .pickbox .deck {
   position: relative;
-  left: -316px;
-  top: 20px;
-  height: 320px;
+  left: -490px;
+  top: 28px;
+  margin-top: 20px;
+  height: 340px;
   transform: translateZ(0);
 }
 
@@ -39,6 +49,9 @@
   transform: translateZ(0);
 }
 
+.choose .pickedbox.trans {
+  background: transparent;
+}
 .left-side .choose .pickedbox {
   left: auto;
   right: 26px;
@@ -46,6 +59,26 @@
 .choose .pickedbox .skills:hover {
   transform: translate3d(-42%, -68%, 0) scale(1.1);
 }
+.choose .pickedbox .slot:first-child .skills:hover {
+  transform: translate3d(-30%, -68%, 0) scale(1.1);
+}
+.choose .pickedbox .slot:nth-child(4) .skills:hover {
+  transform: translate3d(-62%, -68%, 0) scale(1.1);
+}
+.choose .pickedbox .slot:first-child .skills.zoom {
+  transform: translate3d(20%, -112%, 0) scale(2);
+}
+.choose .pickedbox .slot:nth-child(2) .skills.zoom {
+  transform: translate3d(15%, -112%, 0) scale(2);
+}
+.choose .pickedbox .slot:nth-child(3) .skills.zoom {
+  transform: translate3d(-30%, -112%, 0) scale(2);
+}
+.choose .pickedbox .slot:nth-child(4) .skills.zoom {
+  transform: translate3d(-108%, -112%, 0) scale(2);
+}
+
+
 
 .choose .slot {
   position: relative;
@@ -79,7 +112,7 @@
 
 .choose .buttonbox {
   position: absolute;
-  right: 12px;
+  right: 0;
   top: 376px;
   width: 285px;
   padding: 4px 8px;
@@ -92,4 +125,59 @@
 
 .choose .buttonbox .button.playing {
   background: #b7a986
+}
+
+
+.pickbox .card {
+  margin: 0px -62px;
+  top: 0;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0) translateZ(0) scale(0.35);
+  transition: all 0.18s;
+}
+
+.pickbox .card.selected {
+  margin: 0px 16px;
+  transform: translate3d(-50%, 0, 0) scale(1.1);
+}
+
+.pickbox .card.selected.zoom {
+  transform: translate3d(-58%, 34%, 0) scale(2);
+}
+
+
+.pickbox .card.half {
+  transform: translate3d(-50%, 0, 0) scale(0.5);
+  margin: 0px -50px;
+}
+.pickedbox .card {
+  animation: pickedboxslidedown 0.5s;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0) scale(0.6);
+}
+
+.library .pickedbox .card {
+  transform: translate3d(-50%, -50%, 0) scale(0.7);
+}
+
+@keyframes pickedboxslidedown {
+  0% {
+    top: 36%;
+  }
+
+  100% {
+    top: 50%;
+  }
+}
+
+.pickedbox .card.heroes h1, .pickedbox .card.heroes .current, .pickedbox .card.heroes .desc, .pickedbox .card.heroes .buff {
+  opacity: 0;
+}
+.pickedbox .card.heroes fieldset {
+  padding: 0;
+  background: transparent;
+}
+.pickedbox .card.heroes .portrait .img, .pickedbox .card.heroes .portrait .overlay {
+  height: 265px;
 }

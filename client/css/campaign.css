@@ -103,16 +103,18 @@
 .campaign-box p.achieve {
   text-align: left;
   font-size: 13px;
-  margin: 1px;
-  line-height: 20px;
+  line-height: 22px;
 }
 .campaign-box p.achieve:before {
-  content: "•";
+  content: "☆";
+  font-size: 20px;
+  line-height: 22px;
   margin: 0 10px;
+  vertical-align: top;
 }
 .campaign-heroes {
   text-align: center;
-  margin-top: 16px;
+  margin-top: 10px;
 }
 .campaign-box .campaign-heroes .heroes {
   width: 45px;

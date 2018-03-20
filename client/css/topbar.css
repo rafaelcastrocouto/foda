@@ -132,3 +132,8 @@
 .topbar .logout:hover, .topbar .opt:hover {
   text-decoration: underline;
 }
+.topbar.transparent {
+  opacity: 1;
+  background: transparent;
+  pointer-events: all; 
+}

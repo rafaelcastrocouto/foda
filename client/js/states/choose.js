@@ -1,5 +1,5 @@
 game.states.choose = {
-  size: 100,
+  size: 156,
   build: function () {
     this.pickbox = $('<div>').addClass('pickbox').appendTo(this.el);
     this.pickedbox = $('<div>').addClass('pickedbox').hide();
@@ -49,22 +49,33 @@ game.states.choose = {
     }
     return slots;
   },
-  select: function (force) {
+  select: function (force) {// console.log(force)
     var card = $(this);
     if (card.hasClass && card.hasClass('card')) {
-      if (game.mode == 'library') game.library.select(card, force);
-      $('.choose .selected').removeClass('selected draggable');
-      $('.choose .half').removeClass('half');
-      card.addClass('selected');
-      card.prev().addClass('half');
-      card.next().addClass('half');
-      if (game.mode != 'library') card.addClass('draggable');
-      var index = card.siblings(':visible').addBack().index(card);
-      if (index === undefined) index = card.index();
-      var size = game.states.choose.size/2;
-      if (game.mode == 'tutorial') size = 0;
-      game.states.choose.pickDeck.css('margin-left', index * -1 * size);
-      if (!card.hasClass('dead')) game.setData('choose', card.data('hero'));
+      if (card.hasAllClasses('selected zoom')) {
+        $('.choose .card').removeClass('transparent');
+        $('.choose .pickedbox').removeClass('transparent');
+        game.topbar.removeClass('transparent');
+        card.removeClass('zoom');
+      } else if (force != 'force' && card.hasClass('selected')) {
+        $('.choose .card').addClass('transparent');
+        $('.choose .pickedbox').addClass('transparent');
+        game.topbar.addClass('transparent');
+        card.addClass('zoom').removeClass('transparent draggable');
+      } else {
+        if (game.mode == 'library') game.library.select(card, force);
+        $('.choose .selected').removeClass('selected draggable');
+        $('.choose .half').removeClass('half');
+        card.addClass('selected');
+        card.prev().addClass('half');
+        card.next().addClass('half');
+        if (game.mode != 'library') card.addClass('draggable');
+        var index = card.siblings(':visible').addBack().index(card);
+        if (index === undefined) index = card.index();
+        var size = game.states.choose.size/2;
+        game.states.choose.pickDeck.css('margin-left', index * -1 * size);
+        if (!card.hasClass('dead')) game.setData('choose', card.data('hero')); 
+      }
     }
   },
   enablePick: function () {
@@ -225,5 +236,8 @@ game.states.choose = {
     if (this.video) this.playVideo(); //clear video iframe
     $('.slot .card.heroes').prependTo(this.pickDeck).on('mousedown.choose touchstart.choose', game.states.choose.select);
     this.sort();
+    $('.choose .card').removeClass('transparent zoom');
+    $('.choose .pickedbox').removeClass('transparent');
+    game.topbar.removeClass('transparent');
   }
 };

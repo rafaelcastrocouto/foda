@@ -16,6 +16,12 @@
   font-size: 180px;
 }
 
+.transparent {
+  transition: opacity: 0.4s;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .spot .gold {
   font-size: 70px;
 }

@@ -15,9 +15,10 @@ body {
   background-size: 100% 20%;
   background-repeat: no-repeat;
   box-shadow: 0 -50px 100px rgba(0,0,0,0.7) inset;
-  overflow: hidden;
+  /* overflow: hidden; */
   tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  backface-visibility: hidden;
 }
 
 p {
@@ -61,8 +62,6 @@ noscript {
 
 .game-container {
   position: absolute;
-  border: 1px solid #333;
-  box-shadow: inset 0 0 0 1px #333;
   width: 970px;
   height: 600px;
   top: 50%;
@@ -75,7 +74,16 @@ noscript {
   overflow: hidden;
   image-rendering: pixelated;
 }
-
+.game-container:after {
+  content:"";
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  top: -2px; left: -2px;
+  width: 970px;
+  height: 600px;
+  border: 2px solid #000;
+}
 .game-container.campaign-state .states,
 .game-container.choose-state .states,
 .game-container.vs-state .states,
@@ -183,52 +191,6 @@ noscript .box {
 
 .game-overlay .log.box.vote h2 {
   font-weight: bold;
-}
-
-.log .h1 {
-  z-index: 10;
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  animation: logoslideup 0.8s 1;
-  transform: translate(-50%, -100%);
-}
-
-@keyframes logoslideup {
-  0% {
-    transform: translate(-50%, -75%);
-  }
-
-  100% {
-    transform: translate(-50%, -100%);
-  }
-}
-
-.log .h2 {
-  z-index: 10;
-  margin: 16px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-
-.log .h2 {
-  animation: slideright 5s infinite;
-}
-
-@keyframes slideright {
-  0% {
-    transform: translate(-150%, 0);
-  }
-
-  5%, 95% {
-    transform: translate(-55%, 0);
-  }
-
-  100% {
-    transform: translate(250%, 0);
-  }
 }
 
 .loading .box, 
