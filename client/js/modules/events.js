@@ -66,26 +66,30 @@ game.events = {
     return false;
   },
   move: function(event) {
-    var position = game.events.getCoordinates(event);
-    var tolerance = 3;
-    if (game.events.dragTarget &&
-       (position.left < game.events.draggingPosition.left - tolerance || position.top < game.events.draggingPosition.top - tolerance)  &&
-       (position.left > game.events.draggingPosition.left + tolerance || position.top > game.events.draggingPosition.top + tolerance)) {
-      game.events.dragging = true;
-      var scale = game.events.dragClone.getScale();
-      var scale2 = game.container.getScale();
-      if (game.events.dragClone.hasClass('fromMap')) scale = 1;
-      game.events.dragTarget.addClass('dragTarget');
-      game.events.dragClone.css({
-        'left': ((position.left - game.offset.left) - (game.events.dragOffset.left * scale)) / scale2 + 'px',
-        'top': ((position.top - game.offset.top) - (game.events.dragOffset.top * scale)) / scale2 + 'px'
-      });
-      setTimeout(function () {game.events.dragClone.removeClass('hidden');}, 80);
-      var target = $(document.elementFromPoint(position.left, position.top));
-      $('.drop').removeClass('drop');
-      if (target.hasClasses('slot targetarea casttarget movearea attacktarget')) {
-        game.events.dragClone.addClass('drop');
-        target.addClass('drop');
+    if (game.events.dragTarget) {
+      var position = game.events.getCoordinates(event);
+      var tolerance = 3;
+      var moveStarted = (position.left < game.events.draggingPosition.left - tolerance || 
+                         position.top < game.events.draggingPosition.top - tolerance)  &&
+                        (position.left > game.events.draggingPosition.left + tolerance || 
+                         position.top > game.events.draggingPosition.top + tolerance);
+      if (moveStarted || game.events.dragging) {
+        game.events.dragging = true;
+        var scale = game.events.dragClone.getScale();
+        var scale2 = game.container.getScale();
+        if (game.events.dragClone.hasClass('fromMap')) scale = 1;
+        game.events.dragTarget.addClass('dragTarget');
+        game.events.dragClone.css({
+          'left': ((position.left - game.offset.left) - (game.events.dragOffset.left * scale)) / scale2 + 'px',
+          'top': ((position.top - game.offset.top) - (game.events.dragOffset.top * scale)) / scale2 + 'px'
+        });
+        setTimeout(function () {game.events.dragClone.removeClass('hidden');}, 80);
+        var target = $(document.elementFromPoint(position.left, position.top));
+        $('.drop').removeClass('drop');
+        if (target.hasClasses('slot targetarea casttarget movearea attacktarget')) {
+          game.events.dragClone.addClass('drop');
+          target.addClass('drop');
+        }
       }
     }
   },
@@ -136,8 +140,8 @@ game.events = {
   keyboard: function (event) {//console.log(event.keyCode)
     // space: skip turn
     if (event.keyCode == 32) game.states.table.skipClick();
-    // options
-    if (event.keyCode == 111) game.options.keyboard();
+    // + options
+    if (event.keyCode == 43) game.options.keyboard();
     // enter: chat
     if (event.keyCode == 13) $('.chat').toggleClass('hover');
   },

@@ -196,9 +196,17 @@ var game = {
   error: function(details, cb) {
     var box = $('<div>').addClass('box error');
     game.overlay.removeClass('hidden').append(box);
-    box.append($('<h1>').text(game.data.ui.error));
-    box.append($('<p>').html(details+'<br>'+game.data.ui.reload));
-    box.append($('<div>').addClass('button alert').text(game.data.ui.ok).on('mouseup touchend', function () {
+    var ti = 'Error';
+    var re = 'Reload';
+    var ok = 'Ok';
+    if (game.data.ui) {
+      ti = game.data.ui.error;
+      re = game.data.ui.reload;
+      ok = game.data.ui.ok;
+    }
+    box.append($('<h1>').text(ti));
+    box.append($('<p>').html(details+'<br>'+re));
+    box.append($('<div>').addClass('button alert').text(ok).on('mouseup touchend', function () {
       game.overlay.addClass('hidden');
       game.overlay.empty();
       if (cb) cb(true);

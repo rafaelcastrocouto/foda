@@ -53,12 +53,14 @@ game.library = {
             $('.choose .slot').removeClass('transparent');
             $('.choose .pickedbox').removeClass('trans');
             game.topbar.removeClass('transparent');
+            game.message.removeClass('transparent');
             card.removeClass('zoom');
           } else if (!game.states.choose.lockZoom) {
             $('.choose .card').addClass('transparent');
             $('.choose .slot').addClass('transparent');
             $('.choose .pickedbox').addClass('trans');
             game.topbar.addClass('transparent');
+            game.message.addClass('transparent');
             card.addClass('zoom').removeClass('transparent');
             card.parent().removeClass('transparent');
           }

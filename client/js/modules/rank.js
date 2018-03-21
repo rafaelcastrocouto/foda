@@ -22,7 +22,7 @@ game.rank = {
     var ranked = [];
     $.each(data, function (name, points) { ranked.push({name: name, points: points}); });
     ranked.sort(function (a,b) { return b.points - a.points; });
-    game.rank.min = ranked[ranked.length-1].points;
+    if (ranked.length) game.rank.min = ranked[ranked.length-1].points;
     return ranked;
   },
   update: function (data) {
