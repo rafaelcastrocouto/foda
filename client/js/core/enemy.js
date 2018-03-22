@@ -236,7 +236,7 @@ game.enemy = {
   },
   buyItem: function (item, itemtype) {
     var card = $('.items .'+item+'.'+itemtype);
-    if (game.currentTurnSide == 'enemy') card = game.item.clone(card);
+    if (game.currentTurnSide == 'enemy') card = game.items.clone(card);
     card.removeClass('buy expensive').addClass(game.currentTurnSide).appendTo(game[game.currentTurnSide].skills.sidehand);
     if (card.data('cards')) {
       for (var i=1; i<card.data('cards'); i++) {
