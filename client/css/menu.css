@@ -395,9 +395,9 @@
   border: 1.5px solid #2b2734;
   transform-origin: 50% 1%;
   transform: translate3d(220px, 144px, 4px) rotateX(-10deg);
-  width: 75px;
-  padding: 9px;
-  padding-bottom: 4px;
+  width: 80px;
+  padding: 8px;
+  padding-bottom: 6px;
   border-radius: 5px 40px/50px 8px;
   z-index: 5;
   box-shadow:  inset;
@@ -447,14 +447,14 @@
   content: counter(item) " ";
   display: inline-block;
   vertical-align: top;
-  margin-right: 2px;
+  margin-right: 0px;
   font-size: 11px;
 }
 .rank li:last-child {
   border: 0;
 }
 .rank span {
-  max-width: 160px;
+  max-width: 58px;
   text-overflow: ellipsis;
   overflow: hidden;
   margin-left: 4px;
@@ -476,6 +476,7 @@
 
 .rank span:last-child {
   font-size: 12px;
+  margin-left: 0;
 }
 
 
