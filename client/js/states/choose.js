@@ -21,7 +21,7 @@ game.states.choose = {
     game.audio.loopSong('SneakyAdventure');
     var hero = game.getData('choose');
     this.sort();
-    if (game.mode != 'library') this.selectFirst();
+    if (game.mode != 'library') this.selectFirst('force');
     if (game.mode && game[game.mode].chooseStart) game[game.mode].chooseStart(hero);
   },
   buildDeck: function (libdeck) {
