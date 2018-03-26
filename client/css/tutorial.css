@@ -158,23 +158,23 @@
   }
 }
 
-.tutorial.axe.left, .left-side .tutorial.axe {
+.tutorial.axe.left, .left-side .tutorial.axe, .tutorial.axe.fleft {
   right: auto;
   left: -180px;
   transform: scaleX(-1);
 }
 
-.left-side .tutorial.axe.left {
+.left-side .tutorial.axe.left, .left-side .tutorial.axe.fleft {
   left: auto;
   right: -55px;
   transform: scaleX(1);
 }
 
-.tutorial.axe.left .txtflip, .left-side .tutorial.axe .txtflip {
+.tutorial.axe.left .txtflip, .left-side .tutorial.axe .txtflip, .tutorial.axe.fleft .txtflip {
   transform: rotate(-2deg) scaleX(-1);
 }
 
-.left-side .tutorial.axe.left .txtflip {
+.left-side .tutorial.axe.left .txtflip, .left-side .tutorial.axe.fleft .txtflip {
   transform: scaleX(1);
 }
 

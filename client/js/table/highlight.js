@@ -50,9 +50,10 @@ game.highlight = {
       }
       if (card.hasClass('units') && card.parent().is('.sidehand')) {
         game[card.side()].tower.strokeAttack();
-        if (card.canPlay())
+        if (card.canPlay()) {
           card.addClass('draggable');
           card.highlightCreep();
+        }
       }
       if (card.hasAllClasses('items buy')) {
         game.items.enableBuy();

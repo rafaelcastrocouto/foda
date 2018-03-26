@@ -111,10 +111,6 @@
   z-index: 5;
   transform: translateZ(0);
 }
-
-.table .selectedarea:hover {
-  z-index: 20;
-}
 .left-side .table .selectedarea {
   right: auto;
   left: 5px;

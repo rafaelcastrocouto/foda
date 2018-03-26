@@ -114,7 +114,7 @@ game.tutorial = {
       game.tutorial.axebaloon.hide();
       game.tutorial.moveCountValue = 5;
       game.message.text(game.data.ui.yourturn);
-      game.tutorial.axe.addClass('up left');
+      game.tutorial.axe.addClass('up');
       game.enemy.tower.addClass('blink').on('select', game.tutorial.selected);
       game.timeout(400, function () {
         game.skill.build('enemy');
@@ -163,7 +163,6 @@ game.tutorial = {
   },
   creepLesson: function () {
     game.tutorial.lesson = 'Creep';
-    game.tutorial.axe.removeClass('left');
     game.tutorial.axebaloon.hide().delay(800).fadeIn('slow');
     game.tutorial.letter(game.data.ui.axecreep);
     game.units.buyCreeps('player', true);
@@ -208,8 +207,8 @@ game.tutorial = {
     $('.blink').removeClass('blink');
     game.states.table.skip.addClass('blink');
     game.tutorial.axebaloon.hide().fadeIn('slow');
-    game.tutorial.axe.addClass('left');
     game.tutorial.letter(game.data.ui.axeendturn);
+    game.tutorial.axe.addClass('fleft');
   },
   skip: function () {
     $('.map .player.card').removeClass('can-move');
@@ -220,7 +219,6 @@ game.tutorial = {
     $('.blink').removeClass('blink');
     game.message.text(game.data.ui.enemyturn);
     game.tutorial.letter(game.data.ui.axedone);
-    game.tutorial.axe.addClass('left');
     game.tutorial.axebaloon.fadeIn('slow');
     game.loader.addClass('loading');
     game.camera.addClass('night');
@@ -253,6 +251,7 @@ game.tutorial = {
       game.items.disableShop();
       game.states.table.shop.removeClass('blink');
       game.timeout(1000, game.tutorial.enemyMove);
+      game.tutorial.axe.removeClass('fleft');
     }
   },
   enemyMove: function () {
@@ -288,7 +287,6 @@ game.tutorial = {
     game.turn.el.removeClass('show');
     game.states.table.el.addClass('turn');
     game.message.text(game.data.ui.yourturn);
-    game.tutorial.axe.removeClass('left');
     game.card.unselect();
     $('.table .card.items.sheepstick').addClass('blink').on('cast.tutorial', game.tutorial.itemCast);
     game.tutorial.axebaloon.fadeIn('slow');
@@ -337,7 +335,6 @@ game.tutorial = {
     game.tutorial.letter(game.data.ui.axeskill);
   },
   jungleLesson: function () {
-    game.tutorial.axe.addClass('left');
     game.tutorial.lesson = 'Jungle';
     $('.blink').removeClass('blink');
     var hero = $('.map .player.heroes.en').addClass('blink');
@@ -368,7 +365,6 @@ game.tutorial = {
     $('#A1').addClass('blink');
   },
   toggleLesson: function () {
-    game.tutorial.axe.removeClass('left');
     game.tutorial.lesson = 'Toggle';
     $('.blink').removeClass('blink');
     $('.map .player.heroes.en').off('cast.tutorial');
@@ -438,7 +434,7 @@ game.tutorial = {
     if (game.tutorial.axe) {
       game.tutorial.axe.appendTo(game.states.choose.el);
       game.tutorial.axe.removeClass('up');
-      game.tutorial.axe.removeClass('left');
+      game.tutorial.axe.removeClass('left fleft');
       game.tutorial.axebaloon.hide();
     }
   }
