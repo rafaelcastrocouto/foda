@@ -6,7 +6,7 @@ game.skills.nyx = {
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
       var dmgType = skill.data('damage type');
-      game.shake();
+      game.fx.shake();
       source.opponentsInLine(target, range, width, function (card) {
         source.damage(damage, card, dmgType);
         if (!target.hasClass('bkb')) source.addStun(card, skill);

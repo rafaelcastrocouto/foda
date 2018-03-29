@@ -44,7 +44,6 @@ game.states.log = {
         name = game.states.log.input.val();
     if (name && valid) {
       game.player.name = name;
-      game.rank.start();
       if (game.states.log.remembername) {
         game.setData('name', name);
       } else {
@@ -53,9 +52,7 @@ game.states.log = {
       game.setData('logged', true);
       game.setData('last-activity', new Date().valueOf());
       game.states.log.button.attr('disabled', true);
-      game.chat.set(game.data.ui.joined);
-      game.chat.build();
-      game.chat.el.show();
+      game.chat.build(game.data.ui.joined);
       if ('AudioContext' in window) game.audio.build();
       game.states.changeTo('menu');
     } else {

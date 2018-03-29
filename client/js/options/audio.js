@@ -7,12 +7,12 @@ game.audio = {
     game.audio.volumeNode = game.audio.context.createGain();
     game.audio.soundsNode = game.audio.context.createGain();
     game.audio.musicNode = game.audio.context.createGain();
-    game.audio.rememberVolume();
     game.audio.soundsNode.connect(game.audio.volumeNode);
     game.audio.musicNode.connect(game.audio.volumeNode);
     game.audio.volumeNode.connect(game.audio.context.destination);
     game.audio.loadMusic();
     game.audio.loadSounds();
+    game.audio.rememberVolume();
   },
   buffers: {},
   load: function (name, cb) {
@@ -215,9 +215,11 @@ game.audio = {
     if (game.audio[target + 'Node']) {
       //game.audio[target + 'Node'].gain.value = vol;
       game.audio[target + 'Node'].gain.setTargetAtTime(vol, game.audio.context.currentTime + 1, 0.01);
-      game.options[target + 'control'].css('transform', 'scale(' + vol + ')');
-      game.setData(target, vol);
     }
+    if (game.options[target + 'control']) {
+      game.options[target + 'control'].css('transform', 'scale(' + vol + ')');
+    }
+    game.setData(target, vol);
   },
   rememberVolume: function () {
     var volume = game.getData('volume') || game.audio.defaultVolume;

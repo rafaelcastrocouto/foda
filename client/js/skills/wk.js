@@ -96,7 +96,7 @@ game.skills.wk = {
       var buff = game.data.skills.wk.ult.buffs.ult.source;
       var range = buff.range;
       if (wk.data('skill range bonus')) range += wk.data('skill range bonus');
-      game.shake();
+      game.fx.shake();
       wk.reborn(spot);
       wk.addClass('can-attack');
       spot.removeClass('cript block');

@@ -74,7 +74,7 @@ game.skills.cm = {
       }
     },
     damage: function (source, skill) {
-      game.shake();
+      game.fx.shake();
       var range = skill.data('aoe range');
       if (source.data('skill range bonus')) range += source.data('skill range bonus');
       source.opponentsInRange(range, function (target) {

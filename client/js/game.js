@@ -37,6 +37,15 @@ var game = {
   currentData: {}, // all game info and moves. should be able to recreate a table
   currentState: 'noscript', //unsupported, loading, log, menu, campaign, choose, vs, table, results
   heroesAI: {}, // heroes default AI behaviour
+  build: function() {
+    game.utils();
+    game.history.build();
+    game.events.build();
+    game.hidden = $('<div>').addClass('hidden').appendTo(game.container);
+    game.overlay = $('<div>').addClass('game-overlay hidden').appendTo(game.container);
+    game.topbar = $('<div>').addClass('topbar');
+    game.topbar.append(game.loader, game.message, game.triesCounter);
+  },
   start: function() {
     if (window.JSON && window.localStorage && window.btoa && window.atob && window.XMLHttpRequest) {
       if (game.debug) {
@@ -44,14 +53,8 @@ var game = {
         game.staticHost = '';
         game.dynamicHost = '';
       }
-      game.utils();
-      game.events.build();
-      game.history.build();
-      game.hidden = $('<div>').addClass('hidden').appendTo(game.container);
-      game.overlay = $('<div>').addClass('game-overlay hidden').appendTo(game.container);
-      game.topbar = $('<div>').addClass('topbar');
-      game.topbar.append(game.loader, game.message, game.triesCounter);
       game.states.changeTo('loading');
+      game.build();
     } else
       game.states.changeTo('unsupported');
   },
@@ -120,14 +123,6 @@ var game = {
   random: function() {
     game.seed += 1;
     return parseFloat('0.' + Math.sin(game.seed).toString().substr(6));
-  },
-  shake: function() {
-    var state = game.states[game.currentState].el;
-    state.addClass('shake');
-    setTimeout(function() {
-      this.removeClass('shake');
-    }
-    .bind(state), 260);
   },
   validModes: ['tutorial', 'online', 'library', 'single', 'local'],
   setMode: function(mode, recover) {
@@ -231,26 +226,5 @@ var game = {
         location.reload(true);
       }
     });
-  },
-  print: function() {
-    game.states.choose.pickbox.css({
-      left: 100,
-      top: 130,
-      transform: 'scale(2)',
-      background: 'transparent'
-    });
-    $(document.body).css({
-      'background': 'transparent',
-      'box-shadow': 'none'
-    });
-    game.topbar.css('background', 'transparent');
-    game.container.css('background', 'transparent');
-    game.states.choose.pickedbox.css({
-      opacity: 0
-    });
-    game.states.choose.buttonbox.css({
-      right: 0
-    });
-    $('.library.skills .card').appendTo(game.states.choose.pickDeck).on('mousedown.choose touchstart.choose', game.states.choose.select);
   }
 };

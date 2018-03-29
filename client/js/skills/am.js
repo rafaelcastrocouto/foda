@@ -39,7 +39,7 @@ game.skills.am = {
         source.damage(damage + mana, targets, skill.data('damage type'));
       });
       target.stopChanneling();
-      game.shake();
+      game.fx.shake();
     }
   }
 };

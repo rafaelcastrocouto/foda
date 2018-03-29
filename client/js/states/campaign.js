@@ -70,10 +70,10 @@ game.states.campaign = {
   nextStage: function() {
     switch (this.stage.id) {
     case 'last':
-      game.alert('Congratulation, you beat our best Artifial Intelligence! Thanks a lot for participating in our beta test!');
+      game.alert('Congratulation, you beat our Campaign! Thanks a lot for participating in our beta test!');
       this.done = true;
-      this.stage = game.data.campaign.start;
-      this.startShow();
+      game.setData('campaignDone', true);
+      this.enableAllStages();
       break;
     case 'hard':
       this.stage = game.data.campaign.last;
@@ -103,16 +103,10 @@ game.states.campaign = {
     default: //start 
       this.stage = game.data.campaign.easy;
     }
+    game.setData('stage', this.stage.id);
+    game.setData('lane', this.lane);
     if (this[this.stage.id + 'Show'] && !this.done)
       this[this.stage.id + 'Show']();
-  },
-  startShow: function() {
-    $('.stages').removeClass('done');
-    $('.campaign-path').removeClass('hidden').css('opacity', 1);
-    $('.stages').addClass('enabled blink').each(function () {
-      var stage = $(this);
-      stage.on('mouseup touchend', game.states.campaign[stage.data('id')+'Click']);
-    });
   },
   startClick: function() {
     $('.campaign-path').css('opacity', 0.2);
@@ -262,6 +256,17 @@ game.states.campaign = {
     $('.campaign-path.h' + game.states.campaign.lane[1] + '-fi').css('opacity', 1);
     this.buildDesc(game.data.campaign.last);
   },
+  enableAllStages: function() {
+    game.states.campaign.stage = game.data.campaign.start;
+    $('.stages').removeClass('done');
+    $('.campaign-path').removeClass('hidden').css('opacity', 1);
+    $('.stages').addClass('enabled blink').each(function () {
+      var stage = $(this);
+      stage.on('mouseup touchend', game.states.campaign[stage.data('id')+'Click']);
+    });
+    $('.stages.start').removeClass('blink');
+    this.buildDesc(game.data.campaign.start);
+  },
   buildDesc: function(data) {
     if (!data)
       data = this.stage;
@@ -361,6 +366,7 @@ game.states.campaign = {
       $('.campaign-path.nm-h' + l1).css('opacity', 1);
       $('.campaign-path.h' + l1 + '-fi').css('opacity', 1);
     }
+    game.setData('lane', game.states.campaign.lane);
   },
   clearPaths: function() {
     $('.campaign-path', game.states.campaign.map).hide();

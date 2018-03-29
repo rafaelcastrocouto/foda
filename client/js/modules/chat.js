@@ -1,5 +1,5 @@
 game.chat = {
-  build: function() {
+  build: function(msg) {
     if (!game.chat.builded) {
       game.chat.builded = true;
       game.chat.el = $('<div>').addClass('chat').appendTo(document.body).html('<h1>Chat</h1>').hover(game.chat.hover);
@@ -13,6 +13,8 @@ game.chat = {
       setInterval(game.chat.interval, 2000);
       game.chat.notification();
     }
+    game.chat.el.show();
+    game.chat.set(msg);
   },
   hover: function(event) {
     if (!game.chat.discordBuilded) {

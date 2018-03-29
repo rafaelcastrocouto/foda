@@ -5,10 +5,6 @@ game.rank = {
     this.title = $('<h1>').appendTo(this.el).text('WANTED');
     this.list = $('<ol>').appendTo(this.el).addClass('hidden');
   },
-  start: function () {
-    var p = game.getData('points');
-    if ( typeof(p) == 'number') game.player.points = p;
-  },
   send: function () {
     if (!game.debug && game.player.points > game.rank.min) game.db({
       'set': 'rank',

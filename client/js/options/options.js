@@ -37,7 +37,6 @@ game.options = {
      // start
     game.screen.rememberResolution();
     game.screen.FSEvents();
-    if (window.AudioContext) game.audio.rememberVolume();
   },
   events: function () {
     //FS

@@ -187,6 +187,14 @@ game.fx = {
       });
     } else if (cb) cb();
   },
+  shake: function() {
+    var state = game.states[game.currentState].el;
+    state.addClass('shake');
+    setTimeout(function() {
+      this.removeClass('shake');
+    }
+    .bind(state), 260);
+  },
   clear: function() {
     $('.ultfx .star').addClass('hide');
     game.states.table.ultfx.children('.fx').remove();
