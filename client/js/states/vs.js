@@ -31,7 +31,7 @@ game.states.vs = {
       game.units.build('player');
       game.units.build('enemy');
       var t = 4600;
-      if (game.mode == 'library') t = 1400;
+      if (game.mode == 'library') t = 1600;
       game.timeout(t - 300, function () {
         this.player.addClass('slide');
         this.enemy.addClass('slide');
@@ -57,10 +57,10 @@ game.states.vs = {
       }
     });
     game.skill.calcMana('player');
-    if (game.mode != 'library') this.playerinfo.text(game.data.ui.cardsperturn+': '+game.player.cardsPerTurn/*+' Max: '+game.player.maxCards*/);
+    if (game.mode != 'library') this.playerinfo.text(game.data.ui.cardsperturn+': '+game.player.cardsPerTurn);
     else {
       game.player.cardsPerTurn = 10;
-      this.playerinfo.text(game.data.ui.mana + ': '+$('.vsplayerdeck .card').data('mana')/*+' Max: '+game.player.maxCards*/);
+      this.playerinfo.text(game.data.ui.mana + ': '+$('.vsplayerdeck .card').data('mana'));
     }
   },
   buildEnemy: function () {
@@ -79,13 +79,13 @@ game.states.vs = {
         deck.addClass('vsenemyrdeck').appendTo(game.states.vs.enemydeck);
         var ch = deck.children();
         ch.sort(function (a,b) { 
-          return game.enemy.picks.indexOf($(b).data('hero')) - game.enemy.picks.indexOf($(a).data('hero')); 
+          return game.enemy.picks.indexOf($(a).data('hero')) - game.enemy.picks.indexOf($(b).data('hero')); 
         });
         deck.append(ch);
       }
     });
     game.skill.calcMana('enemy');
-    this.enemyinfo.text(game.data.ui.cardsperturn+': '+game.enemy.cardsPerTurn/*+' Max: '+game.enemy.maxCards*/);
+    this.enemyinfo.text(game.data.ui.cardsperturn+': '+game.enemy.cardsPerTurn);
   },
   playerPicks: function () {
     if (game.mode == 'library') {

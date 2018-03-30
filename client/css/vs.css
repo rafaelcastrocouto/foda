@@ -5,36 +5,42 @@
 
 .versus {
   position: absolute;
-  top: 0px;
+  top: 250px;
   left: 425px;
   z-index: 10;
   font-size: 40px;
-  animation: slidevs 1s 1;
+  animation: slidevs 1s 1; 
+  transform: translateZ(20px);
 }
 
 @keyframes slidevs {
   0% {
-    top: -70px;
+    top: -80px;
   }
 
   100% {
-    top: 0px;
+    top: 250px;
   }
 }
 
 .vsplayer, .vsenemy {
   transition: all 1s;
-  width: 345px;
-  height: 460px;
+  width: 840px;
+  height: 250px;
   position: absolute;
-  top: 50px;
-  padding: 30px 20px;
+  top: 0;
+  padding: 10px 20px;
   background: rgba(0,0,0,0.6);
   transform-style: preserve-3d;
 }
 
+.vsdeckplayer {
+  transform: translate(20px, -50px);
+}
+
 .vsplayer {
-  transform: translateX(100px) rotateY(10deg);
+  transform: translate(100px, 315px) rotateY(6deg) rotateZ(2.7deg);
+  text-align: left;
 }
 
 .vsplayerinfo, .vsenemyinfo {
@@ -45,11 +51,15 @@
 }
 
 .vsplayer.slide {
-  transform: translateX(-1100px) rotateY(20deg);
+  transform: translate(-1500px, 315px) rotateY(-6deg) rotateZ(2.7deg);
+}
+
+.vsdeckenemy {
+  transform: translate(-90px, -50px);
 }
 
 .vsenemy {
-  transform: translateX(500px) rotateY(-10deg);
+  transform: translate(-10px,30px) rotateY(-6deg) rotateZ(2.7deg);
   text-align: right;
 }
 
@@ -59,7 +69,7 @@
 }
 
 .vsenemy.slide {
-  transform: translateX(1500px) rotateY(-20deg);
+  transform: translate(1500px,30px) rotateY(-6deg) rotateZ(2.7deg);
 }
 
 .vs .vsplayer > h1, .vs .vsenemy > h1 {
@@ -71,7 +81,7 @@
 }
 
 .vs .card {
-  margin-right: -164px;
+  margin-right: -65px;
 }
 .vs .card .speed {
   display: none;
@@ -80,71 +90,14 @@
   z-index: 1;
 }
 
-.vs .vsdeckplayer {
-  margin-left: -15px;
-  margin-top: -15px;
-}
-
-.vs .vsplayer .card:nth-child(1) {
-  transform: scale(0.7) translateZ(0) rotate(-8deg);
-}
-
-.vs .vsplayer .card:nth-child(2) {
-  margin-top: 30px;
-  transform: scale(0.75) translateZ(20px) rotate(-6deg);
-}
-
-.vs .vsplayer .card:nth-child(3) {
-  margin-top: 60px;
-  transform: scale(0.8) translateZ(40px) rotate(-4deg);
-}
-
-.vs .vsplayer .card:nth-child(4) {
-  margin-top: 90px;
-  transform: scale(0.85) translateZ(60px) rotate(-2deg);
-}
-
-.vs .vsplayer .card:nth-child(5) {
-  margin-top: 120px;
-  transform: scale(0.9) translateZ(80px);
-}
-
-.vs .vsdeckenemy {
-  margin-right: 150px;
-  margin-top: -15px;
+.vs .card {
+  transform: rotate(-2deg) scale(0.6);
 }
 
 .vs .vsenemy .card {
   float: right;
 }
 
-.vs .vsenemy .card:nth-child(5) {
-  margin-top: 120px;
-  transform: scale(0.9) translateZ(80px);
-}
-
-.vs .vsenemy .card:nth-child(4) {
-  margin-top: 90px;
-  transform: scale(0.85) translateZ(60px) rotate(2deg);
-}
-
-.vs .vsenemy .card:nth-child(3) {
-  margin-top: 60px;
-  transform: scale(0.8) translateZ(40px) rotate(4deg);
-}
-
-.vs .vsenemy .card:nth-child(2) {
-  margin-top: 30px;
-  transform: scale(0.75) translateZ(20px) rotate(6deg);
-}
-
-.vs .vsenemy .card:nth-child(1) {
-  transform: scale(0.7) translateZ(0) rotate(8deg);
-}
-
-
 .library .vs .vsplayerdeck .card {
-  margin-left: 50px;
-  margin-top: 50px;
-  transform: scale(0.9) translateZ(0);
+  transform: scale(0.75) translateX(320px) rotate(-2deg);
 }
