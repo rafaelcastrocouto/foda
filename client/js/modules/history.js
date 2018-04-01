@@ -58,7 +58,7 @@ game.history = {
       game.states.campaign.done = true;
       game.states.campaign.enableAllStages();
     } else {
-      game.states.campaign.lane = game.getData('lane');
+      game.states.campaign.lane = game.getData('lane') || ['m', 'm'];
       var order = ['start','easy','normal','hard','last'];
       var end = order.indexOf(id);
       if (end > 0) {
