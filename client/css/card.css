@@ -232,7 +232,7 @@
 }
 
 .card.source {
-  box-shadow: 0 0 0 10px skyblue;
+  box-shadow: 0 0 0 16px skyblue;
 }
 
 .card.enemyMoveHighlight {
@@ -243,8 +243,11 @@
   box-shadow: 0 0 0 10px yellow;
 }
 
-.card.targetarea, .card.casttarget {
+.card.targetarea {
   box-shadow: 0 0 0 10px dodgerblue;
+}
+.card.casttarget {
+  box-shadow: 0 0 0 16px dodgerblue;
 }
 
 .card.dead {

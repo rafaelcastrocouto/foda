@@ -11,7 +11,7 @@ game.fx = {
       fire: ['fire'],
       stun: ['stun'],
       passive: ['passive'],
-      ult: ["ult-close", "ult-far"]
+      ult: ['ult-close', 'ult-far']
     },
     pud: {
       hook: ['hook'],
@@ -19,7 +19,7 @@ game.fx = {
       ult: ['ult']
     },
     wk: {
-      stun: ['stun']
+      stun: ['stun', 'stun-hit']
     },
     cm: {
       slow: ['slow'],
@@ -138,7 +138,7 @@ game.fx = {
       projectile.data('rotate', angle).appendTo(game.map.el);
       game.fx.projectileMove(projectile, source);
       game.timeout(64, game.fx.projectileMove.bind(this, projectile, target));
-      game.timeout(364, projectile.remove.bind(projectile));
+      game.timeout(464, projectile.remove.bind(projectile));
       return projectile;
     }
   },

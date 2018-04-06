@@ -332,7 +332,7 @@
   background-position: 0% 0%;
   top: 144px;
   left: 380px;
-  transform: translateZ(20px) rotateZ(-2deg);
+  transform: translateZ(20px) rotateZ(-2deg) scale(0.9);
 }
 .menu.cmdoll {
   width: 45px;
@@ -342,7 +342,7 @@
   background-position: 100% 0%;
   top: 129px;
   left: 319px;
-  transform: translateZ(20px) rotateZ(-2deg);
+  transform: translateZ(20px) rotateZ(-2deg) scale(0.85);
 }
 .menu.cmdoll:hover, .menu.amdoll:hover {
   transform-origin: 50% 0%;
@@ -396,7 +396,7 @@
   color: #473936;
   border: 1.5px solid #2b2734;
   transform-origin: 50% 1%;
-  transform: translate3d(230px, 144px, 40px) scale(0.9) rotateX(-8deg);
+  transform: translate3d(230px, 144px, 40px) scale(0.85) rotateX(-8deg);
   width: 80px;
   padding: 8px;
   padding-bottom: 6px;

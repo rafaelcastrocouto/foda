@@ -1,6 +1,6 @@
 game.timeout = function (ms, cb, arg) {
-  //if (ms !== 1000 && game.debug) return cb(arg);
-  if (ms === 0 || game.recovering) return cb(arg);
+  //if (ms === 0 || game.recovering) return cb(arg);
+  if (game.recovering) ms = 5;
   var t = setTimeout(function (arg) {
       cb(arg);
       game.timeoutArray.erase(t);

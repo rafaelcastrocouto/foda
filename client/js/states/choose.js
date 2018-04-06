@@ -161,7 +161,7 @@ game.states.choose = {
       $(this).attr('disabled', true);
       game.states.choose.randomFill();
       if (game[game.mode].chooseEnd) {
-        game.states.choose.selectFirst();
+        game.states.choose.selectFirst('force');
         game.timeout(1000, game[game.mode].chooseEnd);
       }
     }

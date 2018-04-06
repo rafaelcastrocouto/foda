@@ -1,12 +1,12 @@
-.states .map .spot.movearea {
+.states .map .spot.movearea, .states .map .spot.tutorialmovearea {
   cursor: pointer;
   /*animation: 1s blinkmovearea infinite;*/
 }
 
-.states .map .spot.movearea.moving {
+.states .map .spot.movearea.moving, .states .map .spot.tutorialmovearea.moving {
   background-color: rgba(100,220,140,0.4);
 }
-.states .map .spot.movearea.movetarget,
+.states .map .spot.movearea.movetarget, .states .map .spot.tutorialmovearea.movetarget,
 .states .map .spot.movesource {
   background-color: rgba(200,255,230,0.8);
 }
@@ -14,16 +14,12 @@
 .states .map .spot.movearea.moving:after,
 .states .map .spot.movearea.moving:before,
 .states .map .spot.movearea.movetarget:after,
-.states .map .spot.movearea.movetarget:before {
+.states .map .spot.movearea.movetarget:before,
+.states .map .spot.tutorialmovearea.moving:after,
+.states .map .spot.tutorialmovearea.moving:before,
+.states .map .spot.tutorialmovearea.movetarget:after,
+.states .map .spot.tutorialmovearea.movetarget:before {
   display: none;
-}
-
-/*@keyframes blinkmovearea {
-  0%, 100% {background: rgba(200,255,230,0.05);}
-  50% {background: rgba(200,255,230,0.15);}
-}*/
-.map .spot.movearea.drop, .states .map .spot.movearea:hover {
-  /*background: rgba(100,255,100,0.2);*/
 }
 
 .slot.available:after, .slot.available:before {
@@ -31,13 +27,13 @@
   transform: scale(0.25);
 }
 
-.slot.available:after, .slot.available:before, .map .movearea:after, .map .movearea:before {
+.slot.available:after, .slot.available:before, .map .movearea:after, .map .movearea:before, .map .tutorialmovearea:after, .map .tutorialmovearea:before{
   content: "";
   display: block;
   position: absolute;
 }
 
-.slot.available:after, .map .movearea:after {
+.slot.available:after, .map .movearea:after, .map .tutorialmovearea:after{
   width: 120px;
   height: 12px;
   background: #00ff7f;
@@ -51,7 +47,7 @@
   bottom: 60px;
 }
 
-.slot.available:before, .map .movearea:before {
+.slot.available:before, .map .movearea:before, .map .tutorialmovearea:before {
   width: 50px;
   height: 50px;
   border: 20px solid transparent;
@@ -69,7 +65,7 @@
   animation: chooseslide 1s infinite;
 }
 
-.map .movearea:hover:before {
+.map .movearea:hover:before, .map .tutorialmovearea:hover:before {
   animation: moveslide 1s infinite;
 }
 

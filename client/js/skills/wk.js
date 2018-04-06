@@ -6,6 +6,7 @@ game.skills.wk = {
       target.on('turnend.wk-stun', this.turnend.bind(this, source, target, skill));
       game.fx.projectile(source, target, skill);
       game.timeout(400, function(source, target, skill) {
+        game.fx.add('wk-stun-hit', source, target);
         source.damage(skill.data('damage'), target, skill.data('damage type'));
       }.bind(this, source, target, skill));
     },

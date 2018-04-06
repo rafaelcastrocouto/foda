@@ -36,7 +36,7 @@ game.units = {
     var summon = game.units.clone(game[side].unitsDeck.children('.summon'));
     if (summon) {
       summon.appendTo(game[side].skills.sidehand);
-      summon.on('mousedown touchstart', game.card.select);
+      summon.on('mousedown touchstart', game.card.select).on('mouseenter', game.highlight.source).on('mouseleave', game.highlight.refresh);
     }
     if (!(side == 'player' || game.mode == 'library' || game.mode == 'local')) {
       ranged.addClass('flipped');

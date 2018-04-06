@@ -26,7 +26,7 @@ game.states.campaign = {
     this.ht = $('<div>').attr('id','ht').data('id','hard').addClass('stages hard top').appendTo(this.map);
     this.hm = $('<div>').attr('id','hm').data('id','hard').addClass('stages hard mid').appendTo(this.map);
     this.hb = $('<div>').attr('id','hb').data('id','hard').addClass('stages hard bot').appendTo(this.map);
-    this.fi = $('<div>').attr('id','fi').data('id','final').addClass('stages final').appendTo(this.map);
+    this.fi = $('<div>').attr('id','fi').data('id','last').addClass('stages last').appendTo(this.map);
     this.ot = $('<div>').attr('id','ot').data('id','optional').addClass('stages optional top').appendTo(this.map);
     this.om = $('<div>').attr('id','om').data('id','optional').addClass('stages optional mid').appendTo(this.map);
     this.ob = $('<div>').attr('id','ob').data('id','optional').addClass('stages optional bot').appendTo(this.map);
@@ -278,8 +278,8 @@ game.states.campaign = {
     $('<h2>').text(data.name).appendTo(this.desc);
     $('<div>').addClass('campaign-img ' + data.img).appendTo(this.desc);
     $('<p>').text(data.title).appendTo(this.desc);
-    $(data.desc).each(function(i, txt) {
-      $('<p>').addClass('achieve').text(txt).appendTo(game.states.campaign.desc);
+    $(data.achievements).each(function(i, achievement) {
+      $('<p>').addClass('achieve').text(achievement.name + ' - ' + achievement.description).appendTo(game.states.campaign.desc);
     });
     var ch = $('<div>').addClass('campaign-heroes').appendTo(this.desc);
     game.single.enemypicks = data.picks;

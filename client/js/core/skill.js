@@ -32,7 +32,7 @@ game.skill = {
           var side = this.toString();
           skill.addClass(side);
           if (side == 'player' || game.mode == 'library' || game.mode == 'local') {
-            skill.on('mousedown touchstart', game.card.select);
+            skill.on('mousedown touchstart', game.card.select).on('mouseenter', game.highlight.source).on('mouseleave', game.highlight.refresh);
             //double click / tap 
           } else skill.attr({ title: '' }).addClass('flipped');
           if (skill.data('deck') === game.data.ui.summon) skill.appendTo(game[side].unitsDeck);
@@ -336,7 +336,7 @@ game.skill = {
   },
   summon: function (skill) {
     skill.removeClass('draggable');
-    var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped dragTarget').on('mousedown touchstart', game.card.select).css({transform: ''});
+    var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped dragTarget').on('mousedown touchstart', game.card.select).on('mouseenter', game.highlight.source).on('mouseleave', game.highlight.refresh).css({transform: ''});
     unit.find('legend').text(skill.data('summon name'));
     unit.find('.description').remove();
     unit.data('summon', skill);

@@ -138,7 +138,7 @@ game.tutorial = {
       if (game.tutorial.lesson === 'Creep') game.tutorial.selectedCreep(card);
       if (game.tutorial.lesson === 'Move') game.tutorial.moveLesson();
       if (game.tutorial.lesson === 'Passive') game.tutorial.selectedPassive();
-      if (game.tutorial.lesson === 'Jungle') game.tutorial.selectedJungle();
+      if (game.tutorial.lesson === 'Jungle') game.tutorial.selectedJungle(data);
       if (game.tutorial.lesson === 'JungleSummon') game.tutorial.selectedJungleSummon();
       if (game.tutorial.lesson === 'Passive' ||
           game.tutorial.lesson === 'Toggle'  ||
@@ -180,7 +180,7 @@ game.tutorial = {
       game.tutorial.lesson = 'Move';
       $('.map .heroes.player').addClass('blink can-move').on('move.tutorial', game.tutorial.moveCount).on('select', game.tutorial.select);
     }
-    $('.map .units.blink').removeClass('blink');      
+    $('.map .units.blink').removeClass('blink');
     game.tutorial.axebaloon.hide().fadeIn('slow');
     if (game.player.skills.sidehand.children().length) game.tutorial.letter(game.data.ui.axesummonselect);
     else game.tutorial.letter(game.data.ui.axeselectplayer);
@@ -203,7 +203,7 @@ game.tutorial = {
     if (game.tutorial.moveCountValue < 3) game.tutorial.endTurnLesson();
   },
   endTurnLesson: function () {
-    $('.map .heroes.player').addClass('blink can-move').off('move.tutorial');
+    $('.map .heroes.player').removeClass('blink can-move').off('move.tutorial');
     $('.blink').removeClass('blink');
     game.states.table.skip.addClass('blink');
     game.tutorial.axebaloon.hide().fadeIn('slow');
@@ -341,25 +341,28 @@ game.tutorial = {
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.tutorial.letter(game.data.ui.axejungle);
   },
-  selectedJungle: function () {
+  selectedJungle: function (data) { //console.log(data)
     $('.blink').removeClass('blink');
-    $('#B2').addClass('movearea blink').on('mouseup.highlight', game.tutorial.jungleSummonLesson);
-    game.tutorial.axebaloon.hide().fadeIn('slow');
-    game.tutorial.letter(game.data.ui.jungleSummonLesson);
+    if (data.card.hasAllClasses('en player heroes')) {
+      $('#B2').addClass('tutorialmovearea blink').on('mouseup.tutorial', game.tutorial.jungleSummonLesson);
+      game.tutorial.axebaloon.hide().fadeIn('slow');
+      game.tutorial.letter(game.data.ui.jungleSummonLesson);
+    }
   },
   jungleSummonLesson: function () {
     var hero = $('.map .player.heroes.en'),
         card = $('.player .available.skills .en-curse'),
         spot = $(this);
-    game.tutorial.lesson = 'JungleSummon';
-    $('.blink').removeClass('blink');
-    $('#A1').addClass('free');
-    $('.map .player.heroes.en').place(spot).removeClass('can-move');
-    card.first().appendTo(game.player.skills.hand).addClass('blink').on('select', game.tutorial.selected);
-    hero.on('cast.tutorial', game.tutorial.toggleLesson);
-    game.tutorial.lesson = 'JungleSummon';
-    game.tutorial.axebaloon.hide().fadeIn('slow');
-    game.tutorial.letter(game.data.ui.axesummonjungle);
+    if (hero.hasClass('selected')) {
+      game.tutorial.lesson = 'JungleSummon';
+      $('#A1').addClass('free');
+      $('#B2').removeClass('tutorialmovearea blink').off('mouseup.tutorial');
+      $('.map .player.heroes.en').place(spot).removeClass('can-move');
+      card.first().appendTo(game.player.skills.hand).addClass('blink').on('select', game.tutorial.selected);
+      hero.on('cast.tutorial', game.tutorial.toggleLesson);
+      game.tutorial.axebaloon.hide().fadeIn('slow');
+      game.tutorial.letter(game.data.ui.axesummonjungle);
+    }
   },
   selectedJungleSummon: function () {
     $('#A1').addClass('blink');

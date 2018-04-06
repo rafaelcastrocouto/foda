@@ -69,8 +69,8 @@ game.highlight = {
     }
   },
   source: function() {
-    var skill = this;
-    var hero = skill.data('hero');
+    var skill = $(this);
+    var hero = skill.data('hero'); //console.log(this)
     if (hero)
       $('.map .card.' + skill.side() + '.heroes.' + hero).addClass('source');
     return skill;
