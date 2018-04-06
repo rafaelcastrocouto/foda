@@ -420,8 +420,8 @@
   animation: ranktwist 3s infinite;
 }
 @keyframes ranktwist {
-  40% {transform: translate3d(230px, 144px, 40px) scale(0.9) rotateX(-10deg) rotateZ(-4deg);}
-  60% {transform: translate3d(230px, 144px, 40px) scale(0.9) rotateX(-18deg) rotateZ(-4deg);}
+  40% {transform: translate3d(230px, 144px, 40px) scale(0.85) rotateX(-8deg) rotateZ(-4deg);}
+  60% {transform: translate3d(230px, 144px, 40px) scale(0.85) rotateX(-18deg) rotateZ(-4deg);}
 }
 .rank h1 {
   font-size: 14px;

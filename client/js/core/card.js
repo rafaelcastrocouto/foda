@@ -534,7 +534,7 @@ game.card = {
     var spot = target.parent();
     target.setCurrentHp(0);
     target.stopChanneling();
-    if (target.data('bounty') && target.side() != source.side()) {
+    if (target.data('bounty') && target.side() != source.side() && !target.data('wk-ult')) {
       game.items.addMoney(source.side(), target.data('bounty'));
       game.fx.text(spot, 'gold', '$'+target.data('bounty'), 2000);
     }
