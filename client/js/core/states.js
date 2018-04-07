@@ -12,8 +12,10 @@ game.states = {
     if (state && !state.builded) {
       state.builded = true;
       if (!state.el) {
-        state.el = $('<div>').addClass('state ' + name).hide();
-        state.el.appendTo(game.states.el);
+        if (name !== 'loading') {
+          state.el = $('<div>').addClass('state ' + name).hide();
+          state.el.appendTo(game.states.el);
+        }
         if (state.build) state.build();
       }
     }

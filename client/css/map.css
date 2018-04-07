@@ -62,7 +62,7 @@
   height: 130px;
   border: 6px solid white;
   border-radius: 50%;
-  background-image: url("../img/trees/forest.png");
+  background-image: url("../img/map/forest.png");
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 85%;
@@ -105,7 +105,7 @@
   height: 130px;
   border: 6px solid white;
   border-radius: 50%;
-  background-image: url("../img/trees/fountain.png");
+  background-image: url("../img/map/fountain.png");
   background-repeat: no-repeat;
   background-position: 50% 60%;
   background-size: 60%;

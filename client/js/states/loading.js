@@ -37,12 +37,16 @@ game.states.loading = {
     }
   },
   preloadimgs: [
-    'bkg/ground.png',
-    'bkg/sky.png',
-    'bkg/mountains.png',
-    'bkg/icons.png',
-    'bkg/bush.png',
-    'bkg/dolls.png'
+    'log/sky.jpg',
+    'log/towers.png',
+    'log/title.png',
+    'log/front.png',
+    'menu/ground.png',
+    'menu/sky.png',
+    'menu/mountains.png',
+    'menu/icons.png',
+    'menu/bush.png',
+    'menu/dolls.png'
   ],
   imgload: 0,
   finished: function () {

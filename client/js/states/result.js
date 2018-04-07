@@ -96,7 +96,10 @@ game.states.result = {
     },
     move: function (event) {
       clearTimeout(game.iddleTimeout);
-      if (game.currentState == 'menu' ||  game.currentState == 'vs' ||  game.currentState == 'result') {
+      if (game.currentState == 'log'  || 
+          game.currentState == 'menu' ||  
+          game.currentState == 'vs'   ||  
+          game.currentState == 'result') {
         var s = 0.01;
         var p = { x: event.clientX, y: event.clientY };
         var w = { x: window.innerWidth, y: window.innerHeight };

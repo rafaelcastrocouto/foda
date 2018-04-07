@@ -160,7 +160,7 @@
   display: block;
   height: 100%;
   width: 100%;
-  background-image: url("../img/bkg/map.jpg");
+  background-image: url("../img/map/bkg.jpg");
   background-size: cover;
   background-position: 50%;
   z-index: -1;

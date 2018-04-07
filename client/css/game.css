@@ -224,7 +224,7 @@ noscript .box a {
 .states {
   background-image: url(../img/banner.jpg);
   background-size: cover;
-  image-rendering: auto;
+  image-rendering: pixelated;
 }
 
 .states, .state {
@@ -433,60 +433,6 @@ label {
 label input {
   margin: 0 5px;
 }
-
-
-.log .box {
-  padding: 10px;
-  padding-bottom: 6px;
-  width: 400px;
-  top: 72%;
-  z-index: 10;
-}
-
-.log h1 {
-  font-size: 26px;
-  margin-bottom: 14px;
-}
-
-.log a {
-  text-decoration: underline;
-  color: #333;
-}
-
-.log form {
-  margin-top: 1px;
-}
-
-.log form .button {
-  width: 160px;
-}
-.log form input[type="text"] {
-  width: 180px;
-}
-
-.log .button {
-  width: 200px;
-}
-.log .button.large {
-  width: 240px;
-}
-
-.log label {
-  text-align: center;
-}
-
-.log .remembername {
-  cursor: pointer;
-  font-size: 15px;
-  height: 28px;
-  width: 220px;
-  margin: 0 auto;
-}
-
-.log .remembername * {
-  /* vertical-align: bottom; */
-}
-
 
 .deck {
   transition: all 0.4s;

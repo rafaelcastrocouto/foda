@@ -2,7 +2,9 @@ game.states.log = {
   remembername: true,
   build: function () {
     this.box = $('<div>').addClass('box').hide();
-    this.logo = $('<div>').appendTo(this.el).addClass('logo slide');
+    this.towers = $('<div>').appendTo(this.el).addClass('logpara towers');
+    this.title = $('<div>').appendTo(this.el).addClass('logpara title');
+    this.front = $('<div>').appendTo(this.el).addClass('logpara front');
     this.form = $('<form>').appendTo(this.box).on('submit', function (event) { event.preventDefault(); return false; });
     this.input = $('<input>').appendTo(this.form).attr({placeholder: game.data.ui.choosename/*game.data.ui.logtype*/, type: 'text', required: 'required', minlength: 3, maxlength: 24, tabindex: 1}).keydown(function (event) { if (event.which === 13) { game.states.log.login(); return false; } });
     this.button = $('<button>').addClass('button').appendTo(this.form).text(game.data.ui.log).attr({type: 'submit'}).on('mouseup touchend', this.login);
