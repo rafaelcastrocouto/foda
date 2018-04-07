@@ -112,7 +112,10 @@ game.states.result = {
     },
     orientation: function (event) {
       clearTimeout(game.iddleTimeout);
-      if (game.currentState == 'menu' ||  game.currentState == 'vs') {
+      if (game.currentState == 'log'  || 
+          game.currentState == 'menu' ||  
+          game.currentState == 'vs'   ||  
+          game.currentState == 'result') {
         var o = {
           x: -event.originalEvent.gamma,
           y: -event.originalEvent.beta
@@ -121,8 +124,8 @@ game.states.result = {
           o.x = event.originalEvent.beta;
           o.y = -event.originalEvent.gamma;
         }
-        o.x = Math.min(Math.max(o.x, -90), 90);
-        o.y = Math.min(Math.max(o.y, -90), 90);
+        o.x = Math.min(Math.max(o.x, -50), 50);
+        o.y = Math.min(Math.max(o.y, -50), 50);
         o.x = ((o.x + 90)/180)*100;
         o.y = ((o.y + 90)/180)*100;
         var min = 5, max = 95;
