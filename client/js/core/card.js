@@ -249,7 +249,7 @@ game.card = {
         game.turn.msg.toggleClass('hidden');
         game.topbar.toggleClass('transparent');
         $(this).toggleClass('zoom');
-        game.tutorial.axe.toggleClass('left');
+        if (game.tutorial.axe) game.tutorial.axe.toggleClass('left');
         game.selectedCardZoom = !game.selectedCardZoom;
       });
     if (game.selectedCardZoom) game.states.table.selectedClone.addClass('zoom');
