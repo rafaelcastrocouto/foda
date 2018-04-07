@@ -9,6 +9,7 @@
   position:  absolute;
   top: 0;
   left: 0;
+  pointer-events: none;
 }
 
 .state.log .towers {
@@ -20,13 +21,15 @@
 .state.log .title {
   background-image: url("../img/log/title.png");
   background-size: cover;
-  transform: translateZ(50px) scale(0.93)
+  transform: translateZ(50px) scale(0.93);
+  z-index: 1;
 }
 
 .state.log .front {
   background-image: url("../img/log/front.png");
   background-size: cover;
-  transform: translateZ(100px) scale(0.86)
+  transform: translateZ(100px) scale(0.86);
+  z-index: 1;
 }
 
 .log .box {
@@ -36,6 +39,8 @@
   top: 72%;
   z-index: 10;
   animation: logslidedown 1s 1;
+  transform: translate3d(-50%, -64%, 0px);
+  z-index: 0;
 }
 
 @keyframes logslidedown {
