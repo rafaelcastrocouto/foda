@@ -262,7 +262,7 @@
   display: block;
 }
 
-.map .targetarea:before {
+.map .targetarea:not(.cript):before {
   width: 50px;
   height: 50px;
   border: 20px solid transparent;
@@ -274,7 +274,7 @@
   transform: rotate(45deg) scale(1);
 }
 
-.map .targetarea:hover:before {
+.map .targetarea:not(.cript):hover:before {
   animation: scalespotbefore 1.5s infinite;
 }
 
@@ -304,7 +304,7 @@
   }
 }
 
-.map .targetarea:after {
+.map .targetarea:not(.cript):after {
   width: 150px;
   height: 50px;
   border: 0px solid transparent;
@@ -318,7 +318,7 @@
   border-radius: 6px;
 }
 
-.map .targetarea:hover:after {
+.map .targetarea:not(.cript):hover:after {
   animation: scalespotafter 1.5s infinite;
 }
 
