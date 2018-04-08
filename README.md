@@ -2,6 +2,8 @@
 
 [![FODA](https://foda-app.herokuapp.com/client/img/campaign/ico_rosh.png)][1]
 
+[![FODA](https://foda-app.herokuapp.com/client/img/ratingsymbol_t.png)][9]
+
 [![Discord Chat Channel](https://foda-app.herokuapp.com/client/img/discord.png)][2]
 
 A **card game** with magical heroes, full of skills and powerful ultimates.
@@ -49,6 +51,6 @@ Special thanks to:
 
 [8]: https://github.com/rafaelcastrocouto/foda/issues/new
 
-[9]: http://steamcommunity.com/sharedfiles/filedetails/?id=500624204
+[9]: http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories
 
 [10]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-setup-a-local-server
