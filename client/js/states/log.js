@@ -39,6 +39,7 @@ game.states.log = {
     });
     box.append(game.poll.button);
     box.append($('<div>').addClass('button').text(game.data.ui.close).on('mouseup touchend', game.poll.close));
+    box.append($('<a>').addClass('rating').attr({target: '_blank', href: 'http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories'}));
     game.screen.resize();
   },
   login: function () {

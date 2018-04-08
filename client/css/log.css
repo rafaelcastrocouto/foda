@@ -3,6 +3,39 @@
   background-size: cover;
 }
 
+.game-overlay .log.box {
+  width: 600px;
+  padding: 35px 40px 20px 40px;
+}
+.game-overlay .log.box b {
+  font-weight: lighter;
+}
+.game-overlay .log.box .version {
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: lighter;
+  margin-left: 6px;
+}
+
+
+.game-overlay .log.box .rating {
+  width: 55px;
+  height: 82px;
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+  background-image: url("../img/ratingsymbol_t.png");
+}
+
+.game-overlay .log.box.vote {
+  width: 560px;
+}
+
+.game-overlay .log.box.vote h2 {
+  font-weight: bold;
+}
+
+
 .state.log .logpara {
   width: 970px;
   height: 600px;

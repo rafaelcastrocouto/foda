@@ -170,27 +170,6 @@ noscript .box {
   text-decoration: underline;
 }
 
-.game-overlay .log.box {
-  width: 600px;
-  padding: 35px 40px 20px 40px;
-}
-.game-overlay .log.box b {
-  font-weight: lighter;
-}
-.game-overlay .log.box .version {
-  font-size: 16px;
-  line-height: 40px;
-  font-weight: lighter;
-  margin-left: 6px;
-}
-
-.game-overlay .log.box.vote {
-  width: 560px;
-}
-
-.game-overlay .log.box.vote h2 {
-  font-weight: bold;
-}
 
 .loading .box, 
 .notfound .box {
