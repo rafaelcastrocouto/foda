@@ -625,21 +625,53 @@
   }
 }
 
-.map .spot.cript {
-  background-image: url("../img/fx/wk/cript.gif");
-  background-size: 240%;
-  background-repeat: no-repeat;
-  background-position: -142px -40px;
+.table .map .spot.cript {
+  overflow: hidden;
   background-color: rgba(0,10,40,0.4);
-  animation: wk-cript 1s 1;
 }
 
-@keyframes wk-cript {
+.map .spot.cript:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 68px;
+  height: 86px;
+  background-image: url("../img/fx/wk/cript.png");
+  transform: translate(65px,80px) scale(3);
+  animation: wk-cript-slide 1s 1, wk-cript-sprite 2.5s steps(21) infinite;
+}
+@keyframes wk-cript-slide {
   0% {
-    background-position: -142px 260px;
+    transform: translate(65px, 420px) scale(3);
   }
+}
+@keyframes wk-cript-sprite {
   100% {
-    background-position: -142px -40px;
+    background-position: -1428px;
+  }
+}
+
+.map .spot.cript:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 53px;
+  background-image: url("../img/fx/wk/hand.png");
+  transform: translate(90px,175px) scale(4);
+  animation: wk-hand-loop 10s infinite, wk-hand-sprite 2.5s steps(18) infinite;
+}
+@keyframes wk-hand-loop {
+  0%, 24.9%, 50.1%, 100% {
+    opacity: 0;
+  }
+  25%, 50% {
+    opacity: 1;
+  }  
+}
+@keyframes wk-hand-sprite {
+  100% {
+    background-position: -432px;
   }
 }
 

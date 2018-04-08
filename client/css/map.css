@@ -136,6 +136,7 @@
   font-size: 70px;
   line-height: 100px;
   margin: 10px;
+  position: absolute;
 }
 /*
 .debug .map .spot .debug {

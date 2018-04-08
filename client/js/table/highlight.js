@@ -254,7 +254,7 @@ game.highlight = {
       var card = neighbor.find('.card');
       if (card.length && !card.hasClass('invisible')) {
         card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
-      } else if (!neighbor.hasClasses('block cript')) {
+      } else if (!neighbor.hasClasses('block')) {
         neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
       }
     });
@@ -381,7 +381,7 @@ game.highlight = {
       $('.map .spot').removeClass('skillstroke skillhoverstroke stroke top right left bottom toparrow bottomarrow leftarrow rightarrow');
       $('.map .card').removeClass('toparrow bottomarrow leftarrow rightarrow');
       if (spot.hasClass('targetarea') || spot.find('.casttarget').length) {
-        if (!spot.hasClasses('block cript')) game.highlight.strokeAtCursor(spot);
+        if (!spot.hasClasses('block')) game.highlight.strokeAtCursor(spot);
       } else
         game.highlight.strokeAtCaster();
     }

@@ -224,7 +224,7 @@ noscript .box a {
 .states {
   background-image: url(../img/banner.jpg);
   background-size: cover;
-  image-rendering: pixelated;
+  image-rendering: auto;
 }
 
 .states, .state {
