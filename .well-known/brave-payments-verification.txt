@@ -1,0 +1,4 @@
+This is a Brave Payments publisher verification file.
+
+Domain: foda-app.herokuapp.com
+Token: 684d139a8232f4362b5544e08ce18d398f29c39d2ae96985d69b4f438608d025
