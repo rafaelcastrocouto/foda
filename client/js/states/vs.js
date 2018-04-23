@@ -101,7 +101,11 @@ game.states.vs = {
       if (game.states.campaign.stage.id == 'start') {
         picks = game.player.picks;
         game.single.playerpicks = game.player.picks;
-      } else picks = game.single.playerpicks;
+        game.setData('mydeck', game.player.picks.join('|'));
+      } else {
+        picks = game.single.playerpicks;
+        if (!picks) picks = game.getData('mydeck').split('|');
+      }
       return picks;
     } else {
       var picks = game.player.picks;

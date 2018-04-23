@@ -91,7 +91,8 @@ game.states.menu = {
     var boom = $(this);
     if (!boom.hasClass('playing') && game.states.menu.boomCount > 9) {
       game.states.menu.boomCount = 0;
-      var fx = $('<span>').addClass('fx lina-stun').on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () { this.remove(); });
+      var explosions = ['lina-stun', 'wk-stun-hit'];
+      var fx = $('<span>').addClass('fx '+explosions[parseInt(Math.random()*explosions.length)]).on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () { this.remove(); });
       boom.addClass('playing').append(fx);
       clearTimeout(game.states.menu.boomTimeout);
       game.states.menu.boomTimeout = setTimeout(function () {
