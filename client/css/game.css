@@ -72,6 +72,8 @@ noscript {
   background-color: #859890;
   overflow: hidden;
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeSpeed;
 }
 .game-container:after {
   content:"";
@@ -212,6 +214,7 @@ noscript .box a {
   position: absolute;
   top: 0;
   left: 0;
+  transform-style:  preserve-3d;
 }
 
 .state p {

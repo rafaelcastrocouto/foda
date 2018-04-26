@@ -406,6 +406,8 @@
 
 .map .fx {
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeSpeed;
   transform-style: preserve-3d;
   pointer-events: none;
   transition: none;

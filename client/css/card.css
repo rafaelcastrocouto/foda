@@ -21,6 +21,7 @@
   cursor: pointer;
   transform: translateZ(0);
   background: #898;
+  will-change: transform;
 }
 
 .map .card.can-attack .current .hp span {

@@ -47,6 +47,7 @@
   border-radius: 4px;
   background: rgba(0,0,0,0.6);
   transform: translateZ(0);
+  transform-style: preserve-3d;
 }
 
 .choose .pickedbox.trans {
@@ -89,6 +90,8 @@
   margin: 0 3px;
   background: rgba(255,255,255,0.08);
   cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .library .choose .slot {

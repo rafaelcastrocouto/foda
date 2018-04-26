@@ -43,6 +43,7 @@
   top: 0;
   left: 0;
   pointer-events: none;
+  transform-style: preserve-3d;
 }
 
 .state.log .towers {

@@ -17,6 +17,7 @@
 .table .items.deck {
   padding-top: 28px;
   padding-left: 10px;
+  transform-style: preserve-3d;
 }
 
 .table .items.deck > div {
@@ -148,6 +149,8 @@
 
 .items .img {
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeSpeed;
   background-size: 50%;
   background-repeat: no-repeat;
 }
@@ -160,6 +163,7 @@
 .buffs .items:hover .img,
 .zoom .buffs .items .img {
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .items .overlay {

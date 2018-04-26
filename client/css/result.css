@@ -57,19 +57,19 @@
 }
 
 .result .results span {
-  line-height: 40px;
+  vertical-align: 13px;
   margin: 10px;
 }
 
 .result .results .portrait {
-  float: right;
   border: 2px solid #79d480;
   border-radius: 50%;
   background-size: cover;
+  width: 36px;
+  display: inline-block;
 }
 
 .result .results.enemy .portrait {
-  float: left;
   border: 2px solid #c76352;
   transform: scaleX(-1);
 }
