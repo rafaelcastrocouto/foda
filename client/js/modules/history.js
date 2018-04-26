@@ -29,7 +29,10 @@ game.history = {
     //console.log(mode, state, logged, name, valid, recent)
   },
   jumpMode: function (mode, state, recovering) {
-    if (state == 'result') mode = false;
+    if (state == 'result') {
+      mode = false;
+      state = 'menu';
+    }
     if (mode) {
       game.recovering = true;
       game.history.match(mode, recovering);

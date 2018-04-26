@@ -20,6 +20,7 @@
   color: #4d4843;
   cursor: pointer;
   transform: translateZ(0);
+  /* transform-style: flat; */
   background: #898;
   will-change: transform;
 }
@@ -580,14 +581,13 @@
 }
 
 .skills.card, .units.card, .items.card {
-  transform-style: preserve-3d;
   backface-visibility: hidden;
   pointer-events: all;
 }
 
-.items.card:before, .items.card:after,
-.units.card:before, .units.card:after,
-.skills.card:before, .skills.card:after {
+.table .items.card:before, .table .items.card:after,
+.table .units.card:before, .table .units.card:after,
+.table .skills.card:before, .table .skills.card:after {
   content: "";
   display: block;
   width: 200px;
