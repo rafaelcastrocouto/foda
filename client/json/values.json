@@ -25,7 +25,8 @@
       "mana": 3,
       "damage": 13,
       "armor": 3,
-      "resistance": 2
+      "resistance": 2,
+      "intro": "yfRNap5uLtY"
     },
 
     "wk": {
@@ -34,7 +35,8 @@
       "mana": 3,
       "damage": 14,
       "armor": 3,
-      "resistance": 3
+      "resistance": 3,
+      "intro": "5ADvXskfDCY"
     },
 
     "lina": {
@@ -43,7 +45,8 @@
       "mana": 4,
       "damage": 12,
       "armor": 2,
-      "resistance": 2
+      "resistance": 2,
+      "intro": "4T1xGekt7_g"
     },
 
     "cm": {
@@ -81,7 +84,8 @@
       "mana": 3,
       "damage": 12,
       "armor": 3,
-      "resistance": 2
+      "resistance": 2,
+      "intro": "y-BzkZm88H8"
     },
 
     "com": {
@@ -99,7 +103,8 @@
       "mana": 4,
       "damage": 13,
       "armor": 2,
-      "resistance": 2
+      "resistance": 2,
+      "intro": "YNPW1jAp5V8"
     },
 
     "venge": {
@@ -108,7 +113,8 @@
       "mana": 2,
       "damage": 13,
       "armor": 3,
-      "resistance": 2
+      "resistance": 2,
+      "intro": "sJa_aFYc8mg"
     },
 
     "en": {
@@ -117,7 +123,8 @@
       "mana": 3,
       "damage": 12,
       "armor": 2,
-      "resistance": 2
+      "resistance": 2,
+      "intro": "M8hsXEtsM0M"
     }
   },
 

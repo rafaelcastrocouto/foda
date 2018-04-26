@@ -106,8 +106,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 920px;
+  width: 760px;
   height: 340px;
+  border: 14px solid #000;
+  border-width: 14px 105px;
 }
 
 .choose .buttonbox {
