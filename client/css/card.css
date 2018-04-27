@@ -20,7 +20,7 @@
   color: #4d4843;
   cursor: pointer;
   transform: translateZ(0);
-  /* transform-style: flat; */
+  transform-style: preserve-3d;
   background: #898;
   will-change: transform;
 }
