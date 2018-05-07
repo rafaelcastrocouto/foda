@@ -74,6 +74,7 @@ noscript {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   image-rendering: optimizeSpeed;
+  will-change: transform;
 }
 .game-container:after {
   content:"";
@@ -98,10 +99,33 @@ noscript {
   overflow: hidden;
   transform: translate3d(0,0,1px);
   perspective: 600px;
+  transform-style: preserve-3d;
+  background-image: url(../img/banner.jpg);
+  background-size: cover;
+  image-rendering: auto;
+  perspective-origin: 50% 50%;
+  will-change: perspective-origin;
 }
 
 .states.iddle {
   animation: persp 20s infinite;
+}
+
+.states, .state {
+  width: 970px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.state {
+  /* transform-style: preserve-3d; */
+}
+
+.state p {
+  display: block;
+  margin: 1em;
 }
 
 @keyframes persp {
@@ -200,26 +224,6 @@ noscript .box a {
 
 .loadtext .message, .loadtext .progress {
   line-height: 22px;
-}
-
-.states {
-  background-image: url(../img/banner.jpg);
-  background-size: cover;
-  image-rendering: auto;
-}
-
-.states, .state {
-  width: 970px;
-  height: 600px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-style:  preserve-3d;
-}
-
-.state p {
-  display: block;
-  margin: 1em;
 }
 
 input {
