@@ -36,6 +36,7 @@
 
 .vsdeckplayer {
   transform: translate(20px, -50px);
+  transform-style: preserve-3d;
 }
 
 .vsplayer {
@@ -56,6 +57,7 @@
 
 .vsdeckenemy {
   transform: translate(-90px, -50px);
+  transform-style: preserve-3d;
 }
 
 .vsenemy {
@@ -79,6 +81,9 @@
   text-overflow: ellipsis;
   line-height: 36px;
 }
+.vs .deck {
+  transform-style: preserve-3d;
+}
 
 .vs .card {
   margin-right: -65px;
@@ -91,7 +96,7 @@
 }
 
 .vs .card {
-  transform: rotate(-2deg) scale(0.6);
+  transform: translateZ(10px) rotate(-2deg) scale(0.6);
 }
 
 .vs .vsenemy .card {
@@ -99,5 +104,5 @@
 }
 
 .library .vs .vsplayerdeck .card {
-  transform: scale(0.75) translateX(320px) rotate(-2deg);
+  transform: translateZ(10px) scale(0.75) translateX(320px) rotate(-2deg);
 }
