@@ -1,3 +1,17 @@
+.parallax {
+  perspective-origin: 50% 50%;
+  transform: translate3d(0,0,1px);
+  perspective: 600px;
+  transform-style: preserve-3d;
+  will-change: perspective-origin;
+  width: 970px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
 .card .damaged, .card .missed, .spot .gold, .spot .deny {
   z-index: 20;
   color: gold;

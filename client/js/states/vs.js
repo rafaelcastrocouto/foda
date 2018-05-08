@@ -1,5 +1,6 @@
 game.states.vs = {
   build: function () {
+    this.parallax = $('<div>').addClass('parallax');
     this.player = $('<div>').addClass('vsplayer slide');
     this.playername = $('<h1>').appendTo(this.player);
     this.playerdeck = $('<div>').addClass('vsdeckplayer').appendTo(this.player);
@@ -9,7 +10,9 @@ game.states.vs = {
     this.enemyname = $('<h1>').appendTo(this.enemy);
     this.enemydeck = $('<div>').addClass('vsdeckenemy').appendTo(this.enemy);
     this.enemyinfo = $('<div>').addClass('vsenemyinfo').appendTo(this.enemy);
-    this.el.append(this.player).append(this.enemy);
+    this.parallax.append(this.player);
+    this.parallax.append(this.enemy);
+    this.el.append(this.parallax);
   },
   start: function (recover) {
     this.clear();

@@ -2,50 +2,52 @@ game.states.menu = {
   build: function () {
     //this.menu = $('<div>').appendTo(this.el).addClass('menu box');
     //this.title = $('<h1>').appendTo(this.menu).text(game.data.ui.menu);
-    this.sky = $('<div>').appendTo(this.el).addClass('menu paralax sky');
-    this.stars = $('<div>').appendTo(this.el);
+    this.parallax = $('<div>').appendTo(this.el).addClass('parallax'); 
+    this.sky = $('<div>').appendTo(this.parallax).addClass('sky');
+    this.stars = $('<div>').appendTo(this.parallax).addClass('stars');
     for (var s=0; s<10; s++) {
-      $('<div>').appendTo(this.stars).addClass('menu paralax star');
+      $('<div>').appendTo(this.stars).addClass('star');
     }
-    this.sun = $('<div>').appendTo(this.el).addClass('menu paralax sun');
-    this.cloud = $('<div>').appendTo(this.el).addClass('menu paralax cloud');
-    this.mountains = $('<div>').appendTo(this.el).addClass('menu paralax mountains');
-    this.eyes = $('<div>').appendTo(this.mountains);
+    this.sun = $('<div>').appendTo(this.parallax).addClass('sun');
+    this.cloud = $('<div>').appendTo(this.parallax).addClass('cloud');
+    this.mountains = $('<div>').appendTo(this.parallax).addClass('mountains');
+    this.eyes = $('<div>').appendTo(this.mountains).addClass('eyes');
     for (s=0; s<8; s++) {
-      $('<div>').appendTo(this.eyes).addClass('menu paralax eye');
+      $('<div>').appendTo(this.eyes).addClass('eye');
     }
-    this.boom = $('<div>').appendTo(this.mountains).addClass('menu boom map').on('mouseup touchend', this.boomClick);
-    this.fire = $('<div>').appendTo(this.el).addClass('menu paralax fire hidden').on('mouseup tap', function () {
+    this.boom = $('<div>').appendTo(this.mountains).addClass('boom map').on('mouseup touchend', this.boomClick);
+    this.fire = $('<div>').appendTo(this.parallax).addClass('fire hidden').on('mouseup tap', function () {
       $(this).toggleClass('hidden');
     });
-    this.ground = $('<div>').appendTo(this.el).addClass('menu paralax ground');
-    this.amdoll = $('<div>').appendTo(this.el).addClass('menu paralax amdoll');
-    this.cmdoll = $('<div>').appendTo(this.el).addClass('menu paralax cmdoll');
-    this.bush = $('<div>').appendTo(this.el).addClass('menu paralax bush');
-    this.tutorial = $('<div>').addClass('tutorial icon').appendTo(this.el).attr({title: game.data.ui.choosetutorial}).append($('<span>').text(game.data.ui.tutorial)).on('mouseup touchend', function () {
+    this.ground = $('<div>').appendTo(this.parallax).addClass('ground');
+    this.amdoll = $('<div>').appendTo(this.parallax).addClass('amdoll');
+    this.cmdoll = $('<div>').appendTo(this.parallax).addClass('cmdoll');
+    this.bush = $('<div>').appendTo(this.parallax).addClass('bush');
+    this.icons = $('<div>').appendTo(this.el).addClass('icons');
+    this.tutorial = $('<div>').addClass('tutorial icon').appendTo(this.icons).attr({title: game.data.ui.choosetutorial}).append($('<span>').text(game.data.ui.tutorial)).on('mouseup touchend', function () {
       game.setMode('tutorial');
       game.states.changeTo('choose');
     });
-    this.campaign = $('<div>').addClass('campaign icon').appendTo(this.el).attr({title: game.data.ui.choosecampaign}).append($('<span>').text(game.data.ui.campaign)).on('mouseup touchend', function () {
+    this.campaign = $('<div>').addClass('campaign icon').appendTo(this.icons).attr({title: game.data.ui.choosecampaign}).append($('<span>').text(game.data.ui.campaign)).on('mouseup touchend', function () {
       game.setMode('single');
       game.states.changeTo('campaign');
     });
-    this.online = $('<div>').addClass('online icon').appendTo(this.el).attr({title: game.data.ui.chooseonline}).append($('<span>').text(game.data.ui.online)).on('mouseup touchend', function () {
+    this.online = $('<div>').addClass('online icon').appendTo(this.icons).attr({title: game.data.ui.chooseonline}).append($('<span>').text(game.data.ui.online)).on('mouseup touchend', function () {
       game.setMode('online');
       game.states.changeTo('choose');
     });
     if (!game.getData('tutorial')) this.tutorial.addClass('highlight');
     else if (!game.getData('campaign')) this.campaign.addClass('highlight');
     else this.online.addClass('highlight');
-    this.local = $('<div>').addClass('local icon').appendTo(this.el).attr({ title: game.data.ui.chooselocal}).append($('<span>').text(game.data.ui.local)).on('mouseup touchend', function () {
+    this.local = $('<div>').addClass('local icon').appendTo(this.icons).attr({ title: game.data.ui.chooselocal}).append($('<span>').text(game.data.ui.local)).on('mouseup touchend', function () {
       game.setMode('local');
       game.states.changeTo('choose');
     });
-    this.library = $('<div>').addClass('library icon').appendTo(this.el).attr({ title: game.data.ui.chooselibrary}).append($('<span>').text(game.data.ui.library)).on('mouseup touchend', function () {
+    this.library = $('<div>').addClass('library icon').appendTo(this.icons).attr({ title: game.data.ui.chooselibrary}).append($('<span>').text(game.data.ui.library)).on('mouseup touchend', function () {
       game.setMode('library');
       game.states.changeTo('choose');
     });
-    this.credits = $('<a>').addClass('credits icon').appendTo(this.el).attr({title: game.data.ui.choosecredits}).append($('<span>').text(game.data.ui.credits)).on('mouseup touchend', function () {
+    this.credits = $('<a>').addClass('credits icon').appendTo(this.icons).attr({title: game.data.ui.choosecredits}).append($('<span>').text(game.data.ui.credits)).on('mouseup touchend', function () {
       var creditsbox = $('<div>').addClass('credits box');
       var hidebox = $('<div>').addClass('credithide').appendTo(creditsbox);
       var box = $('<div>').addClass('creditscroll').appendTo(hidebox);

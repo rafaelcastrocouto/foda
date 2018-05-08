@@ -111,42 +111,42 @@
   opacity: 1;
 }
 
-.bkgdeck {
+.result .parallax {
   position: absolute;
   transform-style: preserve-3d;
 }
 
-.bkgdeck .card {
+.result .parallax .card {
   position: absolute;
   cursor: default;
   z-index: 0;
   pointer-events: none;
 }
 
-.bkgdeck .card:hover {
+.result .parallax .card:hover {
   z-index: 1;
 }
 
-.bkgdeck .ld {
+.result .parallax .card:nth-child(1) {
   transform: translate3d(787px, -44px, -69px) rotateY(-61deg) rotateZ(34deg) rotateX(-25deg);
 }
-
-.bkgdeck .wk {
+/*
+.result .parallax .card:nth-child(2) {
   transform: translate3d(740px, -130px, -260px) rotateY(-50deg) rotateZ(30deg) rotateX(-15deg);
 }
-
-.bkgdeck .cm {
+*/
+.result .parallax .card:nth-child(2) {
   transform: translate3d(970px, 90px, -184px) rotateY(-85deg) rotateZ(35deg) rotateX(-5deg);
 }
 
-.bkgdeck .pud {
+.result .parallax .card:nth-child(3) {
   transform: translate(-65px, -60px) translateZ(-140px) rotateY(50deg) rotateZ(-36deg) rotateX(-2deg);
 }
 
-.bkgdeck .am {
+.result .parallax .card:nth-child(4) {
   transform: translate(-255px, 130px) translateZ(-290px) rotateY(70deg) rotateZ(-35deg) rotateX(5deg);
 }
 
-.bkgdeck .kotl {
+.result .parallax .card:nth-child(5) {
   transform: translate(-5px, -130px) translateZ(-323px) rotateY(40deg) rotateZ(-39deg) rotateX(-18deg);
 }

@@ -98,13 +98,9 @@ noscript {
 .states {
   overflow: hidden;
   transform: translate3d(0,0,1px);
-  perspective: 600px;
-  transform-style: preserve-3d;
   background-image: url(../img/banner.jpg);
   background-size: cover;
   image-rendering: auto;
-  perspective-origin: 50% 50%;
-  will-change: perspective-origin;
 }
 
 .states.iddle {

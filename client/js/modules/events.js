@@ -18,8 +18,8 @@ game.events = {
     $(window).on('keypress', game.events.keyboard);
     $(window).on('resize', game.screen.resize);
     $(window).on('beforeunload ', game.events.leave);
-    $(window).on('mousemove', game.states.result.bkgdeck.move);
-    $(window).on('deviceorientation', game.states.result.bkgdeck.orientation);
+    $(window).on('mousemove', game.parallax.move);
+    $(window).on('deviceorientation', game.parallax.orientation);
     game.container.on('mousedown touchstart', game.events.hit);
     game.container.on('mousemove', game.events.move);
     game.container.on('touchmove', game.events.touchmove);

@@ -11,7 +11,8 @@ game.states.result = {
     this.enemyResults = $('<div>').appendTo(this.resultsbox).addClass('results enemy');
     $('<div>').addClass('button close').appendTo(this.resultsbox).text(game.data.ui.close).on('mouseup touchend', this.close);
     this.el.append(this.resultsbox);
-    this.bkgdeck.create();
+    this.parallax = $('<div>').addClass('parallax bkgdeck');
+    this.el.prepend(this.parallax).addClass('iddle');
   },
   playerHeroResult: function () {
     var hero = $(this), heroid = hero.data('hero'),
@@ -39,10 +40,13 @@ game.states.result = {
     if (game.mode == 'tutorial') game.tutorial.axe.addClass('show').appendTo(this.el);
     var message = game.data.ui.win;
     var winnerName = game.player.name;
+    var picks = game.player.picks;
     if (game.winner != game.player.type) {
       message = game.data.ui.lose;
       winnerName = game.enemy.name;
+      picks = game.enemy.picks;
     }
+    this.bkgdeck(picks);
     if (game.mode == 'local') message = game.data.ui.lose;
     var title = winnerName + ' ' + game.data.ui.victory;
     $(game.player.heroesDeck.data('cards')).each(this.playerHeroResult);
@@ -80,63 +84,12 @@ game.states.result = {
     if (game.mode == 'tutorial') game.chat.set(game.data.ui.completedtutorial);
     return false;
   },
-  bkgdeck: {
-    create: function () {
-      if (!game.states.result.bkgdeck.el) {
-        var div = $('<div>').addClass('bkgdeck');
-        $('.pickbox .card.wk').clone().appendTo(div);
-        $('.pickbox .card.cm').clone().appendTo(div);
-        $('.pickbox .card.am').clone().appendTo(div);
-        $('.pickbox .card.kotl').clone().appendTo(div);
-        $('.pickbox .card.pud').clone().appendTo(div);
-        $('.pickbox .card.ld').clone().appendTo(div);
-        game.states.result.el.prepend(div).addClass('iddle');
-        game.states.result.bkgdeck.el = div;
-      }
-    },
-    move: function (event) {
-      clearTimeout(game.iddleTimeout);
-      if (game.currentState == 'log'  || 
-          game.currentState == 'menu' ||  
-          game.currentState == 'vs'   ||  
-          game.currentState == 'result') {
-        var s = 0.01;
-        var p = { x: event.clientX, y: event.clientY };
-        var w = { x: window.innerWidth, y: window.innerHeight };
-        var offmiddle = { x: p.x - (w.x/2), y: p.y - (w.y/2) };
-        var v = { x: 50 + (offmiddle.x * s), y: 50 + (offmiddle.y * s) };
-        var str = ''+ v.x + '% ' + v.y + '%';
-        game.states.el.removeClass('iddle').css('perspective-origin', str);
-        game.iddleTimeout = setTimeout(function () { game.states.el.addClass('iddle'); }, 8000);
-      }
-    },
-    orientation: function (event) {
-      clearTimeout(game.iddleTimeout);
-      if (game.currentState == 'log'  || 
-          game.currentState == 'menu' ||  
-          game.currentState == 'vs'   ||  
-          game.currentState == 'result') {
-        var o = {
-          x: -event.originalEvent.gamma,
-          y: -event.originalEvent.beta
-        };
-        if (window.innerHeight < window.innerWidth) {
-          o.x = event.originalEvent.beta;
-          o.y = -event.originalEvent.gamma;
-        }
-        o.x = Math.min(Math.max(o.x, -50), 50);
-        o.y = Math.min(Math.max(o.y, -50), 50);
-        o.x = ((o.x + 90)/180)*100;
-        o.y = ((o.y + 90)/180)*100;
-        var min = 5, max = 95;
-        o.x = Math.min(Math.max(o.x, min), max);
-        o.y = Math.min(Math.max(o.y, min), max);
-        var str = ''+ o.x + '% ' + o.y + '%';
-        game.states.el.removeClass('iddle').css('perspective-origin', str);
-        game.iddleTimeout = setTimeout(function () { game.states.el.addClass('iddle'); }, 8000);
-
-      }
-    }
+  bkgdeck: function (picks) {
+    game.states.choose.clear();
+    game.states.result.parallax.empty();
+    $(picks).each(function (i, hero) {
+      $('.pickbox .card.'+hero).clone().appendTo(game.states.result.parallax);
+    });
   },
   clear: function () {
     $('.result .results .heroes').remove();
