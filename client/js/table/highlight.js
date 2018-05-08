@@ -168,7 +168,7 @@ game.highlight = {
     var range = skill.data('cast range');
     var side = skill.side() || source.side();
     var targets = skill.data('targets');
-    if (range === 'global' || skill.hasClass('items')) {
+    if (range === 999 || skill.hasClass('items')) {
       $('.map .card.' + side).each(function () {
         game.highlight.card($(this), skill, side);
       });

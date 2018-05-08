@@ -34,6 +34,13 @@ game.fx = {
     },
     meteor: {
       cast: ['ult']
+    },
+    kotl: {
+      mana: ['mana'],
+      leak: ['leak'],
+      ult: ['ult'],
+      blind: ['blind'],
+      recall: ['recall','recall-source']
     }
   },
   build: function() {

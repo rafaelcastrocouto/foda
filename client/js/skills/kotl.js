@@ -57,7 +57,9 @@ game.skills.kotl = {
   },
   leak: {
     cast: function (skill, source, target) {
-      source.addBuff(target, skill);
+      game.fx.add('kotl-leak', source, target);
+      var buff = source.addBuff(target, skill);
+      buff.on('expire', this.expire);
       target.shake();
       target.data('kotl-leak', skill);
       target.on('moved.kotl-leak', this.moved);
@@ -73,6 +75,7 @@ game.skills.kotl = {
         game.skills.kotl.leak.discard(target, source, skill);
       } else {
         target.off('moved.kotl-leak');
+        game.fx.stop('kotl-leak', target);
       }
     },
     discard: function (target, source, skill) {
@@ -80,7 +83,17 @@ game.skills.kotl = {
       var opponent = target.side();
       var card = $('.'+opponent+' .hand .'+hero).randomCard();
       if (card.length) card.discard();
-      else source.addStun(target, skill);
+      else {
+        source.addStun(target, skill);
+        target.off('moved.kotl-leak');
+        game.fx.stop('kotl-leak', target);
+        target.removeBuff('kotl-leak');
+      }
+    },
+    expire: function (event, eventdata) {
+      var target = eventdata.target;
+      target.off('moved.kotl-leak');
+      game.fx.stop('kotl-leak', target);
     }
   },
   mana: {
@@ -88,10 +101,12 @@ game.skills.kotl = {
       var side = source.side();
       var bonus = skill.data('bonus cards');
       game.skill.buyCards(bonus, side);
+      game.fx.add('kotl-mana', source);
     }
   },
   ult: {
     cast: function (skill, source) {
+      game.fx.add('kotl-ult', source);
       var side = source.side();
       if (!source.hasBuff('kotl-ult')) {
         var illuminate = $('.table .'+side+' .skills .kotl-illuminate');
@@ -105,11 +120,13 @@ game.skills.kotl = {
       }
       source.selfBuff(skill);
       var recall = $('.table .'+side+' .skills .kotl-recall');
-      if (recall.parent()[0] !== game[side].skills.hand[0]);
-        recall.appendTo(game[side].skills.hand);
+      if (recall.parent()[0] !== game[side].skills.hand[0]) {
+        recall.appendTo(game[side].skills.hand).removeClass('casted');
+      }
       var blind = $('.table .'+side+' .skills .kotl-blind');
-      if (blind.parent()[0] !== game[side].skills.hand[0]);
-        blind.appendTo(game[side].skills.hand);
+      if (blind.parent()[0] !== game[side].skills.hand[0]) {
+        blind.appendTo(game[side].skills.hand).removeClass('casted');
+      }
     },
     turnend: function (event, eventdata) {
       var source = eventdata.target;
@@ -143,19 +160,22 @@ game.skills.kotl = {
   },
   blind: {
     cast: function (skill, source, target) {
-      var side = source.side();
-      var opponent = game.opponent(side);
-      var card = $('.card', target);
-      if (card.hasClass(opponent)) game.skills.kotl.blind.target(skill, source, card);
-      target.inCross(1, 0, function (spot, dir) {
-        var card = $('.card.'+opponent, spot);
-        if (card.length && !card.hasClasses('tower ghost bkb')) {
-          game.skills.kotl.blind.target(skill, source, card);
-          var destiny = card.getDirSpot(dir);
-          if (destiny && destiny.hasClass('free')) {
-            card.move(destiny);
+      game.fx.add('kotl-blind', source, target);
+      game.timeout(1200, function () {
+        var side = source.side();
+        var opponent = game.opponent(side);
+        var card = $('.card', target);
+        if (card.hasClass(opponent)) game.skills.kotl.blind.target(skill, source, card);
+        target.inCross(1, 0, function (spot, dir) {
+          var card = $('.card.'+opponent, spot);
+          if (card.length && !card.hasClasses('tower ghost bkb')) {
+            game.skills.kotl.blind.target(skill, source, card);
+            var destiny = card.getDirSpot(dir);
+            if (destiny && destiny.hasClass('free')) {
+              card.move(destiny);
+            }
           }
-        }
+        });
       });
     },
     target: function (skill, source, target) {
@@ -175,6 +195,8 @@ game.skills.kotl = {
   },
   recall: {
     cast: function (skill, source, target) {
+      game.fx.add('kotl-recall-source', source);
+      game.fx.add('kotl-recall', source, target);
       var buff = source.addBuff(target, skill);
       buff.on('expire.kotl-recall', this.expire);
       target.on('damage.kotl-recall', this.damage);
@@ -183,7 +205,13 @@ game.skills.kotl = {
     },
     damage: function (event, eventdata) {
       var target = eventdata.target;
+      var source = target.data('recall-source');
       target.removeBuff('kotl-recall');
+      target.off('damage.kotl-recall');
+      game.fx.stop('kotl-recall', target);
+      game.fx.stop('kotl-recall-source', source);
+      target.data('recall-source', null);
+      target.data('recall-skill', null);
     },
     expire: function (event, eventdata) {
       var target = eventdata.target;
@@ -199,6 +227,8 @@ game.skills.kotl = {
         target.data('recall-source', null);
         target.data('recall-skill', null);
         target.off('damage.kotl-recall');
+        game.fx.stop('kotl-recall', target);
+        game.fx.stop('kotl-recall-source', source);
       }
     }
   }

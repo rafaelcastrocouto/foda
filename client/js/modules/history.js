@@ -42,16 +42,24 @@ game.history = {
   },
   jumpTo: function (state, recover) {
     game.setData('last-activity', new Date().valueOf());
-    game.confirm(function (confirmed) {
-      if (confirmed) {
-        game.player.name = game.getData('name');
-        game.history.rank();
-        game.history.campaign();
-        game.chat.build(game.data.ui.reconnected);
-        if ('AudioContext' in window) game.audio.build();
-        game.states.changeTo(state, recover);
-      } else game.states.changeTo('log');
-    }, game.data.ui.welcome +' '+ game.getData('name') +'! '+ game.data.ui.log +'?');
+    var ctx = {state: state, recover: recover};
+    if (game.debug) game.history.change.call(ctx, true);
+    else {
+      var str = game.data.ui.welcome +' '+ game.getData('name') +'! '+ game.data.ui.log +'?';
+      game.confirm(game.history.change.bind(ctx), str);
+    }
+  },
+  change: function (confirmed) {
+    var state = this.state;
+    var recover = this.recover;
+    if (confirmed) {
+      game.player.name = game.getData('name');
+      game.history.rank();
+      game.history.campaign();
+      game.chat.build(game.data.ui.reconnected);
+      if ('AudioContext' in window) game.audio.build();
+      game.states.changeTo(state, recover);
+    } else game.states.changeTo('log');
   },
   campaign: function() {
     var id = game.getData('stage') || 'start';    

@@ -585,9 +585,9 @@
   pointer-events: all;
 }
 
-.table .items.card:before, .table .items.card:after,
-.table .units.card:before, .table .units.card:after,
-.table .skills.card:before, .table .skills.card:after {
+.table .deck .items.card:before, .table .deck .items.card:after,
+.table .deck .units.card:before, .table .deck .units.card:after,
+.table .deck .skills.card:before, .table .deck .skills.card:after {
   content: "";
   display: block;
   width: 200px;

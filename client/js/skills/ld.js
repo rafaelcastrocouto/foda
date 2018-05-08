@@ -15,7 +15,7 @@ game.skills.ld = {
         bear.data('return', $('.table .'+side+' .temp.skills .ld-bearreturn'));
         bear.data('death damage', skill.data('death damage'));
       }
-      bear.data('return').appendTo(game[side].skills.sidehand);
+      bear.data('return').appendTo(game[side].skills.sidehand).removeClass('casted');
       bear.setCurrentHp(bear.data('hp'));
       game.fx.add('ld-return-target', target);
       game.timeout(400, function () {
