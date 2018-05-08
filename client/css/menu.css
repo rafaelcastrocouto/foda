@@ -409,7 +409,7 @@
   background-color: #dccaa5;
   color: #473936;
   border: 1.5px solid #2b2734;
-  transform-origin: 50% 1%;
+  transform-origin: 50px 5px;
   transform: translate3d(222px, 144px, 10px) scale(0.85);
   width: 80px;
   padding: 8px;

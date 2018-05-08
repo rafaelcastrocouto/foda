@@ -107,7 +107,6 @@
   top: 27px;
   right: 6px;
   border-radius: 10px;
-  perspective: 600px;
   z-index: 5;
   transform: translateZ(0);
 }

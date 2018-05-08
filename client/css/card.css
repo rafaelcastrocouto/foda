@@ -526,7 +526,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform-origin: 100% 0%;
+  transform-origin: 200px 0;
   transform: translate3d(-80px, -180px, 1px) scale(1.2);
   cursor: default;
   transition: all 0s, transform 0.1s;
