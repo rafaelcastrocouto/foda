@@ -169,6 +169,7 @@ game.buff = {
     this.removeBuff(0,'all');
   },
   purge: function () {
+    game.fx.stop(this.opponent(), this);
     this.removeBuff(0,'purge');
   },
   turn: function (card) {

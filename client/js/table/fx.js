@@ -83,7 +83,7 @@ game.fx = {
     //console.log(game.fx.heroes[hero][skill])
     if ( !game.recovering && game.fx.heroes[hero] && game.fx.heroes[hero][skill]) {
       game.fx.stop(name, source);
-      var fx = $('<div>').addClass(name + ' fx fx-' + hero);
+      var fx = $('<div>').addClass(name + ' fx fx-' + hero + ' '+source.side());
       var dirX = source.getX() - target.getX();
       var dirY = source.getY() - target.getY();
       if (tag == 'linear') {
