@@ -140,6 +140,12 @@ game.skill = {
         } else {target = $('#' + target + ' .card'); }
       }
       if (target.length) {
+        var evt = {
+          type: 'cast',
+          skill: skill,
+          source: source,
+          target: target
+        };
         if (skill.data('cast select') && !skill.data('source')) {
           skill.data('source', target);
           game.highlight.clearMap();
@@ -148,12 +154,6 @@ game.skill = {
         } else {
           skill.removeClass('draggable');
           source.stopChanneling();
-          var evt = {
-            type: 'cast',
-            skill: skill,
-            source: source,
-            target: target
-          };
           source.trigger('cast', evt).trigger('action', evt);
           skill.trigger('cast', evt);
           if (!target.hasClass('spot')) target.trigger('casted', evt);

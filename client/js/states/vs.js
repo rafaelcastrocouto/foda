@@ -91,8 +91,8 @@ game.states.vs = {
     this.enemyinfo.text(game.data.ui.cardsperturn+': '+game.enemy.cardsPerTurn);
   },
   playerPicks: function () {
+    var hero, picks;
     if (game.mode == 'library') {
-      var hero;
       if (game.library.hero) {
         hero = game.library.hero;
       } else {
@@ -111,7 +111,7 @@ game.states.vs = {
       }
       return picks;
     } else {
-      var picks = game.player.picks;
+      picks = game.player.picks;
       if (!picks && game.recovering) picks = game.getData(game.player.type+'Deck').split('|');
       if (picks && picks.length === 5) return picks;
     }
