@@ -420,3 +420,8 @@ label input {
   transition: all 0.4s;
 }
 
+@media (max-width: 1050px) {
+  .stomt-button {
+    display: none;
+  }
+}
