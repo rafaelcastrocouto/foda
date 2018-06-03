@@ -85,6 +85,13 @@
   text-overflow: ellipsis;
 }
 
+.topbar .message.alert {
+  animation: alert-blink 1s infinite;
+}
+@keyframes alert-blink {
+  50% {color: yellow;}
+}
+
 .topbar .message * {
   position: static;
 }

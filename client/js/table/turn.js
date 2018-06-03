@@ -60,6 +60,8 @@ game.turn = {
       var turncount;
       if (side === 'player') turncount = game.data.ui.playerturncount;
       if (side === 'enemy') turncount = game.data.ui.enemyturncount;
+      if (game.turn.counter < 11) game.message.addClass('alert');
+      else game.message.removeClass('alert');
       game.message.text(turncount + ' ' + game.turn.counter + ' ' + game.data.ui.seconds);
       if (game.turn.counter > 0) {
         if (countCallback) countCallback(side);
