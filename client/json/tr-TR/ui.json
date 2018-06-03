@@ -196,5 +196,6 @@
   "shop": "Mağaza",
   "price": "Fiyat",
   "sell": "Satmak",
-  "consumable": "Tüketilir"
+  "consumable": "Tüketilir",
+  "flat": "Düz harita (2D)"
 }

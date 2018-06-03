@@ -196,5 +196,6 @@
   "shop": "Shop",
   "price": "Preço",
   "sell": "Vender",
-  "consumable": "Consumível"
+  "consumable": "Consumível",
+  "flat": "Mapa Plano (2D)"
 }

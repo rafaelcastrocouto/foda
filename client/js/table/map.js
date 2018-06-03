@@ -41,6 +41,7 @@ game.map = {
       width: game.width * 212,
       height: game.height * 312
     }), w, h, tr;
+    if (!!game.getData('flat-map')) map.addClass('flat');
     for (h = 0; h < game.height; h += 1) {
       game.map.spots[h] = [];
       tr = $('<div>').addClass('row ' + 'trow' + (h + 1)).appendTo(map);

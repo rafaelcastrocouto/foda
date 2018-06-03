@@ -9,6 +9,11 @@
   transition: all 2s;
 }
 
+.table .map.flat {
+  transform: translate(-50%,-50%) scale3d(0.25,0.2,0.2);
+  transform-style: flat;
+}
+
 .camera.night:before {
   filter: hue-rotate(60deg) brightness(0.7);
   -webkit-filter: hue-rotate(60deg) brightness(0.7);

@@ -61,5 +61,10 @@ game.screen = {
     var checked = $('.screenresolution input[name=side]').prop('checked');
     $(document.body).toggleClass('left-side', checked);
     game.setData('left-side', checked);
+  },
+  toggleFlat: function () {
+    var checked = $('.screenresolution input[name=flat]').prop('checked');
+    game.map.el.toggleClass('flat', checked);
+    game.setData('flat-map', checked);
   }
 };

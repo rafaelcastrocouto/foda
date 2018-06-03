@@ -196,5 +196,6 @@
   "shop": "Shop",
   "price": "Price",
   "sell": "Sell",
-  "consumable": "Consumable"
+  "consumable": "Consumable",
+  "flat": "Flat Map (2D)"
 }

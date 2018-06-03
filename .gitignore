@@ -51,3 +51,4 @@ coverage.xml
 .DS_Store
 *.torrent
 node_modules
+.well-known

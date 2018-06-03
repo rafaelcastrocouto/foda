@@ -8,7 +8,7 @@ game.states.log = {
     this.box = $('<div>').addClass('box').hide();
     this.el.append(this.box);
     this.form = $('<form>').appendTo(this.box).on('submit', function (event) { event.preventDefault(); return false; });
-    this.input = $('<input>').appendTo(this.form).attr({value: 'Player'+parseInt(Math.random()*10000), placeholder: game.data.ui.choosename/*game.data.ui.logtype*/, type: 'text', required: 'required', minlength: 3, maxlength: 24, tabindex: 1}).keydown(function (event) { if (event.which === 13) { game.states.log.login(); return false; } });
+    this.input = $('<input>').appendTo(this.form).attr({placeholder: game.data.ui.choosename/*game.data.ui.logtype*/, type: 'text', required: 'required', minlength: 3, maxlength: 24, tabindex: 1}).keydown(function (event) { if (event.which === 13) { game.states.log.login(); return false; } });
     this.button = $('<button>').addClass('button').appendTo(this.form).text(game.data.ui.log).attr({type: 'submit'}).on('mouseup touchend', this.login);
     this.rememberlabel = $('<label>').addClass('remembername').appendTo(this.form).append($('<span>').text(game.data.ui.remember));
     this.remembercheck = $('<input>').attr({type: 'checkbox', name: 'remember', checked: true}).change(this.remember).appendTo(this.rememberlabel);
@@ -23,6 +23,7 @@ game.states.log = {
     game.loader.removeClass('loading');
     game.triesCounter.text('');
     game.clear();
+    game.states.log.input.attr({value: 'Player'+parseInt(Math.random()*10000)});
     if (!game.states.log.alert) {
       game.states.log.alert = true;
       game.states.log.alertBox();

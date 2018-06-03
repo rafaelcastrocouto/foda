@@ -11,9 +11,15 @@ game.options = {
     //side
     this.side = $('<input>').attr({type: 'checkbox', name: 'side'});
     $('<label>').appendTo(this.screen).append(this.side).append($('<span>').text(game.data.ui.leftmode));
-    if (game.getData('left-side') == 'true') {
+    if (!!game.getData('left-side')) {
       $(document.body).addClass('left-side');
       this.side.prop('checked', true);
+    }
+    //flat
+    this.flat = $('<input>').attr({type: 'checkbox', name: 'flat'});
+    $('<label>').appendTo(this.screen).append(this.flat).append($('<span>').text(game.data.ui.flat));
+    if (!!game.getData('flat-map')) {
+      this.flat.prop('checked', true);
     }
     //resolution
     this.auto = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'auto'})).append($('<span>').text(game.data.ui.auto));
@@ -43,6 +49,8 @@ game.options = {
     $('input[name=fullscreen]', '.screenresolution').on('change', game.screen.toggleFS);
     //SIDE
     $('input[name=side]', '.screenresolution').on('change', game.screen.toggleSide);
+    //FLAT
+    $('input[name=flat]', '.screenresolution').on('change', game.screen.toggleFlat);    
     //RES
     $('input[name=resolution]', '.screenresolution').on('change', game.screen.changeResolution);
     //Lang
