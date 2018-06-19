@@ -68,7 +68,7 @@ game.events = {
   move: function(event) {
     if (game.events.dragTarget) {
       var position = game.events.getCoordinates(event);
-      var tolerance = 3;
+      var tolerance = 2;
       var moveStarted = (position.left < game.events.draggingPosition.left - tolerance || 
                          position.top < game.events.draggingPosition.top - tolerance)  &&
                         (position.left > game.events.draggingPosition.left + tolerance || 
@@ -86,7 +86,7 @@ game.events = {
         setTimeout(function () {game.events.dragClone.removeClass('hidden');}, 80);
         var target = $(document.elementFromPoint(position.left, position.top));
         $('.drop').removeClass('drop');
-        if (target.hasClasses('slot targetarea casttarget movearea attacktarget')) {
+        if (target.hasClasses('slot picked targetarea casttarget movearea attacktarget')) {
           game.events.dragClone.addClass('drop');
           target.addClass('drop');
         }

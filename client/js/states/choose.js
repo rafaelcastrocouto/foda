@@ -47,10 +47,11 @@ game.states.choose = {
     }
     return slots;
   },
-  select: function (force) {// console.log(force)
-    var card = $(this);
+  select: function (force) {
+    var card = $(this);//console.log('select', game.events.dragging, card, force)
     if (card.hasClass && card.hasClass('card')) {
-      if (card.hasAllClasses('selected zoom')) {
+      if (card.hasAllClasses('selected zoom') && !game.events.dragging) { 
+        //console.log('remove zoom')
         $('.choose .card').removeClass('transparent');
         $('.choose .pickedbox').removeClass('transparent');
         game.topbar.removeClass('transparent');
@@ -58,12 +59,14 @@ game.states.choose = {
         if(game.mode != 'library') card.addClass('draggable');
         game.states.choose.lockZoom=true;
         setTimeout(function () {game.states.choose.lockZoom=false;}, 200);
-      } else if (force != 'force' && card.hasClass('selected') && !game.states.choose.lockZoom) {
+      } else if (force != 'force' && card.hasClass('selected') && !game.states.choose.lockZoom && !game.events.dragging) {
+        //console.log('add zoom')
         $('.choose .card').addClass('transparent');
         $('.choose .pickedbox').addClass('transparent');
         game.topbar.addClass('transparent');
         card.addClass('zoom').removeClass('transparent draggable');
-      } else {
+      } else if (force == 'force' || !game.events.dragging) {
+        //console.log('select')
         if (game.mode == 'library') game.library.select(card, force);
         $('.choose .selected').removeClass('selected draggable');
         $('.choose .half').removeClass('half');
@@ -78,11 +81,11 @@ game.states.choose = {
         if (!card.hasClass('dead')) game.setData('choose', card.data('hero')); 
       }
     }
+    if (game.events.dragging && force && force.target && force.type == 'touchend') game.states.choose.pick.call($(force.target), force);
     if (force && force.preventDefault) {
       game.events.end(force);
       force.preventDefault();
-    }
-    return false;
+    }    return false;
   },
   enablePick: function () {
     game.states.choose.pickEnabled = true;
@@ -91,10 +94,13 @@ game.states.choose = {
   disablePick: function () {
     game.states.choose.pickEnabled = false;
   },
-  pick: function (event) {
+  pick: function (event) { //console.log('pick')
     var card,
       slot = $(this).closest('.slot'),
       pick = $('.pickbox .card.selected');
+    if (!slot.length) slot = $('.slot.drop');
+    if (!slot.length) slot = $('.card.picked.drop').parent();
+    //console.log(slot, pick)
     if (!pick.data('disable') &&
         game.states.choose.pickEnabled &&
         game.mode !== 'library') {
@@ -107,14 +113,15 @@ game.states.choose = {
         else card = pick.nextAll(':visible').first();
       } else {
         card = slot.children('.card');
-        card.on(game.states.choose.event, game.states.choose.select).insertBefore(pick);
+        card.on(game.states.choose.event, game.states.choose.select).insertBefore(pick).removeClass('picked');
       }
-      pick.appendTo(slot).clearEvents('choose');
+      //console.log(card)
+      pick.addClass('picked').appendTo(slot).clearEvents('choose');
       game.states.choose.sort();
-      game.states.choose.select.call(card);
+      game.states.choose.select.call(card, 'force');
       if (game[game.mode].pick) game[game.mode].pick();
     }
-    if (event.type == 'touchend')return false;
+    if (event.type == 'touchend') return false;
   },
   selectFirst: function (force) {
     var first = game.states.choose.pickDeck.children(':visible').first();
