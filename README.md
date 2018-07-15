@@ -5,9 +5,13 @@
 
 A **card game** with magical heroes, full of skills and powerful ultimates.
 
-You are free to [fork][3] or [download][4] and help to build the game, you can even make a hero and [win real cash!][5]
+Play for free [online in your browser][1] or check out our [Google play app][10]
+
+You can also [fork][3] or [download][4] and help to build the game, you can even make a hero and [win real cash!][5]
 
 In our Wiki page you can ckeck out the [how to play with real cards][8] and much more.
+
+All [artwork](https://github.com/rafaelcastrocouto/dotacard) can be downloaded for free in high resolution.
 
 Please report any [sugestions or issues][9] here at github.
 
@@ -19,8 +23,6 @@ Please report any [sugestions or issues][9] here at github.
     node server.js
 
 More information on how to [setup your own server][9]
-
-All [artwork](https://github.com/rafaelcastrocouto/dotacard) can be downloaded for free in high resolution
 
 Special thanks to:
 
@@ -49,3 +51,5 @@ Special thanks to:
 [8]: http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories
 
 [9]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-setup-a-local-server
+
+[10]: https://play.google.com/store/apps/details?id=fodaapp.herokuapp.com.foda
