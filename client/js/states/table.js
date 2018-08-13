@@ -59,7 +59,7 @@ game.states.table = {
     $('#' + spot + ', #' + game.map.mirrorPosition(spot)).addClass('jungle').attr({title: game.data.ui.jungle});
   },
   fountainSpot: function () {
-    var spot = 'A7';
+    var spot = 'A8';
     $('#' + spot + ', #' + game.map.mirrorPosition(spot)).addClass('fountain').attr({title: game.data.ui.heal});
 
   },

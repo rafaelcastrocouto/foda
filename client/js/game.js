@@ -27,7 +27,7 @@ var game = {
   jungleFarm: 50,
   maxMoney: 99999,
   width: 13, //map
-  height: 7,
+  height: 8,
   seed: 0,
   id: null,
   timeoutArray: [],

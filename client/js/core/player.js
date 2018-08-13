@@ -12,10 +12,10 @@ game.player = {
         if (game.mode == 'library') {
           var card = deck.data('cards')[0];
           card.addClass('player').on('mousedown touchstart', game.card.select);
-          card.place(game.map.toPosition(5, 4));
+          card.place(game.map.toPosition(6, 4));
         } else {
           var x = game.player.startX;
-          var y = game.player.startY;
+          var y = game.height - 1;
           $.each(deck.data('cards'), function(i, card) {
             var p = game.player.picks.indexOf(card.data('hero'));
             card.addClass('player').on('mousedown touchstart', game.card.select);
