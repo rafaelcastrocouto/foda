@@ -21,7 +21,7 @@ game.tower = {
     return tower;
   },
   place: function () {
-    var p = 'B7';
+    var p = game.states.config[game.size].tower;
     game.player.tower = game.tower.build('player', p);
     game.enemy.tower = game.tower.build('enemy', game.map.mirrorPosition(p));
   },
@@ -40,14 +40,6 @@ game.tower = {
     });
     if (!lowestHp.notfound) {
       game[attacker].tower.attack(lowestHp, true);
-      //if (game.mode === 'online') {
-      //  from = game[attacker].tower.getPosition();
-      //  to = lowestHp.getPosition();
-      //  var move = 'A:' + from + ':' + to;
-      //  game.history.saveMove(move);
-      //  if (game.mode == 'online') 
-      //    game.currentMoves.push(move);
-      //}
     }
   }
 };

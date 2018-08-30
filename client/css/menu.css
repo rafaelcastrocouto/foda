@@ -575,3 +575,19 @@
   left: 5px;
   border-radius: 50%;
 }
+
+.config.state .title {
+  text-align: center;
+  position: relative;
+  top: -50px;
+  transition: top 1s;
+}
+.config.state .title.show {
+  top: 150px;
+  font-size: 30px;
+}
+
+.config.state .buttonbox {
+  width: 400px;
+  margin: 170px auto;
+}

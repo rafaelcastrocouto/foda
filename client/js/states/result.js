@@ -88,7 +88,7 @@ game.states.result = {
     game.states.choose.clear();
     game.states.result.parallax.empty();
     $(picks).each(function (i, hero) {
-      $('.pickbox .card.'+hero).clone().appendTo(game.states.result.parallax);
+      if (hero) $('.pickbox .card.'+hero).clone().appendTo(game.states.result.parallax);
     });
   },
   clear: function () {

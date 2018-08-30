@@ -19,17 +19,14 @@ var game = {
   catapultTurn: 8,
   treeRespawn: 4,
   heroDeathDamage: 4, //HP
-  //heroRespawnDamage: 1,
-  //creepDeathDamage: 1,
   fountainHeal: 12,
   heroBounty: 150, //money
   unitBounty: 50,
   jungleFarm: 50,
   maxMoney: 99999,
-  width: 13, //map
-  height: 8,
   seed: 0,
   id: null,
+  size: 's5v5',
   timeoutArray: [],
   skills: {},
   data: {},//json {heroes, skills, ui, units, campaign}
@@ -134,6 +131,15 @@ var game = {
       game[mode].build(recover);
     }
   },
+  validSizes: ['s1v1', 's3v3', 's5v5'],
+  setSize: function(size, recover) {
+    if (size && game.validSizes.indexOf(size) >= 0) {
+      game.size = size;
+      game.setData('size', size);
+      game.container.removeClass(game.validSizes.join(' '));
+      game.container.addClass(size);
+    }
+  },
   matchClear: function () {
     game.recovering = false;
     game.player.picks = false;
@@ -151,6 +157,9 @@ var game = {
     if (game.mode && game[game.mode] && game[game.mode].clear) {
       game[game.mode].clear();
     }
+    game.container.removeClass(game.validModes.join(' '));
+    game.container.removeClass(game.validSizes.join(' '));
+    game.size = '5v5';
     game.states.choose.clear();
     game.states.vs.clear();
     game.states.table.clear();

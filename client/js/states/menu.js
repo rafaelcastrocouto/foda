@@ -41,7 +41,8 @@ game.states.menu = {
     else this.online.addClass('highlight');
     this.local = $('<div>').addClass('local icon').appendTo(this.icons).attr({ title: game.data.ui.chooselocal}).append($('<span>').text(game.data.ui.local)).on('mouseup touchend', function () {
       game.setMode('local');
-      game.states.changeTo('choose');
+      //game.states.changeTo('choose');
+      game.states.changeTo('config');
     });
     this.library = $('<div>').addClass('library icon').appendTo(this.icons).attr({ title: game.data.ui.chooselibrary}).append($('<span>').text(game.data.ui.library)).on('mouseup touchend', function () {
       game.setMode('library');

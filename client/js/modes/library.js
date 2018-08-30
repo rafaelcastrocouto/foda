@@ -69,7 +69,7 @@ game.library = {
         });
       });
       game.states.choose.pickedbox.hide().fadeIn();
-      $('.slot:empty').hide();
+      $('.slot:empty').addClass('libhide');
       if (!card.data('disable')) {
         game.library.hero = card.data('hero');
         game.setData('choose', game.library.hero);

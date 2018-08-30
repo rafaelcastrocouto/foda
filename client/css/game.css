@@ -90,6 +90,7 @@ noscript {
 .game-container.choose-state .states,
 .game-container.vs-state .states,
 .game-container.table-state .states,
+.game-container.config-state .states,
 .game-container.result-state .states {
   background-color: #126766;
   background-image: url("../img/bkg/polygon-dark.jpg");

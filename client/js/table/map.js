@@ -35,7 +35,7 @@ game.map = {
   },
   lettersStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   build: function() {
-    game.map.letters = game.map.lettersStr.split('');
+    if (!game.map.letters) game.map.letters = game.map.lettersStr.split('');
     game.map.spots = [];
     var map = $('<div>').addClass('map').css({
       width: game.width * 212,
@@ -499,12 +499,6 @@ game.map = {
     }
     return range;
   },
-  clear: function() {
-    game.highlight.clearMap();
-    game.map.el.removeClass('night');
-    $('.map .projectile').remove();
-    $('.map .spot').removeClass('block playerarea enemyarea jungle cript').addClass('free');
-  },
   cardsInRange: function(range, cb) {
     this.inRange(range, function(spot) {
       var card = spot.find('.card');
@@ -599,5 +593,11 @@ game.map = {
       if (card.length && !card.hasClass('cycloned'))
         return card;
     }
+  },
+  clear: function() {
+    game.highlight.clearMap();
+    game.map.el.removeClass('night');
+    $('.map .projectile').remove();
+    $('.map .spot').removeClass('block playerarea enemyarea jungle cript').addClass('free');
   }
 };

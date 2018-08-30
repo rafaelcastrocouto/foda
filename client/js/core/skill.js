@@ -48,7 +48,7 @@ game.skill = {
   calcMana: function (side) {
     game[side].mana = 0;
     $(game[side].picks).each(function (i, name) { 
-      game[side].mana += game.data.heroes[name].mana;
+      if (name) game[side].mana += game.data.heroes[name].mana;
     });
     game[side].cardsPerTurn = Math.round(game[side].mana / 5);
   },

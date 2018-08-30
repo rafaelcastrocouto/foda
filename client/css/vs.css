@@ -99,6 +99,21 @@
   transform: translateZ(10px) rotate(-2deg) scale(0.6);
 }
 
+
+.s1v1 .vs .card {
+  transform: translateX(240px) translateZ(10px) rotate(-2deg) scale(0.6);
+}
+.s1v1 .vs .vsenemy .card {
+  transform: translateX(-240px) translateZ(10px) rotate(-2deg) scale(0.6);
+}
+.s3v3 .vs .card {
+  transform: translateX(110px) translateZ(10px) rotate(-2deg) scale(0.6);
+}
+.s3v3 .vs .vsenemy .card {
+  transform: translateX(-110px) translateZ(10px) rotate(-2deg) scale(0.6);
+}
+
+
 .vs .vsenemy .card {
   float: right;
 }

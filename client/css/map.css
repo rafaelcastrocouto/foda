@@ -9,6 +9,14 @@
   transition: all 2s;
 }
 
+.s1v1 .table .map {
+  transform: translate(-49.7%,-50.8%) rotateX(30deg) scale3d(0.27,0.25,0.25);
+}
+
+.s3v3 .table .map {
+  transform: translate(-49.7%,-50.8%) rotateX(30deg) scale3d(0.22,0.21,0.21);
+}
+
 .table .map.flat {
   transform: translate(-50%,-50%) scale3d(0.25,0.2,0.2);
   transform-style: flat;

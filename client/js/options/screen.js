@@ -1,6 +1,7 @@
 game.screen = {
   width: 970,
   height: 600,
+  scale: 1,
   resolutions: ['auto', 'low', 'high', 'medium', 'default'],
   resize: function (event) {
     game.offset = game.container.offset();

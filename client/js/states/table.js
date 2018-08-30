@@ -1,7 +1,6 @@
 game.states.table = {
   build: function () {
     game.camera = $('<div>').addClass('camera');
-    this.map = game.map.build().appendTo(game.camera);
     this.selectedArea = $('<div>').addClass('selectedarea');
     this.selectedCard = $('<div>').addClass('selectedcard').appendTo(this.selectedArea);
     this.cardBack = $('<div>').addClass('cardback').appendTo(this.selectedCard);
@@ -59,7 +58,7 @@ game.states.table = {
     $('#' + spot + ', #' + game.map.mirrorPosition(spot)).addClass('jungle').attr({title: game.data.ui.jungle});
   },
   fountainSpot: function () {
-    var spot = 'A8';
+    var spot = 'A'+game.height;
     $('#' + spot + ', #' + game.map.mirrorPosition(spot)).addClass('fountain').attr({title: game.data.ui.heal});
 
   },
@@ -93,7 +92,6 @@ game.states.table = {
   clear: function () {
     if (this.selectedCard) this.selectedCard.removeClass('flip');
     game.states.table.setup = false;
-    game.map.clear();
     game.matchClear();
     game.card.clearSelection();
     game.fx.clear();
@@ -105,6 +103,7 @@ game.states.table = {
     this.back.hide();
     this.surrender.show().attr('disabled', true);
     game.skill.disableDiscard();
+    if (game.map.el) game.map.el.remove();
     this.skip.attr('disabled', true);
     this.el.removeClass('turn');
     if (game.turn.el) game.turn.el.removeClass('show');

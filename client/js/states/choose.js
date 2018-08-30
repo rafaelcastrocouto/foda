@@ -175,7 +175,7 @@ game.states.choose = {
     return false;
   },
   randomFill: function (cb) {
-    $('.slot').each(function () {
+    $('.slot:visible').each(function () {
       var slot = $(this), card;
       if (slot.hasClass('available')) {
         card = $('.pickbox .card').not('.dead, .hidden').randomCard('noseed');
@@ -222,12 +222,16 @@ game.states.choose = {
     return false;
   },
   backClick: function () {
-    game.setData('mode', false);
     if (!$(this).attr('disabled')) {
+      game.setData('mode', false);
       if (game.mode == 'online') {
         game.online.backClick();
       } if (game.mode == 'single') {
         game.states.changeTo('campaign');
+      } if (game.mode == 'local') {
+        game.clear();
+        game.setMode('local');
+        game.states.changeTo('config');
       } else game.states.choose.toMenu();
     }
     return false;
@@ -239,7 +243,7 @@ game.states.choose = {
   clear: function (fast) {
     $('.slot .card.skills').appendTo(game.library.skills);
     $('.pickbox .card').removeClass('hidden');
-    $('.slot').addClass('available').show();
+    $('.slot').addClass('available');
     if (this.mydeck) this.mydeck.attr('disabled', false);
     if (this.randombt) this.randombt.attr('disabled', false);
     if (this.back) this.back.attr({disabled: false});

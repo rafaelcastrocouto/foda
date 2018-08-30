@@ -677,20 +677,20 @@
     "creeps":{
       "melee": {
         "range": 2,
-        "hp": 30,
-        "damage": 14,
+        "hp": 24,
+        "damage": 12,
         "armor": 2,
         "resistance": 1,
         "bounty": 100
       },
       "ranged": {
         "range": 5,
-        "hp": 26,
-        "damage": 12,
+        "hp": 20,
+        "damage": 10,
         "armor": 1,
         "mana": 4,
         "resistance": 2,
-        "bounty": 150
+        "bounty": 120
       },
       "catapult": {
         "range": 7,

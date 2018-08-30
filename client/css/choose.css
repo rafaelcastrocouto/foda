@@ -79,8 +79,6 @@
   transform: translate3d(-216px, -336px, 0) scale(2);
 }
 
-
-
 .choose .slot {
   position: relative;
   border-radius: 4px;
@@ -94,6 +92,27 @@
   will-change: transform;
 }
 
+.library .libhide {
+  display: none;
+}
+.s1v1 .slot:nth-child(2),
+.s1v1 .slot:nth-child(3),
+.s1v1 .slot:nth-child(4),
+.s1v1 .slot:nth-child(5) {
+  display: none;
+}
+.s3v3 .slot:nth-child(4),
+.s3v3 .slot:nth-child(5) {
+  display: none;
+}
+
+.s1v1 .pickedbox {
+  width: 125px;
+  margin-left: 250px;
+}
+.s3v3 .pickedbox {
+  margin-left: 120px;
+}
 .library .choose .slot {
   width: 140px;
   height: 210px;

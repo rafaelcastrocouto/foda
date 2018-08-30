@@ -3,6 +3,7 @@ game.history = {
     game.history.last = game.getData('last-activity');
     game.history.state = game.getData('state');
     game.history.mode = game.getData('mode');
+    game.history.size = game.getData('size');
     game.history.seed = game.getData('seed');
   },
   recover: function () {
@@ -82,8 +83,10 @@ game.history = {
   },
   match: function(mode, recovering) {
     game.setMode(mode, recovering);
+    game.setSize(game.history.size);
     game.seed = game.history.seed;
     game.setData('seed', game.seed);
+    game.states.vs.buildMap();
   },
   rank: function () {
     var p = game.getData('points');

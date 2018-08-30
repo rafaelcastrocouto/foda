@@ -1,7 +1,7 @@
 game.audio = {
   defaultVolume: 0.5,
   defaultSounds: 0.25,
-  defaultMusic: 0.5,
+  defaultMusic: 0.25,
   build: function () {
     game.audio.context = new AudioContext();
     game.audio.volumeNode = game.audio.context.createGain();
@@ -154,6 +154,7 @@ game.audio = {
   },
   sources: [],
   play: function (name, loop, music, cb) { //console.trace(name);
+    if (!game.audio.context) game.audio.context = new AudioContext();
     if (music) name = 'music/'+name;
     if (game.audio.context &&
         game.audio.context.createBufferSource &&

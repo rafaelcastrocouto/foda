@@ -30,7 +30,7 @@ game.local = {
     }
   },
   pick: function () {
-    var availableSlots = $('.slot.available').length;
+    var availableSlots = $('.slot.available:visible').length;
     if (!availableSlots) {
       if (!game.local.firstDeck) {
         game.loader.addClass('loading');

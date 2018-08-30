@@ -29,19 +29,18 @@ game.states.vs = {
       }
       this.buildPlayer();
       this.buildEnemy();
+      this.buildMap();
       this.player.removeClass('slide');
       this.enemy.removeClass('slide');
       game.units.build('player');
       game.units.build('enemy');
-      var t = 4600;
-      if (game.mode == 'library') t = 1600;
-      game.timeout(t - 300, function () {
-        this.player.addClass('slide');
-        this.enemy.addClass('slide');
-        game.fx.build();
-      }.bind(this));
-      game.timeout(t, this.toTable);
+      this.toTable();
     }
+  },
+  buildMap: function () {
+    game.width = game.states.config[game.size].width;
+    game.height = game.states.config[game.size].height;
+    game.states.table.map = game.map.build().appendTo(game.camera);
   },
   buildPlayer: function () {
     this.playername.text(game.player.name);
@@ -134,10 +133,19 @@ game.states.vs = {
     }
   },
   toTable: function () {
-    game.states.vs.clear();
-    game.setData(game.player.type + 'Deck', game.player.picks.join('|'));
-    game.setData(game.enemy.type + 'Deck', game.enemy.picks.join('|'));
-    game.states.changeTo('table');
+    var t = 4600;
+    if (game.mode == 'library') t = 1600;
+    game.timeout(t - 300, function () {
+      this.player.addClass('slide');
+      this.enemy.addClass('slide');
+      game.fx.build();
+    }.bind(this));
+    game.timeout(t, function () {
+      game.states.vs.clear();
+      game.setData(game.player.type + 'Deck', game.player.picks.join('|'));
+      game.setData(game.enemy.type + 'Deck', game.enemy.picks.join('|'));
+      game.states.changeTo('table');
+    });
   },
   clear: function () {
     $('.card', game.states.vs.el).remove();
