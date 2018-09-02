@@ -159,7 +159,7 @@ var game = {
     }
     game.container.removeClass(game.validModes.join(' '));
     game.container.removeClass(game.validSizes.join(' '));
-    game.size = '5v5';
+    game.size = 's5v5';
     game.states.choose.clear();
     game.states.vs.clear();
     game.states.table.clear();
