@@ -154,7 +154,7 @@ game.audio = {
   },
   sources: [],
   play: function (name, loop, music, cb) { //console.trace(name);
-    if (!game.audio.context) game.audio.context = new AudioContext();
+    if (!game.audio.context && 'AudioContext' in window) game.audio.context = new AudioContext();
     if (music) name = 'music/'+name;
     if (game.audio.context &&
         game.audio.context.createBufferSource &&
