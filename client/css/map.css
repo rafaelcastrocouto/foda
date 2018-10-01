@@ -18,7 +18,7 @@
 }
 
 .table .map.flat {
-  transform: translate(-50%,-50%) scale3d(0.25,0.2,0.2);
+  transform: translate(-50%,-50%) scale3d(0.255,0.175,0.2);
   transform-style: flat;
 }
 

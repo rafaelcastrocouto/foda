@@ -153,7 +153,7 @@ var game = {
     game.setData('seed', false);
   },
   clear: function() {
-    game.message.html('');
+    game.message.removeClass('alert').html('');
     if (game.mode && game[game.mode] && game[game.mode].clear) {
       game[game.mode].clear();
     }

@@ -655,17 +655,17 @@ game.card = {
     } else {
       if (this.hasClass('player')) {
         x = game.player.startX;
-        y = game.player.startY;
+        y = game.height - 1;
         spot = game.map.toPosition(x + o, y);
-        while (!$('#' + spot).hasClass('free') && o < 5) {
+        while (!$('#' + spot).hasClass('free') && o < game.player.picks.length) {
           o += 1;
           spot = game.map.toPosition(x + o, y);
         }
       } else if (this.hasClass('enemy')) {
         x = game.enemy.startX;
-        y = game.enemy.startY;
+        y = game.height - 1;
         spot = game.map.mirrorPosition(game.map.toPosition(x, y));
-        while (!$('#' + spot).hasClass('free') && o < 5) {
+        while (!$('#' + spot).hasClass('free') && o < game.enemy.picks.length) {
           o += 1;
           spot = game.map.mirrorPosition(game.map.toPosition(x + o, y));
         }

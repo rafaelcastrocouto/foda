@@ -28,18 +28,19 @@ game.states = {
     );
   },
   changeTo: function (state, recover) {
-    if (game.states.validState(state)) {
-      $(game.states.valid).each(function () {
-        game.container.removeClass(this+'-state');
-      });
-      game.container.addClass(state+'-state');
-      var oldstate = game.states[game.currentState];
-      if (oldstate) {
-        if (oldstate.end) oldstate.end();
-        if (oldstate.el) oldstate.el.hide();
-      }
+    if (game.states.validState(state) && !game.states.changing) {
+      game.clearTimeouts();
+      game.states.changing = true;
       game.timeout(200, function (state, recover) {
-        game.clearTimeouts();
+        $(game.states.valid).each(function () {
+          game.container.removeClass(this+'-state');
+        });
+        game.container.addClass(state+'-state');
+        var oldstate = game.states[game.currentState];
+        if (oldstate) {
+          if (oldstate.end) oldstate.end();
+          if (oldstate.el) oldstate.el.hide();
+        }
         game.states.buildState(state);
         var newstate, old = game.currentState;
         newstate = game.states[state];
@@ -53,7 +54,9 @@ game.states = {
           game.backState = old;
         }
         if (newstate.start) newstate.start(recover);
-        
+        game.timeout(200, function () {
+          game.states.changing = false;
+        });
       }.bind(this, state, recover));
     }
   },
