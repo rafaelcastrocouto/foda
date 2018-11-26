@@ -74,7 +74,7 @@
       "mana": 3,
       "damage": 13,
       "armor": 3,
-      "resistance": 3,
+      "resistance": 4,
       "intro": "hIySV3k0cqo"
     },
 
@@ -270,10 +270,17 @@
         "cast range": 5,
         "cards": 2
       },
-      "shield": {
-        "cards": 1,
-        "buffdata": {
-          "resistance bonus": 4
+      "mirror": {
+        "cards": 2,
+        "buffsdata": {
+          "mirror": {
+            "counter": {
+              "duration": 2
+            },
+            "passive": {
+              "resistance bonus": 4
+            }
+          }
         }
       },
       "ult": {

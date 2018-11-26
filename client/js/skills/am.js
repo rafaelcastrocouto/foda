@@ -18,9 +18,19 @@ game.skills.am = {
       }
     }
   },
-  shield: {
-    passive: function (skill, source) {
-      source.selfBuff(skill);
+  mirror: {
+    cast: function (skill, source) {
+      if (!source.hasBuff('mirror-passive')) {
+        source.selfBuff(skill, 'mirror-passive');
+      }
+      source.selfBuff(skill, 'mirror-counter');
+      source.on('casted', this.counter);
+    },
+    counter: function (event, eventdata) {
+      var source = eventdata.source;
+      var target = eventdata.target;
+      var skill = eventdata.skill;
+      target.cast(skill, source);
     }
   },
   blink: {

@@ -189,15 +189,22 @@
       "targets": ["Local", "Livre"],
       "description": "Teleporta para o destino imediatamente"
     },
-    "shield": {
-      "name": "Escudo de Resistência",
-      "type": "Passiva",
-      "hand": "Esquerda",
+    "mirror": {
+      "name": "Espelhos mágicos",
+      "type": "Ativa",
+      "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "description": "Aumenta a resistência a danos mágicos",
-      "buff": {
-        "description": "Resistência mágica aumentada"
+      "description": "Reflete as magias e feitiços e aumenta a resistência",
+      "buffs": {
+        "mirror": {
+          "counter": {
+            "description": "Refletindo as magias e feitiços"
+          },
+          "passive": {
+            "description": "Resistência mágica aumentada"
+          }
+        }
       }
     },
     "ult": {

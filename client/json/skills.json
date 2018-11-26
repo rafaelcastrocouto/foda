@@ -189,15 +189,22 @@
       "targets": ["Spot", "Free"],
       "description": "Teleport to the target spot"
     },
-    "shield": {
-      "name": "Resistance",
-      "type": "Passive",
-      "hand": "Left",
+    "mirror": {
+      "name": "Spell Mirror",
+      "type": "Active",
+      "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "description": "Increases magic resistance",
-      "buff": {
-        "description": "Magic resistance increased"
+      "description": "Mirrors magic back to casters and after first activation will passively increases magic resistance",
+      "buffs": {
+        "mirror": {
+          "counter": {
+            "description": "Mirror spells back to the caster"
+          },
+          "passive": {
+            "description": "Magic resistance increased"
+          }
+        }
       }
     },
     "ult": {

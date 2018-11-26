@@ -37,7 +37,8 @@ game.skills.ld = {
             target.addStack('rooted');
             game.fx.add('ld-root', source, target, 'keep');
             target.on('turnend.entangle-target', game.skills.ld.bear.turnend);
-            var targetBuff = source.addBuff(target, game.data.skills.ld.bear.buffs.entangle.target);
+            var skill = game.data.skills.ld.bear;
+            var targetBuff = source.addBuff(target, skill, "entangle-target");
             targetBuff.data('source', source);
             target.stopChanneling();
           }

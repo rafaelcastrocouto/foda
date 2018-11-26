@@ -53,3 +53,4 @@ game.states.config = {
     this.title.removeClass('show');
   }
 };
+

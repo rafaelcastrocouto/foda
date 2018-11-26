@@ -189,15 +189,22 @@
       "targets": ["Lugar", "Libre"],
       "description": "Teleportar Magino al objetivo"
     },
-    "shield": {
-      "name": "Resistencia",
-      "type": "Pasivo",
-      "hand": "Izquierda",
+    "mirror": {
+      "name": "Espejos mágicos",
+      "type": "Activo",
+      "hand": "Derecha",
       "deck": "Comprar",
       "targets": ["Yo"],
-      "description": "Aumenta la resistencia mágica",
-      "buff": {
-        "description": "Aumento de la resistencia mágica"
+      "description": "Refleja los hechizos y los hechizos y aumenta la resistencia",
+      "buffs": {
+        "mirror": {
+          "counter": {
+            "description": "Reflejando los hechizos y los hechizos"
+          },
+          "passive": {
+            "description": "Resistencia mágica aumentada"
+          }
+        }
       }
     },
     "ult": {

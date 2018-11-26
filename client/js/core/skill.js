@@ -157,31 +157,33 @@ game.skill = {
           source.trigger('cast', evt).trigger('action', evt);
           skill.trigger('cast', evt);
           if (!target.hasClass('spot')) target.trigger('casted', evt);
-          if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
-            str = hero + '/' + skillid;
-            if (target.hasClass('linken')) game.audio.play('activate');
-            else if (skillid !== 'ult') game.audio.play(str);
-          }
-          if (skill.data('type') == game.data.ui.channel) {
-            game.skill.channel(skill, source, target, evt);
-          }
-          if (skill.hasClass('items')) {
-            var itemtype = skill.data('itemtype');
-            var item = skill.data('item');
-            //ITEM CAST
-            game.items[itemtype][item].cast(skill, target);
-            game.skill.castafter(skill, source, target);
-          } else {
-            if (target.hasClass('linken')) {
+          if (!(target.hasBuff('mirror-counter') && source.side() !== target.side())) {
+            if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
+              str = hero + '/' + skillid;
+              if (target.hasClass('linken')) game.audio.play('activate');
+              else if (skillid !== 'ult') game.audio.play(str);
+            }
+            if (skill.data('type') == game.data.ui.channel) {
+              game.skill.channel(skill, source, target, evt);
+            }
+            if (skill.hasClass('items')) {
+              var itemtype = skill.data('itemtype');
+              var item = skill.data('item');
+              //ITEM CAST
+              game.items[itemtype][item].cast(skill, target);
               game.skill.castafter(skill, source, target);
             } else {
-              game.fx.ult(skill, function (skill, source, target) {
-                var hero = skill.data('hero');
-                var skillid = skill.data('skill');
-                // SKILL CAST
-                game.skills[hero][skillid].cast(skill, source, target);
+              if (target.hasClass('linken')) {
                 game.skill.castafter(skill, source, target);
-              }.bind(this, skill, source, target), str);
+              } else {
+                game.fx.ult(skill, function (skill, source, target) {
+                  var hero = skill.data('hero');
+                  var skillid = skill.data('skill');
+                  // SKILL CAST
+                  game.skills[hero][skillid].cast(skill, source, target);
+                  game.skill.castafter(skill, source, target);
+                }.bind(this, skill, source, target), str);
+              }
             }
           }
         }

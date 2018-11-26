@@ -189,15 +189,22 @@
       "targets": ["Yer", "Bedava"],
       "description": "Hedeflenen noktaya ışınlanır"
     },
-    "shield": {
-      "name": "Resistance Shield",
-      "type": "Pasif",
-      "hand": "Sol",
+    "mirror": {
+      "name": "Spell Mirror",
+      "type": "Aktif",
+      "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Aynı"],
-      "description": "Magino'in büyü hasarına karşı direncini arttırır.",
-      "buff": {
-        "description": "Büyü Hasarı Direncini Arttırır"
+      "description": "Tekerlere geri sihirli aynalar ve ilk aktivasyondan sonra pasif olarak sihirli direnci artırır",
+      "buffs": {
+        "mirror": {
+          "counter": {
+            "description": "Ayna tekerleğe geri döner"
+          },
+          "passive": {
+            "description": "Büyü Hasarı Direncini Arttırır"
+          }
+        }
       }
     },
     "ult": {

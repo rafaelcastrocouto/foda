@@ -113,6 +113,10 @@
 .s3v3 .pickedbox {
   margin-left: 120px;
 }
+.library .s3v3 .pickedbox, .library .s1v1 .pickedbox {
+  margin-left: 0;
+}
+
 .library .choose .slot {
   width: 140px;
   height: 210px;
