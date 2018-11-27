@@ -395,15 +395,15 @@
       "targets": ["Spot", "Free"],
       "description": "Teleports the Bear back to the Bear Druid. Must be discarded if the bear is killed"
     },
-    "rabid": {
-      "name": "Bear Fury",
+    "link": {
+      "name": "Bear Link",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Self"],
-      "description": "Increases the attack and movement speed of Bear Druid and the Spirit Bear",
+      "description": "Increases the attack and the Bear Druid damage heals his bear",
       "buff": {
-        "description": "Attack and movement speed increased"
+        "description": "Attack increased and lifesteal heals bear"
       }
     },
     "roar": {

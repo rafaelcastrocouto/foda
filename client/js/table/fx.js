@@ -1,7 +1,7 @@
 game.fx = {
   heroes: {
     ld: {
-      rabid: ['rabid'],
+      link: ['link'],
       roar: ['roar'],
       cry: ['cry'],
       return: ['return','return-target'],

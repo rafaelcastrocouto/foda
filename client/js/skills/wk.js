@@ -36,7 +36,7 @@ game.skills.wk = {
       var damage = eventdata.damage;
       var buff = source.hasBuff('wk-aura');
       if (buff) {
-        var lifesteal = game.data.skills.wk.aura.buff.lifesteal / 100;
+        var lifesteal = buff.data('lifesteal') / 100;
         if (target.side() == source.opponent() && !source.data('miss-attack')) 
           source.heal(damage * lifesteal);
       }

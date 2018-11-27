@@ -1118,15 +1118,15 @@
   }
 }
 
-.map .fx.ld-rabid {
+.map .fx.ld-link {
   transform: rotateX(-20deg) translate3d(60px,-450px,80px) scale(5.5);
   width: 120px;
   height: 150px;
-  animation: ld-rabid-sprite 1.6s steps(19) 1;
-  background-image: url('../img/fx/ld/rabid.png');
+  animation: ld-link-sprite 1.6s steps(19) 1;
+  background-image: url('../img/fx/ld/link.png');
 }
 
-@keyframes ld-rabid-sprite {
+@keyframes ld-link-sprite {
   100% {
     background-position: -2280px;
   }
@@ -1136,7 +1136,7 @@
   transform: rotateX(-20deg) translate3d(60px,-450px,80px) scale(5.5);
   width: 120px;
   height: 150px;
-  animation: ld-rabid-sprite 1.6s steps(19) 1;
+  animation: ld-link-sprite 1.6s steps(19) 1;
   background-image: url('../img/fx/ld/roar.png');
 }
 

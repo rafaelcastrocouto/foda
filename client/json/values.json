@@ -438,12 +438,12 @@
         "cast range": 2,
         "cards": 1
       },
-      "rabid": {
+      "link": {
         "cards": 1,
         "buffdata": {
           "duration": 3,
           "damage bonus": 3,
-          "speed bonus": 1
+          "lifesteal": 50
         }
       },
       "roar": {

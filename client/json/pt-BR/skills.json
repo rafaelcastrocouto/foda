@@ -395,15 +395,15 @@
       "targets": ["Local", "Livre"],
       "description": "Teleporta o Urso de volta para o Druida. Esta carta deve ser descartada quando o Espírito Urso morre"
     },
-    "rabid": {
+    "link": {
       "name": "Fúria de Urso",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "description": "Aumenta o ataque e o movimento do Druida e do Urso",
+      "description": "Aumenta o ataque e o Urso Druida cura seu urso com seus ataques",
       "buff": {
-        "description": "Bonus de ataque e o movimento"
+        "description": "Bonus de ataque e parte do dano cura o urso"
       }
     },
     "roar": {

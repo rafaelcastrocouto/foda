@@ -32,8 +32,10 @@ game.skills.ld = {
         var damage = eventdata.damage;
         var buff = bear.getBuff('defender-source');
         var transfer = buff.data('damage transfer');
-        eventdata.bonus = -1 * transfer;
-        source.damage(transfer, bear, game.data.ui.pure)
+        if (damage > transfer) {
+          eventdata.bonus = -1 * transfer;
+          source.damage(transfer, bear, game.data.ui.pure)
+        }
       }
     },
     attack: function (event, eventdata) { 
@@ -106,16 +108,29 @@ game.skills.ld = {
       });
     }
   },
-  rabid: {
+  link: {
     cast: function (skill, source) {
       source.selfBuff(skill);
       source.shake();
-      game.fx.add('ld-rabid', source);
+      game.fx.add('ld-link', source);
       var bear = source.data('bear');
       if (bear && !bear.hasClasses('bkb cycloned')) {
         source.addBuff(bear, skill);
-        game.fx.add('ld-rabid', bear);
+        game.fx.add('ld-link', bear);
         bear.shake();
+        source.on('attack', this.attack);
+      }
+    },
+    attack: function (event, eventdata) {
+      var source = eventdata.source;
+      var target = eventdata.target;
+      var damage = eventdata.damage;
+      var buff = source.getBuff('ld-link');
+      var bear = source.data('bear');
+      if (buff && bear) {
+        var lifesteal = buff.data('lifesteal') / 100;
+        if (target.side() == source.opponent() && !source.data('miss-attack')) 
+          bear.heal(damage * lifesteal);
       }
     }
   },

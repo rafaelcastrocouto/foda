@@ -395,15 +395,15 @@
       "targets": ["Yer", "Bedava"],
       "description": "Ayıyı Bear Druid yanına ışınlar belli bir saniye aralıgında düşman kahramandan hasar almaması gerekir;"
     },
-    "rabid": {
+    "link": {
       "name": "War Claws",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["AynÄ"],
-      "description": "Bear Druid ve Ruh Bear saldırı ve hareket hızını artırır",
+      "description": "Saldırıyı artırır ve Bear Druid hasarı onun ayısını iyileştirir",
       "buff": {
-        "description": "Saldırı ve hareket hızı artışı sağlar"
+        "description": "Saldırı arttı ve yaşam boyu iyileşme"
       }
     },
     "roar": {

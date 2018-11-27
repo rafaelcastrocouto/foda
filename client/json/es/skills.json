@@ -395,15 +395,15 @@
       "targets": ["Lugar", "Libre"],
       "description": "Teletransporta al oso de nuevo al druida del oso. Debe ser desechado si el oso es asesinado"
     },
-    "rabid": {
+    "link": {
       "name": "Furia del oso",
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
       "targets": ["Yo"],
-      "description": "Aumenta el ataque y la velocidad de movimiento de Bear Druid y Spirit Bear",
+      "description": "Aumenta el ataque y el Oso Druida cura a tu oso con sus ataques",
       "buff": {
-        "description": "Aumento de la velocidad de ataque y de movimiento"
+        "description": "Bonos de ataque y parte del daño cura el oso"
       }
     },
     "roar": {
