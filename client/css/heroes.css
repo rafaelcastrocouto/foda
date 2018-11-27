@@ -264,15 +264,20 @@
   background-image: url("../img/skills/ld/cry.jpg");
 }
 
+.ld-bear.defender-source .img, .buffs .buff.ld-bear.defender-source .img {
+  background-image: url("../img/skills/ld/defender.jpg");
+  background-position: 15%;
+}
+
 .ld-bear.entangle-source .img, .buffs .buff.ld-bear.entangle-source .img, .buffs .buff.ld-bear.entangle-target .img {
   background-image: url("../img/skills/ld/entangle.jpg");
   background-position: 25%;
 }
 
-.ld-bear.demolish-source .img, .ld-bear.demolish-target .img, .buffs .buff.ld-bear.demolish-source .img, .buffs .buff.ld-bear.demolish-target .img {
+.ld-bear.demolish-source .img, .buffs .buff.ld-bear.demolish-source .img {
   background-image: url("../img/skills/ld/demolish.jpg");
   background-size: 220%;
-  background-position: 40%;
+  background-position: 50%;
 }
 
 .nyx, .nyx .portrait {

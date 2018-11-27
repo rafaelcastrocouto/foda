@@ -362,6 +362,12 @@
       "targets": ["Yer", "Bedava"],
       "description": "Güçlü bir ayı çagırır ve bir Dönüş beceri kartı alırsınız",
       "buffs": {
+        "defender": {
+          "source": {
+            "name": "Defender",
+            "description": "Druid'e verilen hasarın bir kısmını ayısına aktar"
+          }
+        },
         "demolish": {
           "source": {
             "name": "Demolition",

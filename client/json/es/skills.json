@@ -362,6 +362,12 @@
       "targets": ["Lugar", "Libre"],
       "description": "El oso tiene 'garras de la naturaleza' y 'demolición'. Hace 12 puntos de daño al morir. Ganancias 'Retorno' tarjeta",
       "buffs": {
+        "defender": {
+          "source": {
+            "name": "Defensor",
+            "description": "Transfiere una porción del daño infligido al druida a su oso"
+          }
+        },
         "demolish": {
           "source": {
             "name": "Demolición",

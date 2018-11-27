@@ -362,6 +362,12 @@
       "targets": ["Local", "Livre"],
       "description": "O jogador compra uma carta temporária 'Retornar'",
       "buffs": {
+        "defender": {
+          "source": {
+            "name": "Defensor",
+            "description": "Transfere uma parte do dano causado ao Druida ao seu urso"
+          }
+        },
         "demolish": {
           "source": {
             "name": "Demolidor",

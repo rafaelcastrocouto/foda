@@ -411,6 +411,11 @@
         "death damage": 12,
         "bounty": 300,
         "buffsdata": {
+          "defender": {
+            "source": {
+              "damage transfer": 3
+            }
+          },
           "demolish": {
             "source": {
               "tower bonus": 6

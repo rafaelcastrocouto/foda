@@ -9,18 +9,32 @@ game.skills.ld = {
         source.data('summon', bear);
         source.addBuff(bear, skill, 'demolish-source');
         source.addBuff(bear, skill, 'entangle-source');
+        source.on('pre-attacked.defender', this.transfer);
         source.on('death', this.death);
         bear.on('pre-attack', this.attack);
         bear.on('death', this.beardeath);
         bear.data('return', $('.table .'+side+' .temp.skills .ld-bearreturn'));
         bear.data('death damage', skill.data('death damage'));
       }
+      source.addBuff(bear, skill, 'defender-source');
       bear.data('return').appendTo(game[side].skills.sidehand).removeClass('casted');
       bear.setCurrentHp(bear.data('hp'));
       game.fx.add('ld-return-target', target);
       game.timeout(400, function () {
         bear.place(target);
       });
+    },
+    transfer: function (event, eventdata) {
+      var target = eventdata.target;
+      var bear = target.data('bear');
+      if (bear) {
+        var source = eventdata.source;
+        var damage = eventdata.damage;
+        var buff = bear.getBuff('defender-source');
+        var transfer = buff.data('damage transfer');
+        eventdata.bonus = -1 * transfer;
+        source.damage(transfer, bear, game.data.ui.pure)
+      }
     },
     attack: function (event, eventdata) { 
       var target = eventdata.target;
@@ -65,6 +79,7 @@ game.skills.ld = {
       if (bear.side() != killer.side()) killer.damage(bear.data('death damage'), ld, game.data.ui.pure);
       var returnSkill = bear.data('return');
       returnSkill.discard();
+      ld.off('pre-attacked.defender');
       ld.data('bear', null);
       ld.data('summon', null);
     },

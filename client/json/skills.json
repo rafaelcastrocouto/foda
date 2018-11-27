@@ -360,8 +360,14 @@
       "hand": "Right",
       "deck": "Summon",
       "targets": ["Spot", "Free"],
-      "description": "Summon a Bear with 'Nature claws' and 'Demolition'. Gains 'Return' card. Deals 12 damage on death",
+      "description": "Summon a Bear with 'Defender', 'Nature claws' and 'Demolition'. Gains 'Return' card. Deals 12 damage on death",
       "buffs": {
+        "defender": {
+          "source": {
+            "name": "Defender",
+            "description": "Transfer a portion of the damage dealt to the Druid to his bear"
+          }
+        },
         "demolish": {
           "source": {
             "name": "Demolition",
