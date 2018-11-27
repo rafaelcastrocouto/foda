@@ -77,7 +77,7 @@ var game = {
       }
     }
   },
-  setData: function(item, data) {
+  setData: function(item, data) { //console.trace('set', item, data)
     game.currentData[item] = data;
     localStorage.setItem('data', JSON.stringify(game.currentData));
   },
@@ -141,10 +141,11 @@ var game = {
     }
   },
   matchClear: function () {
+    game.container.removeClass(game.validSizes.join(' '));
+    game.size = 's5v5';
     game.recovering = false;
     game.player.picks = false;
     game.enemy.picks = false;
-    game.setData('challenger', false);
     game.setData('challenger', false);
     game.setData('challenged', false);
     game.setData('challengerDeck', false);
@@ -157,9 +158,6 @@ var game = {
     if (game.mode && game[game.mode] && game[game.mode].clear) {
       game[game.mode].clear();
     }
-    game.container.removeClass(game.validModes.join(' '));
-    game.container.removeClass(game.validSizes.join(' '));
-    game.size = 's5v5';
     game.states.choose.clear();
     game.states.vs.clear();
     game.states.table.clear();

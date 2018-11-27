@@ -105,7 +105,7 @@ game.items = {
         game.items.clone(card).removeClass('selected').appendTo(game[side].skills.sidehand);
       }
     }
-    game.items.addMoney(game.currentTurnSide, -card.data('price'));
+    game.items.addMoney(side, -card.data('price'));
     game.card.unselect();
     if (game.mode == 'tutorial') game.tutorial.buyItem();
   },

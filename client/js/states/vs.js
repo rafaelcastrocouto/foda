@@ -41,7 +41,7 @@ game.states.vs = {
     if (!game.size) game.size = game.history.size || game.getData('size') || 's5v5';
     game.width = game.states.config[game.size].width;
     game.height = game.states.config[game.size].height;
-    game.states.table.map = game.map.build().appendTo(game.camera);
+    if (!game.states.table.map) game.states.table.map = game.map.build().appendTo(game.camera);
   },
   buildPlayer: function () {
     this.playername.text(game.player.name);

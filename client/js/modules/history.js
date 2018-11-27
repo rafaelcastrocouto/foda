@@ -16,6 +16,7 @@ game.history = {
     var delay = 1000 * 60 * 60 * 24 * 30; // 30 days
     var recent = (new Date().valueOf() - game.history.last) < delay; 
     var recovering = logged && name && valid && recent;
+    game.player.name = name;
     if (!recovering || state == 'log' || state == 'loading') {
       game.states.changeTo('log');
     } else {
@@ -54,7 +55,6 @@ game.history = {
     var state = this.state;
     var recover = this.recover;
     if (confirmed) {
-      game.player.name = game.getData('name');
       game.history.rank();
       game.history.campaign();
       game.chat.build(game.data.ui.reconnected);
