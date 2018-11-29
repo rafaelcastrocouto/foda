@@ -50,5 +50,12 @@ coverage.xml
 *.iml
 .DS_Store
 *.torrent
-node_modules
-.well-known
+node_modules/
+node_modules/*
+node_modules/*/*
+node_modules/*/*/*
+node_modules/*/*/*/*
+.well-known/*
+downloads/windows/*
+downloads/linux/*
+downloads/mac/*
