@@ -48,7 +48,8 @@ var game = {
       if (game.debug) {
         game.container.addClass('debug');
         game.staticHost = '';
-        game.dynamicHost = '';
+        game.electron = (window.process && process.version && process.versions.electron);
+        if (!game.electron) game.dynamicHost = '';
       }
       game.states.changeTo('loading');
       game.build();
@@ -98,8 +99,6 @@ var game = {
   },
   db: function(send, cb, str) {
     var server = game.dynamicHost + 'db';
-    if (game.debug)
-      server = '/db';
     if (typeof send.data !== 'string') {
       send.data = JSON.stringify(send.data);
     }

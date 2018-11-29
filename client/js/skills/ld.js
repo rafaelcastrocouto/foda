@@ -34,7 +34,7 @@ game.skills.ld = {
         var transfer = buff.data('damage transfer');
         if (damage > transfer) {
           eventdata.bonus = -1 * transfer;
-          source.damage(transfer, bear, game.data.ui.pure)
+          source.damage(transfer, bear, game.data.ui.pure);
         }
       }
     },

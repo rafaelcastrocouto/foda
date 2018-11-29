@@ -53,6 +53,10 @@
         </div>
       </div>
     </div>
+    <script>
+      //https://github.com/electron/electron/issues/254#issuecomment-183483641
+      if (typeof module === 'object') {window.module = module; module = undefined;}
+    </script>
     <script src="browser_modules/jquery/jquery.min.js"></script>
     <script src="browser_modules/bigscreen/bigscreen.min.js"></script>
     <script src="browser_modules/pathfinding/pathfinding-browser.min.js"></script>

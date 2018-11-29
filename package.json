@@ -1,5 +1,5 @@
 {
-  "name": "foda",
+  "name": "FODA",
   "version": "0.4.5",
   "author": "rafaelcastrocouto",
   "description": "Fight Over Dat Ancient - Card Game",
@@ -29,16 +29,17 @@
     "tactical"
   ],
   "dependencies": {
-    "mongodb": "^2.2.35",
+    "mongodb": "^2.2.36",
     "serve-static": "^1.13.2"
   },
   "devDependencies": {
-    "grunt": "^1.0.2",
+    "grunt": "^1.0.3",
     "grunt-contrib-clean": "~1.0",
     "grunt-contrib-concat": "~0.5",
     "grunt-contrib-cssmin": "~0.14",
     "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-uglify": "^3.3.0"
+    "grunt-contrib-uglify": "^3.4.0",
+    "grunt-electron": "^9.0.1"
   },
   "license": "MIT"
 }

@@ -1,7 +1,7 @@
 # [Fight Over Dat Ancient][1]
 
 [![Discord Chat Channel](https://foda-app.herokuapp.com/client/img/discord.png)][2]
-  [![FODA](https://foda-app.herokuapp.com/client/img/campaign/ico_rosh.png)][1]  [![FODA](https://foda-app.herokuapp.com/client/img/ratingsymbol_t.png)][8]
+  [![FODA](https://foda-app.herokuapp.com/client/img/campaign/ico_rosh.png)][1]  [![FODA](https://foda-app.herokuapp.com/client/img/ratingsymbol_e10.png)][8]
 
 A **card game** with magical heroes, full of skills and powerful ultimates.
 
@@ -28,7 +28,7 @@ Special thanks to:
 
  - [Dopatwo](https://www.youtube.com/user/dopatwo) for the artwork 
  - [Kevin MacLeod](https://www.youtube.com/user/kmmusic) for the soundtrack
- - [Skylent](https://www.youtube.com/user/SkylentGames) for the introduction videos
+ - [Skylent](https://www.youtube.com/dotacardchannel) for the introduction videos
 
 *Powered by*
 

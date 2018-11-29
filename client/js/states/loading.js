@@ -57,7 +57,7 @@ game.states.loading = {
       game.rank.build();
       //preloadimgs
       $.each(game.states.loading.preloadimgs, function () {
-        $('<img>').attr('src', '/img/'+this).on('load', function () {
+        $('<img>').attr('src', 'img/'+this).on('load', function () {
           game.states.loading.imgload++;
           if (game.states.loading.imgload == game.states.loading.preloadimgs.length) {
             game.states.menu.el.addClass('loaded');
