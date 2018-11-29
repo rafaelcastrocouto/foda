@@ -1,19 +1,24 @@
 # [Fight Over Dat Ancient][1]
 
+[![FODA icon](https://foda-app.herokuapp.com/client/img/campaign/ico_rosh.png)][1]  [![FODA rating](https://foda-app.herokuapp.com/client/img/ratingsymbol_e10.png)][9]
+
 [![Discord Chat Channel](https://foda-app.herokuapp.com/client/img/discord.png)][2]
-  [![FODA](https://foda-app.herokuapp.com/client/img/campaign/ico_rosh.png)][1]  [![FODA](https://foda-app.herokuapp.com/client/img/ratingsymbol_e10.png)][8]
 
 A **card game** with magical heroes, full of skills and powerful ultimates.
+Play for free [online in your browser][1] or check out our [Google play app][11]
+Join our community and discuss the game rules at our [Discord Server][2]. 
 
-Play for free [online in your browser][1] or check out our [Google play app][10]
+### Downloads:
 
-You can also [fork][3] or [download][4] and help to build the game, you can even make a hero and [win real cash!][5]
+ - Windows [FODA-win32-ia32.zip](https://www.dropbox.com/s/kabww6pleqm7a1j/FODA-win32-ia32.zip?dl=0)
+ - Mac-OS [FODA-darwin-x64.zip](https://www.dropbox.com/s/b8k8yic4pykhtvy/FODA-darwin-x64.zip?dl=0)
+ - Linux [FODA-linux-ia32.zip](https://www.dropbox.com/s/nzn21x1x20kbv2m/FODA-linux-ia32.zip?dl=0)
 
-In our Wiki page you can ckeck out the [how to play with real cards][8] and much more.
+You can also [fork][3] or [download][4] to help us build the game, you can even make a hero and [win real cash!][6]
 
-All [artwork](https://github.com/rafaelcastrocouto/dotacard) can be downloaded for free in high resolution.
-
-Please report any [sugestions or issues][9] here at github.
+In our **Wiki page** you can ckeck out the [how to play with real cards][7] and much more.
+All [artwork][5] can be downloaded for free in high resolution. 
+Please report any [sugestions or issues][8] here at github.
 
 [![Fight Over Dat Ancient](https://foda-app.herokuapp.com/client/img/banner.jpg)][1]
 
@@ -22,7 +27,7 @@ Please report any [sugestions or issues][9] here at github.
     npm install
     node server.js
 
-More information on how to [setup your own server][9]
+More information on how to [setup your own server][10]
 
 Special thanks to:
 
@@ -36,20 +41,22 @@ Special thanks to:
 
 [1]: https://foda-app.herokuapp.com/
 
-[2]: https://discord.gg/FvTDss3
+[2]: https://discord.gg/a4TwjAR
 
 [3]: https://github.com/rafaelcastrocouto/foda/fork
 
-[4]: https://github.com/rafaelcastrocouto/foda/archive/gh-pages.zip
+[4]: https://github.com/rafaelcastrocouto/foda/archive/master.zip
 
-[5]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-develop-a-new-hero
+[5]: https://github.com/rafaelcastrocouto/dotacard
 
-[6]: https://github.com/rafaelcastrocouto/dotacard/wiki
+[6]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-develop-a-new-hero
 
-[7]: https://github.com/rafaelcastrocouto/foda/issues/new
+[7]: https://github.com/rafaelcastrocouto/dotacard/wiki
 
-[8]: http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories
+[8]: https://github.com/rafaelcastrocouto/foda/issues/new
 
-[9]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-setup-a-local-server
+[9]: http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories
 
-[10]: https://play.google.com/store/apps/details?id=fodaapp.herokuapp.com.foda
+[10]: https://github.com/rafaelcastrocouto/dotacard/wiki/How-to-setup-a-local-server
+
+[11]: https://play.google.com/store/apps/details?id=fodaapp.herokuapp.com.foda
