@@ -42,7 +42,7 @@ game.states.vs = {
     game.width = game.states.config[game.size].width;
     game.height = game.states.config[game.size].height;
     if (game.map.el) game.map.el.remove();
-    game.map.build().appendTo(game.camera);
+    game.map.build().prependTo(game.camera);
   },
   buildPlayer: function () {
     this.playername.text(game.player.name);

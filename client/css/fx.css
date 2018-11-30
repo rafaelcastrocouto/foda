@@ -236,6 +236,7 @@
 .ultfx {
   transform: translate3d(0, -350px, 400px) scale(0.5);
   transform-style: preserve-3d;
+  z-index: 1;
 }
 
 .ultfx .fx {

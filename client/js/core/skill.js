@@ -11,7 +11,8 @@ game.skill = {
       removeStack: game.skill.removeStack,
       addInvisibility: game.skill.addInvisibility,
       removeInvisibility: game.skill.removeInvisibility,
-      summon: game.skill.summon
+      summon: game.skill.summon,
+      getSkill: game.skill.getSkill
     });
   },
   build: function (side, single, cb) {
@@ -433,12 +434,12 @@ game.skill = {
     }
   },
   discard: function (source, cb) {
+    this.removeClass('draggable');
     if (this.hasClass('skills')) {
       if (this.hasClass('selected')) {
         if (source && source.canPlay()) source.select();
         else game.card.unselect();
       }
-      this.removeClass('draggable');
       this.trigger('discard', {target: this});
       var side = this.side();
       if (this.data('discard-to')) this.appendTo(this.data('discard-to'));
@@ -450,7 +451,6 @@ game.skill = {
       }
     } else if (this.hasClass('items')) {
       this.appendTo(game.hidden);
-      this.removeClass('draggable');
     } else {
       if (this.closest('.map').length) this.parent().addClass('free');
       this.appendTo(game.hidden);
@@ -459,5 +459,9 @@ game.skill = {
     game.lockHighlight = false;
     game.highlight.refresh();
     return this;
+  },
+  getSkill: function (skillid) {
+    var side = this.side();
+    return $('.'+side+'decks .skills.' + skillid).first();
   }
 };

@@ -61,6 +61,7 @@ game.skills.com = {
       game.lockSelection = true;
       source.on('death.com-ult', this.death);
       target.on('death.com-ult', this.death);
+      source.data('com-ult-challenger', true);
       for (var i=0; i < skill.data('attacks'); i++) {
         game.timeout(1400 * i, source.attack.bind(source, target, 'force'));
         game.timeout((1400 * i) + 700, target.attack.bind(target, source, 'force'));
@@ -76,6 +77,14 @@ game.skills.com = {
       var target = eventdata.target;
       game.audio.play('com/ultvictory');
       source.setDamage(source.data('current damage') + 2);
+      if (source.data('com-ult-challenger')) {
+        var skill = source.getSkill('com-heal');
+        var clone = skill.clone().data(skill.data());
+        clone.data('discard-to', game.hidden);
+        source.cast(clone, source);
+      }
+      source.data('com-ult-challenger', false);
+      target.data('com-ult-challenger', false);
     }
   }
 };
