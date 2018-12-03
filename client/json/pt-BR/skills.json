@@ -296,15 +296,17 @@
         }
       }
     },
-    "leak": {
-      "name": "Maldição de Mana",
+    "blind": {
+      "name": "Explosão de Luz",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
-      "targets": ["Inimigos"],
-      "description": "Amaldiçoa uma unidade inimiga obrigando o inimigo a descartar uma carta de habilidade (direita) a cada movimento, caso o inimigo não tenha mais cartas a unidade é atordoada",
+      "targets": ["Local", "Próprio"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Uma luz cegante arremessa as unidades inimigas, fazendo com que errem 70% dos ataques. Interrompe canalização",
       "buff": {
-        "description": "Perde uma carta de habilidade (direita) a cada movimento"
+        "description": "Cego"
       }
     },
     "mana": {
@@ -316,38 +318,15 @@
       "description": "O jogador compra cartas de habilidade"
     },
     "ult": {
-      "name": "Forma Astral",
+      "name": "Espírito de Luz",
       "type": "Ativa",
       "hand": "Direita",
       "deck": "Comprar",
-      "targets": ["Próprio"],
-      "description": "O Guardião se torna um com a luz! Recebe 'Resgate' e 'Luz Cegante' e a Bola de Luz passa a ser Ativa",
-      "buff": {
-        "description": "Forma Espiritual"
-      }
-    },
-    "blind": {
-      "name": "Explosão de Luz",
-      "type": "Ativa",
-      "hand": "Direita",
-      "deck": "Temporária",
       "targets": ["Local", "Próprio"],
       "aoe": "Radial",
-      "damage type": "Mágico",
-      "description": "Uma luz cegante arremessa as unidades inimigas, fazendo com que errem 80% dos ataques. Interrompe canalização",
+      "description": "Um espírito de luz pacífica coloca todos inimigos para dormir",
       "buff": {
-        "description": "Blinded"
-      }
-    },
-    "recall": {
-      "name": "Resgate",
-      "type": "Ativa",
-      "hand": "Direita",
-      "deck": "Temporária",
-      "targets": ["Aliados"],
-      "description": "Caso não sofra dano por um turno, teletransporta o herói alvo para a sua posição",
-      "buff": {
-        "description": "Recalling"
+        "description": "Dormindo"
       }
     }
   },

@@ -128,10 +128,6 @@
   background-position: 20% 50%;
 }
 
-.kotl-illuminate.spiritform .img {
-  background-image: url("../img/skills/kotl/illuminate-spirit.jpg");
-}
-
 .map .card.illuminating fieldset:after {
   content: "";
   display: block;
@@ -180,35 +176,16 @@
   animation: illuminating 1s infinite;
 }
 
-.illuminate-ghost {
-  background: aquamarine;
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.illuminate-ghost .current {
-  display: none;
-}
-
-.kotl-leak .img, .buffs .buff.kotl-leak .img {
-  background-image: url("../img/skills/kotl/leak.jpg");
-}
-
 .kotl-mana .img, .buffs .buff.kotl-mana .img {
   background-image: url("../img/skills/kotl/mana.jpg");
-}
-
-.kotl-ult .img, .buffs .buff.kotl-ult .img, .map .kotl-ult .img {
-  background-image: url("../img/skills/kotl/ult.jpg");
 }
 
 .kotl-blind .img, .buffs .buff.kotl-blind .img {
   background-image: url("../img/skills/kotl/blind.jpg");
 }
 
-.kotl-recall .img, .buffs .buff.kotl-recall .img {
-  background-image: url("../img/skills/kotl/recall.jpg");
+.kotl-ult .img, .buffs .buff.kotl-ult .img, .map .kotl-ult .img {
+  background-image: url("../img/skills/kotl/ult.jpg");
 }
 
 .ld, .ld .portrait {

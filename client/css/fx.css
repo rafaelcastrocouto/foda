@@ -1241,7 +1241,7 @@
 }
 
 .map .fx.kotl-ult {
-  transform: rotateX(-37deg) translate3d(75px,-260px,100px) scale(3);
+  transform: rotateX(-37deg) translate3d(40px,50px,100px) scale(8);
   width: 120px;
   height: 120px;
   animation: kotl-ult-sprite 1.6s steps(18) 1;

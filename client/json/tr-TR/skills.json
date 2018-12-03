@@ -296,15 +296,17 @@
         }
       }
     },
-    "leak": {
-      "name": "Mana Curse",
+    "blind": {
+      "name": "Light Blast",
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
-      "targets": ["Düşman"],
-      "description": "Bu kahraman artık kart yoksa her hareket bir beceri kart kaybı kullanarak bir hedef kartı açar",
+      "targets": ["Yer", "AynÄ"],
+      "aoe": "Radyal",
+      "damage type": "Büyü",
+      "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar 70%. Hedef kanal Kesmeler",
       "buff": {
-        "description": "Bir kartı her zaman kaybeder bu birim hareket"
+        "description": "Kör etmek"
       }
     },
     "mana": {
@@ -320,34 +322,11 @@
       "type": "Aktif",
       "hand": "Sağ",
       "deck": "Satın Al",
-      "targets": ["AynÄ"],
-      "description": "Işık ile bir olur! Satın kartı 'Light Blast' ve 'Rescue'. 'Light Ball' nu Aktif bir beceriye dönüştürür",
-      "buff": {
-        "description": "Spirit Form"
-      }
-    },
-    "blind": {
-      "name": "Light Blast",
-      "type": "Aktif",
-      "hand": "Sağ",
-      "deck": "Geçici",
       "targets": ["Yer", "AynÄ"],
       "aoe": "Radyal",
-      "damage type": "Büyü",
-      "description": "Düşman kahramanlara bir patlama gondererek etrafa saçar 80%. Hedef kanal Kesmeler",
+      "description": "Huzurlu bir ışık perisi, tüm düşmanları uyutur.",
       "buff": {
-        "description": "Blinded"
-      }
-    },
-    "recall": {
-      "name": "Rescue",
-      "type": "Aktif",
-      "hand": "Sağ",
-      "deck": "Geçici",
-      "targets": ["Müttefik"],
-      "description": "Dost kahramana hasar vermeden kendi yanına ışınlar",
-      "buff": {
-        "description": "Recalling"
+        "description": "Uyuyor"
       }
     }
   },

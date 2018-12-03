@@ -296,15 +296,17 @@
         }
       }
     },
-    "leak": {
-      "name": "Maldición de mana",
+    "blind": {
+      "name": "Explosión de Luz",
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": ["Enemigo"],
-      "description": "Fuerza un descarte en el yeso y en cada movimiento. Si el objetivo no tiene más habilidad",
+      "targets": ["Lugar", "Yo"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Una luz ciega lanza las unidades enemigas, haciendo que se equivocan el 70% de los ataques. Interrumpe la canalización",
       "buff": {
-        "description": "Pierde una carta de habilidad cada vez que esta unidad se mueve"
+        "description": "Ciego"
       }
     },
     "mana": {
@@ -316,38 +318,15 @@
       "description": "Jugador ganancia tarjetas de habilidad de bonificación"
     },
     "ult": {
-      "name": "Forma Astral",
+      "name": "Espíritu de Luz",
       "type": "Activo",
       "hand": "Derecha",
       "deck": "Comprar",
-      "targets": ["Yo"],
-      "description": "¡Se convierte en uno con la luz! Gains 'Rescue' y 'Light Blast' y cambia 'Light Ball' en una habilidad activa que cura aliados",
-      "buff": {
-        "description": "Forma del Espíritu"
-      }
-    },
-    "blind": {
-      "name": "Explosión de luz",
-      "type": "Activo",
-      "hand": "Derecha",
-      "deck": "Temporal",
       "targets": ["Lugar", "Yo"],
       "aoe": "Radial",
-      "damage type": "Mágico",
-      "description": "Derrota y enemigos ciegos, haciendo que pierdan 80% de ataques. Interrumpe el canal de destino",
+      "description": "Un espíritu de luz pacífica pone a todos enemigos para dormir",
       "buff": {
-        "description": "Cegado"
-      }
-    },
-    "recall": {
-      "name": "Rescate",
-      "type": "Activo",
-      "hand": "Derecha",
-      "deck": "Temporal",
-      "targets": ["Aliado"],
-      "description": "Si es ileso después del turno del enemigo, el objetivo es teletransportado a un lugar libre cerca de Light Keeper",
-      "buff": {
-        "description": "Siendo rescatado"
+        "description": "Durmiente"
       }
     }
   },

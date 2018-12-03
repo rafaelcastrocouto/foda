@@ -296,15 +296,17 @@
         }
       }
     },
-    "leak": {
-      "name": "Mana Curse",
+    "blind": {
+      "name": "Light Blast",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
-      "targets": ["Enemy"],
-      "description": "Forces a discard on cast and on every move. Stuns if target has no more skill cards",
+      "targets": ["Spot", "Self"],
+      "aoe": "Radial",
+      "damage type": "Magical",
+      "description": "Knock back and blind enemies, causing them to miss 70% attacks. Interrupts target channel",
       "buff": {
-        "description": "Loses a skill card everytime this unit moves"
+        "description": "Blinded"
       }
     },
     "mana": {
@@ -316,38 +318,15 @@
       "description": "Player gain bonus skill cards"
     },
     "ult": {
-      "name": "Astral Form",
+      "name": "Light Wisp",
       "type": "Active",
       "hand": "Right",
       "deck": "Buy",
-      "targets": ["Self"],
-      "description": "Becomes one with the light! Gains 'Rescue' and 'Light Blast' cards and changes 'Light Ball' into an Active skill that heals allies",
-      "buff": {
-        "description": "Spirit Form"
-      }
-    },
-    "blind": {
-      "name": "Light Blast",
-      "type": "Active",
-      "hand": "Right",
-      "deck": "Temporary",
       "targets": ["Spot", "Self"],
       "aoe": "Radial",
-      "damage type": "Magical",
-      "description": "Knock back and blind enemies, causing them to miss 80% attacks. Interrupts target channel",
+      "description": "A peaceful wisp of light puts all enemies to spleep.",
       "buff": {
-        "description": "Blinded"
-      }
-    },
-    "recall": {
-      "name": "Rescue",
-      "type": "Active",
-      "hand": "Right",
-      "deck": "Temporary",
-      "targets": ["Ally"],
-      "description": "If unharmed after enemy turn, target is teleported to a free spot near Light Keeper",
-      "buff": {
-        "description": "Being rescued"
+        "description": "Sleeping"
       }
     }
   },

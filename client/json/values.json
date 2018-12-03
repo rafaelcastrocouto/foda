@@ -357,12 +357,16 @@
           }
         }
       },
-      "leak": {
-        "cast range": 5,
-        "cards": 1,
-        "stun": 2,
+      "blind": {
+        "damage": 8,
+        "aoe range": 1,
+        "cast range": 4,
+        "fixed range": true,
+        "highlight": "out",
+        "cards": 2,
         "buffdata": {
-          "duration": 4,
+          "duration": 2,
+          "miss": 70,
           "purgeable": true
         }
       },
@@ -372,29 +376,11 @@
       },
       "ult": {
         "cards": 1,
+        "aoe range": 3,
+        "cast range": 5,
         "buffdata": {
-          "duration": 6
-        }
-      },
-      "blind": {
-        "damage": 6,
-        "aoe range": 1,
-        "cast range": 4,
-        "fixed range": true,
-        "highlight": "out",
-        "cards": 1,
-        "buffdata": {
-          "duration": 2,
-          "miss": 80,
+          "duration": 3,
           "purgeable": true
-        }
-      },
-      "recall": {
-        "cast range": 999,
-        "delay": 1,
-        "cards": 1,
-        "buffdata": {
-          "duration": 2
         }
       }
     },
