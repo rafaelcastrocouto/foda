@@ -4,6 +4,7 @@ game.heroesAI.am = {
   },
   play: function (card, cardData) {
     var blinks = $('.enemydecks .hand .skills.am-blink');
+    var mirrors = $('.enemydecks .hand .skills.am-mirror');
     var ult = $('.enemydecks .hand .skills.am-ult');
     if (!$('.map .enemy.am').length) {
       blinks.each(function (i, el) {
@@ -40,6 +41,16 @@ game.heroesAI.am = {
               });
             }
           }
+        });
+      }
+      //use mirror counter
+      if ( mirrors.length && 
+          (cardData['can-be-attacked'] || card.parent().data('can-be-casted')) ) {
+        cardData['cast-strats'].push({
+          priority: p,
+          skill: 'mirror',
+          card: mirrors.first(),
+          target: spot
         });
       }
       //use blink to escape
@@ -94,6 +105,7 @@ game.heroesAI.am = {
   },
   defend: function (card, cardData) {
     //console.log('defend-from-am');
+    //todo: not cast at mirror
     var blink = game.data.skills.am.blink;
     var side = card.side();
     var canBlinkTower = false;

@@ -8,7 +8,7 @@ game.heroesAI.ld = {
     // cardData['has-instant-attack-buff'] = true;
     card.data('ai', cardData);
     var bear = $('.enemydecks .sidehand .skills.ld-bear');
-    var rabid = $('.enemydecks .hand .skills.ld-rabid');
+    var link = $('.enemydecks .hand .skills.ld-link');
     var roar = $('.enemydecks .hand .skills.ld-roar');
     var ult = $('.enemydecks .sidehand .skills.ld-ult');
     var cry = $('.enemydecks .hand .skills.ld-cry');
@@ -30,14 +30,14 @@ game.heroesAI.ld = {
         }
       });
     }
-    if (card.canCast(rabid)) {
+    if (card.canCast(link)) {
       cardData['can-cast'] = true;
       p = 10;
       if (cardData['can-attack']) p += 40;
       cardData['cast-strats'].push({
         priority: p,
-        skill: 'rabid',
-        card: rabid,
+        skill: 'link',
+        card: link.first(),
         target: card
       });
     }
