@@ -47,7 +47,7 @@ game.heroesAI.am = {
       if ( mirrors.length && 
           (cardData['can-be-attacked'] || card.parent().data('can-be-casted')) ) {
         cardData['cast-strats'].push({
-          priority: p,
+          priority: 150 - (cardData['current hp']*3),
           skill: 'mirror',
           card: mirrors.first(),
           target: spot
