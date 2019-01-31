@@ -195,7 +195,6 @@ var game = {
     }));
   },
   error: function(details, cb) {
-    if (game.debug) debugger;
     var box = $('<div>').addClass('box error');
     game.overlay.removeClass('hidden').append(box);
     var ti = 'Error';
