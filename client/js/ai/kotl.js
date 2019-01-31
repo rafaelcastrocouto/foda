@@ -5,11 +5,11 @@ game.heroesAI.kotl = {
   play: function (card, cardData) {
     var illuminate = $('.enemydecks .hand .skills.kotl-illuminate');
     var mana = $('.enemydecks .hand .skills.kotl-mana');
-    var leak = $('.enemydecks .hand .skills.kotl-blind');
+    var blind = $('.enemydecks .hand .skills.kotl-blind');
     var ult = $('.enemydecks .hand .skills.kotl-ult');
     if (!$('.map .enemy.kotl').length) {
      illuminate.data('ai discard', illuminate.data('ai discard') + 1);
-     leak.data('ai discard', leak.data('ai discard') + 1);
+     blind.data('ai discard', blind.data('ai discard') + 1);
     }
     if (card.canCast(illuminate)) {
       cardData['can-cast'] = true;
@@ -116,10 +116,8 @@ game.heroesAI.kotl = {
       });
     });
     $('.map .card.'+card.opponent()).each(function (i, el) {
-      //var leak =   game.data.skills.kotl.leak;
       var opponent = $(el);
       var opponentData = opponent.data('ai');
-      //var blind =  game.data.skills.kotl.blind;
       if (opponent.hasBuff('kotl-blind')) {
         opponentData.strats.siege += 30;
       }
