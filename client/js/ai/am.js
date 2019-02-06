@@ -50,7 +50,7 @@ game.heroesAI.am = {
           priority: 150 - (cardData['current hp']*3),
           skill: 'mirror',
           card: mirrors.first(),
-          target: spot
+          target: card
         });
       }
       //use blink to escape
