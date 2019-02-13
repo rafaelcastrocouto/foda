@@ -320,8 +320,8 @@ game.tutorial = {
   passiveLesson: function () {
     game.tutorial.lesson = 'Passive';
     $('.map .player').removeClass('blink');
-    var card = $('.player .available.skills .am-shield'),
-        hero = $('.map .player.heroes.am');
+    var card = $('.player .available.skills .lina-passive'),
+        hero = $('.map .player.heroes.lina');
     card.first().appendTo(game.player.skills.sidehand).addClass('blink').on('select', game.tutorial.selected);
     hero.on('passive.tutorial', game.tutorial.jungleLesson);
     game.tutorial.axebaloon.hide().fadeIn('slow');
