@@ -63,7 +63,7 @@ game.skills.kotl = {
         if (card.hasClass(opponent)) game.skills.kotl.blind.target(skill, source, card);
         target.inCross(1, 0, function (spot, dir) {
           var card = $('.card.'+opponent, spot);
-          if (card.length && !card.hasClasses('tower ghost bkb')) {
+          if (card.length && !card.hasClasses('towers ghost bkb')) {
             game.skills.kotl.blind.target(skill, source, card);
             var destiny = card.getDirSpot(dir);
             if (destiny && destiny.hasClass('free')) {

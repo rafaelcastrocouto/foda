@@ -569,7 +569,7 @@ game.card = {
     dead.data('killer', evt.source);
     if (dead.hasClass('selected')) dead.unselect();
     dead.stopChanneling();
-    dead.clearBuffs();
+    dead.purge();
     dead.find('.damaged, .heal, .fx').remove();
     dead.addClass('dead').removeClass('target done can-attack stunned rooted silenced hexed disabled sleeping cycloned taunted entangled disarmed ai');
     var pos = evt.position, deaths, spot = $('#' + pos), side = dead.side();

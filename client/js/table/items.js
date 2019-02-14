@@ -359,13 +359,20 @@ game.items = {
     linken: {
       cast: function (skill, target) {
         target.addClass('linken');
-        target.selfBuff(skill);
-        target.on('casted', game.items.resistance.linken.casted);
+        var buff = target.selfBuff(skill);
+        buff.on('expire', game.items.resistance.linken.expire);
+        target.on('casted.linken', game.items.resistance.linken.casted);
       },
       casted: function (event, eventdata) {
         var target = eventdata.target;
         target.removeBuff('linken');
         game.audio.play('items/linken');
+        target.off('casted.linken');
+      },
+      expire: function (event, eventdata) {
+        var target = eventdata.target;
+        target.removeClass('bkb');
+        target.off('casted.linken');
       }
     },
     lotus: {

@@ -165,10 +165,8 @@ game.buff = {
     target.reselect();
     return this;
   },
-  clearBuffs: function () {
-    this.removeBuff(0,'all');
-  },
   purge: function () {
+    this.removeStack('rooted').removeStack('disarmed');
     game.fx.stop(this.opponent(), this);
     this.removeBuff(0,'purge');
   },
