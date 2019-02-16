@@ -1,5 +1,11 @@
 {
   
+  "axe": {
+    "name": "Axe",
+    "attribute": "Kuvvet",
+    "description": "Tek kişilik ordu, bir zamanlar şimdi Orkların lideri bir cellat."
+  },
+  
   "ld": {
     "name": "Ayı Büyücü",
     "attribute": "Çeviklik",

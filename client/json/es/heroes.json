@@ -1,4 +1,9 @@
 {
+  "axe": {
+    "name": "Axe",
+    "attribute": "Fuerza",
+    "description": "El ejército de un solo hombre, una vez un verdugo ahora líder de los Orcos. ¡Axe es Axe!"
+  },
   
   "ld": {
     "name": "Bear Druid",

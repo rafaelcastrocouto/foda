@@ -1,4 +1,60 @@
 {
+  "axe": {
+    "taunt": {
+      "name": "Taunt",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe": "Radial",
+      "description": "Taunts nearby enemy units, forcing them to attack Axe",
+      "buffs": {
+        "taunt": {
+          "self": {
+            "description": "Bonus armor"
+          },
+          "targets": {
+            "description": "Taunted"
+          }
+        }
+      }
+    },
+    "enrage": {
+      "name": "Enrage",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "description": "Enrages an enemy unit, causing it to be slowed and take damage over time until it kills another unit or the duration ends",
+      "buff": {
+        "damage type": "Magical",
+        "description": "Enraged (slowed and taking damage over time)"
+      }
+    },
+    "counter": {
+      "name": "Axe Spin",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe": "Radial",
+      "damage type": "Physical",
+      "description": "When attacked, there is a chance to immediately counterattack all enemies around",
+      "buff": {
+        "description": "When attacked, there is a chance to immediately counterattack all enemies around"
+      }
+    },
+    "ult": {
+      "name": "Chop",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Physical",
+      "description": "Axe hits the enemy aiming the neck. If enemy HP is below 1/3 will the head will be chopped!"
+    }
+  },
+  
   "com": {
     "aoe": {
       "name": "Let'em come",

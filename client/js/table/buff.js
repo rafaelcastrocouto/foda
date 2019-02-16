@@ -152,6 +152,7 @@ game.buff = {
           if (data['speed slow'] && typeof (data['speed slow']) == 'number')
             target.setSpeed(target.data('current speed') + data['speed slow']);
         }
+        buff.trigger('expire', {target: target, buff: buff});
         buff.remove();
       }
     });

@@ -1,5 +1,14 @@
 {
   "heroes": {
+    "axe": {
+      "range": 2,
+      "hp": 62,
+      "mana": 2,
+      "damage": 13,
+      "armor": 3,
+      "resistance": 3
+    },
+
     "ld": {
       "range": 4,
       "hp": 50,
@@ -129,6 +138,46 @@
   },
 
   "skills": {
+    "axe": {
+      "taunt": {
+        "cards": 2,
+        "aoe range": 2,
+        "buffsdata": {
+          "taunt": {
+            "self": {
+              "armor bonus": 6,
+              "duration": 2
+            },
+            "targets": {
+              "duration": 2
+            }
+          }
+        }
+      },
+      "enrage": {
+        "cast range": 5,
+        "cards": 1,
+        "buffdata": {
+          "duration": 3,
+          "dot": 5
+        }
+      },
+      "counter": {
+        "cards": 1,
+        "buffdata": {
+          "aoe range": 2,
+          "chance": 20
+        }
+      },
+      "ult": {
+        "attack cast range": true,
+        "fixed range": true,
+        "cast range": 2,
+        "cards": 1,
+        "damage": 18
+      }
+    },
+
     "com": {
       "aoe": {
         "cast range": 5,

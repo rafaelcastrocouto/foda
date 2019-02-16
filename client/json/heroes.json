@@ -1,5 +1,11 @@
 {
   
+  "axe": {
+    "name": "Axe",
+    "attribute": "Strength",
+    "description": "The one man army, once an executioner now leader of the Orcs. Axe is Axe!"
+  },
+  
   "ld": {
     "name": "Bear Druid",
     "attribute": "Agility",

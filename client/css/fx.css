@@ -367,6 +367,10 @@
   }
 }
 
+.ultfx .axe-ult {
+  background-image: url("../img/skills/axe/taunt.png");
+}
+
 .ultfx .ld-ult {
   background-image: url("../img/skills/ld/ult.jpg");
 }

@@ -40,7 +40,7 @@ game.states.log = {
       if (!game.states.log.input.val()) game.states.log.input.focus();
       return false;
     });
-    box.append(game.poll.button);
+    //box.append(game.poll.button);
     box.append($('<div>').addClass('button').text(game.data.ui.close).on('mouseup touchend', game.poll.close));
     box.append($('<a>').addClass('rating').attr({target: '_blank', href: 'http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories'}));
     game.screen.resize();

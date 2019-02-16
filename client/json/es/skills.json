@@ -1,4 +1,60 @@
 {
+  "axe": {
+    "taunt": {
+      "name": "Taunt",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "aoe": "Radial",
+      "description": "Provoca las unidades enemigas cercanas y las obliga a atacar a Axe.",
+      "buffs": {
+        "taunt": {
+          "self": {
+            "description": "Bonus de armadura"
+          },
+          "targets": {
+            "description": "Provocado"
+          }
+        }
+      }
+    },
+    "enrage": {
+      "name": "Enrage",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "description": "Enfurece a una unidad enemiga, lo que ralentiza y recibe daño con el tiempo hasta que mata a otra unidad o la duración finaliza",
+      "buff": {
+      "damage type": "Mágico",
+        "description": "Enfurecido (Ralentizado y recibiendo daño con el tiempo)"
+      }
+    },
+    "counter": {
+      "name": "Axe Spin",
+      "type": "Passive",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "aoe": "Radial",
+      "damage type": "Físico",
+      "description": "Cuando atacado, existe la posibilidad de contraatacar inmediatamente a todos los enemigos que estén alrededor",
+      "buff": {
+        "description": "Cuando atacado, existe la posibilidad de contraatacar inmediatamente a todos los enemigos que estén alrededor"
+      }
+    },
+    "ult": {
+      "name": "Chop",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "damage type": "Físico",
+      "description": "Axe golpea al enemigo apuntando al cuello. Si el HP está por debajo de 1/3, ¡la cabeza será cortada!"
+    }
+  },
+  
   "com": {
     "aoe": {
       "name": "Vengan",

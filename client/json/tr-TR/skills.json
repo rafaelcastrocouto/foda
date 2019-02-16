@@ -1,10 +1,65 @@
 {
+  "axe": {
+    "taunt": {
+      "name": "Taunt",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Yer"],
+      "aoe": "Radyal",
+      "description": "Yakındaki düşman birimlerini alay ederek onları saldırmaya zorluyor",
+      "buffs": {
+        "taunt": {
+          "self": {
+            "description": "Bonus zırhı"
+          },
+          "targets": {
+            "description": "Alay"
+          }
+        }
+      }
+    },
+    "enrage": {
+      "name": "Enrage",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman"],
+      "description": "Düşman birimini öfkelendirir, yavaşlamasına ve zamanla başka bir birimi öldürene veya süresi bitene kadar hasar almasına neden olur",
+      "buff": {
+        "damage type": "Büyü",
+        "description": "Öfkeli (yavaşladı ve zamanla hasar alıyor)"
+      }
+    },
+    "counter": {
+      "name": "Axe Spin",
+      "type": "Pasif",
+      "hand": "Sol",
+      "deck": "Satın Al",
+      "targets": ["Yer"],
+      "aoe": "Radyal",
+      "damage type": "Fiziksel",
+      "description": "Saldırıya uğradığında, etrafındaki tüm düşmanları derhal karşı koyma şansı var.",
+      "buff": {
+        "description": "Saldırıya uğradığında, etrafındaki tüm düşmanları derhal karşı koyma şansı var."
+      }
+    },
+    "ult": {
+      "name": "Chop",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman"],
+      "damage type": "Fiziksel",
+      "description": "Boynu hedefleyen düşmanı vurur. Düşmanın HP 1/3 altında ise, baş doğranmış olacak!"
+    }
+  },
   "com": {
     "aoe": {
       "name": "Let'em come",
       "type": "Aktif",
       "hand": "Sağ",
-      "deck": "Sağ",
+      "deck": "Satın Al",
       "targets": ["Yer", "Ayn?"],
       "aoe": "Radyal",
       "damage type": "Büyü",
@@ -14,7 +69,7 @@
       "name": "Horn Blow",
       "type": "Aktif",
       "hand": "Sağ",
-      "deck": "Sağ",
+      "deck": "Satın Al",
       "targets": ["Ayn?", "Müttefik"],
       "description": "Hedef birimi temizler ve bonus hasarı verir ve iyileşir",
       "buff": {
@@ -25,7 +80,7 @@
       "name": "Counter Attack",
       "type": "Pasif",
       "hand": "Sol",
-      "deck": "Sağ",
+      "deck": "Satın Al",
       "targets": ["Ayn?"],
       "description": "Saldırıya uğradığında, hemen% 75 yaşam döngüsü ile karşı saldırı yapma şansı var",
       "buff": {
@@ -36,7 +91,7 @@
       "name": "Challenge",
       "type": "Aktif",
       "hand": "Sağ",
-      "deck": "Sağ",
+      "deck": "Satın Al",
       "targets": ["Düşman"],
       "description": "Hedef düşmanla üç saldırı değiş tokuşu yapar. Eğer birisi ölürse, katil 4 kalıcı bonus hasarı kazanıyor"
     }

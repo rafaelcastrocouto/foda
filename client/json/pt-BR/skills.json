@@ -1,4 +1,59 @@
 {
+  "axe": {
+    "taunt": {
+      "name": "Provocar",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "aoe": "Radial",
+      "description": "Provoca as unidades inimigas, obrigando-as a atacar o Axe",
+      "buffs": {
+        "taunt": {
+          "self": {
+            "description": "Bonus de armadura"
+          },
+          "targets": {
+            "description": "Provocado"
+          }
+        }
+      }
+    },
+    "enrage": {
+      "name": "Enfurecer",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos"],
+      "description": "Enfurece uma unidade inimiga, que fica lenta e recebe dano por turno até que mate uma unidade ou a duração acabe",
+      "buff": {
+      "damage type": "Mágico",
+        "description": "Enfurecido (Lento e recebendo dano por turno)"
+      }
+    },
+    "counter": {
+      "name": "Contra Giro",
+      "type": "Passiva",
+      "hand": "Esquerda",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "aoe": "Radial",
+      "damage type": "Físico",
+      "description": "Quando atacado, existe a posibilidade de contraatacar imediatamente a todos os enemigos ao redor",
+      "buff": {
+        "description": "Quando atacado, existe a posibilidade de contraatacar imediatamente a todos os enemigos ao redor"
+      }
+    },
+    "ult": {
+      "name": "Executar",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos"],
+      "damage type": "Físico",
+      "description": "Axe golpeia um inimigo mirando o pescoço. Se o HP estiver abaixo de 1/3, a cabeça será cortada!"
+    }
+  },
   "com": {
     "aoe": {
       "name": "Vem mais!",
