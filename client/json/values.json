@@ -163,6 +163,7 @@
         }
       },
       "counter": {
+        "aoe range": 2,
         "cards": 1,
         "buffdata": {
           "aoe range": 2,

@@ -52,8 +52,6 @@ game.card = {
       $('<p>').addClass('hp').appendTo(current).html('HP <span>' + data.hp + '</span>');
       data['current hp'] = data.hp;
     }
-    if (data.buff && data.buff['hp bonus'])
-      $('<p>').addClass('hp').appendTo(current).html('HP <span>' + data.buff['hp bonus'] + '</span>');
     if (data.damage) {
       $('<p>').addClass('damage').appendTo(current).html('DMG <span>' + data.damage + '</span>');
       data['current damage'] = data.damage;
@@ -61,22 +59,6 @@ game.card = {
     desc = $('<div>').addClass('desc').appendTo(fieldset);
     if (data.dot)
       $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(data.dot));
-    if (data.buff) {
-      if (data.buff['damage bonus'])
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ' ' + game.data.ui.bonus + ': ').addClass('dot').append($('<span>').text(data.buff['damage bonus']));
-      if (data.buff.dot)
-        $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(data.buff.dot));
-      if (data.buff['unit damage bonus'])
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(data.buff['unit damage bonus']));
-      if (data.buff.damage)
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(data.buff.damage));
-    }
-    if (data.buff) {
-      if (data.buff['cast damage bonus'])
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(data.buff['cast damage bonus'])).append('<i> * '+game.data.ui.skills+'</i>');
-      if (data.buff['damage per kill'])
-        $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(data.buff['damage per kill'])).append('<i> * '+game.data.ui.kills+'</i>');
-    }
     //if (data.hand)
     //  $('<p>').appendTo(desc).text(data.deck + ' (' + data.hand + ')');
     if (data.price)
@@ -120,32 +102,16 @@ game.card = {
       $('<p>').appendTo(desc).text(game.data.ui.channel+' '+game.data.ui.duration + ': ' + data.channel + ' '+ game.data.ui.turns);
     if (data.stun) 
       $('<p>').appendTo(desc).text(game.data.ui.stun+' '+game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
-    if (data.buff && data.buff.duration)
-      $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buff.duration + ' ' + game.data.ui.turns);
-    else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration)
-      $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
-    else if (data.buffs && data.buffs.ult && data.buffs.ult.targets && data.buffs.ult.targets.duration)
-      $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + data.buffs.ult.targets.duration + ' ' + game.data.ui.turns);
-
+    //BUFFS
     if (data.buff) {
-      if (data.buff['hp per kill'])
-        $('<p>').appendTo(desc).html(game.data.ui.hp +': ' + data.buff['hp per kill']+ ' <i>* '+ game.data.ui.kills+'</i>');
-      if (data.buff['cards per turn'])
-        $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + data.buff['cards per turn']);
-      if (data.buff.chance)
-        $('<p>').appendTo(desc).text(game.data.ui.chance + ': ' + data.buff.chance + '%');
-      if (data.buff.percentage)
-        $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + data.buff.percentage + '%');
-      if (data.buff.lifesteal)
-        $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + data.buff.lifesteal + '%');
-      if (data.buff.multiplier)
-        $('<p>').appendTo(desc).text(game.data.ui.multiplier + ': ' + data.buff.multiplier + 'X');
-      if (data.buff['armor bonus'])
-        $('<p>').appendTo(desc).text(game.data.ui.armor + ' ' + game.data.ui.bonus + ': ' + data.buff['armor bonus']);
-      if (data.buff['resistance bonus'])
-        $('<p>').appendTo(desc).text(game.data.ui.resistance + ' ' + game.data.ui.bonus + ': ' + data.buff['resistance bonus']);
-      if (data.buff.heal)
-        $('<p>').appendTo(desc).text(game.data.ui.buff + ' ' + game.data.ui.heal + ': ' + data.buff.heal);
+      game.card.buffs(data.buff, desc, current);
+    }
+    if (data.buffs) {
+      for (var group in data.buffs) {
+        for (var buff in data.buffs[group]) {
+          game.card.buffs(data.buffs[group][buff], desc, current);
+        }
+      }
     }
     if (data.heal) 
       $('<p>').appendTo(desc).text(game.data.ui.heal + ': ' + data.heal);
@@ -157,9 +123,7 @@ game.card = {
       $('<p>').appendTo(desc).addClass('description').text('“'+data.description+'”');
       //card.attr({ title: data.name + ': ' + data.description });
     }
-    /*card.attr({
-      title: data.name
-    });*/
+    /*card.attr({ title: data.name });*/
     if (data.kd) {
       $('<p>').addClass('kd').appendTo(desc).html(game.data.ui.kd + ': <span class="kills">0</span>/<span class="deaths">0</span>');
       data.kills = 0;
@@ -172,6 +136,42 @@ game.card = {
     });
     card.append(legend).append(fieldset);
     return card;
+  },
+  buffs: function (buff, desc, current) {
+    if (buff['hp bonus'])
+      $('<p>').addClass('hp').appendTo(current).html('HP <span>' + buff['hp bonus'] + '</span>');
+    if (buff['hp per kill'])
+      $('<p>').appendTo(desc).html(game.data.ui.hp +': ' + buff['hp per kill']+ ' <i>* '+ game.data.ui.kills+'</i>');
+    if (buff['cards per turn'])
+      $('<p>').appendTo(desc).text(game.data.ui.cards + ': ' + buff['cards per turn']);
+    if (buff.chance)
+      $('<p>').appendTo(desc).text(game.data.ui.chance + ': ' + buff.chance + '%');
+    if (buff.percentage)
+      $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + buff.percentage + '%');
+    if (buff.lifesteal)
+      $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + buff.lifesteal + '%');
+    if (buff.multiplier)
+      $('<p>').appendTo(desc).text(game.data.ui.multiplier + ': ' + buff.multiplier + 'X');
+    if (buff['armor bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.armor + ' ' + game.data.ui.bonus + ': ' + buff['armor bonus']);
+    if (buff['resistance bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.resistance + ' ' + game.data.ui.bonus + ': ' + buff['resistance bonus']);
+    if (buff.heal)
+      $('<p>').appendTo(desc).text(game.data.ui.buff + ' ' + game.data.ui.heal + ': ' + buff.heal);
+    if (buff['cast damage bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['cast damage bonus'])).append('<i> * '+game.data.ui.skills+'</i>');
+    if (buff['damage per kill'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['damage per kill'])).append('<i> * '+game.data.ui.kills+'</i>');
+    if (buff['damage bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ' ' + game.data.ui.bonus + ': ').addClass('dot').append($('<span>').text(buff['damage bonus']));
+    if (buff.dot)
+      $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(buff.dot));
+    if (buff['unit damage bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['unit damage bonus']));
+    if (buff.damage)
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff.damage));
+    if (buff.duration)
+      $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + buff.duration + ' ' + game.data.ui.turns);
   },
   side: function(side) {
     if (this.hasClass('player'))
