@@ -38,6 +38,7 @@ game.skills.wind = {
       $(targets).each(function () {
         game.timeout(900, source.damage.bind(source, finalDmg, this, skill.data('damage type')));
       });
+      game.timeout(900, game.fx.add.bind(this, 'wind-arrow', source, source.lastSpotInLine(target, range), 'rotate'));
     }
   },
   run: {

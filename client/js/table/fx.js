@@ -41,6 +41,9 @@ game.fx = {
       ult: ['ult'],
       blind: ['blind'],
       recall: ['recall','recall-source']
+    },
+    wind: {
+      arrow: ['arrow']
     }
   },
   build: function() {
