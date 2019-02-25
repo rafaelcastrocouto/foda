@@ -30,7 +30,7 @@ game.skills.am = {
       var source = eventdata.source;
       var target = eventdata.target;
       var skill = eventdata.skill;
-      target.cast(skill, source);
+      if (skill.side() == target.opponent()) target.cast(skill, source);
     }
   },
   blink: {
