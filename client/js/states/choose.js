@@ -51,22 +51,23 @@ game.states.choose = {
     var card = $(this);//console.log('select', game.events.dragging, card, force)
     if (card.hasClass && card.hasClass('card')) {
       if (card.hasAllClasses('selected zoom') && !game.events.dragging) { 
-        //console.log('remove zoom')
         $('.choose .card').removeClass('transparent');
         $('.choose .pickedbox').removeClass('transparent');
         game.topbar.removeClass('transparent');
-        card.removeClass('zoom');
+        card.removeClass('zoom'); //console.log('clicked hero rem')
+        game.states.choose.buttonbox.removeClass('hidden');
+        $('.choose .slot').removeClass('transparent');
         if(game.mode != 'library') card.addClass('draggable');
         game.states.choose.lockZoom=true;
         setTimeout(function () {game.states.choose.lockZoom=false;}, 200);
       } else if (force != 'force' && card.hasClass('selected') && !game.states.choose.lockZoom && !game.events.dragging) {
-        //console.log('add zoom')
         $('.choose .card').addClass('transparent');
         $('.choose .pickedbox').addClass('transparent');
         game.topbar.addClass('transparent');
-        card.addClass('zoom').removeClass('transparent draggable');
+        card.addClass('zoom').removeClass('transparent draggable'); //console.log('clicked hero add')
+        $('.choose .slot').addClass('transparent');
+        game.states.choose.buttonbox.addClass('hidden');
       } else if (force == 'force' || !game.events.dragging) {
-        //console.log('select')
         if (game.mode == 'library') game.library.select(card, force);
         $('.choose .selected').removeClass('selected draggable');
         $('.choose .half').removeClass('half');

@@ -52,17 +52,19 @@ game.library = {
             $('.choose .card').removeClass('transparent');
             $('.choose .slot').removeClass('transparent');
             $('.choose .pickedbox').removeClass('trans');
-            game.topbar.removeClass('transparent');
+            game.topbar.removeClass('transparent'); //console.log('clicked skill rem')
             game.message.removeClass('transparent');
+            game.states.choose.buttonbox.removeClass('hidden');
             card.removeClass('zoom');
-          } else if (!game.states.choose.lockZoom) {
+          } else if (!game.states.choose.lockZoom && !game.selectedCardZoom) {
             $('.choose .card').addClass('transparent');
             $('.choose .slot').addClass('transparent');
-            $('.choose .pickedbox').addClass('trans');
+            $('.choose .pickedbox').addClass('trans'); //console.log('clicked skill add')
             game.topbar.addClass('transparent');
             game.message.addClass('transparent');
             card.addClass('zoom').removeClass('transparent');
             card.parent().removeClass('transparent');
+            game.states.choose.buttonbox.addClass('hidden');
           }
           if (e && e.preventDefault) e.preventDefault();
           return false;

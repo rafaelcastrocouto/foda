@@ -213,3 +213,6 @@
 .pickedbox .card.heroes .portrait .img, .pickedbox .card.heroes .portrait .overlay {
   height: 265px;
 }
+.choose .transparent.card {
+  pointer-events: none;
+}
