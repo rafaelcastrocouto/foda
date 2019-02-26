@@ -4,13 +4,24 @@ game.items = {
       game.items.builded = true;
       this.shop = $('<div>').addClass('shop').appendTo(game.camera);
     }
-    game.itemsDeck = game.deck.build({
+    game.playerItemsDeck = game.deck.build({
       name: 'items',
       cb: function (deck) {  //console.log(deck.data('cards'));
         deck.addClass('items').appendTo(game.items.shop);
+        var data = [];
         $.each(deck.data('cards'), function(i, card) {
           card.on('mousedown touchstart', game.card.select).addClass('buy');
+          data[i] = card.data();
         });
+        game.enemyItemsDeck = deck.clone().data(deck.data()).addClass('enemy hidden');
+        game.enemyItemsDeck.appendTo(game.items.shop);
+        var cards = [];
+        $.each($('.items',game.enemyItemsDeck), function(i, item) {
+          var card = $(item);
+          card.on('mousedown touchstart', game.card.select).data(data[i]);
+          cards.push(card);
+        });
+        game.enemyItemsDeck.data('cards', cards);
       }
     });
   },
@@ -20,14 +31,17 @@ game.items = {
   },
   enableShop: function () {
     game.items.shopEnabled = true;
-    var side = 'player';
-    if (game.mode == 'local') side = game.currentTurnSide;
     game.states.table.shop.attr('disabled', false);
-    var money = '';
-    if (side) money = ' ($'+game[side].money+')';
-    if (game.items.shopOpen) {
-      game.states.table.shop.text(game.data.ui.close + money);
-    } else game.states.table.shop.text(game.data.ui.shop + money);
+    if (!game.items.sellMode) {
+      var side = 'player';
+      if (game.mode == 'local') side = game.currentTurnSide;
+      var money = '';
+      if (side) money = ' ($'+game[side].money+')';
+      if (game.items.shopOpen) {
+        game.states.table.shop.text(game.data.ui.close + money);
+      } else game.states.table.shop.text(game.data.ui.shop + money);
+    }
+
   },
   shopClick: function () {
     var side = 'player';
@@ -37,24 +51,27 @@ game.items = {
       else if (game.mode !== 'tutorial') game.items.sellItem();
     } else {
       game.items.shopOpen = !game.items.shopOpen;
-      game.items.shop.toggleClass('show'); 
-      if (game.items.shopOpen) {
-        game.items.updateShop(side);
-      } else {
-        game.items.hideShop(side);
-      }
+      if (game.items.shopOpen)  game.items.shop.addClass('show'); 
+      else game.items.hideShop(side);
     }
+    game.items.updateShop(side);
   },
-  updateShop: function (side, force) {
+  updateShop: function (side, force) {// console.trace(side);
     if (game.canPlay() || force) {
       var money = '';
-      if (side) money = ' ($'+game[side].money+')';
-      if (game.items.shopOpen) game.states.table.shop.text(game.data.ui.close + money);
-      else game.states.table.shop.text(game.data.ui.shop + money);
-      $.each(game.itemsDeck.data('cards'), function(i, card) {
-        if (side && card.data('price') > game[side].money) card.addClass('expensive');
-        else card.removeClass('expensive');
-      });
+      if (side) {
+        money = ' ($'+game[side].money+')';
+        game[side+'ItemsDeck'].removeClass('hidden');
+        game[game.opponent(side)+'ItemsDeck'].addClass('hidden');
+        $.each(game[side+'ItemsDeck'].data('cards'), function(i, card) {
+          if (card.data('price') > game[side].money) card.addClass('expensive');
+          else card.removeClass('expensive');
+        });
+      }
+      if (!game.items.sellMode) {
+        if (game.items.shopOpen) game.states.table.shop.text(game.data.ui.close + money);
+        else game.states.table.shop.text(game.data.ui.shop + money);
+      }
       if (game.selectedCard && game.selectedCard.hasClass('buy')) game.selectedCard.reselect();
     } 
   },
@@ -64,12 +81,14 @@ game.items = {
     if (!game.items.sellMode) game.states.table.shop.text(game.data.ui.shop + money);
     if (game.selectedCard && game.selectedCard.hasAllClasses('items buy')) game.card.unselect();
     if (game.mode == 'tutorial') game.tutorial.hideShop();
+    game.items.shopOpen = false;
+    game.items.shop.removeClass('show'); 
   },
   disableShop: function () {
     game.items.shopEnabled = false;
     game.items.shopOpen = false;
     game.items.sellMode = false;
-    game.states.table.shop.text(game.data.ui.discard).attr('disabled', true);
+    game.states.table.shop.text(game.data.ui.shop).attr('disabled', true);
     if (game.selectedCard && game.selectedCard.hasAllClasses('items buy')) game.card.unselect();
     if (game.items.shop) game.items.shop.removeClass('show');
   },
@@ -86,10 +105,12 @@ game.items = {
     game.states.table.shop.attr('disabled', game.selectedCard.hasClass('expensive'));
     game.states.table.shop.text(game.data.ui.buy + ' ($'+game.selectedCard.data('price')+')');
   },
-  enableSell: function () {
+  enableSell: function () {// console.log(game.selectedCard.data('buyTurn'))
     if (game.mode !== 'tutorial') {
       game.items.sellMode = true;
-      game.states.table.shop.text(game.data.ui.sell + ' ($'+Math.floor(game.selectedCard.data('price')/2)+')');
+      if (game.selectedCard.data('buyTurn') + 1 >= game.totalTurns)
+        game.states.table.shop.text(game.data.ui.sell + ' ($'+Math.floor(game.selectedCard.data('price')/(game.selectedCard.data('cards')||1))+')');
+      else game.states.table.shop.text(game.data.ui.sell + ' ($'+Math.floor(game.selectedCard.data('price')/(2*(game.selectedCard.data('cards')||1)))+')');
     }
   },
   buyItem: function (side) {
@@ -100,6 +121,7 @@ game.items = {
     game.history.saveMove(move);
     if (game.mode == 'online') game.currentMoves.push(move);
     card.removeClass('buy').appendTo(game[side].skills.sidehand).addClass(side);
+    card.data('buyTurn', game.totalTurns);
     if (card.data('cards')) {
       for (var i=1; i<card.data('cards'); i++) {
         game.items.clone(card).removeClass('selected').appendTo(game[side].skills.sidehand);
@@ -111,7 +133,9 @@ game.items = {
   },
   sellItem: function () {
     var side = game.selectedCard.side();
-    game.items.addMoney(side, game.selectedCard.data('price')/2);
+    if (game.selectedCard.data('buyTurn') + 1 >= game.totalTurns)
+      game.items.addMoney(side, game.selectedCard.data('price')/(game.selectedCard.data('cards')||1));
+    else game.items.addMoney(side, game.selectedCard.data('price')/((2*game.selectedCard.data('cards')||1)));
     game.items.updateShop(side, 'force');
     game[side].discard(game.selectedCard);
     game.items.sellMode = false;

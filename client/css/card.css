@@ -474,7 +474,7 @@
   transform: translate3d(-50%, -50%, 0) scale(0.4) rotateY(180deg) rotateZ(180deg);
 }
 .local .table.unturn .enemydecks .card {
-  transform: translate3d(-50%, -50%, 0) scale(0.5) rotateY(0) rotateZ(180deg);
+  transform: translate3d(-50%, -50%, 0) scale(0.5) rotateY(0) rotateZ(-180deg);
 }
 
 

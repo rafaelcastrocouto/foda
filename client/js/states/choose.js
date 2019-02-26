@@ -227,9 +227,9 @@ game.states.choose = {
       game.setData('mode', false);
       if (game.mode == 'online') {
         game.online.backClick();
-      } if (game.mode == 'single') {
+      } else if (game.mode == 'single') {
         game.states.changeTo('campaign');
-      } if (game.mode == 'local') {
+      } else if (game.mode == 'local') {
         game.clear();
         game.setMode('local');
         game.states.changeTo('config');

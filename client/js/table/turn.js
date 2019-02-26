@@ -45,6 +45,9 @@ game.turn = {
     } else game.turn.enableAttackMove(side);
     if (side == 'player') game.states.table.el.addClass('turn');
     if (side == 'enemy' && game.mode == 'local') game.states.table.el.addClass('unturn');
+    if (game.mode == 'local') {
+      game.items.enableShop();
+    }
     game.loader.removeClass('loading');
     if (game.canPlay()) {
       game.states.table.skip.attr('disabled', false);
@@ -105,6 +108,11 @@ game.turn = {
         game.audio.play('activate');
         var move = 'U:'+side;
         game.history.saveMove(move);
+      }
+      if (game.mode == 'local') {
+        game.items.hideShop(side);
+        game.items.updateShop(side);
+        game.items.disableShop();
       }
       game.turn.tickTime();
       if (cb) cb(side);
