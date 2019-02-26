@@ -235,15 +235,12 @@ game.enemy = {
     }
   },
   buyItem: function (item, itemtype) {
-    var card = $('.items .'+item+'.'+itemtype);
-    if (game.currentTurnSide == 'enemy') card = game.items.clone(card);
-    card.removeClass('buy expensive').addClass(game.currentTurnSide).appendTo(game[game.currentTurnSide].skills.sidehand);
-    if (card.data('cards')) {
-      for (var i=1; i<card.data('cards'); i++) {
-        game.items.clone(card).removeClass('selected').appendTo(game[game.currentTurnSide].skills.sidehand);
-      }
+    var card = $('.items.'+game.currentTurnSide+' .'+item+'.'+itemtype);
+    game.items.newCard(game.currentTurnSide,card);
+    if (game.currentTurnSide == 'player') {
+      game.items.addMoney(game.currentTurnSide, -card.data('price'));
+      card.data('buyTurn', game.totalTurns);
     }
-    if (game.currentTurnSide == 'player') game.items.addMoney(game.currentTurnSide, -card.data('price'));
   },
   discard: function(skill) {
     game.skill.disableDiscard();

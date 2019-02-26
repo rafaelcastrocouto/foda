@@ -10,6 +10,7 @@ game.items = {
         deck.addClass('items').appendTo(game.items.shop);
         var data = [];
         $.each(deck.data('cards'), function(i, card) {
+          card.addClass('player');
           card.on('mousedown touchstart', game.card.select).addClass('buy');
           data[i] = card.data();
         });
@@ -17,11 +18,12 @@ game.items = {
         game.enemyItemsDeck.appendTo(game.items.shop);
         var cards = [];
         $.each($('.items',game.enemyItemsDeck), function(i, item) {
-          var card = $(item);
+          var card = $(item).addClass('enemy');
           card.on('mousedown touchstart', game.card.select).data(data[i]);
           cards.push(card);
         });
         game.enemyItemsDeck.data('cards', cards);
+        deck.addClass('player');
       }
     });
   },
@@ -120,16 +122,20 @@ game.items = {
     var move = 'B:' + item + ':' + itemtype;
     game.history.saveMove(move);
     if (game.mode == 'online') game.currentMoves.push(move);
-    card.removeClass('buy').appendTo(game[side].skills.sidehand).addClass(side);
     card.data('buyTurn', game.totalTurns);
-    if (card.data('cards')) {
-      for (var i=1; i<card.data('cards'); i++) {
-        game.items.clone(card).removeClass('selected').appendTo(game[side].skills.sidehand);
-      }
-    }
+    game.items.newCard(side,card);
     game.items.addMoney(side, -card.data('price'));
     game.card.unselect();
     if (game.mode == 'tutorial') game.tutorial.buyItem();
+  },
+  newCard: function (side, card) { //console.log('new item', side, card);
+    card.removeClass('buy expensive');
+    for (var i=0; i<(card.data('cards') || 1); i++) {
+      var item = game.items.clone(card).removeClass('selected');
+      item.appendTo(game[side].skills.sidehand);
+      if (game.mode !== 'local' && side == 'enemy') item.addClass('flipped');
+    }
+    card.addClass('hidden');
   },
   sellItem: function () {
     var side = game.selectedCard.side();
