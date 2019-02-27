@@ -80,12 +80,12 @@ var game = {
   },
   setData: function(item, data) { //console.trace('set', item, data)
     game.currentData[item] = data;
-    localStorage.setItem('data', JSON.stringify(game.currentData));
+    localStorage.setItem('FODA-data-'+item, JSON.stringify(data));
   },
   getData: function(item) {
     if (!game.currentData[item]) {
-      var saved = localStorage.getItem('data');
-      if (saved) game.currentData = JSON.parse(saved);
+      var saved = localStorage.getItem('FODA-data-'+item);
+      if (typeof(saved) !== undefined) game.currentData[item] = JSON.parse(saved);
     }
     return game.currentData[item];
   },

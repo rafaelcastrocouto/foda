@@ -223,11 +223,14 @@ game.audio = {
     game.setData(target, vol);
   },
   rememberVolume: function () {
-    var volume = game.getData('volume') || game.audio.defaultVolume;
+    var volume = game.getData('volume');
+    if (typeof(volume) == undefined) volume = game.audio.defaultVolume;
     game.audio.setVolume('volume', volume);
-    var music = game.getData('music') || game.audio.defaultMusic;
+    var music = game.getData('music');
+    if (typeof(music) == undefined) music = game.audio.defaultMusic;
     game.audio.setVolume('music', music);
-    var sounds = game.getData('sounds') || game.audio.defaultSounds;
+    var sounds = game.getData('sounds');
+    if (typeof(sounds) == undefined) sounds = game.audio.defaultSounds;
     game.audio.setVolume('sounds', sounds);
   },
   volumeMouseDown: function (event) {
@@ -248,7 +251,7 @@ game.audio = {
     var x = event.clientX - game.options.volumecontrol.offset().left,
         v = parseInt(x / game.screen.scale, 10) / 100;
     //console.log(x, v)
-    game.audio.setVolume(game.audio.volumetarget, v);
+    if (game.audio.volumetarget) game.audio.setVolume(game.audio.volumetarget, v);
   },
   volumeControl: function (name) {
     game.options[name+'control'] = $('<div>').addClass('volumecontrol');
