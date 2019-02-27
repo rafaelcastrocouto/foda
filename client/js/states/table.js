@@ -10,7 +10,7 @@ game.states.table = {
     this.buttonbox = $('<div>').addClass('buttonbox');
     this.surrender = $('<div>').appendTo(this.buttonbox).addClass('surrender alert button').text(game.data.ui.surrender).on('mouseup touchend', this.surrenderClick);
     this.back = $('<div>').hide().appendTo(this.buttonbox).addClass('back alert button').text(game.data.ui.back).on('mouseup touchend', this.backClick);
-    this.shop = $('<div>').appendTo(this.buttonbox).addClass('shop button').attr({disabled: true}).text(game.data.ui.shop).on('mouseup touchend', game.skill.shopClick);
+    this.shop = $('<div>').appendTo(this.buttonbox).addClass('shop button').attr({disabled: true}).text(game.data.ui.shop).on('mouseup touchend', game.skill.shopDicardClick);
     this.skip = $('<div>').appendTo(this.buttonbox).addClass('skip button highlight').attr({disabled: true, title: 'SPACE'}).text(game.data.ui.skip).on('mouseup touchend', this.skipClick);
     this.el.append(game.camera).append(this.selectedArea).append(this.buttonbox).append(this.player).append(this.enemy);
     this.ultfx = $('<div>').addClass('ultfx').appendTo(game.camera);

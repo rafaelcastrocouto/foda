@@ -114,9 +114,8 @@ game.local = {
     if (game.selectedCard) game.selectedCard.unselect();
     game.turn.end('player', game.local.beginEnemy);
   },
-
   beginEnemy: function () { 
-    game.items.updateShop('enemy');
+    game.items.updateShop();
     game.turn.begin('enemy', function () {
       game.local.startTurn('enemy');
       game.highlight.refresh();

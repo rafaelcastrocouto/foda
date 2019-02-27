@@ -408,13 +408,16 @@ game.skill = {
     return card.clone().data(card.data()).addClass('illusion').on('mousedown touchstart', game.card.select);
   },
   disableDiscard: function () {
-    if (game.items.shopEnabled) game.items.enableShop();
+    if (game.items.shopEnabled) {
+      game.states.table.shop.attr('disabled', false);
+      game.items.shopText();
+    }
     else game.states.table.shop.attr('disabled', true);
   },
   enableDiscard: function () {
     game.states.table.shop.attr('disabled', false).text(game.data.ui.discard);
   },
-  shopClick: function () {
+  shopDicardClick: function () {
     if (!game.states.table.shop.attr('disabled')) {
       if (game.states.table.shop.text() == game.data.ui.discard) {
         game.skill.discardClick();

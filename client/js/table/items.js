@@ -1,5 +1,5 @@
 game.items = {
-  build: function (side) {
+  build: function () {
     if (!game.items.builded) {
       game.items.builded = true;
       this.shop = $('<div>').addClass('shop').appendTo(game.camera);
@@ -34,16 +34,17 @@ game.items = {
   enableShop: function () {
     game.items.shopEnabled = true;
     game.states.table.shop.attr('disabled', false);
+    game.items.shopText();
+  },
+  shopText: function () {
+    var side = 'player';
+    if (game.mode == 'local') side = game.currentTurnSide;
+    var money = side ?  '($'+game[side].money+')' : '' ;
     if (!game.items.sellMode) {
-      var side = 'player';
-      if (game.mode == 'local') side = game.currentTurnSide;
-      var money = '';
-      if (side) money = ' ($'+game[side].money+')';
       if (game.items.shopOpen) {
         game.states.table.shop.text(game.data.ui.close + money);
       } else game.states.table.shop.text(game.data.ui.shop + money);
     }
-
   },
   shopClick: function () {
     var side = 'player';
@@ -54,15 +55,15 @@ game.items = {
     } else {
       game.items.shopOpen = !game.items.shopOpen;
       if (game.items.shopOpen)  game.items.shop.addClass('show'); 
-      else game.items.hideShop(side);
+      else game.items.hideShop();
     }
-    game.items.updateShop(side);
+    game.items.updateShop();
   },
-  updateShop: function (side, force) {// console.trace(side);
+  updateShop: function (force) {// console.trace();
+    var side = 'player';
+    if (game.mode == 'local') side = game.currentTurnSide;
     if (game.canPlay() || force) {
-      var money = '';
       if (side) {
-        money = ' ($'+game[side].money+')';
         game[side+'ItemsDeck'].removeClass('hidden');
         game[game.opponent(side)+'ItemsDeck'].addClass('hidden');
         $.each(game[side+'ItemsDeck'].data('cards'), function(i, card) {
@@ -70,17 +71,12 @@ game.items = {
           else card.removeClass('expensive');
         });
       }
-      if (!game.items.sellMode) {
-        if (game.items.shopOpen) game.states.table.shop.text(game.data.ui.close + money);
-        else game.states.table.shop.text(game.data.ui.shop + money);
-      }
+      game.items.shopText();
       if (game.selectedCard && game.selectedCard.hasClass('buy')) game.selectedCard.reselect();
     } 
   },
-  hideShop: function (side) {
-    var money = '';
-    if (side) money = ' ($'+game[side].money+')';
-    if (!game.items.sellMode) game.states.table.shop.text(game.data.ui.shop + money);
+  hideShop: function () {
+    game.items.shopText();
     if (game.selectedCard && game.selectedCard.hasAllClasses('items buy')) game.card.unselect();
     if (game.mode == 'tutorial') game.tutorial.hideShop();
     game.items.shopOpen = false;
@@ -99,7 +95,7 @@ game.items = {
       if (!game[side].money) game[side].money = money;
       else game[side].money += money;
       if (game[side].money > game.maxMoney) game[side].money = game.maxMoney;
-      game.items.updateShop(side);
+      game.items.updateShop();
     }
   },
   enableBuy: function () {
@@ -142,7 +138,7 @@ game.items = {
     if (game.selectedCard.data('buyTurn') + 1 >= game.totalTurns)
       game.items.addMoney(side, game.selectedCard.data('price')/(game.selectedCard.data('cards')||1));
     else game.items.addMoney(side, game.selectedCard.data('price')/((2*game.selectedCard.data('cards')||1)));
-    game.items.updateShop(side, 'force');
+    game.items.updateShop('force');
     game[side].discard(game.selectedCard);
     game.items.sellMode = false;
   },

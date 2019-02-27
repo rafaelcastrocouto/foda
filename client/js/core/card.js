@@ -216,6 +216,7 @@ game.card = {
   },
   clearSelection: function() { //console.trace('clear')
     if (game.selectedCard) {
+      game.items.sellMode = false;
       game.highlight.clearMap();
       game.selectedCard.removeClass('selected draggable');
       game.skill.disableDiscard();
@@ -243,21 +244,22 @@ game.card = {
       .removeClass('selected melee-attack can-attack blink done dead draggable dragTarget shake enemyMoveHighlight enemyMoveHighlightTarget casttarget')
       .clearEvents()
       .appendTo(game.states.table.selectedCard)
-      .on('mouseup', function () {
-        game.options.opt.toggleClass('hidden');
-        game.states.log.out.toggleClass('hidden');
-        game.turn.msg.toggleClass('hidden');
-        game.topbar.toggleClass('transparent');
-        $(this).toggleClass('zoom');
-        if (game.tutorial.axe) game.tutorial.axe.toggleClass('left');
-        game.selectedCardZoom = !game.selectedCardZoom;
-      });
+      .on('mouseup', game.card.clickSelectClone);
     if (game.selectedCardZoom) game.states.table.selectedClone.addClass('zoom');
     game.states.table.selectedCard.addClass('flip');
     card.trigger('select', {
       card: card
     });
     game.states.table.el.removeClass('player enemy').addClass(card.side());
+  },
+  clickSelectClone: function () {
+    game.options.opt.toggleClass('hidden');
+    game.states.log.out.toggleClass('hidden');
+    game.turn.msg.toggleClass('hidden');
+    game.topbar.toggleClass('transparent');
+    $(this).toggleClass('zoom');
+    if (game.tutorial.axe) game.tutorial.axe.toggleClass('left');
+    game.selectedCardZoom = !game.selectedCardZoom;
   },
   unselect: function() {
     game.selectedCardZoom = false;

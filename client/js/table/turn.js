@@ -110,8 +110,8 @@ game.turn = {
         game.history.saveMove(move);
       }
       if (game.mode == 'local') {
-        game.items.hideShop(side);
-        game.items.updateShop(side);
+        game.items.hideShop();
+        game.items.updateShop();
         game.items.disableShop();
       }
       game.turn.tickTime();

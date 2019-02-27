@@ -234,12 +234,19 @@
   animation: none;
 }
 
-.menu .icon.highlight, .menu .icon:hover {
+.menu .icon.highlight {
   animation: twist 0.8s infinite;
+}
+.menu .icon:hover {
+  animation: twistscale 0.8s infinite;
 }
 @keyframes twist {
   0%, 100% {transform: translateZ(14px) rotateZ(-2deg);}
   50% {transform: translateZ(14px) rotateZ(2deg);}
+}
+@keyframes twistscale {
+  0%, 100% {transform: scale(1.1) translateZ(14px) rotateZ(-2deg);}
+  50% {transform: scale(1.1) translateZ(14px) rotateZ(2deg);}
 }
 .menu .icon span {
   text-align: center;
@@ -410,7 +417,7 @@
   color: #473936;
   border: 1.5px solid #2b2734;
   transform-origin: 50px 5px;
-  transform: translate3d(222px, 144px, 10px) scale(0.85);
+  transform: translate3d(216px, 144px, 10px) scale(0.85);
   width: 80px;
   padding: 8px;
   padding-bottom: 6px;
@@ -421,7 +428,7 @@
 }
 .rank:hover {
   border: 1.4px solid #2b2734;
-  transform: translate3d(200px, 140px, 10px) scale(2) rotate(2deg);
+  transform: translate3d(194px, 140px, 10px) scale(2) rotate(4deg);
 }
 .rank:before {
   content: "";
