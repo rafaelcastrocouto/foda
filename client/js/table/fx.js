@@ -1,4 +1,5 @@
 game.fx = {
+  ultList: {},
   heroes: {
     ld: {
       link: ['link'],
@@ -181,11 +182,13 @@ game.fx = {
       game.timeout(t, textFx.remove.bind(textFx));
     }
   },
-  ult: function(skill, cb, str) {
-    var skillid = skill.data('skill');
-    if (skillid == 'ult') {
+  ult: function(skill, cb, str) {// console.log(skill.data())
+    var name = skill.data('skill'),
+        skillId = skill.data('skillId');
+    if (name == 'ult' && !game.fx.ultList[skillId]) {
+      game.fx.ultList[skillId] = true;
       $('.ultfx .star').removeClass('hide');
-      var fx = $('<div>').addClass(skill.data('hero')+'-ult fx');
+      var fx = $('<div>').addClass(skillId+' fx');
       game.states.table.ultfx.append(fx);
       game.timeout(1900, function () {
         $('.ultfx .star').addClass('hide');
@@ -209,6 +212,6 @@ game.fx = {
     $('.ultfx .star').addClass('hide');
     game.states.table.ultfx.children('.fx').remove();
     $('.map .fx').remove();
-    game.fx.ldult = false;
+    game.fx.ultList = {};
   }
 };

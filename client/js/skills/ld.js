@@ -201,10 +201,7 @@ game.skills.ld = {
         }
         source.selfBuff(skill);
         source.setRange(game.data.ui.melee);
-        if (!game.fx.ldult) {
-          game.fx.ult(skill);
-          game.fx.ldult = true;
-        }
+        game.fx.ult(skill);
       } else {
         source.removeClass('transformed');
         skill.removeClass('on');

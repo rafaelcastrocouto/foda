@@ -790,7 +790,7 @@
 }
 
 .map .fx.cat-leap {
-  transform: rotateX(-37deg) translate3d(80px,40px,120px) scale(4);
+  transform: rotateX(-37deg) translate3d(80px,120px,120px) scale(4);
   width: 67px;
   height: 58px;
   animation: cat-leap-sprite 0.8s steps(6) 1;

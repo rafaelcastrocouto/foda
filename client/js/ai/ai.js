@@ -4,13 +4,13 @@ game.ai = {
   start: function () {
     if (!game.currentData) game.currentData = {};
     game.ai.moves = [];
-    if (game.ai.mode == 'very-easy') game.ai.level = 3;
-    if (game.ai.mode == 'easy')      game.ai.level = 4;
-    if (game.ai.mode == 'normal')    game.ai.level = 5;
-    if (game.ai.mode == 'hard')      game.ai.level = 6;
-    if (game.ai.mode == 'very-hard') game.ai.level = 8;
+    if (game.ai.mode == 'very-easy') game.ai.level = 5;
+    if (game.ai.mode == 'easy')      game.ai.level = 6;
+    if (game.ai.mode == 'normal')    game.ai.level = 7;
+    if (game.ai.mode == 'hard')      game.ai.level = 8;
+    if (game.ai.mode == 'very-hard') game.ai.level = 9;
     if (game.debug) game.ai.level = 9;
-    game.ai.timeToPlay = (10 * game.ai.level) + 10;
+    game.ai.timeToPlay = (5 * game.ai.level);
   },
   turnStart: function () { //console.log('ai start turn')
     // remember ai is playing the enemy cards
@@ -277,15 +277,20 @@ game.ai = {
   newSpotData: function (spot) {
     var priority = 40;
     var opponent = game.opponent(game.ai.side);
-    priority += (game.width - spot.getX()) * 4;
-    priority += spot.getY() * 6;
-    if (spot.hasClass('jungle')) priority -= 50;
+    var x = spot.getX(), y = spot.getY();
+    priority += (game.width - x) * 4;
+    priority += y * 6;
+    if (spot.hasClass('jungle')) priority -= 30;
+    if (spot.hasClass('fountain')) priority += 80;
     if (spot.hasClass(game.ai.side+'area')) priority += 5;
     if (spot.hasClass(opponent+'area')) {
       var hp = game[opponent].tower.data('current hp');
       if (hp > 5) priority -= 40;
       if (hp < 4) priority += 30;
     }
+    if ((game.width == (x+1) && (y >= 3)) || 
+       ((y == 0) && (x < game.width - 3)) ||
+       ((game.height == (y+1) && (x > 8)) )) priority -= 80;
     var data = {
       'blocked': !spot.hasClass('free'),
       'priority': priority,
@@ -532,9 +537,11 @@ game.ai = {
       var spotData = spot.data('ai');
       var x = spot.getX();
       var y = spot.getY();
+      var p = spotData.priority + (spotData.unitPriority||0) + ((game.width - x)*2) + (y * 2);
+      if (game.width == (x+1) || y == 0) p = 0;
       if (!spotData.blocked) spots.push({
         target: spot,
-        priority: spotData.priority + (spotData.unitPriority||0) + ((game.width - x)*2) + (y * 2),
+        priority: p,
         data: spotData
       });
     });
