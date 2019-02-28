@@ -27,7 +27,7 @@ game.states.log = {
     if (!game.states.log.alert) {
       game.states.log.alert = true;
       game.states.log.alertBox();
-      if (!game.getData('voted')) game.poll.addButton();
+      if (!game.getData('voted') && game.poll.heroes) game.poll.button.show();
     }
   },
   alertBox: function () {
@@ -35,12 +35,8 @@ game.states.log = {
     game.overlay.removeClass('hidden').append(box);
     box.append($('<h1>').text(game.data.ui.warning));
     box.append($('<p>').html(game.data.ui.alphaalert + '<small class="version">' + game.version + '</small>'));
-    game.poll.button = $('<div>').hide().addClass('button highlight large').text(game.data.ui.votenexthero).on('mouseup touchend', function () {
-      game.poll.build();
-      if (!game.states.log.input.val()) game.states.log.input.focus();
-      return false;
-    });
-    //box.append(game.poll.button);
+    game.poll.button = $('<div>').hide().addClass('button highlight large').text(game.data.ui.votenexthero).on('mouseup touchend', game.poll.showVotes);
+    box.append(game.poll.button);
     box.append($('<div>').addClass('button').text(game.data.ui.close).on('mouseup touchend', game.poll.close));
     box.append($('<a>').addClass('rating').attr({target: '_blank', href: 'http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories'}));
     game.screen.resize();
