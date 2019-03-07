@@ -70,6 +70,11 @@ game.skills.axe = {
       } else {
         source.damage(skill.data('damage'), target, skill.data('damage type'));        
       }
+      setTimeout(function () {
+        if (target.hasClass('dead')) {
+          skill.appendTo(game[skill.side()].skills.hand).removeClass('casted');
+        }
+      }, 600);
       target.stopChanneling();
       game.fx.shake();
     }

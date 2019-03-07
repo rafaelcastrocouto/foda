@@ -98,18 +98,19 @@ game.card = {
     }
     if (data['bonus cards']) 
       $('<p>').appendTo(desc).text(game.data.ui.bonus + ' ' + game.data.ui.cards + ': ' + data['bonus cards']);
-    if (data.type == game.data.ui.channel)
+    if (data.type == game.data.ui.channel && data.channel && data.channel > 1)
       $('<p>').appendTo(desc).text(game.data.ui.channel+' '+game.data.ui.duration + ': ' + data.channel + ' '+ game.data.ui.turns);
-    if (data.stun) 
+    if (data.stun && data.stun > 1) 
       $('<p>').appendTo(desc).text(game.data.ui.stun+' '+game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
     //BUFFS
+    var opt = {summon: data['summon name']};
     if (data.buff) {
-      game.card.buffs(data.buff, desc, current);
+      opt = game.card.buffs(data.buff, desc, current, opt);
     }
-    if (data.buffs) {
+    if (data.buffs && !opt.summon) {
       for (var group in data.buffs) {
         for (var buff in data.buffs[group]) {
-          game.card.buffs(data.buffs[group][buff], desc, current);
+          opt = game.card.buffs(data.buffs[group][buff], desc, current, opt);
         }
       }
     }
@@ -137,7 +138,7 @@ game.card = {
     card.append(legend).append(fieldset);
     return card;
   },
-  buffs: function (buff, desc, current) {
+  buffs: function (buff, desc, current, opt) {
     if (buff['hp bonus'])
       $('<p>').addClass('hp').appendTo(current).html('HP <span>' + buff['hp bonus'] + '</span>');
     if (buff['hp per kill'])
@@ -170,8 +171,11 @@ game.card = {
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['unit damage bonus']));
     if (buff.damage)
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff.damage));
-    if (buff.duration)
+    if (buff.duration && buff.duration > 1 && !opt.duration) {
       $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + buff.duration + ' ' + game.data.ui.turns);
+      opt.duration = true;
+    }
+    return opt;
   },
   side: function(side) {
     if (this.hasClass('player'))
