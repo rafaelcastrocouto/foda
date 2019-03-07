@@ -356,7 +356,7 @@ game.items = {
         var source = eventdata.source;
         var target = eventdata.target;
         var buff = source.getBuff('echo');
-        if (buff.data('echo-enabled') && (target.side() == source.opponent()) && (eventdata.tag !== 'echo')) {
+        if (buff.data('echo-enabled') && (target.side() == source.opponent()) && !eventdata.force) {
           game.timeout(600, source.attack.bind(source, target, 'force', 'echo'));
           buff.data('echo-enabled', false);
         }

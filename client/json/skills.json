@@ -51,7 +51,7 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "damage type": "Physical",
-      "description": "Axe hits the enemy aiming the neck. If enemy HP is below 1/3 will the head will be chopped!"
+      "description": "Axe hits the enemy aiming the neck. If enemy HP is below 1/3 will the head will be chopped and the skill can be used again!"
     }
   },
   

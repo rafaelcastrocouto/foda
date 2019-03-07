@@ -105,12 +105,17 @@ game.card = {
     //BUFFS
     var opt = {summon: data['summon name']};
     if (data.buff) {
-      opt = game.card.buffs(data.buff, desc, current, opt);
+      if (!opt.summon) opt = game.card.buffs(data.buff, desc, current, opt);
+      //else card.selfBuff(data);
     }
-    if (data.buffs && !opt.summon) {
+    if (data.buffs) {
       for (var group in data.buffs) {
         for (var buff in data.buffs[group]) {
-          opt = game.card.buffs(data.buffs[group][buff], desc, current, opt);
+          if (!opt.summon) {
+            opt = game.card.buffs(data.buffs[group][buff], desc, current, opt);
+          }/* else {
+            card.selfBuff(data, group+'-'+buff);
+          }*/
         }
       }
     }
@@ -407,7 +412,8 @@ game.card = {
           source: source,
           target: target,
           damage: damage,
-          tag: tag
+          tag: tag,
+          force: force
         };
         source.trigger('pre-attack', evt);
         target.trigger('pre-attacked', evt);

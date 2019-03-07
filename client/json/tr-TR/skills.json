@@ -51,7 +51,7 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "damage type": "Fiziksel",
-      "description": "Boynu hedefleyen düşmanı vurur. Düşmanın HP 1/3 altında ise, baş doğranmış olacak!"
+      "description": "Boynu hedef alarak düşmanı vur. Düşman 1/3 HP'nin altındaysa, kafa kesilecek ve kart geri gelecektir!"
     }
   },
   "com": {
