@@ -157,6 +157,8 @@ game.items = {
       cast: function (skill, target) {
         if (target.hasClass('trees')) {
           game.tree.destroy(target);
+        } else if (target.hasClasses('spot free')) {
+          game.tree.build(target.attr('id'), skill.side() == 'player' ? 'rad' : 'dire');
         } else {
           var buff = target.selfBuff(skill);
           target.heal(buff.data('heal'));

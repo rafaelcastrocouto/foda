@@ -8,6 +8,7 @@
   transition: all 1s, transform 0s;
   pointer-events: none;
   transform: translateZ(0);
+  background-color: transparent;
 }
 
 .tutorial.axe.up {

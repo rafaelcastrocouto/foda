@@ -63,7 +63,7 @@
       "targets": ["Local", "Próprio"],
       "aoe": "Radial",
       "damage type": "Mágico",
-      "description": "Dano em área aumentado em 1 por unidade or 3 por herói inimigo"
+      "description": "Vira os números inimigos contra eles, causando dano por unidade e dano extra por herói inimigo."
     },
     "heal": {
       "name": "Vuvuzela",
@@ -71,9 +71,9 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Próprio", "Aliados"],
-      "description": "Purga o alvo e aumenta seu dano em 6 e cura 8 pontos por turno",
+      "description": "Purga o alvo e aumenta seu dano e curando por turno",
       "buff": {
-        "description": "Dano aumentado em 6 e curando 8 pontos por turno"
+        "description": "Dano aumentado e curando por turno"
       }
     },
     "counter": {
@@ -82,9 +82,9 @@
       "hand": "Esquerda",
       "deck": "Comprar",
       "targets": ["Próprio"],
-      "description": "Quando atacada, há uma chance de contra atacar imediatamente com 75% de roubo de vida",
+      "description": "Quando atacada, há uma chance de contra atacar imediatamente com roubo de vida",
       "buff": {
-        "description": "Quando atacada, há uma chance de contra atacar imediatamente com 75% de roubo de vida"
+        "description": "Quando atacada, há uma chance de contra atacar imediatamente com roubo de vida"
       }
     },
     "ult": {
@@ -93,7 +93,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "description": "Troca três ataques com o alvo, Se alguém morrer, o assassino ganha 4 pontos permanentes de dano"
+      "description": "Troca três ataques com o alvo, Se alguém morrer, o assassino ganha pontos permanentes de dano"
     }
   },
 
@@ -114,7 +114,7 @@
       "targets": ["Local"],
       "aoe": "Linear",
       "damage type": "Mágico",
-      "description": "Causa dano e destrói árvores ao longo do caminho. Para cada inimigo, o dano da flecha é reduzido em 2"
+      "description": "Causa dano e destrói árvores ao longo do caminho. Para cada inimigo atingido, o dano da flecha é reduzido"
     },
     "run": {
       "name": "Pé de Vento",
@@ -133,7 +133,7 @@
       "hand": "Direita",
       "deck": "Comprar",
       "targets": ["Inimigos"],
-      "description": "Ataca um inimigo quatro vezes. O dano é reduzido em quatro pontos"
+      "description": "Ataca um inimigo quatro vezes. O dano é reduzido"
     }
   },
 
@@ -319,7 +319,7 @@
       "targets": ["Próprio"],
       "aoe": "Radial",
       "damage type": "Mágico",
-      "description": "Canaliza uma tempestade de neve ao seu redor cauzando dano em área",
+      "description": "Canaliza uma tempestade de neve ao seu redor cauzando dano em área e restrição de movimento",
       "buffs": {
         "ult": {
           "source": {
@@ -492,7 +492,7 @@
       "deck": "Comprar",
       "targets": ["Inimigos"],
       "damage type": "Mágico",
-      "description": "Causa dano igual ao mana do alvo multiplicado por 4 e obriga o oponente a descartar uma habilidade do alvo"
+      "description": "Causa dano igual ao mana do alvo multiplicado e obriga o oponente a descartar uma habilidade do alvo"
     },
     "spike": {
       "name": "Carapaça",

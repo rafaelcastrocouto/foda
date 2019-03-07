@@ -342,6 +342,7 @@ game.skill = {
     var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped dragTarget').on('mousedown touchstart', game.card.select).on('mouseenter', game.highlight.source).on('mouseleave', game.highlight.refresh).css({transform: ''});
     unit.find('legend').text(skill.data('summon name'));
     unit.find('.description').remove();
+    unit.find('.castRange').remove();
     unit.data('summon', skill);
     unit.data('summoner', this);
     unit.data('hp', skill.data('hp'));
@@ -349,7 +350,10 @@ game.skill = {
     unit.data('range', skill.data('range'));
     unit.data('armor', skill.data('armor'));
     unit.data('resistance', skill.data('resistance'));
-    unit.data('speed', skill.data('speed') || game.defaultSpeed);
+    var speed = skill.data('speed') || game.defaultSpeed;
+    unit.data('speed', speed);
+    if (typeof(speed) == 'number') speed = game.map.getRangeStr(speed);
+    $('<p>').appendTo(unit.find('.desc')).text(game.data.ui.speed + ': ' + speed).addClass('speed');
     unit.data('current hp', unit.data('hp'));
     unit.data('current damage', unit.data('damage'));
     unit.data('current armor', unit.data('armor'));

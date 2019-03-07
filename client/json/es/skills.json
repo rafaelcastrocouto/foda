@@ -64,7 +64,7 @@
       "targets": ["Lugar", "Yo"],
       "aoe": "Radial",
       "damage type": "Mágico",
-      "description": "Da vuelta a los números enemigos contra ellos, causando 1 daño por unidad o 3 por héroe"
+      "description": "Gira los números enemigos contra ellos, infligiendo daño por unidad y daño extra por héroe enemigo."
     },
     "heal": {
       "name": "Golpe de cuerno",
@@ -74,7 +74,7 @@
       "targets": ["Yo", "Aliado"],
       "description": "Purgar la unidad objetivo y concede daño extra y cura",
       "buff": {
-        "description": "Daño aumentado en 6 y curación 8 de salud por turno"
+        "description": "Daño aumentado y cura por turno"
       }
     },
     "counter": {
@@ -83,9 +83,9 @@
       "hand": "Izquierda",
       "deck": "Comprar",
       "targets": ["Yo"],
-      "description": "Al ser atacado, existe la posibilidad de contraatacar inmediatamente con un 75%",
+      "description": "Al ser atacado, existe la posibilidad de contraatacar inmediatamente con robo de vida",
       "buff": {
-        "description": "Al ser atacado, existe la posibilidad de contraatacar inmediatamente con un 75%"
+        "description": "Al ser atacado, existe la posibilidad de contraatacar inmediatamente con robo de vida"
       }
     },
     "ult": {
@@ -94,7 +94,7 @@
       "hand": "Derecha",
       "deck": "Comprar",
       "targets": ["Enemigo"],
-      "description": "Intercambia tres ataques con un enemigo objetivo. Si alguien muere, el asesino gana 4 daños extras permanentes"
+      "description": "Intercambia tres ataques con un enemigo objetivo. Si alguien muere, el asesino gana daño extra permanente"
     }
   },
 
@@ -115,7 +115,7 @@
       "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Mágico",
-      "description": "Daña a los enemigos y destruye los árboles a lo largo de su camino. Para cada enemigo la flecha golpea, su daño se reduce en 2"
+      "description": "Daña a los enemigos y destruye los árboles a lo largo de su camino. Para cada enemigo la flecha golpea, su daño se reduce"
     },
     "run": {
       "name": "Corredor de viento",
@@ -134,7 +134,7 @@
       "hand": "Derecha",
       "deck": "Comprar",
       "targets": ["Enemigo"],
-      "description": "Ataca a un enemigo objetivo cuatro veces seguidas. El daño se reduce en cuatro puntos"
+      "description": "Ataca a un enemigo objetivo cuatro veces seguidas. El daño se reduce"
     }
   },
 
@@ -493,7 +493,7 @@
       "deck": "Comprar",
       "targets": ["Enemigo"],
       "damage type": "Mágico",
-      "description": "Daña una unidad enemiga por 4X es maná y hace que el jugador enemigo pierda una carta de ese héroe"
+      "description": "Causa daño igual al maná multiplicado y hace que el jugador enemigo pierda una carta de ese héroe"
     },
     "spike": {
       "name": "Carapacho",
@@ -667,7 +667,7 @@
       "targets": ["Lugar"],
       "aoe": "Lineal",
       "damage type": "Mágico",
-      "description": "Debilita la armadura enemiga por 2 puntos",
+      "description": "Debilita la armadura enemiga",
       "buff": {
         "description": "Armadura Reducida"
       }

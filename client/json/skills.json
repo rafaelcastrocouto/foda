@@ -51,7 +51,7 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "damage type": "Physical",
-      "description": "Axe hits the enemy aiming the neck. If enemy HP is below 1/3 will the head will be chopped and the skill can be used again!"
+      "description": "Axe hits the enemy aiming for the neck. If enemy HP is below 1/3 the head will be chopped and the skill can be used again"
     }
   },
   
@@ -64,7 +64,7 @@
       "targets": ["Spot", "Self"],
       "aoe": "Radial",
       "damage type": "Magical",
-      "description": "Turns the enemy numbers against them, dealing 1 damage per unit or 3 per hero"
+      "description": "Turns the enemy numbers against them, dealing bonus damage per unit and extra bonus per hero"
     },
     "heal": {
       "name": "Horn Blow",
@@ -74,7 +74,7 @@
       "targets": ["Self", "Ally"],
       "description": "Purge the target unit and grants bonus damage and heals",
       "buff": {
-        "description": "Damage increased by 6 and healing 8 health per turn"
+        "description": "Damage increased and healing per turn"
       }
     },
     "counter": {
@@ -83,9 +83,9 @@
       "hand": "Left",
       "deck": "Buy",
       "targets": ["Self"],
-      "description": "When attacked, there is a chance to immediately counterattack with 75% lifesteal",
+      "description": "When attacked, there is a chance to immediately counterattack with lifesteal",
       "buff": {
-        "description": "When attacked, there is a chance to immediately counterattack with 75% lifesteal"
+        "description": "When attacked, there is a chance to immediately counterattack with lifesteal"
       }
     },
     "ult": {
@@ -94,7 +94,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "description": "Exchanges three attacks with a target enemy. If anyone dies, the killer gains 4 permanent bonus damage"
+      "description": "Exchanges three attacks with a target enemy. If anyone dies, the killer gains permanent bonus damage"
     }
   },
 
@@ -115,7 +115,7 @@
       "targets": ["Spot"],
       "aoe": "Linear",
       "damage type": "Magical",
-      "description": "Damages enemies and destroys trees along its path. For each enemy the arrow hits, its damage is reduced by 2"
+      "description": "Damages enemies and destroys trees along its path. For each enemy the arrow hits, its damage is reduced"
     },
     "run": {
       "name": "Wind Runner",
@@ -134,7 +134,7 @@
       "hand": "Right",
       "deck": "Buy",
       "targets": ["Enemy"],
-      "description": "Attack a target enemy four times in a row. Damage is reduced by four points"
+      "description": "Attack a target enemy four times in a row. Damage is lightly reduced."
     }
   },
 
@@ -320,7 +320,7 @@
       "targets": ["Self"],
       "aoe": "Radial",
       "damage type": "Magical",
-      "description": "Channels a storm of icy explosions that deals damage to enemies around her",
+      "description": "Channels a storm of icy explosions that deals damage and slows enemies around her",
       "buffs": {
         "ult": {
           "source": {
@@ -493,7 +493,7 @@
       "deck": "Buy",
       "targets": ["Enemy"],
       "damage type": "Magical",
-      "description": "Damages an enemy unit by 4X it's mana and makes enemy player lose a card of that hero"
+      "description": "Deals damage according to opponent's mana multiplied and makes enemy player lose a card of that hero"
     },
     "spike": {
       "name": "Carapace",
@@ -667,7 +667,7 @@
       "targets": ["Spot"],
       "aoe": "Linear",
       "damage type": "Magical",
-      "description": "Weakens enemy armor by 2 points",
+      "description": "Weakens enemy armor",
       "buff": {
         "description": "Reduced Armor"
       }

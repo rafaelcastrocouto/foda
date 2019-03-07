@@ -9,7 +9,7 @@
     "tango": {
       "name": "Tango",
       "attribute": "Consumível",
-      "targets": ["Aliados", "Heróis", "Árvore"],
+      "targets": ["Aliados", "Heróis", "Árvore", "Local", "Livre"],
       "description": "Cura uma unidade ao longo do tempo. Pode ser usado para destruir uma árvore",
       "buff": {
         "description": "Cura ao longo do tempo"
@@ -341,7 +341,7 @@
       "name": "Adaga de Teleporte",
       "attribute": "Consumable",
       "targets": ["Aliados", "Heróis"],
-      "secondary targets": "Local",
+      "secondary targets": ["Local", "Livre"],
       "description": "Teleporta para um ponto alvo"
     },
     "lens": {

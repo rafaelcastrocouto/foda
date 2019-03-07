@@ -30,6 +30,7 @@ game.card = {
   },
   build: function(data) {
     var card, legend, fieldset, portrait, current, desc;
+    var opt = {summon: data['summon name']};
     if (data.hand == game.data.ui.left)
       data.className += ' left-hand';
     if (data.deck == game.data.ui.temp)
@@ -57,8 +58,10 @@ game.card = {
       data['current damage'] = data.damage;
     }
     desc = $('<div>').addClass('desc').appendTo(fieldset);
-    if (data.dot)
+    if (data.dot) {
       $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(data.dot));
+      opt.dot = true;
+    }
     //if (data.hand)
     //  $('<p>').appendTo(desc).text(data.deck + ' (' + data.hand + ')');
     if (data.price)
@@ -69,10 +72,10 @@ game.card = {
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data['damage type']);
     else if (data.buff && data.buff['damage type'])
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ' + data.buff['damage type']);
-    if (data['cast range']) {
-      if (game.language.current == 'ru') $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + data['cast range']);
-      else if (data['cast range'] == 999) $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + game.map.getRangeStr(data['cast range']));
-      else $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + game.map.getRangeStr(data['cast range']) +' ('+ data['cast range'] + ')');
+    if (data['cast range'] && (!data.aoe || data.aoe != game.data.ui.linear)) {
+      if (game.language.current == 'ru') $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + data['cast range']).addClass('castRange');
+      else if (data['cast range'] == 999) $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + game.map.getRangeStr(data['cast range'])).addClass('castRange');
+      else $('<p>').appendTo(desc).text(game.data.ui['cast range'] + ': ' + game.map.getRangeStr(data['cast range']) +' ('+ data['cast range'] + ')').addClass('castRange');
     }
     if (data.aoe) {
       if (typeof(data['aoe width']) == 'number') $('<p>').appendTo(desc).text(game.data.ui.aoe + ': ' + data.aoe + ' (' + data['aoe range']+'/' + ((data['aoe width']*2)+1) + ')');
@@ -98,12 +101,15 @@ game.card = {
     }
     if (data['bonus cards']) 
       $('<p>').appendTo(desc).text(game.data.ui.bonus + ' ' + game.data.ui.cards + ': ' + data['bonus cards']);
-    if (data.type == game.data.ui.channel && data.channel && data.channel > 1)
+    if (data.type == game.data.ui.channel && data.channel && data.channel > 1) {
       $('<p>').appendTo(desc).text(game.data.ui.channel+' '+game.data.ui.duration + ': ' + data.channel + ' '+ game.data.ui.turns);
+      opt.duration = true;
+    }
     if (data.stun && data.stun > 1) 
       $('<p>').appendTo(desc).text(game.data.ui.stun+' '+game.data.ui.duration + ': ' + data.stun + ' ' + game.data.ui.turns);
     //BUFFS
-    var opt = {summon: data['summon name']};
+    opt = game.card.buffs(data, desc, current, opt);
+    opt.buff = true;
     if (data.buff) {
       if (!opt.summon) opt = game.card.buffs(data.buff, desc, current, opt);
       //else card.selfBuff(data);
@@ -144,6 +150,20 @@ game.card = {
     return card;
   },
   buffs: function (buff, desc, current, opt) {
+    if (buff.damage && opt.buff)
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff.damage));
+    if (buff['cast damage bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['cast damage bonus'])).append('<i> * '+game.data.ui.skills+'</i>');
+    if (buff['damage per kill'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['damage per kill'])).append('<i> * '+game.data.ui.kills+'</i>');
+    if (buff['damage bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ' ' + game.data.ui.bonus + ': ').addClass('dot').append($('<span>').text(buff['damage bonus']));
+    if (buff.dot && !opt.dot)
+      $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(buff.dot));
+    if (buff['unit damage bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['unit damage bonus']));
+    if (buff['damage reduction'])
+      $('<p>').appendTo(desc).text(game.data.ui.damage + ': -').append($('<span>').text(buff['damage reduction']));
     if (buff['hp bonus'])
       $('<p>').addClass('hp').appendTo(current).html('HP <span>' + buff['hp bonus'] + '</span>');
     if (buff['hp per kill'])
@@ -155,27 +175,17 @@ game.card = {
     if (buff.percentage)
       $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + buff.percentage + '%');
     if (buff.lifesteal)
-      $('<p>').appendTo(desc).text(game.data.ui.percentage + ': ' + buff.lifesteal + '%');
+      $('<p>').appendTo(desc).text(game.data.ui.heal +' '+ game.data.ui.damage + ': ' + buff.lifesteal + '%');
     if (buff.multiplier)
       $('<p>').appendTo(desc).text(game.data.ui.multiplier + ': ' + buff.multiplier + 'X');
     if (buff['armor bonus'])
       $('<p>').appendTo(desc).text(game.data.ui.armor + ' ' + game.data.ui.bonus + ': ' + buff['armor bonus']);
+    if (buff['armor reduction'])
+      $('<p>').appendTo(desc).text(game.data.ui.armor + ': -' + buff['armor reduction']);
     if (buff['resistance bonus'])
       $('<p>').appendTo(desc).text(game.data.ui.resistance + ' ' + game.data.ui.bonus + ': ' + buff['resistance bonus']);
     if (buff.heal)
       $('<p>').appendTo(desc).text(game.data.ui.buff + ' ' + game.data.ui.heal + ': ' + buff.heal);
-    if (buff['cast damage bonus'])
-      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['cast damage bonus'])).append('<i> * '+game.data.ui.skills+'</i>');
-    if (buff['damage per kill'])
-      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['damage per kill'])).append('<i> * '+game.data.ui.kills+'</i>');
-    if (buff['damage bonus'])
-      $('<p>').appendTo(desc).text(game.data.ui.damage + ' ' + game.data.ui.bonus + ': ').addClass('dot').append($('<span>').text(buff['damage bonus']));
-    if (buff.dot)
-      $('<p>').appendTo(desc).text(game.data.ui.dot + ': ').addClass('dot').append($('<span>').text(buff.dot));
-    if (buff['unit damage bonus'])
-      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff['unit damage bonus']));
-    if (buff.damage)
-      $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff.damage));
     if (buff.duration && buff.duration > 1 && !opt.duration) {
       $('<p>').appendTo(desc).text(game.data.ui.buff+' '+game.data.ui.duration + ': ' + buff.duration + ' ' + game.data.ui.turns);
       opt.duration = true;

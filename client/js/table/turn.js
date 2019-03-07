@@ -33,7 +33,7 @@ game.turn = {
     game.currentTurnSide = side;
     $('.map .fountain.enemyarea .card.enemy').heal(game.fountainHeal);
     $('.map .fountain.playerarea .card.player').heal(game.fountainHeal);
-    $('.map .jungle .card.heroes').each(game.turn.jungle);
+    $('.map .jungle .card').each(game.turn.jungle);
     $('.table .card').each(function () {
       game.turn.triggerStart(this, side);
     });
@@ -119,9 +119,12 @@ game.turn = {
     }
   },
   jungle: function () {
-    var hero = $(this);
-    var side = hero.side();
-    game.items.addMoney(side, game.jungleFarm);
+    var card = $(this);
+    var side = card.side();
+    var reward = game.jungleFarm;
+    if (card.hasClass('heroes')) reward *= 2;
+    game.items.addMoney(side, reward);
+    game.fx.text(card, 'gold', '$'+reward, 2000);
   },
   triggerStart: function (el, side) {
     var card = $(el);

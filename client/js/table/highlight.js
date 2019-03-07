@@ -233,16 +233,24 @@ game.highlight = {
     });
   },
   freeSpots: function(source, skill) {
-    var range = skill.data('cast range');
-    if (source.data('skill range bonus') && !skill.data('fixed range')) 
-      range += source.data('skill range bonus');
-    var doit = true;
-    if (!(skill.data('summon available') && source.data('summon').hasClass('cycloned'))) {
-      source.around(range, function(neighbor) {
-        if (neighbor.hasClass('free') && !neighbor.hasClasses('block cript')) {
+    if (!source) {
+      $('.map .spot.free').each(function () {
+        var neighbor = $(this);
+        if (!neighbor.hasClasses('block cript')) {
           neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
         }
-      }); 
+      });
+    } else {
+      var range = skill.data('cast range');
+      if (source.data('skill range bonus') && !skill.data('fixed range')) 
+        range += source.data('skill range bonus');
+      if (!(skill.data('summon available') && source.data('summon').hasClass('cycloned'))) {
+        source.around(range, function(neighbor) {
+          if (neighbor.hasClass('free') && !neighbor.hasClasses('block cript')) {
+            neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
+          }
+        }); 
+      }
     }
   },
   radial: function(source, skill) {

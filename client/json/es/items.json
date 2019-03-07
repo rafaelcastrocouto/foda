@@ -9,7 +9,7 @@
     "tango": {
       "name": "Tango",
       "attribute": "Consumible",
-      "targets": ["Aliado", "Héroes", "Árbol"],
+      "targets": ["Aliado", "Héroes", "Árbol", "Lugar", "Libre"],
       "description": "Cura una unidad a lo largo del tiempo. Se puede usar para destruir un árbol",
       "buff": {
         "description": "Curación en el tiempo"
@@ -341,7 +341,7 @@
       "name": "Blink Dagger",
       "attribute": "Consumible",
       "targets": ["Aliado", "Héroes"],
-      "secondary targets": "Lugar",
+      "secondary targets": ["Lugar", "Libre"],
       "description": "Teletransportarse a un punto objetivo"
     },
     "lens": {

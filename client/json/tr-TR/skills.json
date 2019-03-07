@@ -54,6 +54,7 @@
       "description": "Boynu hedef alarak düşmanı vur. Düşman 1/3 HP'nin altındaysa, kafa kesilecek ve kart geri gelecektir!"
     }
   },
+  
   "com": {
     "aoe": {
       "name": "Let'em come",
@@ -63,7 +64,7 @@
       "targets": ["Yer", "Ayn?"],
       "aoe": "Radyal",
       "damage type": "Büyü",
-      "description": "Onlara karşı düşman sayıları döndürür, birim başına 1 hasar veya kahraman başına 3 hasar verir"
+      "description": "Düşman sayılarını onlara karşı döndürür, birim başına bonus hasar verir ve kahraman başına ekstra bonus kazandırır"
     },
     "heal": {
       "name": "Horn Blow",
@@ -73,7 +74,7 @@
       "targets": ["Ayn?", "Müttefik"],
       "description": "Hedef birimi temizler ve bonus hasarı verir ve iyileşir",
       "buff": {
-        "description": "Hasar 6 artar ve dönüş başına 8 sağlık iyileşir"
+        "description": "Hasar arttırıldı ve tur başına iyileşme sağlandı"
       }
     },
     "counter": {
@@ -82,9 +83,9 @@
       "hand": "Sol",
       "deck": "Satın Al",
       "targets": ["Ayn?"],
-      "description": "Saldırıya uğradığında, hemen% 75 yaşam döngüsü ile karşı saldırı yapma şansı var",
+      "description": "Saldırıya uğradığında, hayat çalmakla karşı saldırı olasılığı vardır.",
       "buff": {
-        "description": "Saldırıya uğradığında, hemen% 75 yaşam döngüsü ile karşı saldırı yapma şansı var"
+        "description": "Saldırıya uğradığında, hayat çalmakla karşı saldırı olasılığı vardır."
       }
     },
     "ult": {
@@ -93,7 +94,7 @@
       "hand": "Sağ",
       "deck": "Satın Al",
       "targets": ["Düşman"],
-      "description": "Hedef düşmanla üç saldırı değiş tokuşu yapar. Eğer birisi ölürse, katil 4 kalıcı bonus hasarı kazanıyor"
+      "description": "Hedef düşmanla üç saldırı değiş tokuşu yapar. Eğer birisi ölürse, katil kalıcı bonus hasarı kazanıyor"
     }
   },
 
@@ -114,7 +115,7 @@
       "targets": ["Yer"],
       "aoe": "Doğrusal",
       "damage type": "Büyü",
-      "description": "Düşmana zarar verir ve yol boyunca ağaçları yok eder. Okun vurduğu her düşman için zararı 2 azaltıyor"
+      "description": "Düşmana zarar verir ve yol boyunca ağaçları yok eder. Okun vurduğu her düşman için zararı azaltıyor"
     },
     "run": {
       "name": "Wind Runner",
@@ -492,7 +493,7 @@
       "deck": "Satın Al",
       "targets": ["Düşman"],
       "damage type": "Büyü",
-      "description": "Kalan mana 4X çarpanı ile düşmanın manasını yakar ve düşman kart kaybesine yol açar"
+      "description": "Rakibin manasına göre hasar verir ve düşman oyuncunun o kahramanın kartını kaybetmesine neden olur."
     },
     "spike": {
       "name": "Carapace",

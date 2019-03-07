@@ -9,7 +9,7 @@
     "tango": {
       "name": "Tango",
       "attribute": "tüketilir",
-      "targets": ["Müttefik", "Kahramanlar", "Ağaç"],
+      "targets": ["Müttefik", "Kahramanlar", "Ağaç", "Yer", "Bedava"],
       "description": "Birimi zamanla iyileştirir. Bir ağacı yok etmek için kullanılabilir",
       "buff": {
         "description": "Zamanla iyileşme"
@@ -341,7 +341,7 @@
       "name": "Göz Kırpması Hançeri",
       "attribute": "tüketilir",
       "targets": ["Müttefik", "Kahramanlar"],
-      "secondary targets": "Yer",
+      "secondary targets": ["Yer", "Bedava"],
       "description": "Bir hedef noktaya ışınlanma"
     },
     "lens": {

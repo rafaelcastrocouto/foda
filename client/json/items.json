@@ -9,7 +9,7 @@
     "tango": {
       "name": "Tango",
       "attribute": "Consumable",
-      "targets": ["Ally", "Heroes", "Tree"],
+      "targets": ["Ally", "Heroes", "Tree", "Spot", "Free"],
       "description": "Heals a unit over time. Can be used to destroy a tree",
       "buff": {
         "description": "Healing over time"

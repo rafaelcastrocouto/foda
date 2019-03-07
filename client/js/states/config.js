@@ -15,7 +15,7 @@ game.states.config = {
     width: 13,
     height: 8,
     tower: 'B7',
-    trees: 'A2 A3 A5 B4 D8 J8'
+    trees: 'A2 A3 A4 B3 D8 J8'
   },
   build: function () {
     this.buttonbox = $('<div>').addClass('buttonbox');
