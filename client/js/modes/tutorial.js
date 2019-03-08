@@ -54,7 +54,7 @@ game.tutorial = {
       $(arr).each(function () {
         var letter = $('<span>'+this+'</span>').css({opacity: 0});
         node.append(letter);
-        setTimeout(function () { this.css({opacity: 1}); }.bind(letter), (i + 1) * 50);
+        setTimeout(function () { this.css({opacity: 1}); }.bind(letter), (i + 1) * 20);
         i++;
       });
     });

@@ -126,113 +126,6 @@
   }
 }
 
-.map .projectile {
-  border-radius: 50%;
-  transition: all 0.4s linear;
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background: white;
-  transform: translateZ(60px);
-  top: 0;
-  left: 0;
-}
-
-.projectile.units.ranged {
-  background: #54a078;
-  width: 20px;
-  height: 30px;
-  box-shadow: inset 0 -4px 0 4px #b9e8d0;
-}
-.projectile.units.ranged.enemy {
-  background: #dc5b19;
-  box-shadow: inset 0 -4px 0 4px #f7a55b;
-}
-.projectile.cm {
-  background: white;
-  width: 20px;
-  height: 20px;
-  box-shadow: inset -2px 1px 0 4px #6ad0d2;
-}
-.projectile.cat {
-  width: 8px;
-  height: 60px;
-  margin-left: 10px;
-}
-.projectile.en {
-  width: 8px;
-  height: 100px;
-  background: #8fe61b;
-}
-.projectile.en.ult {
-  box-shadow: 0 -10px 10px 5px white;
-}
-.projectile.ld {
-  background-color: transparent;
-  box-shadow: 0 0 0 4px #ccc, inset 0 0 0 8px tan;
-  margin-left: 8px;
-}
-.projectile.kotl {
-  width: 10px;
-  height: 10px;
-  box-shadow: 0 0 20px 12px white;
-  margin-left: 8px;
-}
-.projectile.lina,
-.projectile.towers.enemy {
-  margin-left: 10px;
-  background-color: transparent;
-  width: 34px;
-  height: 50px;
-  background-image: url("../img/fx/lina/passive.png");
-  animation: lina-passive-sprite 0.8s steps(8) infinite;
-}
-.projectile.wind {
-  width: 8px;
-  height: 60px;
-  background: #f4deb1;
-}
-.projectile.venge {
-  width: 70px;
-  height: 60px;
-  background: transparent;
-  box-shadow: 0 15px 0 0 #ed7edc;
-  margin-left: 8px;
-}
-.projectile.wk {
-  background-color: transparent;
-}
-.projectile.wk:before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 34px;
-  height: 50px;
-  transform: scale(1.4);
-  background-image: url("../img/fx/wk/stun.png");
-  animation: lina-passive-sprite 0.8s steps(8) infinite;
-}
-.projectile.wk:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  left: 2px;
-  top: 20px;
-  background-image: url("../img/fx/wk/skull.png");
-}
-.projectile.catapult {
-  background: #7d5d3f;
-}
-.projectile.towers.player {
-  width: 24px;
-  height: 40px;
-  background: #6cffb7;
-  box-shadow: inset 0 -6px 0 4px white;
-}
-
-
 .ultfx {
   transform: translate3d(0, -350px, 400px) scale(0.5);
   transform-style: preserve-3d;
@@ -1287,6 +1180,16 @@
   }
 }
 
+.map .windrun {
+  opacity: 0.6;
+  animation: wind-run 1.1s infinite;
+}
+
+@keyframes wind-run {
+  50% {
+    opacity: 0.8;
+  }
+}
 
 .map .fx.wind-arrow {
   transform: translate3d(90px,500px,10px) scale(4);

@@ -85,14 +85,14 @@ game.states.table = {
   backClick: function () {
     //library only
     game.audio.stopSong();
-    game.states.table.clear();
+    game.states.table.clear(true);
     game.states.changeTo('choose');
     return false;
   },
-  clear: function () {
+  clear: function (back) {
     if (this.selectedCard) this.selectedCard.removeClass('flip');
     game.states.table.setup = false;
-    game.matchClear();
+    if (!back) game.matchClear();
     game.card.clearSelection();
     game.fx.clear();
     game.audio.stopSong();

@@ -44,7 +44,7 @@ game.skills.wind = {
   run: {
     cast: function (skill, source) {
       var buff = source.selfBuff(skill);
-      source.on('attacked.wind-run', this.attacked);
+      source.on('attacked.wind-run', this.attacked).addClass('windrun');
       buff.on('expire', this.expire);
     },
     attacked: function (event, eventdata) {
@@ -53,7 +53,7 @@ game.skills.wind = {
     },
     expire: function (event, eventdata) {
       var target = eventdata.target;
-      target.off('attacked.wind-run');
+      target.off('attacked.wind-run').removeClass('windrun');
     }
   },
   ult: {

@@ -27,7 +27,7 @@ game.states.config = {
     this.el.append(this.buttonbox);
   },
   start: function () {
-    game.message.text('Config');
+    game.message.text(game.player.name+' Config '+game.mode);
     this.title.addClass('show');
   },
   enable: function () { //console.log('en')

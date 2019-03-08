@@ -45,6 +45,10 @@ game.fx = {
     },
     wind: {
       arrow: ['arrow']
+    },
+    venge: {
+      corruption: ['corruption'],
+      passive: ['passive']
     }
   },
   build: function() {

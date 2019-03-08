@@ -2,7 +2,10 @@ game.skills.venge = {
   stun: {
     cast: function (skill, source, target) {
       if (!target.hasClass('bkb')) source.addStun(target, skill);
-      source.damage(skill.data('damage'), target, skill.data('damage type'));      
+      source.damage(skill.data('damage'), target, skill.data('damage type'));
+      setTimeout(function () { 
+        game.fx.projectile(source, target, 'vengestun');
+      }, 250);
     }
   },
   corruption: {

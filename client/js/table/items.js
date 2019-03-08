@@ -13,7 +13,7 @@ game.items = {
           card.addClass('player');
           card.on('mousedown touchstart', game.card.select).addClass('buy');
           data[i] = card.data();
-        });
+        });/*
         game.enemyItemsDeck = deck.clone().data(deck.data()).addClass('enemy hidden');
         game.enemyItemsDeck.appendTo(game.items.shop);
         var cards = [];
@@ -22,7 +22,7 @@ game.items = {
           card.on('mousedown touchstart', game.card.select).data(data[i]);
           cards.push(card);
         });
-        game.enemyItemsDeck.data('cards', cards);
+        game.enemyItemsDeck.data('cards', cards);*/
         deck.addClass('player');
       }
     });
@@ -64,9 +64,9 @@ game.items = {
     if (game.mode == 'local') side = game.currentTurnSide;
     if (game.canPlay() || force) {
       if (side) {
-        game[side+'ItemsDeck'].removeClass('hidden');
-        game[game.opponent(side)+'ItemsDeck'].addClass('hidden');
-        $.each(game[side+'ItemsDeck'].data('cards'), function(i, card) {
+        //game[side+'ItemsDeck'].removeClass('hidden');
+        //game[game.opponent(side)+'ItemsDeck'].addClass('hidden');
+        $.each(game.playerItemsDeck.data('cards'), function(i, card) {
           if (card.data('price') > game[side].money) card.addClass('expensive');
           else card.removeClass('expensive');
         });
@@ -125,13 +125,13 @@ game.items = {
     if (game.mode == 'tutorial') game.tutorial.buyItem();
   },
   newCard: function (side, card) { //console.log('new item', side, card);
-    card.removeClass('buy expensive');
+    //card.removeClass('buy expensive');
     for (var i=0; i<(card.data('cards') || 1); i++) {
-      var item = game.items.clone(card).removeClass('selected');
+      var item = game.items.clone(card).removeClass('selected buy expensive');
       item.appendTo(game[side].skills.sidehand);
       if (game.mode !== 'local' && side == 'enemy') item.addClass('flipped');
     }
-    card.addClass('hidden');
+    //card.addClass('hidden');
   },
   sellItem: function () {
     var side = game.selectedCard.side();
@@ -154,16 +154,19 @@ game.items = {
       }
     },
     tango: {
-      cast: function (skill, target) {
-        if (target.hasClass('trees')) {
-          game.tree.destroy(target);
-        } else if (target.hasClasses('spot free')) {
+      cast: function (skill, target) {            //console.log('target',target)
+        if (target.hasAllClasses('spot free')) { //console.log('plant')
           game.tree.build(target.attr('id'), skill.side() == 'player' ? 'rad' : 'dire');
         } else {
-          var buff = target.selfBuff(skill);
-          target.heal(buff.data('heal'));
-          buff.on('buffcount', game.items.healing.tango.buffcount);
-          buff.on('expire', game.items.healing.tango.buffcount);
+          target = $('.card', target);
+          if (target.hasClass('trees')) {
+            game.tree.destroy(target);        //console.log('destroy')
+          } else {                             // console.log('heal')
+            var buff = target.selfBuff(skill);
+            target.heal(buff.data('heal'));
+            buff.on('buffcount', game.items.healing.tango.buffcount);
+            buff.on('expire', game.items.healing.tango.buffcount);
+          }
         }
       },
       buffcount: function (event, eventdata) {

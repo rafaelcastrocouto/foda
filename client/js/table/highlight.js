@@ -116,7 +116,7 @@ game.highlight = {
         game.highlight.channelStop(event, skill, source);
       else if (targets) {
         if (targets.indexOf(game.data.ui.tree) >= 0)
-          game.highlight.tree(skill.side());
+          game.highlight.tree();
         if (targets.indexOf(game.data.ui.self) >= 0)
           game.highlight.self(source);
         if (targets.indexOf(game.data.ui.ally) >= 0)
@@ -154,9 +154,10 @@ game.highlight = {
     }
   },
   tree: function (side) {
-    var t = 'rad';
-    if (side == 'enemy') t = 'dire';
-    $('.map .card.trees.'+t).addClass('casttarget').on('mouseup.highlight', game.player.cast);
+    var t = '';
+    if (side == 'player') t = '.rad';
+    if (side == 'enemy') t = '.dire';
+    $('.map .spot:not(.enemyarea) .card.trees'+t).addClass('casttarget').on('mouseup.highlight', game.player.cast);
   },
   self: function(source) {
     if (!source.hasClass('cycloned')) source.addClass('casttarget').on('mouseup.highlight', game.player.cast);
@@ -236,7 +237,7 @@ game.highlight = {
     if (!source) {
       $('.map .spot.free').each(function () {
         var neighbor = $(this);
-        if (!neighbor.hasClasses('block cript')) {
+        if (!neighbor.hasClasses('block cript enemyarea jungle')) {
           neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
         }
       });
