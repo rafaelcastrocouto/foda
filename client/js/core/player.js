@@ -8,14 +8,17 @@ game.player = {
       name: 'heroes',
       filter: game.player.picks,
       cb: function(deck) {
+        var x, y;
         deck.addClass('cemitery player').appendTo(game.states.table.player).hide();
         if (game.mode == 'library') {
           var card = deck.data('cards')[0];
           card.addClass('player').on('mousedown touchstart', game.card.select);
-          card.place(game.map.toPosition(6, 4));
+          x = parseInt(game.states.config[game.size].width / 2);
+          y = parseInt(game.states.config[game.size].height / 2);
+          card.place(game.map.toPosition(x, y));
         } else {
-          var x = game.player.startX;
-          var y = game.height - 1;
+          x = game.player.startX;
+          y = game.height - 1;
           $.each(deck.data('cards'), function(i, card) {
             var p = game.player.picks.indexOf(card.data('hero'));
             card.addClass('player').on('mousedown touchstart', game.card.select);

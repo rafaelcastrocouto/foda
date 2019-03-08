@@ -120,6 +120,8 @@ game.states.vs = {
   enemyPicks: function () {
     var picks;
     if (game.mode == 'library') {
+      if (game.size == 's1v1') return [game.library.hero];
+      if (game.size == 's3v3') return [ 'ld', 'am', 'wind' ];
       return [ 'lina', 'pud', 'wk', 'com', 'cm' ];
     }
     if (game.mode == 'tutorial') {

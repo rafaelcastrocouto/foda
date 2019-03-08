@@ -83,7 +83,7 @@ game.history = {
   },
   match: function(mode, recovering) {
     game.setMode(mode, recovering);
-    game.setSize(game.history.size);
+    game.states.config.size(game.history.size);
     game.seed = game.history.seed;
     game.setData('seed', game.seed);
     game.states.vs.buildMap();

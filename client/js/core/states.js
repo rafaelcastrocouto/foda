@@ -27,7 +27,7 @@ game.states = {
       state !== game.currentState
     );
   },
-  changeTo: function (state, recover) {
+  changeTo: function (state, recover) { //console.log(state)
     if (game.states.validState(state) && !game.states.changing) {
       game.clearTimeouts();
       game.states.changing = true;

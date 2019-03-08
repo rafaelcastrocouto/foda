@@ -166,7 +166,7 @@ http.createServer(function(request, response) {
           send(response, JSON.stringify({lang: request.headers['accept-language'] || ''})); 
           return;
         case 'waiting':
-          send(response, waiting);
+          send(response, JSON.stringify(waiting));
           return;
         case 'rank':
           send(response, JSON.stringify(mongo.rank));

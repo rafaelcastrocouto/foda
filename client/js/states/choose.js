@@ -21,6 +21,16 @@ game.states.choose = {
     game.audio.loopSong('SneakyAdventure');
     var hero = game.getData('choose');
     this.sort();
+    $('.slot').removeClass('available');
+    $('.slot:nth-child(1)').addClass('available');
+    if (game.size == 's3v3' || game.size == 's5v5') {
+      $('.slot:nth-child(2)').addClass('available');
+      $('.slot:nth-child(3)').addClass('available');
+    }
+    if (game.size == 's5v5') {
+      $('.slot:nth-child(4)').addClass('available');
+      $('.slot:nth-child(5)').addClass('available');
+    }
     if (game.mode != 'library') this.selectFirst('force');
     if (game.mode && game[game.mode].chooseStart) game[game.mode].chooseStart(hero);
   },
@@ -224,22 +234,22 @@ game.states.choose = {
   },
   backClick: function () {
     if (!$(this).attr('disabled')) {
-      game.setData('mode', false);
       if (game.mode == 'online') {
         game.online.backClick();
       } else if (game.mode == 'single') {
         game.states.changeTo('campaign');
-      } else if (game.mode == 'local') {
+      } else if (game.mode == 'local' || game.mode == 'library') {
+        var mode = game.mode;
         game.clear();
-        game.setMode('local');
+        game.setMode(mode);
         game.states.changeTo('config');
-      } else game.states.choose.toMenu();
+      } else {
+        game.clear();
+        game.states.changeTo('menu');
+      }
+      game.setData('mode', false);
     }
     return false;
-  },
-  toMenu: function () {
-    game.clear();
-    game.states.changeTo('menu');
   },
   clear: function (fast) {
     $('.slot .card.skills').appendTo(game.library.skills);

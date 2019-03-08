@@ -34,19 +34,18 @@ game.states.menu = {
     });
     this.online = $('<div>').addClass('online icon').appendTo(this.icons).attr({title: game.data.ui.chooseonline}).append($('<span>').text(game.data.ui.online)).on('mouseup touchend', function () {
       game.setMode('online');
-      game.states.changeTo('choose');
+      game.online.check('first');
     });
     if (!game.getData('tutorial')) this.tutorial.addClass('highlight');
     else if (!game.getData('campaign')) this.campaign.addClass('highlight');
     else this.online.addClass('highlight');
     this.local = $('<div>').addClass('local icon').appendTo(this.icons).attr({ title: game.data.ui.chooselocal}).append($('<span>').text(game.data.ui.local)).on('mouseup touchend', function () {
       game.setMode('local');
-      //game.states.changeTo('choose');
       game.states.changeTo('config');
     });
     this.library = $('<div>').addClass('library icon').appendTo(this.icons).attr({ title: game.data.ui.chooselibrary}).append($('<span>').text(game.data.ui.library)).on('mouseup touchend', function () {
       game.setMode('library');
-      game.states.changeTo('choose');
+      game.states.changeTo('config');
     });
     this.credits = $('<a>').addClass('credits icon').appendTo(this.icons).attr({title: game.data.ui.choosecredits}).append($('<span>').text(game.data.ui.credits)).on('mouseup touchend', function () {
       var creditsbox = $('<div>').addClass('credits box');

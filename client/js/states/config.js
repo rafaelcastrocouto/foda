@@ -20,32 +20,50 @@ game.states.config = {
   build: function () {
     this.buttonbox = $('<div>').addClass('buttonbox');
     this.title = $('<h1>').addClass('title').text(game.data.ui.choose).appendTo(this.el);
-    this.one = $('<div>').addClass('one button').text('1v1').on('mouseup touchend', this.toChoose).appendTo(this.buttonbox);
-    this.three = $('<div>').addClass('three button').text('3v3').on('mouseup touchend', this.toChoose).appendTo(this.buttonbox);
-    this.five = $('<div>').addClass('five button').text('5v5').on('mouseup touchend', this.toChoose).appendTo(this.buttonbox);
+    this.one = $('<div>').addClass('one button clickSize').text('1v1').on('mouseup touchend', this.clickSize).appendTo(this.buttonbox);
+    this.three = $('<div>').addClass('three button clickSize').text('3v3').on('mouseup touchend', this.clickSize).appendTo(this.buttonbox);
+    this.five = $('<div>').addClass('five button clickSize').text('5v5').on('mouseup touchend', this.clickSize).appendTo(this.buttonbox);
     this.back = $('<div>').addClass('back button').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
     this.el.append(this.buttonbox);
   },
   start: function () {
+    game.message.text('Config');
     this.title.addClass('show');
   },
-  toChoose: function () {
+  enable: function () { //console.log('en')
+    $('.config .button.clickSize').attr('disabled', false);
+  },
+  disable: function () {// console.trace('dis')
+    $('.config .button.clickSize').attr('disabled', true);
+  },
+  validSizes: ['s1v1', 's3v3', 's5v5'],
+  size: function(size, recover) {
+    if (size && game.states.config.validSizes.indexOf(size) >= 0) {
+      game.size = size;
+      game.setData('size', size);
+      game.states.config.clearSize();
+      game.container.addClass(size);
+    }
+  },
+  clearSize: function () {
+    game.container.removeClass(game.states.config.validSizes.join(' '));
+  },
+  clickSize: function () {
     var bt = $(this);
-    if (bt.hasClass('one')) {
-      game.setSize('s1v1');
-    } else if (bt.hasClass('three')) {
-      game.setSize('s3v3');
-    } else game.setSize('s5v5');
-    game.states.changeTo('choose');
+    if (!bt.attr('disabled')) {
+      if (bt.hasClass('one')) {
+        game.states.config.size('s1v1');
+      } else if (bt.hasClass('three')) {
+        game.states.config.size('s3v3');
+      } else game.states.config.size('s5v5');
+      if (game.mode== 'online') game.online.start();
+      game.states.changeTo('choose');
+    }
   },
   backClick: function () {
     if (!$(this).attr('disabled')) {
-      game.setData('mode', false);
-      if (game.mode == 'online') {
-        game.online.backClick();
-      } if (game.mode == 'single') {
-        game.states.changeTo('campaign');
-      } else game.states.choose.toMenu();
+      game.clear();
+      game.states.changeTo('menu');
     }
     return false;
   },

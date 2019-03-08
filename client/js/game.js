@@ -130,17 +130,8 @@ var game = {
       game[mode].build(recover);
     }
   },
-  validSizes: ['s1v1', 's3v3', 's5v5'],
-  setSize: function(size, recover) {
-    if (size && game.validSizes.indexOf(size) >= 0) {
-      game.size = size;
-      game.setData('size', size);
-      game.container.removeClass(game.validSizes.join(' '));
-      game.container.addClass(size);
-    }
-  },
   matchClear: function () {
-    game.container.removeClass(game.validSizes.join(' '));
+    game.states.config.clearSize();
     game.size = 's5v5';
     game.recovering = false;
     game.player.picks = false;

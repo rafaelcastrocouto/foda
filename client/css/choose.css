@@ -93,17 +93,23 @@
 }
 
 .library .libhide {
-  display: none;
+  display: none !important;
 }
 .s1v1 .slot:nth-child(2),
 .s1v1 .slot:nth-child(3),
 .s1v1 .slot:nth-child(4),
-.s1v1 .slot:nth-child(5) {
-  display: none;
-}
+.s1v1 .slot:nth-child(5),
 .s3v3 .slot:nth-child(4),
 .s3v3 .slot:nth-child(5) {
   display: none;
+}
+.library.s1v1 .slot:nth-child(2),
+.library.s1v1 .slot:nth-child(3),
+.library.s1v1 .slot:nth-child(4),
+.library.s1v1 .slot:nth-child(5),
+.library.s3v3 .slot:nth-child(4),
+.library.s3v3 .slot:nth-child(5) {
+  display: block;
 }
 
 .s1v1 .pickedbox {
@@ -112,6 +118,14 @@
 }
 .s3v3 .pickedbox {
   margin-left: 120px;
+}
+
+.library.s1v1 .pickedbox {
+  width: auto;
+  margin-left: 0px;
+}
+.library.s3v3 .pickedbox {
+  margin-left: 0px;
 }
 
 .library .choose .slot {
