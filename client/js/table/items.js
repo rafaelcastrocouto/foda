@@ -30,7 +30,7 @@ game.items = {
   },
   clone: function (cardEl) {
     var card = $(cardEl);
-    return card.clone().data(card.data()).on('mousedown touchstart', game.card.select);
+    if (card.length) return card.clone().data(card.data()).on('mousedown touchstart', game.card.select);
   },
   enableShop: function () {
     game.items.shopEnabled = true;

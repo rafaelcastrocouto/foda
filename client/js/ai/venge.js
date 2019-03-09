@@ -117,9 +117,9 @@ game.heroesAI.venge = {
         spot.data('ai', JSON.stringify(spotData));
         var cardInRange = $('.card.'+card.opponent(), spot);
         if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
-          var cardInRangeData = cardInRange.data('ai');
+          var cardInRangeData = JSON.parse(cardInRange.data('ai'));
           cardInRangeData.strats.dodge += 30;
-          cardInRange.data('ai', cardInRangeData);
+          cardInRange.data('ai', JSON.stringify(cardInRangeData));
         }
       });
     });

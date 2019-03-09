@@ -233,7 +233,7 @@ game.enemy = {
   },
   buyItem: function (item, itemtype) {
     var card = $('.items.'+game.currentTurnSide+' .'+item+'.'+itemtype);
-    game.items.newCard(game.currentTurnSide,card);
+    if (card.length) game.items.newCard(game.currentTurnSide,card);
     if (game.currentTurnSide == 'player') {
       game.items.addMoney(game.currentTurnSide, -card.data('price'));
       card.data('buyTurn', game.totalTurns);

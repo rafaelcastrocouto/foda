@@ -43,7 +43,7 @@ game.skills.axe = {
     expire: function (event, eventdata) {
       var source = eventdata.source;
       var buff = eventdata.buff;
-      if (!source) source = buff.data('source');
+      if (!source) source = $('#'+buff.data('source'));
       source.removeBuff('axe-enrage');
       source.off('kill.axe-enrage');
     }

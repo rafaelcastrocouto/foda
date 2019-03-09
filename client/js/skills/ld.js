@@ -165,21 +165,23 @@ game.skills.ld = {
       target.reselect();
     },
     scare: function (source, spot) {
-      var opponent = source.opponent();
-      var target = spot.find('.card.' + opponent);
-      if (spot && target.length && !target.hasClasses('ghost bkb cycloned rooted stunned disabled')) {
-        // console.log(target)
-        var x = game.map.getX(spot),
-            y = game.map.getY(spot);
-        var ny = 1;
-        if (opponent === 'enemy') ny = -1;
-        var upSpot = game.map.getSpot(x, y + ny);
-        if (upSpot && upSpot.hasClass('free')) {
-          target.stopChanneling();
-          target.removeInvisibility();
-          target.move(upSpot);
-          target.parent().addClass('free');
-          target.shake();
+      if (spot && spot.length) {
+        var opponent = source.opponent();
+        var target = spot.find('.card.' + opponent);
+        if (target.length && !target.hasClasses('ghost bkb cycloned rooted stunned disabled')) {
+          // console.log(target)
+          var x = game.map.getX(spot),
+              y = game.map.getY(spot);
+          var ny = 1;
+          if (opponent === 'enemy') ny = -1;
+          var upSpot = game.map.getSpot(x, y + ny);
+          if (upSpot && upSpot.hasClass('free')) {
+            target.stopChanneling();
+            target.removeInvisibility();
+            target.move(upSpot);
+            target.parent().addClass('free');
+            target.shake();
+          }
         }
       }
     }
