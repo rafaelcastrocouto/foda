@@ -8,10 +8,11 @@ game.player = {
       name: 'heroes',
       filter: game.player.picks,
       cb: function(deck) {
-        var x, y;
+        var x, y, spawn;
+        var cards = JSON.parse(deck.data('cards'));
         deck.addClass('cemitery player').appendTo(game.states.table.player).hide();
         if (game.mode == 'library') {
-          var card = deck.data('cards')[0];
+          var card = $('#'+cards[0]);
           card.addClass('player').on('mousedown touchstart', game.card.select);
           x = parseInt(game.states.config[game.size].width / 2);
           y = parseInt(game.states.config[game.size].height / 2);
@@ -19,7 +20,8 @@ game.player = {
         } else {
           x = game.player.startX;
           y = game.height - 1;
-          $.each(deck.data('cards'), function(i, card) {
+          $.each(cards, function(i, cardId) {
+            var card = $('#'+cardId);
             var p = game.player.picks.indexOf(card.data('hero'));
             card.addClass('player').on('mousedown touchstart', game.card.select);
             card.place(game.map.toPosition(x + p, y));
@@ -62,12 +64,12 @@ game.player = {
     var target = $(this);
     var skill = game.selectedCard;
     var hero = skill.data('hero');
-    var skillid = skill.data('skill');
+    var label = skill.data('label');
     var to = target.getPosition();
-    if (skill.canPlay() && hero && skillid && !skill.hasClass('casted')) {
+    if (skill.canPlay() && hero && label && !skill.hasClass('casted')) {
       skill.addClass('casted');
       skill.passive(target);
-      var move = 'P:' + to + ':' + skillid + ':' + hero;
+      var move = 'P:' + to + ':' + hero + ':' + label;
       game.history.saveMove(move);
       if (game.mode == 'online')
         game.currentMoves.push(move);
@@ -78,11 +80,11 @@ game.player = {
     var target = $(this);
     var skill = game.selectedCard;
     var hero = skill.data('hero');
-    var skillid = skill.data('skill');
+    var label = skill.data('label');
     var to = target.getPosition();
-    if (skill.canPlay() && hero && skillid) {
+    if (skill.canPlay() && hero && label) {
       skill.toggle(target);
-      var move = 'T:' + to + ':' + skillid + ':' + hero;
+      var move = 'T:' + to + ':' + hero + ':' + label;
       game.history.saveMove(move);
       if (game.mode == 'online')
         game.currentMoves.push(move);
@@ -99,13 +101,13 @@ game.player = {
     var from = source.getPosition();
     var to = target.getPosition();
     var hero = skill.data('hero');
-    var skillid = skill.data('skill');
-    var sec = (skill.data('cast select') && !skill.data('source'));
+    var label = skill.data('label');
+    var sec = skill.data('secondary targets');
     if (skill.hasClass('items')) {
       hero = skill.data('itemtype');
-      skillid = skill.data('item');
+      label = skill.data('item');
     }
-    if (skill.canPlay() && hero && skillid && from && to && !skill.hasClass('casted')) {
+    if (skill.canPlay() && hero && label && from && to && !skill.hasClass('casted')) {
       if (!sec) {
         skill.addClass('casted');
         game.lockHighlight = true;
@@ -115,7 +117,7 @@ game.player = {
         target.removeClass('draggable');
       }
       if (!sec) {
-        var move = 'C:' + from + ':' + to + ':' + skillid + ':' + hero;
+        var move = 'C:' + from + ':' + to + ':' + hero + ':' + label;
         game.history.saveMove(move);
         if (game.mode == 'online')
           game.currentMoves.push(move);
@@ -136,7 +138,7 @@ game.player = {
     var target = $(this);
     var to = target.getPosition();
     var card = game.selectedCard;
-    var creep = card.data('id');
+    var creep = card.data('label');
     var move = 'S:' + to + ':' + creep;
     if (card.canPlay()) {
       game.history.saveMove(move);
@@ -147,12 +149,12 @@ game.player = {
   },
   discard: function(skill) {
     var hero = skill.data('hero');
-    var skillid = skill.data('skill');
+    var label = skill.data('label');
     if (skill.hasClass('items')) {
       hero = skill.data('itemtype');
-      skillid = skill.data('item');
+      label = skill.data('item');
     }
-    var move = 'D:' + skillid + ':' + hero;
+    var move = 'D:' + hero + ':' + label;
     game.history.saveMove(move);
     if (game.mode == 'online') 
       game.currentMoves.push(move);

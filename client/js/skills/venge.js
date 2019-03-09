@@ -24,16 +24,16 @@ game.skills.venge = {
     passive: function (skill, source) {
       source.on('death.venge-aura', this.death);
       source.on('reborn.venge-aura', this.reborn);
-      source.data('venge-aura', skill);
+      source.data('venge-aura', skill.attr('id'));
     },
     death: function (event, eventdata) {
       var target = eventdata.target;
       var side = target.side();
-      var skill = target.data('venge-aura');
-      var buff = skill.data('buff');
+      var skill = $('#'+target.data('venge-aura'));
+      var buff = JSON.parse(skill.data('buff'));
       game.timeout(200, function () {
         buff['damage bonus'] *= 2;
-        skill.data('buff', buff);
+        skill.data('buff', JSON.stringify(buff));
         $('.table .card.'+side+':not(.skills)').each(function () {
           var ally = $(this);
           target.addBuff(ally, skill);
@@ -43,14 +43,14 @@ game.skills.venge = {
     reborn: function (event, eventdata) {
       var target = eventdata.target;
       var side = target.side();
-      var skill = target.data('venge-aura');
+      var skill = $('#'+target.data('venge-aura'));
       $('.table .card.'+side+':not(.skills)').each(function () {
         var ally = $(this);
         ally.removeBuff('venge-aura');
       });
-      var buff = skill.data('buff');
+      var buff = JSON.parse(skill.data('buff'));
       buff['damage bonus'] /= 2;
-      skill.data('buff', buff);
+      skill.data('buff', JSON.stringify(buff));
     }
   },
   ult: {

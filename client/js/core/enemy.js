@@ -10,7 +10,8 @@ game.enemy = {
         deck.addClass('cemitery enemy').hide().appendTo(game.states.table.enemy);
         var x = game.enemy.startX;
         var y = game.height - 1;
-        $.each(deck.data('cards'), function(i, card) {
+        $.each(JSON.parse(deck.data('cards')), function(i, cardId) {
+          var card = $('#'+cardId);
           var p = game.enemy.picks.indexOf(card.data('hero'));
           card.addClass('enemy').on('mousedown touchstart', game.card.select);
           card.place(game.map.mirrorPosition(game.map.toPosition(x + p, y)));
@@ -60,8 +61,8 @@ game.enemy = {
           game.enemy.attack(from, to);
         }
         if (move[0] === 'C') { // CAST
-          skillid = move[3];
-          hero = move[4];
+          hero = move[3];
+          skillid = move[4];
           game.enemy.cast(from, to, hero, skillid);
           game.enemy.moveAnimation = 2000;
           if (skillid == 'ult') game.enemy.moveAnimation = 3000;
@@ -69,15 +70,15 @@ game.enemy = {
         if (move[0] === 'P') { // PASSIVE
           if (game.recovering) to = move[1];
           else to = game.map.mirrorPosition(move[1]);
-          skillid = move[2];
-          hero = move[3];
+          hero = move[2];
+          skillid = move[3];
           game.enemy.passive(to, hero, skillid);
         }
         if (move[0] === 'T') { // TOGGLE
           if (game.recovering) to = move[1];
           else to = game.map.mirrorPosition(move[1]);
-          skillid = move[2];
-          hero = move[3];
+          hero = move[2];
+          skillid = move[3];
           game.enemy.toggle(to, hero, skillid);
         }
         if (move[0] === 'S') { // SUMMON
@@ -87,8 +88,8 @@ game.enemy = {
           game.enemy.summonCreepMove(to, creep);
         }
         if (move[0] === 'D') { // DISCARD
-          skillid = move[1];
-          hero = move[2];
+          hero = move[1];
+          skillid = move[2];
           game.enemy.discardMove(hero, skillid);
           game.enemy.moveAnimation = 600;
         }
@@ -146,10 +147,11 @@ game.enemy = {
     var s = hero + '-' + skillid;
     var skill = $('.'+game.currentTurnSide+'decks .hand .skills.' + s + ', .'+game.currentTurnSide+'decks .sidehand .skills.' + s).first();
     if (source.hasClass('towers')) //item
-      skill = $('.table .items.' + hero + '.' + skillid).first();    
+      skill = $('.table .items.' + hero + '.' + skillid).first();
     var targets = skill.data('targets');
     var card;
     if (targets) {
+      targets = JSON.parse(targets);
       if (targets.indexOf(game.data.ui.enemy) >= 0 || targets.indexOf(game.data.ui.ally) >= 0 || targets.indexOf(game.data.ui.self) >= 0) {
         card = $('#' + to + ' .card');
         if (card.length)
@@ -227,12 +229,7 @@ game.enemy = {
   stopChanneling: function(pos) {
     //console.log(pos)
     var card = $('#' + pos + ' .card');
-    if (card.length) {
-      if (card.data('illuminate-ghost'))
-        card.data('illuminate-ghost').stopChanneling();
-      else
-        card.stopChanneling();
-    }
+    if (card.length) card.stopChanneling();
   },
   buyItem: function (item, itemtype) {
     var card = $('.items.'+game.currentTurnSide+' .'+item+'.'+itemtype);

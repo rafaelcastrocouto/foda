@@ -29,8 +29,8 @@ game.heroesAI.kotl = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'illuminate',
-            card: illuminate.first(),
-            target: spot
+            card: illuminate.first().attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -52,8 +52,8 @@ game.heroesAI.kotl = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'blind',
-            card: blind,
-            target: spot
+            card: blind.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -64,8 +64,8 @@ game.heroesAI.kotl = {
         cardData['cast-strats'].push({
           priority: 50,
           skill: 'mana',
-          card: mana,
-          target: card
+          card: mana.attr('id'),
+          target: card.attr('id')
         });
       }
     }
@@ -86,13 +86,13 @@ game.heroesAI.kotl = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'ult',
-            card: ult,
-            target: spot
+            card: ult.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var illuminate = game.data.skills.kotl.illuminate;
@@ -101,28 +101,28 @@ game.heroesAI.kotl = {
     var channeling = card.hasClass('channeling');
     card.around(1, function (dirSpot) {
       card.inLine(dirSpot, range, width, function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 5;
         if (channeling) spotData.priority -= 25;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
         var cardInRange = $('.card.'+card.opponent(), spot);
         if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
-          var cardInRangeData = cardInRange.data('ai');
+          var cardInRangeData = JSON.parse(cardInRange.data('ai'));
           cardInRangeData.strats.dodge += 10;
           if (channeling) cardInRangeData.strats.dodge += 15;
-          cardInRange.data('ai', cardInRangeData);
+          cardInRange.data('ai', JSON.stringify(cardInRangeData));
         }
       });
     });
     $('.map .card.'+card.opponent()).each(function (i, el) {
       var opponent = $(el);
-      var opponentData = opponent.data('ai');
+      var opponentData = JSON.parse(opponent.data('ai'));
       if (opponent.hasBuff('kotl-blind')) {
         opponentData.strats.siege += 30;
       }
-      opponent.data('ai', opponentData);
+      opponent.data('ai', JSON.stringify(opponentData));
     });
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

@@ -11,7 +11,7 @@ game.skills.wk = {
       }.bind(this, source, target, skill));
     },
     turnend: function (source, target, skill) {
-      var buff = skill.data('buff');
+      var buff = JSON.parse(skill.data('buff'));
       var count = target.data('wk-dot-count');
       target.data('wk-dot-count', count - 1);
       if (count === 2) {
@@ -75,7 +75,7 @@ game.skills.wk = {
     passive: function (skill, source) {
       source.selfBuff(skill, 'ult-source');
       source.on('death.wk-ult', this.death);
-      source.data('wk-ult', skill);
+      source.data('wk-ult', skill.attr('id'));
     },
     death: function (event, eventdata) {
       var wk = eventdata.target;
@@ -83,12 +83,12 @@ game.skills.wk = {
       var side = wk.side();
       spot.addClass('cript block').removeClass('free');
       wk.on(side + 'turnstart.wk-ult', game.skills.wk.ult.turnstart);
-      wk.data('wk-ult-spot', spot);
+      wk.data('wk-ult-spot', spot.attr('id'));
     },
     turnstart: function (event, eventdata) {
       var wk = eventdata.target;
-      var spot = wk.data('wk-ult-spot');
-      var skill = wk.data('wk-ult');
+      var spot = $('#'+wk.data('wk-ult-spot'));
+      var skill = $('#'+wk.data('wk-ult'));
       game.audio.play('wk/ult');
       game.fx.ult(skill, game.skills.wk.ult.reborn.bind(this, wk, spot, skill));
     },
@@ -107,7 +107,7 @@ game.skills.wk = {
       wk.off(side + 'turnstart.wk-ult');
       wk.off('death.wk-ult');
       wk.data('wk-ult-spot', null);
-      if (game.mode == 'library') skill.appendTo(game[side].skills.sidehand);
+      if (game.mode == 'library') skill.removeClass('casted').appendTo(game[side].skills.sidehand);
       else skill.appendTo(game[side].skills.cemitery);
       if (side == 'enemy') skill.addClass('flipped');
     }

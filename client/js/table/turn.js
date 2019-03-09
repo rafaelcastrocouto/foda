@@ -17,7 +17,6 @@ game.turn = {
   },
   begin: function(side, cb) {
     if (game.currentState == 'table') {
-      game[side].turn += 1;
       game.message.text(game.data.ui[side+'turn']);
       game.turn.el.text(game.data.ui[side+'turn']).addClass('show');
       if (!game.recovering) game.currentMoves = [];
@@ -114,6 +113,7 @@ game.turn = {
         game.items.updateShop();
         game.items.disableShop();
       }
+      game[side].turn += 1;
       game.turn.tickTime();
       if (cb) cb(side);
     }

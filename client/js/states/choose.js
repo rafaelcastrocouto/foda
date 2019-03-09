@@ -40,7 +40,8 @@ game.states.choose = {
       cb: function (pickDeck) {
         game.states.choose.pickDeck = pickDeck;
         pickDeck.addClass('pickdeck').appendTo(game.states.choose.pickbox);
-        $.each(pickDeck.data('cards'), function (i, card) {
+        $.each(JSON.parse(pickDeck.data('cards')), function (i, cardId) {
+          card = $('#'+cardId);
           card[0].dataset.index = i;
           //if (card.data('disable')) card.addClass('dead');
           card.on(game.states.choose.event, game.states.choose.select);
@@ -52,8 +53,8 @@ game.states.choose = {
   },
   buildSlots: function () {
     var slots = [];
-    for (var slot = 0; slot < 5; slot += 1) {
-      slots.push($('<div>').appendTo(this.pickedbox).attr({ title: game.data.ui.rightpick }).data('slot', slot).addClass('slot available').on('mouseup touchend', this.pick));
+    for (var s = 0; s < 5; s += 1) {
+      slots.push($('<div>').appendTo(this.pickedbox).attr({ title: game.data.ui.rightpick }).data('slot', s).addClass('slot available').on('mouseup touchend', this.pick));
     }
     return slots;
   },

@@ -2,17 +2,16 @@ game.skills.am = {
   burn: {
     passive: function (skill, source) {
       source.selfBuff(skill);
-      source.data('am-burn', skill);
-      source.on('attack', this.attack);
+      source.on('pre-attack.am-burn', this.attack);
     },
     attack: function (event, eventdata) {
       var source = eventdata.source;
       var target = eventdata.target;
       var hero = target.data('hero');
       var opponent = target.side();
-      var mana = target.data('mana');
-      if (opponent == source.opponent() && !source.data('miss-attack') && mana && !target.hasClass('bkb')) {
-        source.data('attack bonus', mana);
+      var mana = target.data('mana') || 0;
+      if (opponent == source.opponent() && !source.data('miss-attack') && !target.hasClass('bkb')) {
+        eventdata.bonus += mana;
         $('.'+opponent+' .hand .'+hero).randomCard().discard();
         game.audio.play('am/burn');
       }

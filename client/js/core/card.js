@@ -28,6 +28,14 @@ game.card = {
       reborn: game.card.reborn
     });
   },
+  chars: 'abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPKQRSTUVWXYZ1234567890'.split(''),
+  newId: function () {
+    var id = '';
+    for (var i=0; i<24; i++) {
+      id += game.card.chars.random();
+    }
+    return id;
+  },
   build: function(data) {
     var card, legend, fieldset, portrait, current, desc;
     var opt = {summon: data['summon name']};
@@ -36,6 +44,7 @@ game.card = {
     if (data.deck == game.data.ui.temp)
       data.className += ' temp';
     card = $('<div>').addClass('card ' + data.className);
+    card.attr('id', game.card.newId());
     legend = $('<legend>').text(data.name);
     fieldset = $('<fieldset>');
     portrait = $('<div>').addClass('portrait').appendTo(fieldset);
@@ -143,7 +152,10 @@ game.card = {
     }
     if (data.buffsBox)
       $('<div>').addClass('buffs').appendTo(fieldset);
-    $.each(data, function(item, value) {
+    $.each(data, function(item, value) {    
+      if (value.constructor.name == 'Array' || value.constructor.name == 'Object') 
+        value = JSON.stringify(value); 
+      //console.log(item, value )
       card.data(item, value);
     });
     card.append(legend).append(fieldset);
@@ -228,7 +240,8 @@ game.card = {
     if (card) {
       if (forceSelection) game.card.setSelection(card);
       else if (!game.lockSelection && !card.hasClasses('selected attacktarget casttarget dead')) {
-        game.card.setSelection(card, event);
+        if (event.button !== 2) game.card.setSelection(card, event);
+        else game.card.unselect();
       }
     }
     return card;
@@ -423,7 +436,8 @@ game.card = {
           target: target,
           damage: damage,
           tag: tag,
-          force: force
+          force: force,
+          bonus: 0
         };
         source.trigger('pre-attack', evt);
         target.trigger('pre-attacked', evt);
@@ -623,7 +637,7 @@ game.card = {
       $('.card', game[side].skills.sidehand).each(function (i, el) {
         var skill = $(el);
         if (skill.hasClass('on')) {
-          game.skills[skill.data('hero')][skill.data('skill')].toggle(skill, dead);
+          game.skills[skill.data('hero')][skill.data('name')].toggle(skill, dead);
         }
         skill.removeClass('on channel-on');
       });
@@ -672,15 +686,16 @@ game.card = {
       game.timeout(200, game.card.rebornBuff.bind(this, this, 1));
     }
   },
-  reborn: function(spot) {
+  reborn: function(spot) { //console.log(spot)
     var hp = this.data('hp'), x, y, o = 0;
-    if (spot && spot.hasClass) {
-      spot = spot[0].id;
+    if (spot && spot.attr) {
+      spot = spot.attr('id');
     } else {
       if (this.hasClass('player')) {
         x = game.player.startX;
         y = game.height - 1;
         spot = game.map.toPosition(x + o, y);
+        //console.trace(spot, o)
         while (!$('#' + spot).hasClass('free') && o < game.player.picks.length) {
           o += 1;
           spot = game.map.toPosition(x + o, y);
@@ -689,6 +704,7 @@ game.card = {
         x = game.enemy.startX;
         y = game.height - 1;
         spot = game.map.mirrorPosition(game.map.toPosition(x, y));
+        //console.log(spot, o)
         while (!$('#' + spot).hasClass('free') && o < game.enemy.picks.length) {
           o += 1;
           spot = game.map.mirrorPosition(game.map.toPosition(x + o, y));
@@ -707,7 +723,7 @@ game.card = {
       this.trigger('reborn', {
         target: this
       });
-      return this;
+      return true;
     }
   }
 };

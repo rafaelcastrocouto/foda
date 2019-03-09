@@ -4,8 +4,8 @@ game.units = {
       name: 'units',
       cb: function (deck) {  //console.log(deck.data('cards'));
         deck.addClass(side+' units cemitery').hide().appendTo(game.states.table[side]);
-        $.each(deck.data('cards'), function (i, card) {
-          card.addClass(side+' unit').data('side', side);
+        $.each(JSON.parse(deck.data('cards')), function (i, card) {
+          $('#'+card).addClass(side+' unit').data('side', side);
         });
       }
     });
@@ -87,7 +87,7 @@ game.units = {
         this.creep.trigger('summon');
       }.bind({
         creep: game.selectedCard,
-        target: target
+        target: target.attr('id')
       });
       if (!game.selectedCard.hasClass('dragTarget')) {
         game.skill.animateCast(game.selectedCard, target, event, end);

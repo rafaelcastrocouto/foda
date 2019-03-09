@@ -17,8 +17,8 @@ game.heroesAI.en = {
           cardData['cast-strats'].push({
             priority: 40,
             skill: 'curse',
-            card: curse,
-            target: spot
+            card: curse.attr('id'),
+            target: spot.attr('id')
           });
         }
         var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
@@ -28,15 +28,15 @@ game.heroesAI.en = {
             cardData['cast-strats'].push({
               priority: 12,
               skill: 'curse',
-              card: curse,
-              target: cardInRange
+              card: curse.attr('id'),
+              target: cardInRange.attr('id')
             });
           } else if (cardInRange.hasClass('units')) {
             cardData['cast-strats'].push({
               priority: 40,
               skill: 'curse',
-              card: curse,
-              target: cardInRange
+              card: curse.attr('id'),
+              target: cardInRange.attr('id')
             });
           }
         }
@@ -55,8 +55,8 @@ game.heroesAI.en = {
       cardData['cast-strats'].push({
         priority: (n * 100)/p,
         skill: 'heal',
-        card: heal,
-        target: card
+        card: heal.attr('id'),
+        target: card.attr('id')
       });
     }
     if (card.canCast(ult)) {
@@ -69,21 +69,21 @@ game.heroesAI.en = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/2),
             skill: 'stun',
-            card: ult,
-            target: cardInRange
+            card: ult.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var curse = game.data.skills.en.curse;
     card.inRange(curse['cast range'], function (spot) {
-      var spotData = spot.data('ai');
-      spotData.unitPriority -= 15;
+      var spotData = JSON.parse(spot.data('ai'));
+      spotData.priority -= 35;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     if (card.hasBuff('en-passive')) {
       card.data('ai priority bonus', -10);
@@ -91,12 +91,12 @@ game.heroesAI.en = {
     if (game[card.side()].turn >= game.ultTurn) {
       var ult = game.data.skills.en.ult;
       card.inRange(ult['cast range'], function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 5;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

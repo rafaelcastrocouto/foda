@@ -43,21 +43,26 @@ game.buff = {
     if (!target.hasClass('cycloned') && (!target.hasClass('towers') || towerForce)) {
       // get buff data
       var data = skill;
-      if (buffs && typeof(buffs) == 'string') {
+      if (!buffs) {
+        // BUFF
+        if (skill instanceof jQuery) data = JSON.parse(skill.data('buff'));
+      } else if (buffs && typeof(buffs) == 'string') {
+        // BUFFS  
         var buffsId = buffs.split('-');
-        if (skill.data && skill.data('buffs') && skill.data('buffs')[buffsId[0]]) {
-          data = skill.data('buffs')[buffsId[0]][buffsId[1]];
+        var buffsData;
+        if (data.buffs) buffsData = JSON.parse(data.buffs);
+        if (skill instanceof jQuery) buffsData = JSON.parse(skill.data('buffs'));
+        if (buffsData[buffsId[0]] && buffsData[buffsId[0]][buffsId[1]]) {
+          data = buffsData[buffsId[0]][buffsId[1]];
         }
-      } else if (skill.data && skill.data('buff')) {
-        data = skill.data('buff');
       }
       if (data) {
         if (!data.buffId) data.buffId = buffs || data.skillId || skill.data('skillId');
         if (!data.className) data.className = data.buffId;
         if (!data.name) data.name = skill.data('name');
-        if (!data.source) data.source = this;
-        if (!data.skill) data.skill = skill;
-        if (!data.target) data.target = target;
+        if (!data.source) data.source = this.attr('id');
+        if (!data.skill && skill.attr) data.skill = skill.attr('id');
+        if (!data.target) data.target = target.attr('id');
         if (!data.description) data.description = skill.data('description');
         if (data.duration && !data.unpurgeable) {
           data.className += ' purgeable ' + (source.side() || game.selectedCard.side());
@@ -66,10 +71,15 @@ game.buff = {
         // remove duplicated buff
         target.removeBuff(data.buffId);
         // create new buff
-        var buff = $('<div>').addClass('buff ' + data.className).data('buff', data).attr({
+        var buff = $('<div>').addClass('buff ' + data.className).attr({
           title: data.name + ': ' + data.description
         });
-        buff.data(data);
+        $.each(data, function(item, value) {    
+          if (value && (value.constructor.name == 'Array' || value.constructor.name == 'Object')) 
+            value = JSON.stringify(value); 
+          //console.log(item, value )
+          buff.data(item, value);
+        });
         $('<div>').appendTo(buff).addClass('img');
         $('<div>').appendTo(buff).addClass('overlay');
         if (data.duration) {
@@ -126,7 +136,7 @@ game.buff = {
       if (!multi) buff = target.find('.buffs > .' + buffId);
       else buff = $(buffId);
       if (buff && buff.data) {
-        var data = buff.data('buff');
+        var data = buff.data();
         if (data) {
           if (data['hp bonus'] && typeof (data['hp bonus']) == 'number') {
             target.setHp(target.data('hp') - data['hp bonus']);
@@ -176,17 +186,19 @@ game.buff = {
     buffs.each(function (i, buffElement) {
       var buff = $(buffElement);
       var duration = buff.data('duration'),
-          data = buff.data('buff');
+          buffId = buff.data('buffId');
       buff.trigger('buffcount', {target: card, buff: buff});
-      if (duration > 1) {
-        duration -= 1;
-        buff.data('duration', duration);
-        $('span', buff).text(duration);
-        var s = buff.closest('.card');
-        s.reselect();
-      } else if (data && data.duration && data.buffId) {
-        buff.trigger('expire', {target: card, buff: buff});
-        card.removeBuff(data.buffId);
+      //console.log(duration)
+      if (duration && duration.constructor.name == 'Number') {
+        if (duration > 1) {
+          duration -= 1;
+          buff.data('duration', duration);
+          $('span', buff).text(duration);
+          var s = buff.closest('.card');
+          s.reselect();
+        } else if (buffId) {
+          card.removeBuff(buffId);
+        }
       }
     });
   }

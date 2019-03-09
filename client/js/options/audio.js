@@ -143,7 +143,7 @@ game.audio = {
       if (game.currentState != 'loading' &&
           game.currentState != 'table' &&
           game.currentState != 'vs' &&
-          game.currentState != 'log') game.audio.loopSong();
+          game.currentState != 'log') setTimeout(game.audio.loopSong, 1000);
     });
   },
   loopSong: function (song) {

@@ -46,7 +46,7 @@ game.skills.cm = {
     buffcount: function (event, eventdata) {
       var target = eventdata.target;
       var buff = eventdata.buff;
-      var source = buff.data('source');
+      var source = $('#'+buff.data('source'));
       if (buff.data('duration') !== 2) 
         source.damage(buff.data('dot'), target, buff.data('damage type'));
     },
@@ -87,7 +87,6 @@ game.skills.cm = {
     },
     channelend: function (event, eventdata) {
       var source = eventdata.source;
-      source.data('cm-ult', null);
       source.removeClass('cm-ult');
       source.removeBuff('cm-ult');
     }

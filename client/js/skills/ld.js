@@ -1,23 +1,25 @@
 game.skills.ld = {
   bear: {
     cast: function (skill, source, target) {
-      var bear = source.data('bear');
+      var bear = $('#'+source.data('bear'));
       var side = source.side();
-      if(!bear) {
+      var returnskill = $('.table .'+side+' .temp.skills .ld-bearreturn');
+      if(!bear.length) {
         bear = source.summon(skill);
-        source.data('bear', bear);
-        source.data('summon', bear);
+        source.data('bear', bear.attr('id'));
+        source.data('summon', bear.attr('id'));
+        source.data('return', returnskill.attr('id'));
         source.addBuff(bear, skill, 'demolish-source');
         source.addBuff(bear, skill, 'entangle-source');
         source.on('pre-attacked.defender', this.transfer);
         source.on('death', this.death);
         bear.on('pre-attack', this.attack);
         bear.on('death', this.beardeath);
-        bear.data('return', $('.table .'+side+' .temp.skills .ld-bearreturn'));
+        bear.data('return', returnskill.attr('id'));
         bear.data('death damage', skill.data('death damage'));
       }
       source.addBuff(bear, skill, 'defender-source');
-      bear.data('return').appendTo(game[side].skills.sidehand).removeClass('casted');
+      returnskill.appendTo(game[side].skills.sidehand).removeClass('casted');
       bear.setCurrentHp(bear.data('hp'));
       game.fx.add('ld-return-target', target);
       game.timeout(400, function () {
@@ -26,14 +28,14 @@ game.skills.ld = {
     },
     transfer: function (event, eventdata) {
       var target = eventdata.target;
-      var bear = target.data('bear');
+      var bear = $('#'+target.data('bear'));
       if (bear) {
         var source = eventdata.source;
         var damage = eventdata.damage;
         var buff = bear.getBuff('defender-source');
         var transfer = buff.data('damage transfer');
         if (damage > transfer) {
-          eventdata.bonus = -1 * transfer;
+          eventdata.bonus += -1 * transfer;
           source.damage(transfer, bear, game.data.ui.pure);
         }
       }
@@ -44,7 +46,7 @@ game.skills.ld = {
       if (!source.data('miss-attack')) {
         if (target.hasClass('towers')) { 
           var demolish = source.getBuff('demolish-source');
-          eventdata.bonus = demolish.data('tower bonus');
+          eventdata.bonus += demolish.data('tower bonus');
         } else if (target.side() == source.opponent()) {
           var entangle = source.getBuff('entangle-source');
           var chance = entangle.data('chance') / 100;
@@ -55,7 +57,6 @@ game.skills.ld = {
             target.on('turnend.entangle-target', game.skills.ld.bear.turnend);
             var skill = game.data.skills.ld.bear;
             var targetBuff = source.addBuff(target, skill, "entangle-target");
-            targetBuff.data('source', source);
             target.stopChanneling();
           }
         }
@@ -65,7 +66,7 @@ game.skills.ld = {
       var target = eventdata.target;
       if (target.hasBuff('entangle-target')) {
         var targetBuff = target.getBuff('entangle-target');
-        var source = targetBuff.data('source');
+        var source = $('#'+targetBuff.data('source'));
         source.damage(targetBuff.data('dot'), target, targetBuff.data('damage type'));
       } else {
         target.removeStack('rooted');
@@ -77,9 +78,9 @@ game.skills.ld = {
     beardeath: function (event, eventdata) {
       var bear = eventdata.target;
       var killer = eventdata.source;
-      var ld = bear.data('summoner');
+      var ld = $('#'+bear.data('summoner'));
       if (bear.side() != killer.side()) killer.damage(bear.data('death damage'), ld, game.data.ui.pure);
-      var returnSkill = bear.data('return');
+      var returnSkill = $('#'+bear.data('return'));
       returnSkill.discard();
       ld.off('pre-attacked.defender');
       ld.data('bear', null);
@@ -87,17 +88,15 @@ game.skills.ld = {
     },
     death: function (event, eventdata) {
       var ld = eventdata.target;
-      var bear = ld.data('summon');
-      if (bear) {
-        var returnSkill = bear.data('return');
-        returnSkill.discard();
-        bear.discard();
-      }
+      var returnSkill = $('#'+ld.data('return'));
+      returnSkill.discard();
+      var bear = $('#'+ld.data('bear'));
+      bear.discard();
     }
   },
   bearreturn: {
     cast: function (skill, source, target) {
-      var bear = source.data('bear');
+      var bear = $('#'+source.data('bear'));
       game.fx.add('ld-return', bear.parent());
       game.timeout(400, function() {
         bear.addClass('hidden');
@@ -113,7 +112,7 @@ game.skills.ld = {
       source.selfBuff(skill);
       source.shake();
       game.fx.add('ld-link', source);
-      var bear = source.data('bear');
+      var bear = $('#'+source.data('bear'));
       if (bear && !bear.hasClasses('bkb cycloned')) {
         source.addBuff(bear, skill);
         game.fx.add('ld-link', bear);
@@ -126,7 +125,7 @@ game.skills.ld = {
       var target = eventdata.target;
       var damage = eventdata.damage;
       var buff = source.getBuff('ld-link');
-      var bear = source.data('bear');
+      var bear = $('#'+source.data('bear'));
       if (buff && bear) {
         var lifesteal = buff.data('lifesteal') / 100;
         if (target.side() == source.opponent() && !source.data('miss-attack')) 
@@ -216,7 +215,7 @@ game.skills.ld = {
       source.selfBuff(skill);
       source.shake();
       game.fx.add('ld-cry', source);
-      var bear = source.data('bear');
+      var bear = $('#'+source.data('bear'));
       if (bear && !bear.hasClasses('bkb cycloned')) {
         source.addBuff(bear, skill);
         game.fx.add('ld-cry', bear);

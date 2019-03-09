@@ -9,15 +9,19 @@ game.skills.axe = {
         game.timeout(400, targets.attack.bind(targets, source, 'force'));
         targets.addClass('taunted');
         source.addBuff(targets, skill, 'taunt-targets');
-        targetsList.push(targets);
+        targetsList.push(targets.attr('id'));
       });
-      source.data('taunted', targetsList);
+      skill.data('taunted', JSON.stringify(targetsList));
     },
     expire: function (event, eventdata) {
       var buff = eventdata.buff;
-      var source = buff.data('source');
-      var targets = source.data('taunted');
-      $(targets).removeClass('taunted');
+      var source = $('#'+buff.data('source'));
+      var skill = $('#'+buff.data('skill'));
+      var targets = JSON.parse(skill.data('taunted'));
+      for  (var i=0; i < targets.length; i++) {
+        var id = targets[i];
+        $('#'+id).removeClass('taunted');
+      }
       source.data('taunted', false);
     }
   },
@@ -32,7 +36,7 @@ game.skills.axe = {
     buffcount: function (event, eventdata) {
       var target = eventdata.target;
       var buff = eventdata.buff;
-      var source = buff.data('source');
+      var source = $('#'+buff.data('source'));
       if (buff.data('duration') !== 1) 
         source.damage(buff.data('dot'), target, buff.data('damage type'));
     },
@@ -54,7 +58,7 @@ game.skills.axe = {
       var target = eventdata.target;
       var buff = target.getBuff('axe-counter');
       var chance = buff.data('chance') / 100;
-      var skill = buff.data('skill');
+      var skill = $('#'+buff.data('skill'));
       var range = target.data('range');
       if (game.random() < chance) {
         target.opponentsInRange(range, function (targets) {

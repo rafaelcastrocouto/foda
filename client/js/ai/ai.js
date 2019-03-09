@@ -30,7 +30,7 @@ game.ai = {
     // choose random card
     var availableCards = $('.map .enemy.card:not(.towers, .dead, .ai-max, .stunned, .disabled, .channeling, .ghost)');
     var chosenCard = availableCards.randomCard();
-    var chosenCardData = chosenCard.data('ai');
+    var chosenCardData = JSON.parse(chosenCard.data('ai'));
     var count = chosenCard.data('ai count');
     if ((!count || count < game.ai.level) && chosenCard.length) {
       chosenCard.data('ai count', (chosenCard.data('ai count') + 1 || 0));
@@ -42,7 +42,7 @@ game.ai = {
         if (card.hasClass('heroes')) {
           var hero = card.data('hero');
           if (game.heroesAI[hero] && game.heroesAI[hero].defend) {
-            var cardData = card.data('ai');
+            var cardData = JSON.parse(card.data('ai'));
             // add per hero defend data
             game.heroesAI[hero].defend(card, cardData);
           }
@@ -54,10 +54,10 @@ game.ai = {
         game.ai.buildData(card);
         if (card.hasClass('heroes')) {
           var hero = card.data('hero');
-          var cardData = card.data('ai');
+          var cardData = JSON.parse(card.data('ai'));
           if (game.heroesAI[hero] && cardData.strats[game.heroesAI[hero].move.default]) {
             cardData.strats[game.heroesAI[hero].move.default] += 10;
-            card.data('ai', cardData);
+            card.data('ai', JSON.stringify(cardData));
           }
           if (game.heroesAI[hero] && game.heroesAI[hero].play) {
             // add per hero cast data
@@ -68,7 +68,7 @@ game.ai = {
       if (game.debug) {
         $('.map .spot').each(function (i, el) {
           var spot = $(el);
-          $('.debug', spot).text(spot.data('ai').priority);
+          $('.debug', spot).text(JSON.parse(spot.data('ai')).priority);
         });
       }
       // cast strats
@@ -131,12 +131,12 @@ game.ai = {
   passives: function (card) {
     // activate all pasives
     if (card.data('type') == game.data.ui.passive) {
-      var skillId = card.data('skill');
-      var heroId = card.data('hero');
-      var hero = $('.map .card.enemy.heroes.'+heroId+':not(.dead, .ghost)');
-      if (hero.length) {
-        var spotId = hero.getSpot().attr('id');
-        if (spotId && skillId && heroId) game.ai.moves.push('P:'+game.map.mirrorPosition(spotId)+':'+skillId+':'+heroId);
+      var label = card.data('label');
+      var hero = card.data('hero');
+      var source = $('.map .card.enemy.heroes.'+hero+':not(.dead, .ghost)');
+      if (source.length) {
+        var spot = source.getPosition();
+        if (spot && label && hero) game.ai.moves.push('P:'+game.map.mirrorPosition(spot)+':'+hero+':'+label);
       }
     }
   },
@@ -182,13 +182,13 @@ game.ai = {
     $(game.ai.strats).each(function (i, strat) {
       d.strats[strat] = 1;
     });
-    return d;
+    return JSON.stringify(d);
   },
   buildData: function (card) {
     //console.log('buildData', card[0], card.data('ai'));
     var side = card.side();
     var opponent = card.opponent();
-    var cardData = card.data('ai');
+    var cardData = JSON.parse(card.data('ai'));
     var range = card.data('range');
     // retreat when hp is low
     if (card.data('current hp') < card.data('hp')/3) {
@@ -199,10 +199,10 @@ game.ai = {
     }
     card.around(range, function (spot) {
       if (side != game.ai.side) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= (card.data('current damage'));
         spotData['can-be-attacked'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
       }
       var opponentCard = $('.card.'+opponent+':not(.invisible, .dead, .ghost)', spot);
       if (opponentCard.length) {
@@ -213,7 +213,7 @@ game.ai = {
           // attack target
           cardData['attack-targets'].push({
             priority: 50 - (opponentCard.data('current armor')*2) - (opponentCard.data('current hp')/2) + (opponentCard.data('ai priority bonus') || 0),
-            target: opponentCard
+            target: opponentCard.attr('id')
           });
           // attack towers
           if ( opponentCard.hasClass('towers')) {
@@ -222,7 +222,7 @@ game.ai = {
           }
         }
         // retreat if in enemy range
-        var opponentData = opponentCard.data('ai');
+        var opponentData = JSON.parse(opponentCard.data('ai'));
         opponentData['can-be-attacked'] = true;
         opponentData.strats.retreat += 15;
         //check death
@@ -237,7 +237,7 @@ game.ai = {
           opponentData['can-be-killed'] = true;
           opponentData.strats.retreat += 25;
         }
-        opponentCard.data('ai', opponentData);
+        opponentCard.data('ai', JSON.stringify(opponentData));
       }
     });
     // tower limit
@@ -271,7 +271,7 @@ game.ai = {
         game.ai.spotData(spot, card, cardData, side, destiny, dodge);
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
     //console.log(cardData);
   },
   newSpotData: function (spot) {
@@ -280,31 +280,29 @@ game.ai = {
     var x = spot.getX(), y = spot.getY();
     priority += (game.width - x) * 4;
     priority += y * 6;
-    if (spot.hasClass('jungle')) priority -= 30;
-    if (spot.hasClass('fountain')) priority += 80;
-    if (spot.hasClass(game.ai.side+'area')) priority += 5;
+    if (spot.hasClass('jungle')) priority += 30;
+    if (spot.hasClass('fountain')) priority += 10;
+    if (spot.hasClass(game.ai.side+'area')) priority += 10;
     if (spot.hasClass(opponent+'area')) {
       var hp = game[opponent].tower.data('current hp');
-      if (hp > 5) priority -= 40;
-      if (hp < 4) priority += 30;
+      if (hp > 8) priority -= 40;
+      if (hp < 6) priority += 30;
     }
-    if ((game.width == (x+1) && (y >= 3)) || 
-       ((y == 0) && (x < game.width - 3)) ||
-       ((game.height == (y+1) && (x > 8)) )) priority -= 80;
+    if ( game.width == (x+1) || (y == 0) ) priority -= 50;
     var data = {
       'blocked': !spot.hasClass('free'),
       'priority': priority,
       'can-be-attacked': false,
       'can-be-casted': false
     };
-    return data;
+    return JSON.stringify(data);
   },
   spotData: function (spot, card, cardData, side, destiny, dodge) {
     if (spot && card && cardData) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       var priority = spotData.priority;
       var o = {
-        target: spot,
+        target: spot.attr('id'),
         priority: priority
       };
       if (card.canMove()) {
@@ -316,7 +314,7 @@ game.ai = {
       cardData.move.push(o);
       cardData[destiny].push(o);
       if (dodge) cardData.dodge.push(o);
-      card.data('ai', cardData);
+      card.data('ai', JSON.stringify(cardData));
     }
   },
   /*comboData: function () {
@@ -372,7 +370,11 @@ game.ai = {
     //console.log('strat', strat, card, cardData);
     if (strat == 'siege') {
       if (cardData['can-attack-tower']) {
-        action = 'attack'; target = $('.map .towers.enemy');
+        action = 'attack'; 
+        target = {
+          target: $('.map .towers.enemy').attr('id'),
+          priority: 100
+        };
       } else if (cardData['can-advance']) {
         action = 'advance';
       }
@@ -454,12 +456,13 @@ game.ai = {
       // priority 1: tower
       var towers;
       $(targets).each(function (i, t) {
-        if (t.target.hasClass('towers')) towers = t;
+        if ($('#'+t.target).hasClass('towers')) towers = t;
       });
       if (towers) return towers;
       else {
         var choosen = game.ai.choose(targets);
-        if (choosen && choosen.target && choosen.target.data('current hp') > 0) return choosen;
+        if (choosen && choosen.target && $('#'+choosen.target).data('current hp') > 0) 
+          return choosen;
       }
     }
   },
@@ -482,77 +485,75 @@ game.ai = {
   parseMove: function (card, cardData, action, target, cast) {
     //console.log(action, target);
     var move = [];
+    var position = $(card).getPosition();
     if (action == 'move' || action == 'advance' || action == 'retreat') {
       move[0] = 'M';
-      move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
-      move[2] = game.map.mirrorPosition(target.attr('id'));
+      move[1] = game.map.mirrorPosition(position);
+      move[2] = game.map.mirrorPosition(target);
       card.data('ai done', true);
       cardData['can-move'] = false;
     }
     if (action == 'attack') {
       move[0] = 'A';
-      move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
-      move[2] = game.map.mirrorPosition(target.getSpot().attr('id'));
+      move[1] = game.map.mirrorPosition(position);
+      move[2] = game.map.mirrorPosition(target);
       card.data('ai done', true);
       cardData['can-attack'] = false;
     }
     if (action == 'cast') {
-      if (cast.card.data('type') == game.data.ui.toggle) {
+      if ($('#'+cast.card).data('type') == game.data.ui.toggle) {
         move[0] = 'T';
-        move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
+        move[1] = game.map.mirrorPosition(position);
         move[2] = cast.skill;
         move[3] = card.data('hero');
       } else {
         move[0] = 'C';
-        move[1] = game.map.mirrorPosition(card.getSpot().attr('id'));
-        move[2] = game.map.mirrorPosition(target.attr('id') || target.getSpot().attr('id'));
-        move[3] = cast.skill;
-        move[4] = card.data('hero');
+        move[1] = game.map.mirrorPosition(position);
+        move[2] = game.map.mirrorPosition(target);
+        move[3] = card.data('hero');
+        move[4] = cast.skill;
       }
     }
     //console.log(move);
     game.ai.moves.push(move.join(':'));
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   checkAttack: function (card) { 
     //check instant attack buffs
     game.ai.buildData(card);
-    var cardData = card.data('ai');
+    var cardData = JSON.parse(card.data('ai'));
     if (cardData['can-attack']) {
       var target = game.ai.chooseTarget(cardData['attack-targets']);
       if (target && target.target) {
         //console.log(card,target.target)
         game.ai.moves.push('A:'+
-          game.map.mirrorPosition(card.getSpot().attr('id'))+':'+
-          game.map.mirrorPosition(target.target.getSpot().attr('id')));
+          game.map.mirrorPosition(card.getPosition())+':'+
+          game.map.mirrorPosition($('#'+target.target).getPosition()));
       }
     }
   },
   summon: function (card) {
-    var creep = card.data('id');
+    var creep = card.data('label');
     var enemyarea = $('.spot.free.enemyarea');
     var spots = [];
     enemyarea.each(function () {
       var spot =  $(this);
-      var spotData = spot.data('ai');
-      var x = spot.getX();
-      var y = spot.getY();
-      var p = spotData.priority + (spotData.unitPriority||0) + ((game.width - x)*2) + (y * 2);
-      if (game.width == (x+1) || y == 0) p = 0;
+      var spotData = JSON.parse(spot.data('ai'));
       if (!spotData.blocked) spots.push({
         target: spot,
-        priority: p,
+        priority: spotData.priority,
         data: spotData
       });
     });
     //console.log(spots)
     if (spots.length) {
-      var spot = game.ai.choose(spots);
+      var spot = game.ai.choose(spots); 
       if (spot) {
-        var to = spot.target.getPosition();
+        var to = spot.target.attr('id');
         game.ai.moves.push('S:'+ game.map.mirrorPosition(to) +':' + creep);
+        //console.log(spot)
         spot.data.blocked = true;
-        spot.target.data('ai', spot.data);
+        spot.target.data('ai', JSON.stringify(spot.data));
       }
     }
   },
@@ -564,9 +565,9 @@ game.ai = {
     } else if (n > 0) {
       n -= 1;
     } else if (n <= 0) {
-      var skillId = card.data('skill');
-      var heroId = card.data('hero');
-      game.ai.moves.push('D:'+skillId+':'+heroId);
+      var skill = card.data('label');
+      var hero = card.data('hero');
+      game.ai.moves.push('D:'+skill+':'+hero);
       n = undefined;
     }
     card.data('ai discard', n);

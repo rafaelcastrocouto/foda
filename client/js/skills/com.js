@@ -76,13 +76,17 @@ game.skills.com = {
       var source = eventdata.source;
       var target = eventdata.target;
       game.audio.play('com/ultvictory');
-      source.setDamage(source.data('current damage') + 2);
+      var ult = target.getSkill('ult'); //console.trace(eventdata)
       if (source.data('com-ult-challenger')) {
-        var skill = source.getSkill('com-heal');
+        // auto cast heal if winner
+        ult = source.getSkill('ult');
+        var skill = source.getSkill('heal');
         var clone = skill.clone().data(skill.data());
-        clone.data('discard-to', game.hidden);
+        clone.data('discard-to', 'hidden');
         source.cast(clone, source);
       }
+      var bonus = ult.data('damage bonus');
+      source.setDamage(source.data('current damage') + bonus);
       source.data('com-ult-challenger', false);
       target.data('com-ult-challenger', false);
     }

@@ -19,8 +19,8 @@ game.heroesAI.nyx = {
       cardData['cast-strats'].push({
         priority: 20,
         skill: 'spike',
-        card: spike,
-        target: card
+        card: spike.attr('id'),
+        target: card.attr('id')
       });
     }
     // stun if 1 or more enemies are aligned
@@ -42,8 +42,8 @@ game.heroesAI.nyx = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'stun',
-            card: stun,
-            target: spot
+            card: stun.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -56,8 +56,8 @@ game.heroesAI.nyx = {
           cardData['cast-strats'].push({
             priority: cardInRange.data('mana'),
             skill: 'burn',
-            card: burn,
-            target: cardInRange
+            card: burn.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
@@ -69,11 +69,11 @@ game.heroesAI.nyx = {
       cardData['cast-strats'].push({
         priority: 60,
         skill: 'ult',
-        card: ult,
-        target: card
+        card: ult.attr('id'),
+        target: card.attr('id')
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var stun = game.data.skills.nyx.stun;
@@ -81,24 +81,24 @@ game.heroesAI.nyx = {
     var width = stun['aoe width'];
     card.around(1, function (dirSpot) {
       card.inLine(dirSpot, range, width, function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 30;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
         var cardInRange = $('.card.'+card.opponent(), spot);
         if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
-          var cardInRangeData = cardInRange.data('ai');
+          var cardInRangeData = JSON.parse(cardInRange.data('ai'));
           cardInRangeData.strats.dodge += 50;
-          cardInRange.data('ai', cardInRangeData);
+          cardInRange.data('ai', JSON.stringify(cardInRangeData));
         }
       });
     });
     var burn = game.data.skills.nyx.burn;
     card.inRange(burn['cast range'], function (spot) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 5;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     if (card.hasBuff('nyx-spike')) {
       card.data('ai priority bonus', -80);
@@ -111,6 +111,6 @@ game.heroesAI.nyx = {
         aicard.data('ai', aicarddata);
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

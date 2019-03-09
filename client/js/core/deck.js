@@ -48,10 +48,10 @@ game.deck = {
         ].join(' ');
         Object.assign(herodata, game.data.values.heroes[heroid]);
         card = game.card.build(herodata).appendTo(deck);
-        cards.push(card);
+        cards.push(card.attr('id'));
       }
     });
-    deck.data('cards', cards);
+    deck.data('cards', JSON.stringify(cards));
     if (cb) { cb(deck); }
   },
   createUnitsDeck: function (deck, cb, filter) {
@@ -69,7 +69,7 @@ game.deck = {
       if (found || !filter) {
         $.each(units, function (unitid, unitdata) {
           unitdata.type = game.data.ui.summon;
-          unitdata.id = unitid;
+          unitdata.label = unitid;
           unitdata.unit = unittype;
           unitdata.speed = game.defaultSpeed;
           if (!unitdata.bounty) unitdata.bounty = game.unitBounty;
@@ -81,11 +81,11 @@ game.deck = {
           ].join(' ');
           Object.assign(unitdata, game.data.values.units[unittype][unitid]);
           card = game.card.build(unitdata).appendTo(deck);
-          cards.push(card);
+          cards.push(card.attr('id'));
         });
       }
     });
-    deck.data('cards', cards);
+    deck.data('cards', JSON.stringify(cards));
     if (cb) { cb(deck); }
   },
   createSkillsDeck: function (deck, cb, filter, multi, deckFilter) {
@@ -103,7 +103,7 @@ game.deck = {
           if (!deckFilter || (deckFilter && deckFilter.indexOf(skillData.deck) < 0 )) {
             var k;
             skillData.hero = hero;
-            skillData.skill = skill;
+            skillData.label = skill;
             skillData.skillId = hero + '-' + skill;
             skillData.className = [
               hero + '-' + skill,
@@ -124,16 +124,18 @@ game.deck = {
                 Object.assign(skillData.buffs[buffs][buff], game.data.values.skills[hero][skill].buffsdata[buffs][buff]);
               }
             }
-            if (multi) {
-              for (k = 0; k < skillData.cards; k += 1) {
-                cards.push(game.card.build(skillData).appendTo(deck));
-              }
-            } else { cards.push(game.card.build(skillData).appendTo(deck)); }
+            var n = 1;
+            if (multi) n = skillData.cards;
+            for (k = 0; k < n; k += 1) {
+              var card = game.card.build(skillData);
+              card.appendTo(deck);
+              cards.push(card.attr('id')); 
+            }
           }
         });
       }
     });
-    deck.data('cards', cards);
+    deck.data('cards', JSON.stringify(cards));
     if (cb) { cb(deck); }
   },
   createItemsDeck: function (deck, cb) {
@@ -165,10 +167,11 @@ game.deck = {
             Object.assign(itemData.buffs[buffs][buff], game.data.values.items[itemtype][item].buffsdata[buffs][buff]);
           }
         }
-        cards.push(game.card.build(itemData).appendTo(typeContainer));
+        var card = game.card.build(itemData).appendTo(typeContainer);
+        cards.push(card.attr('id'));
       });
     });
-    deck.data('cards', cards);
+    deck.data('cards', JSON.stringify(cards));
     if (cb) { cb(deck); }
   },
   randomCard: function (noseed) {

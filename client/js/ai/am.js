@@ -36,8 +36,8 @@ game.heroesAI.am = {
               cardData['cast-strats'].push({
                 priority: p,
                 skill: 'blink',
-                card: blinks.first(),
-                target: spot
+                card: blinks.first().attr('id'),
+                target: spot.attr('id')
               });
             }
           }
@@ -49,8 +49,8 @@ game.heroesAI.am = {
         cardData['cast-strats'].push({
           priority: 150 - (cardData['current hp']*3),
           skill: 'mirror',
-          card: mirrors.first(),
-          target: card
+          card: mirrors.first().attr('id'),
+          target: card.attr('id')
         });
       }
       //use blink to escape
@@ -62,8 +62,8 @@ game.heroesAI.am = {
             cardData['cast-strats'].push({
               priority: 50 + spot.data('priority'),
               skill: 'blink',
-              card: blinks.first(),
-              target: spot
+              card: blinks.first().attr('id'),
+              target: spot.attr('id')
             });
           }
         });
@@ -93,15 +93,15 @@ game.heroesAI.am = {
             cardData['cast-strats'].push({
               priority: p + (targets * 8) + mana,
               skill: 'ult',
-              card: ult,
-              target: cardInRange
+              card: ult.attr('id'),
+              target: cardInRange.attr('id')
             });
           }
         }
       });
     }
     //console.log(cardData['cast-strats'])
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     //console.log('defend-from-am');
@@ -112,9 +112,6 @@ game.heroesAI.am = {
     card.around(blink['cast range'], function (blinkSpot) {
       if (blinkSpot.hasClass('free')) {
         blinkSpot.around(card.data('range'), function (spot) {
-          var spotData = spot.data('ai');
-          spotData.priority -= 1;
-          spot.data('ai', spotData);
           var cardInRange = $('.card.'+side, spot);
           if (cardInRange.hasClass('towers')) {
             canBlinkTower = true;
@@ -132,22 +129,22 @@ game.heroesAI.am = {
       game.enemy.tower.atRange(4, function (spot) {
         var defenderCard = spot.find('.card.'+side);
         if (defenderCard.length) {
-          var defenderData = defenderCard.data('ai');
+          var defenderData = JSON.parse(defenderCard.data('ai'));
           defenderData.strats.retreat += 10;
-          defenderCard.data('ai', defenderData);
+          defenderCard.data('ai', JSON.stringify(defenderData));
         }
       });
     }
     if (game[side].turn >= game.ultTurn) {
       var ult = game.data.skills.am.ult;
       card.inRange(ult['cast range'], function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 15;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };
 

@@ -26,8 +26,8 @@ game.heroesAI.cat = {
         cardData['cast-strats'].push({
           priority: p,
           skill: 'star',
-          card: star,
-          target: card
+          card: star.attr('id'),
+          target: card.attr('id')
         });
       }
     }
@@ -43,8 +43,8 @@ game.heroesAI.cat = {
           cardData['cast-strats'].push({
             priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'arrow',
-            card: arrow,
-            target: spot
+            card: arrow.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -73,8 +73,8 @@ game.heroesAI.cat = {
               cardData['cast-strats'].push({
                 priority: p,
                 skill: 'leap',
-                card: lead,
-                target: spot
+                card: leap.attr('id'),
+                target: spot.attr('id')
               });
             }
           }
@@ -89,8 +89,8 @@ game.heroesAI.cat = {
             cardData['cast-strats'].push({
               priority: 50 + spot.data('priority'),
               skill: 'leap',
-              card: lead,
-              target: spot
+              card: leap.attr('id'),
+              target: spot.attr('id')
             });
           }
         });
@@ -102,35 +102,34 @@ game.heroesAI.cat = {
       cardData['cast-strats'].push({
         priority: 60,
         skill: 'ult',
-        card: ult,
-        target: card
+        card: ult.attr('id'),
+        target: card.attr('id')
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
-    //card.data('ai', cardData);
     var star = game.data.skills.cat.star;
     card.inRange(star['aoe range'], function (spot) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 5;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     var arrow = game.data.skills.cat.arrow;
     var range = arrow['aoe range'];
     var width = arrow['aoe width'];
     card.around(1, function (dirSpot) {
       card.inLine(dirSpot, range, width, function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 30;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
         var cardInRange = $('.card.'+card.opponent(), spot);
         if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
-          var cardInRangeData = cardInRange.data('ai');
+          var cardInRangeData = JSON.parse(cardInRange.data('ai'));
           cardInRangeData.strats.dodge += 50;
-          cardInRange.data('ai', cardInRangeData);
+          cardInRange.data('ai', JSON.stringify(cardInRangeData));
         }
       });
     });
@@ -139,9 +138,9 @@ game.heroesAI.cat = {
     card.atRange(leap['cast range'], function (spot) {
       if (spot.hasClass('free')) {
         spot.around(card.data('range'), function () {
-          var spotData = spot.data('ai');
+          var spotData = JSON.parse(spot.data('ai'));
           spotData.priority -= 1;
-          spot.data('ai', spotData);
+          spot.data('ai', JSON.stringify(spotData));
           if (card.hasClass('towers')) {
             canBlinkTower = true;
           }
@@ -150,27 +149,27 @@ game.heroesAI.cat = {
     });
     if (canBlinkTower) {
       game.enemy.tower.atRange(2, function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority += 30;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
       });
       game.enemy.tower.atRange(4, function (spot) {
         var defenderCard = spot.find('.card.'+side);
         if (defenderCard.length) {
-          var defenderData = defenderCard.data('ai');
+          var defenderData = JSON.parse(defenderCard.data('ai'));
           defenderData.strats.retreat += 20;
-          defenderCard.data('ai', defenderData);
+          defenderCard.data('ai', JSON.stringify(defenderData));
         }
       });
     }
     if (card.hasBuff('cat-ult')) {
       $('.map .card.'+game.ai.side).each(function (i, aicardel) {
         var aicard = $(aicardel);
-        var aicarddata = aicard.data('ai');
+        var aicarddata = JSON.parse(aicard.data('ai'));
         aicarddata.strats.retreat += 10;
-        aicard.data('ai', aicarddata);
+        aicard.data('ai',JSON.stringify(aicarddata));
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

@@ -80,11 +80,11 @@ game.highlight = {
   },
   targets: function(event) {
     var skill = this;
-    var source = skill.data('source');
+    var source = $('#'+skill.data('source'));
     if (!skill.hasClass('items')) {
       if (!source || !source.length) {
         source = $('.map .source');
-        skill.data('source', source);
+        skill.data('source', source.attr('id'));
       }
     }
     if (skill.hasClass('items') || source.hasClasses('heroes units')) {
@@ -98,9 +98,9 @@ game.highlight = {
                 skill.data('type') === game.data.ui.summon) {
         game.highlight.active(event, source, skill);
       }
-      var targets = skill.data('targets');
+      var targets = JSON.parse(skill.data('targets'));
       if (targets && targets.indexOf(game.data.ui.summon) > 0) {
-        var summon = source.data('summon');
+        var summon = $('#'+source.data('summon'));
         if (game.highlight.possible(summon)) {
           summon.addClass('casttarget').on('mouseup.highlight', game.player.cast);
         }
@@ -109,9 +109,9 @@ game.highlight = {
     return skill;
   },
   active: function(event, source, skill, sec) {
-    var targets = skill.data('targets');
-    if (sec) targets = skill.data('secondary targets');
-    if (skill.hasClass('items') || source.canCast(skill) ) {
+    var targets = JSON.parse(skill.data('targets'));
+    if (sec) targets = JSON.parse(skill.data('secondary targets'));
+    if (source.canCast(skill) ) {
       if (skill.hasClass('channel-on'))
         game.highlight.channelStop(event, skill, source);
       else if (targets) {
@@ -168,7 +168,6 @@ game.highlight = {
   ally: function(source, skill) {
     var range = skill.data('cast range');
     var side = skill.side() || source.side();
-    var targets = skill.data('targets');
     if (range === 999 || skill.hasClass('items')) {
       $('.map .card.' + side).each(function () {
         game.highlight.card($(this), skill, side);
@@ -202,7 +201,7 @@ game.highlight = {
   },
   card: function (card, skill, side) {
     var filter = 'dead towers source ghost';
-    var targets = skill.data('targets');
+    var targets = JSON.parse(skill.data('targets'));
     if (skill.data('cast')) {
       filter += ' stunned disabled silenced hexed taunted sleeping';
     }
@@ -245,7 +244,9 @@ game.highlight = {
       var range = skill.data('cast range');
       if (source.data('skill range bonus') && !skill.data('fixed range')) 
         range += source.data('skill range bonus');
-      if (!(skill.data('summon available') && source.data('summon').hasClass('cycloned'))) {
+      var moveBear = (skill.hasClass('ld-bear') || skill.hasClass('ld-bearreturn'));
+      var bear = $('#'+source.data('summon'));
+      if (!(moveBear && bear.hasClass('cycloned'))) {
         source.around(range, function(neighbor) {
           if (neighbor.hasClass('free') && !neighbor.hasClasses('block cript')) {
             neighbor.addClass('targetarea').on('mouseup.highlight', game.player.cast);
@@ -373,8 +374,9 @@ game.highlight = {
         } else if (game.skill.castrange) {
           source.radialStroke(game.skill.castrange, 'skillstroke');
         }
-        if (skill.data('targets') && skill.data('targets').indexOf(game.data.ui.summon) > 0) {
-          var summon = source.data('summon');
+        var targets = JSON.parse(skill.data('targets'));
+        if (targets && targets.length && targets.indexOf(game.data.ui.summon) > 0) {
+          var summon = $('#'+source.data('summon'));
           if (game.highlight.possible(summon)) {
             game.skill.summonHover = true;
             summon.radialStroke(game.skill.castrange, 'skillstroke');
@@ -411,7 +413,7 @@ game.highlight = {
     } else if (game.skill.aoe === game.data.ui.radial) {
       game.skill.castsource.radialStroke(game.skill.castrange, 'skillstroke');
       if (game.skill.summonHover) {
-        var summon = game.skill.castsource.data('summon');
+        var summon = $('#'+game.skill.castsource.data('summon'));
         if (game.highlight.possible(summon)) {
           summon.radialStroke(game.skill.castrange, 'skillstroke');
         }
@@ -428,7 +430,7 @@ game.highlight = {
       , opponent = source.opponent();
     if (this.data('highlight') == 'top') {
       // LD roar
-      var summon = source.data('summon');
+      var summon = $('#'+source.data('summon'));
       var dir = 'top';
       if (source.side() == 'enemy')
         dir = 'bottom';

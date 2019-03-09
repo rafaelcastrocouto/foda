@@ -184,7 +184,7 @@
         "cast range": 5,
         "aoe range": 1,
         "cards": 1,
-        "damage": 4,
+        "damage": 5,
         "damage per unit": 1,
         "damage per hero": 3
       },
@@ -211,7 +211,7 @@
         "cast range": 2,
         "cards": 1,
         "attacks": 3,
-        "damage bonus": 5
+        "damage bonus": 3
       }
     },
 
@@ -790,7 +790,7 @@
     "healing": {
       "faerie": {
         "heal": 12,
-        "price": 50
+        "price": 60
       },
       "tango": {
         "price": 180,
@@ -801,17 +801,17 @@
         }
       },
       "vitality": {
-        "price": 200,
+        "price": 250,
         "buffdata": {
           "hp bonus": 18
         }
       },
       "meka": {
         "heal": 16,
-        "price": 400
+        "price": 450
       },
       "heart": {
-        "price": 500,
+        "price": 600,
         "buffdata": {
           "heal": 8
         }
@@ -833,10 +833,10 @@
       },
       "void": {
         "cards per turn": 1,
-        "price": 300
+        "price": 350
       },
       "diffusal": {
-        "price": 350
+        "price": 400
       },
       "refresher": {
         "skill cards": 4,

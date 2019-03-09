@@ -30,8 +30,8 @@ game.heroesAI.wind = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'arrow',
-            card: arrow,
-            target: spot
+            card: arrow.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -49,8 +49,8 @@ game.heroesAI.wind = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',
-            card: stun,
-            target: cardInRange
+            card: stun.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
@@ -62,8 +62,8 @@ game.heroesAI.wind = {
       cardData['cast-strats'].push({
         priority: p,
         skill: 'run',
-        card: run,
-        target: card
+        card: run.attr('id'),
+        target: card.attr('id')
       });
     }
     if (card.canCast(ult)) {
@@ -76,13 +76,13 @@ game.heroesAI.wind = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/2),
             skill: 'ult',
-            card: ult,
-            target: cardInRange
+            card: ult.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var arrow = game.data.skills.wind.arrow;
@@ -90,24 +90,24 @@ game.heroesAI.wind = {
     var width = arrow['aoe width'];
     card.around(1, function (dirSpot) {
       card.inLine(dirSpot, range, width, function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 30;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
         var cardInRange = $('.card.'+card.opponent(), spot);
         if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
-          var cardInRangeData = cardInRange.data('ai');
+          var cardInRangeData = JSON.parse(cardInRange.data('ai'));
           cardInRangeData.strats.dodge += 50;
-          cardInRange.data('ai', cardInRangeData);
+          cardInRange.data('ai', JSON.stringify(cardInRangeData));
         }
       });
     });
     var stun = game.data.skills.wind.stun;
     card.inRange(stun['cast range'], function (spot) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 5;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     if (card.hasBuff('wind-run')) {
       card.data('ai priority bonus', -80);
@@ -115,12 +115,12 @@ game.heroesAI.wind = {
     var ult = game.data.skills.wind.ult;
     if (game[card.side()].turn >= game.ultTurn) {
       card.inRange(ult['cast range'], function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 5;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

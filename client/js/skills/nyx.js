@@ -28,12 +28,14 @@ game.skills.nyx = {
       var buff = source.selfBuff(skill);
       source.addClass('nyx-spike');
       source.on('damage.nyx-spike', this.damage);
-      source.data('nyx-spike', skill);
+      source.data('nyx-spike', skill.attr('id'));
       buff.on('expire', this.expire);
     },
     damage: function (event, eventdata) {
-      var nyx = eventdata.target;
-      game.timeout(900, function (eventdata, nyx, skill) {
+      var target = eventdata.target;
+      game.timeout(900, function (eventdata, cardId) {
+        var nyx = $('#'+cardId);
+        var skill = $('#'+nyx.data('nyx-spike'));
         var dmgType = skill.data('damage type');
         var attacker = eventdata.source;
         var damage = eventdata.originalDamage;
@@ -41,7 +43,7 @@ game.skills.nyx = {
           nyx.damage(damage, attacker, dmgType);
           nyx.addStun(attacker, skill);
         }
-      }.bind(this, eventdata, nyx, nyx.data('nyx-spike')));
+      }.bind(this, eventdata, target.attr('id')));
     },
     expire: function (event, eventdata) {
       var target = eventdata.target;
@@ -65,7 +67,7 @@ game.skills.nyx = {
       var buff = source.getBuff('nyx-ult');
       //console.log(target)
       if (target.hasClass('towers')) {
-        eventdata.bonus = -buff.data('damage bonus') + 1;
+        eventdata.bonus += (-1 * buff.data('damage bonus')) + 1;
       } else game.audio.play('nyx/ultattack');
       source.removeClass('nyx-ult');
       source.off('pre-attack.nyx-ult');

@@ -48,11 +48,11 @@ game.skills.pud = {
       } else { //turn on
         skill.addClass('on');
         source.on('turnend.rot', game.skills.pud.rot.turnend);
-        source.data('pud-rot', skill);
+        source.data('pud-rot', skill.attr('id'));
         source.addClass('pud-rot');
         source.selfBuff(skill, 'rot-source');
         var range = skill.data('aoe range');
-        var curse = game.skills.pud.rot.curse.bind({source: source, skill: skill});
+        var curse = game.skills.pud.rot.curse.bind({source: source,  skill: skill});
         source.opponentsInRange(range, curse);
         source.on('moved.rot', function () { source.opponentsInRange(range, curse); });
         game.fx.add('pud-rot', source);
@@ -68,7 +68,7 @@ game.skills.pud = {
     turnend: function (event, eventdata) {
       var source = eventdata.target;
       var side = source.side();
-      var skill = source.data('pud-rot');
+      var skill = $('#'+source.data('pud-rot'));
       var range = skill.data('aoe range');
       var damage = skill.data('damage');
       source.damage(damage, source, skill.data('damage type'));
@@ -118,7 +118,7 @@ game.skills.pud = {
       source.addBuff(target, skill, 'ult-target');
       source.addClass('pud-ult');
       target.addClass('disabled').removeClass('can-attack');
-      target.data('pud-ult-source', source);
+      target.data('pud-ult-source', source.attr('id'));
       target.on('death.pud-ult', this.death);
       game.skills.pud.ult.bite(source, target, skill);
       source.on('channel', this.channel);
@@ -141,7 +141,7 @@ game.skills.pud = {
     },
     death: function (event, eventdata) {
       var target = eventdata.target;
-      var source = target.data('pud-ult-source');
+      var source = $('#'+target.data('pud-ult-source'));
       source.stopChanneling();
     },
     channelend: function (event, eventData) {

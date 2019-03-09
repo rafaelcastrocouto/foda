@@ -15,8 +15,8 @@ game.library = {
         deckFilter: [game.data.ui.temp],
         cb: function (deck) {
           deck.addClass('library').hide().appendTo(game.states.choose.el);
-          $.each(deck.data('cards'), function (i, skill) {
-            skill.addClass('player');
+          $.each(JSON.parse(deck.data('cards')), function (i, skill) {
+            $('#'+skill).addClass('player');
           });
           if (cb) cb(deck);
         }
@@ -133,18 +133,22 @@ game.library = {
     }
   },
   endPlayer: function () {
-    game.turn.end('player', game.library.beginEnemy);
+    game.turn.end('player', function () {
+      setTimeout(game.library.beginEnemy, 1000);
+    });
   }, 
   beginEnemy: function () {
     game.turn.begin('enemy', function () {
       game.loader.addClass('loading');
       game.skill.buyHand('enemy');
       game.tower.attack('player');
-      game.library.endEnemy();
+      setTimeout(game.library.endEnemy, 1000);
     });
   },
   endEnemy: function () {
-    game.turn.end('enemy', game.library.beginPlayer);
+    game.turn.end('enemy',  function () {
+      setTimeout(game.library.beginPlayer, 1000);
+    });
   },
   win: function () {
     game.states.table.clear();

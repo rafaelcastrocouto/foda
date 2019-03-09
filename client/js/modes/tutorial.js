@@ -328,7 +328,7 @@ game.tutorial = {
     game.tutorial.letter(game.data.ui.axeskillselect);
   },
   sourceBlink: function (data) { //console.log(data.card)
-    if (data.card.data('source')) data.card.data('source').addClass('blink');
+    if (data.card.data('source')) $('#'+data.card.data('source')).addClass('blink');
   },
   selectedPassive: function () {
     game.tutorial.axebaloon.hide().fadeIn('slow');

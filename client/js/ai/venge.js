@@ -20,8 +20,8 @@ game.heroesAI.venge = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',
-            card: stun,
-            target: cardInRange
+            card: stun.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
@@ -43,8 +43,8 @@ game.heroesAI.venge = {
           cardData['cast-strats'].push({
             priority: p + (targets * 10),
             skill: 'corruption',
-            card: corruption,
-            target: spot
+            card: corruption.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -74,8 +74,8 @@ game.heroesAI.venge = {
               cardData['cast-strats'].push({
                 priority: p,
                 skill: 'ult',
-                card: ult,
-                target: spot
+                card: ult.attr('id'),
+                target: spot.attr('id')
               });
             }
           }
@@ -88,33 +88,33 @@ game.heroesAI.venge = {
         card.alliesInRange(ult.data('cast range'), function (cardInRange) {
           if (cardInRange.hasClass('units')) p += 30;
           cardData['cast-strats'].push({
-            priority: 10 + cardInRange.data('current hp'),
+            priority: 100 - cardInRange.data('current hp'),
             skill: 'ult',
-            card: ult,
-            target: cardInRange.getSpot()
+            card: ult.attr('id'),
+            target: cardInRange.attr('id')
           });
         });
       }
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var stun = game.data.skills.venge.stun;
     card.inRange(stun['cast range'], function (spot) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 5;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     var corruption = game.data.skills.venge.corruption;
     var range = corruption['aoe range'];
     var width = corruption['aoe width'];
     card.around(1, function (dirSpot) {
       card.inLine(dirSpot, range, width, function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 10;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
         var cardInRange = $('.card.'+card.opponent(), spot);
         if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
           var cardInRangeData = cardInRange.data('ai');
@@ -140,9 +140,9 @@ game.heroesAI.venge = {
       // make ai units near the tower walk away
       if (canSwapTower) {
         game.enemy.tower.atRange(2, function (spot) {
-          var spotData = spot.data('ai');
+          var spotData = JSON.parse(spot.data('ai'));
           spotData.priority -= 30;
-          spot.data('ai', spotData);
+          spot.data('ai', JSON.stringify(spotData));
         });
         game.enemy.tower.atRange(4, function (spot) {
           var defenderCard = spot.find('.card.'+side);
@@ -154,6 +154,6 @@ game.heroesAI.venge = {
         });
       }
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

@@ -157,6 +157,7 @@ game.events = {
   rightclick: function (event) {
     game.card.unselect();
     game.events.cancel(event);
+    return false;
   },
   error: function(event) {
     var err = event.originalEvent;

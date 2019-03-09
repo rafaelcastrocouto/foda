@@ -9,10 +9,11 @@ game.items = {
       cb: function (deck) {  //console.log(deck.data('cards'));
         deck.addClass('items').appendTo(game.items.shop);
         var data = [];
-        $.each(deck.data('cards'), function(i, card) {
+        $.each(JSON.parse(deck.data('cards')), function(i, cardId) {
+          var card = $('#'+cardId);
           card.addClass('player');
           card.on('mousedown touchstart', game.card.select).addClass('buy');
-          data[i] = card.data();
+          //data[i] = card.data();
         });/*
         game.enemyItemsDeck = deck.clone().data(deck.data()).addClass('enemy hidden');
         game.enemyItemsDeck.appendTo(game.items.shop);
@@ -66,7 +67,8 @@ game.items = {
       if (side) {
         //game[side+'ItemsDeck'].removeClass('hidden');
         //game[game.opponent(side)+'ItemsDeck'].addClass('hidden');
-        $.each(game.playerItemsDeck.data('cards'), function(i, card) {
+        $.each(JSON.parse(game.playerItemsDeck.data('cards')), function(i, cardId) {
+          var card = $('#'+cardId);
           if (card.data('price') > game[side].money) card.addClass('expensive');
           else card.removeClass('expensive');
         });
@@ -509,7 +511,7 @@ game.items = {
         var source = eventdata.source;
         var target = eventdata.target;
         var buff = source.getBuff('skadi-target');
-        var skill = buff.data('skill');
+        var skill = $('#'+buff.data('skill'));
         if (!target.hasClasses('bkb') && target.side() == source.opponent() && !source.data('miss-attack')) {
           source.addBuff(target, skill, 'skadi-attacked');
         }
@@ -560,7 +562,11 @@ game.items = {
     },
     blinkdagger: {
       cast: function (skill, target) {
-        if (target.hasClass('free')) skill.data('source').place(target);
+        if (target.hasClass('free')) {
+          card = $('#'+skill.data('source'));
+          card.stopChanneling();
+          card.place(target);
+        }
       }
     },
     lens: {
@@ -589,7 +595,7 @@ game.items = {
       expire: function (event, eventdata) {
         var target = eventdata.target;
         var buff = eventdata.buff;
-        var skill = buff.data('skill');
+        var skill = $('#'+buff.data('skill'));
         target.removeClass('cycloned');
         if (skill.side() == target.opponent()) target.damage(buff.data('damage'), target, game.data.ui.pure);
       }
@@ -667,7 +673,7 @@ game.items = {
         var source = eventdata.source;
         var target = eventdata.target;
         var buff = source.getBuff('vennon-target');
-        var skill = buff.data('skill');
+        var skill = $('#'+buff.data('skill'));
         if (!target.hasClasses('bkb') && target.side() == source.opponent() && !source.data('miss-attack')) {
           var attackedbuff = source.addBuff(target, skill, 'vennon-attacked');
           target.on('turnend.vennon', game.items.armaments.vennon.turnend.bind(this, source, target));
@@ -693,7 +699,7 @@ game.items = {
         var source = eventdata.source;
         var target = eventdata.target;
         var buff = source.getBuff('desolator-target');
-        var skill = buff.data('skill');
+        var skill = $('#'+buff.data('skill'));
         if (!target.hasClasses('bkb') && target.side() == source.opponent() && !source.data('miss-attack')) {
           source.addBuff(target, skill, 'desolator-attacked');
         }

@@ -83,27 +83,25 @@ game.map = {
     }
   },
   getX: function(id) {
-    if (!id)
-      id = this;
-    if (id && typeof id.attr == 'function')
-      id = id.attr('id') || id.parent().attr('id');
-    if (id) {
-      var w = game.map.letters.indexOf(id[0]);
-      if (w >= 0 && w < game.width) {
-        return w;
-      }
+    if (!id) id = $(this);
+    if (id && typeof id.attr == 'function') {
+      if (id.hasClass('spot')) id = id.attr('id');
+      else if (id.parent().hasClass('spot')) id = id.parent().attr('id');
+    }
+    var w = game.map.letters.indexOf(id[0]);
+    if (w >= 0 && w < game.width) {
+      return w;
     }
   },
   getY: function(id) {
-    if (!id)
-      id = this;
-    if (id && typeof id.attr == 'function')
-      id = id.attr('id') || id.parent().attr('id');
-    if (id) {
-      var h = parseInt(id[1], 10) - 1;
-      if (h >= 0 && h < game.height) {
-        return h;
-      }
+    if (!id) id = $(this);
+    if (id && typeof id.attr == 'function'){
+      if (id.hasClass('spot')) id = id.attr('id');
+      else if (id.parent().hasClass('spot')) id = id.parent().attr('id');
+    }
+    var h = parseInt(id[1], 10) - 1;
+    if (h >= 0 && h < game.height) {
+      return h;
     }
   },
   getSpot: function(w, h) {

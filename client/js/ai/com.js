@@ -26,8 +26,8 @@ game.heroesAI.com = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'aoe',
-            card: aoe,
-            target: spot
+            card: aoe.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -41,8 +41,8 @@ game.heroesAI.com = {
           cardData['cast-strats'].push({
             priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'heal',
-            card: heal,
-            target: cardInRange
+            card: heal.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
@@ -55,13 +55,13 @@ game.heroesAI.com = {
           cardData['cast-strats'].push({
             priority: parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
             skill: 'ult',
-            card: ult,
-            target: cardInRange
+            card: ult.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var aoe = game.data.skills.com.aoe;
@@ -72,20 +72,20 @@ game.heroesAI.com = {
       });
     });
     $.each(aoeSpots, function (i, spot) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 5;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     if (game[card.side()].turn >= game.ultTurn) {
       var ult = game.data.skills.com.ult;
       card.inRange(ult['cast range'], function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 15;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

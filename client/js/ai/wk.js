@@ -14,8 +14,8 @@ game.heroesAI.wk = {
           cardData['cast-strats'].push({
             priority: p - (cardInRange.data('current hp')/4),
             skill: 'stun',
-            card: stun,
-            target: cardInRange
+            card: stun.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
@@ -23,19 +23,19 @@ game.heroesAI.wk = {
     if (card.hasBuff('wk-ult')) {
       cardData.strats.siege += 25;
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var stun = game.data.skills.wk.stun;
     card.inRange(stun['cast range'], function (spot) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 20;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     if (card.hasBuff('wk-ult')) {
       card.data('ai priority bonus', -40);
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

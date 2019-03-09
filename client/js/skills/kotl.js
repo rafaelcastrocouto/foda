@@ -1,42 +1,30 @@
 game.skills.kotl = {
   illuminate: {
     cast: function (skill, source, target) {
-      var kotl = source;
-      var direction = kotl.getDirectionStr(target);
-      var side = kotl.side();
+      var direction = source.getDirectionStr(target);
+      var side = source.side();
       skill.addClass('channel-on');
-      kotl.selfBuff(skill, 'illuminate-channel');/*
-      if (kotl.hasBuff('kotl-ult')) {
-        var ghost = kotl.clone().removeClass('selected heroes can-attack can-move');
-        ghost.addClass('illuminate-ghost ghost channeling');
-        ghost.insertAfter(kotl);
-        kotl.data('deck', game.data.ui.summon);
-        kotl.data('illuminate-ghost', ghost);
-        ghost.data('illuminate-source', kotl);
-        ghost.data('channeling', skill.data('channel'));
-        source = ghost;
-      }*/
+      source.selfBuff(skill, 'illuminate-channel');
       source.addClass('illuminating illumi-'+direction);
-      source.data('illuminate', skill);
-      source.data('illuminate-target', target);
+      source.data('illuminate', skill.attr('id'));
+      source.data('illuminate-target', target.attr('id'));
       source.on('channelend', this.channelend);
-      skill.data('discard-to', game[side].skills.sidehand);
+      skill.data('discard-to', side+'.skills.sidehand');
     },
     channelend: function (event, eventdata) { 
       var source = $(this);
       game.skills.kotl.illuminate.release(source);
     },
-    release: function (source) { 
-      var kotl = source.data('illuminate-source') || source;
-      var target = source.data('illuminate-target');
-      var skill = $('.table .skills .kotl-illuminate.'+kotl.side());
+    release: function (source) {
+      var target = $('#'+source.data('illuminate-target'));
+      var skill = $('.table .skills .kotl-illuminate.'+source.side());
       var damage = skill.data('damage');
       var range = skill.data('aoe range');
-      if (kotl.data('skill range bonus')) range += kotl.data('skill range bonus');
+      if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var width = skill.data('aoe width');
       var time = skill.data('channel') - source.data('channeling') + 1;
       source.opponentsInLine(target, range, width, function (card) {
-        kotl.damage(damage * time, card, skill.data('damage type'));
+        source.damage(damage * time, card, skill.data('damage type'));
       });
       if (!game.camera.hasClass('night')) {
         source.alliesInLine(target, range, width, function (card) {
@@ -45,10 +33,10 @@ game.skills.kotl = {
       }
       game.audio.stop('kotl/illuminate');
       game.audio.play('kotl/illuminaterelease');
-      kotl.data('illuminate-target', null);
-      kotl.off('turnend.kotl-illuminate');
-      kotl.removeBuff('kotl-illuminate');
-      kotl.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
+      source.data('illuminate-target', null);
+      source.off('turnend.kotl-illuminate');
+      source.removeBuff('kotl-illuminate');
+      source.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
       skill.data('discard-to', false);
       skill.removeClass('channel-on').discard();
     }

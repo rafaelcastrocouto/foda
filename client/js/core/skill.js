@@ -29,7 +29,8 @@ game.skill = {
       cb: function (deck) {
         var side = this.side.toString();
         deck.addClass('available').hide().appendTo(game.states.table[side]);
-        $.each(deck.data('cards'), function (i, skill) {
+        $.each(JSON.parse(deck.data('cards')), function (i, cardId) {
+          var skill = $('#'+cardId);
           var side = this.toString();
           skill.addClass(side);
           if (side == 'player' || game.mode == 'library' || game.mode == 'local') {
@@ -38,7 +39,7 @@ game.skill = {
           } else skill.attr({ title: '' }).addClass('flipped');
           if (skill.data('deck') === game.data.ui.summon) skill.appendTo(game[side].unitsDeck);
           if (skill.data('deck') === game.data.ui.temp) skill.appendTo(game[side].skills.temp);
-          if (skill.data('skill') === 'ult') skill.appendTo(game[side].skills.ult);
+          if (skill.data('label') === 'ult') skill.appendTo(game[side].skills.ult);
         }.bind(side));
         //deck.shuffleDeck();
         game[side].skills.deck = deck;
@@ -54,7 +55,7 @@ game.skill = {
     game[side].cardsPerTurn = Math.round(game[side].mana / 5);
   },
   buyCard: function(side) {
-    var availableSkills = $('.table .'+side+' .skills.available .card'), card, heroid, hero, to, skillid, skills = [], liveheroes = [];
+    var availableSkills = $('.table .'+side+' .skills.available .card'), card, skills = [], liveheroes = [];
     if (availableSkills.length < game[side].cardsPerTurn + 1) {
       // renew deck
       $('.table .'+side+' .skills.cemitery .card').appendTo(game[side].skills.deck);
@@ -86,7 +87,7 @@ game.skill = {
   },
   buyHand: function(side) {
     game.units.buyCreeps(side);
-    if (game[side].type == 'challenger' || game[side].turn > 1)
+    if (game[side].type == 'challenger' || game[side].turn > 0)
       game.skill.buyCards(game[side].cardsPerTurn, side);
   },
   buyCards: function(n, side) {
@@ -114,27 +115,28 @@ game.skill = {
   },
   canCast: function (skill) {
     if (skill && skill.length) {
+      var isBlink = (skill.hasClass('venge-ult') || skill.hasClass('am-blink') || skill.hasClass('blinkdagger'));
+      if ( isBlink && this.hasClass('rooted') ) return false;
       var c = !this.hasClasses('dead stunned silenced hexed disabled sleeping cycloned taunted');
-      if ( skill.hasClass('am-blink') && this.hasClass('rooted') ) c = false;
       return c;
     }
   },
   cast: function (skill, target) {
     var source = this, targets, duration, str,
       hero = skill.data('hero'),
-      skillid = skill.data('skill');
+      label = skill.data('label');
     if (skill.hasClass('items')) {
       hero = skill.data('itemtype');
-      skillid = skill.data('item');
+      label = skill.data('item');
     }
-    if (skillid && hero) {
+    if (label && hero) {
       if (typeof target === 'string') {
         if (skill.hasClass('items')) {
-          if (skill.data('cast select') && skill.data('source')) targets = game.data.items[hero][skillid]['secondary targets'];
-          else targets = game.data.items[hero][skillid].targets;
+          if (skill.data('cast select') && skill.data('source')) targets = game.data.items[hero][label]['secondary targets'];
+          else targets = game.data.items[hero][label].targets;
         } else {
-          if (skill.data('cast select') && skill.data('source')) targets = game.data.items[hero][skillid]['secondary targets'];
-          else targets = game.data.skills[hero][skillid].targets;
+          if (skill.data('cast select') && skill.data('source')) targets = game.data.items[hero][label]['secondary targets'];
+          else targets = game.data.skills[hero][label].targets;
         }
         if (targets.indexOf(game.data.ui.spot) >= 0 || targets.indexOf(game.data.ui.jungle) >= 0) {
           target = $('#' + target);
@@ -148,7 +150,7 @@ game.skill = {
           target: target
         };
         if (skill.data('cast select') && !skill.data('source')) {
-          skill.data('source', target);
+          skill.data('source', target.attr('id'));
           game.highlight.clearMap();
           skill.strokeSkill(target);
           game.highlight.active(evt, target, skill, 'secondary');
@@ -159,10 +161,10 @@ game.skill = {
           skill.trigger('cast', evt);
           if (!target.hasClass('spot')) target.trigger('casted', evt);
           if (!(target.hasBuff('mirror-counter') && source.side() !== target.side())) {
-            if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
-              str = hero + '/' + skillid;
+            if (game.audio.sounds.indexOf(hero + '/' + label) >= 0) {
+              str = hero + '/' + label;
               if (target.hasClass('linken')) game.audio.play('activate');
-              else if (skillid !== 'ult') game.audio.play(str);
+              else if (label !== 'ult') game.audio.play(str);
             }
             if (skill.data('type') == game.data.ui.channel) {
               game.skill.channel(skill, source, target, evt);
@@ -179,9 +181,9 @@ game.skill = {
               } else {
                 game.fx.ult(skill, function (skill, source, target) {
                   var hero = skill.data('hero');
-                  var skillid = skill.data('skill');
+                  var label = skill.data('label');
                   // SKILL CAST
-                  game.skills[hero][skillid].cast(skill, source, target);
+                  game.skills[hero][label].cast(skill, source, target);
                   game.skill.castafter(skill, source, target);
                 }.bind(this, skill, source, target), str);
               }
@@ -237,7 +239,6 @@ game.skill = {
   },
   activeStopChanneling: function () {
     var card = $(this);
-    if (card.data('illuminate-ghost')) card = $(card.data('illuminate-ghost'));
     if (card.side() == 'player') game.player.stopChanneling(card);
     else card.stopChanneling();
   },
@@ -257,15 +258,15 @@ game.skill = {
   passive: function (target) {
     var skill = this,
       hero = skill.data('hero'),
-      skillid = skill.data('skill');
+      label = skill.data('label');
     if (typeof(target) === 'string') target = $('#' + target + ' .card');
-    if (skillid && hero) {
+    if (label && hero) {
       target.trigger('passive', {
         skill: skill,
         target: target
       });
-      game.skills[hero][skillid].passive(skill, target);
-      if (skillid == 'aura') {
+      game.skills[hero][label].passive(skill, target);
+      if (label == 'aura') {
         var side = target.side();
         var team = $('.table .card.'+side+':not(.skills)');
         $.each(team, function (i, card) {
@@ -307,23 +308,23 @@ game.skill = {
   toggle: function (target) { //console.log('target')
     var skill = this,
       hero = skill.data('hero'),
-      skillid = skill.data('skill');
+      label = skill.data('label');
     if (typeof target === 'string') { target = $('#' + target + ' .card'); }
-    if (skillid && hero) {
+    if (label && hero) {
       var evt = {
         type: 'toggle',
         skill: skill,
         target: target
       };
       target.trigger('toggle', evt);
-      game.skills[hero][skillid].toggle(skill, target);
-      if (game.audio.sounds.indexOf(hero + '/' + skillid) >= 0) {
+      game.skills[hero][label].toggle(skill, target);
+      if (game.audio.sounds.indexOf(hero + '/' + label) >= 0) {
         if (skill.is('.ld-ult:not(.on)')) game.audio.play(hero + '/transform');
         else if (skill.is('.pud-rot:not(.on)')) {
           game.audio.stop('pud/rot');
           game.audio.play('activate');
         }
-        else game.audio.play(hero + '/' + skillid);
+        else game.audio.play(hero + '/' + label);
       }
       target.shake();
       skill.removeClass('draggable');
@@ -340,11 +341,12 @@ game.skill = {
   summon: function (skill) {
     skill.removeClass('draggable');
     var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped dragTarget').on('mousedown touchstart', game.card.select).on('mouseenter', game.highlight.source).on('mouseleave', game.highlight.refresh).css({transform: ''});
+    unit.attr('id', game.card.newId());
     unit.find('legend').text(skill.data('summon name'));
     unit.find('.description').remove();
     unit.find('.castRange').remove();
-    unit.data('summon', skill);
-    unit.data('summoner', this);
+    unit.data('summon', skill.attr('id'));
+    unit.data('summoner', this.attr('id'));
     unit.data('hp', skill.data('hp'));
     unit.data('damage', skill.data('damage'));
     unit.data('range', skill.data('range'));
@@ -449,8 +451,10 @@ game.skill = {
       }
       this.trigger('discard', {target: this});
       var side = this.side();
-      if (this.data('discard-to')) this.appendTo(this.data('discard-to'));
-      else if (this.data('deck') === game.data.ui.temp) this.appendTo(game[side].skills.temp);
+      var to = this.data('discard-to');
+      if (to) {
+        this.appendTo(game.resolve(to));
+      } else if (this.data('deck') === game.data.ui.temp) this.appendTo(game[side].skills.temp);
       else if (this.data('type') === game.data.ui.summon) this.appendTo(game.hidden);
       else this.appendTo(game[side].skills.cemitery);
       if (side == 'enemy') {
@@ -467,8 +471,9 @@ game.skill = {
     game.highlight.refresh();
     return this;
   },
-  getSkill: function (skillid) {
+  getSkill: function (skill) {
     var side = this.side();
-    return $('.'+side+'decks .skills.' + skillid).first();
+    var hero = this.data('hero');
+    return $('.'+side+'decks .skills.' + hero + '-' + skill).first();
   }
 };

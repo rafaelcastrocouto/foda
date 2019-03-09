@@ -15,13 +15,13 @@ game.states.result = {
     this.el.prepend(this.parallax).addClass('iddle');
   },
   playerHeroResult: function () {
-    var hero = $(this), heroid = hero.data('hero'),
+    var hero = $('#'+this), heroid = hero.data('hero'),
       img = $('<div>').addClass('portrait').append($('<div>').addClass('img')),
       text = $('<span>').text(hero.data('name') + ': ' + hero.data('kills') + ' / ' + hero.data('deaths'));
     $('<p>').data('hero', heroid).addClass(heroid+' heroes').append(text, img).appendTo(game.states.result.playerResults);
   },
   enemyHeroResult: function () {
-    var hero = $(this), heroid = hero.data('hero'),
+    var hero = $('#'+this), heroid = hero.data('hero'),
       img = $('<div>').addClass('portrait').append($('<div>').addClass('img')),
       text = $('<span>').text(hero.data('name') + ': ' + hero.data('kills') + ' / ' + hero.data('deaths'));
     $('<p>').data('hero', heroid).addClass(heroid+' heroes').append(img, text).appendTo(game.states.result.enemyResults);
@@ -49,8 +49,8 @@ game.states.result = {
     this.bkgdeck(picks);
     if (game.mode == 'local') message = game.data.ui.lose;
     var title = winnerName + ' ' + game.data.ui.victory;
-    $(game.player.heroesDeck.data('cards')).each(this.playerHeroResult);
-    $(game.enemy.heroesDeck.data('cards')).each(this.enemyHeroResult);
+    $(JSON.parse(game.player.heroesDeck.data('cards'))).each(this.playerHeroResult);
+    $(JSON.parse(game.enemy.heroesDeck.data('cards'))).each(this.enemyHeroResult);
     var ch = game.states.result.playerResults.children();
     ch.sort(function (a,b) { 
       return game.player.picks.indexOf($(a).data('hero')) - game.player.picks.indexOf($(b).data('hero')); 

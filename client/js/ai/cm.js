@@ -32,8 +32,8 @@ game.heroesAI.cm = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'slow',
-            card: slow,
-            target: spot
+            card: slow.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -49,8 +49,8 @@ game.heroesAI.cm = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'freeze',
-            card: freeze,
-            target: cardInRange
+            card: freeze.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
@@ -70,12 +70,12 @@ game.heroesAI.cm = {
         cardData['cast-strats'].push({
           priority: p,
           skill: 'ult',
-          card: ult,
-          target: card
+          card: ult.attr('id'),
+          target: card.attr('id')
         });
       }
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     // prevent clustering 
@@ -87,27 +87,27 @@ game.heroesAI.cm = {
       });
     });
     $.each(slowSpots, function (i, spot) {
-      var spotData = spot.data('ai');
-      spotData.priority -= 5;
+      var spotData = JSON.parse(spot.data('ai'));
+      spotData.priority -= 10;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     var freeze = game.data.skills.cm.freeze;
     card.inRange(freeze['cast range'], function (spot) {
-      var spotData = spot.data('ai');
-      spotData.priority -= 5;
+      var spotData = JSON.parse(spot.data('ai'));
+      spotData.priority -= 15;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     var ult = game.data.skills.cm.ult;
     if (game[card.side()].turn >= game.ultTurn) {
       card.inRange(ult['aoe range'], function (spot) {
-        var spotData = spot.data('ai');
-        spotData.priority -= 5;
+        var spotData = JSON.parse(spot.data('ai'));
+        spotData.priority -= 20;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

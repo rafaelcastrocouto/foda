@@ -6,7 +6,6 @@ game.heroesAI.ld = {
     // bear strats (siege)
     // use return if bear is low hp
     // cardData['has-instant-attack-buff'] = true;
-    card.data('ai', cardData);
     var bear = $('.enemydecks .sidehand .skills.ld-bear');
     var link = $('.enemydecks .hand .skills.ld-link');
     var roar = $('.enemydecks .hand .skills.ld-roar');
@@ -24,8 +23,8 @@ game.heroesAI.ld = {
           cardData['cast-strats'].push({
             priority: 10 + (destiny.data('priority') * 4) + (game.enemy.turn*2),
             skill: 'bear',
-            card: bear,
-            target: $(destiny)
+            card: bear.attr('id'),
+            target: destiny.attr('id')
           });
         }
       });
@@ -37,8 +36,8 @@ game.heroesAI.ld = {
       cardData['cast-strats'].push({
         priority: p,
         skill: 'link',
-        card: link.first(),
-        target: card
+        card: link.first().attr('id'),
+        target: card.attr('id')
       });
     }
     var p;
@@ -55,8 +54,8 @@ game.heroesAI.ld = {
       if (p) cardData['cast-strats'].push({
         priority: p,
         skill: 'roar',
-        card: roar,
-        target: card
+        card: roar.attr('id'),
+        target: card.attr('id')
       });
     }
     if (card.canCast(ult)) {
@@ -70,16 +69,16 @@ game.heroesAI.ld = {
         if (!card.hasBuff('ld-cry') || inMelee) cardData['cast-strats'].push({
           priority: 10 + (10 * inMelee),
           skill: 'ult',
-          card: ult,
-          target: card
+          card: ult.attr('id'),
+          target: card.attr('id')
         });
       } else if ((!card.hasBuff('ld-cry') && !cry.length) || (cardData['can-attack'] && !inMelee && inRange)) { 
         // turn off
         cardData['cast-strats'].push({
           priority: 5,
           skill: 'ult',
-          card: ult,
-          target: card
+          card: ult.attr('id'),
+          target: card.attr('id')
         });
       }
     }
@@ -88,11 +87,11 @@ game.heroesAI.ld = {
       cardData['cast-strats'].push({
           priority: 50,
           skill: 'cry',
-          card: cry,
-          target: card
+          card: cry.attr('id'),
+          target: card.attr('id')
         });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var bear = card.data('bear');
@@ -101,10 +100,10 @@ game.heroesAI.ld = {
     }
     var roar = game.data.skills.ld.roar;
     card.inRange(roar['aoe range'], function (spot) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 25;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     if (card.hasBuff('ld-ult')) {
       card.data('ai priority bonus', -10);

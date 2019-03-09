@@ -28,8 +28,8 @@ game.heroesAI.lina = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'fire',
-            card: fire,
-            target: spot
+            card: fire.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -51,8 +51,8 @@ game.heroesAI.lina = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'stun',
-            card: stun,
-            target: spot
+            card: stun.attr('id'),
+            target: spot.attr('id')
           });
         }
       });
@@ -67,13 +67,13 @@ game.heroesAI.lina = {
           cardData['cast-strats'].push({
             priority: p,
             skill: 'ult',
-            card: ult,
-            target: cardInRange
+            card: ult.attr('id'),
+            target: cardInRange.attr('id')
           });
         }
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
     var fire = game.data.skills.lina.fire;
@@ -81,15 +81,15 @@ game.heroesAI.lina = {
     var width = fire['aoe width'];
     card.around(1, function (dirSpot) {
       card.inLine(dirSpot, range, width, function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 10;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
         var cardInRange = $('.card.'+card.opponent(), spot);
         if (cardInRange.length && !cardInRange.hasClasses('ghost dead towers')) {
-          var cardInRangeData = cardInRange.data('ai');
+          var cardInRangeData = JSON.parse(cardInRange.data('ai'));
           cardInRangeData.strats.dodge += 20;
-          cardInRange.data('ai', cardInRangeData);
+          cardInRange.data('ai', JSON.stringify(cardInRangeData));
         }
       });
     });
@@ -101,20 +101,20 @@ game.heroesAI.lina = {
       });
     });
     $.each(stunSpots, function (i, spot) {
-      var spotData = spot.data('ai');
+      var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 10;
       spotData['can-be-casted'] = true;
-      spot.data('ai', spotData);
+      spot.data('ai', JSON.stringify(spotData));
     });
     var ult = game.data.skills.lina.ult;
     if (game[card.side()].turn >= game.ultTurn) {
       card.inRange(ult['cast range'], function (spot) {
-        var spotData = spot.data('ai');
+        var spotData = JSON.parse(spot.data('ai'));
         spotData.priority -= 25;
         spotData['can-be-casted'] = true;
-        spot.data('ai', spotData);
+        spot.data('ai', JSON.stringify(spotData));
       });
     }
-    card.data('ai', cardData);
+    card.data('ai', JSON.stringify(cardData));
   }
 };

@@ -45,11 +45,11 @@ game.fx = {
     },
     wind: {
       arrow: ['arrow']
-    },
+    }/*,
     venge: {
       corruption: ['corruption'],
       passive: ['passive']
-    }
+    }*/
   },
   build: function() {
     var img = $('<img>').appendTo(game.hidden);
@@ -142,7 +142,7 @@ game.fx = {
     if (!game.recovering) {
       var cl = source.data('hero');
       if (source.hasClass('towers')) cl = 'towers ' + source.side();
-      if (source.hasClass('units')) cl = 'units ' + source.data('id') +' '+ source.side();
+      if (source.hasClass('units')) cl = 'units ' + source.data('label') +' '+ source.side();
       if (tag) {
         if (typeof(tag) == 'string') cl += ' '+tag;
         else cl = tag.data('hero');
@@ -187,9 +187,9 @@ game.fx = {
     }
   },
   ult: function(skill, cb, str) {// console.log(skill.data())
-    var name = skill.data('skill'),
+    var label = skill.data('label'),
         skillId = skill.data('skillId');
-    if (name == 'ult' && !game.fx.ultList[skillId]) {
+    if (label == 'ult' && !game.fx.ultList[skillId]) {
       game.fx.ultList[skillId] = true;
       $('.ultfx .star').removeClass('hide');
       var fx = $('<div>').addClass(skillId+' fx');

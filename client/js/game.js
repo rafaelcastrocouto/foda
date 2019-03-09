@@ -15,8 +15,8 @@ var game = {
   connectionLimit: 30,
   deadLength: 3, //turns
   ultTurn: 4,
-  creepTurn: 1,
-  catapultTurn: 8,
+  creepTurn: 0,
+  catapultTurn: 6,
   treeRespawn: 4,
   heroDeathDamage: 4, //HP
   fountainHeal: 12,
@@ -213,6 +213,11 @@ var game = {
         'data': details
       });
     }
+  },
+  resolve: function(path, obj) {
+    return path.split('.').reduce(function(prev, curr) {
+        return prev ? prev[curr] : null;
+    }, obj || game);
   },
   reset: function(details) {
     game.logError(details);

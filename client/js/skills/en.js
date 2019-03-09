@@ -2,15 +2,15 @@ game.skills.en = {
   passive: {
     passive: function (skill, source, target) {
       source.selfBuff(skill, 'passive-self');
-      source.data('en-passive', skill);
+      source.data('en-passive', skill.attr('id'));
       source.on('pre-attacked.en-passive', this.attacked);
     },
     attacked: function (event, eventdata) {
       var source = eventdata.source;
       var target = eventdata.target;
-      var skill = target.data('en-passive');
+      var skill = $('#'+target.data('en-passive'));
       var buff = target.addBuff(source, skill, 'passive-attacker');
-      if (buff) eventdata.bonus = -1 * buff.data('damage reduction');
+      if (buff) eventdata.bonus += -1 * buff.data('damage reduction');
     }
   },
   curse: {
