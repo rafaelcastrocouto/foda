@@ -208,6 +208,8 @@ var game = {
   logError: function(details) {
     if (!game.debug) {
       if (typeof(details) !== 'string') details = JSON.stringify(details);
+      var date = new Date();
+      details += ' ' + date.toDateString();
       game.db({
         'set': 'errors',
         'data': details
