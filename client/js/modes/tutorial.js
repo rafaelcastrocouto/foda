@@ -237,14 +237,15 @@ game.tutorial = {
   openShop: function () {
     game.items.addMoney('player', 800);
     game.items.enableShop();
-    $('.table .card.items').hide();
-    $('.table .card.items.sheepstick').show().addClass('blink');
+    $('.table .shop .card.items').hide();
+    $('.table .shop .card.items.sheepstick').show().addClass('blink');
     game.tutorial.letter(game.data.ui.axeshop);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.states.table.shop.addClass('blink');
   },
   buyItem: function () {
     $('.table .card.items.sheepstick').removeClass('blink');
+    $('.table .shop .card.items.sheepstick').hide();
   },
   hideShop: function () {
     if ($('.player .sidehand .card.items').length) {
@@ -261,8 +262,8 @@ game.tutorial = {
     var target = $('#G6').firstFreeSpotInLine($('#G5'), 8).getPosition();
     var moves = [
       'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E3'),
-      'C:'+game.map.mirrorPosition('E3')+':'+game.map.mirrorPosition('E4')+':bear:ld',
-      'C:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition(target)+':blink:am',
+      'C:'+game.map.mirrorPosition('E3')+':'+game.map.mirrorPosition('E4')+':ld:bear',
+      'C:'+game.map.mirrorPosition('G1')+':'+game.map.mirrorPosition(target)+':am:blink',
       'S:'+game.map.mirrorPosition('K5')+':melee'
       //'M:'+game.map.mirrorPosition('E1')+':'+game.map.mirrorPosition('E2'),
       //'C:'+game.map.mirrorPosition('F1')+':'+game.map.mirrorPosition('F1')+':mana:kotl',

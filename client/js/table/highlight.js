@@ -181,8 +181,9 @@ game.highlight = {
       });
     }
   },
-  enemy: function(source, skill) {
+  enemy: function(source, skill) { 
     var range = skill.data('cast range');
+    if (!range && skill.hasClass('items')) range = 'global';
     var side = skill.opponent() || source.opponent();
     if (range === 'global' || !source) {
       $('.map .card.' + side).each(function () {
