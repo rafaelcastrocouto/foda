@@ -109,7 +109,8 @@ game.skills.pud = {
       var source = eventdata.source;
       var target = eventdata.target;
       var buff = source.getBuff('pud-passive');
-      if (source.side() == target.opponent() && target.hasClass('heroes')) game.skills.pud.passive.bonus(buff, source, 1);
+      if (source.side() == target.opponent() && target.hasClass('heroes') && buff) 
+        game.skills.pud.passive.bonus(buff, source, 1);
     }
   },
   ult: {
