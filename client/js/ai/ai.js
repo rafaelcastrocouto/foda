@@ -68,7 +68,7 @@ game.ai = {
       if (game.debug) {
         $('.map .spot').each(function (i, el) {
           var spot = $(el);
-          $('.debug', spot).text(JSON.parse(spot.data('ai')).priority);
+          if (spot.data('ai')) $('.debug', spot).text(JSON.parse(spot.data('ai')).priority);
         });
       }
       // cast strats

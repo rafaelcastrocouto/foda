@@ -65,7 +65,7 @@ game.screen = {
   },
   toggleFlat: function () {
     var checked = $('.screenresolution input[name=flat]').prop('checked');
-    game.map.el.toggleClass('flat', checked);
+    if (game.map.el && game.map.el.toggleClass) game.map.el.toggleClass('flat', checked);
     game.setData('flat-map', checked);
   }
 };

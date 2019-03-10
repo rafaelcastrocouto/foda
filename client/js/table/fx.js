@@ -198,7 +198,8 @@ game.fx = {
         $('.ultfx .star').addClass('hide');
       });
       game.timeout(2100, function () {
-        game.states.table.ultfx.children('.fx').remove();
+        if (game.states.table.ultfx && game.states.table.ultfx.children) 
+          game.states.table.ultfx.children('.fx').remove();
         if (str) game.audio.play(str);
         if (cb) cb();
       });
@@ -214,7 +215,8 @@ game.fx = {
   },
   clear: function() {
     $('.ultfx .star').addClass('hide');
-    game.states.table.ultfx.children('.fx').remove();
+    if (game.states.table.ultfx && game.states.table.ultfx.children) 
+      game.states.table.ultfx.children('.fx').remove();
     $('.map .fx').remove();
     game.fx.ultList = {};
   }

@@ -48,7 +48,7 @@ game.poll = {
   },
   voted: function (pollResults) { //console.log(poll)
     game.setData('voted', game.poll.votedHero);
-    game.poll[game.poll.votedHero].addClass('vote-send');
+    if (game.poll[game.poll.votedHero]) game.poll[game.poll.votedHero].addClass('vote-send');
     game.poll.title.text(game.data.ui.thanksvote);
     if (pollResults) {
       $.each(pollResults, function (i, v) {

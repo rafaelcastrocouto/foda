@@ -636,8 +636,10 @@ game.card = {
       }
       $('.card', game[side].skills.sidehand).each(function (i, el) {
         var skill = $(el);
-        if (skill.hasClass('on')) {
-          game.skills[skill.data('hero')][skill.data('name')].toggle(skill, dead);
+        var hero = skill.data('hero');
+        var name = skill.data('name');
+        if (skill.hasClass('on') && game.skills[hero] && game.skills[hero][name] && game.skills[hero][name].toggle) {
+          game.skills[hero][name].toggle(skill, dead);
         }
         skill.removeClass('on channel-on');
       });

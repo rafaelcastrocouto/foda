@@ -677,7 +677,7 @@ game.items = {
         if (!target.hasClasses('bkb') && target.side() == source.opponent() && !source.data('miss-attack')) {
           var attackedbuff = source.addBuff(target, skill, 'vennon-attacked');
           target.on('turnend.vennon', game.items.armaments.vennon.turnend.bind(this, source, target));
-          attackedbuff.on('expire', game.items.armaments.vennon.expire.bind(this, source, target));
+          if (attackedbuff) attackedbuff.on('expire', game.items.armaments.vennon.expire.bind(this, source, target));
         }
       },
       turnend: function (source, target) {//console.log(target, card)

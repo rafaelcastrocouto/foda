@@ -213,14 +213,16 @@ game.audio = {
       }
     }
     if (vol > 1) { vol = 1; }
-    if (game.audio[target + 'Node']) {
-      //game.audio[target + 'Node'].gain.value = vol;
-      game.audio[target + 'Node'].gain.setTargetAtTime(vol, game.audio.context.currentTime + 1, 0.01);
+    if (typeof(vol) == 'number' && isFinite(vol))  {
+      if (game.audio[target + 'Node']) {
+        //game.audio[target + 'Node'].gain.value = vol;
+        game.audio[target + 'Node'].gain.setTargetAtTime(vol, game.audio.context.currentTime + 1, 0.1);
+      }
+      if (game.options[target + 'control']) {
+        game.options[target + 'control'].css('transform', 'scale(' + vol + ')');
+      }
+      game.setData(target, vol);
     }
-    if (game.options[target + 'control']) {
-      game.options[target + 'control'].css('transform', 'scale(' + vol + ')');
-    }
-    game.setData(target, vol);
   },
   rememberVolume: function () {
     var volume = game.getData('volume');

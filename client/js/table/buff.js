@@ -51,19 +51,20 @@ game.buff = {
         var buffsId = buffs.split('-');
         var buffsData;
         if (data.buffs) buffsData = JSON.parse(data.buffs);
-        if (skill instanceof jQuery) buffsData = JSON.parse(skill.data('buffs'));
+        if (skill instanceof jQuery && skill.data('buffs')) buffsData = JSON.parse(skill.data('buffs'));
         if (buffsData[buffsId[0]] && buffsData[buffsId[0]][buffsId[1]]) {
           data = buffsData[buffsId[0]][buffsId[1]];
         }
       }
       if (data) {
-        if (!data.buffId) data.buffId = buffs || data.skillId || skill.data('skillId');
+        if (!data.buffId) data.buffId = buffs || data.skillId;
+        if (!data.buffId && skill.data) skill.data('skillId');
         if (!data.className) data.className = data.buffId;
-        if (!data.name) data.name = skill.data('name');
+        if (!data.name && skill.data) data.name = skill.data('name');
         if (!data.source) data.source = this.attr('id');
         if (!data.skill && skill.attr) data.skill = skill.attr('id');
         if (!data.target) data.target = target.attr('id');
-        if (!data.description) data.description = skill.data('description');
+        if (!data.description && skill.data) data.description = skill.data('description');
         if (data.duration && !data.unpurgeable) {
           data.className += ' purgeable ' + (source.side() || game.selectedCard.side());
         }

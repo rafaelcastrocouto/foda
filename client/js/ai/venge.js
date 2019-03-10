@@ -147,9 +147,9 @@ game.heroesAI.venge = {
         game.enemy.tower.atRange(4, function (spot) {
           var defenderCard = spot.find('.card.'+side);
           if (defenderCard.length) {
-            var defenderData = defenderCard.data('ai');
+            var defenderData = JSON.parse(defenderCard.data('ai'));
             defenderData.strats.siege += 20;
-            defenderCard.data('ai', defenderData);
+            defenderCard.data('ai', JSON.stringify(defenderData));
           }
         });
       }

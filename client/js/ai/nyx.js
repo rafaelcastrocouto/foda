@@ -106,9 +106,9 @@ game.heroesAI.nyx = {
     if (card.hasBuff('nyx-ult')) {
       $('.map .card.'+game.ai.side).each(function (i, aicardel) {
         var aicard = $(aicardel);
-        var aicarddata = aicard.data('ai');
+        var aicarddata = JSON.parse(aicard.data('ai'));
         aicarddata.strats.retreat += 10;
-        aicard.data('ai', aicarddata);
+        aicard.data('ai', JSON.stringify(aicarddata));
       });
     }
     card.data('ai', JSON.stringify(cardData));

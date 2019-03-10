@@ -131,7 +131,7 @@ game.states.choose = {
       pick.addClass('picked').appendTo(slot).clearEvents('choose');
       game.states.choose.sort();
       game.states.choose.select.call(card, 'force');
-      if (game[game.mode].pick) game[game.mode].pick();
+      if (game[game.mode] && game[game.mode].pick) game[game.mode].pick();
     }
     if (event.type == 'touchend') return false;
   },
