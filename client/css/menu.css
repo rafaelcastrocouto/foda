@@ -417,18 +417,19 @@
   color: #473936;
   border: 1.5px solid #2b2734;
   transform-origin: 50px 5px;
-  transform: translate3d(216px, 144px, 10px) scale(0.85);
-  width: 80px;
-  padding: 8px;
-  padding-bottom: 6px;
+  transform: translate3d(210px, 144px, 10px) scale(0.85);
+  width: 98px;
+  padding: 10px 6px;
+  padding-bottom: 8px;
   border-radius: 5px 40px/50px 8px;
   z-index: 5;
-  box-shadow: inset;
   transition: transform 0.2s;
+  font-size: 11px;
 }
 .rank:hover {
+  font-size: 8.5px;
   border: 1.4px solid #2b2734;
-  transform: translate3d(194px, 140px, 10px) scale(2) rotate(4deg);
+  transform: translate3d(176px, 140px, 10px) scale(2) rotate(4deg);
 }
 .rank:before {
   content: "";
@@ -438,15 +439,15 @@
   position: absolute;
   background-color: #7d6762;
   border-radius: 50%;
-  left: 42px;
+  left: 50px;
   top: 4px;
   box-shadow: 1px 0 0 #111;
 }
 .rank h1 {
   font-size: 14px;
   text-align: center;
-  padding: 0;
-  margin: 4px 0 0;
+  padding: 4px 0 2px;
+  margin: 2px 0 2px;
   line-height: 16px;
   border-bottom: 1px solid #bba988;
 }
@@ -469,22 +470,21 @@
   display: inline-block;
   vertical-align: top;
   margin-right: 0px;
-  font-size: 11px;
+  font-size: 115%;
 }
 .rank li:last-child {
   border: 0;
 }
 .rank span {
-  max-width: 58px;
+  max-width: 52px;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-left: 4px;
+  margin-left: 2px;
   display: inline-block;
-  font-size: 11px;
 }
 .rank span:last-child {
   float: right;
-  max-width: 40px;
+  max-width: 36px;
 }
 .rank li {
   height: 16px;
@@ -496,7 +496,7 @@
 }
 
 .rank span:last-child {
-  font-size: 12px;
+  font-size: 115%;
   margin-left: 0;
 }
 
