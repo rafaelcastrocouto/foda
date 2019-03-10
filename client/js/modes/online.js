@@ -318,7 +318,8 @@ game.online = {
     if (turn == 'enemy') {
       game.db({ 'get': game.id }, function (data) {
         var challengeTurn = game.enemy.type + 'Turn';
-        if (data[challengeTurn] === game.enemy.turn) {
+        //console.log(data[challengeTurn], game.enemy.turn)
+        if (data[challengeTurn] === game.enemy.turn+1) {
           game.turn.stopCount();
           game.online.beginEnemyMoves(data, 'pre');
         }
@@ -328,7 +329,7 @@ game.online = {
   getTurnData: function () {
     game.db({ 'get': game.id }, function (data) {
       var challengeTurn = game.enemy.type + 'Turn';
-      if (data[challengeTurn] === game.enemy.turn) {
+      if (data[challengeTurn] === game.enemy.turn+1) {
         game.online.beginEnemyMoves(data);
       } else {
         game.tries += 1;
