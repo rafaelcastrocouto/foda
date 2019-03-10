@@ -85,7 +85,6 @@ game.online = {
   },
   searching: function () { //console.log('searching')
     game.states.choose.back.attr({disabled: false});
-    game.states.choose.buttonbox.removeClass('hidden');
     if (game.id && game.online.waiting) {
       game.db({ 'get': game.id }, function (found) {
         if (found.challenger) {

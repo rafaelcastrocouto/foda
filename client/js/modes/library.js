@@ -49,22 +49,14 @@ game.library = {
         skill.on('mouseup touchend', function (e) {
           var card = $(this);
           if (card.hasClass('zoom')) {
-            $('.choose .card').removeClass('transparent');
+            game.states.choose.removeZoom(card);
             $('.choose .slot').removeClass('transparent');
-            $('.choose .pickedbox').removeClass('trans');
-            game.topbar.removeClass('transparent'); //console.log('clicked skill rem')
-            game.message.removeClass('transparent');
-            game.states.choose.buttonbox.removeClass('hidden');
-            card.removeClass('zoom');
+            $('.choose .pickedbox').removeClass('trans'); //console.log('clicked skill rem')
           } else if (!game.states.choose.lockZoom && !game.selectedCardZoom) {
-            $('.choose .card').addClass('transparent');
+            game.states.choose.addZoom(card);
             $('.choose .slot').addClass('transparent');
             $('.choose .pickedbox').addClass('trans'); //console.log('clicked skill add')
-            game.topbar.addClass('transparent');
-            game.message.addClass('transparent');
-            card.addClass('zoom').removeClass('transparent');
             card.parent().removeClass('transparent');
-            game.states.choose.buttonbox.addClass('hidden');
           }
           if (e && e.preventDefault) e.preventDefault();
           return false;

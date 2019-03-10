@@ -61,23 +61,15 @@ game.states.choose = {
   select: function (force) {
     var card = $(this);//console.log('select', game.events.dragging, card, force)
     if (card.hasClass && card.hasClass('card')) {
-      if (card.hasAllClasses('selected zoom') && !game.events.dragging) { 
-        $('.choose .card').removeClass('transparent');
-        $('.choose .pickedbox').removeClass('transparent');
-        game.topbar.removeClass('transparent');
-        card.removeClass('zoom'); //console.log('clicked hero rem')
-        game.states.choose.buttonbox.removeClass('hidden');
-        $('.choose .slot').removeClass('transparent');
-        if(game.mode != 'library') card.addClass('draggable');
-        game.states.choose.lockZoom=true;
-        setTimeout(function () {game.states.choose.lockZoom=false;}, 200);
-      } else if (force != 'force' && card.hasClass('selected') && !game.states.choose.lockZoom && !game.events.dragging) {
-        $('.choose .card').addClass('transparent');
-        $('.choose .pickedbox').addClass('transparent');
-        game.topbar.addClass('transparent');
-        card.addClass('zoom').removeClass('transparent draggable'); //console.log('clicked hero add')
-        $('.choose .slot').addClass('transparent');
-        game.states.choose.buttonbox.addClass('hidden');
+      if (force != 'force' && card.hasClass('selected') && !game.events.dragging) {
+        if (card.hasClass('zoom')) {
+          $('.choose .pickedbox').removeClass('transparent');
+          game.states.choose.removeZoom(card);
+        }
+        else {
+          $('.choose .pickedbox').addClass('transparent');
+          game.states.choose.addZoom(card);
+        }
       } else if (force == 'force' || !game.events.dragging) {
         if (game.mode == 'library') game.library.select(card, force);
         $('.choose .selected').removeClass('selected draggable');
@@ -97,7 +89,22 @@ game.states.choose = {
     if (force && force.preventDefault) {
       game.events.end(force);
       force.preventDefault();
-    }    return false;
+    } return false;
+  },
+  addZoom: function (card) {
+    $('.choose .card').addClass('transparent');
+    game.topbar.addClass('transparent');
+    card.addClass('zoom').removeClass('transparent draggable'); //console.log('clicked hero add')
+    $('.choose .slot').addClass('transparent');
+    game.states.choose.buttonbox.addClass('hidden');
+  },
+  removeZoom: function (card) {
+    $('.choose .card').removeClass('transparent');
+    game.topbar.removeClass('transparent');
+    card.removeClass('zoom'); //console.log('clicked hero rem')
+    game.states.choose.buttonbox.removeClass('hidden');
+    $('.choose .slot').removeClass('transparent');
+    if(game.mode != 'library') card.addClass('draggable');
   },
   enablePick: function () {
     game.states.choose.pickEnabled = true;
