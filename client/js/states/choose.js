@@ -94,6 +94,7 @@ game.states.choose = {
   addZoom: function (card) {
     $('.choose .card').addClass('transparent');
     game.topbar.addClass('transparent');
+    game.message.addClass('transparent');
     card.addClass('zoom').removeClass('transparent draggable'); //console.log('clicked hero add')
     $('.choose .slot').addClass('transparent');
     game.states.choose.buttonbox.addClass('hidden');
@@ -101,6 +102,7 @@ game.states.choose = {
   removeZoom: function (card) {
     $('.choose .card').removeClass('transparent');
     game.topbar.removeClass('transparent');
+    game.message.removeClass('transparent');
     card.removeClass('zoom'); //console.log('clicked hero rem')
     game.states.choose.buttonbox.removeClass('hidden');
     $('.choose .slot').removeClass('transparent');
