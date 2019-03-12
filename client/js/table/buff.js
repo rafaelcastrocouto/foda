@@ -50,8 +50,8 @@ game.buff = {
         // BUFFS  
         var buffsId = buffs.split('-');
         var buffsData;
-        if (data.buffs) buffsData = JSON.parse(data.buffs);
-        if (skill instanceof jQuery && skill.data('buffs')) buffsData = JSON.parse(skill.data('buffs'));
+        if (typeof(data.buffs) == 'string') buffsData = JSON.parse(data.buffs);
+        else if (skill instanceof jQuery && skill.data('buffs')) buffsData = JSON.parse(skill.data('buffs'));
         if (buffsData[buffsId[0]] && buffsData[buffsId[0]][buffsId[1]]) {
           data = buffsData[buffsId[0]][buffsId[1]];
         }

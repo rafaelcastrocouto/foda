@@ -30,53 +30,55 @@ game.ai = {
     // choose random card
     var availableCards = $('.map .enemy.card:not(.towers, .dead, .ai-max, .stunned, .disabled, .channeling, .ghost)');
     var chosenCard = availableCards.randomCard();
-    var chosenCardData = JSON.parse(chosenCard.data('ai'));
-    var count = chosenCard.data('ai count');
-    if ((!count || count < game.ai.level) && chosenCard.length) {
-      chosenCard.data('ai count', (chosenCard.data('ai count') + 1 || 0));
-      if (chosenCard.data('ai count') >= game.ai.level) chosenCard.addClass('ai-max');
-      // add defensive data and strats
-      $('.map .player.card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
-        var card = $(el);
-        game.ai.buildData(card);
-        if (card.hasClass('heroes')) {
-          var hero = card.data('hero');
-          if (game.heroesAI[hero] && game.heroesAI[hero].defend) {
-            var cardData = JSON.parse(card.data('ai'));
-            // add per hero defend data
-            game.heroesAI[hero].defend(card, cardData);
+    if (chosenCard.length) {
+      var count = chosenCard.data('ai count');
+      var chosenCardData = JSON.parse(chosenCard.data('ai'));
+      if ((!count || count < game.ai.level)) {
+        chosenCard.data('ai count', (chosenCard.data('ai count') + 1 || 0));
+        if (chosenCard.data('ai count') >= game.ai.level) chosenCard.addClass('ai-max');
+        // add defensive data and strats
+        $('.map .player.card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
+          var card = $(el);
+          game.ai.buildData(card);
+          if (card.hasClass('heroes')) {
+            var hero = card.data('hero');
+            if (game.heroesAI[hero] && game.heroesAI[hero].defend) {
+              var cardData = JSON.parse(card.data('ai'));
+              // add per hero defend data
+              game.heroesAI[hero].defend(card, cardData);
+            }
           }
-        }
-      });
-      // add attack and move data
-      $('.map .enemy.card:not(.towers, .dead, .ghost)').each(function (i, el) {
-        var card = $(el);
-        game.ai.buildData(card);
-        if (card.hasClass('heroes')) {
-          var hero = card.data('hero');
-          var cardData = JSON.parse(card.data('ai'));
-          if (game.heroesAI[hero] && cardData.strats[game.heroesAI[hero].move.default]) {
-            cardData.strats[game.heroesAI[hero].move.default] += 10;
-            card.data('ai', JSON.stringify(cardData));
-          }
-          if (game.heroesAI[hero] && game.heroesAI[hero].play) {
-            // add per hero cast data
-            game.heroesAI[hero].play(card, cardData);
-          }
-        }
-      });
-      if (game.debug) {
-        $('.map .spot').each(function (i, el) {
-          var spot = $(el);
-          if (spot.data('ai')) $('.debug', spot).text(JSON.parse(spot.data('ai')).priority);
         });
-      }
-      // cast strats
-      var cast = game.ai.decideCast(chosenCard, chosenCardData);
-      if (!chosenCard.data('ai done') && !cast) {
-        var choosen = game.ai.chooseStrat(chosenCard, chosenCardData);
-        // action strats
-        if (choosen) game.ai.decideAction(choosen.strat, chosenCard, chosenCardData);
+        // add attack and move data
+        $('.map .enemy.card:not(.towers, .dead, .ghost)').each(function (i, el) {
+          var card = $(el);
+          game.ai.buildData(card);
+          if (card.hasClass('heroes')) {
+            var hero = card.data('hero');
+            var cardData = JSON.parse(card.data('ai'));
+            if (game.heroesAI[hero] && cardData.strats[game.heroesAI[hero].move.default]) {
+              cardData.strats[game.heroesAI[hero].move.default] += 10;
+              card.data('ai', JSON.stringify(cardData));
+            }
+            if (game.heroesAI[hero] && game.heroesAI[hero].play) {
+              // add per hero cast data
+              game.heroesAI[hero].play(card, cardData);
+            }
+          }
+        });
+        if (game.debug) {
+          $('.map .spot').each(function (i, el) {
+            var spot = $(el);
+            if (spot.data('ai')) $('.debug', spot).text(JSON.parse(spot.data('ai')).priority);
+          });
+        }
+        // cast strats
+        var cast = game.ai.decideCast(chosenCard, chosenCardData);
+        if (!chosenCard.data('ai done') && !cast) {
+          var choosen = game.ai.chooseStrat(chosenCard, chosenCardData);
+          // action strats
+          if (choosen) game.ai.decideAction(choosen.strat, chosenCard, chosenCardData);
+        }
       }
     }
     game.ai.autoMove(game.ai.nextMove);
