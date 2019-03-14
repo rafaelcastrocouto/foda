@@ -55,7 +55,7 @@ game.skills.ld = {
             target.addStack('rooted');
             game.fx.add('ld-root', source, target, 'keep');
             target.on('turnend.entangle-target', game.skills.ld.bear.turnend);
-            var skill = game.data.skills.ld.bear;
+            var skill = $('#'+source.data('summoner')).getSkill('bear');
             var targetBuff = source.addBuff(target, skill, "entangle-target");
             target.stopChanneling();
           }
