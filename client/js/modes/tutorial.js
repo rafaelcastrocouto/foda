@@ -235,10 +235,11 @@ game.tutorial = {
     game.timeout(2400, game.tutorial.openShop);
   },
   openShop: function () {
-    game.items.addMoney('player', 800);
+    var item = $('.table .shop .card.items.sheepstick');
+    game.items.addMoney('player', item.data('price'));
     game.items.enableShop();
     $('.table .shop .card.items').hide();
-    $('.table .shop .card.items.sheepstick').show().addClass('blink');
+    item.show().addClass('blink');
     game.tutorial.letter(game.data.ui.axeshop);
     game.tutorial.axebaloon.hide().fadeIn('slow');
     game.states.table.shop.addClass('blink');

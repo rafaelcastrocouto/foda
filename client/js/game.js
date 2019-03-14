@@ -23,6 +23,8 @@ var game = {
   heroBounty: 150, //money
   unitBounty: 50,
   jungleFarm: 50,
+  turnReward: 40,
+  libReward: 800,
   maxMoney: 99999,
   seed: 0,
   id: null,

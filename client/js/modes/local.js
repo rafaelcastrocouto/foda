@@ -100,7 +100,7 @@ game.local = {
       }
       game.skill.buyHand('player');
       game.tower.attack('enemy');
-      game.items.addMoney('player', 50);
+      game.items.addMoney('player', game.turnReward);
     });
   },
   skip: function () {
@@ -124,7 +124,7 @@ game.local = {
       }
       game.skill.buyHand('enemy');
       game.tower.attack('player');
-      game.items.addMoney('enemy', 50);
+      game.items.addMoney('enemy', game.turnReward);
     });
   },
   endEnemy: function () {

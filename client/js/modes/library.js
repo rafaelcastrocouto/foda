@@ -105,7 +105,7 @@ game.library = {
     game.turn.begin('player', function () {
       game.tower.attack('enemy');
       if (game.player.turn > 1) game.skill.buyHand('player');
-      game.items.addMoney('player', 800);
+      game.items.addMoney('player', game.libReward);
     });
   },
   buildHand: function () {

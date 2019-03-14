@@ -268,7 +268,7 @@
       },
       "leap": {
         "cast range": 5,
-        "cards": 1,
+        "cards": 2,
         "buffdata": {
           "duration": 3,
           "speed bonus": 1
@@ -345,8 +345,8 @@
       "slow": {
         "cast range": 4,
         "aoe range": 2,
-        "damage": 10,
-        "cards": 1,
+        "damage": 8,
+        "cards": 2,
         "buffdata": {
           "speed slow": 1,
           "duration": 2,
@@ -413,7 +413,7 @@
         "cast range": 4,
         "fixed range": true,
         "highlight": "out",
-        "cards": 2,
+        "cards": 1,
         "buffdata": {
           "duration": 2,
           "miss": 70,
@@ -662,7 +662,7 @@
         "aoe range": 5,
         "aoe width": 0,
         "damage": 6,
-        "cards": 1,
+        "cards": 2,
         "buffdata": {
           "duration": 3,
           "armor reduction": 2,
