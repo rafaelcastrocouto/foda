@@ -65,7 +65,10 @@ game.states.loading = {
         }).appendTo(game.hidden);
       });
       game.achievements.build();
-      game.timeout(400, game.history.recover);
+      game.timeout(400, function () {
+        game.screen.resize();
+        game.history.recover();
+      });
     });
   },
   json: function (name, cb, translate) {

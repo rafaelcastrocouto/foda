@@ -51,8 +51,8 @@ var game = {
         game.electron = (window.process && process.version && process.versions.electron);
         if (!game.electron) game.dynamicHost = '';
       }
-      game.states.changeTo('loading');
       game.build();
+      game.states.changeTo('loading');
     } else
       game.states.changeTo('unsupported');
   },

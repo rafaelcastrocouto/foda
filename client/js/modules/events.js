@@ -1,6 +1,5 @@
 game.events = {
   build: function() {
-    game.offset = game.container.offset();
     $.fn.extend({
       clearEvents: game.events.clearEvents,
       getScale: game.events.getScale
@@ -11,12 +10,13 @@ game.events = {
     game.skill.extendjQuery();
     game.highlight.extendjQuery();
     game.map.extendjQuery();
+    game.screen.resize();
+    $(window).on('resize', game.screen.resize);
     $(window).on('error', game.events.error);
     //$(document).ajaxError(function(event, xhr, settings) {
     //  if (xhr.status !== 403 && xhr.status!== 404) game.logError(settings.url + ' ' + xhr.status + ': ' + xhr.responseText);
     //});
     $(window).on('keypress', game.events.keyboard);
-    $(window).on('resize', game.screen.resize);
     $(window).on('beforeunload ', game.events.leave);
     $(window).on('mousemove', game.parallax.move);
     $(window).on('deviceorientation', game.parallax.orientation);
@@ -27,6 +27,21 @@ game.events = {
     game.container.on('mouseup mouseleave tap', game.events.end);
     game.container.on('contextmenu', game.events.rightclick);
     game.container.on('click tap', '.button, .card', game.events.click);
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      game.events.deferredPrompt = e;
+      game.confirm(function (confirmed) {
+        if (confirmed) {
+          game.events.deferredPrompt.prompt();
+        }
+        game.events.deferredPrompt = null;
+      }, 'Add to home screen');
+
+    });
+
   },
   getCoordinates: function(event) {
     var position = {
@@ -63,7 +78,7 @@ game.events = {
   touchmove: function(event) {// console.trace('touchmove');
     game.events.move.call(this, event);
     if (event.preventDefault) event.preventDefault(); //prevent touch scroll
-    return false;
+    //return false;
   },
   move: function(event) {
     if (game.events.dragTarget) {
@@ -99,8 +114,8 @@ game.events = {
     if (!target.is('input, label *, select, form *, .options *')) {
       // fix touchend target
       target.mouseup();
-      if (event.preventDefault) event.preventDefault();
-      return false;
+      //if (event.preventDefault) event.preventDefault();
+      //return false;
     }
   },
   end: function(event) { //console.log(event)

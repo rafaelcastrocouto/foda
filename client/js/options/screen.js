@@ -6,10 +6,12 @@ game.screen = {
   resize: function (event) {
     game.offset = game.container.offset();
     var scale = 1;
-    if (window.innerWidth/window.innerHeight > game.screen.width/game.screen.height) {
-      scale = window.innerHeight/game.screen.height;
+    var w = document.body.offsetWidth;//window.innerWidth;
+    var h = document.body.offsetHeight;//window.innerHeight;
+    if (w/h > game.screen.width/game.screen.height) {
+      scale = h/game.screen.height;
     } else {
-      scale = window.innerWidth/game.screen.width;
+      scale = w/game.screen.width;
     }
     scale = (scale * 0.97).toFixed(2);
     if (scale < 0.5) scale = 0.5;

@@ -23,6 +23,7 @@ game.states.log = {
     game.loader.removeClass('loading');
     game.triesCounter.text('');
     game.clear();
+    setTimeout(function(){game.screen.resize();},1000);
     game.states.log.input.attr({value: 'Player'+parseInt(Math.random()*10000)});
     if (!game.states.log.alert) {
       game.states.log.alert = true;
@@ -39,7 +40,6 @@ game.states.log = {
     box.append(game.poll.button);
     box.append($('<div>').addClass('button').text(game.data.ui.close).on('mouseup touchend', game.poll.close));
     box.append($('<a>').addClass('rating').attr({target: '_blank', href: 'http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories'}));
-    game.screen.resize();
   },
   login: function () {
     var valid = game.states.log.input[0].checkValidity(),
