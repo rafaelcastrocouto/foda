@@ -11,7 +11,7 @@
 }
 
 .axe-taunt .img, .buffs .buff.axe-taunt .img {
-  background-image: url("../img/skills/axe/taunt.png");
+  background-image: url("../img/skills/axe/taunt.jpg");
 }
 
 .axe-enrage .img, .buffs .buff.axe-enrage .img {
@@ -23,7 +23,7 @@
 }
 
 .axe-ult .img {
-  background-image: url("../img/skills/axe/ult.png");
+  background-image: url("../img/skills/axe/ult.jpg");
 }
 
 .en, .en .portrait {
