@@ -269,9 +269,9 @@
   background-image: url("../img/skills/ld/cry.jpg");
 }
 
-.ld-bear.defender-source .img, .buffs .buff.ld-bear.defender-source .img {
+.ld-bear.skills .img, .ld-bear.defender-source .img, .buffs .buff.ld-bear.defender-source .img {
   background-image: url("../img/skills/ld/defender.jpg");
-  background-position: 15%;
+  background-position: 0 0;
 }
 
 .ld-bear.entangle-source .img, .buffs .buff.ld-bear.entangle-source .img, .buffs .buff.ld-bear.entangle-target .img {
