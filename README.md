@@ -16,7 +16,7 @@ Join our community and discuss the game rules at our [Discord Server][2].
  - Mac-OS [FODA-darwin-x64.zip](https://www.dropbox.com/s/b8k8yic4pykhtvy/FODA-darwin-x64.zip?dl=0)
  - Linux [FODA-linux-ia32.zip](https://www.dropbox.com/s/nzn21x1x20kbv2m/FODA-linux-ia32.zip?dl=0)
 
-Feel free to [fork][3] or [download][4] and help us build the game!
+Feel free to [fork][3] or [download][4] and help build the game!
 You can even make a new hero and [win real cash!][6]
 
 Visit our Wiki page where you can learn [how to play with real cards][7] and much more.
