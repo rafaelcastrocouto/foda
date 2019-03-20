@@ -4,8 +4,8 @@
 
 [![Discord Chat Channel](https://foda-app.herokuapp.com/client/img/discord.png)][2]
 
-A **card game** with magical heroes, full of skills and powerful ultimates.
-Play for free [online in your browser][1] or check out our [Google play app][11]
+A **card game** with magical heroes, each with unique of skills and powerful abilities.
+Play for free [online in your browser][1] or check us out on the [Google play app store][11]
 Join our community and discuss the game rules at our [Discord Server][2]. 
 
 ### Downloads:
@@ -14,11 +14,12 @@ Join our community and discuss the game rules at our [Discord Server][2].
  - Mac-OS [FODA-darwin-x64.zip](https://www.dropbox.com/s/b8k8yic4pykhtvy/FODA-darwin-x64.zip?dl=0)
  - Linux [FODA-linux-ia32.zip](https://www.dropbox.com/s/nzn21x1x20kbv2m/FODA-linux-ia32.zip?dl=0)
 
-You can also [fork][3] or [download][4] to help us build the game, you can even make a hero and [win real cash!][6]
+Feel free to [fork][3] or [download][4] to help us build the game!
+You can even make a new hero and [win real cash!][6]
 
-In our **Wiki page** you can ckeck out the [how to play with real cards][7] and much more.
+Visit our **Wiki page** where you can learn [how to play with real cards][7] and much more.
 All [artwork][5] can be downloaded for free in high resolution. 
-Please report any [sugestions or issues][8] here at github.
+Please report any [sugestions, bugs or issues][8] here at github.
 
 [![Fight Over Dat Ancient](https://foda-app.herokuapp.com/client/img/banner.jpg)][1]
 
