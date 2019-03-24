@@ -102,7 +102,7 @@ game.card = {
       data['current resistance'] = data.resistance;
     }
     if (data.mana > 1)
-      $('<p>').appendTo(desc).text(game.data.ui.mana + ': ' + data.mana);
+      $('<p>').appendTo(desc).text(game.data.ui.mana + ': ' + data.mana).addClass('mana');
     if (data.speed) {
       data['current speed'] = data.speed;
       if (typeof(data.speed) == 'number') data.speed = game.map.getRangeStr(data.speed);
@@ -161,7 +161,7 @@ game.card = {
     card.append(legend).append(fieldset);
     return card;
   },
-  buffs: function (buff, desc, current, opt) {
+  buffs: function (buff, desc, current, opt) { //console.log(buff)
     if (buff.damage && opt.buff)
       $('<p>').appendTo(desc).text(game.data.ui.damage + ': ').addClass('dot').append($('<span>').text(buff.damage));
     if (buff['cast damage bonus'])
@@ -196,6 +196,8 @@ game.card = {
       $('<p>').appendTo(desc).text(game.data.ui.armor + ': -' + buff['armor reduction']);
     if (buff['resistance bonus'])
       $('<p>').appendTo(desc).text(game.data.ui.resistance + ' ' + game.data.ui.bonus + ': ' + buff['resistance bonus']);
+    if (buff['range bonus'])
+      $('<p>').appendTo(desc).text(game.data.ui.range + ' ' + game.data.ui.bonus + ': ' + buff['range bonus']);
     if (buff.heal)
       $('<p>').appendTo(desc).text(game.data.ui.buff + ' ' + game.data.ui.heal + ': ' + buff.heal);
     if (buff.duration && buff.duration > 1 && !opt.duration) {
@@ -403,8 +405,9 @@ game.card = {
     return this;
   },
   setRange: function(range) {
-    this.find('.desc .range').text(game.data.ui.range + ': ' + range);
     this.data('range', range);
+    if (typeof(range) == 'number') range = game.map.getRangeStr(range);
+    this.find('.desc .range').text(game.data.ui.range + ': ' + range);
   },
   shake: function() {
     this.addClass('shake');

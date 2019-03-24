@@ -108,6 +108,8 @@ game.buff = {
             target.setSpeed(target.data('current speed') + data['speed bonus']);
           if (data['speed slow'] && typeof (data['speed slow']) == 'number')
             target.setSpeed(target.data('current speed') - data['speed slow']);
+          if (data['range bonus'] && typeof (data['range bonus']) == 'number')
+            target.setRange(target.data('range') + data['range bonus']);
         }
         // append buff
         target.find('.buffs').append(buff);
@@ -162,6 +164,8 @@ game.buff = {
             target.setSpeed(target.data('current speed') - data['speed bonus']);
           if (data['speed slow'] && typeof (data['speed slow']) == 'number')
             target.setSpeed(target.data('current speed') + data['speed slow']);
+          if (data['range bonus'] && typeof (data['range bonus']) == 'number')
+            target.setRange(target.data('range') - data['range bonus']);
         }
         buff.trigger('expire', {target: target, buff: buff});
         buff.remove();

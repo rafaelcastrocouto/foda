@@ -54,6 +54,47 @@
       "description": "Boynu hedef alarak düşmanı vur. Düşman 1/3 HP'nin altındaysa, kafa kesilecek ve kart geri gelecektir!"
     }
   },
+
+  "terror": {
+    "summon": {
+      "name": "Summon Image",
+      "type": "Yakarma",
+      "hand": "Sol",
+      "deck": "Yakarma",
+      "targets": ["Yer", "Bedava"],
+      "description": "Terörün bir kopyasını tekliflerini yapmak için HP'nin yarısı ve zararı olacak şekilde toplanacak"
+    },
+    "mirror": {
+      "name": "Mirror of Erised",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Ayn?"],
+      "aoe": "Radial",
+      "damage type": "Fiziksel",
+      "description": "Etrafındaki tüm düşmanların kendi hasarlarını almalarını sağlayan karanlık yansımaları çağırır"
+    },
+    "morph": {
+      "name": "Demonic Morph",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Ayn?"],
+      "description": "Teröre ve tüm imgelere sıradan bir saldırı ile güçlü şeytanlara dönüşüyor",
+      "buff": {
+        "description": "Hasar ve menzil arttı"
+      }
+    },
+    "ult": {
+      "name": "Soul Exchange",
+      "type": "Aktif",
+      "hand": "Sağ",
+      "deck": "Satın Al",
+      "targets": ["Düşman"],
+      "damage type": "Büyü",
+      "description": "Terör ruhunu hedef düşmanla değiştirecek, bütün HP'lerini değiştirecek"
+    }
+  },
   
   "com": {
     "aoe": {

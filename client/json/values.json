@@ -9,6 +9,15 @@
       "resistance": 3
     },
 
+    "terror": {
+      "range": 2,
+      "hp": 50,
+      "mana": 2,
+      "damage": 14,
+      "armor": 2,
+      "resistance": 2
+    },
+
     "ld": {
       "range": 4,
       "hp": 50,
@@ -176,6 +185,30 @@
         "cast range": 2,
         "cards": 1,
         "damage": 18
+      }
+    },
+
+    "terror": {
+      "summon": {
+        "cards": 1,
+        "cast range": 2
+      },
+      "mirror": {
+        "cards": 1,
+        "cast range": 4,
+        "aoe range": 4
+      },
+      "morph": {
+        "cards": 1,
+        "buffdata": {
+          "range bonus": 3,
+          "damage bonus": 4,
+          "duration": 5
+        }
+      },
+      "ult": {
+        "cast range": 2,
+        "cards": 1
       }
     },
 

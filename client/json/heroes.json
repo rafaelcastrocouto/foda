@@ -6,6 +6,12 @@
     "description": "The one man army, once an executioner now leader of the Orcs. Axe is Axe!"
   },
   
+  "terror": {
+    "name": "Terror",
+    "attribute": "Agility",
+    "description": "His soul was stolen by a demon lord but his empty body continued to wander in hell seeking revenge"
+  },
+  
   "ld": {
     "name": "Bear Druid",
     "attribute": "Agility",

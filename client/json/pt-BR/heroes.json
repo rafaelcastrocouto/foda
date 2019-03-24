@@ -5,6 +5,12 @@
     "description": "O exército de um homem só, antes executor agora líder dos Orcs. Axe é Axe!"
   },
   
+  "terror": {
+    "name": "Terror",
+    "attribute": "Agilidade",
+    "description": "Sua alma foi roubada por um lorde demônio, mas seu corpo vazio continuou a vagar no inferno em busca de vingança"
+  },
+  
   "ld": {
     "name": "Bear Druid",
     "attribute": "Agilidade",

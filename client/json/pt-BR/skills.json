@@ -54,6 +54,48 @@
       "description": "Axe golpeia um inimigo mirando o pescoço. Se o HP estiver abaixo de 1/3, a cabeça será cortada e a carta retorna para a mão!"
     }
   },
+
+  "terror": {
+    "summon": {
+      "name": "Invocar Imagem",
+      "type": "Invocação",
+      "hand": "Esquerda",
+      "deck": "Invocação",
+      "targets": ["Livre", "Lugar"],
+      "description": "Uma cópia do Terror é invocada para cumprir suas tarefas, com metade de seu HP e dano"
+    },
+    "mirror": {
+      "name": "Mirror of Erised",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "aoe": "Radial",
+      "damage type": "Físico",
+      "description": "Invoca reflexos amaldiçoados fazendo com que todos os inimigos recebam seus próprios danos"
+    },
+    "morph": {
+      "name": "Demonic Morph",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Próprio"],
+      "description": "Transforma o Terror e todas as imagens em demônios poderosos com bonus no ataque e no alcançe",
+      "buff": {
+        "description": "Dano e alcance aumentados"
+      }
+    },
+    "ult": {
+      "name": "Soul Exchange",
+      "type": "Ativa",
+      "hand": "Direita",
+      "deck": "Comprar",
+      "targets": ["Inimigos"],
+      "damage type": "Mágico",
+      "description": "Terror vai trocar sua alma com o inimigo alvo, trocando todos os seus HP"
+    }
+  },
+  
   "com": {
     "aoe": {
       "name": "Vem mais!",
@@ -391,7 +433,7 @@
       "name": "Invocar Urso",
       "summon name": "Urso",
       "type": "Invocação",
-      "hand": "Direita",
+      "hand": "Esquerda",
       "deck": "Invocação",
       "targets": ["Local", "Livre"],
       "description": "O jogador compra uma carta temporária 'Retornar'",

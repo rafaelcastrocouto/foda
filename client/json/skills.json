@@ -54,6 +54,47 @@
       "description": "Axe hits the enemy aiming for the neck. If enemy HP is below 1/3 the head will be chopped and the skill can be used again"
     }
   },
+
+  "terror": {
+    "summon": {
+      "name": "Summon Image",
+      "type": "Summon",
+      "hand": "Left",
+      "deck": "Summon",
+      "targets": ["Free", "Spot"],
+      "description": "A copy of Terror will be summoned to do his biddings, with half his HP and damage"
+    },
+    "mirror": {
+      "name": "Mirror of Erised",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe": "Radial",
+      "damage type": "Physical",
+      "description": "Invokes dark reflections making all enemies around will receive their own damage"
+    },
+    "morph": {
+      "name": "Demonic Morph",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Transforms Terror and all images into powerful demons with a ranged attack",
+      "buff": {
+        "description": "Damage and range increased"
+      }
+    },
+    "ult": {
+      "name": "Soul Exchange",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Magical",
+      "description": "Terror will swap his soul with the target enemy, swapping all their HP"
+    }
+  },
   
   "com": {
     "aoe": {
@@ -392,7 +433,7 @@
       "name": "Summon Bear",
       "summon name": "Bear",
       "type": "Summon",
-      "hand": "Right",
+      "hand": "Left",
       "deck": "Summon",
       "targets": ["Spot", "Free"],
       "description": "Summon a Bear with 'Defender', 'Nature claws' and 'Demolition'. Gains 'Return' card. Deals 12 damage on death",

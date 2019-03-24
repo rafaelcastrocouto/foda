@@ -6,6 +6,12 @@
     "description": "Tek kişilik ordu, bir zamanlar şimdi Orkların lideri bir cellat."
   },
   
+  "terror": {
+    "name": "Terror",
+    "attribute": "Çeviklik",
+    "description": "Ruhu bir iblis lordu tarafından çalındı ama boş gövdesi intikam almak isteyen cehennemde dolaşmaya devam etti."
+  },
+  
   "ld": {
     "name": "Ayı Büyücü",
     "attribute": "Çeviklik",

@@ -182,7 +182,7 @@ game.skill = {
                 game.fx.ult(skill, function (skill, source, target) {
                   var hero = skill.data('hero');
                   var label = skill.data('label');
-                  // SKILL CAST
+                  // SKILL CAST   console.log(hero,label)
                   game.skills[hero][label].cast(skill, source, target);
                   game.skill.castafter(skill, source, target);
                 }.bind(this, skill, source, target), str);
@@ -340,11 +340,10 @@ game.skill = {
   },
   summon: function (skill) {
     skill.removeClass('draggable');
-    var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped dragTarget').on('mousedown touchstart', game.card.select).on('mouseenter', game.highlight.source).on('mouseleave', game.highlight.refresh).css({transform: ''});
+    var unit = skill.clone().addClass('units summoned').removeClass('skills selected flipped dragTarget can-attack can-move heroes').on('mousedown touchstart', game.card.select).on('mouseenter', game.highlight.source).on('mouseleave', game.highlight.refresh).css({transform: ''});
     unit.attr('id', game.card.newId());
-    unit.find('legend').text(skill.data('summon name'));
-    unit.find('.description').remove();
-    unit.find('.castRange').remove();
+    if (skill.data('summon name')) unit.find('legend').text(skill.data('summon name'));
+    unit.find('.mana, .description, .castRange, .kd').remove();
     unit.data('summon', skill.attr('id'));
     unit.data('summoner', this.attr('id'));
     unit.data('hp', skill.data('hp'));
@@ -354,14 +353,17 @@ game.skill = {
     unit.data('resistance', skill.data('resistance'));
     var speed = skill.data('speed') || game.defaultSpeed;
     unit.data('speed', speed);
-    if (typeof(speed) == 'number') speed = game.map.getRangeStr(speed);
-    $('<p>').appendTo(unit.find('.desc')).text(game.data.ui.speed + ': ' + speed).addClass('speed');
+    if (typeof(speed) == 'number') 
+      speed = game.map.getRangeStr(speed);
+    if (!unit.find('.speed').length) 
+      $('<p>').appendTo(unit.find('.desc')).text(game.data.ui.speed + ': ' + speed).addClass('speed');
     unit.data('current hp', unit.data('hp'));
     unit.data('current damage', unit.data('damage'));
     unit.data('current armor', unit.data('armor'));
     unit.data('current resistance', unit.data('resistance'));
     unit.data('current speed', unit.data('speed'));
-    unit.find('fieldset').append($('<div>').addClass('buffs'));
+    if (!unit.find('.buffs').length) 
+      unit.find('fieldset').append($('<div>').addClass('buffs'));
     game.timeout(400, function (unit) {
       if (this.side() === 'player') unit.select();
     }.bind(this, unit));

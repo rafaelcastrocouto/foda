@@ -298,7 +298,7 @@ game.highlight = {
     if (card.canPlay() && card.hasClasses('units heroes') && card.canMove()) {
       if (card.hasClass('selected'))
         card.addClass('draggable');
-      speed = card.data('current speed');
+      speed = game.map.getRangeInt(card.data('current speed'));
       if (speed > 1) {
         card.inMovementRange(Math.round(speed), function(neighbor) {
           if (neighbor.hasClass('free') && !neighbor.hasClass('block')) {
