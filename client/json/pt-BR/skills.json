@@ -61,7 +61,7 @@
       "type": "Invocação",
       "hand": "Esquerda",
       "deck": "Invocação",
-      "targets": ["Livre", "Lugar"],
+      "targets": ["Local", "Livre"],
       "description": "Uma cópia do Terror é invocada para cumprir suas tarefas, com metade de seu HP e dano"
     },
     "mirror": {
