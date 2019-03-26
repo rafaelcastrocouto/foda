@@ -62,6 +62,9 @@ game.skills.venge = {
         var targetPosition = target.getPosition();
         target.place(sourcePosition);
         source.place(targetPosition);
+        game.fx.add('ld-return-target', target.parent());
+        game.fx.add('ld-return', source.parent());
+        game.timeout( 50, game.fx.add.bind(this, 'cat-leap-path', source, target, 'rotate'));
         game.timeout(100, game.skills.venge.ult.after.bind(this, source, target));
       }.bind(this, source, target));
     },

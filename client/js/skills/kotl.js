@@ -23,14 +23,6 @@ game.skills.kotl = {
       if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var width = skill.data('aoe width');
       var time = skill.data('channel') - source.data('channeling') + 1;
-      source.opponentsInLine(target, range, width, function (card) {
-        source.damage(damage * time, card, skill.data('damage type'));
-      });
-      if (!game.camera.hasClass('night')) {
-        source.alliesInLine(target, range, width, function (card) {
-          card.heal(damage * time);
-        });
-      }
       game.audio.stop('kotl/illuminate');
       game.audio.play('kotl/illuminaterelease');
       source.data('illuminate-target', null);
@@ -39,6 +31,15 @@ game.skills.kotl = {
       source.removeClass('illuminating illumi-left illumi-right illumi-top illumi-bottom');
       skill.data('discard-to', false);
       skill.removeClass('channel-on').discard();
+      game.fx.add('kotl-illuminate', source, target, 'linear');
+      source.opponentsInLine(target, range, width, function (card) {
+        game.timeout(900, source.damage.bind(source, damage * time, card, skill.data('damage type')));
+      });
+      if (!game.camera.hasClass('night')) {
+        source.alliesInLine(target, range, width, function (card) {
+          game.timeout(900, card.heal.bind(card, damage * time));
+        });
+      }
     }
   },
   blind: {

@@ -37,6 +37,7 @@ game.fx = {
       cast: ['ult']
     },
     kotl: {
+      illuminate: ['illuminate'],
       mana: ['mana'],
       leak: ['leak'],
       ult: ['ult'],

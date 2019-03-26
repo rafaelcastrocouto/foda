@@ -37,7 +37,7 @@ game.states.table = {
     if (game.recovering && game.getData(game.player.type+'Deck')) {
       game.history.recoverMatch();
     } else {
-      game[game.mode].setTable();
+      game[game.mode || 'library'].setTable();
     }
   },
   music: function () {

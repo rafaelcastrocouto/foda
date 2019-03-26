@@ -126,195 +126,6 @@
   }
 }
 
-.ultfx {
-  transform: translate3d(0, -350px, 400px) scale(0.5);
-  transform-style: preserve-3d;
-  z-index: 1;
-}
-
-.ultfx .fx {
-  width: 720px;
-  height: 300px;
-  /* border-top: 75px solid #222; */
-  /* border-bottom: 75px solid #222; */
-  margin: 75px 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-size: cover;
-  background-position: 50%;
-  z-index: 40;
-  /* box-shadow: 250px -375px 0 #222, -250px 375px 0 #222; */
-  animation: ult-fx 2.2s cubic-bezier(0, 1, 1, 0) 1;
-  pointer-events: none;
-}
-
-@keyframes ult-fx {
-  0% {
-    transform: translateX(-1200px);
-  }
-
-  /*35%, 65% {transform: translateX(0px);}*/
-  100% {
-    transform: translateX(1200px);
-  }
-}
-
-.ultfx .fx:after, .ultfx .fx:before {
-  content: "";
-  display: block;
-  width: 900px;
-  height: 160px;
-  background-image: url("../img/fx/ultfx.png");
-  position: absolute;
-  left: -60px;
-  top: -90px;
-  background-size: contain;
-  animation: ult-stripes 2.2s 1;
-  transform: translateX(200px);
-}
-
-.ultfx .fx:before {
-  transform: scaleX(-1);
-  top: 260px;
-  left: -120px;
-  animation: ult-stripes2 2.2s 1;
-  width: 1100px;
-  height: 190px;
-  transform: scaleX(-1) translateX(300px);
-}
-
-@keyframes ult-stripes {
-  0% {
-    transform: translateX(200px);
-  }
-
-  100% {
-    transform: translateX(-200px);
-  }
-}
-
-@keyframes ult-stripes2 {
-  0% {
-    transform: scaleX(-1) translateX(300px);
-  }
-
-  100% {
-    transform: scaleX(-1) translateX(-100px);
-  }
-}
-
-.ultfx .star {
-  width: 600px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-  z-index: 41;
-  animation: ult-stars 1s cubic-bezier(0.55, 0.06, 0.68, 0.19) infinite;
-  transition: opacity 0.2s;
-  pointer-events: none;
-  box-shadow: -400px 0 0 -3px white;
-}
-
-.ultfx .star.hide {
-  opacity: 0;
-}
-
-.ultfx .star:nth-child(1) {
-  top: 15px;
-}
-
-.ultfx .star:nth-child(2) {
-  top: 40px;
-  animation-delay: -0.3s;
-}
-
-.ultfx .star:nth-child(3) {
-  top: 60px;
-  animation-delay: -0.6s;
-}
-
-.ultfx .star:nth-child(4) {
-  top: 370px;
-  animation-delay: -0.5s;
-}
-
-.ultfx .star:nth-child(5) {
-  top: 400px;
-  animation-delay: -0.7s;
-}
-
-.ultfx .star:nth-child(6) {
-  top: 427px;
-  animation-delay: -0.9s;
-}
-
-@keyframes ult-stars {
-  0% {
-    transform: translateX(-1600px);
-  }
-
-  100% {
-    transform: translateX(1600px);
-  }
-}
-
-.ultfx .axe-ult {
-  background-image: url("../img/skills/axe/taunt.png");
-}
-
-.ultfx .ld-ult {
-  background-image: url("../img/skills/ld/ult.jpg");
-}
-
-.ultfx .pud-ult {
-  background-image: url("../img/skills/pud/ult.jpg");
-}
-
-.ultfx .cat-ult {
-  background-image: url("../img/skills/cat/ult.jpg");
-}
-
-.ultfx .wk-ult {
-  background-image: url("../img/skills/wk/ult.jpg");
-}
-
-.ultfx .lina-ult {
-  background-image: url("../img/skills/lina/ult.jpg");
-}
-
-.ultfx .cm-ult {
-  background-image: url("../img/skills/cm/ult.jpg");
-}
-
-.ultfx .kotl-ult {
-  background-image: url("../img/skills/kotl/ult.jpg");
-}
-
-.ultfx .am-ult {
-  background-image: url("../img/skills/am/ult.jpg");
-}
-
-.ultfx .nyx-ult {
-  background-image: url("../img/skills/nyx/ult.jpg");
-}
-
-.ultfx .com-ult {
-  background-image: url("../img/heroes/com.jpg");
-}
-
-.ultfx .wind-ult {
-  background-image: url("../img/heroes/wind.jpg");
-}
-
-.ultfx .venge-ult {
-  background-image: url("../img/heroes/venge.jpg");
-}
-
-.ultfx .en-ult {
-  background-image: url("../img/skills/en/ult.jpg");
-}
 
 .map .fx {
   image-rendering: pixelated;
@@ -1109,6 +920,39 @@
   }
 }
 
+.map .fx.kotl-illuminate {
+  width: 96px;
+  height: 192px;
+  animation: kotl-illuminate-sprite 1.5s steps(15) 1;
+  background-image: url('../img/fx/kotl/illuminate.png');
+  background-repeat: no-repeat;
+  transform: translate3d(60px,-400px,100px) scale(7);
+  background-position: 0px 126px;
+}
+
+@keyframes kotl-illuminate-sprite {
+  100% {
+    background-position: -1440px 0px;
+  }
+}
+
+.map .fx.kotl-illuminate.bottom {
+  transform: rotate(180deg) translate3d(-65px,-450px,100px) scale(7);
+  animation: kotl-illuminate-sprite 1.5s steps(15) 1;
+}
+
+.map .fx.kotl-illuminate.left {
+  transform: translate3d(-200px,100px,100px) rotateZ(-90deg) scaleX(8) scaleY(5);
+  background-position: 0px 135px;
+  animation: kotl-illuminate-sprite 1.5s steps(15) infinite;
+}
+
+.map .fx.kotl-illuminate.right {
+  transform: translate3d(340px,100px,100px) rotateZ(90deg) scaleX(8) scaleY(5);
+  animation: kotl-illuminate-sprite 1.5s steps(15) 1;
+  background-position: 0px 135px;
+}
+
 .map .fx.kotl-mana {
   transform: rotateX(-37deg) translate3d(75px,-260px,100px) scale(3);
   width: 120px;
@@ -1238,4 +1082,195 @@
   opacity: 0.7;
   filter: hue-rotate(30deg) brightness(1.1);
   -webkit-filter: hue-rotate(30deg) brightness(1.1);
+}
+
+
+.ultfx {
+  transform: translate3d(0, -350px, 400px) scale(0.5);
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+.ultfx .fx {
+  width: 720px;
+  height: 300px;
+  /* border-top: 75px solid #222; */
+  /* border-bottom: 75px solid #222; */
+  margin: 75px 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: 50%;
+  z-index: 40;
+  /* box-shadow: 250px -375px 0 #222, -250px 375px 0 #222; */
+  animation: ult-fx 2.2s cubic-bezier(0, 1, 1, 0) 1;
+  pointer-events: none;
+}
+
+@keyframes ult-fx {
+  0% {
+    transform: translateX(-1200px);
+  }
+
+  /*35%, 65% {transform: translateX(0px);}*/
+  100% {
+    transform: translateX(1200px);
+  }
+}
+
+.ultfx .fx:after, .ultfx .fx:before {
+  content: "";
+  display: block;
+  width: 900px;
+  height: 160px;
+  background-image: url("../img/fx/ultfx.png");
+  position: absolute;
+  left: -60px;
+  top: -90px;
+  background-size: contain;
+  animation: ult-stripes 2.2s 1;
+  transform: translateX(200px);
+}
+
+.ultfx .fx:before {
+  transform: scaleX(-1);
+  top: 260px;
+  left: -120px;
+  animation: ult-stripes2 2.2s 1;
+  width: 1100px;
+  height: 190px;
+  transform: scaleX(-1) translateX(300px);
+}
+
+@keyframes ult-stripes {
+  0% {
+    transform: translateX(200px);
+  }
+
+  100% {
+    transform: translateX(-200px);
+  }
+}
+
+@keyframes ult-stripes2 {
+  0% {
+    transform: scaleX(-1) translateX(300px);
+  }
+
+  100% {
+    transform: scaleX(-1) translateX(-100px);
+  }
+}
+
+.ultfx .star {
+  width: 600px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  z-index: 41;
+  animation: ult-stars 1s cubic-bezier(0.55, 0.06, 0.68, 0.19) infinite;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  box-shadow: -400px 0 0 -3px white;
+}
+
+.ultfx .star.hide {
+  opacity: 0;
+}
+
+.ultfx .star:nth-child(1) {
+  top: 15px;
+}
+
+.ultfx .star:nth-child(2) {
+  top: 40px;
+  animation-delay: -0.3s;
+}
+
+.ultfx .star:nth-child(3) {
+  top: 60px;
+  animation-delay: -0.6s;
+}
+
+.ultfx .star:nth-child(4) {
+  top: 370px;
+  animation-delay: -0.5s;
+}
+
+.ultfx .star:nth-child(5) {
+  top: 400px;
+  animation-delay: -0.7s;
+}
+
+.ultfx .star:nth-child(6) {
+  top: 427px;
+  animation-delay: -0.9s;
+}
+
+@keyframes ult-stars {
+  0% {
+    transform: translateX(-1600px);
+  }
+
+  100% {
+    transform: translateX(1600px);
+  }
+}
+
+.ultfx .axe-ult {
+  background-image: url("../img/skills/axe/taunt.png");
+}
+
+.ultfx .ld-ult {
+  background-image: url("../img/skills/ld/ult.jpg");
+}
+
+.ultfx .pud-ult {
+  background-image: url("../img/skills/pud/ult.jpg");
+}
+
+.ultfx .cat-ult {
+  background-image: url("../img/skills/cat/ult.jpg");
+}
+
+.ultfx .wk-ult {
+  background-image: url("../img/skills/wk/ult.jpg");
+}
+
+.ultfx .lina-ult {
+  background-image: url("../img/skills/lina/ult.jpg");
+}
+
+.ultfx .cm-ult {
+  background-image: url("../img/skills/cm/ult.jpg");
+}
+
+.ultfx .kotl-ult {
+  background-image: url("../img/skills/kotl/ult.jpg");
+}
+
+.ultfx .am-ult {
+  background-image: url("../img/skills/am/ult.jpg");
+}
+
+.ultfx .nyx-ult {
+  background-image: url("../img/skills/nyx/ult.jpg");
+}
+
+.ultfx .com-ult {
+  background-image: url("../img/heroes/com.jpg");
+}
+
+.ultfx .wind-ult {
+  background-image: url("../img/heroes/wind.jpg");
+}
+
+.ultfx .venge-ult {
+  background-image: url("../img/heroes/venge.jpg");
+}
+
+.ultfx .en-ult {
+  background-image: url("../img/skills/en/ult.jpg");
 }
