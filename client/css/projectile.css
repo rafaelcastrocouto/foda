@@ -60,7 +60,12 @@
   width: 34px;
   height: 50px;
   background-image: url("../img/fx/lina/passive.png");
-  animation: lina-passive-sprite 0.8s steps(8) infinite;
+  animation: lina-projectile-sprite 0.8s steps(8) infinite;
+}
+@keyframes lina-projectile-sprite {
+  100% {
+    background-position: -272px;
+  }
 }
 .projectile.wind {
   width: 8px;
@@ -74,12 +79,18 @@
   box-shadow: 0 15px 0 0 #ed7edc;
   margin-left: 8px;
 }
-.projectile.vengestun {
-  width: 35px;
-  height: 50px;
-  background: white;
-  box-shadow: 0 -5px 0 5px #ed7edc;
-  margin-left: 8px;
+.projectile.venge-stun {
+  background-color: transparent;
+  width: 192px;
+  height: 192px;
+  box-shadow: none;
+  background-image: url("../img/fx/venge/stun.png");
+  animation: venge-stun-sprite 0.8s steps(8) infinite;
+}
+@keyframes venge-stun-sprite {
+  100% {
+    background-position: -1536px;
+  }
 }
 .projectile.wk {
   background-color: transparent;

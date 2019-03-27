@@ -173,7 +173,7 @@
 }
 
 .fx.lina-passive {
-  transform: translate(0px,-18px) scale(1.2);
+  transform: translate(1px,-17px) scale(1.2);
   width: 34px;
   height: 50px;
   animation: lina-passive-sprite 0.8s steps(8) infinite;
@@ -209,13 +209,13 @@
 }
 
 .map .fx.lina-fire.left {
-  transform: translate3d(-200px,0px,100px) rotateZ(-90deg) scaleX(8) scaleY(5);
+  transform: translate3d(-200px,100px,100px) rotateZ(-90deg) scaleX(8) scaleY(5);
   background-position: 0px 135px;
   animation: lina-fire-sprite 1.5s steps(15) 1;
 }
 
 .map .fx.lina-fire.right {
-  transform: translate3d(340px,0px,100px) rotateZ(90deg) scaleX(8) scaleY(5);
+  transform: translate3d(340px,100px,100px) rotateZ(90deg) scaleX(8) scaleY(5);
   animation: lina-fire-sprite 1.5s steps(15) 1;
   background-position: 0px 135px;
 }

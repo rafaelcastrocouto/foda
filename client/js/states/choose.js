@@ -1,5 +1,5 @@
 game.states.choose = {
-  size: 156,
+  size: 100,
   event: 'mouseup.choose touchend.choose',
   build: function () {
     this.pickbox = $('<div>').addClass('pickbox').appendTo(this.el);
@@ -46,7 +46,7 @@ game.states.choose = {
           //if (card.data('disable')) card.addClass('dead');
           card.on(game.states.choose.event, game.states.choose.select);
         });
-        pickDeck.width(game.states.choose.size * (pickDeck.children().length - 1));
+        pickDeck.width(game.states.choose.size * (pickDeck.children().length));
         
       }
     });
@@ -80,8 +80,7 @@ game.states.choose = {
         if (game.mode != 'library') card.addClass('draggable');
         var index = card.siblings(':visible').addBack().index(card);
         if (index === undefined) index = card.index();
-        var size = game.states.choose.size/2;
-        game.states.choose.pickDeck.css('margin-left', index * -1 * size);
+        game.states.choose.pickDeck.css('left', index * -0.78 * game.states.choose.size);
         if (!card.hasClass('dead')) game.setData('choose', card.data('hero')); 
       }
     }

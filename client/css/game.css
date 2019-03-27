@@ -164,7 +164,7 @@ noscript {
 }
 
 noscript .box,
-.notfound .box,
+.p404 .box,
 .campaign-box.box,
 .resultsbox,
 .loading .box,
@@ -195,17 +195,16 @@ noscript .box {
 
 
 .loading .box, 
-.notfound .box {
+.p404 .box {
   width: 250px;
   top: 68%;
   padding: 8px;
 }
 
-.notfound .box {
+.p404 .box {
   width: auto;
   padding: 8px 40px;
 }
-.notfound .box a,
 noscript .box a {
   color: #333;
   text-decoration: underline;
@@ -421,8 +420,6 @@ label input {
   transition: all 0.4s;
 }
 
-@media (max-width: 1050px) {
-  .stomt-button {
-    display: none;
-  }
+.p404 {
+  background-image: url(../img/404.png);
 }

@@ -3,9 +3,8 @@ game.skills.venge = {
     cast: function (skill, source, target) {
       if (!target.hasClass('bkb')) source.addStun(target, skill);
       source.damage(skill.data('damage'), target, skill.data('damage type'));
-      setTimeout(function () { 
-        game.fx.projectile(source, target, 'vengestun');
-      }, 250);
+      game.timeout(200, game.fx.projectile.bind(this, source, target, 'venge-stun', 1.5));
+      game.timeout(600, game.fx.add.bind(this, 'cat-leap', target.parent()));
     }
   },
   corruption: {

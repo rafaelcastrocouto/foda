@@ -36,6 +36,9 @@ game.fx = {
     meteor: {
       cast: ['ult']
     },
+    venge: {
+      stun: ['stun']
+    },
     kotl: {
       illuminate: ['illuminate'],
       mana: ['mana'],
@@ -92,7 +95,9 @@ game.fx = {
     //console.log(game.fx.heroes[hero][skill])
     if ( !game.recovering && game.fx.heroes[hero] && game.fx.heroes[hero][skill]) {
       game.fx.stop(name, source);
-      var fx = $('<div>').addClass(name + ' fx fx-' + hero + ' '+source.side());
+      var side = source.side();
+      if (!side) side = 'neutral';
+      var fx = $('<div>').addClass(name + ' fx fx-' + hero + ' '+side);
       var dirX = source.getX() - target.getX();
       var dirY = source.getY() - target.getY();
       if (tag == 'linear') {
@@ -139,7 +144,7 @@ game.fx = {
     var fx = source.find('.fx.'+name);
     fx.remove();
   },
-  projectile: function (source, target, tag) {
+  projectile: function (source, target, tag, scale) {
     if (!game.recovering) {
       var cl = source.data('hero');
       if (source.hasClass('towers')) cl = 'towers ' + source.side();
@@ -152,19 +157,20 @@ game.fx = {
       var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
       //console.log(angle)
       projectile.data('rotate', angle).appendTo(game.map.el);
-      game.fx.projectileMove(projectile, source);
-      game.timeout(64, game.fx.projectileMove.bind(this, projectile, target));
+      game.fx.projectileMove(projectile, source, scale);
+      game.timeout(64, game.fx.projectileMove.bind(this, projectile, target, scale));
       game.timeout(464, projectile.remove.bind(projectile));
       return projectile;
     }
   },
-  projectileMove: function(projectile, target) {
+  projectileMove: function(projectile, target, scale) {
+    if (!scale) scale = 2.5;
     if (projectile && target) {
       var rotate = projectile.data('rotate') || 0;
       var x = target.getX();
       var y = target.getY();
       projectile.css({
-        'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale(2.5)'
+        'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale('+scale+')'
       });
     }
   },
