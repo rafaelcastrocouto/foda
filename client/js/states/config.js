@@ -23,7 +23,7 @@ game.states.config = {
     this.one = $('<div>').addClass('one button clickSize').text('1v1').on('mouseup touchend', this.clickSize).appendTo(this.buttonbox);
     this.three = $('<div>').addClass('three button clickSize').text('3v3').on('mouseup touchend', this.clickSize).appendTo(this.buttonbox);
     this.five = $('<div>').addClass('five button clickSize').text('5v5').on('mouseup touchend', this.clickSize).appendTo(this.buttonbox);
-    this.back = $('<div>').addClass('back button').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
+    this.back = $('<div>').addClass('back button alert').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
     this.el.append(this.buttonbox);
   },
   start: function () {

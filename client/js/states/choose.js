@@ -8,7 +8,7 @@ game.states.choose = {
     this.counter = $('<p>').addClass('counter').hide().appendTo(this.pickedbox);
     game.library.buildSkills(game.states.choose.buildDeck);
     this.buttonbox = $('<div>').addClass('buttonbox');
-    this.back = $('<div>').addClass('back button').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
+    this.back = $('<div>').addClass('back button alert').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
     this.intro = $('<div>').addClass('intro button').text(game.data.ui.intro).on('mouseup touchend', game.library.showIntro).appendTo(this.buttonbox);
     this.randombt = $('<div>').addClass('random button').text(game.data.ui.random).on('mouseup touchend', game.states.choose.randomClick).appendTo(this.buttonbox);
     this.mydeck = $('<div>').addClass('mydeck button highlight').text(game.data.ui.mydeck).on('mouseup touchend', this.savedDeck).appendTo(this.buttonbox);
