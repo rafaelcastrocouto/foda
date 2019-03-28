@@ -1,8 +1,8 @@
 game.poll = {
-  /*heroes: {
-    terr: 'Terror Blade',
-    wd: 'Witch Doctor'
-  },*/
+  heroes: {
+    inv: 'Invoker',
+    rub: 'Rubik'
+  },
   build: function () {
     game.poll.voteBox = game.overlay.children().first().addClass('vote').html('');
     game.poll.title = $('<h2>').text(game.data.ui.votenexthero).appendTo(game.poll.voteBox);
