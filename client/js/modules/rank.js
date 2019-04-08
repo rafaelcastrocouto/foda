@@ -13,6 +13,18 @@ game.rank = {
         'points': game.player.points
       }
     }, game.rank.update);
+    // idevgames score
+    if (game.player.points > 50) {
+      $.ajax({
+        type: 'POST',
+        url: 'https://play.idevgames.co.uk/send/score.php',
+        data: {
+        'scoreboardKey': 'meaHKmMadVCwTQJKD8aYnaYZ',
+        'name': game.player.name,
+        'score': game.player.points
+        }
+      });
+    }
   },
   sortData: function (data) {
     var ranked = [];
