@@ -1,4 +1,4 @@
-var version = '0.5.0';
+var version = '0.5.01';
 var urlCache = [
   '/',
   'index.html',
@@ -12,7 +12,18 @@ self.addEventListener('install', function (event) {
   }));
 });
 self.addEventListener('fetch', function (event) {
-  event.respondWith(fetch(event.request).catch(function () {
-    caches.match(event.request);
-  }));
+  event.respondWith(
+    caches.open(version).then(function (cache) {
+      return cache.match(event.request).then(function(cacheResponse) {
+        if (cacheResponse) return cacheResponse;
+        return fetch(event.request).then(function (networkResponse) {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      }).catch(function(error) {
+        console.error('Error in fetch handler:', error);
+        throw error;
+      });
+    })
+  );
 });
