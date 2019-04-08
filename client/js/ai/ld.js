@@ -6,13 +6,13 @@ game.heroesAI.ld = {
     // bear strats (siege)
     // use return if bear is low hp
     // cardData['has-instant-attack-buff'] = true;
-    var bear = $('.enemydecks .sidehand .skills.ld-bear');
-    var link = $('.enemydecks .hand .skills.ld-link');
-    var roar = $('.enemydecks .hand .skills.ld-roar');
-    var ult = $('.enemydecks .sidehand .skills.ld-ult');
-    var cry = $('.enemydecks .hand .skills.ld-cry');
+    var bear = $('.'+game.ai.side+'decks .sidehand .skills.ld-bear');
+    var link = $('.'+game.ai.side+'decks .hand .skills.ld-link');
+    var roar = $('.'+game.ai.side+'decks .hand .skills.ld-roar');
+    var ult = $('.'+game.ai.side+'decks .sidehand .skills.ld-ult');
+    var cry = $('.'+game.ai.side+'decks .hand .skills.ld-cry');
     //todo return
-    if (!$('.map .enemy.ld').length) {
+    if (!$('.map .'+game.ai.side+'.ld').length) {
       rabid.data('ai discard', rabid.data('ai discard') + 1);
       roar.data('ai discard', roar.data('ai discard') + 1);
     }
@@ -21,7 +21,7 @@ game.heroesAI.ld = {
         if (destiny.hasClass('free')) {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({
-            priority: 10 + (destiny.data('priority') * 4) + (game.enemy.turn*2),
+            priority: 10 + (destiny.data('priority') * 4) + (game[game.ai.side].turn*2),
             skill: 'bear',
             card: bear.attr('id'),
             target: destiny.attr('id')
@@ -109,6 +109,6 @@ game.heroesAI.ld = {
       card.data('ai priority bonus', -10);
     }
     //console.log('defend-from-ld');
-    //if bear in player area path block tower
+    //if bear in opponent area path block tower
   }
 };

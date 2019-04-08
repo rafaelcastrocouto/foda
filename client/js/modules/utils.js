@@ -160,4 +160,9 @@ game.utils = function() {
       configurable: true
     });
   }
+  if (!String.prototype.capitalize) {
+    String.prototype.capitalize = function() { 
+      return this[0].toUpperCase() + this.slice(1); 
+    };
+  }
 };

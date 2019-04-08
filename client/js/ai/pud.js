@@ -3,11 +3,11 @@ game.heroesAI.pud = {
     default: 'alert'
   },
   play: function (card, cardData) {
-    var hook = $('.enemydecks .hand .skills.pud-hook');
-    var rot = $('.enemydecks .sidehand .skills.pud-rot');
-    var ult = $('.enemydecks .hand .skills.pud-ult');
+    var hook = $('.'+game.ai.side+'decks .hand .skills.pud-hook');
+    var rot = $('.'+game.ai.side+'decks .sidehand .skills.pud-rot');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.pud-ult');
     var p;
-    if (!$('.map .enemy.pud').length) {
+    if (!$('.map .'+game.ai.side+'.pud').length) {
      hook.data('ai discard', hook.data('ai discard') + 1);
     }
     if (card.canCast(hook)) {

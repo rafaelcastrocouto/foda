@@ -69,6 +69,11 @@ game.single = {
       game.skill.buyHand('player');
       game.tower.attack('enemy');
       game.items.addMoney('player', game.turnReward);
+      if (game.autoplay) {
+        game.ai.side = 'player';
+        game.ai.end = game.single.endPlayer;
+        game.timeout(1000, game.ai.turnStart);
+      }
     });
   },
   skip: function () {
@@ -86,7 +91,9 @@ game.single = {
       game.skill.buyHand('enemy');
       game.tower.attack('player');
       game.items.addMoney('enemy', game.turnReward);
-      game.timeout(2000, game.ai.turnStart);
+      game.ai.side = 'enemy';
+      game.ai.end = game.single.endEnemy;
+      game.timeout(1000, game.ai.turnStart);
     });
   },
   endEnemy: function () {

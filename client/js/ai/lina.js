@@ -3,10 +3,10 @@ game.heroesAI.lina = {
     default: 'flank'
   },
   play: function (card, cardData) {
-    var fire = $('.enemydecks .hand .skills.lina-fire');
-    var stun = $('.enemydecks .hand .skills.lina-stun');
-    var ult = $('.enemydecks .hand .skills.lina-ult');
-    if (!$('.map .enemy.lina').length) {
+    var fire = $('.'+game.ai.side+'decks .hand .skills.lina-fire');
+    var stun = $('.'+game.ai.side+'decks .hand .skills.lina-stun');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.lina-ult');
+    if (!$('.map '+game.ai.side+'.lina').length) {
      fire.data('ai discard', fire.data('ai discard') + 1);
      stun.data('ai discard', stun.data('ai discard') + 1);
     }
@@ -39,7 +39,7 @@ game.heroesAI.lina = {
       card.around(stun.data('cast range'), function (spot) {
         var targets = 0, p = cardData['can-attack'] ? 20 : 0;
         spot.around(stun.data('aoe range'), function (nspot) {
-          var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
+          var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead)', nspot);
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);

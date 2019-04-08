@@ -3,11 +3,11 @@ game.heroesAI.wind = {
     default: 'flank'
   },
   play: function (card, cardData) {
-    var arrow = $('.enemydecks .hand .skills.wind-arrow');
-    var stun = $('.enemydecks .hand .skills.wind-stun');
-    var run = $('.enemydecks .hand .skills.wind-run');
-    var ult = $('.enemydecks .hand .skills.wind-ult');
-    if (!$('.map .enemy.wind').length) {
+    var arrow = $('.'+game.ai.side+'decks .hand .skills.wind-arrow');
+    var stun = $('.'+game.ai.side+'decks .hand .skills.wind-stun');
+    var run = $('.'+game.ai.side+'decks .hand .skills.wind-run');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.wind-ult');
+    if (!$('.map .'+game.ai.side+'.wind').length) {
       arrow.data('ai discard', arrow.data('ai discard') + 1);
       stun.data('ai discard', stun.data('ai discard') + 1);
       run.data('ai discard', run.data('ai discard') + 1);

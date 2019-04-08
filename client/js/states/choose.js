@@ -92,16 +92,12 @@ game.states.choose = {
   },
   addZoom: function (card) {
     $('.choose .card').addClass('transparent');
-    game.topbar.addClass('transparent');
-    game.message.addClass('transparent');
     card.addClass('zoom').removeClass('transparent draggable'); //console.log('clicked hero add')
     $('.choose .slot').addClass('transparent');
     game.states.choose.buttonbox.addClass('hidden');
   },
   removeZoom: function (card) {
     $('.choose .card').removeClass('transparent');
-    game.topbar.removeClass('transparent');
-    game.message.removeClass('transparent');
     card.removeClass('zoom'); //console.log('clicked hero rem')
     game.states.choose.buttonbox.removeClass('hidden');
     $('.choose .slot').removeClass('transparent');
@@ -183,15 +179,15 @@ game.states.choose = {
       if ($('.choose .card.selected').length === 0) { game.states.choose.selectFirst(); }
     });
   },
-  randomClick: function () {
+  randomClick: function (e) {
     if (!$(this).attr('disabled')) {
       $(this).attr('disabled', true);
       game.states.choose.randomFill();
       if (game[game.mode].chooseEnd) {
-        game.states.choose.selectFirst('force');
         game.timeout(1000, game[game.mode].chooseEnd);
       }
     }
+    e.preventDefault();
     return false;
   },
   randomFill: function (cb) {
@@ -275,7 +271,6 @@ game.states.choose = {
     this.sort();
     $('.choose .card').removeClass('transparent zoom');
     $('.choose .pickedbox').removeClass('transparent');
-    game.topbar.removeClass('transparent');
     game.states.choose.lockZoom=false;
   }
 };

@@ -3,11 +3,11 @@ game.heroesAI.kotl = {
     default: 'alert'
   },
   play: function (card, cardData) {
-    var illuminate = $('.enemydecks .hand .skills.kotl-illuminate');
-    var mana = $('.enemydecks .hand .skills.kotl-mana');
-    var blind = $('.enemydecks .hand .skills.kotl-blind');
-    var ult = $('.enemydecks .hand .skills.kotl-ult');
-    if (!$('.map .enemy.kotl').length) {
+    var illuminate = $('.'+game.ai.side+'decks .hand .skills.kotl-illuminate');
+    var mana = $('.'+game.ai.side+'decks .hand .skills.kotl-mana');
+    var blind = $('.'+game.ai.side+'decks .hand .skills.kotl-blind');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.kotl-ult');
+    if (!$('.map .'+game.ai.side+'.kotl').length) {
      illuminate.data('ai discard', illuminate.data('ai discard') + 1);
      blind.data('ai discard', blind.data('ai discard') + 1);
     }
@@ -40,7 +40,7 @@ game.heroesAI.kotl = {
       card.around(blind.data('cast range'), function (spot) {
         var targets = 0, p = 0;
         spot.around(blind.data('aoe range'), function (nspot) {
-          var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
+          var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead)', nspot);
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
@@ -74,7 +74,7 @@ game.heroesAI.kotl = {
       card.around(ult.data('cast range'), function (spot) {
         var targets = 0, p = 0;
         spot.around(ult.data('aoe range'), function (nspot) {
-          var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
+          var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead)', nspot);
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);

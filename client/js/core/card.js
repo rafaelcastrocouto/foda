@@ -262,10 +262,6 @@ game.card = {
         game.selectedCard.data('source', false);
       }
       game.selectedCard = null;
-      game.options.opt.removeClass('hidden');
-      game.states.log.out.removeClass('hidden');
-      game.turn.msg.removeClass('hidden');
-      game.topbar.removeClass('transparent');
     }
   },
   setSelection: function(card, event) {
@@ -287,10 +283,6 @@ game.card = {
     game.states.table.el.removeClass('player enemy').addClass(card.side());
   },
   clickSelectClone: function () {
-    game.options.opt.toggleClass('hidden');
-    game.states.log.out.toggleClass('hidden');
-    game.turn.msg.toggleClass('hidden');
-    game.topbar.toggleClass('transparent');
     $(this).toggleClass('zoom');
     if (game.tutorial.axe) game.tutorial.axe.toggleClass('left');
     game.selectedCardZoom = !game.selectedCardZoom;

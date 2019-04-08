@@ -15,6 +15,8 @@
   overflow: hidden;
   padding: 0;
   text-align: center;
+  z-index: 20;
+  pointer-events: none;
 }
 
 .choose .pickbox:before {
@@ -47,6 +49,7 @@
   background: rgba(0,0,0,0.6);
   transform: translateZ(0);
   transform-style: preserve-3d;
+  z-index: 25;
 }
 
 .choose .pickedbox.trans {
@@ -167,6 +170,7 @@
 
 
 .pickbox .card {
+  pointer-events: all;
   margin: 0px -62px;
   top: 0;
   left: 50%;

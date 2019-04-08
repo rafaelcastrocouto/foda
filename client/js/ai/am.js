@@ -3,10 +3,10 @@ game.heroesAI.am = {
     default: 'flank'
   },
   play: function (card, cardData) {
-    var blinks = $('.enemydecks .hand .skills.am-blink');
-    var mirrors = $('.enemydecks .hand .skills.am-mirror');
-    var ult = $('.enemydecks .hand .skills.am-ult');
-    if (!$('.map .enemy.am').length) {
+    var blinks = $('.'+game.ai.side+'decks .hand .skills.am-blink');
+    var mirrors = $('.'+game.ai.side+'decks .hand .skills.am-mirror');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.am-ult');
+    if (!$('.map .'+game.ai.side+'.am').length) {
       blinks.each(function (i, el) {
         var skill = $(el);
         var d = skill.data('ai discard') + 1;
@@ -23,13 +23,13 @@ game.heroesAI.am = {
           if (spot.hasClass('free')) {
             var targets = 0, p = spot.data('priority');
             spot.around(card.data('range'), function (nspot) {
-              var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
+              var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead)', nspot);
               if (cardInRange.length) {
                 targets++;
                 p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
                 if (cardInRange.hasClass('towers')) p += 70;
                 if (cardInRange.hasClass('units')) p += 10;
-                if (nspot.hasClass('enemyarea')) p -= 30;
+                if (nspot.hasClass(game.ai.side+'area')) p -= 30;
               }
             });
             if (targets) {
@@ -58,7 +58,7 @@ game.heroesAI.am = {
           card.data('current hp') < 25 &&
           (!card.hasClass('can-move') || !cardData['can-make-action']) ) {
         card.around(blinks.first().data('cast range'), function (spot) {
-          if (spot.hasClass('free') && !spot.hasClass('playerarea')) {
+          if (spot.hasClass('free') && !spot.hasClass(game.opponent(game.ai.side)+'area')) {
             cardData['cast-strats'].push({
               priority: 50 + spot.data('priority'),
               skill: 'blink',
@@ -74,7 +74,7 @@ game.heroesAI.am = {
         /*N ememies in target range ||*/
         /*after N turns*/
       card.inRange(ult.data('cast range'), function (spot) {
-        var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
+        var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead, .towers)', spot);
         var p = 20;
         if (cardInRange.length) {
           cardData['can-cast'] = true;
@@ -83,7 +83,7 @@ game.heroesAI.am = {
             if (cardInRange.hasClass('channeling')) p += 20;
             if (cardInRange.hasClass('units')) p -= 5;
             cardInRange.around(card.data('range'), function (nspot) {
-              var sectarget = $('.card.player:not(.invisible, .ghost, .dead)', nspot);
+              var sectarget = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead)', nspot);
               if (sectarget.length) {
                 targets++;
                 if (sectarget.hasClasses('channeling towers')) p += 20;
@@ -121,12 +121,12 @@ game.heroesAI.am = {
     });
     // make ai units near the tower block am path
     if (canBlinkTower) {
-      game.enemy.tower.atRange(2, function (spot) {
+      game[game.ai.side].tower.atRange(2, function (spot) {
         var spotData = spot.data('ai');
         spotData.priority += 10;
         spot.data('ai', spotData);
       });
-      game.enemy.tower.atRange(4, function (spot) {
+      game[game.ai.side].tower.atRange(4, function (spot) {
         var defenderCard = spot.find('.card.'+side);
         if (defenderCard.length) {
           var defenderData = JSON.parse(defenderCard.data('ai'));

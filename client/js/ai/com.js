@@ -3,10 +3,10 @@ game.heroesAI.com = {
     default: 'attack'
   },
   play: function (card, cardData) {
-    var aoe = $('.enemydecks .hand .skills.com-aoe');
-    var heal = $('.enemydecks .hand .skills.com-heal');
-    var ult = $('.enemydecks .hand .skills.com-ult');
-    if (!$('.map .enemy.com').length) {
+    var aoe = $('.'+game.ai.side+'decks .hand .skills.com-aoe');
+    var heal = $('.'+game.ai.side+'decks .hand .skills.com-heal');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.com-ult');
+    if (!$('.map .'+game.ai.side+'.com').length) {
       aoe.data('ai discard', aoe.data('ai discard') + 1);
     }
     if (card.canCast(aoe)) {
@@ -14,7 +14,7 @@ game.heroesAI.com = {
       card.inRange(aoe.data('cast range'), function (spot) {
         var targets = 0, p = 10;
         spot.inRange(aoe.data('aoe range'), function (castSpot) {
-          var cardInRange = $('.card.player', castSpot);
+          var cardInRange = $('.card.'+game.opponent(game.ai.side), castSpot);
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
@@ -34,7 +34,7 @@ game.heroesAI.com = {
     }
     if (card.canCast(heal)) {
       card.inRange(heal.data('cast range'), function (spot) {
-        var cardInRange = $('.card.enemy:not(.ghost, .dead, .towers, .units)', spot);
+        var cardInRange = $('.card.'+game.ai.side+':not(.ghost, .dead, .towers, .units)', spot);
         var p = 10;
         if (cardInRange.length) {
           cardData['can-cast'] = true;
@@ -49,7 +49,7 @@ game.heroesAI.com = {
     }
     if (card.canCast(ult)) {
       card.inRange(ult.data('cast range'), function (spot) {
-        var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers, .units)', spot);
+        var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead, .towers, .units)', spot);
         if (cardInRange.length) {
           cardData['can-cast'] = true;
           cardData['cast-strats'].push({

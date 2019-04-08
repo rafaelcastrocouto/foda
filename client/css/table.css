@@ -105,9 +105,9 @@
 .table .selectedarea {
   position: absolute;
   top: 27px;
-  right: 6px;
+  right: 2px;
   border-radius: 10px;
-  z-index: 5;
+  z-index: 35;
   transform: translateZ(0);
 }
 .left-side .table .selectedarea {

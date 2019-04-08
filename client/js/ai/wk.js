@@ -3,7 +3,7 @@ game.heroesAI.wk = {
     default: 'attack'
   },
   play: function (card, cardData) {
-    var stun = $('.enemydecks .hand .skills.wk-stun');
+    var stun = $('.'+game.ai.side+'decks .hand .skills.wk-stun');
     if (card.canCast(stun)) {
       cardData['can-cast'] = true;
       card.opponentsInRange(stun.data('cast range'), function (cardInRange) {

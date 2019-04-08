@@ -3,11 +3,11 @@ game.heroesAI.nyx = {
     default: 'attack'
   },
   play: function (card, cardData) {
-    var spike = $('.enemydecks .hand .skills.nyx-spike');
-    var stun = $('.enemydecks .hand .skills.nyx-stun');
-    var burn = $('.enemydecks .hand .skills.nyx-burn');
-    var ult = $('.enemydecks .hand .skills.nyx-ult');
-    if (!$('.map .enemy.nyx').length) {
+    var spike = $('.'+game.ai.side+'decks .hand .skills.nyx-spike');
+    var stun = $('.'+game.ai.side+'decks .hand .skills.nyx-stun');
+    var burn = $('.'+game.ai.side+'decks .hand .skills.nyx-burn');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.nyx-ult');
+    if (!$('.map .'+game.ai.side+'.nyx').length) {
      burn.data('ai discard', burn.data('ai discard') + 1);
      stun.data('ai discard', stun.data('ai discard') + 1);
      spike.data('ai discard', spike.data('ai discard') + 1);

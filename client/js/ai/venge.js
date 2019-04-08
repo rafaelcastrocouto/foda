@@ -3,10 +3,10 @@ game.heroesAI.venge = {
     default: 'attack'
   },
   play: function (card, cardData) {
-    var stun = $('.enemydecks .hand .skills.venge-stun');
-    var corruption = $('.enemydecks .hand .skills.venge-corruption');
-    var ult = $('.enemydecks .hand .skills.venge-ult');
-    if (!$('.map .enemy.venge').length) {
+    var stun = $('.'+game.ai.side+'decks .hand .skills.venge-stun');
+    var corruption = $('.'+game.ai.side+'decks .hand .skills.venge-corruption');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.venge-ult');
+    if (!$('.map .'+game.ai.side+'.venge').length) {
       stun.data('ai discard', stun.data('ai discard') + 1);
       corruption.data('ai discard', corruption.data('ai discard') + 1);
     }
@@ -61,13 +61,13 @@ game.heroesAI.venge = {
           if (cardInRange) {
             var targets = 0, p = 0;
             cardInRange.around(card.data('range'), function (nspot) {
-              var cardInUltRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', nspot);
+              var cardInUltRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead, .towers)', nspot);
               if (cardInUltRange.length) {
                 targets++;
                 p += parseInt((cardInUltRange.data('hp')-cardInUltRange.data('current hp'))/4);
                 if (cardInUltRange.hasClass('towers')) p += 70;
                 if (cardInUltRange.hasClass('units')) p -= 5;
-                if (nspot.hasClass('enemyarea')) p -= 30;
+                if (nspot.hasClass(game.ai.side+'area')) p -= 30;
               }
             });
             if (targets) {
@@ -139,12 +139,12 @@ game.heroesAI.venge = {
       });
       // make ai units near the tower walk away
       if (canSwapTower) {
-        game.enemy.tower.atRange(2, function (spot) {
+        game[game.ai.side].tower.atRange(2, function (spot) {
           var spotData = JSON.parse(spot.data('ai'));
           spotData.priority -= 30;
           spot.data('ai', JSON.stringify(spotData));
         });
-        game.enemy.tower.atRange(4, function (spot) {
+        game[game.ai.side].tower.atRange(4, function (spot) {
           var defenderCard = spot.find('.card.'+side);
           if (defenderCard.length) {
             var defenderData = JSON.parse(defenderCard.data('ai'));

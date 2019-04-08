@@ -3,10 +3,10 @@ game.heroesAI.en = {
     default: 'flank'
   },
   play: function (card, cardData) {
-    var curse = $('.enemydecks .hand .skills.en-curse');
-    var heal = $('.enemydecks .hand .skills.en-heal');
-    var ult = $('.enemydecks .hand .skills.en-ult');
-    if (!$('.map .enemy.en').length) {
+    var curse = $('.'+game.ai.side+'decks .hand .skills.en-curse');
+    var heal = $('.'+game.ai.side+'decks .hand .skills.en-heal');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.en-ult');
+    if (!$('.map .'+game.ai.side+'.en').length) {
       curse.data('ai discard', curse.data('ai discard') + 1);
       heal.data('ai discard', heal.data('ai discard') + 1);
     }
@@ -21,7 +21,7 @@ game.heroesAI.en = {
             target: spot.attr('id')
           });
         }
-        var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
+        var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
           cardData['can-cast'] = true;
           if (cardInRange.hasClasses('heroes ld-bear')) {

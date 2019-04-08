@@ -3,11 +3,11 @@ game.heroesAI.cat = {
     default: 'flank'
   },
   play: function (card, cardData) {
-    var star = $('.enemydecks .sidehand .skills.cat-star');
-    var arrow = $('.enemydecks .hand .skills.cat-arrow');
-    var leap = $('.enemydecks .sidehand .skills.cat-leap');
-    var ult = $('.enemydecks .hand .skills.cat-ult');
-    if (!$('.map .enemy.cat').length) {
+    var star = $('.'+game.ai.side+'decks .sidehand .skills.cat-star');
+    var arrow = $('.'+game.ai.side+'decks .hand .skills.cat-arrow');
+    var leap = $('.'+game.ai.side+'decks .sidehand .skills.cat-leap');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.cat-ult');
+    if (!$('.map .'+game.ai.side+'.cat').length) {
       star.data('ai discard', star.data('ai discard') + 1);
       arrow.data('ai discard', arrow.data('ai discard') + 1);
       leap.data('ai discard', leap.data('ai discard') + 1);
@@ -60,12 +60,12 @@ game.heroesAI.cat = {
           if (spot.hasClass('free')) {
             var targets = 0, p = spot.data('priority');
             spot.around(card.data('range'), function (nspot) {
-              var cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', nspot);
+              var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead, .towers)', nspot);
               if (cardInRange.length) {
                 targets++;
                 p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
                 if (cardInRange.hasClass('towers')) p += 70;
-                if (nspot.hasClass('enemyarea')) p -= 30;
+                if (nspot.hasClass(game.ai.side+'area')) p -= 30;
                 if (cardInRange.hasClass('units')) p -= 10;
               }
             });
@@ -85,7 +85,7 @@ game.heroesAI.cat = {
           card.data('current hp') < 25 &&
           (!card.hasClass('can-move') || !cardData['can-make-action']) ) {
         card.atRange(leap.data('cast range'), function (spot) {
-          if (spot.hasClass('free') && !spot.hasClass('playerarea')) {
+          if (spot.hasClass('free') && !spot.hasClass(game.opponent(game.ai.side)+'area')) {
             cardData['cast-strats'].push({
               priority: 50 + spot.data('priority'),
               skill: 'leap',
@@ -148,12 +148,12 @@ game.heroesAI.cat = {
       }
     });
     if (canBlinkTower) {
-      game.enemy.tower.atRange(2, function (spot) {
+      game[game.ai.side].tower.atRange(2, function (spot) {
         var spotData = JSON.parse(spot.data('ai'));
         spotData.priority += 30;
         spot.data('ai', JSON.stringify(spotData));
       });
-      game.enemy.tower.atRange(4, function (spot) {
+      game[game.ai.side].tower.atRange(4, function (spot) {
         var defenderCard = spot.find('.card.'+side);
         if (defenderCard.length) {
           var defenderData = JSON.parse(defenderCard.data('ai'));

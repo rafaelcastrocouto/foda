@@ -1,6 +1,7 @@
-.state.log {
+.log .parallax {
   background-image: url("../img/log/sky.jpg");
   background-size: cover;
+  pointer-events: all;
 }
 
 .game-overlay .log.box {
@@ -16,7 +17,6 @@
   font-weight: lighter;
   margin-left: 6px;
 }
-
 
 .game-overlay .log.box .rating {
   width: 55px;
@@ -35,15 +35,14 @@
   font-weight: bold;
 }
 
-
 .state.log .logpara {
   width: 970px;
   height: 600px;
   position:  absolute;
   top: 0;
   left: 0;
-  pointer-events: none;
   transform-style: preserve-3d;
+  pointer-events: none;
 }
 
 .state.log .towers {
@@ -56,14 +55,12 @@
   background-image: url("../img/log/title.png");
   background-size: cover;
   transform: translateZ(50px) scale(0.93);
-  z-index: 1;
 }
 
 .state.log .front {
   background-image: url("../img/log/front.png");
   background-size: cover;
   transform: translateZ(100px) scale(0.86);
-  z-index: 1;
 }
 
 .log .box {

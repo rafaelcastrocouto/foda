@@ -76,35 +76,27 @@ noscript {
   image-rendering: optimizeSpeed;
   will-change: transform;
 }
-.game-container:after {
-  content:"";
-  display: block;
-  pointer-events: none;
-  position: absolute;
-  top: -2px; left: -2px;
-  width: 970px;
-  height: 600px;
-  border: 2px solid #000;
+.game-container.loaded {
+  image-rendering: auto;
+  background-image: url(../img/banner.jpg) !important;
+  background-size: cover;
 }
-.game-container.campaign-state .states,
-.game-container.choose-state .states,
-.game-container.vs-state .states,
-.game-container.table-state .states,
-.game-container.config-state .states,
-.game-container.result-state .states {
+.game-container.campaign-state,
+.game-container.choose-state,
+.game-container.vs-state,
+.game-container.table-state,
+.game-container.config-state,
+.game-container.result-state {
   background-color: #126766;
-  background-image: url("../img/bkg/polygon-dark.jpg");
+  background-image: url("../img/bkg/polygon-dark.jpg") !important;
 }
 
 .states {
   overflow: hidden;
-  transform: translate3d(0,0,1px);
-  background-image: url(../img/banner.jpg);
-  background-size: cover;
-  image-rendering: auto;
+  
 }
 
-.states.iddle {
+.iddle {
   animation: persp 20s infinite;
 }
 

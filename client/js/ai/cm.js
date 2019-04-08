@@ -8,10 +8,10 @@ game.heroesAI.cm = {
     combo freeze
     only use ult if N opponents or after N turns
     */
-    var slow = $('.enemydecks .hand .skills.cm-slow');
-    var freeze = $('.enemydecks .hand .skills.cm-freeze');
-    var ult = $('.enemydecks .hand .skills.cm-ult');
-    if (!$('.map .enemy.cm').length) {
+    var slow = $('.'+game.ai.side+'decks .hand .skills.cm-slow');
+    var freeze = $('.'+game.ai.side+'decks .hand .skills.cm-freeze');
+    var ult = $('.'+game.ai.side+'decks .hand .skills.cm-ult');
+    if (!$('.map .'+game.ai.side+'.cm').length) {
       slow.data('ai discard', slow.data('ai discard') + 1);
       freeze.data('ai discard', freeze.data('ai discard') + 1);
     }
@@ -20,7 +20,7 @@ game.heroesAI.cm = {
       card.inRange(slow.data('cast range'), function (spot) {
         var targets = 0, p = 10;
         spot.inRange(slow.data('aoe range'), function (castSpot) {
-          var cardInRange = $('.card.player:not(.invisible, .ghost, .dead)', castSpot);
+          var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead)', castSpot);
           if (cardInRange.length) {
             targets++;
             p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
@@ -40,7 +40,7 @@ game.heroesAI.cm = {
     }
     if (card.canCast(freeze)) {
       card.inRange(freeze.data('cast range'), function (spot) {
-        var p = 0, cardInRange = $('.card.player:not(.invisible, .ghost, .dead, .towers)', spot);
+        var p = 0, cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead, .towers)', spot);
         if (cardInRange.length) {
           cardData['can-cast'] = true;
           p = 10 + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
