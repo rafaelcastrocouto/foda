@@ -23,7 +23,7 @@ Visit our Wiki page where you can learn [how to play with real cards][7] and muc
 
 All [artwork][5] can be downloaded for free in high resolution. 
 
-Please report any [sugestions, bugs or issues][8] here at github.
+Please report any [suggestions, bugs or issues][8] here at github.
 
 [![Fight Over Dat Ancient](https://foda-app.herokuapp.com/client/img/banner.jpg)][1]
 
