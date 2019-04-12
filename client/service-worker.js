@@ -17,7 +17,7 @@ self.addEventListener('fetch', function (event) {
       return cache.match(event.request).then(function(cacheResponse) {
         if (cacheResponse) return cacheResponse;
         return fetch(event.request).then(function (networkResponse) {
-          cache.put(event.request, networkResponse.clone());
+          if (event.request.method == 'GET') cache.put(event.request, networkResponse.clone());
           return networkResponse;
         });
       }).catch(function(error) {

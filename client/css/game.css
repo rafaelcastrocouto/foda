@@ -91,11 +91,6 @@ noscript {
   background-image: url("../img/bkg/polygon-dark.jpg") !important;
 }
 
-.states {
-  overflow: hidden;
-  
-}
-
 .iddle {
   animation: persp 20s infinite;
 }
@@ -106,10 +101,7 @@ noscript {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.state {
-  /* transform-style: preserve-3d; */
+  overflow: hidden;
 }
 
 .state p {
