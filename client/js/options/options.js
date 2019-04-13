@@ -1,7 +1,7 @@
 game.options = {
   build: function () {
     this.opt = $('<small>').addClass('opt').hide().text(game.data.ui.options + ' ⚙').appendTo(game.topbar).attr('title', game.data.ui.chooseoptions).on('mouseup touchend', game.options.show);
-    this.box = $('<div>').addClass('box');
+    this.box = $('<div>').addClass('box optbox');
     this.title = $('<h1>').appendTo(this.box).text(game.data.ui.options);
     this.row = $('<div>').appendTo(this.box);
     //screen
@@ -74,9 +74,11 @@ game.options = {
     else if (game.overlay.hasClass('hidden')) game.options.show();
   },
   backClick: function () {
-    game.overlay.addClass('hidden');
     game.options.box.appendTo(game.hidden);
     game.container.removeClass('option-state');
+    if (!game.overlay.children().length) {
+      game.overlay.addClass('hidden');
+    }
     return false;
   }
 };

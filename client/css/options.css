@@ -1,15 +1,15 @@
-.option-state .game-overlay .box {
+.game-overlay .optbox {
   min-width: 730px;
   padding: 50px;
 }
 
-.option-state h1 {
+.optbox h1 {
   font-size: 28px;
   /* font-weight: bold; */
   margin-bottom: 8px;
 }
 
-.option-state h2 {
+.optbox h2 {
   font-size: 18px;
   /* color: white; */
 }
@@ -33,7 +33,7 @@
   text-align: right;
 }
 
-.option-state label {
+.optbox label {
   position: relative;
   font-weight: bold;
 }
@@ -65,11 +65,11 @@ label span {
   vertical-align: super;
 }
 
-.option-state input + span {
+.optbox input + span {
   cursor: pointer;
 }
 
-.option-state .audioconfig label span:first-child {
+.optbox .audioconfig label span:first-child {
   margin-left: 60px;
 }
 
@@ -117,7 +117,7 @@ label span {
   transform: scale(0.25);
 }
 
-.option-state .lang {
+.optbox .lang {
   text-align: left;
   float: left;
   clear: left;
@@ -125,19 +125,19 @@ label span {
   margin-left: 60px;
 }
 
-.left-side .option-state .lang {
+.left-side .optbox .lang {
   position: relative;
   left: 260px;
 }
 
-.option-state .lang h2 {
+.optbox .lang h2 {
   display: inline;
   margin-right: 20px;
   /* color: white; */
   font-weight: bold;
 }
 
-.option-state .lang select {
+.optbox .lang select {
   font-size: 14px;
   background: #fff;
   color: #222;
@@ -148,14 +148,14 @@ label span {
   height: 40px;
 }
 
-.option-state .game-overlay .back {
+.option-state .back {
   min-width: 200px;
   margin-bottom: 0px;
   margin-top: 30px;
   margin-right: 20px;
 }
 
-.left-side .option-state .game-overlay .back {
+.left-side .optbox .back {
   position: relative;
   right: 300px;
 }

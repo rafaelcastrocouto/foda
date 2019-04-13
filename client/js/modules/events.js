@@ -38,7 +38,7 @@ game.events = {
           game.events.deferredPrompt.prompt();
         }
         game.events.deferredPrompt = null;
-      }, 'Add to home screen');
+      }, 'Add to home screen', 'home');
 
     });
 

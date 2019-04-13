@@ -272,6 +272,12 @@ input:focus {
   overflow: hidden;
 }
 
+.game-container .game-overlay .box.home {
+  padding: 10px 40px;
+  transform: translate3d(-50%, 130%, 200px);
+  min-width: auto;
+}
+
 .game-overlay h1 {
   margin-bottom: 10px;
   /* font-weight: bold; */

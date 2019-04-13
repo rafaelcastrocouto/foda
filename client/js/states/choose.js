@@ -198,7 +198,7 @@ game.states.choose = {
         slot.append(card).removeClass('available selected');
       }
     });
-    game.states.choose.selectFirst();
+    //game.states.choose.selectFirst();
     if (cb) cb();
   },
   fillPicks: function (side, picked) {

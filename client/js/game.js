@@ -164,28 +164,28 @@ var game = {
     box.append($('<h1>').text(game.data.ui.warning));
     box.append($('<p>').text(txt));
     box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
-      game.overlay.addClass('hidden');
-      game.overlay.empty();
+      $(this).parent().remove();
+      if (!game.overlay.children().length) {
+        game.overlay.addClass('hidden');
+      }
       if (cb) cb(true);
       return false;
     }));
   },
-  confirm: function(cb, text) {
-    var box = $('<div>').addClass('box');
+  confirm: function(cb, text, cl) {
+    var box = $('<div>').addClass('box '+cl);
     game.overlay.removeClass('hidden').append(box);
     box.append($('<h1>').text(text || game.data.ui.sure));
-    box.append($('<div>').addClass('button alert').text(game.data.ui.yes).on('mouseup touchend', function () {
-      game.overlay.addClass('hidden');
-      game.overlay.empty();
-      cb(true);
+    var end = function () {// console.log(game.overlay.children().length)
+      $(this).parent().remove();
+      if (!game.overlay.children().length) {
+        game.overlay.addClass('hidden');
+      }
+      cb(!$(this).hasClass('alert'));
       return false;
-    }));
-    box.append($('<div>').addClass('button').text(game.data.ui.no).on('mouseup touchend', function () {
-      game.overlay.addClass('hidden');
-      game.overlay.empty();
-      cb(false);
-      return false;
-    }));
+    };
+    box.append($('<div>').addClass('button alert').text(game.data.ui.yes).on('mouseup touchend', end));
+    box.append($('<div>').addClass('button').text(game.data.ui.no).on('mouseup touchend', end));
   },
   error: function(details, cb) {
     var box = $('<div>').addClass('box error');
@@ -201,8 +201,10 @@ var game = {
     box.append($('<h1>').text(ti));
     box.append($('<p>').html(details+'<br>'+re));
     box.append($('<div>').addClass('button alert').text(ok).on('mouseup touchend', function () {
-      game.overlay.addClass('hidden');
-      game.overlay.empty();
+      $(this).parent().remove();
+      if (!game.overlay.children().length) {
+        game.overlay.addClass('hidden');
+      }
       if (cb) cb(true);
       return false;
     }));
