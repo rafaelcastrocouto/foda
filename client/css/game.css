@@ -276,6 +276,7 @@ input:focus {
   padding: 10px 40px;
   transform: translate3d(-50%, 130%, 200px);
   min-width: auto;
+  z-index: 32;
 }
 
 .game-overlay h1 {

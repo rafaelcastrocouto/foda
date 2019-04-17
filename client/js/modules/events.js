@@ -28,18 +28,11 @@ game.events = {
     game.container.on('contextmenu', game.events.rightclick);
     game.container.on('click tap', '.button, .card', game.events.click);
 
-    window.addEventListener('beforeinstallprompt', function(e) {
+    window.addEventListener('beforeinstallprompt', function(event) {
       // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
+      event.preventDefault();
       // Stash the event so it can be triggered later.
-      game.events.deferredPrompt = e;
-      game.confirm(function (confirmed) {
-        if (confirmed) {
-          game.events.deferredPrompt.prompt();
-        }
-        game.events.deferredPrompt = null;
-      }, 'Add to home screen', 'home');
-
+      game.events.deferredPrompt = event;
     });
 
   },

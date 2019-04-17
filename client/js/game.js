@@ -181,7 +181,7 @@ var game = {
       if (!game.overlay.children().length) {
         game.overlay.addClass('hidden');
       }
-      cb(!$(this).hasClass('alert'));
+      cb($(this).hasClass('alert'));
       return false;
     };
     box.append($('<div>').addClass('button alert').text(game.data.ui.yes).on('mouseup touchend', end));

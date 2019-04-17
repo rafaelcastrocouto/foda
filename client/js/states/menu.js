@@ -86,6 +86,17 @@ game.states.menu = {
     game.rank.update(game.rank.data);
     game.audio.loopSong('SneakyAdventure');
     game.states.menu.boomCount = 0;
+    game.states.menu.addToHome();
+  },
+  addToHome: function () {
+    if (game.events.deferredPrompt) {
+      game.confirm(function (confirmed) {
+        if (confirmed) {
+          game.events.deferredPrompt.prompt();
+        }
+        game.events.deferredPrompt = null;
+      }, 'Add to home screen', 'home');
+    }
   },
   boomCount: 0,
   boomClick: function () {
