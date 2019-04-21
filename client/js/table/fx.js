@@ -37,7 +37,8 @@ game.fx = {
       cast: ['ult']
     },
     venge: {
-      stun: ['stun']
+      stun: ['stun'],
+      aura: ['aura','aura-target']
     },
     kotl: {
       illuminate: ['illuminate'],

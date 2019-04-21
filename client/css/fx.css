@@ -1219,6 +1219,37 @@
   }
 }
 
+
+.map .fx.venge-aura {
+  transform: rotateX(-25deg) translate3d(-10px,-400px,10px) scale(1.4);
+  width: 260px;
+  height: 320px;
+  animation: venge-aura-sprite 1.2s steps(14) 1;
+  background-image: url('../img/fx/venge/aura.png');
+}
+
+@keyframes venge-aura-sprite {
+  100% {
+    background-position: -3640px;
+  }
+}
+
+
+.map .fx.venge-aura-target {
+  transform: rotateX(-25deg) translate3d(25px,-280px,10px) scale(1.4);
+  width: 220px;
+  height: 240px;
+  animation: venge-aura-target-sprite 1.2s steps(13) 1;
+  background-image: url('../img/fx/venge/target.png');
+}
+
+@keyframes venge-aura-target-sprite {
+  100% {
+    background-position: -2860px;
+  }
+}
+
+
 .ultfx .axe-ult {
   background-image: url("../img/skills/axe/taunt.png");
 }

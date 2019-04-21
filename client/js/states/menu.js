@@ -90,12 +90,14 @@ game.states.menu = {
   },
   addToHome: function () {
     if (game.events.deferredPrompt) {
-      game.confirm(function (confirmed) {
-        if (confirmed) {
-          game.events.deferredPrompt.prompt();
-        }
-        game.events.deferredPrompt = null;
-      }, 'Add to home screen', 'home');
+      game.timeout(2000, function () {
+        game.confirm(function (confirmed) {
+          if (confirmed) {
+            game.events.deferredPrompt.prompt();
+          }
+          game.events.deferredPrompt = null;
+        }, 'Add to home screen', 'home');
+      });
     }
   },
   boomCount: 0,

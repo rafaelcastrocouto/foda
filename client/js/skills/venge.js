@@ -24,6 +24,14 @@ game.skills.venge = {
       source.on('death.venge-aura', this.death);
       source.on('reborn.venge-aura', this.reborn);
       source.data('venge-aura', skill.attr('id'));
+      game.fx.add('venge-aura', source);
+      game.timeout(200, function () {
+        var side = source.side();
+        $('.table .map .card.'+side).each(function (i, el) {
+          var card = $(el);
+          if (card.hasBuff('venge-aura') && card[0] !== source[0]) game.fx.add('venge-aura-target', card);
+        });
+      });
     },
     death: function (event, eventdata) {
       var target = eventdata.target;
