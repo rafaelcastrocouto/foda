@@ -13,9 +13,18 @@ game.skills.venge = {
       if (source.data('skill range bonus')) range += source.data('skill range bonus');
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
-      source.opponentsInLine(target, range, width, function (card) {
-        source.damage(damage, card, skill.data('damage type'));
-        if (!target.hasClass('bkb')) source.addBuff(card, skill);
+      var x = source.getX(), y = source.getY();
+      source.inLine(target, range, width, function (spot, i, j) {
+        var t = Math.abs(180 * ((x-i)+(y-j)));
+        var card = $('.card', spot);
+        var opponent = source.opponent();
+        if (card.hasClass(opponent) && !card.hasClass('bkb')) {
+          game.timeout(t, function () {
+            source.damage(damage, card, skill.data('damage type'));
+            source.addBuff(card, skill);
+            game.fx.add('venge-corruption', spot);
+          });
+        } else game.timeout(t, game.fx.add.bind(this, 'venge-corruption', spot,0,0,0,'miss'));
       });
     }
   },
@@ -29,7 +38,8 @@ game.skills.venge = {
         var side = source.side();
         $('.table .map .card.'+side).each(function (i, el) {
           var card = $(el);
-          if (card.hasBuff('venge-aura') && card[0] !== source[0]) game.fx.add('venge-aura-target', card);
+          if (card.hasBuff('venge-aura') && card[0] !== source[0]) 
+            game.fx.add('venge-aura-target', card);
         });
       });
     },

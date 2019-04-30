@@ -38,7 +38,8 @@ game.fx = {
     },
     venge: {
       stun: ['stun'],
-      aura: ['aura','aura-target']
+      aura: ['aura','target'],
+      corruption: ['corruption']
     },
     kotl: {
       illuminate: ['illuminate'],
@@ -88,7 +89,7 @@ game.fx = {
     }
   },
   imgs: [],
-  add: function(name, source, target, tag, append) {
+  add: function(name, source, target, tag, append, custom) {
     if (!target) target = source;
     var a = name.split('-');
     var hero = a[0];
@@ -96,9 +97,9 @@ game.fx = {
     //console.log(game.fx.heroes[hero][skill])
     if ( !game.recovering && game.fx.heroes[hero] && game.fx.heroes[hero][skill]) {
       game.fx.stop(name, source);
-      var side = source.side();
+      var side = $(source).side();
       if (!side) side = 'neutral';
-      var fx = $('<div>').addClass(name + ' fx fx-' + hero + ' '+side);
+      var fx = $('<div>').addClass(name + ' fx fx-' + hero + ' '+side+' '+custom);
       var dirX = source.getX() - target.getX();
       var dirY = source.getY() - target.getY();
       if (tag == 'linear') {

@@ -377,7 +377,7 @@ game.map = {
       for (var j = start.y; j <= end.y; j++) {
         var spot = game.map.getSpot(i, j);
         if (spot) {
-          cb(spot);
+          cb(spot, i, j);
         }
       }
     }
@@ -386,19 +386,19 @@ game.map = {
   opponentsInLine: function(target, range, width, cb, offset) {
     var side = this.side();
     var opponent = game.opponent(side);
-    this.inLine(target, range, width, function(spot) {
+    this.inLine(target, range, width, function(spot, i, j) {
       var card = spot.find('.card.' + opponent);
       if (card.length)
-        cb(card);
+        cb(card, i, j);
     }, offset);
     return this;
   },
   alliesInLine: function(target, range, width, cb, offset) {
     var side = this.side();
-    this.inLine(target, range, width, function(spot) {
+    this.inLine(target, range, width, function(spot, i, j) {
       var card = spot.find('.card.' + side);
       if (card.length)
-        cb(card);
+        cb(card, i, j);
     }, offset);
     return this;
   },
