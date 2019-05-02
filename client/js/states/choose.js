@@ -222,12 +222,14 @@ game.states.choose = {
       t = game.states.choose.intro.text();
       t = '⏹' + t.substr(1);
       game.states.choose.intro.text(t).addClass('playing');
+      game.states.choose.pickbox.addClass('intro');
     } else {
       game.states.choose.videoPlaying = false;
       game.states.choose.video.attr({'src': 'about:blank'}).hide();
       t = game.states.choose.intro.text();
       t = '▶' + t.substr(1);
       game.states.choose.intro.text(t).removeClass('playing');
+      game.states.choose.pickbox.removeClass('intro');
     }
   },
   testHeroClick: function () {

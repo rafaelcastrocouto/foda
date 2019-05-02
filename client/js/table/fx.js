@@ -195,12 +195,21 @@ game.fx = {
       game.timeout(t, textFx.remove.bind(textFx));
     }
   },
+  buildUlt: function () {
+    var ultfx = $('<div>').addClass('ultfx').appendTo(game.camera);
+    for (var s=0; s<6; s++) {
+      var star = $('<div>').appendTo(ultfx).addClass('ulfx star hide');
+    }
+    ultfx.append($('<div>').addClass('stripe1 stripes hide'));
+    ultfx.append($('<div>').addClass('stripe2 stripes hide'));
+    game.states.table.ultfx = ultfx;
+  },
   ult: function(skill, cb, str) {// console.log(skill.data())
     var label = skill.data('label'),
         skillId = skill.data('skillId');
     if (label == 'ult' && !game.fx.ultList[skillId]) {
       game.fx.ultList[skillId] = true;
-      $('.ultfx .star').removeClass('hide');
+      $('.ultfx *').removeClass('hide');
       var fx = $('<div>').addClass(skillId+' fx');
       game.states.table.ultfx.append(fx);
       game.timeout(1900, function () {
@@ -209,6 +218,7 @@ game.fx = {
       game.timeout(2100, function () {
         if (game.states.table.ultfx && game.states.table.ultfx.children) 
           game.states.table.ultfx.children('.fx').remove();
+          $('.ultfx .stripes').addClass('hide');
         if (str) game.audio.play(str);
         if (cb) cb();
       });
@@ -223,7 +233,7 @@ game.fx = {
     .bind(state), 260);
   },
   clear: function() {
-    $('.ultfx .star').addClass('hide');
+    $('.ultfx *').addClass('hide');
     if (game.states.table.ultfx && game.states.table.ultfx.children) 
       game.states.table.ultfx.children('.fx').remove();
     $('.map .fx').remove();

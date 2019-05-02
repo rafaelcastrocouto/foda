@@ -1150,6 +1150,7 @@
   top: 0;
   background-size: cover;
   background-position: 50%;
+  clip-path: polygon(0 0, 40px 150px, 20px 300px, 690px 300px, 720px 150px, 670px 0px);
   z-index: 40;
   /* box-shadow: 250px -375px 0 #222, -250px 375px 0 #222; */
   animation: ult-fx 2.2s cubic-bezier(0, 1, 1, 0) 1;
@@ -1158,37 +1159,28 @@
 
 @keyframes ult-fx {
   0% {
-    transform: translateX(-1200px);
+    transform: scale(1.2) translateX(-1200px);
   }
 
   /*35%, 65% {transform: translateX(0px);}*/
   100% {
-    transform: translateX(1200px);
+    transform: scale(1.2) translateX(1200px);
   }
 }
 
-.ultfx .fx:after, .ultfx .fx:before {
-  content: "";
-  display: block;
+.ultfx .stripe1, .ultfx .stripe2 {
+  position: absolute;
   width: 900px;
   height: 160px;
   background-image: url("../img/fx/ultfx.png");
   position: absolute;
-  left: -60px;
-  top: -90px;
+  left: 0;
+  top: 15px;
   background-size: contain;
   animation: ult-stripes 2.2s 1;
-  transform: translateX(200px);
-}
-
-.ultfx .fx:before {
-  transform: scaleX(-1);
-  top: 260px;
-  left: -120px;
-  animation: ult-stripes2 2.2s 1;
-  width: 1100px;
-  height: 190px;
-  transform: scaleX(-1) translateX(300px);
+  transform: translateX(0px);
+  pointer-events: none;
+  z-index: 41;
 }
 
 @keyframes ult-stripes {
@@ -1199,6 +1191,17 @@
   100% {
     transform: translateX(-200px);
   }
+}
+
+
+.ultfx .stripe2 {
+  transform: scaleX(-1);
+  top: 330px;
+  left: -120px;
+  animation: ult-stripes2 2.2s 1;
+  width: 1100px;
+  height: 190px;
+  transform: scaleX(-1) translateX(300px);
 }
 
 @keyframes ult-stripes2 {
@@ -1224,8 +1227,8 @@
   box-shadow: -400px 0 0 -3px white;
 }
 
-.ultfx .star.hide {
-  opacity: 0;
+.ultfx .hide {
+  display: none;
 }
 
 .ultfx .star:nth-child(1) {

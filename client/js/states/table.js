@@ -13,10 +13,7 @@ game.states.table = {
     this.shop = $('<div>').appendTo(this.buttonbox).addClass('shop button').attr({disabled: true}).text(game.data.ui.shop).on('mouseup touchend', game.skill.shopDicardClick);
     this.skip = $('<div>').appendTo(this.buttonbox).addClass('skip button highlight').attr({disabled: true, title: 'SPACE'}).text(game.data.ui.skip).on('mouseup touchend', this.skipClick);
     this.el.append(game.camera).append(this.selectedArea).append(this.buttonbox).append(this.player).append(this.enemy);
-    this.ultfx = $('<div>').addClass('ultfx').appendTo(game.camera);
-    for (var s=0; s<6; s++) {
-      var star = $('<div>').appendTo(this.ultfx).addClass('ulfx star hide');
-    }
+    game.fx.buildUlt();
   },
   start: function (recover) {
     if (game.turn.el) {

@@ -18,6 +18,9 @@
   z-index: 20;
   pointer-events: none;
 }
+.choose .pickbox.intro {
+  pointer-events: all;
+}
 
 .choose .pickbox:before {
   content: "";

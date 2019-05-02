@@ -199,15 +199,10 @@ var game = {
       ok = game.data.ui.ok;
     }
     box.append($('<h1>').text(ti));
-    box.append($('<p>').html('<a href="https://github.com/rafaelcastrocouto/foda/issues/new" target="_blank">Submit bug</a>'));
     box.append($('<p>').html(details+'<br>'+re));
     box.append($('<div>').addClass('button alert').text(ok).on('mouseup touchend', function () {
-      $(this).parent().remove();
-      if (!game.overlay.children().length) {
-        game.overlay.addClass('hidden');
-      }
-      if (cb) cb(true);
-      return false;
+      open('https://github.com/rafaelcastrocouto/foda/issues/new','_blank');
+      location.reload();
     }));
   },
   logError: function(details) {
