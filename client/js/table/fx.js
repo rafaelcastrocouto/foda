@@ -48,8 +48,10 @@ game.fx = {
       arrow: ['arrow']
     },
     venge: {
-      passive: ['passive']
-    }*/
+      stun: ['stun'],
+      aura: ['aura', 'target'],
+      corruption: ['corruption', 'corruption1']
+    }
   },
   build: function() {
     var img = $('<img>').appendTo(game.hidden);
