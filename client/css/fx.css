@@ -1101,20 +1101,24 @@
 }
 
 .map .fx.venge-corruption {
-  transform: rotateX(-25deg) translate3d(0px,-80px,10px) scale(1.4);
-  width: 200px;
-  height: 260px;
-  animation: venge-corruption-sprite 1.6s steps(18) 1;
+  transform: rotateX(-25deg) translate3d(45px,0px,80px) scale(2.75);
+  width: 128px;
+  height: 128px;
+  animation: venge-corruption-sprite 1.8s steps(21) 1;
   background-image: url('../img/fx/venge/corruption.png');
+  opacity: 1;
+}
+.map .fx.venge-corruption1 {
+  background-image: url('../img/fx/venge/corruption1.png');
 }
 
 .map .fx.venge-corruption.miss {
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
 @keyframes venge-corruption-sprite {
   100% {
-    background-position: -3600px;
+    background-position: -2688px;
   }
 }
 

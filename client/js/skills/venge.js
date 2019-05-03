@@ -22,9 +22,9 @@ game.skills.venge = {
           game.timeout(t, function () {
             source.damage(damage, card, skill.data('damage type'));
             source.addBuff(card, skill);
-            game.fx.add('venge-corruption', spot);
+            game.fx.add('venge-corruption', spot, 0, 'random');
           });
-        } else game.timeout(t, game.fx.add.bind(this, 'venge-corruption', spot,0,0,0,'miss'));
+        } else game.timeout(t, game.fx.add.bind(this, 'venge-corruption', spot, 0, 'random',0  ,'miss'));
       });
     }
   },

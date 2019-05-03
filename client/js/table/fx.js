@@ -36,11 +36,6 @@ game.fx = {
     meteor: {
       cast: ['ult']
     },
-    venge: {
-      stun: ['stun'],
-      aura: ['aura','target'],
-      corruption: ['corruption']
-    },
     kotl: {
       illuminate: ['illuminate'],
       mana: ['mana'],
@@ -51,9 +46,8 @@ game.fx = {
     },
     wind: {
       arrow: ['arrow']
-    }/*,
+    },
     venge: {
-      corruption: ['corruption'],
       passive: ['passive']
     }*/
   },
