@@ -483,7 +483,7 @@
   transform: rotateX(-37deg) translate3d(60px,-740px,10px) scale(6);
   width: 96px;
   height: 256px;
-  animation: cat-star-sprite 1.05s steps(23) 1;
+  animation: cat-star-sprite 1.9s steps(23) 1;
   background-image: url('../img/fx/cat/star.png');
 }
 
