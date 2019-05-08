@@ -281,7 +281,7 @@
         "cast range": 5,
         "cards": 1,
         "attacks": 4,
-        "damage reduction": 4
+        "damage reduction": 3
       }
     },
 
@@ -693,7 +693,7 @@
         "cards": 1
       },
       "corruption": {
-        "cast range": 5,
+        "cast range": 1,
         "cast width": 0,
         "aoe range": 5,
         "aoe width": 0,
