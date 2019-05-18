@@ -33,9 +33,9 @@ game.states.table = {
   recover: function () {
     if (game.recovering && game.getData(game.player.type+'Deck')) {
       game.history.recoverMatch();
-    } else {
+    } else if (game.player.picks && game.player.picks.length) {
       game[game.mode || 'library'].setTable();
-    }
+    } else game.states.changeTo('menu');
   },
   music: function () {
     if (game.mode == 'library') game.audio.loopSong('Perspectives');

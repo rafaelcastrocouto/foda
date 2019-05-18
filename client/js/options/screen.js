@@ -8,11 +8,15 @@ game.screen = {
     var scale = 1;
     var w = document.body.offsetWidth;//window.innerWidth;
     var h = document.body.offsetHeight;//window.innerHeight;
-    if (w/h > game.screen.width/game.screen.height) {
+    var bodyRatio = w/h;
+    var screenRatio = game.screen.width/game.screen.height;
+    if (bodyRatio > screenRatio) {
       scale = h/game.screen.height;
     } else {
       scale = w/game.screen.width;
     }
+    if (bodyRatio < 0.8) scale *= 1.26;
+    //console.log(bodyRatio, screenRatio, bodyRatio - screenRatio);
     scale = (scale * 0.97).toFixed(2);
     if (scale < 0.5) scale = 0.5;
     game.screen.scale = scale;

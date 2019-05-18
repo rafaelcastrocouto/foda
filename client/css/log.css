@@ -67,10 +67,10 @@
   padding: 10px;
   padding-bottom: 6px;
   width: 400px;
-  top: 72%;
+  top: 68%;
   z-index: 10;
   animation: logslidedown 1s 1;
-  transform: translate3d(-50%, -64%, 0px);
+  transform: translate3d(-50%, -50%, 0px);
   z-index: 0;
 }
 
