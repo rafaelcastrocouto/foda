@@ -6,10 +6,10 @@
     "description": "Tek kişilik ordu, bir zamanlar şimdi Orkların lideri bir cellat."
   },
   
-  "terror": {
-    "name": "Terror",
-    "attribute": "Çeviklik",
-    "description": "Ruhu bir iblis lordu tarafından çalındı ama boş gövdesi intikam almak isteyen cehennemde dolaşmaya devam etti."
+  "en": {
+    "name": "Geyik",
+    "attribute": "Zeka",
+    "description": "Sevgi ve güzellik güçlüdür, bu yüzden savaş sıcağından uzaklaşır. Ama aptal olma, büyüleyici kadar ölümcül"
   },
   
   "ld": {
@@ -71,11 +71,11 @@
     "attribute": "Kuvvet",
     "description": "Savaş alanına girmek için cesaret gerekiyor. Fakat bir kadın olarak geri gelmek ve meydan okumaya ayak uydurmak başka bir şey gerektirir ve hepsi bu kadardır!"
   },
-
-  "wind": {
-    "name": "Rüzgar Peri",
-    "attribute": "Zeka",
-    "description": "Ailesi doğumunun gecesinde bir fırtınada öldürüldü, ancak rüzgarın kendisi pislendi ve kurtardı. Okçu sırlarını düşmanlarını atmak için kullanır."
+  
+  "terror": {
+    "name": "Terror",
+    "attribute": "Çeviklik",
+    "description": "Ruhu bir iblis lordu tarafından çalındı ama boş gövdesi intikam almak isteyen cehennemde dolaşmaya devam etti."
   },
 
   "venge": {
@@ -83,11 +83,11 @@
     "attribute": "Çeviklik",
     "description": "Tahta doğuş hakkını kaybettikten sonra Venge, kız kardeşinin ihanetini asla affetmeyecek ve adalet yapılıncaya kadar onu avlayacak."
   },
-  
-  "en": {
-    "name": "Geyik",
+
+  "wind": {
+    "name": "Rüzgar Peri",
     "attribute": "Zeka",
-    "description": "Sevgi ve güzellik güçlüdür, bu yüzden savaş sıcağından uzaklaşır. Ama aptal olma, büyüleyici kadar ölümcül"
+    "description": "Ailesi doğumunun gecesinde bir fırtınada öldürüldü, ancak rüzgarın kendisi pislendi ve kurtardı. Okçu sırlarını düşmanlarını atmak için kullanır."
   }
 
 }

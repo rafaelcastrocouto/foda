@@ -1024,6 +1024,68 @@
   }
 }
 
+
+.map .fx.nyx-stun {
+  transform: rotateX(-25deg) translate3d(45px,70px,80px) scale(3);
+  width: 96px;
+  height: 96px;
+  animation: nyx-stun-sprite 1.4s steps(12) 1;
+  background-image: url('../img/fx/nyx/stun.png');
+}
+.map .fx.nyx-stun.miss {
+  background-image: url('../img/fx/nyx/stun1.png');
+}
+
+@keyframes nyx-stun-sprite {
+  100% {
+    background-position: -1152px;
+  }
+}
+
+.map .fx.nyx-spike {
+  transform: rotateX(-3deg) translate3d(40px,-220px,10px) scale(3.3);
+  width: 128px;
+  height: 128px;
+  animation: nyx-spike-sprite 1.2s steps(10) 1;
+  background-image: url('../img/fx/nyx/spike.png');
+  background-position: -1280px;
+}
+
+@keyframes nyx-spike-sprite {
+  0% {
+     background-position: 0px;
+  }
+  100% {
+    background-position: -1280px;
+  }
+}
+.map .fx.nyx-spike.end {
+  animation: nyx-spike-sprite-end 0.9s steps(8) 1;
+}
+
+@keyframes nyx-spike-sprite-end {
+  0% {
+     background-position: -1280px;
+  }
+  100% {
+    background-position: -2304px;
+  }
+}
+
+.map .fx.nyx-burn {
+  transform: rotateX(-37deg) translate3d(65px,-175px,100px) scale(3);
+  width: 96px;
+  height: 96px;
+  animation: nyx-burn-sprite 2.1s steps(20) 1;
+  background-image: url('../img/fx/nyx/burn.png');
+}
+
+@keyframes nyx-burn-sprite {
+  100% {
+    background-position: -1920px;
+  }
+}
+
 .map .windrun {
   opacity: 0.6;
   animation: wind-run 1.1s infinite;
@@ -1119,6 +1181,22 @@
 @keyframes venge-corruption-sprite {
   100% {
     background-position: -2688px;
+  }
+}
+
+.map .fx.venge-ult {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 256px;
+  height: 256px;
+  background-image: url("../img/fx/venge/ult.png");
+  animation: venge-ult-sprite 0.8s steps(6) 1;
+}
+
+@keyframes venge-ult-sprite {
+  100% {
+    background-position: -1536px;
   }
 }
 

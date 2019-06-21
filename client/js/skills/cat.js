@@ -7,7 +7,7 @@ game.skills.cat = {
       var stunBonus = skill.data('distance stun bonus');
       var damage = skill.data('damage');
       var arrowTarget = source.firstCardInLine(target, range);
-      game.timeout( 50, game.fx.add.bind(this, 'cat-arrow-source', source, target, 'rotate', source.parent()));
+      game.timeout( 50, game.fx.add.bind(this, 'cat-arrow-source', source, target, 'target', source.parent()));
       var fxTarget;
       if (arrowTarget && arrowTarget.side() == source.opponent()) {
         fxTarget = arrowTarget.parent();
@@ -22,7 +22,7 @@ game.skills.cat = {
       } else {
         fxTarget = source.lastSpotInLine(target, range);
       }
-      game.timeout(100, game.fx.add.bind(this, 'cat-arrow', source, fxTarget, 'rotate'));
+      game.timeout(100, game.fx.add.bind(this, 'cat-arrow', source, fxTarget, 'target'));
     }
   },
   leap: {
@@ -30,7 +30,7 @@ game.skills.cat = {
       source.selfBuff(skill);
       source.move(target);
       game.timeout( 50, game.fx.add.bind(this, 'cat-leap', source.parent()));
-      game.timeout( 50, game.fx.add.bind(this, 'cat-leap-path', source, target, 'rotate'));
+      game.timeout( 50, game.fx.add.bind(this, 'cat-leap-path', source, target, 'target'));
       game.timeout(150, game.fx.add.bind(this, 'cat-leap', target));
     }
   },

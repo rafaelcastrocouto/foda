@@ -56,7 +56,7 @@ game.skills.lina = {
   },
   ult: {
     cast: function (skill, source, target) {
-      game.fx.add('lina-ult', source, target, 'rotate');
+      game.fx.add('lina-ult', source, target, 'target');
       game.timeout(900, source.damage.bind(source, skill.data('damage'), target, skill.data('damage type')));
     }
   }

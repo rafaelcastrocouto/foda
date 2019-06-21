@@ -5,10 +5,10 @@
     "description": "El ejército de un solo hombre, una vez un verdugo ahora líder de los Orcos. ¡Axe es Axe!"
   },
   
-  "terror": {
-    "name": "Terror",
-    "attribute": "Agilidad",
-    "description": "Su alma fue robada por un señor demonio pero su cuerpo vacío continuó vagando en el infierno buscando venganza"
+  "en": {
+    "name": "Bambi",
+    "attribute": "Inteligencia",
+    "description": "El amor y la belleza son sus puntos fuertes, por lo que se aleja del calor de la batalla. Pero no te dejes engañar, ella es tan mortal como encantadora"
   },
   
   "ld": {
@@ -70,11 +70,11 @@
     "attribute": "Fuerza",
     "description": "Uno necesita coraje para entrar en el campo de batalla. ¡Pero volver como mujer y hacer frente al desafío requiere algo más y ella tiene todo eso!"
   },
-
-  "wind": {
-    "name": "Elfa de Viento",
-    "attribute": "Inteligencia",
-    "description": "Su familia murió en una tormenta la noche de su nacimiento, pero el viento mismo la salvó. Ahora ella usa los secretos de la arquería"
+  
+  "terror": {
+    "name": "Terror",
+    "attribute": "Agilidad",
+    "description": "Su alma fue robada por un señor demonio pero su cuerpo vacío continuó vagando en el infierno buscando venganza"
   },
 
   "venge": {
@@ -82,11 +82,11 @@
     "attribute": "Agilidad",
     "description": "Después de perder su trono y su amor, el Mago del Cielo, Venge nunca perdonará la traición de su hermana y la perseguirá hasta que se haga justicia"
   },
-  
-  "en": {
-    "name": "Bambi",
+
+  "wind": {
+    "name": "Elfa de Viento",
     "attribute": "Inteligencia",
-    "description": "El amor y la belleza son sus puntos fuertes, por lo que se aleja del calor de la batalla. Pero no te dejes engañar, ella es tan mortal como encantadora"
+    "description": "Su familia murió en una tormenta la noche de su nacimiento, pero el viento mismo la salvó. Ahora ella usa los secretos de la arquería"
   }
 
 }

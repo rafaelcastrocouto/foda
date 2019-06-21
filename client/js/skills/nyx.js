@@ -7,9 +7,18 @@ game.skills.nyx = {
       var damage = skill.data('damage');
       var dmgType = skill.data('damage type');
       game.fx.shake();
-      source.opponentsInLine(target, range, width, function (card) {
-        source.damage(damage, card, dmgType);
-        if (!target.hasClass('bkb')) source.addStun(card, skill);
+      var opponent = source.opponent();
+      var x = source.getX(), y = source.getY();
+      source.inLine(target, range, width, function (spot, i, j) {
+        var t = Math.abs(180 * ((x-i)+(y-j)));
+        var card = $('.card', spot);
+        if (card.hasClass(opponent) && !card.hasClass('bkb')) {
+          game.timeout(t, function () {
+            source.damage(damage, card, dmgType);
+            source.addStun(card, skill);
+            game.fx.add('nyx-stun', spot);
+          });
+        } else game.timeout(t, game.fx.add.bind(this, 'nyx-stun', spot,0,0,0 ,'miss'));
       });
     }
   },
@@ -21,6 +30,7 @@ game.skills.nyx = {
       var damage = (target.data('mana') || 1) * skill.data('multiplier');
       var dmgType = skill.data('damage type');
       source.damage(damage, target, dmgType);
+      game.fx.add('nyx-burn', source, target);
     }
   },
   spike: {
@@ -30,6 +40,7 @@ game.skills.nyx = {
       source.on('damage.nyx-spike', this.damage);
       source.data('nyx-spike', skill.attr('id'));
       buff.on('expire', this.expire);
+      game.fx.add('nyx-spike', source, 0, 'keep');
     },
     damage: function (event, eventdata) {
       var target = eventdata.target;
@@ -50,6 +61,9 @@ game.skills.nyx = {
       target.data('nyx-spike', null);
       target.off('damage.nyx-spike');
       target.removeClass('nyx-spike');
+      var fx = $('.fx.nyx-spike', target);
+      fx.addClass('end');
+      fx.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () { this.remove(); });
     }
   },
   ult: {

@@ -549,7 +549,7 @@
         "aoe width": 0,
         "aoe range": 4,
         "cast width": 0,
-        "cast range": 4,
+        "cast range": 1,
         "cards": 1,
         "damage": 12,
         "stun": 2

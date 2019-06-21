@@ -6,10 +6,10 @@
     "description": "The one man army, once an executioner now leader of the Orcs. Axe is Axe!"
   },
   
-  "terror": {
-    "name": "Terror",
-    "attribute": "Agility",
-    "description": "His soul was stolen by a demon lord but his empty body continued to wander in hell seeking revenge"
+  "en": {
+    "name": "Bambi",
+    "attribute": "Intelligence",
+    "description": "Love and beauty are her strengths, which is why she moves away from the heat of battle. But do not be fooled, she is as deadly as she is charming"
   },
   
   "ld": {
@@ -71,11 +71,11 @@
     "attribute": "Strength",
     "description": "One needs courage to enter the battlefield. But to come back as a woman and stand up to the challenge requires something else and she has all that!"
   },
-
-  "wind": {
-    "name": "Wind Elf",
-    "attribute": "Intelligence",
-    "description": "Her family was killed in a storm on the night of her birth, but the wind itself pitied and saved her. She uses the secrets of archery to take out her enemies"
+  
+  "terror": {
+    "name": "Terror",
+    "attribute": "Agility",
+    "description": "His soul was stolen by a demon lord but his empty body continued to wander in hell seeking revenge"
   },
 
   "venge": {
@@ -83,11 +83,11 @@
     "attribute": "Agility",
     "description": "After losing her throne birthright and her love the Sky Mage, Venge will never forgive her sister's treachery and will hunt her until justice is made"
   },
-  
-  "en": {
-    "name": "Bambi",
+
+  "wind": {
+    "name": "Wind Elf",
     "attribute": "Intelligence",
-    "description": "Love and beauty are her strengths, which is why she moves away from the heat of battle. But do not be fooled, she is as deadly as she is charming"
+    "description": "Her family was killed in a storm on the night of her birth, but the wind itself pitied and saved her. She uses the secrets of archery to take out her enemies"
   }
 
 }

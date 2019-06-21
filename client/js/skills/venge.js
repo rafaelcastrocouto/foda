@@ -14,10 +14,10 @@ game.skills.venge = {
       var width = skill.data('aoe width');
       var damage = skill.data('damage');
       var x = source.getX(), y = source.getY();
+      var opponent = source.opponent();
       source.inLine(target, range, width, function (spot, i, j) {
         var t = Math.abs(180 * ((x-i)+(y-j)));
         var card = $('.card', spot);
-        var opponent = source.opponent();
         if (card.hasClass(opponent) && !card.hasClass('bkb')) {
           game.timeout(t, function () {
             source.damage(damage, card, skill.data('damage type'));
@@ -79,10 +79,8 @@ game.skills.venge = {
         var targetPosition = target.getPosition();
         target.place(sourcePosition);
         source.place(targetPosition);
-        game.fx.add('ld-return-target', target.parent());
-        game.fx.add('ld-return', source.parent());
-        game.timeout( 50, game.fx.add.bind(this, 'cat-leap-path', source, target, 'rotate'));
-        game.timeout(100, game.skills.venge.ult.after.bind(this, source, target));
+        game.fx.add('venge-ult', source, target, 'rotate',0,0,{scale: 2.2, offset:{x:-80}});
+        game.fx.add('venge-ult', target, source, 'rotate',0,0,{scale: 2.2, offset:{x:-80}});
       }.bind(this, source, target));
     },
     after: function(source, target) {

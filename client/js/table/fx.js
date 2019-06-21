@@ -1,6 +1,17 @@
 game.fx = {
   ultList: {},
   heroes: {
+    cm: {
+      slow: ['slow'],
+      freeze: ['freeze'],
+      ult: ['ult', 'ult1', 'ult2', 'ult3']
+    },
+    cat: {
+      arrow: ['arrow', 'arrow-impact', 'arrow-source', 'arrow-source-horiz'],
+      star: ['star'],
+      leap: ['leap', 'leap-path'],
+      ult: ['ult']
+    },
     ld: {
       link: ['link'],
       roar: ['roar'],
@@ -14,27 +25,15 @@ game.fx = {
       passive: ['passive'],
       ult: ['ult-close', 'ult-far']
     },
+    nyx: {
+      stun: ['stun','stun1'],
+      burn: ['burn'],
+      spike: ['spike']
+    },
     pud: {
       hook: ['hook'],
       rot: ['rot'],
       ult: ['ult']
-    },
-    wk: {
-      stun: ['stun', 'stun-hit']
-    },
-    cm: {
-      slow: ['slow'],
-      freeze: ['freeze'],
-      ult: ['ult', 'ult1', 'ult2', 'ult3']
-    },
-    cat: {
-      arrow: ['arrow', 'arrow-impact', 'arrow-source', 'arrow-source-horiz'],
-      star: ['star'],
-      leap: ['leap', 'leap-path'],
-      ult: ['ult']
-    },
-    meteor: {
-      cast: ['ult']
     },
     kotl: {
       illuminate: ['illuminate'],
@@ -44,13 +43,20 @@ game.fx = {
       blind: ['blind'],
       recall: ['recall','recall-source']
     },
-    wind: {
-      arrow: ['arrow']
-    },
     venge: {
       stun: ['stun'],
       aura: ['aura', 'target'],
-      corruption: ['corruption', 'corruption1']
+      corruption: ['corruption', 'corruption1'],
+      ult: ['ult']
+    },
+    wind: {
+      arrow: ['arrow']
+    },
+    wk: {
+      stun: ['stun', 'stun-hit']
+    },
+    meteor: {
+      cast: ['ult']
     }
   },
   build: function() {
@@ -84,8 +90,12 @@ game.fx = {
       img.attr({ src: '/img/fx/' + hero + '/' + name + '.png' });
     }
   },
+  offset: {
+    x: 210,
+    y: 310
+  },
   imgs: [],
-  add: function(name, source, target, tag, append, custom) {
+  add: function(name, source, target, tag, append, custom, pos) {
     if (!target) target = source;
     var a = name.split('-');
     var hero = a[0];
@@ -95,6 +105,7 @@ game.fx = {
       game.fx.stop(name, source);
       var side = $(source).side();
       if (!side) side = 'neutral';
+      if (!custom) custom = '';
       var fx = $('<div>').addClass(name + ' fx fx-' + hero + ' '+side+' '+custom);
       var dirX = source.getX() - target.getX();
       var dirY = source.getY() - target.getY();
@@ -102,10 +113,16 @@ game.fx = {
         var dir = source.getDirectionStr(target);
         fx.addClass(dir + ' d'+ Math.abs(dirX || dirY));
       }
-      if (tag == 'rotate') {
+      if (tag == 'target') {
         if (Math.abs(dirX) > 1 || Math.abs(dirY) > 1) fx.addClass('far');
         else fx.addClass('close');
         fx.addClass('r' + dirX + dirY);
+      }
+      if (tag == 'rotate') {
+        var angle = 180 * Math.atan2( (source.getX()-target.getX())*game.fx.offset.y, (target.getY()-source.getY())*game.fx.offset.y ) / Math.PI;
+        fx.data('rotate', angle).appendTo(game.map.el);
+        game.fx.projectileMove(fx, target, pos.scale, pos.offset);
+        if (!append) append = game.map.el;
       }
       if (tag == 'random') {
         var n = game.fx.heroes[hero][skill].length;
@@ -152,7 +169,7 @@ game.fx = {
         else cl = tag.data('hero');
       }
       var projectile = $('<div>').addClass('projectile ' + cl);
-      var angle = 180 * Math.atan2( (source.getX()-target.getX())*210, (target.getY()-source.getY())*310 ) / Math.PI;
+      var angle = 180 * Math.atan2( (source.getX()-target.getX())*game.fx.offset.y, (target.getY()-source.getY())*game.fx.offset.y ) / Math.PI;
       //console.log(angle)
       projectile.data('rotate', angle).appendTo(game.map.el);
       game.fx.projectileMove(projectile, source, scale);
@@ -161,15 +178,20 @@ game.fx = {
       return projectile;
     }
   },
-  projectileMove: function(projectile, target, scale) {
+  projectileMove: function(projectile, target, scale, offset) {
     if (!scale) scale = 2.5;
     if (projectile && target) {
       var rotate = projectile.data('rotate') || 0;
       var x = target.getX();
       var y = target.getY();
-      projectile.css({
-        'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * 210))+'px,'+(160 + (y * 310))+'px, 20px) rotate('+rotate+'deg) scale('+scale+')'
-      });
+      if (!offset) 
+        projectile.css({
+          'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * game.fx.offset.x))+'px,'+(160 + (y * game.fx.offset.y))+'px, 20px) rotate('+rotate+'deg) scale('+scale+')'
+        });
+      else  
+        projectile.css({
+          'transform': 'translate(-50%, -50%) translate3d('+(110 + (x * game.fx.offset.x))+'px,'+(160 + (y * game.fx.offset.y))+'px, 20px) rotate('+rotate+'deg) translate('+(offset.x||0)+'px,'+(offset.y||0)+'px) scale('+scale+')'
+        });
     }
   },
   textDelay: 600,
