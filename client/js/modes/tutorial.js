@@ -114,7 +114,7 @@ game.tutorial = {
       game.tutorial.axebaloon.hide();
       game.tutorial.moveCountValue = 5;
       game.message.text(game.data.ui.yourturn);
-      game.tutorial.axe.addClass('up');
+      game.tutorial.axe.addClass('up fleft');
       game.enemy.tower.addClass('blink').on('select', game.tutorial.selected);
       game.timeout(400, function () {
         game.skill.build('enemy');
@@ -159,6 +159,7 @@ game.tutorial = {
     if (game.tutorial.lesson === 'Unselect') {
       game.tutorial.lesson = '';
       game.tutorial.creepLesson();
+      game.tutorial.axe.removeClass('fleft');
     }
   },
   creepLesson: function () {

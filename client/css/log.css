@@ -24,6 +24,7 @@
   position: absolute;
   bottom: 100px;
   right: 50px;
+  margin: 15px 0px;
   background-image: url("../img/ratingsymbol_e10.png");
 }
 

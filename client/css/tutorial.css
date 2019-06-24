@@ -1,9 +1,9 @@
 .tutorial.axe {
-  z-index: 18;
+  z-index: 30;
   width: 350px;
   height: 256px;
   position: absolute;
-  right: -45px;
+  right: -200px;
   bottom: -450px;
   transition: all 1s, transform 0s;
   pointer-events: none;
@@ -12,7 +12,7 @@
 }
 
 .tutorial.axe.up {
-  bottom: 0px;
+  bottom: -75px;
 }
 
 .tutorial.axe .img {
@@ -161,8 +161,9 @@
 
 .tutorial.axe.left, .left-side .tutorial.axe, .tutorial.axe.fleft {
   right: auto;
-  left: -180px;
+  left: -200px;
   transform: scaleX(-1);
+  z-index: 28;
 }
 
 .left-side .tutorial.axe.left, .left-side .tutorial.axe.fleft {
@@ -181,14 +182,15 @@
 
 .choose .tutorial.axe {
   width: 502px;
+  right: -120px;
 }
 
 .left-side .choose .tutorial.axe {
-  left: -60px;
+  left: -110px;
 }
 
 .choose .tutorial.axe.up {
-  bottom: -45px;
+  bottom: -60px;
 }
 
 .choose .tutorial.axe .img {

@@ -4,7 +4,7 @@ game.poll = {
     rub: 'Rubik'
   },
   build: function () {
-    game.poll.voteBox = game.overlay.children().first().addClass('vote').html('');
+    game.poll.voteBox = game.overlay.el.children().first().addClass('vote').html('');
     game.poll.title = $('<h2>').text(game.data.ui.votenexthero).appendTo(game.poll.voteBox);
     game.poll.voteList = $('<p>').appendTo(game.poll.voteBox);
     for (var hero in game.poll.heroes) {
@@ -57,8 +57,7 @@ game.poll = {
     }
   },
   close: function () {
-    game.overlay.addClass('hidden');
-    game.overlay.empty();
+    game.overlay.clear();
     setTimeout(function () {
       game.states.log.box.fadeIn();
     }, 200);

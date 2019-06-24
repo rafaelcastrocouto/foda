@@ -40,8 +40,8 @@ var game = {
     game.utils();
     game.history.build();
     game.events.build();
+    game.overlay.build();
     game.hidden = $('<div>').addClass('hidden').appendTo(game.container);
-    game.overlay = $('<div>').addClass('game-overlay hidden').appendTo(game.container);
     game.topbar = $('<div>').addClass('topbar');
     game.topbar.append(game.loader, game.message, game.triesCounter);
   },
@@ -158,72 +158,13 @@ var game = {
     game.mode = false;
     game.setData('mode', false);
   },
-  alert: function(txt, cb) {
-    var box = $('<div>').addClass('box');
-    game.overlay.removeClass('hidden').append(box);
-    box.append($('<h1>').text(game.data.ui.warning));
-    box.append($('<p>').text(txt));
-    box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
-      $(this).parent().remove();
-      if (!game.overlay.children().length) {
-        game.overlay.addClass('hidden');
-      }
-      if (cb) cb(true);
-      return false;
-    }));
-  },
-  confirm: function(cb, text, cl) {
-    var box = $('<div>').addClass('box '+cl);
-    game.overlay.removeClass('hidden').append(box);
-    box.append($('<h1>').text(text || game.data.ui.sure));
-    var end = function () {// console.log(game.overlay.children().length)
-      $(this).parent().remove();
-      if (!game.overlay.children().length) {
-        game.overlay.addClass('hidden');
-      }
-      cb($(this).hasClass('alert'));
-      return false;
-    };
-    box.append($('<div>').addClass('button alert').text(game.data.ui.yes).on('mouseup touchend', end));
-    box.append($('<div>').addClass('button').text(game.data.ui.no).on('mouseup touchend', end));
-  },
-  error: function(details, cb) {
-    var box = $('<div>').addClass('box error');
-    game.overlay.removeClass('hidden').append(box);
-    var ti = 'Error';
-    var re = 'Reload';
-    var ok = 'Ok';
-    if (game.data.ui) {
-      ti = game.data.ui.error;
-      re = game.data.ui.reload;
-      ok = game.data.ui.ok;
-    }
-    box.append($('<h1>').text(ti));
-    box.append($('<p>').html(details+'<br>'+re));
-    box.append($('<div>').addClass('button alert').text(ok).on('mouseup touchend', function () {
-      open('https://github.com/rafaelcastrocouto/foda/issues/new','_blank');
-      location.reload();
-    }));
-  },
-  logError: function(details) {
-    if (!game.debug) {
-      if (typeof(details) !== 'string') details = JSON.stringify(details);
-      var date = new Date();
-      details += ' ' + date.toDateString();
-      game.db({
-        'set': 'errors',
-        'data': details
-      });
-    }
-  },
   resolve: function(path, obj) {
     return path.split('.').reduce(function(prev, curr) {
         return prev ? prev[curr] : null;
     }, obj || game);
   },
   reset: function(details) {
-    game.logError(details);
-    game.error(details, function(confirmed) {
+    game.overlay.confirm(details, function(confirmed) {
       if (confirmed) {
         game.clear();
         game.setData('state', 'menu');

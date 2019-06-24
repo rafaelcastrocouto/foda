@@ -261,12 +261,12 @@ input:focus {
   height: 3000vh;
   width: 3000vw;
   background: rgba(0,0,0,0.7);
-  z-index: 29;
+  z-index: 39;
   transform: translateZ(1px);
 }
 
 .game-overlay .box {
-  z-index: 30;
+  z-index: 40;
   padding: 40px 80px;
   transform: translate3d(-50%, -48%, 200px);
   overflow: hidden;
@@ -276,7 +276,7 @@ input:focus {
   padding: 10px 40px;
   transform: translate3d(-50%, 130%, 200px);
   min-width: auto;
-  z-index: 32;
+  z-index: 42;
 }
 
 .game-overlay h1 {
@@ -286,7 +286,7 @@ input:focus {
 
 .option-state .game-overlay {
   display: block;
-  z-index: 29;
+  z-index: 39;
 }
 
 .button, button, input[type=button], input[type=submit] {
@@ -316,7 +316,7 @@ input:focus {
 
 .button:hover, button:hover, input[type=button]:hover, input[type=submit]:hover {
   background: #abb7b1;
-  z-index: 20;
+  z-index: 31;
 }
 
 .button:active, button:active, input[type=button]:active, input[type=submit]:active {

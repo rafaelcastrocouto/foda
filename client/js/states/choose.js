@@ -236,7 +236,7 @@ game.states.choose = {
     //library only
     if (!game.states.choose.librarytest.attr('disabled')) {
       game.library.chooseEnd();
-    } else game.alert('Sorry but this hero is still under development!');
+    } else game.overlay.alert('Sorry but this hero is still under development!');
     return false;
   },
   backClick: function () {

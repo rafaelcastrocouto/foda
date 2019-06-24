@@ -70,11 +70,10 @@ game.states.menu = {
       box.append($('<p>').html('Hatcrafter').append($('<span>').addClass('thumb supp1')));
       box.append($('<p>').html('Milokot').append($('<span>').addClass('thumb supp2')));
       creditsbox.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
-        game.overlay.addClass('hidden');
-        game.overlay.empty();
+        game.overlay.clear();
         return false;
       }));
-      game.overlay.removeClass('hidden').append(creditsbox);
+      game.overlay.el.removeClass('hidden').append(creditsbox);
     });
   },
   start: function () {
@@ -86,12 +85,12 @@ game.states.menu = {
     game.rank.update(game.rank.data);
     game.audio.loopSong('SneakyAdventure');
     game.states.menu.boomCount = 0;
-    game.states.menu.addToHome();
+    //game.states.menu.addToHome();
   },
   addToHome: function () {
     if (game.events.deferredPrompt) {
       game.timeout(2000, function () {
-        game.confirm(function (confirmed) {
+        game.overlay.confirm(function (confirmed) {
           if (confirmed) {
             game.events.deferredPrompt.prompt();
           }

@@ -14,7 +14,7 @@ game.events = {
     $(window).on('resize', game.screen.resize);
     $(window).on('error', game.events.error);
     //$(document).ajaxError(function(event, xhr, settings) {
-    //  if (xhr.status !== 403 && xhr.status!== 404) game.logError(settings.url + ' ' + xhr.status + ': ' + xhr.responseText);
+    //  if (xhr.status !== 403 && xhr.status!== 404) game.overlay.error(settings.url + ' ' + xhr.status + ': ' + xhr.responseText);
     //});
     $(window).on('keypress', game.events.keyboard);
     $(window).on('beforeunload ', game.events.leave);
@@ -170,12 +170,10 @@ game.events = {
   error: function(event) {
     var err = event.originalEvent;
     var details = err.message +' '+ err.filename +' '+ err.lineno +':'+err.colno;
-    game.logError(details);
-    game.error(details, function () {
+    game.overlay.error(details, function () {
       game.clear();
       game.setData('state', 'menu');
       location.reload(true);
     });
-    //game.reset(details);
   }
 };

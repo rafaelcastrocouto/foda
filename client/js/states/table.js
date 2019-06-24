@@ -71,7 +71,7 @@ game.states.table = {
   surrenderClick: function () {
     //online && tutorial
     if (!game.states.table.surrender.attr('disabled')) {
-      game.confirm(function(confirmed) {
+      game.overlay.confirm(function(confirmed) {
         if (confirmed && game.mode && game[game.mode].surrender) {
           game[game.mode].surrender();
         }

@@ -1,4 +1,7 @@
 @media all and (orientation:portrait) {
+  .game-container.default {
+    transform: translate3d(-50%, -50%, 0) scale(0.5) !important;
+  }
   .game-container, 
   .states, .state {
     width: 600px;
@@ -18,7 +21,7 @@
     transform: scale(0.5) translateZ(20px);
   }
   .state.log .box {
-    transform: translate3d(-50%, -120%, 0px) scale(0.9);
+    transform: translate3d(-50%, -105%, 0px) scale(0.9);
   }
   .state.log .logpara.front {
     top: 180px;
@@ -77,10 +80,10 @@
     transform: translate3d(602px, 34px, 10px) scale(2.8)
   }
   .campaign .campaign-map {
-    transform: translate(-50%, -50%) scale(0.94) translate(-20px, -20px);
+    transform: translate(-50%, -50%) scale(0.94) translate(-20px, -22px);
   }
   .campaign .campaign-box {
-    top: 570px;
+    top: 562px;
     left: 25px;
     width: 550px;
     height: 300px;
@@ -110,10 +113,11 @@
   .tutorial .choose .buttonbox .button {
     width: 280px;
   }
-  .choose .pickedbox {
+  .choose .pickedbox, .left-side .choose .pickedbox {
     bottom: 175px;
     left: 10px;
     width: 577px;
+    bottom: 368px;
   }
   .library.game-container .state.choose .pickedbox {
     width: 577px;
@@ -128,27 +132,18 @@
   .s1v1 .choose .pickedbox {
     width: 125px;
   }
-  .tutorial .choose .pickedbox {
-    bottom: 372px;
-  }
   .choose .pickedbox .slot{
     transform: scale(0.9);
     margin-right: -10px;
   }
   .choose .buttonbox {
-    top: 820px;
+    top: 800px;
   }
   .choose .pickbox {
-    top: 90px;
-  }
-  .tutorial .choose .pickbox {
     top: 5px;
   }
-  .tutorial.axe .baloon {
-    bottom: 225px;
-  }
   .tutorial.axe.up {
-    bottom: 170px;
+    bottom: 0;
     right: -130px;
   }
   .topbar .message {
@@ -167,7 +162,7 @@
     left: -60px;
   }
   .table .map {
-    transform: translate(-49.7%,-50.3%) rotateX(30deg) scale(0.18);
+    transform: translate(-49.7%,-50.3%) rotateX(30deg) scale3d(0.18,0.18,0.18);
   }
   .table .map.flat {
     transform: translate(-50%,-50%) scale3d(0.21,0.175,0.2);
@@ -189,18 +184,22 @@
     bottom: 5px;
   }
   .table .buttonbox .button {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     height: 56px;
     line-height: 56px;
   }
   .table .deck .card {
     margin-right: -100px;
   }
+  .left-side .table .buttonbox {
+    left: 260px;
+  }
   .table .selectedarea {
     top: 660px;
   }
   .table .selectedarea .selectedcard.flip .card.zoom {
     transform: translate(-78px, -768px) scale(3);
+    z-index: 32;
   }
   .table .player .skills.sidehand {
     width: 240px;
@@ -247,5 +246,8 @@
   }
   .game-overlay .box {
     padding: 36px 36px;
+  }
+  .button {
+    padding: 16px 12px;
   }
 }

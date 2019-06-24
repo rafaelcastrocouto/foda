@@ -70,7 +70,7 @@ game.states.campaign = {
   nextStage: function() {
     switch (this.stage.id) {
     case 'last':
-      game.alert('Congratulation, you beat our Campaign! Thanks a lot for participating in our beta test!');
+      game.overlay.alert('Congratulation, you beat our Campaign! Thanks a lot for participating in our beta test!');
       this.done = true;
       game.setData('campaignDone', true);
       this.enableAllStages();

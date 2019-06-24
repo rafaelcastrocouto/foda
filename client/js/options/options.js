@@ -62,8 +62,9 @@ game.options = {
     $('.option-state .game-overlay .box').on('mousemove.volume touchmove.volume', game.audio.volumeMouseMove);
   },
   show: function () {
-    game.overlay.removeClass('hidden');
-    game.overlay.append(game.options.box);
+    game.overlay.el.removeClass('hidden');
+    game.overlay.el.append(game.options.box);
+    game.overlay.cb = game.options.backClick;
     game.container.addClass('option-state');
     game.screen.rememberResolution();
     game.options.events();
@@ -71,13 +72,13 @@ game.options = {
   },
   keyboard: function () {
     if (game.container.hasClass('option-state')) game.options.backClick();
-    else if (game.overlay.hasClass('hidden')) game.options.show();
+    else if (game.overlay.el.hasClass('hidden')) game.options.show();
   },
   backClick: function () {
     game.options.box.appendTo(game.hidden);
     game.container.removeClass('option-state');
-    if (!game.overlay.children().length) {
-      game.overlay.addClass('hidden');
+    if (!game.overlay.el.children().length) {
+      game.overlay.el.addClass('hidden');
     }
     return false;
   }

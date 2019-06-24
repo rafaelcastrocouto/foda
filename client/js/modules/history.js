@@ -48,7 +48,7 @@ game.history = {
     if (game.debug) game.history.change.call(ctx, true);
     else {
       var str = game.data.ui.welcome +' '+ game.getData('name') +'! '+ game.data.ui.log +'?';
-      game.confirm(game.history.change.bind(ctx), str);
+      game.overlay.confirm(game.history.change.bind(ctx), str);
     }
   },
   change: function (confirmed) {
