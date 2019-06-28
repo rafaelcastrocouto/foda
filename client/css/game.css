@@ -413,4 +413,5 @@ label input {
 
 .p404 {
   background-image: url(../img/404.png);
+  background-size: contain;
 }
