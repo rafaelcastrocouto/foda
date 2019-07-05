@@ -15,7 +15,7 @@ game.highlight = {
       linearStroke: game.highlight.linearStroke,
     });
   },
-  map: function(event) { 
+  map: function(event) {
     game.highlight.clearMap();
     var card = game.selectedCard;
     if (game.selectedCard && !card.hasClass('nohighlight') && !game.lockHighlight) {
@@ -70,7 +70,7 @@ game.highlight = {
   },
   source: function() {
     var skill = $(this);
-    var hero = skill.data('hero'); //console.log(this)
+    var hero = skill.data('hero');
     if (hero)
       $('.map .card.' + skill.side() + '.heroes.' + hero).addClass('source');
     return skill;
@@ -116,7 +116,7 @@ game.highlight = {
         game.highlight.channelStop(event, skill, source);
       else if (targets) {
         if (targets.indexOf(game.data.ui.tree) >= 0)
-          game.highlight.tree();
+          game.highlight.tree(skill.side());
         if (targets.indexOf(game.data.ui.self) >= 0)
           game.highlight.self(source);
         if (targets.indexOf(game.data.ui.ally) >= 0)
@@ -497,7 +497,6 @@ game.highlight = {
     $('.spot.' + side + 'area.free').addClass('movearea').on('mouseup.highlight', game[side].summonCreep);
   },
   radialStroke: function(r, cl) {
-    //console.log(r,cl)
     var spot = this
       , range = r
       , cls = 'left right top bottom';

@@ -11,20 +11,8 @@ game.items = {
         var data = [];
         $.each(JSON.parse(deck.data('cards')), function(i, cardId) {
           var card = $('#'+cardId);
-          card.addClass('player');
           card.on('mousedown touchstart', game.card.select).addClass('buy');
-          //data[i] = card.data();
-        });/*
-        game.enemyItemsDeck = deck.clone().data(deck.data()).addClass('enemy hidden');
-        game.enemyItemsDeck.appendTo(game.items.shop);
-        var cards = [];
-        $.each($('.items',game.enemyItemsDeck), function(i, item) {
-          var card = $(item).addClass('enemy');
-          card.on('mousedown touchstart', game.card.select).data(data[i]);
-          cards.push(card);
         });
-        game.enemyItemsDeck.data('cards', cards);*/
-        deck.addClass('player');
       }
     });
   },
@@ -131,6 +119,7 @@ game.items = {
     for (var i=0; i<(card.data('cards') || 1); i++) {
       var item = game.items.clone(card).removeClass('selected buy expensive');
       item.appendTo(game[side].skills.sidehand);
+      item.addClass(side);
       if (game.mode !== 'local' && side == 'enemy') item.addClass('flipped');
     }
     //card.addClass('hidden');
@@ -146,8 +135,8 @@ game.items = {
   },
   clear: function () {
     game.items.disableShop();
-    game.player.money = 0;
-    game.enemy.money = 0;
+    game.player.money = game.startMoney;
+    game.enemy.money = game.startMoney;
   },
   healing: {
     faerie: {

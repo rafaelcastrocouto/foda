@@ -20,9 +20,10 @@ var game = {
   treeRespawn: 4,
   heroDeathDamage: 4, //HP
   fountainHeal: 12,
+  startMoney: 400,
   heroBounty: 150, //money
-  unitBounty: 50,
-  jungleFarm: 50,
+  unitBounty: 60,
+  jungleFarm: 80,
   turnReward: 40,
   libReward: 800,
   maxMoney: 99999,

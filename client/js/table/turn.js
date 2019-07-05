@@ -21,10 +21,10 @@ game.turn = {
       game.turn.el.text(game.data.ui[side+'turn']).addClass('show');
       if (!game.recovering) game.currentMoves = [];
       var t = 800;
-      if (game.mode == 'local') t = 2800;
+      if (game.mode == 'local' && !game.debug) t = 2800;
       game.timeout(t, function () {
         game.turn.el.removeClass('show');
-        game.timeout(400, game.turn.play.bind(this, side, cb));
+        game.timeout(800, game.turn.play.bind(this, side, cb));
       });
     }
   },
@@ -54,7 +54,7 @@ game.turn = {
     }
     game.highlight.map();
     if (cb) {
-      game.timeout(400, cb.bind(this, side));
+      game.timeout(100, cb.bind(this, side));
     }
   },
   count: function (side, endCallback, countCallback) {
