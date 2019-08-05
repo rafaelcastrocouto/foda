@@ -177,9 +177,10 @@
       "counter": {
         "aoe range": 2,
         "cards": 1,
+        "damage": 8,
         "buffdata": {
           "aoe range": 2,
-          "chance": 20
+          "chance": 25
         }
       },
       "ult": {

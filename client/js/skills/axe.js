@@ -62,7 +62,7 @@ game.skills.axe = {
       var range = target.data('range');
       if (game.random() < chance) {
         target.opponentsInRange(range, function (targets) {
-          source.damage(source.data('current damage'), targets, skill.data('damage type'));
+          source.damage(skill.data('damage'), targets, skill.data('damage type'));
         }); 
       }
     }
