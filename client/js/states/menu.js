@@ -1,7 +1,5 @@
 game.states.menu = {
   build: function () {
-    //this.menu = $('<div>').appendTo(this.el).addClass('menu box');
-    //this.title = $('<h1>').appendTo(this.menu).text(game.data.ui.menu);
     this.parallax = $('<div>').appendTo(this.el).addClass('parallax'); 
     this.sky = $('<div>').appendTo(this.parallax).addClass('sky');
     this.stars = $('<div>').appendTo(this.parallax).addClass('stars');
@@ -52,9 +50,10 @@ game.states.menu = {
       var hidebox = $('<div>').addClass('credithide').appendTo(creditsbox);
       var box = $('<div>').addClass('creditscroll').appendTo(hidebox);
       box.append($('<h1>').text(game.data.ui.credits));
-      box.append($('<p>').html('Author/Dev: <a target="_blank" href="https://github.com/rafaelcastrocouto/foda">Rafael</a>').append($('<span>').addClass('thumb doll2')));
+      box.append($('<p>').html('Creator/Dev: <a target="_blank" href="https://github.com/rafaelcastrocouto/foda">Rafael</a>').append($('<span>').addClass('thumb doll2')));
       box.append($('<p>').html('Artwork: <a target="_blank" href="https://www.youtube.com/user/dopatwo">Dopatwo</a>').append($('<span>').addClass('thumb doll1')));
       box.append($('<p>').html('Special FX: <a target="_blank" href="https://twitter.com/DanielClarcO">Daniel Clarc</a>').append($('<span>').addClass('thumb doll3')));
+      box.append($('<p>').html('Colors: <a target="_blank" href="https://twitter.com/glitchzilla">Glitchzilla</a>').append($('<span>').addClass('thumb supp4')));
       box.append($('<p>').html('Audio: <a target="_blank" href="https://www.youtube.com/user/kmmusic">Kevin MacLeod</a>'));
       box.append($('<p>').html('Introduction Videos: <a target="_blank" href="https://www.youtube.com/user/SkylentGames">Skylent</a>'));
       box.append($('<p>').html('Language (TU): <a target="_blank" href="https://github.com/ahmetozalp">Ahmet</a>'));
@@ -65,7 +64,7 @@ game.states.menu = {
       box.append($('<p>').html('Fuzi'));
       box.append($('<p>').html('Pingu'));
       box.append($('<p>').html('Мастер'));
-      box.append($('<p>').html('Help us: <a target="_blank" href="https://www.patreon.com/racascou">Become a Patreon</a>'));
+      box.append($('<p>').html('<b>Help us:</b> <a target="_blank" href="https://www.patreon.com/racascou">Become a Patreon</a>'));
       box.append($('<p>').html('Thanks a lot to our supporters:'));
       box.append($('<p>').html('Hatcrafter').append($('<span>').addClass('thumb supp1')));
       box.append($('<p>').html('Milokot').append($('<span>').addClass('thumb supp2')));

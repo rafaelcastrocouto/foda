@@ -39,19 +39,19 @@
 }
 
 .terror-summon .img, .terror.summoned .img {
-  background-image: url("../img/skills/terror/summon.png");
+  background-image: url("../img/skills/terror/summon.jpg");
 }
 
 .terror-mirror .img {
-  background-image: url("../img/skills/terror/mirror.png");
+  background-image: url("../img/skills/terror/mirror.jpg");
 }
 
 .terror-morph .img, .buffs .buff.terror-morph .img  {
-  background-image: url("../img/skills/terror/morph.png");
+  background-image: url("../img/skills/terror/morph.jpg");
 }
 
 .terror-ult .img {
-  background-image: url("../img/skills/terror/ult.png");
+  background-image: url("../img/skills/terror/ult.jpg");
 }
 
 .en, .en .portrait {

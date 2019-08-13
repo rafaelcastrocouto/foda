@@ -212,18 +212,18 @@
   .table .turntitle {
     width: 600px;
   }
-  .versus {
+  .vs .versus {
     transform: translateY(140px) translateZ(20px);
     left: 170px;
     font-size: 90px;
   }
-  .vsplayer, .vsenemy { 
+  .vs .vsplayer, .vs .vsenemy { 
     width: 530px;
   }
-  .vsplayer {
+  .vs .vsplayer {
     transform: translate(20px, 620px) rotateY(6deg) rotateZ(2.7deg);
   }
-  .vsenemy {
+  .vs .vsenemy {
     transform: translate(-10px,100px) rotateY(-6deg) rotateZ(2.7deg);
   }
   .vs .card {
@@ -241,7 +241,7 @@
     transform: translate(-170px, 130px,-290px)
                rotateY(70deg) rotateZ(-35deg) rotateX(5deg);
   }
-  .resultsbox {
+  .result .resultsbox {
     transform: translate(-50%, -25%);
   }
   .game-overlay .box {
