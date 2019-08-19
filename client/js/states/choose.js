@@ -14,7 +14,7 @@ game.states.choose = {
     this.mydeck = $('<div>').addClass('mydeck button highlight').text(game.data.ui.mydeck).on('mouseup touchend', this.savedDeck).appendTo(this.buttonbox);
     this.librarytest = $('<div>').addClass('librarytest button highlight').text(game.data.ui.librarytest).on('mouseup touchend', this.testHeroClick).appendTo(this.buttonbox);
     this.el.append(this.buttonbox).append(this.pickedbox);
-    this.video = $('<iframe>').hide().addClass('video').attr({'allowfullscreen': true, 'frameborder': 0, 'width': 760, 'height': 340}).appendTo(this.pickbox);
+    this.video = $('<iframe>').hide().addClass('video').attr({'frameborder': 0, 'width': 760, 'height': 340, 'allow': 'autoplay; fullscreen', 'rel': 0}).appendTo(this.pickbox);
   },
   start: function () {
     $('.choose .buttonbox .button').not('.back').hide();
@@ -220,16 +220,14 @@ game.states.choose = {
       game.states.choose.videoPlaying = true;
       game.states.choose.video.attr({'src': 'https://www.youtube.com/embed/' + link + '?autoplay=1'}).show();
       t = game.states.choose.intro.text();
-      t = '⏹' + t.substr(1);
+      t = '■' + t.substr(1);
       game.states.choose.intro.text(t).addClass('playing');
-      game.states.choose.pickbox.addClass('intro');
     } else {
       game.states.choose.videoPlaying = false;
       game.states.choose.video.attr({'src': 'about:blank'}).hide();
       t = game.states.choose.intro.text();
       t = '▶' + t.substr(1);
       game.states.choose.intro.text(t).removeClass('playing');
-      game.states.choose.pickbox.removeClass('intro');
     }
   },
   testHeroClick: function () {

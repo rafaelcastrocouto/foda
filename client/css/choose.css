@@ -18,10 +18,6 @@
   z-index: 20;
   pointer-events: none;
 }
-.choose .pickbox.intro {
-  pointer-events: all;
-}
-
 .choose .pickbox:before {
   content: "";
   display: block;
@@ -39,6 +35,7 @@
   margin-top: 48px;
   height: 340px;
   transform: translateZ(0);
+  pointer-events: all;
 }
 
 .choose .pickedbox {
@@ -152,6 +149,7 @@
   height: 340px;
   border: 14px solid #000;
   border-width: 14px 105px;
+  pointer-events: all;
 }
 
 .choose .buttonbox {
