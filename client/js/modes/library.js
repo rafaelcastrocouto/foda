@@ -126,7 +126,7 @@ game.library = {
   },
   endPlayer: function () {
     game.turn.end('player', function () {
-      setTimeout(game.library.beginEnemy, 1000);
+      setTimeout(game.library.beginEnemy, 100);
     });
   }, 
   beginEnemy: function () {
@@ -134,12 +134,12 @@ game.library = {
       game.loader.addClass('loading');
       game.skill.buyHand('enemy');
       game.tower.attack('player');
-      setTimeout(game.library.endEnemy, 1000);
+      setTimeout(game.library.endEnemy, 100);
     });
   },
   endEnemy: function () {
     game.turn.end('enemy',  function () {
-      setTimeout(game.library.beginPlayer, 1000);
+      setTimeout(game.library.beginPlayer, 100);
     });
   },
   win: function () {

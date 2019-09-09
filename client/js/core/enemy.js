@@ -31,7 +31,7 @@ game.enemy = {
     //console.log(game.currentMoves)
     game.enemy.autoMoveCount = 0;
     game.enemy.moveEndCallback = cb;
-    if (game.currentMoves.length && game.currentMoves[0].length)
+    if (game.currentMoves && game.currentMoves.length && game.currentMoves[0].length)
       game.timeout(1000, game.enemy.autoMoving);
     else
       game.timeout(1000, game.enemy.movesEnd);
@@ -120,7 +120,7 @@ game.enemy = {
     if (game.mode == 'single' && game.turn.counter < 1)
       game.ai.endTurn();
     else
-      game.timeout(1000, game.enemy.moveEndCallback);
+      game.timeout(1000, game.enemy.moveEndCallback || game[game.mode].endEnemy);
   },
   move: function(from, to) {
     var target = $('#' + from + ' .card')
@@ -215,7 +215,7 @@ game.enemy = {
   },
   summonCreepMove: function(to, creep) {
     var target = $('#' + to);
-    var creepCard = game[game.currentTurnSide].skills.sidehand.children('.creeps-' + creep).first();
+    var creepCard = game[game.currentTurnSide||'enemy'].skills.sidehand.children('.creeps-' + creep).first();
     if (target.hasClass('free') && creepCard.length) {
       game.audio.play('activate');
       creepCard.addClass('showMoves');

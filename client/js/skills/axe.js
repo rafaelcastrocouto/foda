@@ -61,6 +61,7 @@ game.skills.axe = {
       var skill = $('#'+buff.data('skill'));
       var range = target.data('range');
       if (game.random() < chance) {
+        game.fx.add('axe-counter', target);
         target.opponentsInRange(range, function (targets) {
           source.damage(skill.data('damage'), targets, skill.data('damage type'));
         }); 
@@ -69,16 +70,20 @@ game.skills.axe = {
   },
   ult: {
     cast: function (skill, source, target) {
+      var flip = '';
+      if ( target.getX() < source.getX() ) flip = 'flip';
+      game.fx.add('axe-ult',target,0,0,0,flip);
       if (target.data('current hp') < target.data('hp')/3) {
         source.damage(target.data('current hp')+target.data('current armor'), target, skill.data('damage type'));  
+        game.timeout(350, game.fx.add.bind(this,'axe-ult-kill', target,0,0,0,flip));
       } else {
         source.damage(skill.data('damage'), target, skill.data('damage type'));        
       }
-      setTimeout(function () {
+      game.timeout(600, function () {
         if (target.hasClass('dead')) {
           skill.appendTo(game[skill.side()].skills.hand).removeClass('casted');
         }
-      }, 600);
+      });
       target.stopChanneling();
       game.fx.shake();
     }

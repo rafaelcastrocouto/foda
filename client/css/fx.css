@@ -158,6 +158,42 @@
   top: 100%;
 }
 
+.map .fx.axe-counter {
+  transform: rotateX(10deg) translate3d(75px,-270px,90px) scale(10);
+  width: 96px;
+  height: 96px;
+  animation: axe-counter-sprite 0.7s steps(8) 1;
+  background-image: url('../img/fx/axe/counter.png');
+}
+@keyframes axe-counter-sprite {
+  100% {
+    background-position: -768px;
+  }
+}
+.map .fx.axe-ult {
+  transform: rotateX(-20deg) translate3d(50px,-250px,90px) scale(6);
+  width: 96px;
+  height: 96px;
+  animation: axe-ult-sprite 0.5s steps(6) 1;
+  background-image: url('../img/fx/axe/ult.png');
+}
+.map .fx.axe-ult.flip,
+.map .fx.axe-ult-kill.flip {
+  transform: rotateX(-20deg) translate3d(100px,-250px,90px) scale(-6, 6);
+}
+.map .fx.axe-ult-kill {
+  transform: rotateX(-20deg) translate3d(50px,-250px,90px) scale(6);
+  width: 96px;
+  height: 96px;
+  animation: axe-counter-sprite 0.9s steps(8) 1;
+  background-image: url('../img/fx/axe/ult-kill.png');
+}
+@keyframes axe-ult-sprite {
+  100% {
+    background-position: -576px;
+  }
+}
+
 .map .fx.lina-stun {
   transform: rotateX(-37deg) translate3d(75px,-480px,100px) scale(10);
   width: 64px;

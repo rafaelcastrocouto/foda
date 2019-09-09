@@ -1,6 +1,10 @@
 game.fx = {
   ultList: {},
   heroes: {
+    axe: {
+      counter: ['counter'],
+      ult: ['ult','ult-kill']
+    },
     cm: {
       slow: ['slow'],
       freeze: ['freeze'],

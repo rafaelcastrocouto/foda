@@ -155,5 +155,6 @@ game.states.vs = {
     $('.card', game.states.vs.el).remove();
   },
   end: function () {
+    //this.clear();
   }
 };
