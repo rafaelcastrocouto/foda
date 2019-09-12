@@ -158,11 +158,48 @@
   top: 100%;
 }
 
+
+.map .fx.axe-taunt {
+  transform: rotateX(-10deg) translate3d(75px,-350px,90px) scale(3);
+  width: 114px;
+  height: 114px;
+  animation: axe-taunt-sprite 1.6s steps(18) 1;
+  background-image: url('../img/fx/axe/taunt.png');
+}
+@keyframes axe-taunt-sprite {
+  100% {
+    background-position: -2052px;
+  }
+}
+
+.map .fx.axe-enrage {
+  transform: rotateX(-20deg) translate3d(75px,-270px,90px) scale(4);
+  width: 96px;
+  height: 96px;
+  animation: axe-enrage-sprite 0.9s steps(7) 1;
+  background-image: url('../img/fx/axe/enrage.png');
+}
+@keyframes axe-enrage-sprite {
+  100% {
+    background-position: -672px;
+  }
+}
+
+.buff .fx.axe-fire {
+  transform: translate(1px,-17px) scale(1.2);
+  width: 34px;
+  height: 50px;
+  animation: lina-passive-sprite 0.8s steps(8) infinite;
+  background-image: url('../img/fx/axe/fire.png');
+  z-index: -1;
+}
+
+
 .map .fx.axe-counter {
   transform: rotateX(10deg) translate3d(75px,-270px,90px) scale(10);
   width: 96px;
   height: 96px;
-  animation: axe-counter-sprite 0.7s steps(8) 1;
+  animation: axe-counter-sprite 0.9s steps(8) 1;
   background-image: url('../img/fx/axe/counter.png');
 }
 @keyframes axe-counter-sprite {
@@ -1389,7 +1426,7 @@
 }
 
 .ultfx .axe-ult {
-  background-image: url("../img/skills/axe/taunt.png");
+  background-image: url("../img/skills/axe/ult.jpg");
 }
 
 .ultfx .ld-ult {

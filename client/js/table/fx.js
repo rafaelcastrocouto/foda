@@ -2,6 +2,9 @@ game.fx = {
   ultList: {},
   heroes: {
     axe: {
+      taunt: ['taunt'],
+      enrage: ['enrage'],
+      fire: ['fire'],
       counter: ['counter'],
       ult: ['ult','ult-kill']
     },

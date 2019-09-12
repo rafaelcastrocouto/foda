@@ -1,6 +1,7 @@
 game.skills.axe = {
   taunt: {
     cast: function (skill, source) {
+      game.fx.add('axe-taunt', source);
       var buff = source.selfBuff(skill, 'taunt-self');
       buff.on('expire', this.expire);
       var range = skill.data('aoe range');
@@ -27,7 +28,9 @@ game.skills.axe = {
   },
   enrage: {
     cast: function (skill, source, target) {
+      game.fx.add('axe-enrage', target);
       var buff = source.addBuff(target, skill);
+      game.fx.add('axe-fire', target, buff);
       source.damage(buff.data('dot'), target, buff.data('damage type'));
       buff.on('buffcount', this.buffcount);
       buff.on('expire', this.expire);
