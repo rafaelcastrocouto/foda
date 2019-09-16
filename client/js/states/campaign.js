@@ -66,6 +66,9 @@ game.states.campaign = {
       game.states.campaign.nextStage();
       game.nextStage = false;
     }
+    if (!game.mode) {
+      game.setMode('single');
+    }
   },
   nextStage: function() {
     switch (this.stage.id) {

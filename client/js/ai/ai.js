@@ -13,7 +13,8 @@ game.ai = {
     game.ai.timeToPlay = (5 * game.ai.level);
   },
   turnStart: function () { //console.log('ai start turn')
-    game.ai.currentmovesLoop = game.ai.level*2;
+    game.ai.currentmovesLoop = game.ai.level*4;
+    $('.ai-max').removeClass('ai-max');
     game.ai.resetData();
     // add combo data and strats
     //game.ai.comboData();
@@ -32,9 +33,9 @@ game.ai = {
     if (chosenCard.length) {
       var count = chosenCard.data('ai count');
       var chosenCardData = JSON.parse(chosenCard.data('ai'));
-      if ((!count || count < game.ai.level)) {
+      if ((!count || count < game.ai.level/2)) {
         chosenCard.data('ai count', (chosenCard.data('ai count') + 1 || 0));
-        if (chosenCard.data('ai count') >= game.ai.level) chosenCard.addClass('ai-max');
+        if (chosenCard.data('ai count') >= game.ai.level/2) chosenCard.addClass('ai-max');
         // add defensive data and strats
         $('.map .'+game.opponent(game.ai.side)+'.card:not(.towers, .dead, .stunned, .disabled, .channeling, .ghost)').each(function (i, el) {
           var card = $(el);
@@ -72,8 +73,8 @@ game.ai = {
           });
         }
         // cast strats
-        var cast = game.ai.decideCast(chosenCard, chosenCardData);
-        if (!chosenCard.data('ai done') && !cast) {
+        chosenCardData = JSON.parse(chosenCard.data('ai'));
+        if (!chosenCard.data('ai done')) {
           var choosen = game.ai.chooseStrat(chosenCard, chosenCardData);
           // action strats
           if (choosen) game.ai.decideAction(choosen.strat, chosenCard, chosenCardData);
@@ -119,7 +120,6 @@ game.ai = {
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.card').data('ai count', 0);
     $('.source').removeClass('source');
-    $('.ai-max').removeClass('ai-max');
     if (game.ai.end) game.ai.end();
     else if (game.mode && game[game.mode] && game[game.mode]['end'+game.ai.side.capitalize()]) {
       game[game.mode]['end'+game.ai.side.capitalize()]();
@@ -372,15 +372,14 @@ game.ai = {
       var cast = game.ai.choose(cardData['cast-strats']);
       //console.log('cast-skill', cast);
       if (cast && cast.skill && cast.target && cast.card) {
-        game.ai.parseMove(card, cardData, 'cast', cast.target, cast);
-        cardData['cast-strats'].erase(cast);
-        return true;
+        return cast;
       }
     }
   },
   strats: [
     'siege',
     'attack',
+    'cast',
     'flank',
     'dodge',
     'alert',
@@ -389,7 +388,8 @@ game.ai = {
   ],
   decideAction: function (strat, card, cardData) {
     var action,
-        target;
+        target,
+        cast;
     //console.log('strat', strat, card, cardData);
     if (strat == 'siege') {
       if (cardData['can-attack-tower']) {
@@ -435,6 +435,11 @@ game.ai = {
         action = 'retreat';
       }
     }
+    if (strat == 'cast') {
+      if (cardData['can-cast']) {
+        action = 'cast';
+      } else action = 'stand';
+    }
     if (strat == 'stand') {
       if (cardData['can-attack']) {
         action = 'attack';
@@ -442,13 +447,15 @@ game.ai = {
     }
     // decide final action
     if (!action) {
-      if (cardData['can-attack']) {
+      if (cardData['can-cast'] && cardData['cast-strats'].length > 0) {
+        action = 'cast';
+      } else if (cardData['can-attack'] && cardData['attack-targets'].length > 0) {
         action = 'attack';
       } else if (cardData['can-move']) {
         action = 'move';
       } else action = false;
     }
-    //console.log('action:', action); 
+    //console.log('action:', action, card[0]); 
     if (action) {
       if (action == 'move' || action == 'advance' || action == 'retreat' || action == 'dodge') {
         target = game.ai.chooseDestiny(card, cardData, action);
@@ -458,10 +465,27 @@ game.ai = {
       if (action == 'attack'){
         if (!target) target = game.ai.chooseTarget(cardData['attack-targets']);
       }
+      if (action == 'cast'){
+        cast = game.ai.decideCast(card, cardData);
+        target = cast;
+      }
       //console.log('target', target);
       if (action && target && target.target) {
-        game.ai.parseMove(card, cardData, action, target.target);
+        game.ai.parseMove(card, cardData, action, target.target, cast);
       }
+      if (action == 'cast' && cast) {
+        game.ai.eraseSkill(cardData, cast);
+      }
+      card.data('ai', JSON.stringify(cardData));
+    }
+  },
+  eraseSkill: function (cardData, cast) {
+    var strats = cardData['cast-strats'];
+    //cardData['cast-strats'].erase(cast);
+    //console.log(strats)
+    for (var i=0; i<strats.length; i++) {
+      var strat = strats[i];
+      if (strat.skill == cast.skill) strats.erase(strat);
     }
   },
   chooseDestiny: function (card, cardData, action) {
@@ -506,7 +530,7 @@ game.ai = {
     //else console.log(chosen)
   },
   parseMove: function (card, cardData, action, target, cast) {
-    //console.log(action, target);
+    //console.log(action, target)
     var move = [];
     var position = $(card).getPosition();
     if (action == 'move' || action == 'advance' || action == 'retreat') {
@@ -517,6 +541,7 @@ game.ai = {
       cardData['can-move'] = false;
     }
     if (action == 'attack') {
+      target = $('#'+target);
       move[0] = 'A';
       move[1] = game.map.mirrorPosition(position);
       move[2] = game.map.mirrorPosition(target);
@@ -524,6 +549,7 @@ game.ai = {
       cardData['can-attack'] = false;
     }
     if (action == 'cast') {
+      target = $('#'+target);
       if ($('#'+cast.card).data('type') == game.data.ui.toggle) {
         move[0] = 'T';
         move[1] = game.map.mirrorPosition(position);

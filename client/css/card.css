@@ -579,7 +579,7 @@
 }
 
 .skills.card, .units.card, .items.card {
-  backface-visibility: hidden;
+  /* backface-visibility: hidden; */
   pointer-events: all;
 }
 

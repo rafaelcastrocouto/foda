@@ -6,6 +6,7 @@ game.single = {
     }
     game.player.type = 'challenged';
     game.enemy.type = 'challenger';
+    game.size = 's5v5';
   },
   chooseStart: function (hero) {
     game.states.choose.randombt.show();

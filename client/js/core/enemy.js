@@ -32,9 +32,9 @@ game.enemy = {
     game.enemy.autoMoveCount = 0;
     game.enemy.moveEndCallback = cb;
     if (game.currentMoves && game.currentMoves.length && game.currentMoves[0].length)
-      game.timeout(1000, game.enemy.autoMoving);
+      game.enemy.autoMoving();
     else
-      game.timeout(1000, game.enemy.movesEnd);
+      game.enemy.movesEnd();
   },
   autoMoving: function() {
     var from, to, hero, skillid, move;
@@ -45,7 +45,7 @@ game.enemy = {
       $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
       $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
       $('.source').removeClass('source');
-      game.enemy.moveAnimation = 1600;
+      game.enemy.moveAnimation = 1000;
       //console.log(move)
       if (move[1]) {
         if (game.recovering) from = move[1];
@@ -64,10 +64,11 @@ game.enemy = {
           hero = move[3];
           skillid = move[4];
           game.enemy.cast(from, to, hero, skillid);
-          game.enemy.moveAnimation = 2000;
-          if (skillid == 'ult') game.enemy.moveAnimation = 3000;
+          game.enemy.moveAnimation = 1600;
+          if (skillid == 'ult') game.enemy.moveAnimation = 2000;
         }
         if (move[0] === 'P') { // PASSIVE
+          game.enemy.moveAnimation = 1200;
           if (game.recovering) to = move[1];
           else to = game.map.mirrorPosition(move[1]);
           hero = move[2];
@@ -91,13 +92,15 @@ game.enemy = {
           hero = move[1];
           skillid = move[2];
           game.enemy.discardMove(hero, skillid);
-          game.enemy.moveAnimation = 600;
+          game.enemy.moveAnimation = 800;
         }
         if (move[0] === 'G') { // STOP CHANNEL
           game.enemy.stopChanneling(from);
+          game.enemy.moveAnimation = 400;
         }
         if (move[0] === 'B') { // BUY ITEM
           game.enemy.buyItem(move[1],move[2]);
+          game.enemy.moveAnimation = 800;
         }
         if (move[0] === 'U') { // END TURN
           var cb = game[game.mode].endPlayer;
@@ -117,10 +120,9 @@ game.enemy = {
     $('.enemyMoveHighlight').removeClass('enemyMoveHighlight');
     $('.enemyMoveHighlightTarget').removeClass('enemyMoveHighlightTarget');
     $('.source').removeClass('source');
-    if (game.mode == 'single' && game.turn.counter < 1)
-      game.ai.endTurn();
-    else
-      game.timeout(1000, game.enemy.moveEndCallback || game[game.mode].endEnemy);
+    if (game.mode == 'single' && game.turn.counter < 1) game.ai.endTurn();
+    else if (game.enemy.moveEndCallback) game.enemy.moveEndCallback();
+    else if (game[game.mode].endEnemy) game[game.mode].endEnemy();
   },
   move: function(from, to) {
     var target = $('#' + from + ' .card')
@@ -242,7 +244,7 @@ game.enemy = {
   discard: function(skill) {
     game.skill.disableDiscard();
     skill.addClass('discardMove');
-    game.timeout(200, function() {
+    game.timeout(game.enemy.moveAnimation, function() {
       this.removeClass('discardMove');
       this.discard();
     }
