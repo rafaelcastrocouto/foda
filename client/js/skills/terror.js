@@ -12,6 +12,7 @@ game.skills.terror = {
       var damage = Math.floor(source.data('damage')/2);
       image.setHp(hp).setCurrentHp(hp);
       image.setDamage(damage).data('damage', damage);
+      image.removeClass('dead').purge();
       game.fx.add('ld-return-target', target);
       game.timeout(400, function () {
         image.place(target);

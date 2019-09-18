@@ -763,7 +763,7 @@
       "melee": {
         "range": 2,
         "hp": 24,
-        "damage": 12,
+        "damage": 8,
         "armor": 2,
         "resistance": 1,
         "bounty": 100
@@ -771,7 +771,7 @@
       "ranged": {
         "range": 5,
         "hp": 20,
-        "damage": 10,
+        "damage": 7,
         "armor": 1,
         "mana": 4,
         "resistance": 2,
@@ -780,7 +780,7 @@
       "catapult": {
         "range": 7,
         "hp": 32,
-        "damage": 16,
+        "damage": 10,
         "armor": 4,
         "resistance": 6,
         "bounty": 200
@@ -790,7 +790,7 @@
       "cent": {
         "range": 2,
         "hp": 38,
-        "damage": 10,
+        "damage": 11,
         "armor": 2,
         "resistance": 2,
         "bounty": 100

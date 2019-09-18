@@ -21,6 +21,7 @@ game.skills.ld = {
       source.addBuff(bear, skill, 'defender-source');
       returnskill.appendTo(game[side].skills.sidehand).removeClass('casted');
       bear.setCurrentHp(bear.data('hp'));
+      bear.removeClass('dead').purge();
       game.fx.add('ld-return-target', target);
       game.timeout(400, function () {
         bear.place(target);
