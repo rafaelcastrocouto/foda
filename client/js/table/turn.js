@@ -17,13 +17,15 @@ game.turn = {
   },
   begin: function(side, cb) {
     if (game.currentState == 'table') {
-      game.message.text(game.data.ui[side+'turn']);
-      game.turn.el.text(game.data.ui[side+'turn']).addClass('show');
-      if (!game.recovering) game.currentMoves = [];
+      if (!game.recovering) {
+        game.message.text(game.data.ui[side+'turn']);
+        game.turn.el.text(game.data.ui[side+'turn']).addClass('show');
+        game.currentMoves = [];
+      }
       var t = 800;
       if (game.mode == 'local' && !game.debug) t = 2800;
       game.timeout(t, function () {
-        game.turn.el.removeClass('show');
+        if (!game.recovering) game.turn.el.removeClass('show');
         game.timeout(800, game.turn.play.bind(this, side, cb));
       });
     }

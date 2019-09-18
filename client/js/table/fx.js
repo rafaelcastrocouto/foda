@@ -135,7 +135,7 @@ game.fx = {
         var n = game.fx.heroes[hero][skill].length;
         var r = Math.floor(Math.random() * n);
         if (r) fx.addClass(skill+r);
-        game.timeout(Math.random() * 600, function (fx, target) {
+        game.timeout(50+(Math.random()*600), function (fx, target) {
           if (append) fx.appendTo(append);
           else fx.appendTo(target);
           game.fx.play(fx);
@@ -180,8 +180,8 @@ game.fx = {
       //console.log(angle)
       projectile.data('rotate', angle).appendTo(game.map.el);
       game.fx.projectileMove(projectile, source, scale);
-      game.timeout(64, game.fx.projectileMove.bind(this, projectile, target, scale));
-      game.timeout(464, projectile.remove.bind(projectile));
+      game.timeout(65, game.fx.projectileMove.bind(this, projectile, target, scale));
+      game.timeout(465, projectile.remove.bind(projectile));
       return projectile;
     }
   },
