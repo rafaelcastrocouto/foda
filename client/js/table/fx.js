@@ -203,8 +203,12 @@ game.fx = {
   },
   textDelay: 600,
   text: function (card, color, val, t) {
-    if (val > 0 || typeof(val) == 'string') {
-      var textFx = $('<span>').addClass(color).text(val);
+    if (color == 'z') {
+      for (var i=0; i<3; i++) {
+        game.timeout(i*1000, game.fx.sleep.bind(this, card));
+      } 
+    } else if (val > 0 || typeof(val) == 'string') {
+      var textFx = $('<span>').addClass('textfx '+color).text(val);
       var currentDelay = card.data('textFxDelay');
       if (!currentDelay) {
         textFx.appendTo(card);
@@ -214,11 +218,14 @@ game.fx = {
         card.data('textFxDelay', currentDelay + game.fx.textDelay);
       }
       game.timeout(game.fx.textDelay, function () {
-        this.data('textFxDelay', this.data('textFxDelay') - game.fx.textDelay);
-      }.bind(card));
-      if (!t) t = 2000;
-      game.timeout(t, textFx.remove.bind(textFx));
+        card.data('textFxDelay', card.data('textFxDelay') - game.fx.textDelay);
+      }.bind(this, card));
+      if (t) game.timeout(t, textFx.remove.bind(textFx));
     }
+  },
+  sleep: function (card) {
+    var textFx = $('<span>').addClass('textfx textsleep').text('z');
+    textFx.appendTo(card);
   },
   buildUlt: function () {
     var ultfx = $('<div>').addClass('ultfx').appendTo(game.camera);

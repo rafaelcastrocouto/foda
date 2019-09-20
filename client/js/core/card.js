@@ -547,7 +547,7 @@ game.card = {
     return this;
   },
   heal: function(healhp) {
-    if (healhp > 0) {
+    if (healhp > 0 && this.length > 0) {
       var currenthp = this.data('current hp'), maxhp = this.data('hp'), hp;
       healhp = parseInt(healhp);
       hp = currenthp + healhp;

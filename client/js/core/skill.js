@@ -12,6 +12,7 @@ game.skill = {
       addInvisibility: game.skill.addInvisibility,
       removeInvisibility: game.skill.removeInvisibility,
       summon: game.skill.summon,
+      resummon: game.skill.resummon,
       getSkill: game.skill.getSkill
     });
   },
@@ -366,8 +367,15 @@ game.skill = {
       unit.find('fieldset').append($('<div>').addClass('buffs'));
     game.timeout(400, function (unit) {
       if (this.side() === 'player') unit.select();
+      game.fx.text(unit, 'z');
     }.bind(this, unit));
     return unit;
+  },
+  resummon: function (unit) {
+    unit.removeClass('dead').addClass('summonsleep').purge();
+    game.timeout(400, function (unit) {
+      game.fx.text(unit, 'z');
+    });
   },
   addStack: function (tag) {
     var stack = this.data(tag+'Stack');

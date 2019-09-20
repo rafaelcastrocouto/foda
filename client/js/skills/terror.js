@@ -5,14 +5,16 @@ game.skills.terror = {
       var side = source.side();
       if(!image.length) {
         image = source.summon(source);
+        image.addClass('illusion');
         source.data('mirror image', image.attr('id'));
         source.data('summon', image.attr('id'));
+      } else {
+        source.resummon(image);
       }
       var hp = Math.floor(source.data('hp')/2);
       var damage = Math.floor(source.data('damage')/2);
       image.setHp(hp).setCurrentHp(hp);
       image.setDamage(damage).data('damage', damage);
-      image.removeClass('dead').purge();
       game.fx.add('ld-return-target', target);
       game.timeout(400, function () {
         image.place(target);

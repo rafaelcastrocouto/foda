@@ -92,6 +92,7 @@ game.turn = {
       $('.map .card').each(function (i, el) {
         var card = $(el);
         card.removeClass('can-attack can-move');
+        $('.textfx', card).remove();
         game.turn.channel(card);
         game.buff.turn(card);
         card.trigger('turnend', { target: card });

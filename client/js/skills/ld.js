@@ -17,11 +17,12 @@ game.skills.ld = {
         bear.on('death', this.beardeath);
         bear.data('return', returnskill.attr('id'));
         bear.data('death damage', skill.data('death damage'));
+      } else {
+        source.resummon(bear);
       }
       source.addBuff(bear, skill, 'defender-source');
       returnskill.appendTo(game[side].skills.sidehand).removeClass('casted');
       bear.setCurrentHp(bear.data('hp'));
-      bear.removeClass('dead').purge();
       game.fx.add('ld-return-target', target);
       game.timeout(400, function () {
         bear.place(target);

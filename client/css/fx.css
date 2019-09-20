@@ -51,16 +51,50 @@
   text-shadow: 4px 0 white, -4px 0 white, 0 4px white, 0 -4px white, 4px 4px white, -4px 4px white, 4px -4px white, -4px -4px white;
 }
 
-.card .heal {
+.card .heal, .card .textsleep {
   z-index: 21;
   color: springgreen;
   position: absolute;
+  left: 20px;
   opacity: 0;
-  top: 0;
-  left: 0;
   font-size: 150px;
   animation: slideup 3s cubic-bezier(0.4, 0, 1, 1);
   text-shadow: 5px 0 #afa, -5px 0 #afa, 0 5px #afa, 0 -5px #afa, 5px 5px #afa, -5px 5px #afa, 5px -5px #afa, -5px -5px #afa;
+}
+
+.card .textsleep {
+  font-size: 100px;
+  color: white;
+  animation: textsleep 3s cubic-bezier(0.4, 0, 1, 1) infinite;
+  text-shadow: 5px 0 #ddd, -5px 0 #ddd, 0 5px #ddd, 0 -5px #ddd, 5px 5px #ddd, -5px 5px #ddd, 5px -5px #ddd, -5px -5px #ddd;
+}
+@keyframes textsleep {  
+  0% {
+    transform: scale(0.4);
+    top: 80px;
+    opacity: 0;
+    left: 0px;
+  }
+
+  15% {
+    opacity: 0.6;
+  }
+
+  80% {
+    transform: scale(0.9);
+    opacity: 0.6;
+    left: 30px;
+  }
+
+  100% {
+    top: -100px;
+    left: 80px;
+    opacity: 0;
+  }
+}
+ 
+.selectedarea .textfx {
+  display: none;
 }
 
 @keyframes slideup {
@@ -157,7 +191,6 @@
   position: relative;
   top: 100%;
 }
-
 
 .map .fx.axe-taunt {
   transform: rotateX(-10deg) translate3d(75px,-350px,90px) scale(3);

@@ -107,6 +107,7 @@ game.skills.kotl = {
     target: function (skill, source, target) {
       source.addBuff(target, skill);
       target.addClass('sleeping');
+      game.fx.text(target, 'z');
       target.on('attacked.kotl-ult', this.attacked);
       target.stopChanneling();
     },
@@ -114,6 +115,7 @@ game.skills.kotl = {
       var target = eventdata.target;
       target.removeBuff('kotl-ult');
       target.removeClass('sleeping');
+      $('.textsleep', target).remove();
     }
   }
 };

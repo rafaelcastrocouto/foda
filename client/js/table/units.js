@@ -83,6 +83,7 @@ game.units = {
       if (card.canPlay()) game.highlight.clearMap();
       else game.highlight.refresh();
       var end = function() {
+        game.fx.text(this.creep, 'z');
         this.creep.place(this.target);
         this.creep.trigger('summon');
       }.bind({
