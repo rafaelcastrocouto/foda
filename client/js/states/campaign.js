@@ -61,13 +61,13 @@ game.states.campaign = {
   },
   start: function() {
     this.clear();
+    if (!game.mode) {
+      game.setMode('single');
+    }
     game.message.text(game.data.ui.campaign);
     if (game.nextStage) {
       game.states.campaign.nextStage();
       game.nextStage = false;
-    }
-    if (!game.mode) {
-      game.setMode('single');
     }
   },
   nextStage: function() {

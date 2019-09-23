@@ -31,6 +31,9 @@ game.states.choose = {
       $('.slot:nth-child(4)').addClass('available');
       $('.slot:nth-child(5)').addClass('available');
     }
+    if (!game.mode) {
+      game.states.changeTo('menu');
+    }
     if (game.mode != 'library') this.selectFirst('force');
     if (game.mode && game[game.mode].chooseStart) game[game.mode].chooseStart(hero);
   },

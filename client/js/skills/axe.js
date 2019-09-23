@@ -73,12 +73,10 @@ game.skills.axe = {
   },
   ult: {
     cast: function (skill, source, target) {
-      var flip = '';
-      if ( target.getX() < source.getX() ) flip = 'flip';
-      game.fx.add('axe-ult',target,0,0,0,flip);
+      game.fx.add('axe-ult', source, target, 'flip');
       if (target.data('current hp') < target.data('hp')/3) {
         source.damage(target.data('current hp')+target.data('current armor'), target, skill.data('damage type'));  
-        game.timeout(350, game.fx.add.bind(this,'axe-ult-kill', target,0,0,0,flip));
+        game.timeout(350, game.fx.add.bind(this, 'axe-ult-kill', source , target, 'flip'));
       } else {
         source.damage(skill.data('damage'), target, skill.data('damage type'));        
       }

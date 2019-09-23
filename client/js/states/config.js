@@ -27,6 +27,9 @@ game.states.config = {
     this.el.append(this.buttonbox);
   },
   start: function () {
+    if (!game.mode) {
+      game.states.changeTo('menu');
+    }
     game.message.text(game.player.name+' Config '+game.mode);
     this.title.addClass('show');
   },

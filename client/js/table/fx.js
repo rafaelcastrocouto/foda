@@ -107,7 +107,7 @@ game.fx = {
     var a = name.split('-');
     var hero = a[0];
     var skill = a[1];
-    //console.log(game.fx.heroes[hero][skill])
+    //console.log(hero,skill,name)
     if ( !game.recovering && game.fx.heroes[hero] && game.fx.heroes[hero][skill]) {
       game.fx.stop(name, source);
       var side = $(source).side();
@@ -131,26 +131,28 @@ game.fx = {
         game.fx.projectileMove(fx, target, pos.scale, pos.offset);
         if (!append) append = game.map.el;
       }
+      if (tag == 'flip') {
+        if ( target.getX() < source.getX() ) fx.addClass('flip');
+      }
       if (tag == 'random') {
         var n = game.fx.heroes[hero][skill].length;
         var r = Math.floor(Math.random() * n);
         if (r) fx.addClass(skill+r);
-        game.timeout(50+(Math.random()*600), function (fx, target) {
-          if (append) fx.appendTo(append);
-          else fx.appendTo(target);
-          game.fx.play(fx);
-        }.bind(this, fx, target));
+        game.timeout(50+(Math.random()*600), game.fx.append.bind(this, fx, target, append));
       }
-      else {
-        if (append) fx.appendTo(append);
-        else fx.appendTo(target);
-        game.fx.play(fx);
+      if (tag !== 'random') {
+        game.fx.append(fx, target, append);
       }
       //console.log(fx)
       if (tag != 'keep') fx.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function () { this.remove(); });
       target.closest('.card').reselect();
       return fx;
     }
+  },
+  append: function (fx, target, append) {
+    if (append) fx.appendTo(append);
+    else fx.appendTo(target);
+    game.fx.play(fx);
   },
   play: function(fx) {
     fx[0].style.animationPlayState = 'running';
