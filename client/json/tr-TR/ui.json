@@ -197,5 +197,6 @@
   "price": "Fiyat",
   "sell": "Satmak",
   "consumable": "Tüketilir",
-  "flat": "Düz harita (2D)"
+  "flat": "Düz harita (2D)",
+  "dark": "Karanlık Tema"
 }

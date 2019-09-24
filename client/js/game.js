@@ -55,6 +55,7 @@ var game = {
         if (!game.electron) game.dynamicHost = '';
       }
       game.build();
+      game.screen.detectDark();
       game.states.changeTo('loading');
     } else
       game.states.changeTo('unsupported');

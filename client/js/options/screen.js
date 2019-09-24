@@ -73,5 +73,18 @@ game.screen = {
     var checked = $('.screenresolution input[name=flat]').prop('checked');
     if (game.map.el && game.map.el.toggleClass) game.map.el.toggleClass('flat', checked);
     game.setData('flat-map', checked);
+  },
+  detectDark: function () {
+    var bkg = window.getComputedStyle(document.body)['background-color'];
+    game.screen.dark = (bkg == 'rgb(18, 23, 28)');
+    if (game.screen.dark && game.getData('dark-theme') !== 'light') {
+      game.setData('dark-theme', 'dark');
+    }
+    game.container.toggleClass('dark', game.screen.dark);
+  },
+  toggleDark: function () {
+    game.screen.dark = $('.screenresolution input[name=dark]').prop('checked');
+    game.container.toggleClass('dark', game.screen.dark);
+    game.setData('dark-theme', game.screen.dark ? 'dark' : 'light');
   }
 };

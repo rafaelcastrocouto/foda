@@ -197,5 +197,6 @@
   "price": "Precio",
   "sell": "Vender",
   "consumable": "Consumible",
-  "flat": "Mapa Plano (2D)"
+  "flat": "Mapa Plano (2D)",
+  "dark": "Tema Oscuro"
 }

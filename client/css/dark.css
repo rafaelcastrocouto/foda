@@ -1,0 +1,27 @@
+@media (prefers-color-scheme: dark) {
+  html body {
+    background-color: #12171c; 
+    background: radial-gradient(ellipse farthest-corner at center top, #6e7a66 0%, #242b33 30%, #12171c 60%, #12171c 100%), #12171c;
+  }
+  noscript .box {
+    background-color: #333;
+    color: #F9F9F9;
+    box-shadow: inset 0 20px 30px #222, 0 0 0 6px #444;
+  }
+}
+.dark .p404 .box,
+.dark .campaign-box.box,
+.dark .resultsbox,
+.dark .loading .box,
+.dark .game-overlay .box,
+.dark .log .box {
+  background-color: #333;
+  color: #F9F9F9;
+  box-shadow: inset 0 20px 30px #222, 0 0 0 6px #444;
+}
+.dark .volume {
+  border-right: 100px solid rgba(255,255,255,0.2);
+}
+.dark .volumecontrol {
+  border-right: 100px solid rgba(255,255,255,0.3);
+}

@@ -197,5 +197,6 @@
   "price": "Price",
   "sell": "Sell",
   "consumable": "Consumable",
-  "flat": "Flat Map (2D)"
+  "flat": "Flat Map (2D)",
+  "dark": "Dark Theme"
 }

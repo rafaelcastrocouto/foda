@@ -18,10 +18,12 @@
   display: inline-block;
   vertical-align: top;
   width: 250px;
-  height: 255px;
+  height: 270px;
   margin-bottom: -10px;
 }
-
+.audioconfig {
+  height: 250px;
+}
 .audioconfig h2, .screenresolution h2 {
   text-align: left;
   font-weight: bold;
@@ -40,10 +42,13 @@
 
 .screenresolution label {
   margin: 0;
+  font-size: 15px;
+  line-height: 15px;
+  height: 25px;
 }
 
-.screenresolution label:nth-child(4) {
-  margin: 0 0 8px 0;
+.screenresolution label:nth-child(6) {
+  margin: 0 0 10px 0;
 }
 
 .audioconfig label {
@@ -54,7 +59,7 @@
 .audioconfig label:nth-child(2) {
   height: 30px;
   text-align: right;
-  margin-bottom: 45px;
+  margin-bottom: 35px;
 }
 
 .audioconfig label:nth-child(3) {
@@ -121,7 +126,7 @@ label span {
   text-align: left;
   float: left;
   clear: left;
-  margin-top: 46px;
+  margin-top: 20px;
   margin-left: 60px;
 }
 
@@ -150,8 +155,6 @@ label span {
 
 .option-state .back {
   min-width: 200px;
-  margin-bottom: 0px;
-  margin-top: 30px;
   margin-right: 20px;
 }
 

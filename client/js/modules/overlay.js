@@ -27,7 +27,7 @@ game.overlay = {
     }));
   },
   confirm: function(cb, text, cl) {
-    var box = $('<div>').addClass('box '+cl);
+    var box = $('<div>').addClass('box '+(cl || ''));
     game.overlay.cb = cb;
     game.overlay.el.removeClass('hidden').append(box);
     box.append($('<h1>').text(text || game.data.ui.sure));

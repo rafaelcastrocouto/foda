@@ -6,7 +6,13 @@ game.options = {
     this.row = $('<div>').appendTo(this.box);
     //screen
     this.screen = $('<div>').appendTo(this.row).addClass('screenresolution').append($('<h2>').text(game.data.ui.screenres));
-    this.fullscreen = $('<input>').attr({type: 'checkbox', name: 'fullscreen', disabled: true});
+    //resolution
+    this.auto = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'auto'})).append($('<span>').text(game.data.ui.auto));
+    this.high = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'high'})).append($('<span>').text(game.data.ui.high + ' 1920x1080'));
+    this.medium = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'medium'})).append($('<span>').text(game.data.ui.medium + ' 1366x768'));
+    this.default = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'default'})).append($('<span>').text(game.data.ui['default'] + ' 1024x768'));
+    this.low = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'low'})).append($('<span>').text(game.data.ui.low + ' 800x600'));
+   this.fullscreen = $('<input>').attr({type: 'checkbox', name: 'fullscreen', disabled: true});
     $('<label>').appendTo(this.screen).append(this.fullscreen).append($('<span>').text(game.data.ui.fullscreen));
     //side
     this.side = $('<input>').attr({type: 'checkbox', name: 'side'});
@@ -21,12 +27,12 @@ game.options = {
     if (!!game.getData('flat-map')) {
       this.flat.prop('checked', true);
     }
-    //resolution
-    this.auto = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'auto'})).append($('<span>').text(game.data.ui.auto));
-    this.high = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'high'})).append($('<span>').text(game.data.ui.high + ' 1920x1080'));
-    this.medium = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'medium'})).append($('<span>').text(game.data.ui.medium + ' 1366x768'));
-    this.default = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'default'})).append($('<span>').text(game.data.ui['default'] + ' 1024x768'));
-    this.low = $('<label>').appendTo(this.screen).append($('<input>').attr({type: 'radio', name: 'resolution', value: 'low'})).append($('<span>').text(game.data.ui.low + ' 800x600'));
+    //dark
+    this.dark = $('<input>').attr({type: 'checkbox', name: 'dark'});
+    $('<label>').appendTo(this.screen).append(this.dark).append($('<span>').text(game.data.ui.dark));
+    if (!!game.getData('dark-theme')) {
+      this.dark.prop('checked', true);
+    }
     // lang
     this.lang = $('<div>').appendTo(this.box).addClass('lang').attr({title: game.data.ui.lang}).append($('<h2>').text(game.data.ui.lang));
     this.langSelect = game.language.select().appendTo(this.lang);
@@ -51,6 +57,8 @@ game.options = {
     $('input[name=side]', '.screenresolution').on('change', game.screen.toggleSide);
     //FLAT
     $('input[name=flat]', '.screenresolution').on('change', game.screen.toggleFlat);    
+    //DARK
+    $('input[name=dark]', '.screenresolution').on('change', game.screen.toggleDark);        
     //RES
     $('input[name=resolution]', '.screenresolution').on('change', game.screen.changeResolution);
     //Lang
