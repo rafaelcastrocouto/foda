@@ -468,6 +468,8 @@ game.card = {
       if (range > 2) {
         // launch projectile
         game.fx.projectile(source, target, tag);
+        // hit effect
+        game.timeout(400, game.fx.add.bind(this, 'projectile-hit', source, target, 'flip', 0, tag));
       }
       // miss fx
       if (source.data('miss-attack')) {

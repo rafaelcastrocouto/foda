@@ -1,4 +1,4 @@
-var version = '0.5.32';
+var version = '0.5.33';
 var urlCache = [
   '/',
   'index.html',

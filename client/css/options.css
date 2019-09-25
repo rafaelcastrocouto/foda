@@ -60,6 +60,7 @@
   height: 30px;
   text-align: right;
   margin-bottom: 35px;
+  margin-top: 10px;
 }
 
 .audioconfig label:nth-child(3) {
@@ -156,6 +157,7 @@ label span {
 .option-state .back {
   min-width: 200px;
   margin-right: 20px;
+  margin-top: 20px;
 }
 
 .left-side .optbox .back {

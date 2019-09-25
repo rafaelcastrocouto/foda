@@ -64,6 +64,9 @@ game.fx = {
     },
     meteor: {
       cast: ['ult']
+    },
+    projectile: {
+      hit: ['hit']
     }
   },
   build: function() {

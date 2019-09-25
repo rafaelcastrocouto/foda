@@ -124,3 +124,19 @@
   background: #6cffb7;
   box-shadow: inset 0 -6px 0 4px white;
 }
+
+.map .projectile-hit {
+  transform: rotateX(-20deg) translate3d(10px,-260px,90px);
+  width: 340px;
+  height: 340px;
+  animation: projectile-hit-sprite 0.7s steps(6) 1;
+  background-image: url('../img/fx/hit.png');
+}
+.map .projectile-hit.flip {
+  transform: rotateX(-20deg) translate3d(-110px,-260px,90px) scaleX(-1);
+}
+@keyframes projectile-hit-sprite {
+  100% {
+    background-position: -2040px;
+  }
+}
