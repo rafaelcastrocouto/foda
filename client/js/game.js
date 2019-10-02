@@ -39,7 +39,7 @@ var game = {
   heroesAI: {}, // heroes default AI behaviour
   build: function() {
     game.utils();
-    game.storageSupport = game.history.isSupported(window.localStorage);
+    game.storageSupport = game.history.isSupported('localStorage');
     if (game.storageSupport) game.history.build();
     game.events.build();
     game.overlay.build();
