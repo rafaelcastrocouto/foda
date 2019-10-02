@@ -91,7 +91,7 @@ var game = {
     if (!game.currentData[item]) {
       var saved;
       if (game.storageSupport) saved = localStorage.getItem('FODA-data-'+item);
-      if (typeof(saved) !== undefined) game.currentData[item] = JSON.parse(saved);
+      if (typeof(saved) !== 'undefined') game.currentData[item] = JSON.parse(saved);
     }
     return game.currentData[item];
   },
