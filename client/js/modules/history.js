@@ -6,6 +6,16 @@ game.history = {
     game.history.size = game.getData('size');
     game.history.seed = game.getData('seed');
   },
+  isSupported: function (storage) {
+    try {
+      var key = "__some_key_you_are_not_going_to_use__";
+      storage.setItem(key, key);
+      storage.removeItem(key);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
   recover: function () {
     game.audio.rememberVolume();
     var mode = game.history.mode,

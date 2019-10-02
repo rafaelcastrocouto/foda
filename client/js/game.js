@@ -39,7 +39,8 @@ var game = {
   heroesAI: {}, // heroes default AI behaviour
   build: function() {
     game.utils();
-    if (window.localStorage) game.history.build();
+    game.storageSupport = game.history.isSupported(window.localStorage);
+    if (game.storageSupport) game.history.build();
     game.events.build();
     game.overlay.build();
     game.hidden = $('<div>').addClass('hidden').appendTo(game.container);
@@ -84,11 +85,12 @@ var game = {
   },
   setData: function(item, data) { //console.trace('set', item, data)
     game.currentData[item] = data;
-    if (window.localStorage) localStorage.setItem('FODA-data-'+item, JSON.stringify(data));
+    if (game.storageSupport) localStorage.setItem('FODA-data-'+item, JSON.stringify(data));
   },
   getData: function(item) {
-    if (!game.currentData[item] && window.localStorage) {
-      var saved = localStorage.getItem('FODA-data-'+item);
+    if (!game.currentData[item]) {
+      var saved;
+      if (game.storageSupport) saved = localStorage.getItem('FODA-data-'+item);
       if (typeof(saved) !== undefined) game.currentData[item] = JSON.parse(saved);
     }
     return game.currentData[item];
