@@ -13,8 +13,7 @@ This license is derived from the MIT License, as amended to limit the impact of 
 
 ----------------------------------------------------------
 
-FODA versions may include or require the following libraries, 
-which may have other licenses of their own.
+FODA versions may include or require the following libraries, which may have other licenses of their own.
 
 "jQuery", John Resig, https://github.com/jquery/jquery
 "Prefix-free", Lea Verou, https://github.com/LeaVerou/prefixfree
@@ -26,5 +25,4 @@ which may have other licenses of their own.
 
 ----------------------------------------------------------
 
-"Dota", the "Dota 2" logo, and "Defense of the Ancients" are trademarks and/or 
-registered trademarks of Valve Corporation, http://www.valvesoftware.com/legal.html
+"Dota", the "Dota 2" logo, and "Defense of the Ancients" are trademarks and/or registered trademarks of Valve Corporation, http://www.valvesoftware.com/legal.html
