@@ -1,0 +1,155 @@
+{
+  "start": {
+    "name": "Fase 1",
+    "img": "tower",
+    "title": "Muito Fácil - Torre dos Iluminados",
+    "ai": "very-easy",
+    "achievements": [{
+      "name": "Rela pra tu ver",
+      "description": "Não deixe nenhuma unidade morrer"
+      },{
+      "name": "Meu!",
+      "description": "Negue uma unidade"
+      },{
+      "name": "Abate Duplo",
+      "description": "Obtenha 2 abates com um herói"
+    }],
+    "picks": [ "wk", "cm", "pud", "lina", "am" ]
+  },
+  "easy": {
+    "name": "Fase 2",
+    "img": "unit",
+    "title": "Fácil - Selva dos Iluminados",
+    "ai": "easy",
+    "achievements": [{
+      "name": "Apressado", 
+      "description": "Vença antes de 10 turnos"
+      },{
+      "name": "Abate Triplo",
+      "description": "Obtenha 3 abates com um herói"
+      },{
+      "name": "Onda de matança",
+      "description": "Abata 3 heróis sem morrer"
+    }],
+    "picks": [ "nyx", "kotl", "cat", "en", "ld" ]
+  },
+  "normal": {
+    "name": "Fase 3",
+    "img": "eunit",
+    "title": "Normal - Torre do Meio",
+    "ai": "normal",
+    "achievements": [{
+      "name": "Mago", 
+      "description": "Cause mais de 50 pontos de dano mágico"
+      },{
+      "name": "Abate Ultra", 
+      "description": "Obtenha 4 abates com um herói"
+      },{
+      "name": "Dominante",
+      "description": "Abata 4 heróis sem morrer"
+    }],
+    "picks": [ "lina", "pud", "lina", "wk", "am" ]
+  },
+  "hard": {
+    "name": "Fase 4",
+    "img": "eunitran",
+    "title": "Difícil - Base Inimiga",
+    "ai": "hard",
+    "achievements": [{
+      "name": "Fim de Jogo", 
+      "description": "Vença depois de 20 turnos"
+      },{
+      "name": "Massacre", 
+      "description": "Obtenha 5 abates com um herói"
+      },{
+      "name": "Abate Mega",
+      "description": "Abata 5 heróis sem morrer"
+    }],
+    "picks": [ "cm", "wk", "com", "ld", "am" ]
+  },
+  "last": {
+    "name": "Última Fase",
+    "img": "etower",
+    "title": "Muito Difícil - Ancião",
+    "ai": "very-hard",
+    "achievements": [{
+      "name": "Por pouco", 
+      "description": "Vença com 1HP restante em sua torre"
+      },{
+      "name": "Bolso cheio",
+      "description": "Compre 6 itens para o mesmo herói"
+      },{
+      "name": "Abençoado",
+      "description": "Mate 10 heróis sem morrer"
+    }],
+    "picks": [ "kotl", "cat", "cm", "venge", "en" ]
+  },
+  "optional": {
+    "name": "Fase Opcional",
+    "img": "forest",
+    "title": "Opcional - Selva",
+    "ai": "easy",
+    "achievements": [{
+      "name": "Ganância de Greevil", 
+      "description": "Não gaste ouro algum"
+      },{
+      "name": "Poupe os fracos", 
+      "description": "Não invoque criaturas"
+      },{
+      "name": "Imparável",
+      "description": "Abata 6 heróis sem morrer"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "rune": {
+    "name": "Fase da Runa",
+    "img": "rune",
+    "title": "Runa do Rio",
+    "ai": "easy",
+    "achievements": [{
+      "name": "Coletor", 
+      "description": "Compre 3 itens para o mesmo herói"
+      },{
+      "name": "Você não é de nada!",
+      "description": "Negue todas as criaturas"
+      },{
+      "name": "Enfurecido",
+      "description": "Abata 7 heróis sem morrer"
+    }],
+    "picks": [ "en", "lina", "cm", "wind", "pud" ]
+  },
+  "shop": {
+    "name": "Fase da Loja",
+    "img": "catap",
+    "title": "Loja Secreta",
+    "ai": "normal",
+    "achievements": [{
+      "name": "Crítico", 
+      "description": "Cause mais de 30 pontos de dano em um ataque"
+      },{
+      "name": "Carty", 
+      "description": "Vença a partida com o ataque de uma catapulta"
+      },{
+      "name": "Abate monstruoso",
+      "description": "Abata 8 heróis sem morrer"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "roshan": {
+    "name": "Fase do Roshan",
+    "img": "ecat",
+    "title": "Caverna do Roshan",
+    "ai": "hard",
+    "achievements": [{
+      "name": "Desabilitador", 
+      "description": "Aplique atordoamento por um total de 8 turnos"
+      },{
+      "name": "Criaturesco", 
+      "description": "Vença a partida com o ataque de uma criatura"
+      },{
+      "name": "Divino",
+      "description": "Abata 9 heróis sem morrer"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  }
+}
