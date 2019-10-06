@@ -1,0 +1,155 @@
+{
+  "start": {
+    "name": "Nivel 1",
+    "img": "tower",
+    "title": "Muy fácil - Torre radiante",
+    "ai": "very-easy",
+    "achievements": [{
+      "name": "No puedo tocar esto", 
+      "description": "No dejes que muera ninguna unidad"
+      },{
+      "name": "¡Mío!", 
+      "description": "Negar una unidad"
+      },{
+      "name": "Double Kill",
+      "description": "Consigue 2 muertes con un héroe"
+    }],
+    "picks": [ "wk", "cm", "pud", "lina", "am" ]
+  },
+  "easy": {
+    "name": "Nivel 2",
+    "img": "unit",
+    "title": "Fácil: jungla radiante",
+    "ai": "easy",
+    "achievements": [{
+      "name": "Prisa", 
+      "description": "Gana antes de 10 turnos"
+      },{
+      "name": "Triple Kill",
+      "description": "Consigue 3 muertes con un héroe"
+      },{
+      "name": "Killing spree",
+      "description": "Mata a 3 héroes sin morir"
+    }],
+    "picks": [ "nyx", "kotl", "cat", "en", "ld" ]
+  },
+  "normal": {
+    "name": "Nivel 3",
+    "img": "eunit",
+    "title": "Normal - Torre media",
+    "ai": "normal",
+    "achievements": [{
+      "name": "Mago", 
+      "description": "Inflige más de 50 daños mágicos"
+      },{
+      "name": "Ultra kill", 
+      "description": "Consigue 4 muertes con un héroe"
+      },{
+      "name": "Dominating",
+      "description": "Mata a 4 héroes sin morir"
+    }],
+    "picks": [ "lina", "pud", "lina", "wk", "am" ]
+  },
+  "hard": {
+    "name": "Nivel 4",
+    "img": "eunitran",
+    "title": "Hard - Enemy Base",
+    "ai": "hard",
+    "achievements": [{
+      "name": "Juego tardío", 
+      "description": "Gana después de 20 turnos."
+      },{
+      "name": "Rampage", 
+      "description": "Consigue 5 muertes con un héroe"
+      },{
+      "name": "Mega kill",
+      "description": "Mata a 5 héroes sin morir"
+    }],
+    "picks": [ "cm", "wk", "com", "ld", "am" ]
+  },
+  "last": {
+    "name": "Último Nivel",
+    "img": "etower",
+    "title": "Muy duro - Antiguo Enemigo",
+    "ai": "very-hard",
+    "achievements": [{
+      "name": "Cerrado", 
+      "description": "Gana con 1 HP restante en tu torre"
+      },{
+      "name": "Completo", 
+      "description": "Compra 6 artículos para el mismo héroe"
+      },{
+      "name": "Dios",
+      "description": "Mata a 10 héroes sin morir."
+    }],
+    "picks": [ "kotl", "cat", "cm", "venge", "en" ]
+  },
+  "optional": {
+    "name": "Nivel Opcional",
+    "img": "forest",
+    "title": "Opcional - Jungla",
+    "ai": "easy",
+    "achievements": [{
+      "name": "La codicia", 
+      "description": "No gastes oro"
+      },{
+      "name": "Salvar a los débiles", 
+      "description": "No convoques unidades"
+      },{
+      "name": "Unstoppable",
+      "description": "Mata a 6 héroes sin morir"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "rune": {
+    "name": "Runa",
+    "img": "rune",
+    "title": "Runa del río",
+    "ai": "easy",
+    "achievements": [{
+      "name": "Farme", 
+      "description": "Compra 3 artículos para el mismo héroe"
+      },{
+      "name": "No tienes nada", 
+      "description": "Negar todas unidades"
+      },{
+      "name": "Wicked sick",
+      "description": "Mata a 7 héroes sin morir"
+    }],
+    "picks": [ "en", "lina", "cm", "wind", "pud" ]
+  },
+  "shop": {
+    "name": "Tienda",
+    "img": "catap",
+    "title": "Tienda Secreta",
+    "ai": "normal",
+    "achievements": [{
+      "name": "Crítico", 
+      "description": "Inflige más de 30 daños en un golpe"
+      },{
+      "name": "Carty", 
+      "description": "Gana el juego con un golpe de catapulta"
+      },{
+      "name": "Monster kill",
+      "description": "Mata a 8 héroes sin morir"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "roshan": {
+    "name": "Roshan",
+    "img": "ecat",
+    "title": "La Cueva del Roshan",
+    "ai": "hard",
+    "achievements": [{
+      "name": "Disabler", 
+      "description": "Aturdir por un total de 8 turnos"
+      },{
+      "name": "Creepy", 
+      "description": "Gana el juego con el golpe de una unidad"
+      },{
+      "name": "Godlike",
+      "description": "Mata a 9 héroes sin morir"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  }
+}
