@@ -1,6 +1,8 @@
+var devMode = document.cookie.indexOf('NODE_ENV=development') > -1;
+
 var game = {
-  staticHost: 'http://rafaelcastrocouto.github.io/foda/client/',
-  dynamicHost: 'https://foda-app.herokuapp.com/',
+  staticHost: devMode ? document.location.href : 'http://rafaelcastrocouto.github.io/foda/client/',
+  dynamicHost: devMode ? document.location.href : 'https://foda-app.herokuapp.com/',
   container: $('.game-container'),
   loader: $('<span>').addClass('loader'),
   message: $('<span>').addClass('message'),
