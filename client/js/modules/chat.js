@@ -47,6 +47,7 @@ game.chat = {
   update: function(received) {
     if (received.messages && received.messages.length) {
       game.chat.messages.empty();
+      console.log(received.messages);
       $.each(received.messages, function() {
         var now = new Date().valueOf();
         var diff = now - Number(this.date);

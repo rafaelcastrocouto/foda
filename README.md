@@ -28,12 +28,37 @@ Please report any [suggestions, bugs or issues][8] here at github.
 
 [![Fight Over Dat Ancient](https://foda-app.herokuapp.com/client/img/banner.jpg)][1]
 
-**Local server setup**
+## Hacking at Home (or *Local server setup*)
 
-    npm install
-    node server.js
+**1**: [Download](http://nodejs.org/download/) and install Node.js
 
-More information on how to [setup your own server][10]
+**2**: [Fork](https://github.com/rafaelcastrocouto/dotacard/fork) this repo
+
+**3**: Clone your fork on your machine
+
+**4**: Install the dependencies: `npm install`
+
+**5**: Create a free Mongo DB at mlab.com *(or anywhere to experts)*
+
+**6**: Create an user to your DB *(you can do this, and all DB related setup, in the mlab.com web interface)*
+
+**7**: Create a collection named `collection` in your mongo db.
+
+**8**: Inside the collection, create a document with this content: `{"document": "dotacard"}`
+
+**9**: Set up you environment config copping `EXAMPLE.env` to `.env`, then edit `.env` with your DB connection URL.
+
+**10**: Build client side bundle: `npm run build`
+
+**11**: Run the server: `npm start`
+
+**12**: Happy Hacking!
+
+*(if you don't need a DB to test changes, like Art and UI, set a empty value to MONGO_CONN inside `.env`)*
+
+*(if you change any UI code, you must run `npm run build` to see the result)*
+
+--------------------------------------------------------------------------------
 
 Special thanks to:
 
