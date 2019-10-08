@@ -64,7 +64,7 @@ var getRank = function () {
 if (mongoConn) {
   mongo.get('poll', function (err, data) { mongo.poll = data; });
   getRank();
-  mongo.set('errors', mongo.errors, (err)=> err && console.log(err));
+  mongo.set('errors', mongo.errors, (err)=> err && console.log('Mongo load error:', err));
 }
 
 var clientServer = serveStatic('client', {'index': ['index.html', 'index.htm']});
@@ -113,7 +113,7 @@ class Session {
 }
 
 Session.data = {};
-setInterval(()=> console.log(Session.data), 3000);
+//setInterval(()=> console.log(Session.data), 3000);
 
 http.createServer(function(request, response) {
   setHeaders(request, response);
@@ -164,7 +164,7 @@ http.createServer(function(request, response) {
         case 'poll':
           if (mongoConn && typeof(mongo.poll[query.data]) == 'number') {
             mongo.poll[query.data]++;
-            mongo.set('poll', mongo.poll, (err)=> err && console.log(err));
+            mongo.set('poll', mongo.poll, (err)=> err && console.log('Poll error', err));
           }
           send(response, JSON.stringify(mongo.poll));
           return;
@@ -182,7 +182,7 @@ http.createServer(function(request, response) {
                 mongo.rank = {};
                 for (i=0; i<5; i++) { mongo.rank[mongo.ranked[i].name] = mongo.ranked[i].points; }
               }
-              if (Object.keys(mongo.rank).length == 5) mongo.set('rank', mongo.rank, (err)=> err && console.log(err));
+              if (Object.keys(mongo.rank).length == 5) mongo.set('rank', mongo.rank, (err)=> err && console.log('Rank error:', err));
             }
           }
           send(response, JSON.stringify(mongo.rank));
@@ -190,7 +190,7 @@ http.createServer(function(request, response) {
         case 'errors':
           if (mongo.errors.length) {
             mongo.errors.push(query.data);
-            mongo.set('errors', mongo.errors, (err)=> err && console.log(err));
+            mongo.set('errors', mongo.errors, (err)=> err && console.log('Mongo error:', err));
           }
           return;
         default:

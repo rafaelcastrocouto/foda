@@ -6,7 +6,7 @@
   "homepage": "https://foda-app.herokuapp.com/",
   "readmeFilename": "README.md",
   "engine": {
-    "node": "10.x"
+    "node": "10.3.0"
   },
   "repository": {
     "type": "git",

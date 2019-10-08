@@ -13,7 +13,6 @@ dist/*
 dist/*/*
 dist/*/*/*
 dist/*/*/*/*
-client/bundle/
 bin
 lib
 include
