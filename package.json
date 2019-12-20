@@ -1,0 +1,48 @@
+{
+  "name": "FODA",
+  "version": "0.5.46",
+  "author": "rafaelcastrocouto",
+  "description": "Fight Over Dat Ancient - Card Game",
+  "homepage": "https://foda-app.herokuapp.com/",
+  "readmeFilename": "README.md",
+  "engine": {
+    "node": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafaelcastrocouto/foda"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "grunt"
+  },
+  "bugs": {
+    "url": "https://github.com/rafaelcastrocouto/foda/issues"
+  },
+  "keywords": [
+    "cardgame",
+    "cardgames",
+    "game",
+    "games",
+    "card",
+    "cards",
+    "dota",
+    "strategy",
+    "tactical"
+  ],
+  "dependencies": {
+    "dotenv": "latest",
+    "mongodb": "latest",
+    "serve-static": "latest"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-uglify": "latest"
+  },
+  "license": "MIT"
+}
