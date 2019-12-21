@@ -1,0 +1,38 @@
+{
+  "creeps":{
+    "melee": {
+      "name": "Unidad Básica",
+      "attribute": "Invocar"
+    },
+    "ranged": {
+      "name": "Unidad Auxiliar",
+      "attribute": "Invocar"
+    },
+    "catapult": {
+      "name": "Catapulta",
+      "attribute": "Invocar"
+    }
+  },
+  "forest":{
+    "cent": {
+      "name": "Centauro",
+      "attribute": "Invocar",
+      "description": "Centauro com habilidade radial com dano en área y atordoamento"
+     },
+    "golem": {
+      "name": "Golem",
+      "attribute": "Invocar",
+      "description": "Golem con habilidad de atordoar a un objetivo"
+    },
+    "tomato": {
+      "name": "Tomate",
+      "attribute": "Invocar",
+      "description": "Tomate con habilidad de dano radial en área"
+    },
+    "satyr": {
+      "name": "Sátiro",
+      "attribute": "Invocar",
+      "description": "Sátiro com habilidad lineal com dano em área"
+    }
+  }
+}

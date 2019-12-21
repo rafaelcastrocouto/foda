@@ -1,0 +1,476 @@
+{
+  "healing": {
+    "faerie": {
+      "name": "Fada",
+      "attribute": "Consumível",
+      "targets": ["Aliados"],
+      "description": "Cura básica. Cura instantânea em uma unidade-alvo"
+    },
+    "tango": {
+      "name": "Tango",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis", "Árvore", "Local", "Livre"],
+      "description": "Cura uma unidade ao longo do tempo. Pode ser usado para destruir uma árvore",
+      "buff": {
+        "description": "Cura ao longo do tempo"
+      }
+    },
+    "vitality": {
+      "name": "Cristal da vitalidade",
+      "attribute": "Buff",
+      "targets": ["Aliados"],
+      "description": "O herói alvo ganha HP extra",
+      "buff": {
+        "description": "Bonus HP"
+      }
+    },
+    "meka": {
+      "name": "Meka",
+      "attribute": "Consumível",
+      "targets": ["Aliados"],
+      "description": "Cura todas as unidades do jogador"
+    },
+    "heart": {
+      "name": "Coração do Tarrasque",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Cura o alvo a cada turno",
+      "buff": {
+        "description": "Cura a cada turno"
+      }
+    }
+  },
+  "mana": {
+    "clarity": {
+      "name": "Poção",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Compra temporariamente uma carta de habilidade extra do herói. O efeito acaba se o herói é atacado",
+      "buff": {
+        "description": "O jogador compra um carta de habilidade extra do herói. O efeito acaba se for atacado"
+      }
+    },
+    "soul": {
+      "name": "Anel da Alma",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Compra cartas do herói alvo, mas danifica o alvo. Não pode matar"
+    },
+    "void": {
+      "name": "Pedra do Vazio",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "O jogador compra uma carta de habilidade extra por turno",
+      "buff": {
+        "description": "O jogador compra uma carta de habilidade extra desse herói"
+      }
+    },
+    "diffusal": {
+      "name": "Lâmina Difusora",
+      "attribute": "Consumível",
+      "targets": ["Inimigos", "Heróis"],
+      "description": "Inimigo descarta todas as habilidades da mão direita do herói"
+    },
+    "refresher": {
+      "name": "Orbe Restaurador",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "O jogador compra cartas de habilidade do herói"
+    }
+  },
+  "armor": {
+    "ring": {
+      "name": "Anel de proteção",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta a armadura do alvo",
+      "buff": {
+        "description": "Bonus de armadura"
+      }
+    },
+    "buckler": {
+      "name": "Broquel",
+      "attribute": "Consumível",
+      "targets": ["Aliados"],
+      "description": "Aumenta temporariamente a armadura de todas as unidades",
+      "buff": {
+        "description": "Bonus de armadura"
+      }
+    },
+    "medallion": {
+      "name": "Medalhão de coragem",
+      "attribute": "Consumível",
+      "targets": ["Aliados"],
+      "description": "Aumenta temporariamente a armadura do alvo",
+      "buff": {
+        "description": "Bonus de armadura"
+      }
+    },
+    "talisman": {
+      "name": "Talismã da Evasão",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Evasão de ataques",
+      "buff": {
+        "description": "Chance de esquivar ataques"
+      }
+    },
+    "blademail": {
+      "name": "Blademail",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Retorna temporariamente todos os danos direcionados ao herói",
+      "buff": {
+        "description": "Retorna todo o dano alvo"
+      }
+    }
+  },
+  "attack": {
+    "quelling": {
+      "name": "Machadinho",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta o dano contra as unidades. Target pode destruir árvores",
+      "buff": {
+        "description": "Dano aumentado. Pode destruir árvores"
+      }
+    },
+    "broadsword": {
+      "name": "Espada Larga",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta o dano de um herói-alvo",
+      "buff": {
+        "description": "Dano aumentado"
+      }
+    },
+    "madness": {
+      "name": "Máscara da Loucura",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta temporariamente o dano, mas reduz a armadura e a resistência",
+      "buff": {
+        "description": "Dano aumentado, armadura reduzida e resistência"
+      }
+    },
+    "crystalys": {
+      "name": "Cristális",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Possibilidade de causar danos críticos",
+      "buff": {
+        "description": "Ataque crítico"
+      }
+    },
+    "echo": {
+      "name": "Sabre do Ecoante",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Ataque duas vezes o mesmo alvo",
+      "buff": {
+        "description": "Duplo ataque"
+      }
+    }
+  },
+  "resistance": {
+    "cloak": {
+      "name": "Manto",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta a resistência mágica",
+      "buff": {
+        "description": "Bonus de resistência mágica"
+      }
+    },
+    "pipe": {
+      "name": "Pipe of Insight",
+      "attribute": "Consumível",
+      "targets": ["Aliados"],
+      "description": "Aumenta temporariamente todas as unidades resistência mágica",
+      "buff": {
+        "description": "Bonus de resistência mágica"
+      }
+    },
+    "linken": {
+      "name": "Esfera do Linken",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Bloqueia a próxima habilidade direcionada ao herói",
+      "buff": {
+        "description": "Bloqueia uma habilidade"
+      }
+    },
+    "lotus": {
+      "name": "Orbe de Lotus",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Reflete temporariamente todos os efeitos das habilidades direcionadas ao herói",
+      "buff": {
+        "description": "Reflete as habilidades"
+      }
+    },
+    "bkb": {
+      "name": "Bastão do Rei",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Imunidade mágica. O herói não pode ser alvo de habilidades e não recebe nenhum dano mágico",
+      "buff": {
+        "description": "Imune a magia, não pode ser alvo de habilidades e não recebe nenhum dano mágico"
+      }
+    }
+  },
+  "arcane": {
+    "dust": {
+      "name": "Areia da Revelação",
+      "attribute": "Consumível",
+      "targets": ["Aliados"],
+      "aoe": "Radial",
+      "description": "Revela unidades invisíveis"
+    },
+    "glimmer": {
+      "name": "Capa Cintilante",
+      "attribute": "Consumível",
+      "targets": ["Aliados"],
+      "description": "Torna o alvo invisível",
+      "buff": {
+        "description": "Invisível"
+      }
+    },
+    "ethereal": {
+      "name": "Lâmina Etérea",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Inimigos"],
+      "description": "Torna o alvo imune a ataques, mas desarma e reduz a resistência mágica",
+      "buff": {
+        "description": "Imune a ataques, desarmado e resistência mágica reduzida"
+      }
+    },
+    "sheepstick": {
+      "name": "Foiçe da Ovelha",
+      "attribute": "Consumível",
+      "targets": ["Inimigos"],
+      "description": "Converte o alvo em uma ovelha. Silencia, reduz a velocidade e desarma",
+      "buff": {
+        "description": "Silenciado, velocidade reduzida e desarmado. Béééé"
+      }
+    },
+    "kaya": {
+      "name": "Kaya",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta o dano das habilidades",
+      "buff": {
+        "description": "Dano de habilidades aumentado"
+      }
+    }
+  },
+  "movement": {
+    "windlace": {
+      "name": "Fita do Vento",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta temporariamente a velocidade do alvo",
+      "buff": {
+        "description": "Velocidade aumentada"
+      }
+    },
+    "boots": {
+      "name": "Botas da Velocidade",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta a velocidade do alvo",
+      "buff": {
+        "description": "Velocidade aumentada"
+      }
+    },
+    "drums": {
+      "name": "Tambor da Resistência",
+      "attribute": "Consumível",
+      "targets": ["Aliados"],
+      "description": "Aumenta temporariamente a velocidade de todas unidades do jogador",
+      "buff": {
+        "description": "Aumento da velocidade"
+      }
+    },
+    "skadi": {
+      "name": "Skadi",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Reduz a velocidade do alvo no ataque",
+      "buffs": {
+        "skadi": {
+          "target": {
+            "description": "Reduz a velocidade do alvo no ataque"
+          },
+          "attacked": {
+            "description": "Velocidade reduzida"
+          }
+        }
+      }
+    },
+    "phase": {
+      "name": "Botas Atravessadoras",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta a velocidade do alvo e permite que atravesse unidades",
+      "buff": {
+        "description": "Velocidade aumentada e capaz de atravessar unidades"
+      }
+    }
+  },
+  "range": {
+    "tp": {
+      "name": "Pergaminho da Fuga",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Canaliza para teleportar para a fonte ou para um local aleatório ao redor da torre",
+      "buff": {
+        "description": "Teleportando para casa"
+      }
+    },
+    "rod": {
+      "name": "Bastão de Atos",
+      "attribute": "Consumível",
+      "targets": ["Inimigos"],
+      "description": "Prende um alvo no lugar",
+      "buff": {
+        "description": "Preso"
+      }
+    },
+    "blinkdagger": {
+      "name": "Adaga de Teleporte",
+      "attribute": "Consumable",
+      "targets": ["Aliados", "Heróis"],
+      "secondary targets": ["Local", "Livre"],
+      "description": "Teleporta para um ponto alvo"
+    },
+    "lens": {
+      "name": "Lente do Éter",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta o alcance das habilidades",
+      "buff": {
+        "description": "Alcance de habilidades aumentado"
+      }
+    },
+    "dragon": {
+      "name": "Arco do dragão",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Aumenta o alcance dos ataques",
+      "buff": {
+        "description": "Alcance de ataques aumentado"
+      }
+    }
+  },
+  "relic": {
+    "eul": {
+      "name": "Cetro de Eul",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Inimigos"],
+      "description": "Invoca um ciclone protegendo o alvo. O alvo é purgado se aliado ou danificado na queda se inimigo",
+      "buff": {
+        "description": "Cyclone está protegendo o alvo"
+      }
+    },
+    "morbid": {
+      "name": "Máscara Mórbida",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Rouba HP do inimigo. Todo ataque irá curar por uma porcentagem do dano",
+      "buff": {
+        "description": "Drena HP em cada ataque"
+      }
+    },
+    "halberd": {
+      "name": "Alabarda Celestial",
+      "attribute": "Consumível",
+      "targets": ["Inimigos"],
+      "description": "Desarma a unidade alvo tornando-o incapaz de atacar",
+      "buff": {
+        "description": "Desarmado, incapaz de atacar."
+      }
+    },
+    "shivas": {
+      "name": "Proteção de Shivas",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Dano em área e reduz a velocidade",
+      "buff": {
+        "description": "Velocidade reduzida"
+      }
+    },
+    "meteor": {
+      "name": "Martelo do Meteoro",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "secondary targets": "Local",
+      "aoe": "Radial",
+      "description": "Dano em área, atordoa e aplica dano por turno",
+      "buff": {
+        "damage type": "Mágico",
+        "description": "Dano por turno"
+      }
+    }
+  },
+  "armaments": {
+    "vennon": {
+      "name": "Veneno",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Ataque envenenado. Aplica o dano por turno no ataque",
+      "buffs": {
+        "vennon": {
+          "target": {
+            "description": "Ataque de veneno. Aplica o dano por turno no ataque"
+          },
+          "attacked": {
+            "damage type": "Mágico",
+            "description": "Dano por turno"
+          }
+        }
+      }
+    },
+    "desolator": {
+      "name": "Desoladora",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Ataques reduzem a armadura do alvo",
+      "buffs": {
+        "desolator": {
+          "target": {
+            "description": "Ataques reduzem a armadura do alvo"
+          },
+          "attacked": {
+            "description": "Armadura reduzida"
+          }
+        }
+      }
+    },
+    "manta": {
+      "name": "Machado Ilusório",
+      "attribute": "Consumível",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Cria 2 ilusões do alvo. As ilusões têm metade do ataque e são destruídas se danificadas"
+    },
+    "basher": {
+      "name": "Esmagador",
+      "attribute": "Consumível",
+      "targets": ["Inimigos"],
+      "damage type": "Físico",
+      "description": "Atordoa a unidade alvo"
+    },
+    "radiance": {
+      "name": "Radiante",
+      "attribute": "Buff",
+      "targets": ["Aliados", "Heróis"],
+      "description": "Dano por turno em todos os inimigos em torno do alvo",
+      "buff": {
+        "description": "Dano por turno em todos os inimigos ao redor",
+        "damage type": "Mágico"
+      }
+    }
+  }
+}

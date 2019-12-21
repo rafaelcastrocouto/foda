@@ -1,0 +1,604 @@
+.states .map .spot.movearea, .states .map .spot.tutorialmovearea {
+  cursor: pointer;
+  /*animation: 1s blinkmovearea infinite;*/
+}
+
+.states .map .spot.movearea.moving, .states .map .spot.tutorialmovearea.moving {
+  background-color: rgba(100,220,140,0.4);
+}
+.states .map .spot.movearea.movetarget, .states .map .spot.tutorialmovearea.movetarget,
+.states .map .spot.movesource {
+  background-color: rgba(200,255,230,0.8);
+}
+
+.states .map .spot.movearea.moving:after,
+.states .map .spot.movearea.moving:before,
+.states .map .spot.movearea.movetarget:after,
+.states .map .spot.movearea.movetarget:before,
+.states .map .spot.tutorialmovearea.moving:after,
+.states .map .spot.tutorialmovearea.moving:before,
+.states .map .spot.tutorialmovearea.movetarget:after,
+.states .map .spot.tutorialmovearea.movetarget:before {
+  display: none;
+}
+
+.slot.available:after, .slot.available:before {
+  transform-origin: 0% 0%;
+  transform: scale(0.25);
+}
+
+.slot.available:after, .slot.available:before, .map .movearea:after, .map .movearea:before, .map .tutorialmovearea:after, .map .tutorialmovearea:before{
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+.slot.available:after, .map .movearea:after, .map .tutorialmovearea:after{
+  width: 120px;
+  height: 12px;
+  background: #00ff7f;
+  left: 40px;
+  bottom: 100px;
+  border-radius: 6px;
+}
+
+.slot.available:after {
+  left: 44px;
+  bottom: 60px;
+}
+
+.slot.available:before, .map .movearea:before, .map .tutorialmovearea:before {
+  width: 50px;
+  height: 50px;
+  border: 20px solid transparent;
+  border-right: 12px solid #00ff7f;
+  border-bottom: 12px solid #00ff7f;
+  background: transparent;
+  left: 60px;
+  top: 40px;
+  transform: rotate(45deg);
+}
+
+.slot.available:before {
+  left: 60px;
+  transform: rotate(45deg) scale(0.25);
+  animation: chooseslide 1s infinite;
+}
+
+.map .movearea:hover:before, .map .tutorialmovearea:hover:before {
+  animation: moveslide 1s infinite;
+}
+
+@keyframes chooseslide {
+  0%, 100% {
+    top: 50px;
+  }
+
+  50% {
+    top: 65px;
+  }
+}
+
+@keyframes moveslide {
+  0%, 100% {
+    top: 40px;
+  }
+
+  50% {
+    top: 80px;
+  }
+}
+
+.map .card.player.attacktarget {
+  background: #8bd85e;
+}
+
+.map .card.enemy.attacktarget {
+  background: tomato;
+}
+
+.map .card.casttarget {
+  background: #80bfff;
+}
+
+.map .row .spot.targetarea {
+  background: rgba(128, 191, 255, 0.25);
+}
+
+.map .attacktarget fieldset, .map .casttarget fieldset {
+  opacity: 0.7;
+}
+
+.map .attacktarget:after, .map .attacktarget:before {
+  z-index: 11;
+  position: absolute;
+  content: "";
+  display: block;
+}
+
+.map .attacktarget:before {
+  width: 50px;
+  height: 50px;
+  border: 20px solid transparent;
+  border-right: 12px solid orangered;
+  border-bottom: 12px solid orangered;
+  background: transparent;
+  left: 60px;
+  top: 50px;
+  transform: rotate(45deg) scale(1);
+}
+
+.table.player .map .card.player.attacktarget, .table.enemy .map .card.enemy.attacktarget {
+  box-shadow: 0 0 0 10px #ffe100;
+}
+
+.table.player .map .player.attacktarget:before, .table.enemy .map .enemy.attacktarget:before {
+  border-right: 12px solid #ffe100;
+  border-bottom: 12px solid #ffe100;
+}
+
+.table.player .map .player.attacktarget:after, .table.enemy .map .enemy.attacktarget:after {
+  border-top: 12px solid #ffe100;
+}
+
+.table.player .map .player.attacktarget:hover:after, .table.enemy .map .enemy.attacktarget:hover:after {
+  animation: playerscaleattackafter 1.5s infinite;
+}
+
+@keyframes playerscaleattackafter {
+  0%, 100% {
+    width: 150px;
+    bottom: 30px;
+    left: 30px;
+    transform: rotate(0deg) scale(1);
+    border-radius: 3px;
+  }
+
+  20%, 80% {
+    width: 50px;
+    bottom: 70px;
+    left: 60px;
+    border: 20px solid transparent;
+    border-top: 12px solid #ffe100;
+    border-left: 12px solid #ffe100;
+    transform: rotate(45deg) scale(1);
+    border-radius: 0;
+  }
+
+  50% {
+    transform: translateY(25px) rotate(45deg) scale(1.5);
+  }
+}
+
+.map .card.attacktarget {
+  box-shadow: 0 0 0 10px orangered;
+}
+
+.map .card.attacktarget:before {
+  border-right: 12px solid orangered;
+  border-bottom: 12px solid orangered;
+}
+
+.map .card.attacktarget:after {
+  border-top: 12px solid orangered;
+}
+
+.map .card.attacktarget:hover:before {
+  animation: scaleattackbefore 1.5s infinite;
+}
+
+@keyframes scaleattackbefore {
+  0%, 20%, 80%, 100% {
+    transform: rotate(45deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-25px) rotate(45deg) scale(1.5);
+  }
+}
+
+.map .attacktarget:after {
+  width: 150px;
+  height: 50px;
+  border: 0px solid transparent;
+  border-top: 12px solid orangered;
+  background: transparent;
+  left: 30px;
+  bottom: 30px;
+  transform: rotate(0deg) scale(1);
+  transition: all 0.5s;
+  border-radius: 6px;
+  top: initial;
+}
+
+.map .attacktarget:hover:after {
+  animation: scaleattackafter 1.5s infinite;
+}
+
+@keyframes scaleattackafter {
+  0%, 100% {
+    width: 150px;
+    bottom: 30px;
+    left: 30px;
+    transform: rotate(0deg) scale(1);
+    border-radius: 3px;
+  }
+
+  20%, 80% {
+    width: 50px;
+    bottom: 70px;
+    left: 60px;
+    border: 20px solid transparent;
+    border-top: 12px solid orangered;
+    border-left: 12px solid orangered;
+    transform: rotate(45deg) scale(1);
+    border-radius: 0;
+  }
+
+  50% {
+    transform: translateY(25px) rotate(45deg) scale(1.5);
+  }
+}
+
+.map .spot.targetarea {
+  cursor: pointer;
+  /*background: rgba(200,200,255,0.2);
+  animation: 1s blinktargetarea infinite;*/
+}
+
+/*
+@keyframes blinktargetarea {
+  0%, 100% {background: rgba(200,200,255,0.1);}
+  50% {background: rgba(200,200,255,0.3);}
+}*/
+.map .row .spot.targetarea.drop, .map .row .spot.targetarea:hover {
+  background: rgba(200,200,255,0.2);
+}
+
+.map .targetarea:after, .map .targetarea:before {
+  z-index: 11;
+  position: absolute;
+  content: "";
+  display: block;
+}
+
+.map .targetarea:not(.cript):before {
+  width: 50px;
+  height: 50px;
+  border: 20px solid transparent;
+  border-right: 12px solid dodgerblue;
+  border-bottom: 12px solid dodgerblue;
+  background: transparent;
+  left: 60px;
+  top: 50px;
+  transform: rotate(45deg) scale(1);
+}
+
+.map .targetarea:not(.cript):hover:before {
+  animation: scalespotbefore 1.5s infinite;
+}
+
+@keyframes scalespotbefore {
+  0%, 100% {
+    left: 60px;
+    top: 50px;
+    width: 50px;
+    height: 50px;
+    transform: rotate(45deg) scale(1);
+  }
+
+  20%, 80% {
+    width: 100px;
+    height: 100px;
+    left: 40px;
+    top: 90px;
+    border: 12px solid transparent;
+    border-left: 12px solid dodgerblue;
+    border-top: 12px solid dodgerblue;
+    border-radius: 50%;
+    transform: rotate(45deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(45deg) scale(1.2);
+  }
+}
+
+.map .targetarea:not(.cript):after {
+  width: 150px;
+  height: 50px;
+  border: 0px solid transparent;
+  border-top: 12px solid dodgerblue;
+  background: transparent;
+  left: 30px;
+  bottom: 30px;
+  top: auto;
+  transform: rotate(0deg) scale(1);
+  transition: all 0.5s;
+  border-radius: 6px;
+}
+
+.map .targetarea:not(.cript):hover:after {
+  animation: scalespotafter 1.5s infinite;
+}
+
+@keyframes scalespotafter {
+  0%, 100% {
+    width: 150px;
+    height: 50px;
+    left: 30px;
+    bottom: 30px;
+    transform: rotate(0deg) scale(1);
+    border: 12px solid transparent;
+    border-bottom: 12px solid dodgerblue;
+    border-radius: 6px;
+  }
+
+  20%, 80% {
+    width: 100px;
+    height: 100px;
+    left: 40px;
+    bottom: 86px;
+    transform: rotate(45deg) scale(1);
+    border: 12px solid transparent;
+    border-right: 12px solid dodgerblue;
+    border-bottom: 12px solid dodgerblue;
+    border-radius: 50%;
+  }
+
+  50% {
+    transform: rotate(45deg) scale(1.2);
+  }
+}
+
+.table .map .card.casttarget {
+  box-shadow: 0 0 0 8px #c2eeff, 0 0 0 18px dodgerblue;
+  /*filter: brightness(1.1);*/
+  /*animation: blinkbright 1s infinite;*/
+  background: #40c3f7;
+  opacity: 1;
+}
+
+@keyframes blinkbright {
+  0%, 100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+.map .casttarget:after, .map .casttarget:before {
+  z-index: 11;
+  position: absolute;
+  content: "";
+  display: block;
+}
+
+.map .casttarget:before {
+  width: 50px;
+  height: 50px;
+  border: 20px solid transparent;
+  border-right: 12px solid dodgerblue;
+  border-bottom: 12px solid dodgerblue;
+  background: transparent;
+  left: 60px;
+  top: 50px;
+  transform: rotate(45deg) scale(1);
+}
+
+.map .casttarget:hover:before {
+  animation: scalecastbefore 1.5s infinite;
+}
+
+@keyframes scalecastbefore {
+  0%, 20%, 80%, 100% {
+    transform: rotate(45deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-25px) rotate(45deg) scale(1.5);
+  }
+}
+
+.map .casttarget:after, .map .card.casttarget:hover:after {
+  width: 150px;
+  height: 50px;
+  border: 0px solid transparent;
+  border-top: 12px solid dodgerblue;
+  background: transparent;
+  left: 30px;
+  bottom: 30px;
+  transform: rotate(0deg) scale(1);
+  transition: all 0.5s;
+  border-radius: 6px;
+  top: initial;
+  animation: none;
+  box-shadow: none;
+}
+
+.map .card.casttarget:hover:after {
+  animation: scalecastafter 1.5s infinite;
+}
+
+@keyframes scalecastafter {
+  0%, 100% {
+    width: 150px;
+    bottom: 30px;
+    left: 30px;
+    transform: rotate(0deg) scale(1);
+    border-radius: 3px;
+  }
+
+  20%, 80% {
+    width: 50px;
+    bottom: 70px;
+    left: 60px;
+    border: 20px solid transparent;
+    border-top: 12px solid dodgerblue;
+    border-left: 12px solid dodgerblue;
+    transform: rotate(45deg) scale(1);
+    border-radius: 0;
+  }
+
+  50% {
+    transform: translateY(25px) rotate(45deg) scale(1.5);
+  }
+}
+
+/*STROKES*/
+.map .spot.stroke.playerattack.top {
+  border-top: 6px solid gold;
+}
+
+.map .spot.stroke.playerattack.bottom {
+  border-bottom: 6px solid gold;
+}
+
+.map .spot.stroke.playerattack.left {
+  border-left: 6px solid gold;
+}
+
+.map .spot.stroke.playerattack.right {
+  border-right: 6px solid gold;
+}
+
+.map .spot.stroke.enemyattack.top {
+  border-top: 6px solid orangered;
+}
+
+.map .spot.stroke.enemyattack.bottom {
+  border-bottom: 6px solid orangered;
+}
+
+.map .spot.stroke.enemyattack.left {
+  border-left: 6px solid orangered;
+}
+
+.map .spot.stroke.enemyattack.right {
+  border-right: 6px solid orangered;
+}
+
+.map .spot.stroke.skillhoverstroke.top {
+  border-top: 6px solid springgreen;
+}
+
+.map .spot.stroke.skillhoverstroke.bottom {
+  border-bottom: 6px solid springgreen;
+}
+
+.map .spot.stroke.skillhoverstroke.left {
+  border-left: 6px solid springgreen;
+}
+
+.map .spot.stroke.skillhoverstroke.right {
+  border-right: 6px solid springgreen;
+}
+
+.map .spot.stroke.skillstroke.top {
+  border-top: 6px solid dodgerblue;
+}
+
+.map .spot.stroke.skillstroke.bottom {
+  border-bottom: 6px solid dodgerblue;
+}
+
+.map .spot.stroke.skillstroke.left {
+  border-left: 6px solid dodgerblue;
+}
+
+.map .spot.stroke.skillstroke.right {
+  border-right: 6px solid dodgerblue;
+}
+
+.map .toparrow:before, .map .bottomarrow:before, .map .leftarrow:before, .map .rightarrow:before {
+  display: none;
+  transition: all 0.4s;
+}
+
+.map .toparrow:after, .map .bottomarrow:after, .map .leftarrow:after, .map .rightarrow:after {
+  content: "";
+  transition: all 0.4s;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 20px solid transparent;
+  border-right: 12px solid springgreen;
+  border-bottom: 12px solid springgreen;
+  background: transparent;
+  left: 60px;
+  top: 50px;
+}
+
+.player .map .enemy.toparrow:after, .player .map .enemy.bottomarrow:after, .player .map .enemy.leftarrow:after, .player .map .enemy.rightarrow:after, .enemy .map .player.toparrow:after, .enemy .map .player.bottomarrow:after, .enemy .map .player.leftarrow:after, .enemy .map .player.rightarrow:after {
+  border-right: 12px solid #ff1f0a;
+  border-bottom: 12px solid #ff1f0a;
+}
+
+.map .toparrow:after {
+  transform: translateY(70px) rotate(-135deg) scale(0.6);
+}
+
+.map .bottomarrow:after {
+  transform: translateY(50px) rotate(45deg) scale(0.6);
+}
+
+.map .leftarrow:after {
+  transform: translate(10px, 60px) rotate(135deg) scale(0.6);
+}
+
+.map .rightarrow:after {
+  transform: translate(-10px, 60px) rotate(-45deg) scale(0.6);
+}
+
+.player .map .player.toparrow:after, .enemy .map .enemy.toparrow:after {
+  transform: translateY(70px) rotate(-135deg) scale(1);
+}
+
+.player .map .player.bottomarrow:after, .enemy .map .enemy.bottomarrow:after {
+  transform: translateY(40px) rotate(45deg) scale(1);
+}
+
+.player .map .player.leftarrow:after, .enemy .map .enemy.leftarrow:after {
+  transform: translate(20px, 60px) rotate(135deg) scale(1);
+}
+
+.player .map .player.rightarrow:after, .enemy .map .enemy.rightarrow:after {
+  transform: translate(-20px, 60px) rotate(-45deg) scale(1);
+}
+
+.player .map .enemy.toparrow:after, .enemy .map .player.toparrow:after {
+  transform: translateY(70px) rotate(-135deg) scale(1);
+}
+
+.player .map .enemy.bottomarrow:after, .enemy .map .player.bottomarrow:after {
+  transform: translateY(40px) rotate(45deg) scale(1);
+}
+
+.player .map .enemy.leftarrow:after, .enemy .map .player.leftarrow:after {
+  transform: translate(20px, 60px) rotate(135deg) scale(1);
+}
+
+.player .map .enemy.rightarrow:after, .enemy .map .player.rightarrow:after {
+  transform: translate(-20px, 60px) rotate(-45deg) scale(1);
+}
+
+.map .casttarget.toparrow:hover:after, .map .casttarget.bottomarrow:hover:after, .map .casttarget.leftarrow:hover:after, .map .casttarget.rightarrow:hover:after {
+  animation: scalecastafter 1.5s infinite;
+}
+
+.map .casttarget.toparrow:hover:before, .map .casttarget.bottomarrow:hover:before, .map .casttarget.leftarrow:hover:before, .map .casttarget.rightarrow:hover:before {
+  display: block;
+  animation: scalecastbefore 1.5s infinite;
+}
+
+.map .targetarea.toparrow:hover:after, .map .targetarea.bottomarrow:hover:after, .map .targetarea.leftarrow:hover:after, .map .targetarea.rightarrow:hover:after {
+  animation: scalespotbefore 1.5s infinite;
+}
+
+.map .targetarea.toparrow:hover:before, .map .targetarea.bottomarrow:hover:before, .map .targetarea.leftarrow:hover:before, .map .targetarea.rightarrow:hover:before {
+  display: block;
+  top: auto;
+  animation: scalespotafter 1.5s infinite;
+}

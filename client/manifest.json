@@ -1,0 +1,32 @@
+{
+  "name": "Fight Over Dat Ancient",
+  "version": "0.5.48",
+  "short_name": "FODA",
+  "start_url": "index.html",
+  "background_color": "#22272c",
+  "display": "standalone",
+  "prefer_related_applications": true,
+  "related_applications": [{
+    "platform": "play",
+    "id": "fodaapp.herokuapp.com.foda"
+  }],
+  "display": "fullscreen",
+  "description": "Free and open source card game based on Defense of the Ancients",
+  "icons": [{
+    "src": "https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/favicon.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  },{
+    "src": "https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rune.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  },{
+    "src": "https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rune192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },{
+    "src": "https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rune512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

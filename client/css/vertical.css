@@ -1,0 +1,253 @@
+@media all and (orientation:portrait) {
+  .game-container.default {
+    transform: translate3d(-50%, -50%, 0) scale(0.5) !important;
+  }
+  .game-container, 
+  .states, .state {
+    width: 600px;
+    height: 970px;
+  }
+  .state.log .parallax {
+    transform: translate(-185px, 188px) scale(1.62);
+  }
+  .state.log .logpara.title {
+    height: 340px;
+    transform: scale(0.7) translateY(-30px);
+  }
+  .state.log .logpara.towers {
+    top: -50px; 
+    left: 10px;
+    height: 300px;
+    transform: scale(0.5) translateZ(20px);
+  }
+  .state.log .box {
+    transform: translate3d(-50%, -105%, 0px) scale(0.9);
+  }
+  .state.log .logpara.front {
+    top: 180px;
+    transform: scale(0.4) translateZ(60px);
+  }
+  .menu {
+    top: 96px;
+    left: -300px;
+    width: 970px;
+    transform: scale(1.2);
+  }
+  .menu .parallax {
+    height: 970px;
+  }
+  .menu .parallax .mountains {
+    top: 140px;
+    left: 350px;
+  }
+  .menu .parallax .ground:before {
+    display: block;
+    content: "";
+    width: 120px;
+    height: 280px;
+    position: absolute;
+    right: 150px;
+    top: -185px;
+    background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/menu/ground.png");
+    background-position: 26% 13%;
+    background-size: 1400%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: optimizeSpeed;
+  }
+  .menu .parallax .ground,
+  .menu .parallax .amdoll,
+  .menu .parallax .cmdoll {
+    top: 220px;
+  }
+  .menu .icons {
+    position: relative;
+    top: 220px;
+  }
+  .menu .bush {
+    top: 200px;
+    left: 200px;
+  }
+  .menu .fire {
+    transform: scale(2.5);
+    top: 35px;
+    left: 734px;
+  }
+  .menu .rank {
+    transform: translate3d(700px, 135px, 10px) scale(1.2)
+  }
+  .menu .rank:hover {
+    transform: translate3d(602px, 34px, 10px) scale(2.8)
+  }
+  .campaign .campaign-map {
+    transform: translate(-50%, -50%) scale(0.94) translate(-20px, -22px);
+  }
+  .campaign .campaign-box {
+    top: 562px;
+    left: 25px;
+    width: 550px;
+    height: 300px;
+    text-align: right;
+  }
+  .campaign .campaign-img {
+    width: 240px;
+    float: left;
+    margin-right: 20px;
+  }
+  .campaign .campaign-heroes {
+    position: absolute;
+    bottom: 0;
+    width: 535px;
+  }
+  .campaign .buttonbox,
+  .choose .buttonbox {
+    width: 570px;
+    right: 0;
+  }
+  .campaign .buttonbox .button,
+  .choose .buttonbox .button {
+    width: 240px;
+    margin: 0 5px;
+    display: inline-block;
+  }
+  .tutorial .choose .buttonbox .button {
+    width: 280px;
+  }
+  .choose .pickedbox, .left-side .choose .pickedbox {
+    bottom: 175px;
+    left: 10px;
+    width: 577px;
+    bottom: 368px;
+  }
+  .library.game-container .state.choose .pickedbox {
+    width: 577px;
+  }
+  .choose .pickedbox p {
+    overflow: hidden;
+    height: 25px;
+  }
+  .s3v3 .choose .pickedbox {
+    width: 355px;
+  }
+  .s1v1 .choose .pickedbox {
+    width: 125px;
+  }
+  .choose .pickedbox .slot{
+    transform: scale(0.9);
+    margin-right: -10px;
+  }
+  .choose .buttonbox {
+    top: 800px;
+  }
+  .choose .pickbox {
+    top: 5px;
+  }
+  .tutorial.axe.up {
+    bottom: 0;
+    right: -130px;
+  }
+  .topbar .message {
+    width: 200px;
+  }
+  .topbar .turns {
+    right: 260px;
+  }
+  .topbar .time {
+    left: 400px;
+  }
+  .topbar .logout {
+    right: 84px;
+  }
+  .table .camera {
+    left: -60px;
+  }
+  .table .map {
+    transform: translate(-49.7%,-50.3%) rotateX(30deg) scale3d(0.18,0.18,0.18);
+  }
+  .table .map.flat {
+    transform: translate(-50%,-50%) scale3d(0.21,0.175,0.2);
+  }
+  .s1v1 .table .map.flat {
+    transform: translate(-50%,-50%) scale3d(0.3,0.23,0.2);
+  }
+  .s3v3 .table .map.flat {
+    transform: translate(-50%,-50%) scale3d(0.25,0.2,0.2)
+  }
+  .table .playerdecks, 
+  .local .table.turn .playerdecks {
+    bottom: 350px;
+    width: 600px;
+  }
+  .table .buttonbox {
+    right: 260px;
+    width: 325px;
+    bottom: 5px;
+  }
+  .table .buttonbox .button {
+    margin-bottom: 10px;
+    height: 56px;
+    line-height: 56px;
+  }
+  .table .deck .card {
+    margin-right: -100px;
+  }
+  .left-side .table .buttonbox {
+    left: 260px;
+  }
+  .table .selectedarea {
+    top: 660px;
+  }
+  .table .selectedarea .selectedcard.flip .card.zoom {
+    transform: translate(-78px, -768px) scale(3);
+    z-index: 32;
+  }
+  .table .player .skills.sidehand {
+    width: 240px;
+    left: 0;
+  }
+  .table .player .skills.hand {
+    left: 280px;
+    width: 270px;
+  }
+  .table .turntitle {
+    width: 600px;
+  }
+  .vs .versus {
+    transform: translateY(140px) translateZ(20px);
+    left: 170px;
+    font-size: 90px;
+  }
+  .vs .vsplayer, .vs .vsenemy { 
+    width: 530px;
+  }
+  .vs .vsplayer {
+    transform: translate(20px, 620px) rotateY(6deg) rotateZ(2.7deg);
+  }
+  .vs .vsenemy {
+    transform: translate(-10px,100px) rotateY(-6deg) rotateZ(2.7deg);
+  }
+  .vs .card {
+    margin-right: -108px;
+  }
+  .result .parallax .card:nth-child(1){
+    transform: translate3d(407px, -44px, -69px)
+               rotateY(-35deg) rotateZ(34deg) rotateX(-20deg)
+  }
+  .result .parallax .card:nth-child(2) {
+    transform: translate3d(470px, 90px, -184px)
+               rotateY(-54deg) rotateZ(35deg) rotateX(-5deg)
+  }
+  .result .parallax .card:nth-child(4) {
+    transform: translate(-170px, 130px,-290px)
+               rotateY(70deg) rotateZ(-35deg) rotateX(5deg);
+  }
+  .result .resultsbox {
+    transform: translate(-50%, -25%);
+  }
+  .game-overlay .box {
+    padding: 36px 36px;
+  }
+  .button {
+    padding: 16px 12px;
+  }
+}

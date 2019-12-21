@@ -1,0 +1,236 @@
+.choose .counter {
+  width: 100%;
+  margin: 0;
+  padding: 4px 0 0;
+  clear: both;
+}
+
+.choose .pickbox {
+  width: 970px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  padding: 0;
+  text-align: center;
+  z-index: 20;
+  pointer-events: none;
+}
+.choose .pickbox:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 970px;
+  height: 340px;
+  top: 28px;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
+.choose .pickbox .deck {
+  position: relative;
+  margin-left: -280px;
+  margin-top: 48px;
+  height: 340px;
+  transform: translateZ(0);
+  pointer-events: all;
+}
+
+.choose .pickedbox {
+  height: 210px;
+  position: absolute;
+  bottom: 5px;
+  left: 25px;
+  padding: 5px 3px;
+  text-align: center;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.6);
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+  z-index: 25;
+}
+
+.choose .pickedbox.trans {
+  background: transparent;
+}
+.left-side .choose .pickedbox {
+  left: auto;
+  right: 26px;
+}
+.choose .pickedbox .skills:hover {
+  transform: translate3d(-84px, -200px, 1px) scale(1.1);
+}
+.choose .pickedbox .slot:first-child .skills:hover {
+  transform: translate3d(-60px, -200px, 1px) scale(1.1);
+}
+.choose .pickedbox .slot:nth-child(4) .skills:hover {
+  transform: translate3d(-124px, -200px, 1px) scale(1.1);
+}
+.choose .pickedbox .slot:first-child .skills.zoom {
+  transform: translate3d(30px, -336px, 0) scale(2);
+}
+.choose .pickedbox .slot:nth-child(2) .skills.zoom {
+  transform: translate3d(30px, -336px, 0) scale(2);
+}
+.choose .pickedbox .slot:nth-child(3) .skills.zoom {
+  transform: translate3d(-60px, -336px, 0) scale(2);
+}
+.choose .pickedbox .slot:nth-child(4) .skills.zoom {
+  transform: translate3d(-216px, -336px, 0) scale(2);
+}
+
+.choose .slot {
+  position: relative;
+  border-radius: 4px;
+  float: left;
+  width: 120px;
+  height: 180px;
+  margin: 0 3px;
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.library .libhide {
+  display: none !important;
+}
+.s1v1 .slot:nth-child(2),
+.s1v1 .slot:nth-child(3),
+.s1v1 .slot:nth-child(4),
+.s1v1 .slot:nth-child(5),
+.s3v3 .slot:nth-child(4),
+.s3v3 .slot:nth-child(5) {
+  display: none;
+}
+.library.s1v1 .slot:nth-child(2),
+.library.s1v1 .slot:nth-child(3),
+.library.s1v1 .slot:nth-child(4),
+.library.s1v1 .slot:nth-child(5),
+.library.s3v3 .slot:nth-child(4),
+.library.s3v3 .slot:nth-child(5) {
+  display: block;
+}
+
+.s1v1 .pickedbox {
+  width: 125px;
+  margin-left: 250px;
+}
+.s3v3 .pickedbox {
+  margin-left: 120px;
+}
+
+.library.s1v1 .pickedbox {
+  width: auto;
+  margin-left: 0px;
+}
+.library.s3v3 .pickedbox {
+  margin-left: 0px;
+}
+
+.library .choose .slot {
+  width: 140px;
+  height: 210px;
+  margin: 0 9px;
+}
+
+.choose .slot:hover, .choose .slot.drop {
+  background: rgba(255,255,255,0.1);
+}
+
+.choose .video {
+  z-index: 30;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 760px;
+  height: 340px;
+  border: 14px solid #000;
+  border-width: 14px 105px;
+  pointer-events: all;
+}
+
+.choose .buttonbox {
+  position: absolute;
+  right: 0;
+  top: 376px;
+  width: 285px;
+  padding: 4px 8px;
+}
+
+.left-side .choose .buttonbox {
+  left: 12px;
+  right: auto;
+}
+
+.choose .buttonbox .button.playing {
+  background: #b7a986
+}
+
+
+.pickbox .card {
+  pointer-events: all;
+  margin: 0px -62px;
+  top: 0;
+  left: 50%;
+  transform: translate3d(-100px, 0, 0) translateZ(0) scale(0.35);
+  transition: all 0.18s;
+}
+
+.pickbox .card.selected {
+  margin: 0px 16px;
+  transform: translate3d(-100px, 0, 0) scale(1.1);
+}
+
+.pickbox .card.selected.zoom {
+  transform: translate3d(-100px, 102px, 0px) scale(2);
+}
+
+
+.pickbox .card.half {
+  transform: translate3d(-50%, 0, 0) scale(0.5);
+  margin: 0px -50px;
+}
+.pickedbox .card {
+  animation: pickedboxslidedown 0.5s;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-100px, -150px, 0) scale(0.6);
+}
+
+.library .pickedbox .card {
+  transform: translate3d(-100px, -150px, 0) scale(0.7);
+}
+
+.library .pickedbox.trans .card {
+  pointer-events: none;
+}
+.library .pickedbox.trans .card.zoom {
+  pointer-events: all;
+}
+
+@keyframes pickedboxslidedown {
+  0% {
+    top: 36%;
+  }
+
+  100% {
+    top: 50%;
+  }
+}
+
+.pickedbox .card.heroes h1, .pickedbox .card.heroes .current, .pickedbox .card.heroes .desc, .pickedbox .card.heroes .buff {
+  opacity: 0;
+}
+.pickedbox .card.heroes fieldset {
+  padding: 0;
+  background: transparent;
+}
+.pickedbox .card.heroes .portrait .img, .pickedbox .card.heroes .portrait .overlay {
+  height: 265px;
+}
+.choose .transparent.card {
+  pointer-events: none;
+}

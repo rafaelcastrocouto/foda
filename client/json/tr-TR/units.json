@@ -1,0 +1,38 @@
+{
+  "creeps":{
+    "melee": {
+      "name": "Temel Birim",
+      "attribute": "Birimler"
+    },
+    "ranged": {
+      "name": "Yardımcı Birim",
+      "attribute": "Birimler"
+    },
+    "catapult": {
+      "name": "Mancınık",
+      "attribute": "Birimler"
+    }
+  },
+  "forest":{
+    "cent": {
+      "name": "Centaur",
+      "attribute": "Orman Birimi",
+      "description": "Radiant yeteneği ile alan hasarı ve çarpıcı Centaur"
+     },
+    "golem": {
+      "name": "Taş",
+      "attribute": "Orman Birimi",
+      "description": "Taş, bir hedefi şok ederek"
+    },
+    "tomato": {
+      "name": "Domates",
+      "attribute": "Orman Birimi",
+      "description": "Alana radyal hasar kabiliyetine sahip Domates"
+    },
+    "satyr": {
+      "name": "Satyr",
+      "attribute": "Orman Birimi",
+      "description": "Doğrusal beceri ve alan hasarlı Satyr"
+    }
+  }
+}

@@ -1,0 +1,1179 @@
+{
+  "heroes": {
+    "axe": {
+      "range": 2,
+      "hp": 62,
+      "mana": 2,
+      "damage": 13,
+      "armor": 3,
+      "resistance": 3,
+      "intro": "xfVZwDuGLFo"
+    },
+
+    "terror": {
+      "range": 2,
+      "hp": 50,
+      "mana": 2,
+      "damage": 14,
+      "armor": 2,
+      "resistance": 2,
+      "intro": "JjXOSEO-uMo"
+    },
+
+    "ld": {
+      "range": 4,
+      "hp": 50,
+      "mana": 2,
+      "damage": 15,
+      "armor": 3,
+      "resistance": 2
+    },
+
+    "pud": {
+      "range": 2,
+      "hp": 65,
+      "mana": 2,
+      "damage": 14,
+      "armor": 3,
+      "resistance": 2,
+      "intro": "hExBCxjiKsI"
+    },
+
+    "cat": {
+      "range": 5,
+      "hp": 40,
+      "mana": 3,
+      "damage": 13,
+      "armor": 3,
+      "resistance": 2,
+      "intro": "yfRNap5uLtY"
+    },
+
+    "wk": {
+      "range": 2,
+      "hp": 60,
+      "mana": 3,
+      "damage": 14,
+      "armor": 3,
+      "resistance": 3,
+      "intro": "5ADvXskfDCY"
+    },
+
+    "lina": {
+      "range": 5,
+      "hp": 40,
+      "mana": 4,
+      "damage": 12,
+      "armor": 2,
+      "resistance": 2,
+      "intro": "4T1xGekt7_g"
+    },
+
+    "cm": {
+      "range": 5,
+      "hp": 40,
+      "mana": 4,
+      "damage": 12,
+      "armor": 2,
+      "resistance": 2,
+      "intro": "um5z4d9SFkI"
+    },
+
+    "kotl": {
+      "range": 5,
+      "hp": 40,
+      "mana": 4,
+      "damage": 13,
+      "armor": 2,
+      "resistance": 2
+    },
+
+    "am": {
+      "range": 2,
+      "hp": 40,
+      "mana": 3,
+      "damage": 13,
+      "armor": 3,
+      "resistance": 4,
+      "intro": "hIySV3k0cqo"
+    },
+
+    "nyx": {
+      "range": 2,
+      "hp": 50,
+      "mana": 3,
+      "damage": 12,
+      "armor": 3,
+      "resistance": 2,
+      "intro": "y-BzkZm88H8"
+    },
+
+    "com": {
+      "range": 2,
+      "hp": 50,
+      "mana": 2,
+      "damage": 14,
+      "armor": 3,
+      "resistance": 3,
+      "intro": "I68-_02Rhrs"
+    },
+
+    "wind": {
+      "range": 5,
+      "hp": 40,
+      "mana": 4,
+      "damage": 13,
+      "armor": 2,
+      "resistance": 2,
+      "intro": "YNPW1jAp5V8"
+    },
+
+    "venge": {
+      "range": 4,
+      "hp": 42,
+      "mana": 2,
+      "damage": 13,
+      "armor": 3,
+      "resistance": 2,
+      "intro": "sJa_aFYc8mg"
+    },
+
+    "en": {
+      "range": 5,
+      "hp": 40,
+      "mana": 3,
+      "damage": 12,
+      "armor": 2,
+      "resistance": 2,
+      "intro": "M8hsXEtsM0M"
+    }
+  },
+
+  "skills": {
+    "axe": {
+      "taunt": {
+        "cards": 2,
+        "aoe range": 2,
+        "buffsdata": {
+          "taunt": {
+            "self": {
+              "armor bonus": 6,
+              "duration": 2
+            },
+            "targets": {
+              "duration": 2
+            }
+          }
+        }
+      },
+      "enrage": {
+        "cast range": 5,
+        "cards": 1,
+        "buffdata": {
+          "duration": 3,
+          "dot": 5
+        }
+      },
+      "counter": {
+        "aoe range": 2,
+        "cards": 1,
+        "damage": 8,
+        "buffdata": {
+          "aoe range": 2,
+          "chance": 25
+        }
+      },
+      "ult": {
+        "attack cast range": true,
+        "fixed range": true,
+        "cast range": 2,
+        "cards": 1,
+        "damage": 18
+      }
+    },
+
+    "terror": {
+      "summon": {
+        "cards": 1,
+        "cast range": 2
+      },
+      "mirror": {
+        "cards": 1,
+        "cast range": 4,
+        "aoe range": 4
+      },
+      "morph": {
+        "cards": 1,
+        "buffdata": {
+          "range bonus": 3,
+          "damage bonus": 4,
+          "duration": 5
+        }
+      },
+      "ult": {
+        "cast range": 2,
+        "cards": 1
+      }
+    },
+
+    "com": {
+      "aoe": {
+        "cast range": 5,
+        "aoe range": 1,
+        "cards": 1,
+        "damage": 5,
+        "damage per unit": 1,
+        "damage per hero": 3
+      },
+      "heal": {
+        "cast range": 5,
+        "cycloned": true,
+        "cards": 1,
+        "buffdata": {
+          "duration": 3,
+          "heal": 8,
+          "damage bonus": 6
+        }
+      },
+      "counter": {
+        "cards": 1,
+        "buffdata": {
+          "chance": 25,
+          "lifesteal": 75
+        }
+      },
+      "ult": {
+        "attack cast range": true,
+        "fixed range": true,
+        "cast range": 2,
+        "cards": 1,
+        "attacks": 3,
+        "damage bonus": 3
+      }
+    },
+
+    "wind": {
+      "stun": {
+        "fixed range": true,
+        "cast range": 3,
+        "stun": 4,
+        "cards": 1
+      },
+      "arrow": {
+        "cast range": 4,
+        "cast width": 0,
+        "aoe range": 4,
+        "aoe width": 0,
+        "damage": 16,
+        "damage reduction": 2,
+        "cards": 1
+      },
+      "run": {
+        "cards": 1,
+        "buffdata": {
+          "duration": 3,
+          "miss": 100,
+          "speed bonus": 1
+        }
+      },
+      "ult": {
+        "attack cast range": true,
+        "fixed range": true,
+        "cast range": 5,
+        "cards": 1,
+        "attacks": 4,
+        "damage reduction": 3
+      }
+    },
+
+    "cat": {
+      "star": {
+        "cast range": 5,
+        "damage": 10,
+        "cards": 1
+      },
+      "arrow": {
+        "cast range": 4,
+        "cast width": 0,
+        "aoe range": 4,
+        "aoe width": 0,
+        "damage": 10,
+        "distance damage bonus": 2,
+        "stun": 1,
+        "distance stun bonus": 1,
+        "cards": 1
+      },
+      "leap": {
+        "cast range": 5,
+        "cards": 2,
+        "buffdata": {
+          "duration": 3,
+          "speed bonus": 1
+        }
+      },
+      "ult": {
+        "cards": 1,
+        "buffdata": {
+          "duration": 2
+        }
+      }
+    },
+
+    "lina": {
+      "fire": {
+        "fixed cast range": true,
+        "cast range": 1,
+        "cast width": 0,
+        "aoe range": 4,
+        "aoe width": 1,
+        "damage": 12,
+        "cards": 1
+      },
+      "stun": {
+        "cast range": 5,
+        "aoe range": 1,
+        "damage": 10,
+        "stun": 2,
+        "cards": 1
+      },
+      "passive": {
+        "cards": 1,
+        "buffdata": {
+          "cast damage bonus": 4
+        }
+      },
+      "ult": {
+        "cast range": 4,
+        "cards": 1,
+        "damage": 30
+      }
+    },
+
+    "am": {
+      "burn": {
+        "cards": 1
+      },
+      "blink": {
+        "cast range": 5,
+        "cards": 2
+      },
+      "mirror": {
+        "cards": 2,
+        "buffsdata": {
+          "mirror": {
+            "counter": {
+              "duration": 2
+            },
+            "passive": {
+              "resistance bonus": 4
+            }
+          }
+        }
+      },
+      "ult": {
+        "cast range": 3,
+        "aoe range": 2,
+        "damage": 16,
+        "cards": 1
+      }
+    },
+
+    "cm": {
+      "slow": {
+        "cast range": 4,
+        "aoe range": 2,
+        "damage": 8,
+        "cards": 2,
+        "buffdata": {
+          "speed slow": 1,
+          "duration": 2,
+          "purgeable": true
+        }
+      },
+      "passive": {
+        "cards": 1,
+        "buffdata": {
+          "cards per turn": 1
+        }
+      },
+      "freeze": {
+        "cast range": 5,
+        "cards": 1,
+        "buffdata": {
+          "duration": 3,
+          "dot": 8,
+          "purgeable": true
+        }
+      },
+      "ult": {
+        "channel": 2,
+        "aoe range": 5,
+        "stroke range": 5,
+        "damage": 12,
+        "cards": 1,
+        "vertical": true,
+        "buffsdata": {
+          "ult": {
+            "source": {
+              "duration": 2
+            },
+            "targets": {
+              "duration": 2,
+              "speed slow": 1,
+              "purgeable": true
+            }
+          }
+        }
+      }
+    },
+
+    "kotl": {
+      "illuminate": {
+        "channel": 3,
+        "fixed cast range": true,
+        "cast range": 1,
+        "cast width": 0,
+        "aoe width": 1,
+        "aoe range": 5,
+        "damage": 4,
+        "cards": 1,
+        "buffsdata": {
+          "illuminate": {
+            "channel": {
+              "duration": 3
+            }
+          }
+        }
+      },
+      "blind": {
+        "damage": 8,
+        "aoe range": 1,
+        "cast range": 4,
+        "fixed range": true,
+        "highlight": "out",
+        "cards": 1,
+        "buffdata": {
+          "duration": 2,
+          "miss": 70,
+          "purgeable": true
+        }
+      },
+      "mana": {
+        "cards": 1,
+        "bonus cards": 3
+      },
+      "ult": {
+        "cards": 1,
+        "aoe range": 3,
+        "cast range": 5,
+        "buffdata": {
+          "duration": 3,
+          "purgeable": true
+        }
+      }
+    },
+
+    "ld": {
+      "bear": {
+        "cards": 1,
+        "cast range": 2,
+        "hp": 58,
+        "range": 2,
+        "damage": 8,
+        "armor": 3,
+        "resistance": 3,
+        "death damage": 12,
+        "bounty": 300,
+        "buffsdata": {
+          "defender": {
+            "source": {
+              "damage transfer": 3
+            }
+          },
+          "demolish": {
+            "source": {
+              "tower bonus": 6
+            }
+          },
+          "entangle": {
+            "source": {
+             "chance": 20
+            },
+            "target": {
+              "dot": 6,
+              "duration": 2,
+              "purgeable": true
+             }
+          }
+        }
+      },
+      "bearreturn": {
+        "summon available": true,
+        "cast range": 2,
+        "cards": 1
+      },
+      "link": {
+        "cards": 1,
+        "buffdata": {
+          "duration": 3,
+          "damage bonus": 3,
+          "lifesteal": 50
+        }
+      },
+      "roar": {
+        "damage": 6,
+        "range": 2,
+        "aoe range": 2,
+        "stroke range": 2,
+        "fixed range": true,
+        "highlight": "top",
+        "cards": 1
+      },
+      "ult": {
+        "cards": 1,
+        "buffdata": {
+          "hp bonus": 9,
+          "armor bonus": 2
+        }
+      },
+      "cry": {
+        "cards": 1,
+        "buffdata": {
+          "duration": 3,
+          "armor bonus": 2,
+          "damage bonus": 5
+        }
+      }
+    },
+
+    "nyx": {
+      "stun": {
+        "aoe width": 0,
+        "aoe range": 4,
+        "cast width": 0,
+        "cast range": 1,
+        "cards": 1,
+        "damage": 12,
+        "stun": 2
+      },
+      "burn": {
+        "cast range": 5,
+        "multiplier": 5,
+        "cards": 1
+      },
+      "spike": {
+        "cards": 1,
+        "stun": 3,
+        "buffdata": {
+          "duration": 2,
+          "armor bonus": 10,
+          "resistance bonus": 10
+        }
+      },
+      "ult": {
+        "duration": 8,
+        "cards": 1,
+        "buffdata": {
+          "duration": 6,
+          "speed bonus": 1,
+          "damage bonus": 18
+        }
+      }
+    },
+
+    "pud": {
+      "hook": {
+        "cast range": 4,
+        "cast width": 0,
+        "aoe range": 4,
+        "aoe width": 0,
+        "damage": 14,
+        "highlight": "in",
+        "cards": 1
+      },
+      "rot": {
+        "aoe range": 2,
+        "stroke range": 2,
+        "damage": 6,
+        "cards": 1,
+        "buffsdata": {
+          "rot": {
+            "targets": {
+              "speed slow": 1,
+              "duration": 1,
+              "purgeable": true
+            }
+          }
+        }
+      },
+      "passive": {
+        "cards": 1,
+        "buffdata": {
+          "hp per kill": 4,
+          "damage per kill": 3,
+          "resistance bonus": 2
+        }
+      },
+      "ult": {
+        "channel": 2,
+        "cast range": 2,
+        "fixed range": true,
+        "dot": 10,
+        "cards": 1,
+        "buffsdata": {
+          "ult": { 
+            "source": {
+              "duration": 2,
+              "unpurgeable": true
+            },
+            "target": {
+              "duration": 2,
+              "unpurgeable": true
+            }
+          }
+        }
+      }
+    },
+
+    "wk": {
+      "stun": {
+        "cast range": 4,
+        "damage": 12,
+        "stun": 2,
+        "cards": 1,
+        "buffdata": {
+          "speed slow": 1,
+          "duration": 2,
+          "dot": 6,
+          "purgeable": true
+        }
+      },
+      "aura": {
+        "cards": 1,
+        "buffdata": {
+          "lifesteal": 30
+        }
+      },
+      "crit": {
+        "cards": 1,
+        "buffdata": {
+          "chance": 15,
+          "multiplier": 3
+        }
+      },
+      "skeleton": {
+        "cards": 1,
+        "cast range": 2,
+        "hp": 28,
+        "range": 2,
+        "damage": 6,
+        "armor": 1,
+        "resistance": 1
+      },
+      "ult": {
+        "cards": 1,
+        "buffsdata": {
+          "ult": {
+            "source": {
+              "range": 2
+            },
+            "targets": {
+              "duration": 2,
+              "speed slow": 1,
+              "purgeable": true
+            }
+          }
+        }
+      }
+    },
+
+    "venge": {
+      "stun": {
+        "cast range": 4,
+        "damage": 14,
+        "stun": 2,
+        "cards": 1
+      },
+      "corruption": {
+        "cast range": 1,
+        "cast width": 0,
+        "aoe range": 5,
+        "aoe width": 0,
+        "damage": 6,
+        "cards": 2,
+        "buffdata": {
+          "duration": 3,
+          "armor reduction": 2,
+          "purgeable": true
+        }
+      },
+      "aura": {
+        "cards": 1,
+        "buffdata": {
+          "damage bonus": 2
+        }
+      },
+       "ult":{
+        "cast range": 5,
+        "cards": 1
+       }
+     },
+
+    "en": {
+      "passive": {
+        "cards": 1,
+        "buffsdata": {
+          "passive": {
+            "attacker": {
+              "duration": 1,
+              "damage reduction": 4
+            }
+          }
+        }
+      },
+      "curse": {
+        "cast range": 5,
+        "cards": 1,
+        "buffdata": {
+          "duration": 2,
+          "speed slow": 1,
+          "purgeable": true
+        }
+      },
+      "heal": {
+        "cast range": 5,
+        "max targets": 4,
+        "cards": 1,
+        "buffdata": {
+          "heal": 6,
+          "duration": 4
+        }
+      },
+       "ult":{
+        "attack cast range": true,
+        "fixed range": true,
+        "cast range": 6,
+        "cards": 2
+       }
+     }
+  },
+
+
+  "units": {
+    "creeps":{
+      "melee": {
+        "range": 2,
+        "hp": 24,
+        "damage": 8,
+        "armor": 2,
+        "resistance": 1,
+        "bounty": 100
+      },
+      "ranged": {
+        "range": 5,
+        "hp": 20,
+        "damage": 7,
+        "armor": 1,
+        "mana": 4,
+        "resistance": 2,
+        "bounty": 120
+      },
+      "catapult": {
+        "range": 7,
+        "hp": 32,
+        "damage": 10,
+        "armor": 4,
+        "resistance": 6,
+        "bounty": 200
+      }
+    },
+    "forest":{
+      "cent": {
+        "range": 2,
+        "hp": 38,
+        "damage": 11,
+        "armor": 2,
+        "resistance": 2,
+        "bounty": 100
+       },
+      "golem": {
+        "range": 2,
+        "hp": 34,
+        "damage": 8,
+        "armor": 4,
+        "resistance": 3,
+        "bounty": 100
+      },
+      "tomato": {
+        "range": 2,
+        "hp": 36,
+        "damage": 10,
+        "armor": 3,
+        "resistance": 2,
+        "bounty": 100
+      },
+      "satyr": {
+        "range": 2,
+        "hp": 32,
+        "damage": 8,
+        "armor": 2,
+        "resistance": 3,
+        "bounty": 100
+      }
+    }
+  },
+
+  "items": {
+
+    "healing": {
+      "faerie": {
+        "heal": 12,
+        "price": 60
+      },
+      "tango": {
+        "price": 180,
+        "cards": 3,
+        "buffdata": {
+          "duration": 3,
+          "heal": 4
+        }
+      },
+      "vitality": {
+        "price": 250,
+        "buffdata": {
+          "hp bonus": 18
+        }
+      },
+      "meka": {
+        "heal": 16,
+        "price": 450
+      },
+      "heart": {
+        "price": 600,
+        "buffdata": {
+          "heal": 8
+        }
+      }
+    },
+
+    "mana": {
+      "clarity": {
+        "cards per turn": 1,
+        "price": 200,
+        "buffdata": {
+          "duration": 2
+        }
+      },
+      "soul": {
+        "damage": 14,
+        "skill cards": 2,
+        "price": 250
+      },
+      "void": {
+        "cards per turn": 1,
+        "price": 350
+      },
+      "diffusal": {
+        "price": 400
+      },
+      "refresher": {
+        "skill cards": 4,
+        "price": 450
+      }
+    },
+    "armor": {
+      "ring": {
+        "price": 50,
+        "buffdata": {
+          "armor bonus": 2
+        }
+      },
+      "buckler": {
+        "price": 200,
+        "buffdata": {
+          "armor bonus": 3,
+          "duration": 4
+        }
+      },
+      "medallion": {
+        "price": 300,
+        "buffdata": {
+          "armor bonus": 5,
+          "duration": 2
+        }
+      },
+      "talisman": {
+        "price": 350,
+        "buffdata": {
+          "miss": 25
+        }
+      },
+      "blademail": {
+        "price": 450,
+        "buffdata": {
+          "duration": 2
+        }
+      }
+    },
+
+    "attack": {
+      "quelling": {
+        "price": 50,
+        "buffdata": {
+          "unit damage bonus": 4
+        }
+      },
+      "broadsword": {
+        "price": 200,
+        "buffdata": {
+          "damage bonus": 4
+        }
+      },
+      "madness": {
+        "price": 300,
+        "buffdata": {
+          "damage bonus": 6,
+          "armor reduction": 2,
+          "resistance reduction": 2,
+          "duration": 4
+        }
+      },
+      "crystalys": {
+        "price": 350,
+        "buffdata": {
+          "chance": 25,
+          "multiplier": 2.5
+        }
+      },
+      "echo": {
+        "price": 500
+      }
+    },
+    "resistance": {
+      "cloak": {
+        "price": 100,
+        "buffdata": {
+          "resistance bonus": 2
+        }
+      },
+      "pipe": {
+        "price": 250,
+        "buffdata": {
+          "resistance bonus": 3,
+          "duration": 4
+        }
+      },
+      "linken": {
+        "price": 350,
+        "buffdata": {
+          "duration": 4
+        }
+      },
+      "lotus": {
+        "price": 400,
+        "buffdata": {
+          "duration": 4
+        }
+      },
+      "bkb": {
+        "price": 450,
+        "buffdata": {
+          "duration": 4
+        }
+      }
+    },
+    "arcane": {
+      "dust": {
+        "price": 100,
+        "aoe range": 4
+      },
+      "glimmer": {
+        "price": 200,
+        "buffdata": {
+          "duration": 4
+        }
+      },
+      "ethereal": {
+        "price": 200,
+        "buffdata": {
+          "resistance reduction": 3,
+          "duration": 2
+        }
+      },
+      "sheepstick": {
+        "turns": 3,
+        "price": 350,
+        "buffdata": {
+          "speed slow": 1,
+          "duration": 2
+        }
+      },
+      "kaya": {
+        "multiplier": 1.5,
+        "price": 500
+      }
+    },
+    "movement": {
+      "windlace": {
+        "price": 100,
+        "buffdata": {
+          "speed bonus": 1,
+          "duration": 2
+        }
+      },
+      "boots": {
+        "price": 150,
+        "buffdata": {
+          "speed bonus": 1
+        }
+      },
+      "drums": {
+        "price": 200,
+        "buffdata": {
+          "speed bonus": 1,
+          "duration": 4
+        }
+      },
+      "skadi": {
+        "speed reduction": 1,
+        "price": 300,
+        "buffsdata": {
+          "skadi": {
+            "target": {},
+            "attacked": {
+              "duration": 4,
+              "speed slow": 1
+            }
+          }
+        }
+      },
+      "phase": {
+        "price": 300,
+        "buffdata": {
+          "speed bonus": 1
+        }
+      }
+    },
+    "range": {
+      "tp": {
+        "channel": 2,
+        "price": 50,
+        "buff": {
+          "duration": 2
+        }
+      },
+      "rod": {
+        "price": 200,
+        "buffdata": {
+          "duration": 2
+        }
+      },
+      "blinkdagger": {
+        "cast select": true,
+        "cast range": 5,
+        "stroke range": 5,
+        "price": 250
+      },
+      "lens": {
+        "price": 300,
+        "buffdata": {
+          "skill range bonus": 1
+        }
+      },
+      "dragon": {
+        "price": 350,
+        "buffdata": {
+          "attack range bonus": 1
+        }
+      }
+    },
+    "relic": {
+      "eul": {
+        "price": 150,
+        "buffdata": {
+          "damage": 4,
+          "duration": 3
+        }
+      },
+      "morbid": {
+        "price": 200,
+        "buffdata": {
+          "lifesteal": 20
+        }
+      },
+      "halberd": {
+        "price": 300,
+        "buffdata": {
+          "duration": 2
+        }
+      },
+      "shivas": {
+        "damage": 12,
+        "aoe range": 5,
+        "price": 450,
+        "cast": true,
+        "buffdata": {
+          "speed slow": 1,
+          "duration": 2
+        }
+      },
+      "meteor": {
+        "cast select": true,
+        "stroke range": 5,
+        "aoe range": 2,
+        "selected cast range": 5,
+        "channel": 1,
+        "price": 650,
+        "damage": 10,
+        "stun": 2,
+        "buffdata": {
+          "dot": 5,
+          "duration": 2
+        }
+      }
+    },
+    "armaments": {
+      "vennon": {
+        "price": 150,
+        "buffsdata": {
+          "vennon": {
+            "target": {},
+            "attacked": {
+              "dot": 3,
+              "duration": 2
+            }
+          }
+        }
+      },
+      "desolator": {
+        "price": 300,
+        "buffsdata": {
+          "desolator": {
+            "target": {},
+            "attacked": {
+              "armor reduction": 2,
+              "duration": 2
+            }
+          }
+        }
+      },
+      "manta": {
+        "price": 350,
+        "aoe range": 2,
+        "illusions": 2
+      },
+      "basher": {
+        "price": 450,
+        "stun": 2,
+        "damage": 10
+      },
+      "radiance": {
+        "price": 500,
+        "aoe range": 2,
+        "buffdata": {
+          "damage": 5
+        }
+      }
+    }
+  }
+}

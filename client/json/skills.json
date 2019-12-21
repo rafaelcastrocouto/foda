@@ -1,0 +1,787 @@
+{
+  "axe": {
+    "taunt": {
+      "name": "Taunt",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe": "Radial",
+      "description": "Taunts nearby enemy units, forcing them to attack Axe",
+      "buffs": {
+        "taunt": {
+          "self": {
+            "description": "Bonus armor"
+          },
+          "targets": {
+            "description": "Taunted"
+          }
+        }
+      }
+    },
+    "enrage": {
+      "name": "Enrage",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "description": "Enrages an enemy unit, causing it to be slowed and take damage over time until it kills another unit or the duration ends",
+      "buff": {
+        "damage type": "Magical",
+        "description": "Enraged (slowed and taking damage over time)"
+      }
+    },
+    "counter": {
+      "name": "Axe Spin",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe": "Radial",
+      "damage type": "Physical",
+      "description": "When attacked, there is a chance to immediately counterattack all enemies around",
+      "buff": {
+        "description": "When attacked, there is a chance to immediately counterattack all enemies around"
+      }
+    },
+    "ult": {
+      "name": "Chop",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Physical",
+      "description": "Axe hits the enemy aiming for the neck. If enemy HP is below 1/3 the head will be chopped and the skill can be used again"
+    }
+  },
+
+  "terror": {
+    "summon": {
+      "name": "Summon Image",
+      "type": "Summon",
+      "hand": "Left",
+      "deck": "Summon",
+      "targets": ["Free", "Spot"],
+      "description": "A copy of Terror will be summoned to do his biddings, with half his HP and damage"
+    },
+    "mirror": {
+      "name": "Mirror of Erised",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe": "Radial",
+      "damage type": "Physical",
+      "description": "Invokes dark reflections making all enemies around will receive their own damage"
+    },
+    "morph": {
+      "name": "Demonic Morph",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Transforms Terror and all images into powerful demons with a ranged attack",
+      "buff": {
+        "description": "Damage and range increased"
+      }
+    },
+    "ult": {
+      "name": "Soul Exchange",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Magical",
+      "description": "Terror will swap his soul with the target enemy, swapping all their HP"
+    }
+  },
+  
+  "com": {
+    "aoe": {
+      "name": "Let'em come",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Self"],
+      "aoe": "Radial",
+      "damage type": "Magical",
+      "description": "Turns the enemy numbers against them, dealing bonus damage per unit and extra bonus per hero"
+    },
+    "heal": {
+      "name": "Horn Blow",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self", "Ally"],
+      "description": "Purge the target unit and grants bonus damage and heals",
+      "buff": {
+        "description": "Damage increased and healing per turn"
+      }
+    },
+    "counter": {
+      "name": "Counter Attack",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "When attacked, there is a chance to immediately counterattack with lifesteal",
+      "buff": {
+        "description": "When attacked, there is a chance to immediately counterattack with lifesteal"
+      }
+    },
+    "ult": {
+      "name": "Challenge",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "description": "Exchanges three attacks with a target enemy. If anyone dies, the killer gains permanent bonus damage"
+    }
+  },
+
+  "wind": {
+    "stun": {
+      "name": "Rope Shot",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "description": "Ties the target to an enemy unit or tree behind it. If no unit or tree is present, the stun duration is halved"
+    },
+    "arrow": {
+      "name": "Power Arrow",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "damage type": "Magical",
+      "description": "Damages enemies and destroys trees along its path. For each enemy the arrow hits, its damage is reduced"
+    },
+    "run": {
+      "name": "Wind Runner",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Increases the movement speed and adds evasion from all attacks",
+      "buff": {
+        "description": "Movement speed increased and evasion from all attacks"
+      }
+    },
+    "ult": {
+      "name": "Rain of Arrows",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "description": "Attack a target enemy four times in a row. Damage is lightly reduced."
+    }
+  },
+
+  "cat": {
+    "star": {
+      "name": "Starfall",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "damage type": "Magical",
+      "description": "Damages all enemies around the Cat Lady. One random enemy will be hit twice"
+    },
+    "arrow": {
+      "name": "Swift Arrow",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "damage type": "Magical",
+      "description": "Stuns and damages a single target. The distance will increase the damage and the stun (Max Dmg 15, Max Stun: 4 turns)"
+    },
+    "leap": {
+      "name": "Cat Leap",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Range", "Free"],
+      "description": "Jump to the target spot and receive bonus speed",
+      "buff": {
+        "description": "Speed increased by 'Leap'"
+      }
+    },
+    "ult": {
+      "name": "Keen Shadows",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "All player heroes will become invisible",
+      "buff": {
+        "description": "Hidden by the 'Rivet Shadows'"
+      }
+    }
+  },
+
+  "lina": {
+    "fire": {
+      "name": "Dragon Flames",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "damage type": "Magical",
+      "description": "A column of flames damages enemies in a line"
+    },
+    "stun": {
+      "name": "Fireball",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Self"],
+      "aoe": "Radial",
+      "damage type": "Magical",
+      "description": "A ball of fire stuns and damages enemies in target area. Can destroy trees"
+    },
+    "passive": {
+      "name": "Soul on fire",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Each cast will increase attack stacking fire bonus damage. Reset on turn end",
+      "buff": {
+        "description": "Each cast will increase attack stacking fire bonus damage. Reset on turn end"
+      }
+    },
+    "ult": {
+      "name": "Zap",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Magical",
+      "description": "Fires off a bolt of lightning at a single enemy unit"
+    }
+  },
+
+  "am": {
+    "burn": {
+      "name": "Mana Burn",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Every attack has damage bonus equal to target's mana and makes the enemy discard a right hand skill card of that hero",
+      "buff": {
+        "description": "Damage increased by the target's mana and makes the enemy discard a right hand skill card of that hero"
+      }
+    },
+    "blink": {
+      "name": "Blink",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Free"],
+      "description": "Teleport to the target spot"
+    },
+    "mirror": {
+      "name": "Spell Mirror",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Mirrors magic back to casters and after first activation will passively increases magic resistance",
+      "buffs": {
+        "mirror": {
+          "counter": {
+            "description": "Mirror spells back to the caster"
+          },
+          "passive": {
+            "description": "Magic resistance increased"
+          }
+        }
+      }
+    },
+    "ult": {
+      "name": "Mana Blast",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "aoe": "Radial",
+      "damage type": "Magical",
+      "description": "Damage target area with bonus damage equal the target's mana. Interrupts target channel"
+    }
+  },
+
+  "cm": {
+    "slow": {
+      "name": "Snow Blast",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Self"],
+      "aoe": "Radial",
+      "damage type": "Magical",
+      "description": "A burst of damaging frost that slows enemies in the target area",
+      "buff": {
+        "description": "Slowed by Snow Blast"
+      }
+    },
+    "passive": {
+      "name": "Mana Aura",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Give a bonus skill card per turn",
+      "buff": {
+        "description": "Player buys one extra skill card per turn"
+      }
+    },
+    "freeze": {
+      "name": "Ice Prison",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "description": "Prevents movement and attack while dealing damage over time. Interrupts target channel",
+      "buff": {
+        "damage type": "Magical",
+        "description": "Ice Prison: disarmed, rooted and receiving damage over time"
+      }
+    },
+    "ult": {
+      "name": "Ice Storm",
+      "type": "Channel",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe": "Radial",
+      "damage type": "Magical",
+      "description": "Channels a storm of icy explosions that deals damage and slows enemies around her",
+      "buffs": {
+        "ult": {
+          "source": {
+            "description": "Let it go! Let it go!"
+          },
+          "targets": {
+            "description": "Slowed and damaged by icy explosions"
+          }
+        }
+      }
+    }
+  },
+
+  "kotl": {
+    "illuminate": {
+      "name": "Light Ball",
+      "type": "Channel",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "damage type": "Magical",
+      "description": "Channels light to damage enemies in a line",
+      "buffs": {
+        "illuminate": {
+          "channel": {
+            "description": "Channeling light to damage enemies in a line"
+          }
+        }
+      }
+    },
+    "blind": {
+      "name": "Light Blast",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Self"],
+      "aoe": "Radial",
+      "damage type": "Magical",
+      "description": "Knock back and blind enemies, causing them to miss 70% attacks. Interrupts target channel",
+      "buff": {
+        "description": "Blinded"
+      }
+    },
+    "mana": {
+      "name": "Mana Magic",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Player gain bonus skill cards"
+    },
+    "ult": {
+      "name": "Light Wisp",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot", "Self"],
+      "aoe": "Radial",
+      "description": "A peaceful wisp of light puts all enemies to spleep.",
+      "buff": {
+        "description": "Sleeping"
+      }
+    }
+  },
+
+  "ld": {
+    "bear": {
+      "name": "Summon Bear",
+      "summon name": "Bear",
+      "type": "Summon",
+      "hand": "Left",
+      "deck": "Summon",
+      "targets": ["Spot", "Free"],
+      "description": "Summon a Bear with 'Defender', 'Nature claws' and 'Demolition'. Gains 'Return' card. Deals 12 damage on death",
+      "buffs": {
+        "defender": {
+          "source": {
+            "name": "Defender",
+            "description": "Transfer a portion of the damage dealt to the Druid to his bear"
+          }
+        },
+        "demolish": {
+          "source": {
+            "name": "Demolition",
+            "description": "Increases the power of the Bear, causing it to deal 6 extra damage to the tower"
+          }
+        },
+        "entangle": {
+          "source": {
+            "name": "Nature Claws",
+            "description": "Attacks have a 20% chance to cause roots to burst from the ground, immobilizing the attacked enemy unit, and dealing 6 damage per second. Interrupts target channel"
+          },
+          "target": {
+            "name": "Nature Claws",
+            "damage type": "Physical",
+            "description": "Rooted and receiving damage per second"
+          }
+        }
+      }
+    },
+    "bearreturn": {
+      "name": "Return",
+      "type": "Active",
+      "hand": "Left",
+      "deck": "Temporary",
+      "targets": ["Spot", "Free"],
+      "description": "Teleports the Bear back to the Bear Druid. Must be discarded if the bear is killed"
+    },
+    "link": {
+      "name": "Bear Link",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Increases the attack and the Bear Druid damage heals his bear",
+      "buff": {
+        "description": "Attack increased and lifesteal heals bear"
+      }
+    },
+    "roar": {
+      "name": "Fearful Roar",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "aoe": "Radial",
+      "targets": ["Self", "Summon"],
+      "damage type": "Magical",
+      "description": "Roars causing enemies to flee in terror. Unit retreats one spot if the position is free. Interrupts targets channel"
+    },
+    "ult": {
+      "name": "Bear Form",
+      "type": "Toggle",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Bear Druid morphs himself into a raging bear with increased HP and armor. Gains 'Battle Roar' card",
+      "buff": {
+        "description": "Bear form active"
+      }
+    },
+    "cry": {
+      "name": "War Claws",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Temporary",
+      "targets": ["Self"],
+      "description": "Increases the attack and armor of Syllabear and the Spirit Bear",
+      "buff": {
+        "description": "Attack and armor increased"
+      }
+    }
+  },
+
+  "nyx": {
+    "stun": {
+      "name": "Rock Wave",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "damage type": "Magical",
+      "description": "Rock spikes burst along a straight path, hitted enemies are stunned and take damage"
+    },
+    "burn": {
+      "name": "Mind Burn",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Magical",
+      "description": "Deals damage according to opponent's mana multiplied and makes enemy player lose a card of that hero"
+    },
+    "spike": {
+      "name": "Carapace",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "damage type": "Pure",
+      "description": "Reflect damage received and stun the source of damage",
+      "buff": {
+        "description": "Reflect damage received and stun the source of damage"
+      }
+    },
+    "ult": {
+      "name": "Burrow",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "damage type": "Physical",
+      "description": "Mix becomes invisible and gains bonus speed and damage",
+      "buff": {
+        "description": "Invisible and attack increased"
+      }
+    }
+  },
+
+  "pud": {
+    "hook": {
+      "name": "Meat Hook",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "damage type": "Pure",
+      "description": "Launches a hook that will snag the first unit it encounters, dragging the unit and dealing damage if enemy. Interrupts enemy channel. Damage blocked by Black King Bar"
+    },
+    "rot": {
+      "name": "Stink",
+      "type": "Toggle",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "aoe": "Radial",
+      "damage type": "Magical",
+      "description": "A stink cloud that deals damage and slows enemies. Damage is dealt at the turn end, Butcher will also be damaged",
+      "buffs": {
+        "rot": {
+          "source": {
+            "description": "Stink is active"
+          },
+          "targets": {
+            "description": "Slowed by Butcher's Stink"
+          }
+        }
+      }
+    },
+    "passive": {
+      "name": "Meat Armor",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Gives Butcher bonus HP and damage on every kill and reduces magic damage",
+      "buff": {
+        "description": "HP and attack increased per kill and bonus magic resistance"
+      }
+    },
+    "ult": {
+      "name": "Fresh Meat",
+      "type": "Channel",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Magical",
+      "description": "Disable and deals damage over time while healing himself. Interrupts target channel",
+      "buffs": {
+        "ult": { 
+          "source": {
+            "description": "Channeling - Fresh Meat"
+          },
+          "target": {
+            "description": "Disabled and receiving damage over time"
+          }
+        }
+      }
+    }
+  },
+
+  "wk": {
+    "stun": {
+      "name": "Fire Blast",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Magical",
+      "description": "Damage and stun a target then slows and deals damage over time",
+      "buff": {
+        "damage type": "Magical",
+        "description": "Fire Blast damage over time"
+      }
+    },
+    "aura": {
+      "name": "Vampiric Aura",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Grants attack lifesteal. Every attack will heal by a percentage of the damage",
+      "buff": {
+        "description": "Drain life on every attack"
+      }
+    },
+    "crit": {
+      "name": "Mortal Strike",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Dead King attacks will have a chance of inflicting critical damage bonus. If a unit is killed with critical damage, player buys one 'Skeleton' card",
+      "buff": {
+        "description": "Chance of critical damage. If a unit is killed with critical damage, player buys one 'Skeleton' card"
+      }
+    },
+    "skeleton": {
+      "name": "Summon Skeleton",
+      "summon name": "Skeleton",
+      "type": "Summon",
+      "hand": "Right",
+      "deck": "Temporary",
+      "targets": ["Spot", "Free"],
+      "description": "Summon a Skeleton"
+    },
+    "ult": {
+      "name": "Reincarnation",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Dead King will come back on next player turn after being killed slowing enemies around. The passive is discarded",
+      "buffs": {
+        "ult": {
+          "source": {
+            "description": "No one can kill the Dead King!"
+          },
+          "targets": {
+            "description": "Slowed by the return of the King!"
+          }
+        }
+      }
+    }
+  },
+
+  "venge": {
+    "stun": {
+      "name": "Magic Blast",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "damage type": "Magical",
+      "description": "Damage and stun a target"
+    },
+    "corruption": {
+      "name": "Terror Wave",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Spot"],
+      "aoe": "Linear",
+      "damage type": "Magical",
+      "description": "Weakens enemy armor",
+      "buff": {
+        "description": "Reduced Armor"
+      }
+    },
+    "aura": {
+      "name": "Vengeance Aura",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "An aura that increases the attack damage of nearby friendly units. If Venge dies, damage bonus will double",
+      "buff": {
+        "description": "Attack Bonus"
+      }
+    },
+     "ult":{
+      "name": "In my Shoes",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy", "Ally"],
+      "description": "Instantaneously swaps positions with a target Hero, friend or enemy"
+     }
+   },
+
+  "en": {
+    "passive": {
+      "name": "Untouched",
+      "type": "Passive",
+      "hand": "Left",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Attacker's will be cursed and suffer reduced damage for the turn",
+      "buffs": {
+        "passive": {
+          "self": {
+            "description": "Can't touch this"
+          },
+          "attacker": {
+            "description": "Reduced Damage"
+          }
+        }
+      }
+    },
+    "curse": {
+      "name": "Seduction",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy","Jungle"],
+      "description": "Summon a forest creep, takes control over an enemy unit or slow an enemy hero",
+      "buff": {
+        "description": "Charmed"
+      }
+    },
+    "heal": {
+      "name": "Healing Wisps",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Self"],
+      "description": "Invoke 5 Healing Wisps for herself and nearby friendly units",
+      "buff": {
+        "description": "Healing Wisp"
+      }
+    },
+     "ult":{
+      "name": "Spear of Missing",
+      "type": "Active",
+      "hand": "Right",
+      "deck": "Buy",
+      "targets": ["Enemy"],
+      "description": "Attack a target enemy with bonus damage equal to twice the distance"
+     }
+   }
+}

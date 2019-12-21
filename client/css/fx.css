@@ -1,0 +1,374 @@
+.parallax {
+  perspective-origin: 50% 50%;
+  transform: translate3d(0,0,1px);
+  perspective: 600px;
+  transform-style: preserve-3d;
+  will-change: perspective-origin;
+  width: 970px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.card .damaged, .card .missed, .spot .gold, .spot .deny {
+  z-index: 20;
+  color: gold;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  font-size: 150px;
+  animation: slideup 2.5s cubic-bezier(0.4, 0, 1, 1);
+  transform: translateZ(50px);
+  text-shadow: 5px 0 #fff, -5px 0 #fff, 0 5px #fff, 0 -5px #fff, 5px 5px #fff, -5px 5px #fff, 5px -5px #fff, -5px -5px #fff;
+}
+
+.spot .deny {
+  right: 65px;
+  font-size: 180px;
+}
+
+.transparent {
+  transition: opacity 0.4s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spot .gold {
+  font-size: 70px;
+}
+
+.card .damaged.critical, .card .missed {
+  color: orangered;
+  animation: slideup 2.5s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.card .missed {
+  animation: slideup 3s cubic-bezier(0.4, 0, 1, 1);
+  font-size: 100px;
+  text-shadow: 4px 0 white, -4px 0 white, 0 4px white, 0 -4px white, 4px 4px white, -4px 4px white, 4px -4px white, -4px -4px white;
+}
+
+.card .heal, .card .textsleep {
+  z-index: 21;
+  color: springgreen;
+  position: absolute;
+  left: 20px;
+  opacity: 0;
+  font-size: 150px;
+  animation: slideup 3s cubic-bezier(0.4, 0, 1, 1);
+  text-shadow: 5px 0 #afa, -5px 0 #afa, 0 5px #afa, 0 -5px #afa, 5px 5px #afa, -5px 5px #afa, 5px -5px #afa, -5px -5px #afa;
+}
+
+.card .textsleep {
+  font-size: 100px;
+  color: white;
+  animation: textsleep 3s cubic-bezier(0.4, 0, 1, 1) infinite;
+  text-shadow: 5px 0 #ddd, -5px 0 #ddd, 0 5px #ddd, 0 -5px #ddd, 5px 5px #ddd, -5px 5px #ddd, 5px -5px #ddd, -5px -5px #ddd;
+}
+@keyframes textsleep {  
+  0% {
+    transform: scale(0.4);
+    top: 80px;
+    opacity: 0;
+    left: 0px;
+  }
+
+  15% {
+    opacity: 0.6;
+  }
+
+  80% {
+    transform: scale(0.9);
+    opacity: 0.6;
+    left: 30px;
+  }
+
+  100% {
+    top: -100px;
+    left: 80px;
+    opacity: 0;
+  }
+}
+ 
+.selectedarea .textfx {
+  display: none;
+}
+
+@keyframes slideup {
+  0% {
+    top: 40px;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    top: -140px;
+    opacity: 0;
+  }
+}
+
+.shake {
+  position: relative;
+  animation: shake 0.1s infinite linear;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(2px);
+  }
+
+  50% {
+    transform: translateX(-2px);
+  }
+}
+
+.card.shake {
+  animation: cardshake 0.1s infinite linear;
+}
+
+@keyframes cardshake {
+  0% {
+    left: calc(50% + 8px);
+  }
+
+  50% {
+    left: calc(50% - 8px);
+  }
+}
+
+.card.melee-attack {
+  animation: melee-attack 0.3s 1 cubic-bezier(0, -1, 1, 2);
+}
+
+@keyframes melee-attack {
+  0% {
+    top: calc(50% + 8px);
+  }
+
+  50% {
+    top: calc(50% - 8px);
+  }
+}
+
+
+.map .fx {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeSpeed;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  transition: none;
+  position: absolute;
+  opacity: 1;
+}
+
+.buffs .fx {
+  position: absolute;
+}
+
+.fx.ghost {
+  transform: translate3d(-50%, -50%, 30px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 300px;
+  transform-style: preserve-3d;
+  display: inline-block;
+}
+
+.fx.ghost .fx {
+  position: relative;
+  top: 100%;
+}
+
+.map .projectile {
+  border-radius: 50%;
+  transition: all 0.4s linear;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: white;
+  transform: translateZ(60px);
+  top: 0;
+  left: 0;
+}
+
+.map .projectile-hit {
+  transform: rotateX(-20deg) translate3d(10px,-260px,90px);
+  width: 340px;
+  height: 340px;
+  animation: projectile-hit-sprite 0.7s steps(6) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/hit.png');
+}
+
+.map .projectile-hit.flip {
+  transform: rotateX(-20deg) translate3d(-110px,-260px,90px) scaleX(-1);
+}
+@keyframes projectile-hit-sprite {
+  100% {
+    background-position: -2040px;
+  }
+}
+
+.ultfx {
+  transform: translate3d(0, -350px, 400px) scale(0.5);
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+.ultfx .fx {
+  width: 720px;
+  height: 300px;
+  /* border-top: 75px solid #222; */
+  /* border-bottom: 75px solid #222; */
+  margin: 75px 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: 50%;
+  clip-path: polygon(0 0, 40px 150px, 20px 300px, 690px 300px, 720px 150px, 670px 0px);
+  z-index: 40;
+  animation: ult-fx 2.2s cubic-bezier(0, 1, 1, 0) 1;
+  pointer-events: none;
+}
+
+@keyframes ult-fx {
+  0% {
+    transform: scale(1.2) translateX(-1200px);
+  }
+
+  /*35%, 65% {transform: translateX(0px);}*/
+  100% {
+    transform: scale(1.2) translateX(1200px);
+  }
+}
+
+.ultfx.vertical-ult .fx {
+  width: 720px;
+  height: 720px;
+  left: 50px;
+  animation: vertical-ult-fx 2.2s cubic-bezier(0, 1, 1, 0) 1;
+  clip-path: none;
+  background-size: 120%;
+}
+@keyframes vertical-ult-fx {
+  0% {
+    transform: scale(1) translateY(1200px);
+  }
+  100% {
+    transform: scale(1) translateY(-1200px);
+  }
+}
+
+
+.ultfx .stripe1, .ultfx .stripe2 {
+  position: absolute;
+  width: 900px;
+  height: 160px;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/ultfx.png");
+  position: absolute;
+  left: 0;
+  top: 15px;
+  background-size: contain;
+  animation: ult-stripes 2.2s 1;
+  transform: translateX(0px);
+  pointer-events: none;
+}
+
+@keyframes ult-stripes {
+  0% {
+    transform: translateX(200px);
+  }
+
+  100% {
+    transform: translateX(-200px);
+  }
+}
+
+
+.ultfx .stripe2 {
+  transform: scaleX(-1);
+  top: 330px;
+  left: -120px;
+  animation: ult-stripes2 2.2s 1;
+  width: 1100px;
+  height: 190px;
+  transform: scaleX(-1) translateX(300px);
+}
+
+@keyframes ult-stripes2 {
+  0% {
+    transform: scaleX(-1) translateX(300px);
+  }
+
+  100% {
+    transform: scaleX(-1) translateX(-100px);
+  }
+}
+
+.ultfx .star {
+  width: 600px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  animation: ult-stars 1s cubic-bezier(0.55, 0.06, 0.68, 0.19) infinite;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  box-shadow: -400px 0 0 -3px white;
+}
+
+.ultfx .hide {
+  display: none;
+}
+
+.ultfx .star:nth-child(3) {
+  top: 40px;
+}
+
+.ultfx .star:nth-child(4) {
+  top: 70px;
+  animation-delay: -0.3s;
+}
+
+.ultfx .star:nth-child(5) {
+  top: 100px;
+  animation-delay: -0.6s;
+}
+
+.ultfx .star:nth-child(6) {
+  top: 370px;
+  animation-delay: -0.5s;
+}
+
+.ultfx .star:nth-child(7) {
+  top: 400px;
+  animation-delay: -0.7s;
+}
+
+.ultfx .star:nth-child(8) {
+  top: 430px;
+  animation-delay: -0.9s;
+}
+
+@keyframes ult-stars {
+  0% {
+    transform: translateX(-1600px);
+  }
+
+  100% {
+    transform: translateX(1600px);
+  }
+}

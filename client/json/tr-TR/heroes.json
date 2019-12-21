@@ -1,0 +1,93 @@
+{
+  
+  "axe": {
+    "name": "Axe",
+    "attribute": "Kuvvet",
+    "description": "Tek kişilik ordu, bir zamanlar şimdi Orkların lideri bir cellat."
+  },
+  
+  "en": {
+    "name": "Geyik",
+    "attribute": "Zeka",
+    "description": "Sevgi ve güzellik güçlüdür, bu yüzden savaş sıcağından uzaklaşır. Ama aptal olma, büyüleyici kadar ölümcül"
+  },
+  
+  "ld": {
+    "name": "Ayı Büyücü",
+    "attribute": "Çeviklik",
+    "description": "Fırça Deresi ormanının koruyucusu, orman patladığında savaş istedi. Büyücü ve ayıları birlikte oldukları için uzun süre onlar ruhları birbirine bağlarlar"
+  },
+
+  "pud": {
+    "name": "Kasap",
+    "attribute": "Kuvvet",
+    "description": "Necro tarafından çağrılan Kasap vücut parçalarının bir bileşimidir. Efsane, kalbinin eski bir Shirai Ryu üyesinden olduğunu söylüyor"
+  },
+
+  "cat": {
+    "name": "Kedi Kadın",
+    "attribute": "Çeviklik",
+    "description": "Kendini ayın tanrıçası Sajedene'nin hizmetine tamamen adamıştır. Rüzgar Elfine ve Drow Ranger'e bir ok vurmayı öğretti!"
+  },
+
+  "wk": {
+    "name": "Ölü kral",
+    "attribute": "Kuvvet",
+    "description": "Arendelle Kralı kız olayıyla ilgili bir şeyler keşfettiğinde bir tedavi aradı. Cadı tarafından ihanete uğradı sonra, şimdi Dire wraith'inin bir kölemidir."
+  },
+
+  "lina": {
+    "name": "Yangın Bükücü",
+    "attribute": "Zeka",
+    "description": "Ateş Ulusunun düşüşünden sonra Ice Mage'e aşık oldu. Şimdi, birlikte yaşlılar için savaşıyorlar ve ateş ediyor ve saldırmaya hazır!"
+  },
+
+  "cm": {
+    "name": "Buz sihirbaz",
+    "attribute": "Zeka",
+    "description": "Arendelle'de doğan buz sihirbazının büyükbabası Lich tarafından öğretildi. Biraz yardım ederek, antik insanlar hakkındaki gerçeği keşfetti"
+  },
+  
+  "kotl": {
+    "name": "Işık Koruyucu",
+    "attribute": "Zeka",
+    "description": "Maiar'dan biri olmak, gerçeği yaymaktan sorumludur. Karanlık devrildiğinde düştü, ama şimdi rame rá'ı kandırma gücüyle geri döndü!"
+  },
+
+  "am": {
+    "name": "Hiçbüyü",
+    "attribute": "Çeviklik",
+    "description": "Kardeşinin ruhu çalınca, maceraya tüm sihrine karşı başladı. Keskin bir dövüşçüyken, düşmanlarına sihir gücünü kendine karşı çeviriyor"
+  },
+
+  "nyx": {
+    "name": "Karıştırmak",
+    "attribute": "Çeviklik",
+    "description": "Samsa Kovanının en eski yetiştiricisi, sıradan bir fıçı kurusu değildir. O, onun kraliçesinin yolunda olanları öldürmek için seçilen Karma suikastçısıdır."
+  },
+
+  "com": {
+    "name": "Sashay Komutanı",
+    "attribute": "Kuvvet",
+    "description": "Savaş alanına girmek için cesaret gerekiyor. Fakat bir kadın olarak geri gelmek ve meydan okumaya ayak uydurmak başka bir şey gerektirir ve hepsi bu kadardır!"
+  },
+  
+  "terror": {
+    "name": "Terror",
+    "attribute": "Çeviklik",
+    "description": "Ruhu bir iblis lordu tarafından çalındı ama boş gövdesi intikam almak isteyen cehennemde dolaşmaya devam etti."
+  },
+
+  "venge": {
+    "name": "Tikam",
+    "attribute": "Çeviklik",
+    "description": "Tahta doğuş hakkını kaybettikten sonra Venge, kız kardeşinin ihanetini asla affetmeyecek ve adalet yapılıncaya kadar onu avlayacak."
+  },
+
+  "wind": {
+    "name": "Rüzgar Peri",
+    "attribute": "Zeka",
+    "description": "Ailesi doğumunun gecesinde bir fırtınada öldürüldü, ancak rüzgarın kendisi pislendi ve kurtardı. Okçu sırlarını düşmanlarını atmak için kullanır."
+  }
+
+}

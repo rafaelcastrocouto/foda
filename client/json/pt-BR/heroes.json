@@ -1,0 +1,92 @@
+{
+  "axe": {
+    "name": "Axe",
+    "attribute": "Força",
+    "description": "O exército de um homem só, antes executor agora líder dos Orcs. Axe é Axe!"
+  },
+  
+  "en": {
+    "name": "Bambi",
+    "attribute": "Inteligência",
+    "description": "O amor e a beleza são seus pontos fortes, e é por isso que ela se afasta do calor da batalha. Mas não se deixe enganar, ela é tão mortal quanto encantadora"
+  },
+  
+  "ld": {
+    "name": "Bear Druid",
+    "attribute": "Agilidade",
+    "description": "Defensor da floresta de Brush Creek, foi para a guerra depois que a floresta foi queimada. O Druida e o Urso estão juntos há tanto tempo que uniram almas"
+  },
+
+  "pud": {
+    "name": "Açougueiro",
+    "attribute": "Força",
+    "description": "Invocado por Necro, ele é composto de membros e partes de corpos enxertadas juntas. A lenda diz que seu coração é de um membro do clan Shirai Ryu"
+  },
+
+  "cat": {
+    "name": "Senhora do Gato",
+    "attribute": "Agilidade",
+    "description": "Ela se dedica completamente ao serviço de Sajedene, Deusa da Lua. Ela ensinou a Elfa do Vento e a Drow Ranger os segredos do arco e flecha!"
+  },
+
+  "wk": {
+    "name": "Rei morto",
+    "attribute": "Força",
+    "description": "Quando o rei de Arendelle descobriu sobre sua filha, ele procurou uma cura. Depois de ser traído pela Bruxa, ele é agora um escravo da ira dos mortos"
+  },
+
+  "lina": {
+    "name": "Dobradora de fogo",
+    "attribute": "Inteligência",
+    "description": "Após a queda da Nação do Fogo, ela se apaixonou pela Maga do Gelo. Agora, juntas elas lutam na guerra dos anciões e ela está literalmente em chamas"
+  },
+
+  "cm": {
+    "name": "Maga do Gelo",
+    "attribute": "Inteligência",
+    "description": "Nascida em Arendelle, a Maga do Gelo foi ensinada por seu bisavô Lich. Mas com alguma ajuda, ela encontrou a verdade sobre os anciões e livre está!"
+  },
+  
+  "kotl": {
+    "name": "Guardião da Luz",
+    "attribute": "Inteligência",
+    "description": "Sendo um dos Maiar, ele é o guadião da verdade. Ele caiu quando a escuridão dominou a terra, mas agora ele está de volta com o poder de kame rame rá!"
+  },
+
+  "am": {
+    "name": "Magino",
+    "attribute": "Agilidade",
+    "description": "Quando a alma de seu irmão foi amaldiçoada, ele começou sua guerra contra a magia. Ele é um lutador astuto e usa o poder de seus inimigos contra eles"
+  },
+
+  "nyx": {
+    "name": "Mix",
+    "attribute": "Agilidade",
+    "description": "Mais antigo fundador da Colméia de Samsa, ele não é um assassino comum. Ele é o Mix, escolhido para matar quem estiver no caminho de sua rainha"
+  },
+
+  "com": {
+    "name": "Comandante Sashay",
+    "attribute": "Força",
+    "description": "É preciso coragem para entrar no campo de batalha. Mas voltar como mulher e enfrentar o desafio requer outra coisa, e ela tem isso e muito mais!"
+  },
+  
+  "terror": {
+    "name": "Terror",
+    "attribute": "Agilidade",
+    "description": "Sua alma foi roubada por um lorde demônio, mas seu corpo vazio continuou a vagar no inferno em busca de vingança"
+  },
+
+  "venge": {
+    "name": "Venge",
+    "attribute": "Agilidade",
+    "description": "Depois de perder seu direito ao trono e seu amor, o Mago do Céu, a Venge nunca perdoará a traição de sua irmã e a caçará até que a justiça seja feita"
+  },
+
+  "wind": {
+    "name": "Elfa do Vento",
+    "attribute": "Inteligência",
+    "description": "Sua família foi morta por um furacão na noite em ela nasceu, mas o próprio vento se compadeceu e a salvou. Agora usa flechas contra seus inimigos"
+  }
+
+}

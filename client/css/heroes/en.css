@@ -1,0 +1,48 @@
+.en, .en .portrait {
+  background-color: #5cb538;
+}
+
+.en .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpEOEEzOTA4RTQzOTNFNzExOUU3MzlGMUNFQzQzQzk4NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3QTkxNTVFQ0MwMDgxMUU3OTZGMURFOTU0Qjk0QUFDMCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3QTkxNTVFQkMwMDgxMUU3OTZGMURFOTU0Qjk0QUFDMCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQ5QTM5MDhFNDM5M0U3MTE5RTczOUYxQ0VDNDNDOTg3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQ4QTM5MDhFNDM5M0U3MTE5RTczOUYxQ0VDNDNDOTg3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Q7TYfQAAAD5JREFUeNoAMADP/wQgDxFtPzbSMzYnJRnb9SMCDiARFzo0APoZz+oKBA4QAwH+++cA7/oJ7ij/7/bf2gIMAFtJEwFVBAY9AAAAAElFTkSuQmCC');
+}
+
+.en.heroes .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/heroes/en.jpg");
+}
+
+.map .en.heroes .portrait .img, .fromMap.en.heroes .portrait .img, .slot .en.heroes .portrait .img {
+  background-size: 260%;
+  background-position: 15% 0%;
+}
+
+.en-passive .img, .buffs .buff.en-passive .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/en/passive.jpg");
+}
+
+.en-curse .img, .buffs .buff.en-curse .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/en/curse.jpg");
+}
+
+.en-heal .img, .buffs .buff.en-heal .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/en/heal.jpg");
+}
+
+.en-ult .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/en/ult.jpg");
+}
+
+
+.ultfx .en-ult {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/en/ult.jpg");
+}
+.projectile.en {
+  width: 8px;
+  height: 80px;
+  background: #8fe61b;
+  box-shadow: 0 20px 0px 4px white;
+}
+.projectile.en.ult {
+  width: 10px;
+  height: 100px;
+  box-shadow: 0 16px 0px 6px white, 0 -40px 0 0 white;
+}

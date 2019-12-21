@@ -1,0 +1,123 @@
+.vs {
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+}
+
+.versus {
+  position: absolute;
+  top: 250px;
+  left: 425px;
+  z-index: 10;
+  font-size: 40px;
+  animation: slidevs 1s 1; 
+  transform: translateZ(20px);
+}
+
+@keyframes slidevs {
+  0% {
+    top: -80px;
+  }
+
+  100% {
+    top: 250px;
+  }
+}
+
+.vsplayer, .vsenemy {
+  transition: all 1s;
+  width: 840px;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.6);
+  transform-style: preserve-3d;
+}
+
+.vsdeckplayer {
+  transform: translate(20px, -50px);
+  transform-style: preserve-3d;
+}
+
+.vsplayer {
+  transform: translate(100px, 315px) rotateY(6deg) rotateZ(2.7deg);
+  text-align: left;
+}
+
+.vsplayerinfo, .vsenemyinfo {
+  font-size: 14px;
+  position: absolute;
+  bottom: 2px;
+  left: 12px;
+}
+
+.vsplayer.slide {
+  transform: translate(-1500px, 315px) rotateY(-6deg) rotateZ(2.7deg);
+}
+
+.vsdeckenemy {
+  transform: translate(-90px, -50px);
+  transform-style: preserve-3d;
+}
+
+.vsenemy {
+  transform: translate(-10px,30px) rotateY(-6deg) rotateZ(2.7deg);
+  text-align: right;
+}
+
+.vsenemyinfo {
+  left: auto;
+  right: 12px;
+}
+
+.vsenemy.slide {
+  transform: translate(1500px,30px) rotateY(-6deg) rotateZ(2.7deg);
+}
+
+.vs .vsplayer > h1, .vs .vsenemy > h1 {
+  font-size: 36px;
+  padding: 0 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 36px;
+}
+.vs .deck {
+  transform-style: preserve-3d;
+}
+
+.vs .card {
+  margin-right: -65px;
+}
+.vs .card .speed {
+  display: none;
+}
+.vs .card:hover {
+  z-index: 1;
+}
+
+.vs .card {
+  transform: translateZ(10px) rotate(-2deg) scale(0.6);
+}
+
+
+.s1v1 .vs .card {
+  transform: translateX(240px) translateZ(10px) rotate(-2deg) scale(0.6);
+}
+.s1v1 .vs .vsenemy .card {
+  transform: translateX(-240px) translateZ(10px) rotate(-2deg) scale(0.6);
+}
+.s3v3 .vs .card {
+  transform: translateX(110px) translateZ(10px) rotate(-2deg) scale(0.6);
+}
+.s3v3 .vs .vsenemy .card {
+  transform: translateX(-110px) translateZ(10px) rotate(-2deg) scale(0.6);
+}
+
+
+.vs .vsenemy .card {
+  float: right;
+}
+
+.library .vs .vsplayerdeck .card {
+  transform: translateZ(10px) scale(0.75) translateX(320px) rotate(-2deg);
+}

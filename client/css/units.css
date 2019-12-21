@@ -1,0 +1,130 @@
+.player.skills.summon, .player.skills.summon .portrait {
+  background-color: #249c88;
+}
+.enemy.skills.summon, .enemy.skills.summon .portrait {
+  background: #a74a6a;
+}
+.units.forest-cent .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/units/cent.jpg");
+}
+
+.units.forest-golem .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/units/golem.jpg");
+}
+
+.units.forest-tomato .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/units/tomato.jpg");
+}
+
+.units.forest-satyr .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/units/satyr.jpg");
+}
+
+.projectile.units.ranged {
+  background: #54a078;
+  width: 20px;
+  height: 30px;
+  box-shadow: inset 0 -4px 0 4px #b9e8d0;
+}
+.projectile.units.ranged.enemy {
+  background: #dc5b19;
+  box-shadow: inset 0 -4px 0 4px #f7a55b;
+}
+/*UNITS*/
+.card.trees, .card.trees .portrait {
+  background-color: #5ba22f;
+}
+
+.card.trees .portrait, .campaign-img.tree {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTcxRURDM0FDMDBCMTFFNzlDQUY5MjdCRUZBQTI2QjgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTcxRURDMzlDMDBCMTFFNzlDQUY5MjdCRUZBQTI2QjgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjgwRDU0QkQ3MkE1Q0E4MUVFQzYxRUIzNUFBQkQ3QUFGIiBzdFJlZjpkb2N1bWVudElEPSI4MEQ1NEJENzJBNUNBODFFRUM2MUVCMzVBQUJEN0FBRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsSeaXUAAAA+SURBVHjaADAAz/8E0P3/yu+/8wID7QH/BRA/BOjq0du6iNK9ux8mIwNKfAM1SAIA8gj18SMaIR8n/+ICDABkBRaoPF445QAAAABJRU5ErkJggg==');
+}
+
+.card.trees.rad .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/trees/tree_rad.jpg");
+}
+
+.card.trees.dire .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/trees/tree_dire.jpg");
+}
+
+.creeps-melee.player .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/player_melee.jpg");
+}
+.map .card.creeps-melee.player .portrait .img {
+  background-position: 75% 75%;
+  background-size: 360%;
+}
+
+.creeps-melee.enemy .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/enemy_melee.jpg");
+}
+.creeps-melee.player .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzE2MjcyNjVDMDAyMTFFN0E2NDdFRDBDNjk0ODBERUYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzE2MjcyNjRDMDAyMTFFN0E2NDdFRDBDNjk0ODBERUYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IkEzOEFCMTE4OTE3M0IzOUYxMkFFNkU2MERBQ0VCQzEwIiBzdFJlZjpkb2N1bWVudElEPSJBMzhBQjExODkxNzNCMzlGMTJBRTZFNjBEQUNFQkMxMCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnKUQ0MAAAA+SURBVHjaADAAz/8Bxd+g9Pm7AfAJDwT1FRooBAPvtMK+4+jz7TITF1E77AIoExIC+u70zD/t3xIJEBgCDAA8mhY3uBy5OAAAAABJRU5ErkJggg==');
+}
+.map .card.creeps-melee.enemy .portrait .img {
+  background-position: 15% 30%;
+  background-size: 400%;
+}
+
+.creeps-ranged.player .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/player_ranged.jpg");
+}
+.creeps-ranged.player .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RkIyQjVCQkZDMDAyMTFFNzg3N0VCQzQ0ODg4NTc4RjciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RkIyQjVCQkVDMDAyMTFFNzg3N0VCQzQ0ODg4NTc4RjciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjAxOTc4MkU5OEEyNTVDODFFQkMzOTYwMjlBNEYzQTBFIiBzdFJlZjpkb2N1bWVudElEPSIwMTk3ODJFOThBMjU1QzgxRUJDMzk2MDI5QTRGM0EwRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PlGGaJ8AAAA+SURBVHjaADAAz/8Eeo9uaFdr6ADX2ubc4dboBBgBD/LouOfu8v36/x0OIANASBmoltz5+h8K/wfOvNUCDACCeRqlaSK/RgAAAABJRU5ErkJggg==');
+}
+.map .card.creeps-ranged.player .img {
+  background-position: 20% 50%;
+}
+
+.creeps-ranged.enemy .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/enemy_ranged.jpg");
+}
+.map .card.creeps-ranged.enemy .img {
+  background-position: 60% 50%;
+}
+
+
+.card.creeps-catapult.player .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/player_catapult.jpg");
+}
+.card.creeps-catapult.enemy .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/enemy_catapult.jpg");
+}
+.map .card.creeps-catapult.enemy .img {
+  background-position: 55% 50%;
+  background-size: 300%;
+}
+.projectile.catapult {
+  background: #7d5d3f;
+}
+
+/*TOWERS*/
+
+.player.towers .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/towers/tower-player.jpg");
+}
+.player.towers .portrait, .campaign-img.tower {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iRTY5MUYwQkIwQThEMTExMzk0QjFFMzBDRDc2NzAwRDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NjFBRDJGMENDMDA0MTFFN0IwNENFRjgwODk1NURDOTgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NjFBRDJGMEJDMDA0MTFFN0IwNENFRjgwODk1NURDOTgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpERTZEMjkwMjYxOUVFNzExQkY5QkY0MjJGRjIxOEE3QiIgc3RSZWY6ZG9jdW1lbnRJRD0iRTY5MUYwQkIwQThEMTExMzk0QjFFMzBDRDc2NzAwRDAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz50evNTAAAAPklEQVR42gAwAM//Af6gRdQqWwb//SbSkQEuYAH/9LOwzvbw+QNgKOLyHGUErtQG8PPyAQwUyvketqikAgwAahYZoVZshwQAAAAASUVORK5CYII=');
+}
+
+.enemy.towers .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/towers/tower-enemy.jpg");
+}
+.enemy.towers .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUQ2OTUzRTdDMDA1MTFFNzgxMTRBNzlDMUY1RDhDMTEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUQ2OTUzRTZDMDA1MTFFNzgxMTRBNzlDMUY1RDhDMTEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IkUyNDYyMEQwQjQyNDMyMkVEQzhDRDdFRTRDNTIxMzBCIiBzdFJlZjpkb2N1bWVudElEPSJFMjQ2MjBEMEI0MjQzMjJFREM4Q0Q3RUU0QzUyMTMwQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrkaSOAAAAA+SURBVHjaADAAz/8BUDhJAAEH+fjq6fnxIxImAxIMGvwD/TD+9ez27en9BAL6+fwOAf3C9ur4BP8iDAcCDAAumBjGgdmiagAAAABJRU5ErkJggg==');
+}
+
+.map .card.enemy.towers .img {
+  background-position: 70% 50%
+}
+
+.map .card.player.towers .img {
+  background-position: 40% 50%
+}
+
+.projectile.towers.player {
+  width: 24px;
+  height: 40px;
+  background: #6cffb7;
+  box-shadow: inset 0 -6px 0 4px white;
+}

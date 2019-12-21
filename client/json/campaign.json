@@ -1,0 +1,155 @@
+{
+  "start": {
+    "name": "Stage 1",
+    "img": "tower",
+    "title": "Very Easy - Radiant Tower",
+    "ai": "very-easy",
+    "achievements": [{
+      "name": "Can't touch this", 
+      "description": "Don't let any unit die"
+      },{
+      "name": "Mine!", 
+      "description": "Deny a unit"
+      },{
+      "name": "Double Kill",
+      "description": "Get 2 kills with a hero"
+    }],
+    "picks": [ "wk", "cm", "pud", "lina", "am" ]
+  },
+  "easy": {
+    "name": "Stage 2",
+    "img": "unit",
+    "title": "Easy - Radiant Jungle",
+    "ai": "easy",
+    "achievements": [{
+      "name": "Haste", 
+      "description": "Win before 10 turns"
+      },{
+      "name": "Triple Kill",
+      "description": "Get 3 kills with a hero"
+      },{
+      "name": "Killing spree",
+      "description": "Kill 3 heroes without dying"
+    }],
+    "picks": [ "nyx", "kotl", "cat", "en", "ld" ]
+  },
+  "normal": {
+    "name": "Stage 3",
+    "img": "eunit",
+    "title": "Normal - Middle Tower",
+    "ai": "normal",
+    "achievements": [{
+      "name": "Wizard", 
+      "description": "Deal over 50 magical damage"
+      },{
+      "name": "Ultra kill", 
+      "description": "Get 4 kills with a hero"
+      },{
+      "name": "Dominating",
+      "description": "Kill 4 heroes without dying"
+    }],
+    "picks": [ "lina", "pud", "lina", "wk", "am" ]
+  },
+  "hard": {
+    "name": "Stage 4",
+    "img": "eunitran",
+    "title": "Hard - Enemy Base",
+    "ai": "hard",
+    "achievements": [{
+      "name": "Late Game", 
+      "description": "Win after 20 turns"
+      },{
+      "name": "Rampage", 
+      "description": "Get 5 kills with a hero"
+      },{
+      "name": "Mega kill",
+      "description": "Kill 5 heroes without dying"
+    }],
+    "picks": [ "cm", "wk", "com", "ld", "am" ]
+  },
+  "last": {
+    "name": "Last Stage",
+    "img": "etower",
+    "title": "Very Hard - Enemy Ancient",
+    "ai": "very-hard",
+    "achievements": [{
+      "name": "Close", 
+      "description": "Win with 1HP left on your tower"
+      },{
+      "name": "Full", 
+      "description": "Buy 6 items for the same hero"
+      },{
+      "name": "Holly",
+      "description": "Kill 10 heroes without dying"
+    }],
+    "picks": [ "kotl", "cat", "cm", "venge", "en" ]
+  },
+  "optional": {
+    "name": "Optional Stage",
+    "img": "forest",
+    "title": "Optional - Jungle",
+    "ai": "easy",
+    "achievements": [{
+      "name": "Greevil's Greed", 
+      "description": "Don't spend gold"
+      },{
+      "name": "Save the weak", 
+      "description": "Don't summon creeps"
+      },{
+      "name": "Unstoppable",
+      "description": "Kill 6 heroes without dying"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "rune": {
+    "name": "Rune Stage",
+    "img": "rune",
+    "title": "River Rune",
+    "ai": "easy",
+    "achievements": [{
+      "name": "Farmed", 
+      "description": "Buy 3 items for the same hero"
+      },{
+      "name": "You get nothing", 
+      "description": "Deny all creeps"
+      },{
+      "name": "Wicked sick",
+      "description": "Kill 7 heroes without dying"
+    }],
+    "picks": [ "en", "lina", "cm", "wind", "pud" ]
+  },
+  "shop": {
+    "name": "Shop Stage",
+    "img": "catap",
+    "title": "Secret Shop",
+    "ai": "normal",
+    "achievements": [{
+      "name": "Critical", 
+      "description": "Deal over 30 damage on one hit"
+      },{
+      "name": "Carty", 
+      "description": "Win the game with a catapult hit"
+      },{
+      "name": "Monster kill",
+      "description": "Kill 8 heroes without dying"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  },
+  "roshan": {
+    "name": "Roshan Stage",
+    "img": "ecat",
+    "title": "Roshan Cave",
+    "ai": "hard",
+    "achievements": [{
+      "name": "Disabler", 
+      "description": "Stun for a total of 8 turns"
+      },{
+      "name": "Creepy", 
+      "description": "Win the game with a creep hit"
+      },{
+      "name": "Godlike",
+      "description": "Kill 9 heroes without dying"
+    }],
+    "picks": [ "cm", "cat", "venge", "lina", "wind" ]
+  }
+}

@@ -1,0 +1,417 @@
+html, body {
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  /*min-width: 485px;
+  min-height: 300px;*/
+}
+
+body {
+  background-attachment: fixed;
+  background-color: #22272c;
+  background: radial-gradient(ellipse farthest-corner at center top, #6e7a66 0%, #343b43 30%, #22272c 60%, #22272c 100%), #22272c;
+  background-size: 100% 20%;
+  background-repeat: no-repeat;
+  box-shadow: 0 -50px 100px rgba(0,0,0,0.7) inset;
+  tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  backface-visibility: hidden;
+}
+
+p {
+  cursor: default;
+  word-spacing: -1px;
+  padding: 1px 2px;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+h1, h2 {
+  padding: 1px 2px;
+  margin: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 22px;
+  cursor: default;
+}
+
+h2 {
+  font-size: 19px;
+  cursor: default;
+  margin: 10px 0;
+}
+
+img {
+  border: 0;
+}
+
+small {
+  font-size: 70%;
+}
+
+noscript {
+  display: block;
+}
+
+.game-container {
+  position: absolute;
+  width: 970px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  color: #fff;
+  background-size: cover;
+  background-position: 50%;
+  background-color: #859890;
+  overflow: hidden;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: optimizeSpeed;
+  will-change: transform;
+}
+.game-container.loaded {
+  image-rendering: auto;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/banner.jpg") !important;
+  background-size: cover;
+}
+.game-container.campaign-state,
+.game-container.choose-state,
+.game-container.vs-state,
+.game-container.table-state,
+.game-container.config-state,
+.game-container.result-state {
+  background-color: #126766;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/bkg/polygon-dark.jpg") !important;
+}
+
+.iddle {
+  animation: persp 20s infinite;
+}
+
+.states, .state {
+  width: 970px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.state p {
+  display: block;
+  margin: 1em;
+}
+
+@keyframes persp {
+  0%, 100% {
+    perspective-origin: 50% 55%;
+  }
+
+  25% {
+    perspective-origin: 55% 50%;
+  }
+
+  50% {
+    perspective-origin: 50% 45%;
+  }
+
+  75% {
+    perspective-origin: 45% 50%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.box {
+  position: absolute;
+  box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%);
+  padding: 40px 80px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgba(11, 15, 14, 0.75);
+}
+
+.box.error {
+  width: 600px;
+}
+
+noscript .box,
+.p404 .box,
+.campaign-box.box,
+.resultsbox,
+.loading .box,
+.game-overlay .box,
+.log .box {
+  background-color: #F9F9F9;
+  color: #333;
+  font-weight: bold;
+  box-shadow: inset 0 20px 30px #d2d2d2, 0 0 0 6px #fff;
+  border-radius: 18px;
+}
+noscript .box {
+  top: 70%;
+  padding: 20px 40px;
+}
+
+.box p, .box label {
+  display: block;
+  font-weight: normal;
+  margin-bottom: 4px;
+  line-height: 28px;
+}
+
+.game-overlay .box a {
+  color: #333;
+  text-decoration: underline;
+}
+
+
+.loading .box, 
+.p404 .box {
+  width: 250px;
+  top: 68%;
+  padding: 8px;
+}
+
+.p404 .box {
+  width: auto;
+  padding: 8px 40px;
+}
+noscript .box a {
+  color: #333;
+  text-decoration: underline;
+}
+
+.box .loadtext {
+  margin-left: 0.5em;
+}
+
+.loadtext .message {
+  margin-left: 12px;
+}
+
+.loadtext .message, .loadtext .progress {
+  line-height: 22px;
+}
+
+input {
+  border-radius: 3px;
+  letter-spacing: -1px;
+  word-spacing: 2px;
+  font-size: 17px;
+  color: #4d4843;
+  outline: 0;
+  border: 0;
+  padding: 5px;
+  margin: 1px;
+  height: 22px;
+  transform: translateZ(0);
+}
+
+input[type=text] {
+  background: #eee;
+  box-shadow: inset 0 10px 20px #bbb;
+  height: 30px;
+  padding: 10px;
+}
+
+input:focus {
+  animation: shade 0.5s;
+}
+
+@keyframes shade {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.external {
+  position: relative;
+  transform: translate(3px, -6px) scale(0.65) rotate(-45deg);
+  display: inline-block;
+}
+
+.external:after {
+  position: absolute;
+  content: "◇";
+  top: -2px;
+  left: -6px;
+  z-index: -1;
+  transform: scale(1.7);
+  display: block;
+}
+
+.game-overlay:before {
+  content: "";
+  position: absolute;
+  left: -1000vw;
+  top: -1000vh;
+  height: 3000vh;
+  width: 3000vw;
+  background: rgba(0,0,0,0.7);
+  z-index: 39;
+  transform: translateZ(1px);
+}
+
+.game-overlay .box {
+  z-index: 40;
+  padding: 40px 80px;
+  transform: translate3d(-50%, -48%, 200px);
+  overflow: hidden;
+}
+
+.game-container .game-overlay .box.home {
+  padding: 10px 40px;
+  transform: translate3d(-50%, 130%, 200px);
+  min-width: auto;
+  z-index: 42;
+}
+
+.game-overlay h1 {
+  margin-bottom: 10px;
+  /* font-weight: bold; */
+}
+
+.option-state .game-overlay {
+  display: block;
+  z-index: 39;
+}
+
+.button, button, input[type=button], input[type=submit] {
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 6px;
+  margin: 6px;
+  outline: 0;
+  background: #9dada4;
+  color: white;
+  text-shadow: 0 1px 0 #444;
+  box-shadow: 0 4px 0 #777;
+  position: relative;
+  top: -3px;
+  transition: all 0.2s;
+  transform: translateZ(0);
+  min-width: 75px;
+  min-height: 40px;
+  overflow: hidden;
+  font-weight: normal;
+}
+
+.button:hover, button:hover, input[type=button]:hover, input[type=submit]:hover {
+  background: #abb7b1;
+  z-index: 31;
+}
+
+.button:active, button:active, input[type=button]:active, input[type=submit]:active {
+  top: 0;
+  box-shadow: 0 1px 0 #9b9c89;
+}
+
+.button[disabled], button[disabled], input[type=button][disabled], input[type=submit][disabled] {
+  background: darkgray;
+  color: gray;
+  text-shadow: none;
+  box-shadow: 0 4px 0 gray;
+}
+
+.button[disabled]:hover, button[disabled]:hover, input[type=button][disabled]:hover, input[type=submit][disabled]:hover {
+  cursor: default;
+  background: darkgray;
+  z-index: 0;
+}
+
+.button[disabled]:active, button[disabled]:active, input[type=button][disabled]:active, input[type=submit][disabled]:active {
+  top: -3px;
+}
+
+.buttonbox .button {
+  display: block;
+  margin-bottom: 14px;
+}
+.buttonbox .button:last-child {
+  margin-bottom: 6px;
+}
+
+.button.highlight {
+  background-color: #66bb8c;
+  box-shadow: 0 4px 0 #4b8864;
+}
+.button.highlight:active {
+  box-shadow: 0 1px 0 #4b8864;
+}
+
+.button.highlight[disabled], .button.highlight[disabled]:hover {
+  background: #8da7a2;
+  box-shadow: 0 4px 0 #6f7d76;
+}
+.button.highlight:hover {
+  background: #82c19f;
+}
+
+.button.alert, .button.alert[disabled]:active  {
+  background: #e66d58;
+  box-shadow: 0 4px 0 #a23f2e;
+}
+.button.alert:active {
+  box-shadow: 0 1px 0 #a23f2e;
+}
+.button.alert:hover {
+  background: #f5735d;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+.button:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/bkg/steel.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+label {
+  display: block;
+  padding: 0 2px;
+  margin: 0;
+  text-align: left;
+  height: 28px;
+}
+
+label input {
+  margin: 0 5px;
+}
+
+.deck {
+  transition: all 0.4s;
+}
+
+.p404 {
+  background-image: url(https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/404.png);
+  background-size: contain;
+}

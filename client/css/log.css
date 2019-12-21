@@ -1,0 +1,125 @@
+.log .parallax {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/log/sky.jpg");
+  background-size: cover;
+  pointer-events: all;
+}
+
+.game-overlay .log.box {
+  width: 600px;
+  padding: 35px 40px 20px 40px;
+}
+.game-overlay .log.box b {
+  font-weight: lighter;
+}
+.game-overlay .log.box .version {
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: lighter;
+  margin-left: 6px;
+}
+
+.game-overlay .log.box .rating {
+  width: 55px;
+  height: 82px;
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+  margin: 15px 0px;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/ratingsymbol_e10.png");
+}
+
+.game-overlay .log.box.vote {
+  width: 560px;
+}
+
+.game-overlay .log.box.vote h2 {
+  font-weight: bold;
+}
+
+.state.log .logpara {
+  width: 970px;
+  height: 600px;
+  position:  absolute;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.state.log .towers {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/log/towers.png");
+  background-size: cover;
+  transform: translateZ(20px) scale(0.98)
+}
+
+.state.log .title {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/log/title.png");
+  background-size: cover;
+  transform: translateZ(50px) scale(0.93);
+}
+
+.state.log .front {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/log/front.png");
+  background-size: cover;
+  transform: translateZ(100px) scale(0.86);
+}
+
+.log .box {
+  padding: 10px;
+  padding-bottom: 6px;
+  width: 400px;
+  top: 68%;
+  z-index: 10;
+  animation: logslidedown 1s 1;
+  transform: translate3d(-50%, -50%, 0px);
+  z-index: 0;
+}
+
+@keyframes logslidedown {
+  0% {top: 172%;}
+  1000% {top: 72%;}
+}
+
+.log h1 {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+.log a {
+  text-decoration: underline;
+  color: #333;
+}
+
+.log form {
+  margin-top: 1px;
+}
+
+.log form .button {
+  width: 160px;
+}
+.log form input[type="text"] {
+  width: 180px;
+}
+
+.log .button {
+  width: 200px;
+}
+.log .button.large {
+  width: 240px;
+}
+
+.log label {
+  text-align: center;
+}
+
+.log .remembername {
+  cursor: pointer;
+  font-size: 15px;
+  height: 28px;
+  width: 220px;
+  margin: 0 auto;
+}
+
+.log .remembername * {
+  /* vertical-align: bottom; */
+}

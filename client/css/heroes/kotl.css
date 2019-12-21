@@ -1,0 +1,206 @@
+.kotl, .kotl .portrait {
+  background-color: #E5BC53;
+}
+.map .kotl.heroes .portrait .img, .fromMap.kotl.heroes .portrait .img, .slot .kotl.heroes .portrait .img {
+  background-position: 30% 0%;
+}
+
+.kotl .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Qjk1MjEwRDhDMDA2MTFFN0JGRjZGODNGNzQxNDc5ODciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Qjk1MjEwRDdDMDA2MTFFN0JGRjZGODNGNzQxNDc5ODciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjVFOTAwODlGNUYwNjQwQ0EzNDZGQjQ1QURFMkZCNDEyIiBzdFJlZjpkb2N1bWVudElEPSI1RTkwMDg5RjVGMDY0MENBMzQ2RkI0NUFERTJGQjQxMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Plmo86QAAAA+SURBVHjaADAAz/8BPDcoUEw/5N7i8vPw5efrBCofDk5JR/T8HtzTubm4qgMhGxDg3f8EBxNKUDrQ0NMCDABJVhfimoMUAwAAAABJRU5ErkJggg==');
+}
+
+.kotl.heroes .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/heroes/kotl.jpg");
+}
+
+.kotl-illuminate .img, .map .kotl.illuminating .img, .buffs .buff.kotl-illuminate .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/kotl/illuminate.jpg");
+}
+
+.map .kotl.illuminating .img {
+  background-position: 20% 50%;
+}
+
+.map .card.illuminating fieldset:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+  animation: illuminating 1s infinite;
+}
+
+.map .illuminating.illumi-left fieldset:after {
+  top: calc(50% - 20px);
+  left: -15%;
+}
+
+.map .illuminating.illumi-right fieldset:after {
+  top: calc(50% - 20px);
+  left: 90%;
+}
+
+.map .illuminating.illumi-top fieldset:after {
+  top: -10%;
+  left: calc(50% - 20px);
+}
+
+.map .illuminating.illumi-bottom fieldset:after {
+  top: 90%;
+  left: calc(50% - 20px);
+}
+
+@keyframes illuminating {
+  0%, 100% {
+    box-shadow: 0 0 20px white;
+  }
+
+  50% {
+    box-shadow: 0 0 60px 20px white;
+  }
+}
+
+.map .casttarget.illuminating:hover:after {
+  animation: illuminating 1s infinite;
+}
+
+.kotl-mana .img, .buffs .buff.kotl-mana .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/kotl/mana.jpg");
+}
+
+.kotl-blind .img, .buffs .buff.kotl-blind .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/kotl/blind.jpg");
+}
+
+.kotl-ult .img, .buffs .buff.kotl-ult .img, .map .kotl-ult .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/kotl/ult.jpg");
+}
+
+.map .fx.kotl-illuminate {
+  width: 96px;
+  height: 192px;
+  animation: kotl-illuminate-sprite 1.5s steps(15) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/kotl/illuminate.png');
+  background-repeat: no-repeat;
+  transform: translate3d(60px,-400px,100px) scale(7);
+  background-position: 0px 126px;
+}
+
+@keyframes kotl-illuminate-sprite {
+  100% {
+    background-position: -1440px 0px;
+  }
+}
+
+.map .fx.kotl-illuminate.bottom {
+  transform: rotate(180deg) translate3d(-65px,-450px,100px) scale(7);
+  animation: kotl-illuminate-sprite 1.5s steps(15) 1;
+}
+
+.map .fx.kotl-illuminate.left {
+  transform: translate3d(-200px,100px,100px) rotateZ(-90deg) scaleX(8) scaleY(5);
+  background-position: 0px 135px;
+  animation: kotl-illuminate-sprite 1.5s steps(15) infinite;
+}
+
+.map .fx.kotl-illuminate.right {
+  transform: translate3d(340px,100px,100px) rotateZ(90deg) scaleX(8) scaleY(5);
+  animation: kotl-illuminate-sprite 1.5s steps(15) 1;
+  background-position: 0px 135px;
+}
+
+.map .fx.kotl-mana {
+  transform: rotateX(-37deg) translate3d(75px,-260px,100px) scale(3);
+  width: 120px;
+  height: 120px;
+  animation: kotl-mana-sprite 1.6s steps(18) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/kotl/mana.png');
+}
+
+@keyframes kotl-mana-sprite {
+  100% {
+    background-position: -2160px;
+  }
+}
+
+.map .fx.kotl-leak {
+  transform: rotateX(-37deg) translate3d(75px,-260px,100px) scale(3);
+  width: 120px;
+  height: 120px;
+  animation: kotl-leak-sprite 1.3s steps(14) infinite;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/kotl/leak.png');
+}
+
+@keyframes kotl-leak-sprite {
+  100% {
+    background-position: -1680px;
+  }
+}
+
+.map .fx.kotl-ult {
+  transform: rotateX(-37deg) translate3d(40px,50px,100px) scale(8);
+  width: 120px;
+  height: 120px;
+  animation: kotl-ult-sprite 1.6s steps(18) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/kotl/ult.png');
+}
+
+@keyframes kotl-ult-sprite {
+  100% {
+    background-position: -2160px;
+  }
+}
+
+.map .fx.kotl-blind {
+  transform: rotateX(-37deg) translate3d(40px,40px,100px) scale(4);
+  width: 160px;
+  height: 160px;
+  animation: kotl-blind-sprite 2.2s steps(24) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/kotl/blind.png');
+}
+
+@keyframes kotl-blind-sprite {
+  100% {
+    background-position: -3840px;
+  }
+}
+
+.map .fx.kotl-recall {
+  transform: rotateX(-37deg) translate3d(90px,-200px,100px) scale(3);
+  opacity: 0.7;
+  width: 124px;
+  height: 124px;
+  animation: kotl-recall-sprite 1.2s steps(10) infinite;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/kotl/recall.png');
+}
+
+@keyframes kotl-recall-sprite {
+  100% {
+    background-position: -1240px;
+  }
+}
+
+.map .fx.kotl-recall-source {
+  transform: rotateX(-37deg) translate3d(60px,-250px,100px) scale(3);
+  opacity: 0.7;
+  width: 124px;
+  height: 124px;
+  animation: kotl-recall-sprite 1.2s steps(10) infinite;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/kotl/recall-source.png');
+}
+
+.ultfx .kotl-ult {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/kotl/ult.jpg");
+}
+
+.projectile.kotl {
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 20px 12px white;
+  margin-left: 8px;
+}

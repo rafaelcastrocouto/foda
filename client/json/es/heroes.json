@@ -1,0 +1,92 @@
+{
+  "axe": {
+    "name": "Axe",
+    "attribute": "Fuerza",
+    "description": "El ejército de un solo hombre, una vez un verdugo ahora líder de los Orcos. ¡Axe es Axe!"
+  },
+  
+  "en": {
+    "name": "Bambi",
+    "attribute": "Inteligencia",
+    "description": "El amor y la belleza son sus puntos fuertes, por lo que se aleja del calor de la batalla. Pero no te dejes engañar, ella es tan mortal como encantadora"
+  },
+  
+  "ld": {
+    "name": "Bear Druid",
+    "attribute": "Agilidad",
+    "description": "Defensor del bosque Brush Creek, buscó la guerra después de quemar el bosque. El druida y su oso están juntos por tanto tiempo que unen almas"
+  },
+
+  "pud": {
+    "name": "Carnicero",
+    "attribute": "Fuerza",
+    "description": "Convocado por el Necro, el Carnicero es un compuesto de partes del cuerpo. La leyenda dice que su corazón es de un antiguo miembro de Shirai Ryu"
+  },
+
+  "cat": {
+    "name": "Dama do Gato",
+    "attribute": "Agilidad",
+    "description": "Ella se dedica completamente al servicio de Sajedene, Diosa de la Luna. ¡Ella le enseñó al Wind Elf y al Drow Ranger cómo disparar una flecha!"
+  },
+
+  "wk": {
+    "name": "Rey Muerto",
+    "attribute": "Fuerza",
+    "description": "Cuando el Rey se enteró de aventura amorosa de su hija, buscó una cura. Fue traicionado por Bruja y ahora es un esclavo de los Muertos."
+  },
+
+  "lina": {
+    "name": "Dobladora de fuego",
+    "attribute": "Inteligencia",
+    "description": "Después de la caída de la Nación del Fuego, ella se enamoró del Ice Mage. ¡Ahora, juntos luchan por los Ancianos y ella está en llamas y lista para atacar!"
+  },
+
+  "cm": {
+    "name": "Mago de Hielo",
+    "attribute": "Inteligencia",
+    "description": "Nacido en Arendelle, el mago de hielo fue enseñado por su bisabuelo Lich. Con algo de ayuda, descubrió la verdad sobre los antiguos"
+  },
+  
+  "kotl": {
+    "name": "Guardián de la Luz",
+    "attribute": "Inteligencia",
+    "description": "Siendo uno de los Maiar, es responsable de difundir la verdad. Cayó cuando la oscuridad se hizo cargo, ¡pero ahora ha vuelto con el poder de matarme!"
+  },
+
+  "am": {
+    "name": "Magino",
+    "attribute": "Agilidad",
+    "description": "Cuando le robaron el alma de su hermano, él comenzó su búsqueda contra la magia. Convierte el poder mágico de sus enemigos contra sí mismos"
+  },
+
+  "nyx": {
+    "name": "Mezcla",
+    "attribute": "Agilidad",
+    "description": "El criador más antiguo de Samsa Hive, no es un escarabajo ordinario. Él es el asesino de Mix, elegido para matar a quien esté en el camino de su Reina"
+  },
+
+  "com": {
+    "name": "Comandante Sashay",
+    "attribute": "Fuerza",
+    "description": "Uno necesita coraje para entrar en el campo de batalla. ¡Pero volver como mujer y hacer frente al desafío requiere algo más y ella tiene todo eso!"
+  },
+  
+  "terror": {
+    "name": "Terror",
+    "attribute": "Agilidad",
+    "description": "Su alma fue robada por un señor demonio pero su cuerpo vacío continuó vagando en el infierno buscando venganza"
+  },
+
+  "venge": {
+    "name": "Venge",
+    "attribute": "Agilidad",
+    "description": "Después de perder su trono y su amor, el Mago del Cielo, Venge nunca perdonará la traición de su hermana y la perseguirá hasta que se haga justicia"
+  },
+
+  "wind": {
+    "name": "Elfa de Viento",
+    "attribute": "Inteligencia",
+    "description": "Su familia murió en una tormenta la noche de su nacimiento, pero el viento mismo la salvó. Ahora ella usa los secretos de la arquería"
+  }
+
+}

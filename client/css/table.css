@@ -1,0 +1,262 @@
+.table .playerdecks,
+.local .table.turn .playerdecks {
+  position: absolute;
+  height: 100px;
+  width: 724px;
+  bottom: -15px;
+  perspective: 600px;
+}
+
+.local .table .playerdecks {
+  bottom: 0;
+}
+
+.left-side .table .playerdecks {
+  right: 0;
+}
+
+.table .playerdecks .deck {
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+.table .enemydecks {
+  position: absolute;
+  height: 214px;
+  width: 100%;
+  top: 22px;
+  transform: translateZ(0);
+  transition: top 0.4s;
+  pointer-events: none;
+}
+.local .table.turn .enemydecks {
+  top: 36px;
+}
+.local .table .enemydecks {
+  top: 50px;
+}
+
+.table .enemydecks .deck {
+  top: -115px;
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+.table .deck {
+  height: 120px;
+  position: absolute;
+  border-radius: 4px;
+}
+
+.table .enemy .skills.hand {
+  margin-right: 38px;
+  left: 16px;
+  width: 300px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.left-side .table .enemy .skills.hand {
+  left: 600px;
+  /* justify-content: flex-start; */
+  /* margin-right: 0; */
+}
+
+.table .enemy .skills.sidehand {
+  left: 390px;
+  width: 260px;
+  display: flex;
+  padding-right: 60px;
+}
+.left-side .table .enemy .skills.sidehand {
+  right: 388px;
+  /* justify-content: flex-end; */
+  left: auto;
+}
+
+.table .player .skills.sidehand {
+  margin-right: 60px;
+  left: 14px;
+  width: 280px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left-side .table .player .skills.sidehand {
+  right: 2px;
+  /* justify-content: flex-start; */
+  /* margin-right: 0; */
+  /* margin-left: 20px; */
+  left: auto;
+}
+.table .player .skills.hand {
+  left: 360px;
+  width: 300px;
+  display: flex;
+  margin-right: 60px;
+}
+
+.left-side .table .player .skills.hand {
+  left: 16px;
+  /* justify-content: flex-end; */
+  /* margin-right: 0; */
+}
+.table .selectedarea {
+  position: absolute;
+  top: 27px;
+  right: 2px;
+  border-radius: 10px;
+  z-index: 29;
+  transform: translateZ(0);
+}
+.left-side .table .selectedarea {
+  right: auto;
+  left: 5px;
+}
+
+.table .selectedarea.enemymoving {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.table .buttonbox {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 250px;
+}
+
+.left-side .table .buttonbox {
+  right:auto;
+  left: 2px;
+}
+
+.table .camera {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 718px;
+  height: 450px;
+  perspective: 800px;
+  perspective-origin: 57% 50%;
+  overflow: hidden;
+  transform: translateZ(0);
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAECAIAAADNpLIqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA1ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0iNjk5NzEyRTA3ODNBRjk2MkNGMjYzODI1RjY2NURCNTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUNBMzc0NDhDMDAyMTFFNzhEODJCOTQwODVGQUIyNjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUNBMzc0NDdDMDAyMTFFNzhEODJCOTQwODVGQUIyNjEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMzZCQjQ4M0FGNTJFNzExQjFBOEUwMDkwRDY0RjEwRiIgc3RSZWY6ZG9jdW1lbnRJRD0iNjk5NzEyRTA3ODNBRjk2MkNGMjYzODI1RjY2NURCNTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7zjCgtAAAAZklEQVR42gBYAKf/AXqEStbtC8/J4Ar78BEoFgENDP3t/QMnGh3+EP4YMCLzBAoJCP774+n++AYDIT8VLBkALRgSBQ0PAAIK/AEF3NXmBBwYEhYUCPTx6Abu7A0IGA85LBYlHAIMABdhH3ounuYxAAAAAElFTkSuQmCC');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.left-side .table .camera {
+  left: auto;
+  right: 0;
+}
+
+.table .camera:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/map/bkg.jpg");
+  background-size: cover;
+  background-position: 50%;
+  z-index: -1;
+}
+
+.table .camera:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 6px 18px rgba(0,0,0,0.6);
+  pointer-events: none;
+}
+
+/*RESULTS*/
+.table .resultsbox {
+  width: 800px;
+}
+
+.table .result {
+  text-transform: uppercase;
+  font-size: 25px;
+}
+
+.table .results {
+  display: inline-block;
+  width: 320px;
+}
+
+.table .results.enemy {
+  color: tomato;
+}
+
+.table .results p {
+  box-shadow: inset 0 0 0 50px rgba(0,0,0,0.7);
+  border: 0;
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 6px;
+}
+
+.table .results span {
+  line-height: 30px;
+  margin-left: 70px;
+}
+
+.table .results .portrait {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 60px;
+  height: 30px;
+}
+
+.table .results .img {
+  width: 60px;
+  height: 30px;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.table .resultsbox .close {
+  width: 60px;
+  display: block;
+  margin: 20px auto 0;
+  position: static;
+}
+
+.table .turntitle,
+.result .turntitle {
+  z-index: 30;
+  position: absolute;
+  width: 970px;
+  top: 220px;
+  left: 0;
+  font-weight: bold;
+  color: white;
+  font-size: 80px;
+  text-align: center;
+  transition: all 0.3s;
+  transform: translateZ(0);
+  cursor: default;
+  background: rgba(0,0,0,0.4);
+  line-height: 100px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.table .turntitle.show {
+  opacity: 1;
+}
+
+.table .tree-deck {
+  display: none;
+}

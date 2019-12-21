@@ -1,0 +1,96 @@
+.nyx, .nyx .portrait {
+  background-color: #4e2846;
+}
+
+.nyx .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzEyMEUwRDNDMDA4MTFFNzgwREVFQjVBNzc0RkJEQkIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzEyMEUwRDJDMDA4MTFFNzgwREVFQjVBNzc0RkJEQkIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjVEMjk3QTkxMzU0M0E5Q0ZFMjY3NjFCQzUyOUUwMzlBIiBzdFJlZjpkb2N1bWVudElEPSI1RDI5N0E5MTM1NDNBOUNGRTI2NzYxQkM1MjlFMDM5QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtC9emIAAAA8SURBVHjaYhEVVxTkZJRhY3v18ccnNlamv/8YdGWlfC21DfX0fv7+zcTPxsTwn/0FqzCPkhoHOzdAgAEAVEoNgGbf6vwAAAAASUVORK5CYII=');
+}
+
+.nyx.heroes .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/heroes/nyx.jpg");
+}
+
+.map .nyx.heroes.nyx-spike .portrait .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/nyx/spike.jpg");
+  background-position: 35% 50%;
+}
+
+.nyx-stun .img, .buffs .buff.nyx-stun .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/nyx/stun.jpg");
+}
+
+.nyx-burn .img, .buffs .buff.nyx-burn .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/nyx/burn.jpg");
+}
+
+.nyx-spike .img, .buffs .buff.nyx-spike .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/nyx/spike.jpg");
+}
+
+.nyx-ult .img, .buffs .buff.nyx-ult .img, .map .nyx.heroes.nyx-ult .portrait .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/nyx/ult.jpg");
+}
+
+.map .fx.nyx-stun {
+  transform: rotateX(-25deg) translate3d(45px,70px,80px) scale(3);
+  width: 96px;
+  height: 96px;
+  animation: nyx-stun-sprite 1.4s steps(12) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/nyx/stun.png');
+}
+.map .fx.nyx-stun.miss {
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/nyx/stun1.png');
+}
+
+@keyframes nyx-stun-sprite {
+  100% {
+    background-position: -1152px;
+  }
+}
+
+.map .fx.nyx-spike {
+  transform: rotateX(-3deg) translate3d(40px,-220px,10px) scale(3.3);
+  width: 128px;
+  height: 128px;
+  animation: nyx-spike-sprite 1.2s steps(10) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/nyx/spike.png');
+  background-position: -1280px;
+}
+
+@keyframes nyx-spike-sprite {
+  0% {
+     background-position: 0px;
+  }
+  100% {
+    background-position: -1280px;
+  }
+}
+.map .fx.nyx-spike.end {
+  animation: nyx-spike-sprite-end 0.9s steps(8) 1;
+}
+
+@keyframes nyx-spike-sprite-end {
+  0% {
+     background-position: -1280px;
+  }
+  100% {
+    background-position: -2304px;
+  }
+}
+
+.map .fx.nyx-burn {
+  transform: rotateX(-37deg) translate3d(65px,-175px,100px) scale(3);
+  width: 96px;
+  height: 96px;
+  animation: nyx-burn-sprite 2.1s steps(20) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/nyx/burn.png');
+}
+
+@keyframes nyx-burn-sprite {
+  100% {
+    background-position: -1920px;
+  }
+}
+.ultfx .nyx-ult {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/nyx/ult.jpg");
+}

@@ -1,0 +1,208 @@
+.tutorial.axe {
+  z-index: 30;
+  width: 350px;
+  height: 256px;
+  position: absolute;
+  right: -200px;
+  bottom: -450px;
+  transition: all 1s, transform 0s;
+  pointer-events: none;
+  transform: translateZ(0);
+  background-color: transparent;
+}
+
+.tutorial.axe.up {
+  bottom: -75px;
+}
+
+.tutorial.axe .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/tutorial/axe.png");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.tutorial.axe .baloon {
+  padding: 22px;
+  background: #fff;
+  border: 4px solid #777;
+  border-width: 4px 8px;
+  width: 200px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 245px;
+  right: 185px;
+}
+
+.tutorial.axe .baloon:before, .tutorial.axe .baloon:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -23px;
+  height: 20px;
+}
+
+.tutorial.axe .baloon:before {
+  width: 40px;
+  border-style: solid;
+  border-width: 0 0 4px 8px;
+  border-color: #777;
+  background: transparent;
+  border-radius: 0 0 0 80px;
+  box-shadow: inset 20px 0 0 #fff;
+  left: calc(50% - 18px);
+}
+
+.tutorial.axe .baloon:after {
+  width: 15px;
+  border-style: solid;
+  border-width: 0 0 4px 8px;
+  border-color: #777;
+  background: transparent;
+  border-radius: 0 0 0 50px;
+  display: block;
+  left: calc(50% + 8px);
+}
+
+.tutorial.axe .txt {
+  transform: rotate(2deg);
+  color: #444;
+  background: transparent;
+  border-radius: 50%;
+  width: 95%;
+  font-size: 18px;
+  line-height: 25px;
+}
+.tutorial.axe .txt b {
+  font-size: 20px;
+  text-shadow: 0 1px 0 #aaa;
+}
+.tutorial.axe .txtflip {
+  text-align: center;
+}
+.tutorial.axe .txtclip {
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+  float: left;
+}
+.tutorial.axe .txtclip.right {
+  float: right;
+}
+
+.tutorial .txt b.battle {
+  font-size: 160%;
+  line-height: 135%;
+}
+
+.blink, .table .player .blink {
+  box-shadow: 0 0 0 8px white;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    /*filter: brightness(1);*/
+    box-shadow: 0 0 0 6px rgba(0,0,0,0);
+  }
+
+  50% {
+    /*filter: brightness(1.3);*/
+    box-shadow: 0 0 0 6px white;
+  }
+}
+
+.table .card.blink {
+  box-shadow: 0 0 0 10px white;
+  animation: cardblink 1s infinite;
+}
+
+@keyframes cardblink {
+  0%, 100% {
+    box-shadow: 0 0 0 10px rgba(0,0,0,0);
+    /*filter: brightness(1)*/
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px white;
+    /*filter: brightness(1.4)*/
+  }
+}
+
+.table .map .blink {
+  box-shadow: 0 0 0 20px white;
+  animation: mapblink 1s infinite;
+}
+
+@keyframes mapblink {
+  0%, 100% {
+    box-shadow: 0 0 0 20px rgba(0,0,0,0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 20px white;
+  }
+}
+
+.skills.blink {
+  box-shadow: 0 0 0 10px white;
+  animation: skillsblink 1s infinite;
+}
+
+@keyframes skillsblink {
+  0%, 100% {
+    box-shadow: 0 0 0 10px rgba(0,0,0,0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px white;
+  }
+}
+
+.tutorial.axe.left, .left-side .tutorial.axe, .tutorial.axe.fleft {
+  right: auto;
+  left: -200px;
+  transform: scaleX(-1);
+  z-index: 28;
+}
+
+.left-side .tutorial.axe.left, .left-side .tutorial.axe.fleft {
+  left: auto;
+  right: -55px;
+  transform: scaleX(1);
+}
+
+.tutorial.axe.left .txtflip, .left-side .tutorial.axe .txtflip, .tutorial.axe.fleft .txtflip {
+  transform: rotate(-2deg) scaleX(-1);
+}
+
+.left-side .tutorial.axe.left .txtflip, .left-side .tutorial.axe.fleft .txtflip {
+  transform: scaleX(1);
+}
+
+.choose .tutorial.axe {
+  width: 502px;
+  right: -120px;
+}
+
+.left-side .choose .tutorial.axe {
+  left: -110px;
+}
+
+.choose .tutorial.axe.up {
+  bottom: -60px;
+}
+
+.choose .tutorial.axe .img {
+  background-repeat: no-repeat;
+  background-position: 170px 30px;
+}
+
+.choose .tutorial.axe .baloon {
+  /* transform: scaleX(-1); */
+  right: 90px;
+}
+
+.choose .tutorial.axe .txt {
+  /* transform: scaleX(-1); */
+}

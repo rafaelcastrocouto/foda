@@ -1,0 +1,210 @@
+.lina, .lina .portrait {
+  background-color: #e08725;
+}
+.slot .lina.heroes .portrait .img, .map .lina.heroes .portrait .img, .fromMap.lina.heroes .portrait .img {
+  background-size: 280%;
+  background-position: 36% 0%;
+}
+.lina .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjM1QzU5NDdDMDA2MTFFNzhBNDhENDNBNjFGMjJFNTQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjM1QzU5NDZDMDA2MTFFNzhBNDhENDNBNjFGMjJFNTQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjRDNjgzMUE4RkUzRDJFMDJCNTE2RkFFRDBGOTZDQ0NFIiBzdFJlZjpkb2N1bWVudElEPSI0QzY4MzFBOEZFM0QyRTAyQjUxNkZBRUQwRjk2Q0NDRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PshLRrYAAAA+SURBVHjaADAAz/8BuIAttMD9DA8I7vrrVjwaAxoN/eHvHHRdR/n/AczW7QPCsEgE8+a0rwAK8PYrKOgCDAA6zBhVxXUk4wAAAABJRU5ErkJggg==');
+}
+
+.lina.heroes .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/heroes/lina.jpg");
+}
+
+.lina-fire .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/lina/fire.jpg");
+}
+
+.lina-stun .img, .buffs .buff.lina-stun .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/lina/stun.jpg");
+}
+
+.lina-passive .img, .buffs .buff.lina-passive .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/lina/passive.jpg");
+}
+
+.lina-ult .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/lina/ult.jpg");
+}
+
+.map .fx.lina-stun {
+  transform: rotateX(-37deg) translate3d(75px,-480px,100px) scale(10);
+  width: 64px;
+  height: 128px;
+  animation: lina-stun-sprite 1.4s steps(14) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/lina/stun.png');
+}
+
+@keyframes lina-stun-sprite {
+  100% {
+    background-position: -896px;
+  }
+}
+
+.fx.lina-passive {
+  transform: translate(1px,-17px) scale(1.2);
+  width: 34px;
+  height: 50px;
+  animation: lina-passive-sprite 0.8s steps(8) infinite;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/lina/passive.png');
+  z-index: -1;
+}
+
+@keyframes lina-passive-sprite {
+  100% {
+    background-position: -272px;
+  }
+}
+
+.map .fx.lina-fire {
+  width: 96px;
+  height: 192px;
+  animation: lina-fire-sprite 1.5s steps(15) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/lina/fire.png');
+  background-repeat: no-repeat;
+  transform: translate3d(60px,-400px,100px) scale(7);
+  background-position: 0px 126px;
+}
+
+@keyframes lina-fire-sprite {
+  100% {
+    background-position: -1440px 0px;
+  }
+}
+
+.map .fx.lina-fire.bottom {
+  transform: rotate(180deg) translate3d(-65px,-450px,100px) scale(7);
+  animation: lina-fire-sprite 1.5s steps(15) 1;
+}
+
+.map .fx.lina-fire.left {
+  transform: translate3d(-200px,100px,100px) rotateZ(-90deg) scaleX(8) scaleY(5);
+  background-position: 0px 135px;
+  animation: lina-fire-sprite 1.5s steps(15) 1;
+}
+
+.map .fx.lina-fire.right {
+  transform: translate3d(340px,100px,100px) rotateZ(90deg) scaleX(8) scaleY(5);
+  animation: lina-fire-sprite 1.5s steps(15) 1;
+  background-position: 0px 135px;
+}
+
+.map .fx.lina-ult {
+  transform: translate3d(0,0,100px) scale(18);
+  width: 57px;
+  height: 91px;
+  animation: lina-ult-sprite 1.9s steps(19) 1;
+}
+
+@keyframes lina-ult-sprite {
+  100% {
+    background-position: -1083px;
+  }
+}
+
+.map .fx.lina-ult.close {
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/lina/ult-close.png');
+}
+
+.map .fx.lina-ult.far {
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/lina/ult-far.png');
+}
+
+.map .fx.lina-ult.r01 {
+  transform: translate3d(80px,0,200px) scale(9);
+}
+
+.map .fx.lina-ult.r-11 {
+  transform: translate3d(40px,-45px,100px) scale(10) rotate(36deg);
+}
+
+.map .fx.lina-ult.r11 {
+  transform: translate3d(110px,-45px,100px) scale(10) rotate(-36deg);
+}
+
+.map .fx.lina-ult.r10 {
+  transform: translate3d(105px,-120px,100px) scale(6) rotate(-90deg);
+}
+
+.map .fx.lina-ult.r-10 {
+  transform: translate3d(50px,-120px,100px) scale(6) rotate(90deg);
+}
+
+.map .fx.lina-ult.r-1-1 {
+  transform: translate3d(50px,-200px,100px) scale(10) rotate(142deg);
+}
+
+.map .fx.lina-ult.r1-1 {
+  transform: translate3d(110px,-200px,100px) scale(10) rotate(-142deg);
+}
+
+.map .fx.lina-ult.r0-1 {
+  transform: translate3d(85px,-165px,100px) scale(9) rotate(180deg);
+}
+
+.map .fx.lina-ult.r02 {
+  transform: translate3d(85px,245px,100px) scale(9);
+}
+
+.map .fx.lina-ult.r-12 {
+  transform: translate3d(-30px,235px,100px) scale(10) rotate(20deg);
+}
+
+.map .fx.lina-ult.r12 {
+  transform: translate3d(190px,235px,100px) scale(10) rotate(-20deg);
+}
+
+.map .fx.lina-ult.r-21 {
+  transform: translate3d(-150px,55px,100px) scale(8) rotate(54deg);
+}
+
+.map .fx.lina-ult.r21 {
+  transform: translate3d(315px,65px,100px) scale(8) rotate(-54deg);
+}
+
+.map .fx.lina-ult.r-20 {
+  transform: translate3d(-150px,-110px,100px) scale(6.5) rotate(90deg);
+}
+
+.map .fx.lina-ult.r20 {
+  transform: translate3d(330px,-110px,100px) scale(6.5) rotate(-90deg);
+}
+
+.map .fx.lina-ult.r-2-1 {
+  transform: translate3d(-140px,-290px,100px) scale(8) rotate(125deg);
+}
+
+.map .fx.lina-ult.r2-1 {
+  transform: translate3d(320px,-280px,100px) scale(8) rotate(-125deg);
+}
+
+.map .fx.lina-ult.r-1-2 {
+  transform: translate3d(-20px,-460px,100px) scale(10) rotate(160deg);
+}
+
+.map .fx.lina-ult.r1-2 {
+  transform: translate3d(200px,-460px,100px) scale(10) rotate(-160deg);
+}
+
+.map .fx.lina-ult.r0-2 {
+  transform: translate3d(90px,-480px,100px) scale(9) rotate(180deg);
+}
+.ultfx .lina-ult {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/lina/ult.jpg");
+}
+.projectile.lina,
+.projectile.towers.enemy {
+  margin-left: 10px;
+  background-color: transparent;
+  width: 34px;
+  height: 50px;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/lina/passive.png");
+  animation: lina-projectile-sprite 0.8s steps(8) infinite;
+}
+@keyframes lina-projectile-sprite {
+  100% {
+    background-position: -272px;
+  }
+}

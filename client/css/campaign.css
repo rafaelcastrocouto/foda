@@ -1,0 +1,347 @@
+.campaign-map {
+  position: relative;
+  width: 600px;
+  height: 550px;
+  background-color: #073131;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDE1QzE1MkVDMDAxMTFFN0FBMzhERkM0OTZFREEzQjQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDE1QzE1MkRDMDAxMTFFN0FBMzhERkM0OTZFREEzQjQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjA5OTlCNDg4NzQwMEIxNjE4RDkxRjVDN0NFM0RCMDQ5IiBzdFJlZjpkb2N1bWVudElEPSIwOTk5QjQ4ODc0MDBCMTYxOEQ5MUY1QzdDRTNEQjA0OSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PocqeS4AAABeSURBVHjaAFAAr/8EJy40GCAU+vv5AAQE9uPnBBMnCwMCIggA7hAd/+P7/ATyA9gDEv4G8SXr3/r57f0EGRwSEBfp6+bsFBsuBOH8BAEGBPLsAPzx8/kXxuv7+AIMAChoJXryGCoBAAAAAElFTkSuQmCC');
+  background-size: cover;
+  top: 310px;
+  left: 320px;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+}
+
+.campaign-map:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/bkg/campaign.jpg");
+  background-size: cover;
+  border-radius: 6px;
+}
+
+.left-side .campaign-map {
+  left: 635px;
+}
+
+.campaign-box.box {
+  right: 30px;
+  transform: none;
+  padding: 8px;
+  width: 300px;
+  left: auto;
+  top: 36px;
+  height: 400px;
+}
+
+.campaign-box h2 {
+  margin: 8px;
+  font-size: 22px;
+}
+
+.left-side .campaign-box.box {
+  left: 22px;
+  right: auto;
+}
+
+.campaign-img {
+  height: 160px;
+  background-size: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-position: 50% 50%;
+  background-color: lightgrey;
+}
+
+.campaign-img:before {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.campaign-img.tower:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/towers/tower-player.jpg");
+}
+.campaign-img.etower:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/towers/tower-enemy.jpg");
+}
+.campaign-img.tree:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/trees/tree_rad.jpg");
+}
+.campaign-img.forest:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/units/tomato.jpg");
+}
+.campaign-img.catap:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/player_catapult.jpg");
+}
+.campaign-img.unit:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/player_melee.jpg");
+}
+.campaign-img.eunit:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/enemy_melee.jpg");
+}
+.campaign-img.eunitran:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/enemy_ranged.jpg");
+}
+.campaign-img.ecat:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/enemy_catapult.jpg");
+}
+.campaign-img.rune:before {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/creeps/player_ranged.jpg");
+}
+
+
+.state .campaign-box p {
+  margin: 2px 0;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.campaign-box p.achieve {
+  text-align: left;
+  font-size: 13px;
+  line-height: 22px;
+}
+.campaign-box p.achieve:before {
+  content: "☆";
+  font-size: 20px;
+  line-height: 22px;
+  margin: 0 4px 0 0;
+  vertical-align: bottom;
+}
+.campaign-heroes {
+  text-align: center;
+  margin-top: 10px;
+}
+.campaign-box .campaign-heroes .heroes {
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0px 3px;
+  overflow: hidden;
+}
+.campaign-heroes .portrait, .campaign-heroes .heroes .img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position-x: 50%;
+}
+
+.stages {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255,255,225,0.1);
+  box-shadow: 0 0 15px 0 rgba(255,255,225,0.2);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0);
+  opacity: 0.9;
+}
+
+.stages:hover {
+  background-color: rgba(255,255,225,0.3);
+  box-shadow: 0 0 15px 0 rgba(255,255,225,0.7);
+}
+
+.stages.blink {
+  animation: stagesblink 1s infinite;
+  background-color: rgba(255,255,225,0.3);
+}
+.stages.blink:after {
+  display: none;
+}
+.states .stages.done {
+  opacity: 0.3;
+  background-color: rgba(255,255,225,0.3);
+}
+.stages.done:after {
+  content: "X";
+  font-size: 80px;
+  position: relative;
+  top: 24px;
+  left: 18px;
+  opacity: 0.5;
+  font-family: monospace;
+}
+.stages.done.start:after {
+  top: 40px;
+  left: 30px;
+}
+.stages.done.optional:after {
+  font-size: 60px;
+  top: 16px;
+  left: 13px;
+}
+.stages.done.shop:after,
+.stages.done.rune:after {
+  font-size: 50px;
+  top: 16px;
+  left: 18px;
+}
+.stages.done.enabled {
+  opacity: 1;
+}
+.stages.done.enabled:after {
+  opacity: 0.3;
+  color: tomato;
+}
+
+@keyframes stagesblink {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(0,0,0,0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 4px white;
+  }
+}
+
+.stages.enabled {
+  cursor: pointer;
+  background-color: rgba(255,255,225,0.3);
+}
+
+.stages.enabled.blink {
+  border: 1px solid white;
+  opacity: 1;
+}
+.stages.enabled.blink:hover {
+  box-shadow: 0 0 0 4px white;
+}
+.stages.enabled:hover {
+  box-shadow: 0 0 0 2px white;
+  animation: none;
+}
+
+.stages.start {
+  bottom: 20px;
+  left: 20px;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rad.png");
+  width: 110px;
+  height: 110px;
+  background-size: 90%;
+}
+
+.stages.easy {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_easy.png");
+}
+
+.stages.easy.top {
+  top: 190px;
+  left: 30px;
+}
+
+.stages.easy.mid {
+  top: 330px;
+  left: 140px;
+}
+
+.stages.easy.bot {
+  bottom: 30px;
+  left: 300px;
+}
+
+.stages.rune {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rune.png");
+  top: 320px;
+  left: 370px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+}
+
+.stages.roshan {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rosh.png");
+  top: 140px;
+  left: 160px;
+  opacity: 0.7;
+}
+
+.stages.shop {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_shop.png");
+  top: 250px;
+  left: 110px;
+  width: 60px;
+  height: 60px;
+}
+
+.stages.normal.mid {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_medium.png");
+  top: 200px;
+  left: 280px;
+}
+
+.stages.hard {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_hard.png");
+}
+
+.stages.hard.top {
+  top: 10px;
+  left: 380px;
+}
+
+.stages.hard.mid {
+  top: 110px;
+  left: 400px;
+}
+
+.stages.hard.bot {
+  bottom: 320px;
+  left: 500px;
+}
+
+.stages.last {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_dire.png");
+  top: 20px;
+  left: 500px;
+}
+
+.stages.optional {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_opt.png");
+  width: 60px;
+  height: 60px;
+}
+
+.stages.optional.top {
+  top: 30px;
+  left: 45px;
+}
+.stages.optional.mid {
+  top: 360px;
+  left: 265px;
+}
+.stages.optional.bot {
+  bottom: 40px;
+  left: 500px;
+}
+
+.campaign-path {
+  background: white;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+.campaign-path.enabled {
+  opacity: 1.
+}
+
+.campaign .buttonbox {
+  position: absolute;
+  right: 22px;
+  bottom: 10px;
+  width: 320px;
+}
+
+.left-side .campaign .buttonbox {
+  right: auto;
+  left: 12px;
+}

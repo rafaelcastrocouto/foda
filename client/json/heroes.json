@@ -1,0 +1,93 @@
+{
+  
+  "axe": {
+    "name": "Axe",
+    "attribute": "Strength",
+    "description": "The one man army, once an executioner now leader of the Orcs. Axe is Axe!"
+  },
+  
+  "en": {
+    "name": "Bambi",
+    "attribute": "Intelligence",
+    "description": "Love and beauty are her strengths, which is why she moves away from the heat of battle. But do not be fooled, she is as deadly as she is charming"
+  },
+  
+  "ld": {
+    "name": "Bear Druid",
+    "attribute": "Agility",
+    "description": "Defender of the Brush Creek forest, he seeked war after the forest was burn down. The Druid and his Bear are together for so long that they bond souls"
+  },
+
+  "pud": {
+    "name": "Butcher",
+    "attribute": "Strength",
+    "description": "Summoned by the Necro, the Butcher is a composite of limbs an body parts grafted together. Legend say that his heart is from an old member of the Shirai Ryu"
+  },
+
+  "cat": {
+    "name": "Cat Lady",
+    "attribute": "Agility",
+    "description": "She dedicates herself completely to the service of Sajedene, Goddess of the Moon. She taught the Wind Elf and the Drow Ranger how to shoot an arrow!"
+  },
+
+  "wk": {
+    "name": "Dead King",
+    "attribute": "Strength",
+    "description": "When the King of Arendelle found about his daughter afair, he sought for a cure. After being betrayed by the Witch, he is now a slave of the Dire's wrath"
+  },
+
+  "lina": {
+    "name": "Fire Bender",
+    "attribute": "Intelligence",
+    "description": "After the fall of the Fire Nation, the Fire Bender felt in love with the Ice Mage. Now, together they fight for dat ancient and she is on fire and ready to zap!"
+  },
+
+  "cm": {
+    "name": "Ice Mage",
+    "attribute": "Intelligence",
+    "description": "Born in Arendelle, the Ice Mage was taught by her great grandfather Lich. With some help, she found the truth about the ancients and is ready to let it go!"
+  },
+  
+  "kotl": {
+    "name": "Light Keeper",
+    "attribute": "Intelligence",
+    "description": "Being one of the Maiar, he's responsible for spreading the truth. He fell when the darkness took over, but now he is back with the power to kame rame rá!"
+  },
+
+  "am": {
+    "name": "Magino",
+    "attribute": "Agility",
+    "description": "When his brother soul was stolen, he started his quest against all magic. Being a sharp fighter, he turns his enemies magic power against themselves"
+  },
+
+  "nyx": {
+    "name": "Mix",
+    "attribute": "Agility",
+    "description": "The oldest breeder of the Samsa Hive, he is not an ordinary zealot scarab. He is the Mix assassin, chosen to kill whoever get's in the path of his Queen"
+  },
+
+  "com": {
+    "name": "Sashay Commander",
+    "attribute": "Strength",
+    "description": "One needs courage to enter the battlefield. But to come back as a woman and stand up to the challenge requires something else and she has all that!"
+  },
+  
+  "terror": {
+    "name": "Terror",
+    "attribute": "Agility",
+    "description": "His soul was stolen by a demon lord but his empty body continued to wander in hell seeking revenge"
+  },
+
+  "venge": {
+    "name": "Venge",
+    "attribute": "Agility",
+    "description": "After losing her throne birthright and her love the Sky Mage, Venge will never forgive her sister's treachery and will hunt her until justice is made"
+  },
+
+  "wind": {
+    "name": "Wind Elf",
+    "attribute": "Intelligence",
+    "description": "Her family was killed in a storm on the night of her birth, but the wind itself pitied and saved her. She uses the secrets of archery to take out her enemies"
+  }
+
+}

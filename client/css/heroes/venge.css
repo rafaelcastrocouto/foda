@@ -1,0 +1,117 @@
+.venge, .venge .portrait {
+  background-color: #e557c4;
+}
+
+.venge .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpEQUEzOTA4RTQzOTNFNzExOUU3MzlGMUNFQzQzQzk4NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1QkU1NjJCREMwMDgxMUU3QUE1NkRBMzk2NkQxOTc1RSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1QkU1NjJCQ0MwMDgxMUU3QUE1NkRBMzk2NkQxOTc1RSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkRCQTM5MDhFNDM5M0U3MTE5RTczOUYxQ0VDNDNDOTg3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkRBQTM5MDhFNDM5M0U3MTE5RTczOUYxQ0VDNDNDOTg3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+X4rY2AAAAD5JREFUeNoAMADP/wPQRaUdMUIEOjn15eL09e8D/QwLwPHSLh8qIxce6+nhA+8GAQwXIAX+//Lq2vPz8AIMAB03GEEEySHXAAAAAElFTkSuQmCC');
+}
+
+.venge.heroes .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/heroes/venge.jpg");
+}
+
+.venge-stun .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/venge/stun.jpg");
+}
+
+.venge-corruption .img, .buffs .buff.venge-corruption .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/venge/corruption.jpg");
+}
+
+.venge-aura .img, .buffs .buff.venge-aura .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/venge/aura.jpg");
+}
+
+.venge-ult .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/venge/ult.jpg");
+}
+.map .fx.venge-aura {
+  transform: rotateX(-25deg) translate3d(-10px,-400px,10px) scale(1.4);
+  width: 260px;
+  height: 320px;
+  animation: venge-aura-sprite 1.2s steps(14) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/venge/aura.png');
+}
+
+@keyframes venge-aura-sprite {
+  100% {
+    background-position: -3640px;
+  }
+}
+
+
+.map .fx.venge-aura-target {
+  transform: rotateX(-25deg) translate3d(25px,-280px,10px) scale(1.4);
+  width: 220px;
+  height: 240px;
+  animation: venge-aura-target-sprite 1.2s steps(13) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/venge/target.png');
+}
+
+@keyframes venge-aura-target-sprite {
+  100% {
+    background-position: -2860px;
+  }
+}
+
+.map .fx.venge-corruption {
+  transform: rotateX(-25deg) translate3d(45px,0px,80px) scale(2.75);
+  width: 128px;
+  height: 128px;
+  animation: venge-corruption-sprite 1.8s steps(21) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/venge/corruption.png');
+  opacity: 1;
+}
+.map .fx.venge-corruption1 {
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/venge/corruption1.png');
+}
+
+.map .fx.venge-corruption.miss {
+  opacity: 0.25;
+}
+
+@keyframes venge-corruption-sprite {
+  100% {
+    background-position: -2688px;
+  }
+}
+
+.map .fx.venge-ult {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 256px;
+  height: 256px;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/venge/ult.png");
+  animation: venge-ult-sprite 0.8s steps(6) 1;
+}
+
+@keyframes venge-ult-sprite {
+  100% {
+    background-position: -1536px;
+  }
+}
+
+.ultfx .venge-ult {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/heroes/venge.jpg");
+}
+.projectile.venge {
+  width: 70px;
+  height: 60px;
+  background: transparent;
+  box-shadow: 0 15px 0 0 #ed7edc;
+  margin-left: 8px;
+}
+.projectile.venge-stun {
+  background-color: transparent;
+  width: 192px;
+  height: 192px;
+  box-shadow: none;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/venge/stun.png");
+  animation: venge-stun-sprite 0.8s steps(8) infinite;
+}
+@keyframes venge-stun-sprite {
+  100% {
+    background-position: -1536px;
+  }
+}

@@ -1,0 +1,133 @@
+.resultsbox {
+  width: 720px;
+  animation: slideresult 0.8s;
+  padding: 30px 60px;
+}
+
+@keyframes slideresult {
+  0% {
+    top: -800px;
+  }
+
+  100% {
+    top: 50%;
+  }
+}
+.result h1 {
+  display: inline;
+  margin-right: 10px;
+  font-size: 18px;
+}
+.result h1:last-child {
+  margin-right: 0;
+}
+.result .sub {white-space: nowrap;}
+.result .resultTitle {
+  text-transform: uppercase;
+  font-size: 25px;
+  display: block;
+  /* font-weight: bold; */
+  margin-bottom: 6px;
+  margin-right: 0;
+}
+
+.result .results {
+  display: inline-block;
+  width: 300px;
+  text-align: right;
+}
+
+.result .results.enemy {
+  text-align: left;
+}
+.result .results p {
+  box-shadow: inset 0 0 0 50px rgba(255,255,200,0.3);
+  border: 0;
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 6px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.result .results.enemy p {
+  box-shadow: inset 0 0 0 50px rgba(255,120,255,0.3);
+}
+
+.result .results span {
+  vertical-align: 13px;
+  margin: 10px;
+}
+
+.result .results .portrait {
+  border: 2px solid #79d480;
+  border-radius: 50%;
+  background-size: cover;
+  width: 36px;
+  display: inline-block;
+}
+
+.result .results.enemy .portrait {
+  border: 2px solid #c76352;
+  transform: scaleX(-1);
+}
+.result .results .img {
+  width: 36px;
+  height: 36px;
+  background-size: cover;
+  background-position: 50%;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.result .resultsbox .close {
+  width: 160px;
+  display: block;
+  margin: 6px auto 0;
+}
+
+.result .turntitle.show {
+  opacity: 1;
+}
+
+.result .parallax {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.result .parallax .card {
+  position: absolute;
+  cursor: default;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.result .parallax .card:hover {
+  z-index: 1;
+}
+
+.result .parallax .card:nth-child(1) {
+  transform: translate3d(787px, -44px, -69px) rotateY(-61deg) rotateZ(34deg) rotateX(-25deg);
+}
+/*
+.result .parallax .card:nth-child(2) {
+  transform: translate3d(740px, -130px, -260px) rotateY(-50deg) rotateZ(30deg) rotateX(-15deg);
+}
+*/
+.result .parallax .card:nth-child(2) {
+  transform: translate3d(970px, 90px, -184px) rotateY(-85deg) rotateZ(35deg) rotateX(-5deg);
+}
+
+.result .parallax .card:nth-child(3) {
+  transform: translate(-65px, -60px) translateZ(-140px) rotateY(50deg) rotateZ(-36deg) rotateX(-2deg);
+}
+
+.result .parallax .card:nth-child(4) {
+  transform: translate(-255px, 130px) translateZ(-290px) rotateY(70deg) rotateZ(-35deg) rotateX(5deg);
+}
+
+.result .parallax .card:nth-child(5) {
+  transform: translate(-5px, -130px) translateZ(-323px) rotateY(40deg) rotateZ(-39deg) rotateX(-18deg);
+}

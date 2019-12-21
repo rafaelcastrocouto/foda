@@ -1,0 +1,165 @@
+.table .map {
+  z-index: 0;
+  transform: translate(-49.7%,-50.8%) rotateX(30deg) scale3d(0.21,0.19,0.2);
+  transform-style: preserve-3d;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: all 2s;
+}
+
+.s1v1 .table .map {
+  transform: translate(-49.7%,-50.8%) rotateX(30deg) scale3d(0.27,0.25,0.25);
+}
+
+.s3v3 .table .map {
+  transform: translate(-49.7%,-50.8%) rotateX(30deg) scale3d(0.22,0.21,0.21);
+}
+
+.table .map.flat {
+  transform: translate(-50%,-50%) scale3d(0.255,0.175,0.2);
+  transform-style: flat;
+}
+
+.camera.night:before {
+  filter: hue-rotate(60deg) brightness(0.7);
+  -webkit-filter: hue-rotate(60deg) brightness(0.7);
+}
+
+.map .row {
+  /* width: 1910px; */
+  height: 312px;
+}
+
+.map .spot {
+  width: 200px;
+  height: 300px;
+  position: relative;
+  border: 6px solid rgba(0,0,0,0.1);
+  border-radius: 6px;
+  display: inline-block;
+  transform: translate3d(0, 0, 1px);
+  transform-style: preserve-3d;
+  transition: all 0.3s, filter 2s, -webkit-filter 2s
+}
+
+.map .spot:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.map .spot.playerarea {
+  background: rgba(14, 190, 255,0.2);
+}
+
+.map .spot.playerarea:hover {
+  background: rgba(50,200,250,0.3);
+}
+
+.map .spot.enemyarea {
+  background: rgba(255,100,100,0.2);
+}
+
+.map .spot.enemyarea:hover {
+  background: rgba(255,100,100,0.3);
+}
+
+.map .spot.jungle {
+  background: rgba(255,255,100,0.15);
+}
+
+.map .spot.jungle:after {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 130px;
+  border: 6px solid white;
+  border-radius: 50%;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/map/forest.png");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 85%;
+  position: absolute;
+  top: 86px;
+  left: 30px;
+  opacity: 0.3;
+  background-color: transparent;
+}
+.map .spot.jungle:hover:after {
+  opacity: 0.8;
+}
+
+
+.map .spot.jungle.targetarea:after {
+  animation: none;
+  border: 10px solid dodgerblue;
+  opacity: 1;
+}
+
+.map .spot.jungle.targetarea:hover:after {
+  animation: none;
+  border: 6px solid doggerblue;
+}
+
+.map .spot.jungle:hover {
+  background: rgba(100,255,100,0.25);
+}
+
+.map .spot.fountain {
+  background: rgba(100,255,190,0.15);
+}
+.map .enemyarea.spot.fountain {
+  background: rgba(255,80,80,0.3);
+}
+.map .spot.fountain:after {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 130px;
+  border: 6px solid white;
+  border-radius: 50%;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/map/fountain.png");
+  background-repeat: no-repeat;
+  background-position: 50% 60%;
+  background-size: 60%;
+  position: absolute;
+  top: 86px;
+  left: 30px;
+  opacity: 0.3;
+}
+.map .spot.fountain:hover:after {
+  opacity: 0.8;
+}
+
+.map .spot.fountain:hover {
+  background: rgba(100,255,100,0.25);
+}
+.map .enemyarea.spot.fountain:hover {
+  background: rgba(255,80,80,0.4);
+}
+
+.map .card.stunned,
+.map .card.disabled {
+  background: silver;
+}
+
+
+.map .spot .debug {
+  opacity: 0.2;
+  font-size: 70px;
+  line-height: 100px;
+  margin: 10px;
+  position: absolute;
+}
+/*
+.debug .map .spot .debug {
+  opacity: 0.3;
+  display: block;
+  font-size: 64px;
+  transform: translate3d(10px, 30px, 10px);
+  pointer-events: none;
+}
+*/
+.debug .map .ai {
+  box-shadow: 0 0 0 6px white;
+}

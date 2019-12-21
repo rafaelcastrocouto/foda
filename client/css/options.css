@@ -1,0 +1,166 @@
+.game-overlay .optbox {
+  min-width: 730px;
+  padding: 50px;
+}
+
+.optbox h1 {
+  font-size: 28px;
+  /* font-weight: bold; */
+  margin-bottom: 8px;
+}
+
+.optbox h2 {
+  font-size: 18px;
+  /* color: white; */
+}
+
+.audioconfig, .screenresolution {
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+  height: 270px;
+  margin-bottom: -10px;
+}
+.audioconfig {
+  height: 250px;
+}
+.audioconfig h2, .screenresolution h2 {
+  text-align: left;
+  font-weight: bold;
+  margin: 0 4px;
+  height: 32px;
+}
+
+.audioconfig h2 {
+  text-align: right;
+}
+
+.optbox label {
+  position: relative;
+  font-weight: bold;
+}
+
+.screenresolution label {
+  margin: 0;
+  font-size: 15px;
+  line-height: 15px;
+  height: 25px;
+}
+
+.screenresolution label:nth-child(6) {
+  margin: 0 0 10px 0;
+}
+
+.audioconfig label {
+  height: 50px;
+  margin-right: 6px;
+}
+
+.audioconfig label:nth-child(2) {
+  height: 30px;
+  text-align: right;
+  margin-bottom: 35px;
+  margin-top: 10px;
+}
+
+.audioconfig label:nth-child(3) {
+  margin-top: 20px;
+}
+
+label span {
+  vertical-align: super;
+}
+
+.optbox input + span {
+  cursor: pointer;
+}
+
+.optbox .audioconfig label span:first-child {
+  margin-left: 60px;
+}
+
+.game-container.high {
+  transform: translate3d(-50%, -50%, 0) scale(1.5) !important;
+}
+
+.game-container.medium {
+  transform: translate3d(-50%, -50%, 0) scale(1.2) !important;
+}
+
+.game-container.default {
+  transform: translate3d(-50%, -50%, 0) scale(1) !important;
+}
+
+.game-container.low {
+  transform: translate3d(-50%, -50%, 0) scale(0.75) !important;
+}
+
+.volume {
+  cursor: pointer;
+  position: relative;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-top: 40px solid transparent;
+  border-right: 100px solid rgba(0,0,0,0.2);
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  transform: translateZ(0);
+}
+
+.volumecontrol {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-top: 40px solid transparent;
+  border-right: 100px solid rgba(0,0,0,0.3);
+  transform-origin: 0 100%;
+  transform: scale(0.25);
+}
+
+.optbox .lang {
+  text-align: left;
+  float: left;
+  clear: left;
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+.left-side .optbox .lang {
+  position: relative;
+  left: 260px;
+}
+
+.optbox .lang h2 {
+  display: inline;
+  margin-right: 20px;
+  /* color: white; */
+  font-weight: bold;
+}
+
+.optbox .lang select {
+  font-size: 14px;
+  background: #fff;
+  color: #222;
+  border-radius: 3px;
+  padding: 6px;
+  font-weight: normal;
+  font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
+  height: 40px;
+}
+
+.option-state .back {
+  min-width: 200px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.left-side .optbox .back {
+  position: relative;
+  right: 300px;
+}

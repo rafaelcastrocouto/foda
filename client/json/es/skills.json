@@ -1,0 +1,787 @@
+{
+  "axe": {
+    "taunt": {
+      "name": "Taunt",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "aoe": "Radial",
+      "description": "Provoca las unidades enemigas cercanas y las obliga a atacar a Axe.",
+      "buffs": {
+        "taunt": {
+          "self": {
+            "description": "Bonus de armadura"
+          },
+          "targets": {
+            "description": "Provocado"
+          }
+        }
+      }
+    },
+    "enrage": {
+      "name": "Enrage",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "description": "Enfurece a una unidad enemiga, lo que ralentiza y recibe daño con el tiempo hasta que mata a otra unidad o la duración finaliza",
+      "buff": {
+      "damage type": "Mágico",
+        "description": "Enfurecido (Ralentizado y recibiendo daño con el tiempo)"
+      }
+    },
+    "counter": {
+      "name": "Axe Spin",
+      "type": "Passive",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "aoe": "Radial",
+      "damage type": "Físico",
+      "description": "Cuando atacado, existe la posibilidad de contraatacar inmediatamente a todos los enemigos que estén alrededor",
+      "buff": {
+        "description": "Cuando atacado, existe la posibilidad de contraatacar inmediatamente a todos los enemigos que estén alrededor"
+      }
+    },
+    "ult": {
+      "name": "Chop",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "damage type": "Físico",
+      "description": "Axe golpea al enemigo apuntando al cuello. Si el HP está por debajo de 1/3, la cabeza será cortada e y la carta vuelve a la mano."
+    }
+  },
+
+  "terror": {
+    "summon": {
+      "name": "Invocar Imagem",
+      "type": "Invocar",
+      "hand": "Izquierda",
+      "deck": "Invocar",
+      "targets": ["Lugar", "Libre"],
+      "description": "Una copia de Terror será convocada para cumplir sus órdenes, con la mitad de su HP y el daño"
+    },
+    "mirror": {
+      "name": "Mirror of Erised",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "aoe": "Radial",
+      "damage type": "Físico",
+      "description": "Invoca reflejos oscuros haciendo que todos los enemigos alrededor reciban su propio daño"
+    },
+    "morph": {
+      "name": "Demonic Morph",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Transforma Terror y todas las imágenes en poderosos demonios con un ataque a distancia",
+      "buff": {
+        "description": "Daño y alcance aumentado"
+      }
+    },
+    "ult": {
+      "name": "Soul Exchange",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "damage type": "Mágico",
+      "description": "Terror intercambiará su alma con el enemigo objetivo, intercambiando todos sus HP"
+    }
+  },
+  
+  "com": {
+    "aoe": {
+      "name": "Vengan",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar", "Yo"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Gira los números enemigos contra ellos, infligiendo daño por unidad y daño extra por héroe enemigo."
+    },
+    "heal": {
+      "name": "Golpe de cuerno",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo", "Aliado"],
+      "description": "Purgar la unidad objetivo y concede daño extra y cura",
+      "buff": {
+        "description": "Daño aumentado y cura por turno"
+      }
+    },
+    "counter": {
+      "name": "Contra ataque",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Al ser atacado, existe la posibilidad de contraatacar inmediatamente con robo de vida",
+      "buff": {
+        "description": "Al ser atacado, existe la posibilidad de contraatacar inmediatamente con robo de vida"
+      }
+    },
+    "ult": {
+      "name": "Reto",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "description": "Intercambia tres ataques con un enemigo objetivo. Si alguien muere, el asesino gana daño extra permanente"
+    }
+  },
+
+  "wind": {
+    "stun": {
+      "name": "Tiro de cuerda",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "description": "Vincula el objetivo a una unidad o árbol enemigo detrás de él. Si no hay unidad o árbol presente, la duración del aturdimiento se reduce a la mitad"
+    },
+    "arrow": {
+      "name": "Flecha de alimentación",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar"],
+      "aoe": "Lineal",
+      "damage type": "Mágico",
+      "description": "Daña a los enemigos y destruye los árboles a lo largo de su camino. Para cada enemigo la flecha golpea, su daño se reduce"
+    },
+    "run": {
+      "name": "Corredor de viento",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Aumenta la velocidad de movimiento y añade la evasión de todos los ataques",
+      "buff": {
+        "description": "Velocidad de movimiento aumentada y evasión de todos los ataques"
+      }
+    },
+    "ult": {
+      "name": "Lluvia de flechas",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "description": "Ataca a un enemigo objetivo cuatro veces seguidas. El daño se reduce"
+    }
+  },
+
+  "cat": {
+    "star": {
+      "name": "Caída de estrellas",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "damage type": "Mágico",
+      "description": "Daña a los enemigos alrededor de la Dama del Gato. Un enemigo aleatorio será golpeado dos veces"
+    },
+    "arrow": {
+      "name": "Flecha rápida",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar"],
+      "aoe": "Lineal",
+      "damage type": "Mágico",
+      "description": "Stuns and damages a single target. The distance will increase the damage and the stun (Max Dmg 15, Max Stun: 4 turns)"
+    },
+    "leap": {
+      "name": "Salto de gato",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar", "Distancia", "Libre"],
+      "description": "Saltar al punto de destino y recibir velocidad de bonificación",
+      "buff": {
+        "description": "Velocidad aumentada por 'Salto'"
+      }
+    },
+    "ult": {
+      "name": "Sombras agudas",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Todos los héroes de los jugadores se vuelven invisibles",
+      "buff": {
+        "description": "Escondido por las 'Sombras de Remache'"
+      }
+    }
+  },
+
+  "lina": {
+    "fire": {
+      "name": "Dragón Llamas",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar"],
+      "aoe": "Lineal",
+      "damage type": "Mágico",
+      "description": "Una columna de llamas daña a los enemigos en una línea"
+    },
+    "stun": {
+      "name": "Bola de fuego",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar", "Yo"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Una bola de fuego aturde y daña a los enemigos en el área de destino. Puede destruir árboles"
+    },
+    "passive": {
+      "name": "Alma en llamas",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Cada lanzamiento aumentará el daño de bonificación de fuego de apilamiento de ataque. Restablecer en el final de la vuelta",
+      "buff": {
+        "description": "Cada lanzamiento aumentará el daño de bonificación de fuego de apilamiento de ataque. Restablecer en el final de la vuelta"
+      }
+    },
+    "ult": {
+      "name": "Borrar",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "damage type": "Mágico",
+      "description": "Dispara un rayo a una sola unidad enemiga"
+    }
+  },
+
+  "am": {
+    "burn": {
+      "name": "Quemadura de maná",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Cada ataque tiene bonus de daño igual al maná del blanco y hace que el enemigo descarte una carta de habilidad de mano derecha de ese héroe",
+      "buff": {
+        "description": "Daño aumentado por la maná del objetivo y hace que el enemigo descarte una carta de habilidad de mano derecha de ese héroe"
+      }
+    },
+    "blink": {
+      "name": "Parpadeo",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar", "Libre"],
+      "description": "Teleportar Magino al objetivo"
+    },
+    "mirror": {
+      "name": "Espejos mágicos",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Refleja los hechizos y los hechizos y aumenta la resistencia",
+      "buffs": {
+        "mirror": {
+          "counter": {
+            "description": "Reflejando los hechizos y los hechizos"
+          },
+          "passive": {
+            "description": "Resistencia mágica aumentada"
+          }
+        }
+      }
+    },
+    "ult": {
+      "name": "Explosión de maná",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "El área de daño con daño de bonificación es igual al maná del objetivo. Interrumpe el canal de destino"
+    }
+  },
+
+  "cm": {
+    "slow": {
+      "name": "Nieve explosiva",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar", "Yo"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Una ráfaga de heladas dañinas que retarda a los enemigos en el área objetivo",
+      "buff": {
+        "description": "Disminuido por la explosión de nieve"
+      }
+    },
+    "passive": {
+      "name": "Mana aura",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Dar una tarjeta de habilidad de bonificación por turno",
+      "buff": {
+        "description": "El jugador compra una carta de habilidad adicional por turno"
+      }
+    },
+    "freeze": {
+      "name": "Prisión de hielo",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "description": "Previene el movimiento y el ataque mientras se trata de daño con el tiempo. Interrumpe el canal de destino",
+      "buff": {
+        "damage type": "Mágico",
+        "description": "Ice Prison: disarmed, rooted and receiving damage over time"
+      }
+    },
+    "ult": {
+      "name": "Tormenta de nieve",
+      "type": "Canal",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Canaliza una tormenta de explosiones heladas que daña a los enemigos que la rodean",
+      "buffs": {
+        "ult": {
+          "source": {
+            "description": "¡Déjalo ir! ¡Déjalo ir!"
+          },
+          "targets": {
+            "description": "Lento y dañado por explosiones heladas"
+          }
+        }
+      }
+    }
+  },
+
+  "kotl": {
+    "illuminate": {
+      "name": "Bola liviana",
+      "type": "Canal",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar"],
+      "aoe": "Lineal",
+      "damage type": "Mágico",
+      "description": "Canales ligeros para dañar a los enemigos en una línea",
+      "buffs": {
+        "illuminate": {
+          "channel": {
+            "description": "Canalización de luz para dañar a los enemigos en una línea"
+          }
+        }
+      }
+    },
+    "blind": {
+      "name": "Explosión de Luz",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar", "Yo"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Una luz ciega lanza las unidades enemigas, haciendo que se equivocan el 70% de los ataques. Interrumpe la canalización",
+      "buff": {
+        "description": "Ciego"
+      }
+    },
+    "mana": {
+      "name": "Magia de mana",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Jugador ganancia tarjetas de habilidad de bonificación"
+    },
+    "ult": {
+      "name": "Espíritu de Luz",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar", "Yo"],
+      "aoe": "Radial",
+      "description": "Un espíritu de luz pacífica pone a todos enemigos para dormir",
+      "buff": {
+        "description": "Durmiente"
+      }
+    }
+  },
+
+  "ld": {
+    "bear": {
+      "name": "Invocar oso",
+      "summon name": "Oso",
+      "type": "Invocar",
+      "hand": "Derecha",
+      "deck": "Invocar",
+      "targets": ["Lugar", "Libre"],
+      "description": "El oso tiene 'garras de la naturaleza' y 'demolición'. Hace 12 puntos de daño al morir. Ganancias 'Retorno' tarjeta",
+      "buffs": {
+        "defender": {
+          "source": {
+            "name": "Defensor",
+            "description": "Transfiere una porción del daño infligido al druida a su oso"
+          }
+        },
+        "demolish": {
+          "source": {
+            "name": "Demolición",
+            "description": "Aumenta la potencia del Oso, causando que inflige 6 daños adicionales a la torre"
+          }
+        },
+        "entangle": {
+          "source": {
+            "name": "Garras de la naturaleza",
+            "description": "Los ataques tienen un 20% de probabilidad de hacer que las raíces exploten desde el suelo, inmovilizando a la unidad enemiga atacada y causando 6 daños por segundo. Interrumpe el canal de destino"
+          },
+          "target": {
+            "name": "Garras de la naturaleza",
+            "damage type": "Físico",
+            "description": "Arraigado y recibiendo daño por segundo"
+          }
+        }
+      }
+    },
+    "bearreturn": {
+      "name": "Regreso",
+      "type": "Activo",
+      "hand": "Izquierda",
+      "deck": "Temporal",
+      "targets": ["Lugar", "Libre"],
+      "description": "Teletransporta al oso de nuevo al druida del oso. Debe ser desechado si el oso es asesinado"
+    },
+    "link": {
+      "name": "Furia del oso",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Aumenta el ataque y el Oso Druida cura a tu oso con sus ataques",
+      "buff": {
+        "description": "Bonos de ataque y parte del daño cura el oso"
+      }
+    },
+    "roar": {
+      "name": "Rugido temeroso",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo", "Invocar"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Los rugidos hacen que los enemigos huyan aterrorizados. La unidad retira un punto si la posición es libre. Interrumpe el canal de destinos"
+    },
+    "ult": {
+      "name": "Forma de oso",
+      "type": "Palanca",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Bear Druid se transforma en un oso furioso con mayor HP y armadura. Gana la carta de 'Batalla Roar'",
+      "buff": {
+        "description": "Forma de oso activa"
+      }
+    },
+    "cry": {
+      "name": "Garras de guerra",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Temporal",
+      "targets": ["Yo"],
+      "description": "Aumenta el ataque y la armadura de Syllabear y el Spirit Bear",
+      "buff": {
+        "description": "Ataque y armadura aumentados"
+      }
+    }
+  },
+
+  "nyx": {
+    "stun": {
+      "name": "Ola de roca",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar"],
+      "aoe": "Lineal",
+      "damage type": "Mágico",
+      "description": "Picos de roca irrumpen a lo largo de un camino recto, los enemigos golpeados son aturdidos y tomar daño"
+    },
+    "burn": {
+      "name": "Quemadura de la mente",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "damage type": "Mágico",
+      "description": "Causa daño igual al maná multiplicado y hace que el jugador enemigo pierda una carta de ese héroe"
+    },
+    "spike": {
+      "name": "Carapacho",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "damage type": "Puro",
+      "description": "Reflejar los daños recibidos y aturdir la fuente de daño",
+      "buff": {
+        "description": "Reflejar los daños recibidos y aturdir la fuente de daño"
+      }
+    },
+    "ult": {
+      "name": "Madriguera",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "damage type": "Físico",
+      "description": "La mezcla se vuelve invisible y gana velocidad y daño",
+      "buff": {
+        "description": "Invisible y ataque aumentado"
+      }
+    }
+  },
+
+  "pud": {
+    "hook": {
+      "name": "Gancho carnicero",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar"],
+      "aoe": "Lineal",
+      "damage type": "Puro",
+      "description": "Lanza un gancho sangriento que enganchará la primera unidad que encuentre, arrastrando la unidad y causando daño si es enemigo. Interrumpe el canal enemigo"
+    },
+    "rot": {
+      "name": "Hedor",
+      "type": "Palanca",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "aoe": "Radial",
+      "damage type": "Mágico",
+      "description": "Una nube apestosa que hace daño y frena enemigos. El daño se reparte al final del turno, el Carnicero también será dañado",
+      "buffs": {
+        "rot": {
+          "source": {
+            "description": "El hedor está activo"
+          },
+          "targets": {
+            "description": "Disminuido por el hedor del carnicero"
+          }
+        }
+      }
+    },
+    "passive": {
+      "name": "Armadura de Carne",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Da Carnicero de bonificación de HP y daños en cada matar y reduce el daño mágico",
+      "buff": {
+        "description": "HP y ataque aumentado por resistencia mágica de matanza y bonificación"
+      }
+    },
+    "ult": {
+      "name": "Carne fresca",
+      "type": "Canal",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "damage type": "Mágico",
+      "description": "Deshabilitar y hacer daño con el tiempo mientras se cura a sí mismo. Interrumpe el canal de destino",
+      "buffs": {
+        "ult": { 
+          "source": {
+            "description": "Canalización - Carne fresca"
+          },
+          "target": {
+            "description": "Deshabilitado y recibiendo daños en el tiempo"
+          }
+        }
+      }
+    }
+  },
+
+  "wk": {
+    "stun": {
+      "name": "Explosión de fuego",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "damage type": "Mágico",
+      "description": "Daña y aturde a un objetivo y luego se ralentiza y hace daño con el tiempo",
+      "buff": {
+        "damage type": "Mágico",
+        "description": "Daños de explosión de fuego con el tiempo"
+      }
+    },
+    "aura": {
+      "name": "Aura vampírica",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Cada ataque drenará un porcentaje de la vida del enemigo",
+      "buff": {
+        "description": "Drenar vida en cada ataque"
+      }
+    },
+    "crit": {
+      "name": "Golpe mortal",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Los ataques de Dead King tendrán la posibilidad de infligir bonos críticos. Si una unidad es asesinada con daño crítico, el jugador compra una carta 'Esqueleto'",
+      "buff": {
+        "description": "Posibilidad de daño crítico. Si una unidad es asesinada con daño crítico, el jugador compra una carta 'Esqueleto'"
+      }
+    },
+    "skeleton": {
+      "name": "Invocar Esqueleto",
+      "summon name": "Esqueleto",
+      "type": "Invocar",
+      "hand": "Derecha",
+      "deck": "Temporal",
+      "targets": ["Lugar", "Libre"],
+      "description": "Invocar un Esqueleto"
+    },
+    "ult": {
+      "name": "Reencarnación",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Dead King volverá al siguiente turno de jugador después de haber sido asesinado frenando enemigos alrededor. El pasivo es descartado",
+      "buffs": {
+        "ult": {
+          "source": {
+            "description": "¡Nadie puede matar al Rey Muerto!"
+          },
+          "targets": {
+            "description": "¡Desacelerado por el regreso del Rey!"
+          }
+        }
+      }
+    }
+  },
+
+  "venge": {
+    "stun": {
+      "name": "Explosión mágica",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "damage type": "Mágico",
+      "description": "Dañar y aturdir a un objetivo"
+    },
+    "corruption": {
+      "name": "Ola de terror",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Lugar"],
+      "aoe": "Lineal",
+      "damage type": "Mágico",
+      "description": "Debilita la armadura enemiga",
+      "buff": {
+        "description": "Armadura Reducida"
+      }
+    },
+    "aura": {
+      "name": "Venganza Aura",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Un aura que aumenta el daño de ataque de las unidades amigas cercanas. Si Venge muere, el bono de daño se duplicará",
+      "buff": {
+        "description": "Bono de ataque"
+      }
+    },
+     "ult":{
+      "name": "En mis zapatos",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo", "Aliado"],
+      "description": "Intercambia instantáneamente posiciones con un héroe objetivo, amigo o enemigo"
+     }
+   },
+
+  "en": {
+    "passive": {
+      "name": "Sin tocar",
+      "type": "Pasivo",
+      "hand": "Izquierda",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "El atacante será maldecido y sufrirá daño reducido para el turno",
+      "buffs": {
+        "passive": {
+          "self": {
+            "description": "No puede tocar esto"
+          },
+          "attacker": {
+            "description": "Daño reducido"
+          }
+        }
+      }
+    },
+    "curse": {
+      "name": "Seducción",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo", "Selva"],
+      "description": "Invocar un deslizamiento del bosque, toma el control sobre una unidad enemiga o ralentiza a un héroe enemigo",
+      "buff": {
+        "description": "Encantado"
+      }
+    },
+    "heal": {
+      "name": "Healing Wisps",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Yo"],
+      "description": "Invoque 5 Healing Wisps para ella y unidades amigas cercanas",
+      "buff": {
+        "description": "Healing Wisp"
+      }
+    },
+     "ult":{
+      "name": "Lanza de desaparecidos",
+      "type": "Activo",
+      "hand": "Derecha",
+      "deck": "Comprar",
+      "targets": ["Enemigo"],
+      "description": "Ataca a un enemigo objetivo con daño de bonificación igual al doble de la distancia"
+     }
+   }
+}

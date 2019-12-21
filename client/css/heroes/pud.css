@@ -1,0 +1,169 @@
+.pud, .pud .portrait {
+  background-color: #b43;
+}
+
+.pud .portrait {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAADCAIAAADUVFKvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTU2QzE0RjFDMDAwMTFFN0I5RkNEREUwNjEwQkUyOUYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTU2QzE0RjBDMDAwMTFFN0I5RkNEREUwNjEwQkUyOUYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9IjEzMEZEREUwOEM4QUJGMkQ1RTc3NEQ4MDA3OThEODVGIiBzdFJlZjpkb2N1bWVudElEPSIxMzBGRERFMDhDOEFCRjJENUU3NzREODAwNzk4RDg1RiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pg5aUQYAAAA+SURBVHjaADAAz/8BSzY29Pn7APj4KC0sGBANBAQDA2JbQRYFBtLd5djP1gRCMydXOS74/ADu8/XM+vsCDAC8ehVucRFl3wAAAABJRU5ErkJggg==');
+}
+
+.pud.heroes .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/heroes/pud.jpg");
+}
+
+.pud-hook .img, .buffs .buff.pud-hook .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/pud/hook.jpg");
+}
+
+.pud-rot .img, .map .pud-rot .img, .buffs .buff.pud-rot .img, .fromMap.pud-rot .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/pud/rot.jpg");
+}
+
+.pud-passive .img, .buffs .buff.pud-passive .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/pud/passive.jpg");
+}
+
+.pud-ult .img, .buffs .buff.pud-ult .img, .map .pud-ult .img, .fromMap.pud-ult .img, .buffs .buff.pud-rot.ult-source .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/pud/ult.jpg");
+}
+
+.slot .pud.heroes .portrait .img, .map .pud.heroes .portrait .img, .fromMap.pud.heroes .portrait .img {
+  background-position: 16% 50%;
+}
+
+.map .pud-rot.heroes .portrait .img, .fromMap.pud-rot.heroes .portrait .img {
+  background-position: 50% 50%;
+}
+
+.map .pud-ult.heroes .portrait .img, .fromMap.pud-ult.heroes .portrait .img {
+  background-size: 300%;
+  background-position: 80% 90%;
+}
+
+.map .pud-ult.pud-rot .portrait .img, .fromMap.pud-ult.pud-rot .portrait .img {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/pud/ult-rot.jpg");
+}
+
+.map .fx.pud-rot {
+  transform: rotateX(-17deg) translate3d(34px,-190px,30px) scale(6.5);
+  width: 92px;
+  height: 83px;
+  animation: pud-rot-sprite 1.1s steps(14) infinite;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/pud/rot.png');
+}
+
+@keyframes pud-rot-sprite {
+  100% {
+    background-position: -1288px;
+  }
+}
+
+.map .fx.pud-hook {
+  transform: translate3d(200px,-60px,40px) scale(3.5);
+  /*width: 214px;*/
+  width: 0;
+  height: 75px;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/pud/hook.png');
+  background-position: 100% 50%;
+  transform-origin: 0% 0%;
+}
+
+.map .fx.pud-hook.d4, .map .fx.pud-hook.d5 {
+  animation: pud-hook-d4 1s steps(10) 1;
+  width: 0;
+}
+
+@keyframes pud-hook-d4 {
+  60%, 70% {
+    width: 214px;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+.map .fx.pud-hook.d3 {
+  animation: pud-hook-d3 1s steps(10) 1;
+  width: 0;
+}
+
+@keyframes pud-hook-d3 {
+  60%, 70% {
+    width: 180px;
+  }
+
+  90%, 100% {
+    width: 0;
+  }
+}
+
+.map .fx.pud-hook.d2 {
+  animation: pud-hook-d2 1s steps(10) 1;
+  width: 0;
+}
+
+@keyframes pud-hook-d2 {
+  60%, 70% {
+    width: 120px;
+  }
+
+  90%, 100% {
+    width: 0;
+  }
+}
+
+.map .fx.pud-hook.d1 {
+  animation: pud-hook-d1 1s steps(10) 1;
+  width: 0;
+}
+
+@keyframes pud-hook-d1 {
+  30%, 40% {
+    width: 65px;
+  }
+
+  60%, 100% {
+    width: 0;
+  }
+}
+
+.map .fx.pud-hook.top {
+  transform: rotate(-90deg) translate3d(80px, -60px, 40px) scale(5.2,4);
+}
+
+.map .fx.pud-hook.left {
+  transform: scaleX(-1) scale(3.5) translate3d(0,-20px,40px);
+}
+
+.map .fx.pud-hook.bottom {
+  transform: rotate(90deg) translate3d(220px, -265px, 40px) scale(5.2,4);
+}
+
+.map .fx.pud-ult {
+  transform: rotateX(-17deg) translate3d(80px,-150px,50px) scale(4);
+  width: 73px;
+  height: 85px;
+  animation: pud-ult-sprite 1.6s steps(14) 1;
+  background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/pud/ult.png');
+}
+
+@keyframes pud-ult-sprite {
+  50% {
+    background-position: -1022px;
+    transform: rotateX(-17deg) translate3d(80px,-150px,50px) scale(4);
+  }
+
+  50.01% {
+    background-position: 0px;
+    transform: scaleX(-1) rotateX(-17deg) translate3d(-60px,-150px,50px) scale(3);
+  }
+
+  100% {
+    background-position: -1022px;
+    transform: scaleX(-1) rotateX(-17deg) translate3d(-60px,-150px,50px) scale(3);
+  }
+}
+
+.ultfx .pud-ult {
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/pud/ult.jpg");
+}
