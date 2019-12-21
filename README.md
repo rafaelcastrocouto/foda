@@ -20,39 +20,13 @@ Join our community and discuss the game rules at our [Discord Server][2].
 Feel free to [fork][3] or [download][4] and help build the game!
 You can even [make a new hero][6]
 
-Visit our Wiki page where you can learn [how to play with real cards][7] and much more.
+Visit our [Wiki page][7] where you can learn how to hack this project, how to play with real cards and much more.
 
 All [artwork][5] can be downloaded for free in high resolution. 
 
 Please report any [suggestions, bugs or issues][8] here at github.
 
 [![Fight Over Dat Ancient](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/banner.jpg)][1]
-
-## Hacking at Home (or *Local server setup*)
-
-1. [Download](http://nodejs.org/download/) and install Node.js
-
-1. [Fork](https://github.com/rafaelcastrocouto/dotacard/fork) and [clone](https://git-scm.com/docs/git-clone) this repo
-
-1. Install the dependencies: `npm install` (if all you will edit is the front-end, you can skip steps 4, 5 and 6 and just set `MONGO_CONN=""` inside `.env`)
-
-1. Create a free Mongo DB at [mlab.com](https://mlab.com/) *(or at any other mongo server)*
-
-1. Create an user to access your DB *(you can do this, and all DB related setup, in the mlab.com web interface)*
-
-1. Create a collection named `collection` in your mongo db and inside it, create a document with this content: `{"document": "dotacard"}`
-
-1. Set up you environment config copping `EXAMPLE.env` to `.env`, then edit `.env` with your DB connection URL (in Windows you need to create `.env.` - note the last dot will be auto removed)
-
-1. Build client side bundle: `npm run build` (or `grunt`)
-
-1. Run the server: `npm start` (or `node server.js`)
-
-1. Happy Hacking!
-
-After you change any UI code, you must access `host:port/debug.html` or run `npm run build` to bundle the code.
-
---------------------------------------------------------------------------------
 
 Special thanks to:
 
