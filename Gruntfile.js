@@ -28,6 +28,11 @@ module.exports = function(grunt) {
         'client/js/**/*.js'
       ]
     },
+    'version': {
+      defaults: {
+        src: ['client/service-worker.js', 'client/package.json', 'client/manifest.json']
+      }
+    },
     'cssmin': { 
       target: {
         files: [{
@@ -122,11 +127,12 @@ module.exports = function(grunt) {
   }
   grunt.initConfig(init);
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-version');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  var tasks = ['jshint', 'cssmin', 'uglify', 'concat', 'clean'];
+  var tasks = ['jshint', 'version', 'cssmin', 'uglify', 'concat', 'clean'];
   if (electron) { 
     grunt.loadNpmTasks('grunt-electron');
     tasks.push('electron');

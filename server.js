@@ -1,6 +1,3 @@
-(()=>{
-"use strict";
-
 require('dotenv').config();
 
 var nodeEnv = process.env.NODE_ENV || 'development'; 
@@ -213,5 +210,3 @@ http.createServer(function(request, response) {
 console.log(new Date().toLocaleString() + ' FODA server running at: http://' + (host || 'localhost') + (port === '80' ? '/' : ':' + port + '/'));
 
 //setInterval(function () { console.log(games.waiting, games.data); }, 1000);
-
-})();
