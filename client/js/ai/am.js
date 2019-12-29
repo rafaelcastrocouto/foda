@@ -137,12 +137,7 @@ game.heroesAI.am = {
     }
     if (game[side].turn >= game.ultTurn) {
       var ult = game.data.skills.am.ult;
-      card.inRange(ult['cast range'], function (spot) {
-        var spotData = JSON.parse(spot.data('ai'));
-        spotData.priority -= 15;
-        spotData['can-be-casted'] = true;
-        spot.data('ai', JSON.stringify(spotData));
-      });
+      game.aia.defendUlt(card, ult);
     }
     card.data('ai', JSON.stringify(cardData));
   }

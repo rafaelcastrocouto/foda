@@ -49,15 +49,9 @@ game.heroesAI.wind = {
       card.opponentsInRange(ult.data('cast range'), function (cardInRange) {
         if (!cardInRange.hasClasses('invisible ghost dead')) {
           var p = 40;
-          cardData['can-cast'] = true;
           if (cardInRange.hasClass('towers')) p += 40;
           if (cardInRange.hasClass('units')) p -= 30;
-          cardData['cast-strats'].push({
-            priority: p - (cardInRange.data('current hp')/2),
-            skill: 'ult',
-            card: ult.attr('id'),
-            target: cardInRange.attr('id')
-          });
+          game.aia.castUlt(card, cardInRange, cardData, ult, p);
         }
       });
     }

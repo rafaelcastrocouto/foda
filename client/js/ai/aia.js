@@ -1,17 +1,34 @@
 game.aia = {
   addCardInRange: function () {
-      targets++;
-      p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
-      if (cardInRange.hasClass('channeling towers')) p += 20;
-      if (cardInRange.hasClass('units')) p -= 5;
-    
+    targets++;
+    p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+    if (cardInRange.hasClass('channeling towers')) p += 20;
+    if (cardInRange.hasClass('units')) p -= 5;
+  },
+  castSingle: function (card, skill) {
+    var cardData = card.data('ai');
+    cardData['can-cast'] = true;
+    card.opponentsInRange(skill.data('cast range'), function (cardInRange) {
+      if (!cardInRange.hasClasses('invisible ghost dead towers')) {
+        var p = 50;
+        if (cardInRange.hasClass('channeling')) p += 30;
+        if (cardInRange.hasClass('units')) p -= 20;
+        cardData['cast-strats'].push({
+          priority: p - (cardInRange.data('current hp')/4),
+          skill: skill.data('label'),
+          card: skill.attr('id'),
+          target: cardInRange.attr('id')
+        });
+      }
+    });
+    card.data('ai', JSON.stringify(cardData));
   },
   castArea: function (card, skill) {
     var cardData = card.data('ai');
     cardData['can-cast'] = true;
-    card.around(skill.data('cast range'), function (spot) {
+    card.inRange(skill.data('cast range'), function (spot) {
       var targets = 0, p = cardData['can-attack'] ? 20 : 0;
-      spot.around(skill.data('aoe range'), function (nspot) {
+      spot.inRange(skill.data('aoe range'), function (nspot) {
         var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead)', nspot);
         if (cardInRange.length) {
           game.aia.addCardInRange(cardInRange, targets, p);
@@ -100,5 +117,13 @@ game.aia = {
     var aicarddata = JSON.parse(aicard.data('ai'));
     aicarddata.strats.retreat += p;
     aicard.data('ai', JSON.stringify(aicarddata));
+  },
+  defendUlt: function (card, ult) {
+    card.inRange(ult['cast range'], function (spot) {
+      var spotData = JSON.parse(spot.data('ai'));
+      spotData.priority -= 15;
+      spotData['can-be-casted'] = true;
+      spot.data('ai', JSON.stringify(spotData));
+    });
   }
 };

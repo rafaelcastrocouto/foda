@@ -5,7 +5,7 @@ var options = {
     'bundle/game.min.js',
     'bundle/game.min.css'
   ]
-}
+};
 self.addEventListener('install', function (event) {
   event.waitUntil(caches.open(options.version).then(function (cache) {
     return cache.addAll(options.urlCache);

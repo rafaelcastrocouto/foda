@@ -10,27 +10,7 @@ game.heroesAI.com = {
       aoe.data('ai discard', aoe.data('ai discard') + 1);
     }
     if (card.canCast(aoe)) {
-      cardData['can-cast'] = true;
-      card.inRange(aoe.data('cast range'), function (spot) {
-        var targets = 0, p = 10;
-        spot.inRange(aoe.data('aoe range'), function (castSpot) {
-          var cardInRange = $('.card.'+game.opponent(game.ai.side), castSpot);
-          if (cardInRange.length) {
-            targets++;
-            p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
-            if (cardInRange.hasClass('towers')) p += 20;
-            if (cardInRange.hasClass('units')) p -= 5;
-          }
-        });
-        if (targets > 1) {
-          cardData['cast-strats'].push({
-            priority: p,
-            skill: 'aoe',
-            card: aoe.attr('id'),
-            target: spot.attr('id')
-          });
-        }
-      });
+      game.aia.castArea(card, aoe);
     }
     if (card.canCast(heal)) {
       card.inRange(heal.data('cast range'), function (spot) {
@@ -74,12 +54,7 @@ game.heroesAI.com = {
     });
     if (game[card.side()].turn >= game.ultTurn) {
       var ult = game.data.skills.com.ult;
-      card.inRange(ult['cast range'], function (spot) {
-        var spotData = JSON.parse(spot.data('ai'));
-        spotData.priority -= 15;
-        spotData['can-be-casted'] = true;
-        spot.data('ai', JSON.stringify(spotData));
-      });
+      game.aia.defendUlt(card, ult);
     }
     card.data('ai', JSON.stringify(cardData));
   }

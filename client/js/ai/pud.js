@@ -72,14 +72,9 @@ game.heroesAI.pud = {
       p = cardData['can-attack'] ? -20 : 40;
       card.opponentsInRange(rot.data('aoe range'), function (cardInRange) {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
-          cardData['can-cast'] = true;
-          if (cardInRange.hasClass('units')) p -= 15;
-          cardData['cast-strats'].push({
-            priority: p + parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4),
-            skill: 'ult',
-            card: ult.attr('id'),
-            target: cardInRange.attr('id')
-          });
+          if (cardInRange.hasClass('units')) p -= 25;
+          p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
+          game.aia.castUlt(card, cardInRange, cardData, ult, p);
         }
       });
     }
