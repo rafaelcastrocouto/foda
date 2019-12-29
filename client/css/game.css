@@ -30,6 +30,10 @@ a, a:visited {
   text-decoration: none;
 }
 
+a:focus {
+  font-weight: bold;
+}
+
 h1, h2 {
   padding: 1px 2px;
   margin: 0;
@@ -212,7 +216,6 @@ input {
   word-spacing: 2px;
   font-size: 17px;
   color: #4d4843;
-  outline: 0;
   border: 0;
   padding: 5px;
   margin: 1px;
@@ -299,7 +302,6 @@ input:focus {
   border: 0;
   border-radius: 6px;
   margin: 6px;
-  outline: 0;
   background: #9dada4;
   color: white;
   text-shadow: 0 1px 0 #444;
@@ -314,7 +316,8 @@ input:focus {
   font-weight: normal;
 }
 
-.button:hover, button:hover, input[type=button]:hover, input[type=submit]:hover {
+.button:hover, button:hover, input[type=button]:hover, input[type=submit]:hover,
+.button:focus, button:focus, input[type=button]:focus, input[type=submit]:focus {
   background: #abb7b1;
   z-index: 31;
 }
@@ -331,7 +334,8 @@ input:focus {
   box-shadow: 0 4px 0 gray;
 }
 
-.button[disabled]:hover, button[disabled]:hover, input[type=button][disabled]:hover, input[type=submit][disabled]:hover {
+.button[disabled]:hover, button[disabled]:hover, input[type=button][disabled]:hover, input[type=submit][disabled]:hover,
+.button[disabled]:focus, button[disabled]:focus, input[type=button][disabled]:focus, input[type=submit][disabled]:focus {
   cursor: default;
   background: darkgray;
   z-index: 0;

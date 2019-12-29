@@ -25,3 +25,6 @@
 .dark .volumecontrol {
   border-right: 100px solid rgba(255,255,255,0.3);
 }
+.dark .game-overlay .box a {
+  color: #F9F9F9;
+}
