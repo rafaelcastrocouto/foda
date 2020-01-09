@@ -3,7 +3,7 @@
 [![Discord Chat Channel](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/discord.png)][2]
   [![FODA icon](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rosh.png)][1]  [![FODA rating](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/ratingsymbol_e10.png)][9]
 
-## Source Code [![Code Inspector Grade A](https://www.code-inspector.com/project/754/status/svg)](https://www.code-inspector.com/public/project/754/foda/dashboard) [![Run on Repl.it](https://repl.it/badge/github/rafaelcastrocouto/foda)](https://repl.it/github/rafaelcastrocouto/foda)
+## Source Code [![Code Inspector Grade A](https://www.code-inspector.com/project/754/status/svg)](https://www.code-inspector.com/public/project/754/foda/dashboard) [![Run on Repl.it](https://repl.it/badge/github/rafaelcastrocouto/foda)](https://repl.it/github/rafaelcastrocouto/foda-replit)
 
 
 A **card game** with magical heroes, each with unique skills and powerful abilities.
