@@ -22,11 +22,11 @@ var servers = {
       });
     });
   },
-  allowed: [host + ':' + port, 'foda-app.herokuapp.com', 'rafaelcastrocouto.github.io'],
+  allowed: [host + ':' + port, 'foda-app.herokuapp.com', 'rafaelcastrocouto.github.io', 'inspectlet.com'],
   setHeaders: function(request, response) {
-    var origin = request.headers.host;
+    var origin = request.headers.origin;
     if (servers.allowed.indexOf(origin) > -1) {
-      response.setHeader('Access-Control-Allow-Origin', '*');
+      response.setHeader('Access-Control-Allow-Origin', origin);
     }
   },
   send: function(response, data) {
