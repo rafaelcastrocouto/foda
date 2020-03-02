@@ -11,7 +11,7 @@
   "remember": "Запомнить меня",
   "welcome": "Добро пожаловать,",
   "joined": "присоединился",
-  "alphaalert": "Игра находится в стадии беты, в ней могут (и будут) встречаться баги. <br> Спасибо за тестирование и следите за будущими обновлениями! <br> Игра адаптирована для Chrome и Safari. <br> <a href='https: //github.com/rafaelcastrocouto/foda/blob/master/PRIVACY.md'>Политика конфиденциальности</a><br>Версия",
+  "alphaalert": "Игра находится в стадии беты, в ней могут (и будут) встречаться баги. <br> Спасибо за тестирование и следите за будущими обновлениями! <br> Игра адаптирована для Chrome и Safari. <br> <a href='https: //github.com/rafaelcastrocouto/foda/blob/master/PRIVACY.md' rel='nofollow noopener'>Политика конфиденциальности</a><br>Версия",
   "reconnected": "переподключился",
   "logout": "Выйти",
   "loading": "Загрузка",

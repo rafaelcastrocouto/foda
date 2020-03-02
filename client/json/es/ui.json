@@ -11,7 +11,7 @@
   "remember": "Recuerda mi nombre",
   "welcome": "Bienvenido",
   "joined": "unido",
-  "alphaalert": "Este juego está en <b>beta</b> y los errores pueden suceder<br> Gracias por probar y volver para obtener más actualizaciones<br>Funciona mejor con Chrome y Safari<br><a href='https://github.com/rafaelcastrocouto/foda/blob/master/PRIVACY.md '>Política de privacidad</a><br><small class='version'>Versión ",
+  "alphaalert": "Este juego está en <b>beta</b> y los errores pueden suceder<br> Gracias por probar y volver para obtener más actualizaciones<br>Funciona mejor con Chrome y Safari<br><a href='https://github.com/rafaelcastrocouto/foda/blob/master/PRIVACY.md' rel='nofollow noopener'>Política de privacidad</a><br><small class='version'>Versión ",
   "reconnected": "reconectado",
   "logout": "Cerrar sesión",
   "loading": "Cargando",

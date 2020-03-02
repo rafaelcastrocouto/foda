@@ -56,7 +56,7 @@ game.overlay = {
     box.append($('<h1>').text(ti));
     box.append($('<p>').html(details+'<br>'+re));
     box.append($('<div>').addClass('button alert').text(ok).on('mouseup touchend', function () {
-      open('https://github.com/rafaelcastrocouto/foda/issues/new','_blank');
+      //open('https://github.com/rafaelcastrocouto/foda/issues/new','_blank');
       location.reload();
     }));
     game.overlay.logError(details);

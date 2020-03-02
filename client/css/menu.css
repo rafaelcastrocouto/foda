@@ -530,7 +530,7 @@
     top: 320px;
   }
   80%, 100% {
-    top: -820px;
+    top: -710px;
   }
 }
 .credits p {
@@ -599,6 +599,15 @@
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/credits/supp4.png");
   background-size: cover;
   left: 25px;
+  border-radius: 50%;
+}
+
+.credits .supp5 {
+  width: 42px;
+  height: 42px;
+  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/credits/supp5.png");
+  background-size: cover;
+  left: 75px;
   border-radius: 50%;
 }
 

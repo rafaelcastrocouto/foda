@@ -28,6 +28,12 @@
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/ratingsymbol_e10.png");
 }
 
+.game-overlay .log.box .rating:after {
+  position: relative;
+  left: 36px;
+  top: -8px;
+}
+
 .game-overlay .log.box.vote {
   width: 560px;
 }

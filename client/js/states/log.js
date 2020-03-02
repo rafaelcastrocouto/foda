@@ -38,7 +38,7 @@ game.states.log = {
     box.append($('<h1>').text(game.data.ui.warning));
     box.append($('<p>').html(game.data.ui.alphaalert + '<small class="version">' + game.version + '</small>'));
     game.poll.button = $('<div>').hide().addClass('button highlight large').text(game.data.ui.votenexthero).on('mouseup touchend', game.poll.showVotes);
-    box.append($('<a>').addClass('rating').attr({target: '_blank', href: 'http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories'}));
+    box.append($('<a>').addClass('rating').attr({rel: 'nofollow noopener', href: 'http://www.esrb.org/ratings/ratings_guide.aspx#rating_categories'}));
     box.append(game.poll.button);
     box.append($('<div>').addClass('button').text(game.data.ui.close).on('mouseup touchend', game.poll.close));
   },
