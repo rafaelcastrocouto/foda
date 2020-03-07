@@ -54,12 +54,13 @@
       </div>
     </div>
     <script src="bundle/game.min.js"></script>
-    <script src="analytics/google.analytics.min.js"></script>
-    <script src="analytics/inspectlet.min.js" id="inspectletjs"></script>
     <script>
       console.log('Visit https://github.com/rafaelcastrocouto/foda for the source code');
       $(game.start);
       if ('serviceWorker' in navigator) navigator.serviceWorker.register('/service-worker.js')
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40631477-4"></script>
+    <script src="analytics/google.analytics.min.js"></script>
+    <script async src="analytics/inspectlet.min.js" id="inspectletjs"></script>
   </body>
 </html>
