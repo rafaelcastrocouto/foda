@@ -11,8 +11,8 @@
   "devDependencies": {
     "electron": "latest"
   },
-  "license": "Hippocratic License",
   "dependencies": {
     "grunt-version": "latest"
-  }
+  },
+  "license": "Hippocratic-2.1"
 }

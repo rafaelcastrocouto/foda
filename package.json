@@ -45,5 +45,5 @@
     "grunt-contrib-uglify": "latest",
     "grunt-version": "latest"
   },
-  "license": "Hippocratic License"
+  "license": "Hippocratic-2.1"
 }
