@@ -10,9 +10,11 @@ var url = require('url');
 var fs = require('fs');
 var serveStatic = require('serve-static');
 
+var maxAge = '1w';
+
 var servers = {
-  rootServer: serveStatic(__dirname),
-  clientServer: serveStatic('client', {'index': ['index.html', 'index.htm']}),
+  rootServer: serveStatic(__dirname, {'maxAge': maxAge}),
+  clientServer: serveStatic('client', {'maxAge': maxAge, 'index': ['index.html', 'index.htm']}),
   staticServer: function (request, response) {
     servers.clientServer(request, response, function onNext(err) {
       servers.rootServer(request, response, function onNext(err) {
