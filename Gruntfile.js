@@ -96,8 +96,8 @@ module.exports = function(grunt) {
         },
         expand: true,
         cwd: 'client/',
-        src: ['**/*.min.css','**/*.min.js','**/*.json'],
-        dest: 'dist/img'
+        src: ['**/*.min.css','**/*.min.js','**/*.json', '!**/node_modules/**'],
+        dest: 'gzip/'
       }
     }
   };

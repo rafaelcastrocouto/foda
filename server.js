@@ -15,12 +15,17 @@ var maxAge = '1w';
 var servers = {
   rootServer: serveStatic(__dirname, {'maxAge': maxAge}),
   clientServer: serveStatic('client', {'maxAge': maxAge, 'index': ['index.html', 'index.htm']}),
+  gzipServer: serveStatic('gzip', {'maxAge': maxAge, 'setHeaders': function(response) {
+    response.setHeader('Content-Encoding', 'gzip');
+  }}),
   staticServer: function (request, response) {
-    servers.clientServer(request, response, function onNext(err) {
-      servers.rootServer(request, response, function onNext(err) {
-        response.statusCode = 404;
-        response.setHeader('Content-Type', 'text/html; charset=UTF-8');
-        fs.createReadStream('client/404.html').pipe(response);
+    servers.gzipServer(request, response, function onNext(err) {
+      servers.clientServer(request, response, function onNext(err) {
+        servers.rootServer(request, response, function onNext(err) {
+          response.statusCode = 404;
+          response.setHeader('Content-Type', 'text/html; charset=UTF-8');
+          fs.createReadStream('client/404.html').pipe(response);
+        });
       });
     });
   },
