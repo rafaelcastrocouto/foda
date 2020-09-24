@@ -39,13 +39,13 @@
   "devDependencies": {
     "grunt": "latest",
     "grunt-contrib-clean": "latest",
-    "grunt-contrib-compress": "^1.6.0",
+    "grunt-contrib-compress": "latest",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-version": "latest",
-    "zlib": "^1.0.5"
+    "zlib": "latest"
   },
   "license": "Hippocratic-2.1+"
 }
