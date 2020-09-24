@@ -23,6 +23,7 @@ game.language = {
   set: function (lang) {
     var detectLanguage = game.language.available.indexOf(lang);
     if (detectLanguage > 0) {
+      $('html').attr('lang', lang);
       game.language.current = lang;
       game.language.dir = lang + '/';
       game.setData('lang', lang);

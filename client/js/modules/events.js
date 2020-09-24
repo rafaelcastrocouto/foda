@@ -20,7 +20,13 @@ game.events = {
     $(window).on('beforeunload ', game.events.leave);
     $(window).on('mousemove', game.parallax.move);
     $(window).on('deviceorientation', game.parallax.orientation);
-    game.container.on('mousedown touchstart', game.events.hit);
+    game.container.on('mousedown', game.events.hit);
+    jQuery.event.special.touchstart = {
+      setup: function( _, ns, handle ) {
+        this.addEventListener("touchstart", handle, { passive: true });
+      }
+    };
+    game.container.on('touchstart', game.events.hit);
     game.container.on('mousemove', game.events.move);
     game.container.on('touchmove', game.events.touchmove);
     game.container.on('touchend touchleave', game.events.touchend);

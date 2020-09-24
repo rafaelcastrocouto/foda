@@ -246,7 +246,7 @@ game.states.choose = {
         game.online.backClick();
       } else if (game.mode == 'single') {
         game.states.changeTo('campaign');
-      } else if (game.mode == 'local' || game.mode == 'library') {
+      } else if (game.mode == 'local') {
         var mode = game.mode;
         game.clear();
         game.setMode(mode);

@@ -75,7 +75,7 @@ game.library = {
   },
   chooseEnd: function () {
     game.states.choose.clear();
-    game.states.changeTo('vs');
+    game.states.changeTo('config');
   },
   setTable: function () {
     game.player.placeHeroes();

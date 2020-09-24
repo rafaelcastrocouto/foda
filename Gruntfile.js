@@ -10,6 +10,7 @@
 //  and var election = true below
 
 var electron = false;
+var zlib = require("zlib");
 
 module.exports = function(grunt) {
   var init = {
@@ -86,7 +87,19 @@ module.exports = function(grunt) {
     'clean':  [
       'client/bundle/js',
       'client/bundle/css'
-    ]
+    ],
+    'compress': {
+      main: {
+        options: { 
+          mode: 'gzip',
+          level: zlib.constants.Z_BEST_COMPRESSION
+        },
+        expand: true,
+        cwd: 'client/',
+        src: ['**/*.min.css','**/*.min.js','**/*.json'],
+        dest: 'dist/img'
+      }
+    }
   };
   if (electron) { 
     init.electron = {
@@ -132,7 +145,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  var tasks = ['jshint', 'version', 'cssmin', 'uglify', 'concat', 'clean'];
+  grunt.loadNpmTasks('grunt-contrib-compress');
+  var tasks = ['jshint', 'version', 'cssmin', 'uglify', 'concat', 'clean', 'compress'];
   if (electron) { 
     grunt.loadNpmTasks('grunt-electron');
     tasks.push('electron');

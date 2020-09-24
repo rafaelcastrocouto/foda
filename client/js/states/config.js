@@ -60,13 +60,18 @@ game.states.config = {
         game.states.config.size('s3v3');
       } else game.states.config.size('s5v5');
       if (game.mode== 'online') game.online.start();
-      game.states.changeTo('choose');
+      if (game.mode == 'library') game.states.changeTo('vs');
+      else game.states.changeTo('choose');
     }
   },
   backClick: function () {
     if (!$(this).attr('disabled')) {
-      game.clear();
-      game.states.changeTo('menu');
+      if (game.mode == 'library') {
+        game.states.changeTo('choose');
+      } else {
+        game.clear();
+        game.states.changeTo('menu');
+      }
     }
     return false;
   },

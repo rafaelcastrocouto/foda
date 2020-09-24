@@ -19,6 +19,7 @@
 }
 
 .game-overlay .log.box .rating {
+  color: transparent;
   width: 55px;
   height: 82px;
   position: absolute;

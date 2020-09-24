@@ -43,7 +43,7 @@ game.states.menu = {
     });
     this.library = $('<div>').addClass('library icon').appendTo(this.icons).attr({ title: game.data.ui.chooselibrary}).append($('<span>').text(game.data.ui.library)).on('mouseup touchend', function () {
       game.setMode('library');
-      game.states.changeTo('config');
+      game.states.changeTo('choose');
     });
     this.credits = $('<a>').addClass('credits icon').appendTo(this.icons).attr({title: game.data.ui.choosecredits}).append($('<span>').text(game.data.ui.credits)).on('mouseup touchend', function () {
       var creditsbox = $('<div>').addClass('credits box');
