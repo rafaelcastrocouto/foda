@@ -15,6 +15,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "web": "npm install && node server.js",
     "build": "grunt"
   },
   "bugs": {
