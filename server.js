@@ -1,4 +1,4 @@
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 var nodeEnv = process.env.NODE_ENV || 'development'; 
 var host = process.env.HOST;
