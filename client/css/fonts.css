@@ -2,6 +2,7 @@
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local('Open Sans'), local('OpenSans'), url(../fonts/Open-Sans.woff2) format('woff2'), url(../fonts/Open-Sans.woff) format('woff');
 }
 
@@ -14,6 +15,7 @@ body, p, noscript, .card h1 {
   font-family: 'Julius Sans One';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local('Julius Sans One'), local('JuliusSansOne-Regular'), url(../fonts/Julius-Sans-One.woff2) format('woff2'), url(../fonts/Julius-Sans-One.woff) format('woff');
 }
 
@@ -25,6 +27,7 @@ body, p, noscript, .card h1 {
   font-family: 'Sansita One';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local('Sansita One'), local('SansitaOne'), url('../fonts/Sansita-One.woff2') format('woff2'), url('../fonts/Sansita-One.woff') format('woff');
 }
 
@@ -36,6 +39,7 @@ body, p, noscript, .card h1 {
   font-family: 'OssBold';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local('OssBold'), url('../fonts/OssBold.woff2') format('woff2'), url('../fonts/OssBold.woff') format('woff');
 }
 

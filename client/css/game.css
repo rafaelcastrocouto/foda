@@ -40,9 +40,9 @@ a[rel="nofollow noopener"]:after {
   display: inline-block;
   width: 0.6em;
   height: 0.75em;
-  top: 0.05em;
+  top: -0.35em;
   position: relative;
-  left: 0.2em;
+  left: 0.3em;
   margin-right: 0.2em;
   background-image: url('data:image/svg+xml; utf8, <svg height="1024" width="768" xmlns="http://www.w3.org/2000/svg"><path d="M640 768H128V258L256 256V128H0v768h768V576H640V768zM384 128l128 128L320 448l128 128 192-192 128 128V128H384z" fill="%23999"/></svg>');
 }
@@ -315,10 +315,10 @@ input:focus {
   border: 0;
   border-radius: 6px;
   margin: 6px;
-  background: #9dada4;
+  background: #666967;
   color: white;
   text-shadow: 0 1px 0 #444;
-  box-shadow: 0 4px 0 #777;
+  box-shadow: 0 4px 0 #4e4e4e;
   position: relative;
   top: -3px;
   transition: all 0.2s;
@@ -367,8 +367,8 @@ input:focus {
 }
 
 .button.highlight {
-  background-color: #66bb8c;
-  box-shadow: 0 4px 0 #4b8864;
+  background-color: #376b4c;
+  box-shadow: 0 4px 0 #224a32;
 }
 .button.highlight:active {
   box-shadow: 0 1px 0 #4b8864;
@@ -379,18 +379,18 @@ input:focus {
   box-shadow: 0 4px 0 #6f7d76;
 }
 .button.highlight:hover {
-  background: #82c19f;
+  background: #4a8461;
 }
 
 .button.alert, .button.alert[disabled]:active  {
-  background: #e66d58;
-  box-shadow: 0 4px 0 #a23f2e;
+  background: #803528;
+  box-shadow: 0 4px 0 #54190f;
 }
 .button.alert:active {
   box-shadow: 0 1px 0 #a23f2e;
 }
 .button.alert:hover {
-  background: #f5735d;
+  background: #cc5c4a;
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -409,7 +409,7 @@ input[type="checkbox"], input[type="radio"] {
   top: 0;
   left: 0;
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 label {

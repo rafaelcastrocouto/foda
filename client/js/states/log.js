@@ -22,7 +22,6 @@ game.states.log = {
     game.options.opt.show();
     game.loader.removeClass('loading');
     game.triesCounter.text('');
-    game.clear();
     setTimeout(function(){game.screen.resize();},1000);
     game.states.log.input.attr({value: 'Player'+parseInt(Math.random()*10000)});
     if (!game.states.log.alert) {

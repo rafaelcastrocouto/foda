@@ -34,6 +34,8 @@ game.states.choose = {
     if (!game.mode) {
       game.states.changeTo('menu');
     }
+    game.states.build('vs');
+    game.states.build('table');
     if (game.mode != 'library') this.selectFirst('force');
     if (game.mode && game[game.mode].chooseStart) game[game.mode].chooseStart(hero);
   },

@@ -31,8 +31,8 @@
 
 .game-overlay .log.box .rating:after {
   position: relative;
-  left: 36px;
-  top: -8px;
+  left: 18px;
+  top: -94px;
 }
 
 .game-overlay .log.box.vote {

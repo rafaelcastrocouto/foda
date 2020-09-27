@@ -35,6 +35,7 @@ var servers = {
     if (servers.allowed.indexOf(origin) > -1) {
       response.setHeader('Access-Control-Allow-Origin', origin);
     }
+    response.setHeader('Cache-Control', 'max-age=31536000');
   },
   send: function(response, data) {
     response.statusCode = 200;
