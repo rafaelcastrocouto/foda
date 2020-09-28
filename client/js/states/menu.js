@@ -81,9 +81,9 @@ game.states.menu = {
     game.loader.removeClass('loading');
     game.triesCounter.text('');
     game.message.text(game.data.ui.welcome + ' ' + game.player.name + '!');
-    game.states.build('campaign');
-    game.states.build('choose');
-    game.states.build('config');
+    game.states.buildState('campaign');
+    game.states.buildState('choose');
+    game.states.buildState('config');
     game.states.log.out.show();
     game.rank.update(game.rank.data);
     game.audio.loopSong('SneakyAdventure');

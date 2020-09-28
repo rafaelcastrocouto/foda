@@ -28,6 +28,7 @@ game.states.table = {
       game.states.table.forestSpot();
       game.states.table.fountainSpot();
     }
+    game.states.buildState('result');
     game.states.table.recover();
   },
   recover: function () {

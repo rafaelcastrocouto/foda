@@ -66,7 +66,10 @@ game.history = {
     var recover = this.recover;
     if (confirmed) {
       game.history.rank();
-      game.history.campaign();
+      if (this.state == 'campaign') {
+        game.states.build('campaign');
+        game.history.campaign();
+      }
       game.chat.build(game.data.ui.reconnected);
       if ('AudioContext' in window) game.audio.build();
       game.states.changeTo(state, recover);

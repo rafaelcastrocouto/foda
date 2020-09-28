@@ -157,10 +157,10 @@ var game = {
     if (game.mode && game[game.mode] && game[game.mode].clear) {
       game[game.mode].clear();
     }
-    game.states.choose.clear();
-    game.states.vs.clear();
-    game.states.table.clear();
-    game.states.result.clear();
+    if (game.states.choose.builded) game.states.choose.clear();
+    if (game.states.vs.builded) game.states.vs.clear();
+    if (game.states.table.builded) game.states.table.clear();
+    if (game.states.result.builded) game.states.result.clear();
     game.container.removeClass(game.validModes.join(' '));
     game.mode = false;
     game.setData('mode', false);
