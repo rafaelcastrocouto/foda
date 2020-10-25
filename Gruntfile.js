@@ -10,7 +10,6 @@
 //  and var election = true below
 
 var electron = false;
-var zlib = require("zlib");
 
 module.exports = function(grunt) {
   var init = {
@@ -92,7 +91,7 @@ module.exports = function(grunt) {
       main: {
         options: { 
           mode: 'gzip',
-          level: zlib.constants.Z_BEST_COMPRESSION
+          level: 9
         },
         expand: true,
         cwd: 'client/',

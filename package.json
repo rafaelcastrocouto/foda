@@ -1,6 +1,6 @@
 {
   "name": "FODA",
-  "version": "0.5.57",
+  "version": "0.5.58",
   "author": "rafaelcastrocouto",
   "description": "Fight Over Dat Ancient - Card Game",
   "homepage": "https://foda-app.herokuapp.com/",
@@ -45,8 +45,7 @@
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-uglify": "latest",
-    "grunt-version": "latest",
-    "zlib": "latest"
+    "grunt-version": "latest"
   },
   "license": "Hippocratic-2.1+"
 }
