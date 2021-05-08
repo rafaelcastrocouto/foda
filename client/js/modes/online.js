@@ -90,7 +90,6 @@ game.online = {
     }
   },
   challengerFound: function (enemyName) { //console.log('challengerFound')
-    //game.states.changeTo('choose');
     game.db({
       'set': game.id + 'challenged',
       'data': game.currentData
@@ -111,6 +110,7 @@ game.online = {
   clickList: function () {
     var button = $(this);
     button.attr('disabled', true);
+    game.online.possibleButton = button;
     game.online.joinGame(button.data('waiting'));
   },
   // CHALLENGER
@@ -122,14 +122,35 @@ game.online = {
       'set': game.online.possibleMatch.id + 'challenger',
       'data': game.currentData
     }, function () {
-      setTimeout(game.online.confirmMatch, 1000);
+      game.message.text(game.data.ui.gamefound);
+      game.online.waiting = true;
+      game.online.confirmMatch();
     });
   },
   confirmMatch: function () {
+    if (game.online.waiting) {
+      game.db({ 'get': game.online.possibleMatch.id + 'challenged' }, function (match) {  // searching
+        if (match.challenged) {
+          game.online.waiting = false;
+          game.online.found(match);
+        } else {
+          game.triesCounter.text(game.tries);
+          if (game.tries > game.waitLimit/4) {
+            game.online.possibleButton.remove();
+            game.message.text('');
+            game.online.waiting = false;
+            game.online.clear();
+          } else { 
+            game.tries += 1;
+            game.timeout(1000, game.online.confirmMatch);
+          }
+        }
+      });
+    }
     game.db({ 'get': game.online.possibleMatch.id + 'challenged' }, function (match) {
       //console.log(match)
       if (match) {
-       game.online.found(match);
+       
       }
     });
   },

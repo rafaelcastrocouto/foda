@@ -36,7 +36,7 @@ game.states.config = {
     if (!game.mode) {
       game.states.changeTo('menu');
     }
-    game.message.text(game.player.name+' Config '+game.mode);
+    game.message.text('');
     this.title.addClass('show');
     if (game.mode === 'online') {
       game.online.updateList();

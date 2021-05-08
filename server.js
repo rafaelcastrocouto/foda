@@ -218,4 +218,4 @@ http.createServer(function(request, response) {
 
 console.log(new Date().toLocaleString() + ' FODA server running at: http://' + (host || 'localhost') + (port === '80' ? '/' : ':' + port + '/'));
 
-setInterval(function () { console.log(games.data); }, 1000);
+//setInterval(function () { console.log(games.data); }, 1000);
