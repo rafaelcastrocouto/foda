@@ -51,7 +51,6 @@ game.states = {
         }
         game.currentState = state;
         if (old != 'loading' && old != 'noscript') {
-          game.setData('backstate', old);
           game.backState = old;
         }
         if (newstate.start) newstate.start(recover);
@@ -62,7 +61,7 @@ game.states = {
     }
   },
   back: function () {
-    if (!game.backState) game.backState = game.getData('backstate');
+    if (!game.backState) game.backState = 'log';
     game.states.changeTo(game.backState);
   }
 };

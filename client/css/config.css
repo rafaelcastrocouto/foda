@@ -1,0 +1,75 @@
+.config.state .title {
+  text-align: center;
+  position: relative;
+  top: -50px;
+  transition: top 1s;
+}
+
+.config.state .title.show {
+  top: 150px;
+  font-size: 30px;
+}
+
+.config.state .buttonbox {
+  width: 400px;
+  margin: 170px auto;
+}
+
+.config.state .createTitle {
+  display: none;
+  position: absolute;
+  top: 180px;
+  left: 80px;
+  width: 400px;
+  text-align: center;
+}
+
+.config.state .joinTitle {
+  display: none;
+  position: absolute;
+  top: 180px;
+  right: 80px;
+  width: 400px;
+  text-align: center;
+}
+
+
+.online .config.state .title.show {
+  top: 100px;
+}
+
+.online .config.state .createTitle,
+.online .config.state .joinTitle {
+  display: block;
+}
+
+.online .config.state .buttonbox {
+  margin: 200px 80px;
+}
+
+.config.state .onlineList {
+  display: none;
+  position: absolute;
+  right: 80px;
+  width: 400px;
+  top: 215px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 3px;
+  height: 278px;
+  overflow-y: auto;
+}
+.online .config.state .onlineList {
+  display: block;
+}
+
+.config.state .onlineList .button {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 14px;
+}
+
+.config.state .onlineList .listTitle {
+  margin: 20px;
+}

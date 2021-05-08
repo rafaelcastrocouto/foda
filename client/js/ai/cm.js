@@ -41,6 +41,9 @@ game.heroesAI.cm = {
       card.opponentsInRange(ult.data('aoe range'), function (cardInRange) {
         if (!cardInRange.hasClasses('invisible ghost dead towers')) {
           game.aia.addCardInRange(cardInRange, targets, p);
+          var calcp = game.aia.addCardInRange(cardInRange, targets, p);
+          targets = calcp.targets;
+          p = calcp.p;
         }
       });
       if (targets > 1) {

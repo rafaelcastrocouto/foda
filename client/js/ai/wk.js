@@ -13,11 +13,12 @@ game.heroesAI.wk = {
     card.data('ai', JSON.stringify(cardData));
   },
   defend: function (card, cardData) {
-    var stun = game.data.skills.wk.stun;
-    card.inRange(stun['cast range'], function (spot) {
+    var stundata = game.data.skills.wk.stun;
+    card.inRange(stundata['cast range'], function (spot) {
       var spotData = JSON.parse(spot.data('ai'));
       spotData.priority -= 20;
       spotData['can-be-casted'] = true;
+      spotData['can-be-stuned'] = true;
       spot.data('ai', JSON.stringify(spotData));
     });
     if (card.hasBuff('wk-ult')) {

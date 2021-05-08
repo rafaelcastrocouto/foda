@@ -198,5 +198,6 @@
   "sell": "Sell",
   "consumable": "Consumable",
   "flat": "Flat Map (2D)",
-  "dark": "Dark Theme"
+  "dark": "Dark Theme",
+  "create": "Create new game"
 }

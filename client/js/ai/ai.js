@@ -344,7 +344,7 @@ game.ai = {
     var combos = [];
     $('.map .'+game.ai.side+'.card:not(.towers)').each(function (i, el) {
       var card = $(el);
-      var cardData = card.data('ai');
+      var cardData = JSON.parse(card.data('ai'));
       todo: add combo strats {
         attack combos
         single unit skill combos

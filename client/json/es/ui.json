@@ -198,5 +198,6 @@
   "sell": "Vender",
   "consumable": "Consumible",
   "flat": "Mapa Plano (2D)",
-  "dark": "Tema Oscuro"
+  "dark": "Tema Oscuro",
+  "create": "Crear juego nuevo"
 }

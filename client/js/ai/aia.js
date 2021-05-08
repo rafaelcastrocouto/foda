@@ -1,12 +1,13 @@
 game.aia = {
-  addCardInRange: function () {
+  addCardInRange: function (cardInRange, targets, p) {
     targets++;
     p += parseInt((cardInRange.data('hp')-cardInRange.data('current hp'))/4);
     if (cardInRange.hasClass('channeling towers')) p += 20;
     if (cardInRange.hasClass('units')) p -= 5;
+    return {targets: targets, p: p};
   },
   castSingle: function (card, skill) {
-    var cardData = card.data('ai');
+    var cardData = JSON.parse(card.data('ai'));
     cardData['can-cast'] = true;
     card.opponentsInRange(skill.data('cast range'), function (cardInRange) {
       if (!cardInRange.hasClasses('invisible ghost dead towers')) {
@@ -24,14 +25,16 @@ game.aia = {
     card.data('ai', JSON.stringify(cardData));
   },
   castArea: function (card, skill) {
-    var cardData = card.data('ai');
+    var cardData = JSON.parse(card.data('ai'));
     cardData['can-cast'] = true;
     card.inRange(skill.data('cast range'), function (spot) {
       var targets = 0, p = cardData['can-attack'] ? 20 : 0;
       spot.inRange(skill.data('aoe range'), function (nspot) {
         var cardInRange = $('.card.'+game.opponent(game.ai.side)+':not(.invisible, .ghost, .dead)', nspot);
         if (cardInRange.length) {
-          game.aia.addCardInRange(cardInRange, targets, p);
+          var calcp = game.aia.addCardInRange(cardInRange, targets, p);
+          targets = calcp.targets;
+          p = calcp.p;
         }
       });
       if (targets > 1) {
@@ -46,7 +49,7 @@ game.aia = {
     card.data('ai', JSON.stringify(cardData));
   },
   castLine: function (card, skill) {
-    var cardData = card.data('ai');
+    var cardData = JSON.parse(card.data('ai'));
     cardData['can-cast'] = true;
     var range = skill.data('aoe range');
     var width = skill.data('aoe width');

@@ -11,7 +11,7 @@ game.heroesAI.lina = {
      stun.data('ai discard', stun.data('ai discard') + 1);
     }
     if (card.canCast(fire)) {
-      game.aia.castLine(card, cardData, fire);
+      game.aia.castLine(card, fire);
     }
     if (card.canCast(stun)) {
       game.aia.castArea(card, stun);

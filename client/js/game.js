@@ -141,7 +141,6 @@ var game = {
   },
   matchClear: function () {
     game.states.config.clearSize();
-    game.size = 's5v5';
     game.recovering = false;
     game.player.picks = false;
     game.enemy.picks = false;

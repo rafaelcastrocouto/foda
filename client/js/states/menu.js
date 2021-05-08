@@ -32,7 +32,7 @@ game.states.menu = {
     });
     this.online = $('<div>').addClass('online icon').appendTo(this.icons).attr({title: game.data.ui.chooseonline}).append($('<span>').text(game.data.ui.online)).on('mouseup touchend', function () {
       game.setMode('online');
-      game.online.check('first');
+      game.states.changeTo('config');
     });
     if (!game.getData('tutorial')) this.tutorial.addClass('highlight');
     else if (!game.getData('campaign')) this.campaign.addClass('highlight');

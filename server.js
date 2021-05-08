@@ -30,14 +30,14 @@ var servers = {
     });
   },
   allowed: [host + ':' + port, 'foda-app.herokuapp.com', 'rafaelcastrocouto.github.io', 'inspectlet.com'],
-  setHeaders: function(request, response) {
+  setHeaders: function (request, response) {
     var origin = request.headers.origin;
     if (servers.allowed.indexOf(origin) > -1) {
       response.setHeader('Access-Control-Allow-Origin', origin);
     }
     response.setHeader('Cache-Control', 'max-age=31536000');
   },
-  send: function(response, data) {
+  send: function (response, data) {
     response.statusCode = 200;
     response.end(String(data));
   }
@@ -45,34 +45,35 @@ var servers = {
 
 var games = {
   waitLimit: 10, // seconds
-  waiting: { id: 'none' },
+  waiting: {},
+  waitTimeout: {},
   data: {},
-  get: function(name, cb) {
+  get: function (name, cb) {
     cb(games.data[name] || '');
   },
-  set: function(name, val, cb) {
+  set: function (name, val, cb) {
     cb(games.data[name] = val);
   },
-  clearWait: function() {
-    if (games.waitTimeout) clearTimeout(games.waitTimeout);
-    games.waiting = { id: 'none' };
+  clearWait: function (id) {
+    if (games.waiting[id]) 
+      delete games.waiting[id];
   },
-  wait: function (response, query) {
+  join: function (response, query) {
     if (query.data) {
-      if (games.waiting.id === 'none') {
-        servers.send(response, JSON.stringify(games.waiting));
-        games.waiting.id = query.data;
-        games.waitTimeout = setTimeout(games.clearWait, games.waitLimit * 1000);
-      } else {
-        servers.send(response, JSON.stringify(games.waiting));
-        games.clearWait();
-      }
+      var data = JSON.parse(query.data);
+      games.waiting[data.id] = {
+        id: data.id,
+        size: data.size,
+        name: data.name
+      };
+      var clear = games.clearWait.bind(0, data.id);
+      games.waitTimeout[data.id] = setTimeout(clear, games.waitLimit * 1000);
+      servers.send(response, JSON.stringify(games.waiting));
     }
   },
   back: function (response, query) { 
-    if (query.data == games.waiting.id) {
-      delete games.data[games.waiting.id + 'challenged'];
-      games.clearWait();
+    if (query.data) {
+      games.clearWait(query.data);
     }
   }
 };
@@ -196,7 +197,7 @@ http.createServer(function(request, response) {
     response.setHeader('Content-Type', 'application/json');
     if (query.set) {
       switch (query.set) {
-        case 'waiting': games.wait(response, query); return;
+        case 'join': games.join(response, query); return;
         case 'back': games.back(response, query); return;
         case 'poll': mongo.pollSet(response, query); return;
         case 'rank': rank.set(query); return;
@@ -217,4 +218,4 @@ http.createServer(function(request, response) {
 
 console.log(new Date().toLocaleString() + ' FODA server running at: http://' + (host || 'localhost') + (port === '80' ? '/' : ':' + port + '/'));
 
-//setInterval(function () { console.log(games.waiting, games.data); }, 1000);
+setInterval(function () { console.log(games.data); }, 1000);
