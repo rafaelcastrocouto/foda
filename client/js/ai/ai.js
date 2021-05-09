@@ -553,8 +553,8 @@ game.ai = {
       if ($('#'+cast.card).data('type') == game.data.ui.toggle) {
         move[0] = 'T';
         move[1] = game.map.mirrorPosition(position);
-        move[2] = cast.skill;
-        move[3] = card.data('hero');
+        move[2] = card.data('hero');
+        move[3] = cast.skill;
       } else {
         move[0] = 'C';
         move[1] = game.map.mirrorPosition(position);

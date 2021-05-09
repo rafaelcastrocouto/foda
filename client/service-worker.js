@@ -15,7 +15,8 @@ self.addEventListener("activate", function (event) {
   event.waitUntil(self.clients.claim());
 });
 self.addEventListener('fetch', function (event) {
-  if (event.request.method !== "GET") return;
+  var url = new URL(event.request.url);
+  if (event.request.method !== "GET" || url.pathname == '/db') return;
   event.respondWith(
     caches.open(options.version).then(function (cache) {
       return cache.match(event.request).then(function(cacheResponse) {

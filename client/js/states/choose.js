@@ -63,8 +63,8 @@ game.states.choose = {
     }
     return slots;
   },
-  select: function (force) {
-    var card = $(this);//console.log('select', game.events.dragging, card, force)
+  select: function (force) { 
+    var card = $(this); // console.log('select', game.events.dragging, card, force)
     if (card.hasClass && card.hasClass('card')) {
       if (force != 'force' && card.hasClass('selected') && !game.events.dragging) {
         if (card.hasClass('zoom')) {
@@ -101,7 +101,7 @@ game.states.choose = {
     $('.choose .slot').addClass('transparent');
     game.states.choose.buttonbox.addClass('hidden');
   },
-  removeZoom: function (card) {
+  removeZoom: function (card) { 
     $('.choose .card').removeClass('transparent');
     card.removeClass('zoom'); //console.log('clicked hero rem')
     game.states.choose.buttonbox.removeClass('hidden');

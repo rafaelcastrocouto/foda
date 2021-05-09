@@ -58,6 +58,7 @@ game.skills.en = {
           //console.log(target, skill);
           buff = source.addBuff(target, skill);
           target.heal(buff.data('heal'));
+          game.fx.add('wk-lifesteal', source);
           buff.on('buffcount', game.skills.en.heal.buffcount);
           buff.on('expire', game.skills.en.heal.buffcount);
         });

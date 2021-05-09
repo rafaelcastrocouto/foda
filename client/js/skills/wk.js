@@ -27,7 +27,7 @@ game.skills.wk = {
   aura: {
     passive: function (skill, source) {
       var side = source.side();
-      var team = $('.table .card.'+side+':not(.skills)');
+      var team = $('.table .card.'+side+':not(.skills, .towers)');
       team.on('attack.wk-aura', this.attack);
     },
     attack: function (event, eventdata) {

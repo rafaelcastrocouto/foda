@@ -200,6 +200,7 @@ game.enemy = {
     target.addClass('enemyMoveHighlight');
     game.timeout(game.enemy.moveAnimation, function(skill, target, hero, skillid) {
       skill.removeClass('showMoves');
+      console.log(hero,skillid);
       if (game.skills[hero][skillid].toggle && skill && target.hasClass('enemy') && skill.toggle) {
         skill.toggle(target);
       }

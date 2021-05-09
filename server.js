@@ -44,19 +44,22 @@ var servers = {
 };
 
 var games = {
-  waitLimit: 10, // seconds
-  waiting: {},
-  waitTimeout: {},
   data: {},
+  dataLimit: 25, // minutes
+  dataTimeout: {},
+  waiting: {},
+  waitLimit: 10, // seconds
+  waitTimeout: {},
   get: function (name, cb) {
     cb(games.data[name] || '');
   },
   set: function (name, val, cb) {
     cb(games.data[name] = val);
+    var clear = games.clear.bind(0, name);
+    games.dataTimeout[name] = setTimeout(clear, 120 * games.dataLimit * 60 * 1000);
   },
-  clearWait: function (id) {
-    if (games.waiting[id]) 
-      delete games.waiting[id];
+  clear: function (name) {
+    if (games.data[name]) delete games.data[name];
   },
   join: function (response, query) {
     if (query.data) {
@@ -75,6 +78,9 @@ var games = {
     if (query.data) {
       games.clearWait(query.data);
     }
+  },
+  clearWait: function (id) {
+    if (games.waiting[id]) delete games.waiting[id];
   }
 };
 

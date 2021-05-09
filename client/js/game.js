@@ -52,9 +52,12 @@ var game = {
   start: function() {
     if (window.JSON && window.btoa && window.atob && window.XMLHttpRequest) {
       if (!game.debug) game.debug = document.cookie.indexOf('NODE_ENV=development') > -1;
+      if (!game.debug) game.debug = location.hostname == 'localhost';
       if (game.debug) {
         game.staticHost = '';
         game.dynamicHost = '';
+        game.imageServer = 'http://127.0.0.1:8080/img';
+        game.audioServer = 'http://127.0.0.1:8080/audio';
         game.container.addClass('debug');
       }
       game.build();
