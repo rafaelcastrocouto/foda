@@ -57,8 +57,7 @@ game.skills.wk = {
       var buff = source.getBuff('wk-crit');
       var chance = buff.data('chance') / 100;
       var bonus = buff.data('multiplier');
-      //if (game.random() < chance && target.side() == source.opponent() && !source.data('miss-attack')) {
-      if (true) {
+      if (game.random() < chance && target.side() == source.opponent() && !source.data('miss-attack')) {
         game.fx.add('axe-ult-kill', source, target, 'flip');
         source.data('critical-attack', bonus);
         var skeleton = game.units.clone( $('.table .'+side+' .temp.skills .wk-skeleton') );

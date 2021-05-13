@@ -22,6 +22,8 @@ game.states.table = {
     }
     if (game.mode && !game.states.table.setup) {
       game.states.table.setup = true;
+      game.player.money = game.startMoney;
+      game.enemy.money = game.startMoney;
       game.items.build();
       game.tower.place();
       game.tree.place();
