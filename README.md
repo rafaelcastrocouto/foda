@@ -11,7 +11,7 @@
 
 A **card game** with magical heroes, each with unique skills and powerful abilities.
 
-Play for free [online in your browser][1] on our heroku servers.
+Play for free [online in your browser][1] on our [heroku](https://heroku.com) servers.
 
 Join our community and discuss the game rules at our [Discord Server][2]. 
 
