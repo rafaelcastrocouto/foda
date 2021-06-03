@@ -118,11 +118,11 @@ game.states.loading = {
       if (!game.rank.db) game.states.loading.updated(); //console.log('rank', game.states.loading.updating)
       game.rank.db = true;
       var ranked = game.rank.sortData(data);
-      if (ranked.length == 5) {
+      if (ranked.length == 5 || game.debug) {
         game.rank.data = data;
         if (game.rank.el) game.rank.update(data);
       } else {
-        setTimeout(game.states.loading.rank, 3000);
+        setTimeout(game.states.loading.rank, 5000);
       }
     });
   }

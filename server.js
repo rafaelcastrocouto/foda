@@ -51,15 +51,22 @@ var games = {
   waitLimit: 10, // seconds
   waitTimeout: {},
   get: function (name, cb) {
-    cb(games.data[name] || '');
+    mongo.get('games', function (data) {
+      games.data = data;
+      cb(games.data[name] || '');
+    });
   },
   set: function (name, val, cb) {
-    cb(games.data[name] = val);
+    games.data[name] = val;
+    mongo.set('games', games.data, function () {
+      cb(val);
+    });
     var clear = games.clear.bind(0, name);
     games.dataTimeout[name] = setTimeout(clear, 120 * games.dataLimit * 60 * 1000);
   },
   clear: function (name) {
     if (games.data[name]) delete games.data[name];
+    mongo.set('games', games.data);
   },
   join: function (response, query) {
     if (query.data) {
@@ -69,9 +76,11 @@ var games = {
         size: data.size,
         name: data.name
       };
+      mongo.set('waiting', games.waiting, function () {
+        servers.send(response, JSON.stringify(games.waiting));
+      });
       var clear = games.clearWait.bind(0, data.id);
       games.waitTimeout[data.id] = setTimeout(clear, games.waitLimit * 1000);
-      servers.send(response, JSON.stringify(games.waiting));
     }
   },
   back: function (response, query) { 
@@ -81,6 +90,7 @@ var games = {
   },
   clearWait: function (id) {
     if (games.waiting[id]) delete games.waiting[id];
+    mongo.set('waiting', games.waiting);
   }
 };
 

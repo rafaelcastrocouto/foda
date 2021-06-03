@@ -73,7 +73,7 @@
   transform: rotateX(-10deg) translate3d(70px,-170px,90px) scale(5);
   width: 96px;
   height: 96px;
-  animation: wk-lifesteal-sprite 0.9s steps(9) 3;
+  animation: wk-lifesteal-sprite 0.9s steps(9) 2;
   background-image: url('https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/wk/lifesteal.png');
 }
 @keyframes wk-lifesteal-sprite {

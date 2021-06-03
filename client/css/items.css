@@ -171,154 +171,154 @@
   box-shadow: inset -36px 0 0 5px rgba(0,0,0,0.8), inset 36px 0 0 5px rgba(0,0,0,0.8);
 } 
 
-.items.faerie .img {
+.items.faerie .img, .buffs .buff.faerie .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/faerie.png");
 }
-.items.tango .img {
+.items.tango .img, .buffs .buff.tango .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/tango.png");
 }
-.items.vitality .img {
+.items.vitality .img, .buffs .buff.vitality .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/vitality.png");
 }
-.items.meka .img {
+.items.meka .img, .buffs .buff.meka .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/meka.png");
 }
-.items.heart .img {
+.items.heart .img, .buffs .buff.heart .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/heart.png");
 }
-.items.clarity .img {
+.items.clarity .img, .buffs .buff.clarity .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/clarity.png");
 }
-.items.soul .img {
+.items.soul .img, .buffs .buff.soul .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/soul.png");
 }
-.items.void .img {
+.items.void .img, .buffs .buff.void .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/void.png");
 }
-.items.refresher .img {
+.items.refresher .img, .buffs .buff.refresher .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/refresher.png");
 }
-.items.kaya .img {
+.items.kaya .img, .buffs .buff.kaya .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/kaya.png");
 }
-.items.quelling .img {
+.items.quelling .img, .buffs .buff.quelling .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/quelling.png");
 }
-.items.madness .img {
+.items.madness .img, .buffs .buff.madness .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/madness.png");
 }
-.items.broadsword .img {
+.items.broadsword .img, .buffs .buff.broadsword .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/broadsword.png");
 }
-.items.crystalys .img {
+.items.crystalys .img, .buffs .buff.crystalys .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/crystalys.png");
 }
-.items.echo .img {
+.items.echo .img, .buffs .buff.echo .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/echo.png");
 }
-.items.ring .img {
+.items.ring .img, .buffs .buff.ring .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/ring.png");
 }
-.items.buckler .img {
+.items.buckler .img, .buffs .buff.buckler .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/buckler.png");
 }
-.items.medallion .img {
+.items.medallion .img, .buffs .buff.medallion .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/medallion.png");
 }
-.items.halberd .img {
+.items.halberd .img, .buffs .buff.halberd .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/halberd.png");
 }
-.items.blademail .img {
+.items.blademail .img, .buffs .buff.blademail .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/blademail.png");
 }
-.items.cloak .img {
+.items.cloak .img, .buffs .buff.cloak .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/cloak.png");
 }
-.items.pipe .img {
+.items.pipe .img, .buffs .buff.pipe .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/pipe.png");
 }
-.items.linken .img {
+.items.linken .img, .buffs .buff.linken .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/linken.png");
 }
-.items.lotus .img {
+.items.lotus .img, .buffs .buff.lotus .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/lotus.png");
 }
-.items.bkb .img {
+.items.bkb .img, .buffs .buff.bkb .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/bkb.png");
 }
-.items.windlace .img {
+.items.windlace .img, .buffs .buff.windlace .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/windlace.png");
 }
-.items.boots .img {
+.items.boots .img, .buffs .buff.boots .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/boots.png");
 }
-.items.drums .img {
+.items.drums .img, .buffs .buff.drums .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/drums.png");
 }
-.items.phase .img {
+.items.phase .img, .buffs .buff.phase .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/phase.png");
 }
-.items.rod .img {
+.items.rod .img, .buffs .buff.rod .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/rod.png");
 }
-.items.tp .img {
+.items.tp .img, .buffs .buff.tp .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/tp.png");
 }
-.items.manta .img {
+.items.manta .img, .buffs .buff.manta .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/manta.png");
 }
-.items.blinkdagger .img {
+.items.blinkdagger .img, .buffs .buff.blinkdagger .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/blinkdagger.png");
 }
-.items.lens .img {
+.items.lens .img, .buffs .buff.lens .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/lens.png");
 }
-.items.dragon .img {
+.items.dragon .img, .buffs .buff.dragon .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/dragon.png");
 }
-.items.eul .img {
+.items.eul .img, .buffs .buff.eul .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/eul.png");
 }
-.items.glimmer .img {
+.items.glimmer .img, .buffs .buff.glimmer .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/glimmer.png");
 }
-.items.ethereal .img {
+.items.ethereal .img, .buffs .buff.ethereal .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/ethereal.png");
 }
-.items.sheepstick .img {
+.items.sheepstick .img, .buffs .buff.sheepstick .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/sheepstick.png");
 }
-.items.meteor .img {
+.items.meteor .img, .buffs .buff.meteor .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/meteor.png");
 }
-.items.vennon .img {
+.items.vennon .img, .buffs .buff.vennon .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/vennon.png");
 }
-.items.morbid .img {
+.items.morbid .img, .buffs .buff.morbid .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/morbid.png");
 }
-.items.diffusal .img {
+.items.diffusal .img, .buffs .buff.diffusal .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/diffusal.png");
 }
-.items.desolator .img {
+.items.desolator .img, .buffs .buff.desolator .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/desolator.png");
 }
-.items.basher .img {
+.items.basher .img, .buffs .buff.basher .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/basher.png");
 }
-.items.dust .img {
+.items.dust .img, .buffs .buff.dust .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/dust.png");
 }
-.items.talisman .img {
+.items.talisman .img, .buffs .buff.talisman .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/talisman.png");
 }
-.items.skadi .img {
+.items.skadi .img, .buffs .buff.skadi .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/skadi.png");
 }
-.items.shivas .img {
+.items.shivas .img, .buffs .buff.shivas .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/shivas.png");
 }
-.items.radiance .img {
+.items.radiance .img, .buffs .buff.radiance .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/items/radiance.png");
 }
 
@@ -329,15 +329,15 @@
   background-size: 100%;
 }
 
-.table .buffs .buff..silence .img {
+.table .buffs .buff.silence .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/silence.jpg");
 }
 
-.table .buffs .buff..magicimmune .img {
+.table .buffs .buff.magicimmune .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/magicimmune.jpg");
 }
 
-.table .buffs .buff..ethereal .img {
+.table .buffs .buff.ethereal .img {
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/skills/ethereal.jpg");
 }
 

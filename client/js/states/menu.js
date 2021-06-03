@@ -98,7 +98,7 @@ game.states.menu = {
             game.events.deferredPrompt.prompt();
           }
           game.events.deferredPrompt = null;
-        }, 'Add to home screen', 'home');
+        }, 'Add to home screen?', 'home');
       });
     }
   },

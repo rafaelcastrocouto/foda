@@ -1,5 +1,5 @@
 game.rank = {
-  min: 0,
+  min: 1000,
   build: function () {
     this.el = $('<div>').appendTo(game.states.menu.el).addClass('rank');
     this.title = $('<h1>').appendTo(this.el).text('WANTED');
@@ -14,7 +14,7 @@ game.rank = {
       }
     }, game.rank.update);
     // idevgames score
-    if (game.player.points > 50 && !game.debug) {
+    /*if (!game.debug && game.player.points > 50) {
       $.ajax({
         type: 'POST',
         url: 'https://play.idevgames.co.uk/send/score.php',
@@ -24,7 +24,7 @@ game.rank = {
         'score': game.player.points
         }
       });
-    }
+    }*/
   },
   sortData: function (data) {
     var ranked = [];
