@@ -74,9 +74,9 @@ var games = {
   },
   join: function (response, query) {
     if (query.data) {
-      var data = JSON.parse(query.data);
-      mongo.get('waiting', function (data) {
-        games.waiting = data;
+      mongo.get('waiting', function (olddata) {
+        games.waiting = olddata;
+        var data = JSON.parse(query.data);
         games.waiting[data.id] = {
           id: data.id,
           size: data.size,
