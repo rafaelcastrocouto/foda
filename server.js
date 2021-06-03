@@ -10,10 +10,10 @@ var url = require('url');
 var fs = require('fs');
 var serveStatic = require('serve-static');
 
-var maxAge = '1w';
+var maxAge = '31536000';
 
 var servers = {
-  rootServer: serveStatic(__dirname, {'maxAge': maxAge}),
+  rootServer: serveStatic(__dirname, {'maxAge': '1'}),
   clientServer: serveStatic('client', {'maxAge': maxAge, 'index': ['index.html', 'index.htm']}),
   gzipServer: serveStatic('gzip', {'maxAge': maxAge, 'setHeaders': function(response) {
     response.setHeader('Content-Encoding', 'gzip');
@@ -35,7 +35,7 @@ var servers = {
     if (servers.allowed.indexOf(origin) > -1) {
       response.setHeader('Access-Control-Allow-Origin', origin);
     }
-    response.setHeader('Cache-Control', 'max-age=31536000');
+    response.setHeader('Cache-Control', 'max-age='+maxAge);
   },
   send: function (response, data) {
     response.statusCode = 200;
@@ -57,12 +57,16 @@ var games = {
     });
   },
   set: function (name, val, cb) {
-    games.data[name] = val;
-    mongo.set('games', games.data, function () {
-      cb(val);
+    mongo.get('games', function (data) {
+      games.data = data;
+      games.data[name] = val;
+      mongo.set('games', games.data, function () {
+        cb(val);
+      });
+      var clear = games.clear.bind(0, name);
+      if (games.dataTimeout[name]) clearTimeout(games.dataTimeout[name]);
+      games.dataTimeout[name] = setTimeout(clear, games.dataLimit * 60 * 1000);
     });
-    var clear = games.clear.bind(0, name);
-    games.dataTimeout[name] = setTimeout(clear, 120 * games.dataLimit * 60 * 1000);
   },
   clear: function (name) {
     if (games.data[name]) delete games.data[name];
@@ -71,16 +75,20 @@ var games = {
   join: function (response, query) {
     if (query.data) {
       var data = JSON.parse(query.data);
-      games.waiting[data.id] = {
-        id: data.id,
-        size: data.size,
-        name: data.name
-      };
-      mongo.set('waiting', games.waiting, function () {
-        servers.send(response, JSON.stringify(games.waiting));
+      mongo.get('waiting', function (data) {
+        games.waiting = data;
+        games.waiting[data.id] = {
+          id: data.id,
+          size: data.size,
+          name: data.name
+        };
+        mongo.set('waiting', games.waiting, function () {
+          servers.send(response, JSON.stringify(games.waiting));
+        });
+        var clear = games.clearWait.bind(0, data.id);
+        if (games.waitTimeout[data.id]) clearTimeout(games.waitTimeout[data.id]);
+        games.waitTimeout[data.id] = setTimeout(clear, games.waitLimit * 1000);
       });
-      var clear = games.clearWait.bind(0, data.id);
-      games.waitTimeout[data.id] = setTimeout(clear, games.waitLimit * 1000);
     }
   },
   back: function (response, query) { 
@@ -101,8 +109,11 @@ var mongo = {
         mongo.db = db;
         mongo.collection = db.collection('collection');
         mongo.get('poll', function(data) { mongo.poll = data; });
+        mongo.get('games', function(data) { games.data = data; });
+        mongo.get('waiting', function(data) { games.waiting = data; });
         rank.get();
         errorLog.reset();
+        mongo.connected = true;
       });
     }
   },
@@ -125,10 +136,10 @@ var mongo = {
     mongo.client.connect(mongo.logError('connection fail', cb));
   },
   get: function(name, cb) {
-    mongo.collection.findOne(mongo.doc, mongo.logError('get('+name+') fail', cb, name));
+    if (mongo.connected) mongo.collection.findOne(mongo.doc, mongo.logError('get('+name+') fail', cb, name));
   },
   set: function(name, val, cb) {
-    mongo.collection.updateOne(mongo.doc, { $set: { [name]: val } }, cb);
+    if (mongo.connected) mongo.collection.updateOne(mongo.doc, { $set: { [name]: val } }, cb);
   },
   poll: {},
   pollSet: function (response, query) { //console.log('query', query)
@@ -234,4 +245,4 @@ http.createServer(function(request, response) {
 
 console.log(new Date().toLocaleString() + ' FODA server running at: http://' + (host || 'localhost') + (port === '80' ? '/' : ':' + port + '/'));
 
-//setInterval(function () { console.log(games.data); }, 1000);
+// setInterval(function () { console.log(games.data); }, 1000)
