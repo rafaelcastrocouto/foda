@@ -25,7 +25,7 @@ game.heroesAI.nyx = {
     }
     // stun if 1 or more enemies are aligned
     if (card.canCast(stun)) {
-      game.aia.castLine(card, cardData, stun);
+      game.aia.castLine(card, stun);
     }
     //mana burn
     if (card.canCast(burn)) {

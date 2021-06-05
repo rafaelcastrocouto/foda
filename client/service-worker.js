@@ -1,5 +1,5 @@
 var options = {
-  "version": "0.5.62",
+  "version": "0.5.63",
   urlCache: [
     '/', 'index.html',
     'bundle/game.min.js',
@@ -26,7 +26,7 @@ self.addEventListener('fetch', function (event) {
           return networkResponse;
         });
       }).catch(function(error) {
-        console.error('Error in service worker fetch handler:', error, event);
+        console.error(error, event.request.url);
       });
     })
   );

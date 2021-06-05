@@ -56,8 +56,8 @@ var game = {
       if (game.debug) {
         game.staticHost = '';
         game.dynamicHost = '';
-        game.imageServer = 'http://127.0.0.1:8080/img';
-        game.audioServer = 'http://127.0.0.1:8080/audio';
+        /*game.imageServer = 'http://127.0.0.1:8080/img';
+        game.audioServer = 'http://127.0.0.1:8080/audio';*/
         game.container.addClass('debug');
       }
       game.build();

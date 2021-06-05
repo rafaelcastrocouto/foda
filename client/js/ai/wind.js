@@ -13,7 +13,7 @@ game.heroesAI.wind = {
       run.data('ai discard', run.data('ai discard') + 1);
     }
     if (card.canCast(arrow)) {
-      game.aia.castLine(card, cardData, arrow);
+      game.aia.castLine(card, arrow);
     }
     if (card.canCast(stun)) {
       card.opponentsInRange(stun.data('cast range'), function (cardInRange) {

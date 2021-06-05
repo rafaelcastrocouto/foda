@@ -12,7 +12,7 @@ game.heroesAI.kotl = {
      blind.data('ai discard', blind.data('ai discard') + 1);
     }
     if (card.canCast(illuminate)) {
-      game.aia.castLine(card, cardData, illuminate);
+      game.aia.castLine(card, illuminate);
     }
     if (card.canCast(blind)) {
       game.aia.castArea(card, blind);
