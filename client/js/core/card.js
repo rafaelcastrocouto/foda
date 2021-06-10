@@ -287,7 +287,7 @@ game.card = {
     if (game.tutorial.axe) game.tutorial.axe.toggleClass('left');
     game.selectedCardZoom = !game.selectedCardZoom;
   },
-  unselect: function() {
+  unselect: function () {
     game.selectedCardZoom = false;
     if (game.states.table.selectedCard) game.states.table.selectedCard.removeClass('flip');
     game.timeout(200, game.card.clearSelection);
@@ -318,8 +318,10 @@ game.card = {
         card: card,
         target: to
       };
-      game.timeout( 50, game.fx.add.bind(this, 'cat-leap', card.parent()));
-      game.timeout(150, game.fx.add.bind(this, 'cat-leap', destiny));
+      if (!card.hasClass('invisible')) {
+        game.timeout( 50, game.fx.add.bind(this, 'cat-leap', card.parent()));
+        game.timeout(150, game.fx.add.bind(this, 'cat-leap', destiny));
+      }
       card.trigger('move', evt).trigger('action', evt);
       game.lockSelection = true;
       var end = function(card, destiny) {

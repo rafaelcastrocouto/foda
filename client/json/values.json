@@ -248,7 +248,7 @@
         "cast range": 2,
         "cards": 1,
         "attacks": 3,
-        "damage bonus": 3
+        "damage bonus": 4
       }
     },
 
@@ -609,8 +609,8 @@
       "passive": {
         "cards": 1,
         "buffdata": {
-          "hp per kill": 4,
-          "damage per kill": 3,
+          "hp per kill": 2,
+          "damage per kill": 2,
           "resistance bonus": 2
         }
       },

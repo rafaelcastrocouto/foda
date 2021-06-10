@@ -18,7 +18,7 @@ game.library = {
           $.each(JSON.parse(deck.data('cards')), function (i, skill) {
             $('#'+skill).addClass('player');
           });
-          if (cb) cb(deck);
+          if (cb) cb();
         }
       });
     }

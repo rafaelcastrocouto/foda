@@ -43,7 +43,7 @@ game.items = {
       else if (game.mode !== 'tutorial') game.items.sellItem();
     } else {
       game.items.shopOpen = !game.items.shopOpen;
-      if (game.items.shopOpen)  game.items.shop.addClass('show'); 
+      if (game.items.shopOpen) game.items.shop.addClass('show'); 
       else game.items.hideShop();
     }
     game.items.updateShop();
@@ -59,6 +59,10 @@ game.items = {
           var card = $('#'+cardId);
           if (card.data('price') > game[side].money) card.addClass('expensive');
           else card.removeClass('expensive');
+          
+          var buyCount = card.data('buyCount' + side) || 0;
+          if (buyCount >= game.maxItems) card.addClass('hidden');
+          else card.removeClass('hidden');
         });
       }
       game.items.shopText();
@@ -109,20 +113,22 @@ game.items = {
     game.history.saveMove(move);
     if (game.mode == 'online') game.currentMoves.push(move);
     card.data('buyTurn', game.totalTurns);
-    game.items.newCard(side,card);
+    var buyCount = card.data('buyCount' + side) || 0;
+    buyCount++;
+    card.data('buyCount' + side, buyCount);
+    game.items.newCard(side, card);
     game.items.addMoney(side, -card.data('price'));
-    game.card.unselect();
     if (game.mode == 'tutorial') game.tutorial.buyItem();
+    game.card.unselect();
+    if (buyCount >= game.maxItems) card.addClass('hidden');
   },
-  newCard: function (side, card) { //console.log('new item', side, card);
-    //card.removeClass('buy expensive');
+  newCard: function (side, card) {
     for (var i=0; i<(card.data('cards') || 1); i++) {
       var item = game.items.clone(card).removeClass('selected buy expensive');
       item.appendTo(game[side].skills.sidehand);
       item.addClass(side);
       if (game.mode !== 'local' && side == 'enemy') item.addClass('flipped');
     }
-    //card.addClass('hidden');
   },
   sellItem: function () {
     var side = game.selectedCard.side();
@@ -132,9 +138,13 @@ game.items = {
     game.items.updateShop('force');
     game[side].discard(game.selectedCard);
     game.items.sellMode = false;
+    game.card.unselect();
   },
   clear: function () {
     game.items.disableShop();
+    $('.items hidden').removeClass('hidden');
+    $('.items').data('buyCountplayer', 0);
+    $('.items').data('buyCountenemy', 0);
     game.player.money = game.startMoney;
     game.enemy.money = game.startMoney;
   },

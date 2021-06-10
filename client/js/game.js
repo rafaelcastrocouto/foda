@@ -29,6 +29,7 @@ var game = {
   turnReward: 40,
   libReward: 800,
   maxMoney: 99999,
+  maxItems: 3,
   seed: 0,
   id: null,
   size: 's5v5',

@@ -6,7 +6,8 @@ game.states.choose = {
     this.pickedbox = $('<div>').addClass('pickedbox').hide();
     this.slots = this.buildSlots();
     this.counter = $('<p>').addClass('counter').hide().appendTo(this.pickedbox);
-    game.library.buildSkills(game.states.choose.buildDeck);
+    game.library.buildSkills();
+    game.states.choose.buildDeck();
     this.buttonbox = $('<div>').addClass('buttonbox');
     this.back = $('<div>').addClass('back button alert').text(game.data.ui.back).on('mouseup touchend', this.backClick).appendTo(this.buttonbox);
     this.intro = $('<div>').addClass('intro button').text(game.data.ui.intro).on('mouseup touchend', game.library.showIntro).appendTo(this.buttonbox);
@@ -39,8 +40,8 @@ game.states.choose = {
     if (game.mode != 'library') this.selectFirst('force');
     if (game.mode && game[game.mode].chooseStart) game[game.mode].chooseStart(hero);
   },
-  buildDeck: function (libdeck) {
-    return game.deck.build({
+  buildDeck: function (cb) {
+    game.deck.build({
       name: 'heroes', 
       cb: function (pickDeck) {
         game.states.choose.pickDeck = pickDeck;
@@ -52,7 +53,7 @@ game.states.choose = {
           card.on(game.states.choose.event, game.states.choose.select);
         });
         pickDeck.width(game.states.choose.size * (pickDeck.children().length));
-        
+        if (cb) cb();
       }
     });
   },

@@ -29,9 +29,11 @@ game.skills.cat = {
     cast: function (skill, source, target) {
       source.selfBuff(skill);
       source.move(target);
-      game.timeout( 50, game.fx.add.bind(this, 'cat-leap', source.parent()));
-      game.timeout( 50, game.fx.add.bind(this, 'cat-leap-path', source, target, 'target'));
-      game.timeout(150, game.fx.add.bind(this, 'cat-leap', target));
+      if (!card.hasClass('invisible')) {
+        game.timeout( 50, game.fx.add.bind(this, 'cat-leap', source.parent()));
+        game.timeout( 50, game.fx.add.bind(this, 'cat-leap-path', source, target, 'target'));
+        game.timeout(150, game.fx.add.bind(this, 'cat-leap', target));
+      }
     }
   },
   star: {
