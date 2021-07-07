@@ -148,6 +148,21 @@ game.items = {
     game.player.money = game.startMoney;
     game.enemy.money = game.startMoney;
   },
+  cast: function (skill, source, target) {
+    var itemtype = skill.data('itemtype');
+    var item = skill.data('item');
+    var att = skill.data('attribute');
+    var itembuffs = target.data('itembuffs') || 0;
+    if (att == game.data.ui.buff && itembuffs < game.maxBuffs) {
+      itembuffs++;
+      target.data('itembuffs', itembuffs);
+      game.items[itemtype][item].cast(skill, target);
+      game.skill.castafter(skill, source, target);
+    } else if (att == game.data.ui.consumable) {
+      game.items[itemtype][item].cast(skill, target);
+      game.skill.castafter(skill, source, target);
+    }
+  },
   healing: {
     faerie: {
       cast: function (skill, target) {

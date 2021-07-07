@@ -171,11 +171,7 @@ game.skill = {
               game.skill.channel(skill, source, target, evt);
             }
             if (skill.hasClass('items')) {
-              var itemtype = skill.data('itemtype');
-              var item = skill.data('item');
-              //ITEM CAST
-              game.items[itemtype][item].cast(skill, target);
-              game.skill.castafter(skill, source, target);
+              game.items.cast(skill, source, target);
             } else {
               if (target.hasClass('linken')) {
                 game.skill.castafter(skill, source, target);

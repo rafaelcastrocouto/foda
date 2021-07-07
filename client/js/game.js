@@ -30,6 +30,7 @@ var game = {
   libReward: 800,
   maxMoney: 99999,
   maxItems: 3,
+  maxBuffs: 4,
   seed: 0,
   id: null,
   size: 's5v5',

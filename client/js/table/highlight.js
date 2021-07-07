@@ -203,6 +203,12 @@ game.highlight = {
   card: function (card, skill, side) {
     var filter = 'dead towers source ghost';
     var targets = JSON.parse(skill.data('targets'));
+    var maxBuff = false;
+    if (skill.hasClass('items')) {
+      var att = skill.data('attribute');
+      var itembuffs = card.data('itembuffs') || 0;
+      maxBuff = (att == game.data.ui.buff && itembuffs >= game.maxBuffs);
+    }
     if (skill.data('cast')) {
       filter += ' stunned disabled silenced hexed taunted sleeping';
     }
@@ -212,7 +218,7 @@ game.highlight = {
     if (targets && targets.indexOf(game.data.ui.heroes) >= 0) {
       filter += ' units';
     }
-    if (card.hasClass(side) && !card.hasClasses(filter) ) {
+    if (card.hasClass(side) && !card.hasClasses(filter) && !maxBuff) {
       card.addClass('casttarget').on('mouseup.highlight', game.player.cast);
     }
   },
