@@ -9,6 +9,7 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var serveStatic = require('serve-static');
+var mongodb = require('mongodb');
 
 var maxAge = '31536000';
 
@@ -117,7 +118,7 @@ var mongo = {
       });
     }
   },
-  client: new require('mongodb').MongoClient(mongoConn, {
+  client: new mongodb.MongoClient(mongoConn, {
     useUnifiedTopology: true
   }),
   url: mongoConn,
