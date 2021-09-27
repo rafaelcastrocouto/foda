@@ -53,7 +53,7 @@
 
 .audioconfig label {
   height: 50px;
-  margin-right: 6px;
+  margin-right: 10px;
 }
 
 .audioconfig label:nth-child(2) {
@@ -128,7 +128,7 @@ label span {
   float: left;
   clear: left;
   margin-top: 20px;
-  margin-left: 60px;
+  margin-left: 68px;
 }
 
 .left-side .optbox .lang {

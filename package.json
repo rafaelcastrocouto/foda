@@ -33,18 +33,18 @@
     "tactical"
   ],
   "dependencies": {
-    "dotenv": "latest",
-    "mongodb": "latest",
+    "dotenv": "^10.0.0",
+    "mongodb": "^4.1.2",
     "serve-static": "latest"
   },
   "devDependencies": {
-    "grunt": "latest",
+    "grunt": "^1.4.1",
     "grunt-contrib-clean": "latest",
-    "grunt-contrib-compress": "latest",
+    "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-concat": "latest",
-    "grunt-contrib-cssmin": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-contrib-uglify": "^5.0.1",
     "grunt-version": "latest"
   },
   "license": "Hippocratic-2.1+"

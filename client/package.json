@@ -9,10 +9,10 @@
     "start": "electron ."
   },
   "devDependencies": {
-    "electron": "latest"
+    "electron": "^15.0.0"
   },
   "dependencies": {
-    "grunt-version": "latest"
+    "grunt-version": "^2.0.0"
   },
   "license": "Hippocratic-2.1+"
 }
