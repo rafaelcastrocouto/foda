@@ -138,7 +138,7 @@ game.events = {
     return false;
   },
   leave: function() {
-    if (game.mode == 'online') return game.data.ui.leave;
+    if (game.mode == 'online' && !game.debug) return game.data.ui.leave;
   },
   getScale: function () {
     var sc = $(this).css('transform').split('(')[1],

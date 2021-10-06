@@ -163,6 +163,7 @@
   background-size: cover;
   background-position: 50%;
   z-index: -1;
+  pointer-events: none;
 }
 
 .table .camera:after {

@@ -45,44 +45,15 @@ var servers = {
 };
 
 var games = {
-  data: {},
-  dataLimit: 25, // minutes
-  dataTimeout: {},
   waiting: {},
-  waitLimit: 10, // seconds
+  waitLimit: 20, // seconds
   waitTimeout: {},
-  get: function (name, cb) {
-    mongo.get('games', function (data) {
-      games.data = data;
-      cb(games.data[name] || '');
-    });
-  },
-  set: function (name, val, cb) {
-    mongo.get('games', function (data) {
-      games.data = data;
-      games.data[name] = val;
-      mongo.set('games', games.data, function () {
-        cb(val);
-      });
-      var clear = games.clear.bind(0, name);
-      if (games.dataTimeout[name]) clearTimeout(games.dataTimeout[name]);
-      games.dataTimeout[name] = setTimeout(clear, games.dataLimit * 60 * 1000);
-    });
-  },
-  clear: function (name) {
-    if (games.data[name]) delete games.data[name];
-    mongo.set('games', games.data);
-  },
   join: function (response, query) {
     if (query.data) {
       mongo.get('waiting', function (olddata) {
         games.waiting = olddata;
         var data = JSON.parse(query.data);
-        games.waiting[data.id] = {
-          id: data.id,
-          size: data.size,
-          name: data.name
-        };
+        games.waiting[data.id] = data;
         mongo.set('waiting', games.waiting, function () {
           servers.send(response, JSON.stringify(games.waiting));
         });
@@ -110,7 +81,6 @@ var mongo = {
         mongo.db = db;
         mongo.collection = db.collection('collection');
         mongo.get('poll', function(data) { mongo.poll = data; });
-        mongo.get('games', function(data) { games.data = data; });
         mongo.get('waiting', function(data) { games.waiting = data; });
         rank.get();
         errorLog.reset();
@@ -230,15 +200,13 @@ http.createServer(function(request, response) {
         case 'poll': mongo.pollSet(response, query); return;
         case 'rank': rank.set(query); return;
         case 'errors': errorLog.set(query); return;
-        default: games.set(query.set, query.data, function(data) { servers.send(response, data); }); return;
       }
     } else if (query.get) {
       switch (query.get) {
-        case 'server': servers.send(response, JSON.stringify({ status: 'online' })); return;
-        case 'lang': servers.send(response, JSON.stringify({ lang: request.headers['accept-language'] || ''})); return;
+        case 'server':  servers.send(response, JSON.stringify({ status: 'online' })); return;
+        case 'lang':    servers.send(response, JSON.stringify({ lang: request.headers['accept-language'] || ''})); return;
         case 'waiting': servers.send(response, JSON.stringify(games.waiting)); return;
-        case 'rank':servers.send(response, JSON.stringify(mongo.rank)); return;
-        default: games.get(query.get, function(data) { servers.send(response, data); }); return;
+        case 'rank':    servers.send(response, JSON.stringify(mongo.rank)); return;
       }
     } else { servers.send(response, '{"msg": "FODA DataBase working!"}'); return; }
   } else servers.staticServer(request, response);

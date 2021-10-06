@@ -7,6 +7,7 @@
   top: 50%;
   left: 50%;
   transition: all 2s;
+  pointer-events: none;
 }
 
 .s1v1 .table .map {
@@ -30,6 +31,7 @@
 .map .row {
   /* width: 1910px; */
   height: 312px;
+  pointer-events: none;
 }
 
 .map .spot {
@@ -41,7 +43,8 @@
   display: inline-block;
   transform: translate3d(0, 0, 1px);
   transform-style: preserve-3d;
-  transition: all 0.3s, filter 2s, -webkit-filter 2s
+  transition: all 0.3s, filter 2s, -webkit-filter 2s;
+  pointer-events: all;
 }
 
 .map .spot:hover {

@@ -23,6 +23,7 @@
   transform-style: preserve-3d;
   background: #898;
   will-change: transform;
+  pointer-events: all;
 }
 
 .map .card.can-attack .current .hp span {

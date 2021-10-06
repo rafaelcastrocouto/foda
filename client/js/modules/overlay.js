@@ -36,7 +36,7 @@ game.overlay = {
       if (!game.overlay.el.children().length) {
         game.overlay.clear();
       }
-      cb($(this).hasClass('alert'));
+      if (cb) cb($(this).hasClass('alert'));
       return false;
     };
     box.append($('<div>').addClass('button alert').text(game.data.ui.yes).on('mouseup touchend', end));

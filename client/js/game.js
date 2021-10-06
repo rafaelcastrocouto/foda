@@ -13,7 +13,7 @@ var game = {
   tries: 0,
   timeToPick: 40, //seconds
   timeToPlay: 99,
-  waitLimit: 10,
+  waitLimit: 20,
   connectionLimit: 30,
   deadLength: 3, //turns
   ultTurn: 4,
@@ -175,12 +175,12 @@ var game = {
     }, obj || game);
   },
   reset: function(details) {
-    game.overlay.confirm(details, function(confirmed) {
+    game.overlay.confirm(function(confirmed) {
       if (confirmed) {
         game.clear();
         game.setData('state', 'menu');
         location.reload(true);
       }
-    });
+    }, details);
   }
 };
