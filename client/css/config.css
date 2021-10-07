@@ -11,7 +11,7 @@
 }
 
 .config.state .buttonbox {
-  width: 400px;
+  width: 420px;
   margin: 170px auto;
 }
 
@@ -19,7 +19,7 @@
   display: none;
   position: absolute;
   top: 180px;
-  left: 80px;
+  left: 70px;
   width: 400px;
   text-align: center;
 }
@@ -28,7 +28,7 @@
   display: none;
   position: absolute;
   top: 180px;
-  right: 80px;
+  right: 60px;
   width: 400px;
   text-align: center;
 }
@@ -44,13 +44,13 @@
 }
 
 .online .config.state .buttonbox {
-  margin: 200px 80px;
+  margin: 200px 60px;
 }
 
 .config.state .onlineList {
   display: none;
   position: absolute;
-  right: 80px;
+  right: 60px;
   width: 400px;
   top: 215px;
   text-align: center;

@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     },
     'uglify': {
       options: {
-        banner: '// <%= pkg.name %> grunt <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %> */\n'
+        banner: '// <%= pkg.name %> grunt <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %> */'
       },
       target: {
         files: [{
@@ -68,7 +68,6 @@ module.exports = function(grunt) {
     'concat': {
       css: {
         src: [
-          'client/browser_modules/**/*.min.css',
           'client/bundle/css/*.min.css',
           'client/bundle/css/**/*.min.css'
         ],

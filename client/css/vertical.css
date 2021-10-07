@@ -146,6 +146,11 @@
     bottom: 0;
     right: -130px;
   }
+  .topbar,
+  .game-container .topbar * {
+    font-size: 20px;
+    line-height: 20px;
+  }
   .topbar .message {
     width: 200px;
   }
@@ -156,7 +161,16 @@
     left: 400px;
   }
   .topbar .logout {
-    right: 84px;
+    right: 120px;
+  }
+  .config .onlineList {
+    margin: 420px 40px 10px;
+  }
+  .online .config.state .buttonbox {
+    margin: 200px 90px;
+  }
+  .states .config.state .joinTitle {
+    top: 600px;
   }
   .table .camera {
     left: -60px;
