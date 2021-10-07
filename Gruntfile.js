@@ -75,7 +75,6 @@ module.exports = function(grunt) {
       },
       js: {
         src: [
-          'client/browser_modules/**/*.min.js',
           'client/bundle/js/game.min.js',
           'client/bundle/js/after.min.js'
         ],
