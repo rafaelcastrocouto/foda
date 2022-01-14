@@ -75,8 +75,12 @@ var games = {
 };
 
 var mongo = {
+  url: mongoConn,
   start: function () {
-    if (mongoConn) {
+    if (mongo.url) {
+      mongo.client = new mongodb.MongoClient(mongo.url, {
+        useUnifiedTopology: true
+      });
       mongo.connect(function (db) {
         mongo.db = db;
         mongo.collection = db.collection('collection');
@@ -88,10 +92,6 @@ var mongo = {
       });
     }
   },
-  client: new mongodb.MongoClient(mongoConn, {
-    useUnifiedTopology: true
-  }),
-  url: mongoConn,
   doc: { document: 'dotacard' },
   logError: function (str, cb, name) {
     return function (err, client) { 
@@ -114,7 +114,7 @@ var mongo = {
   },
   poll: {},
   pollSet: function (response, query) { //console.log('query', query)
-    if (mongoConn && typeof (mongo.poll[query.data]) == 'number') {
+    if (mongo.url && typeof (mongo.poll[query.data]) == 'number') {
       mongo.poll[query.data]++;
       mongo.set('poll', mongo.poll, mongo.logError('Poll error'));
     }

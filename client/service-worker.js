@@ -1,5 +1,5 @@
 var options = {
-  "version": "0.5.70",
+  "version": "0.5.71",
   urlCache: [
     '/', 'index.html',
     'bundle/game.min.js',
