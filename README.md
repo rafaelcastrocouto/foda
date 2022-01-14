@@ -1,19 +1,17 @@
 # [Fight Over Dat Ancient][1]
 
 [![FODA icon](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rosh.png)][1]
-[![Discord Chat Channel](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/discord.png)][2]
 [![FODA rating](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/ratingsymbol_e10.png)][9]
 
-[![Code Inspector Grade A](https://www.code-inspector.com/project/754/status/svg#banner.svg)](https://www.code-inspector.com/public/project/754/foda/dashboard) 
-[![Run on Repl.it](https://repl.it/badge/github/rafaelcastrocouto/foda.svg)](https://replit.com/@rafaelcastrocouto/foda-replit)
-
-## Source Code
+## Source Code [![Run on Repl.it](https://repl.it/badge/github/rafaelcastrocouto/foda.svg)](https://replit.com/@rafaelcastrocouto/foda-replit)
 
 A **card game** with magical heroes, each with unique skills and powerful abilities.
 
 Play for free [online in your browser][1] on our [heroku](https://heroku.com) servers.
 
 Join our community and discuss the game rules at our [Discord Server][2]. 
+
+[![Discord Chat Channel](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/discord.png)][2]
 
 Feel free to [fork][3] or [download][4] and help build the game!
 You can even [make a new hero][6]
