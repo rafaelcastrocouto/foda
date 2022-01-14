@@ -1,3 +1,4 @@
 gzip
 bundle
 node_modules
+.env
