@@ -52,7 +52,7 @@ game.states.menu = {
       box.append($('<h1>').text(game.data.ui.credits));
       box.append($('<p>').html('Creator/Dev: <a rel="nofollow noopener" href="https://github.com/rafaelcastrocouto/foda">Rafael</a>').append($('<span>').addClass('thumb doll2')));
       box.append($('<p>').html('Artwork: <a rel="nofollow noopener" href="https://www.youtube.com/user/dopatwo">Dopatwo</a>').append($('<span>').addClass('thumb doll1')));
-      box.append($('<p>').html('Special FX: <a rel="nofollow noopener" href="https://twitter.com/DanielClarcO">Daniel Clarc</a>').append($('<span>').addClass('thumb doll3')));
+      box.append($('<p>').html('Special FX: <a rel="nofollow noopener" href="https://twitter.com/clarcosa">Leona Clarc</a>').append($('<span>').addClass('thumb doll3')));
       box.append($('<p>').html('Colors: <a rel="nofollow noopener" href="https://twitter.com/glitchzilla">Glitchzilla</a>').append($('<span>').addClass('thumb supp4')));
       box.append($('<p>').html('Audio: <a rel="nofollow noopener" href="https://www.youtube.com/user/kmmusic">Kevin MacLeod</a>'));
       box.append($('<p>').html('Introduction Videos: <a rel="nofollow noopener" href="https://www.youtube.com/user/SkylentGames">Skylent</a>'));

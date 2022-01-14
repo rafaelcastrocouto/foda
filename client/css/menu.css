@@ -562,11 +562,14 @@
 }
 
 .credits .doll3 {
-  width: 30px;
+  width: 46px;
   height: 46px;
-  background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/menu/icons.png");
-  background-position: -324px -100px;
-  right: 10px;
+  background-image: url(https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/credits/leona.png);
+  background-position: -6px -5px;
+  right: 2px;
+  background-size: 125%;
+  border-radius: 50%;
+  image-rendering: pixelated;
 }
 
 
