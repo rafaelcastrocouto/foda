@@ -14,20 +14,20 @@ var electron = false;
 module.exports = function(grunt) {
   var init = {
     'pkg': grunt.file.readJSON('package.json'),
-    'jshint': {
-      options: {
-        esversion: 6,
-        reporterOutput: "",
-        laxcomma: true
-      },
-      all: [
-        'package.json',
-        'Gruntfile.js',
-        'server.js',
-        'client/json/**/*.json',
-        'client/js/**/*.js'
-      ]
-    },
+//    'jshint': {
+//      options: {
+//        esversion: 6,
+//        reporterOutput: "",
+//        laxcomma: true
+//      },
+//      all: [
+//        'package.json',
+//        'Gruntfile.js',
+//        'server.js',
+//        'client/json/**/*.json',
+//        'client/js/**/*.js'
+//      ]
+//    },
     'version': {
       defaults: {
         src: ['client/service-worker.js', 'client/package.json', 'client/manifest.json']
@@ -136,14 +136,14 @@ module.exports = function(grunt) {
     };
   }
   grunt.initConfig(init);
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+//grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-version');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
-  var tasks = ['jshint', 'version', 'cssmin', 'uglify', 'concat', 'clean', 'compress'];
+  var tasks = [/*'jshint',*/ 'version', 'cssmin', 'uglify', 'concat', 'clean', 'compress'];
   if (electron) { 
     grunt.loadNpmTasks('grunt-electron');
     tasks.push('electron');
