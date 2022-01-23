@@ -16,7 +16,7 @@ game.events = {
     //$(document).ajaxError(function(event, xhr, settings) {
     //  if (xhr.status !== 403 && xhr.status!== 404) game.overlay.error(settings.url + ' ' + xhr.status + ': ' + xhr.responseText);
     //});
-    $(window).on('keypress', game.events.keyboard);
+    $(window).on('keyup', game.events.keyboard);
     $(window).on('beforeunload ', game.events.leave);
     $(window).on('mousemove', game.parallax.move);
     $(window).on('deviceorientation', game.parallax.orientation);
@@ -147,12 +147,15 @@ game.events = {
     return Number(s);
   },
   keyboard: function (event) {//console.log(event.keyCode)
-    // space: skip turn
+    // Space: end turn
     if (event.keyCode == 32) game.states.table.skipClick();
-    // + options
-    if (event.keyCode == 43) game.options.keyboard();
-    // enter: chat
-    if (event.keyCode == 13) $('.chat').toggleClass('hover');
+    // Options
+    if (event.keyCode == 79) game.options.keyboard();
+    // Escape close dialogs
+    if (event.keyCode == 27) {
+      if (game.container.hasClass('option-state')) game.options.backClick();
+      else if (!game.overlay.el.hasClass('hidden')) game.overlay.clear();
+    }
   },
   click: function () {
     var target = $(this);

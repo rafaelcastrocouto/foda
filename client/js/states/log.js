@@ -12,7 +12,7 @@ game.states.log = {
     this.button = $('<button>').addClass('button').appendTo(this.form).text(game.data.ui.log).attr({type: 'submit'}).on('mouseup touchend', this.login);
     this.rememberlabel = $('<label>').addClass('remembername').appendTo(this.form).append($('<span>').text(game.data.ui.remember));
     this.remembercheck = $('<input>').attr({type: 'checkbox', name: 'remember', checked: true}).change(this.remember).appendTo(this.rememberlabel);
-    this.out = $('<small>').addClass('logout').hide().insertAfter(game.message).text(game.data.ui.logout).on('mouseup touchend', this.logout);
+    this.out = $('<small>').addClass('logout').hide().insertAfter(game.message).text(game.data.ui.logout).on('mouseup touchend', this.out);
     var rememberedname = game.getData('name');
     if (rememberedname) { this.input.val(rememberedname); }
     this.el.append(this.parallax);
@@ -62,17 +62,18 @@ game.states.log = {
     }
     return false;
   },
-  logout: function () {
-    game.overlay.confirm(function (confirmed) {
-      if (confirmed) {
-        game.audio.stopSong();
-        game.setData('logged', false);
-        game.clear();
-        game.chat.el.hide();
-        game.states.changeTo('log');
-      }
-    });
+  out: function () {
+    game.overlay.confirm(game.states.log.logout);
     return false;
+  },
+  logout: function (confirmed) {
+    if (confirmed) {
+      game.audio.stopSong();
+      game.setData('logged', false);
+      game.clear();
+      game.chat.el.hide();
+      game.states.changeTo('log');
+    }
   },
   remember: function () {
     game.states.log.remembername = !game.states.log.remembername;

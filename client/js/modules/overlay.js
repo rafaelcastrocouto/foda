@@ -11,12 +11,12 @@ game.overlay = {
       }
     }); 
   },
-  alert: function(txt, cb) {
+  alert: function(text, cb) {
     var box = $('<div>').addClass('box');
     game.overlay.cb = cb;
     game.overlay.el.removeClass('hidden').append(box);
     box.append($('<h1>').text(game.data.ui.warning));
-    box.append($('<p>').text(txt));
+    box.append($('<p>').text(text));
     box.append($('<div>').addClass('button').text(game.data.ui.ok).on('mouseup touchend', function () {
       $(this).parent().remove();
       if (!game.overlay.el.children().length) {
@@ -31,7 +31,7 @@ game.overlay = {
     game.overlay.cb = cb;
     game.overlay.el.removeClass('hidden').append(box);
     box.append($('<h1>').text(text || game.data.ui.sure));
-    var end = function () {// console.log(game.overlay.children().length)
+    var end = function () {
       $(this).parent().remove();
       if (!game.overlay.el.children().length) {
         game.overlay.clear();
