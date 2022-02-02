@@ -406,7 +406,7 @@
       "name": "Martelo do Meteoro",
       "attribute": "Consumível",
       "targets": ["Aliados", "Heróis"],
-      "secondary targets": "Local",
+      "secondary targets": ["Local", "Próprio"],
       "aoe": "Radial",
       "description": "Dano em área, atordoa e aplica dano por turno",
       "buff": {

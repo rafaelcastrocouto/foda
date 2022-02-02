@@ -406,7 +406,7 @@
       "name": "Martillo de meteorito",
       "attribute": "Consumible",
       "targets": ["Aliado", "Héroes"],
-      "secondary targets": "Lugar",
+      "secondary targets": ["Yo", "Lugar"],
       "aoe": "Radial",
       "description": "Daño y aturdimiento en el área de efecto y aplicar daño a lo largo del tiempo",
       "buff": {

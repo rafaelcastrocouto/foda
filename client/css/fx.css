@@ -230,8 +230,6 @@
 .ultfx .fx {
   width: 720px;
   height: 300px;
-  /* border-top: 75px solid #222; */
-  /* border-bottom: 75px solid #222; */
   margin: 75px 0;
   position: absolute;
   left: 0;
@@ -278,13 +276,13 @@
   width: 900px;
   height: 160px;
   background-image: url("https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/fx/ultfx.png");
-  position: absolute;
   left: 0;
   top: 15px;
   background-size: contain;
   animation: ult-stripes 2.2s 1;
   transform: translateX(0px);
   pointer-events: none;
+  z-index: 50;
 }
 
 @keyframes ult-stripes {
@@ -328,6 +326,7 @@
   transition: opacity 0.2s;
   pointer-events: none;
   box-shadow: -400px 0 0 -3px white;
+  z-index: 60;
 }
 
 .ultfx .hide {

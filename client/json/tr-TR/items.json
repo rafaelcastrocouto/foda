@@ -406,7 +406,7 @@
       "name": "Meteor Hammer",
       "attribute": "tüketilir",
       "targets": ["Müttefik", "Kahramanlar"],
-      "secondary targets": "Yer",
+      "secondary targets": ["Yer", "Ayn?"],
       "aoe": "Radyal",
       "description": "Etki alanı hasar ve şok ve zamanla hasar uygulayınız.",
       "buff": {
