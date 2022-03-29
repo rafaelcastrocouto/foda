@@ -9,7 +9,7 @@
     "start": "electron ."
   },
   "devDependencies": {
-    "electron": "^15.0.0"
+    "electron": "^15.3.5"
   },
   "dependencies": {
     "grunt-version": "^2.0.0"
