@@ -30,7 +30,7 @@ var servers = {
       });
     });
   },
-  allowed: [host + ':' + port, 'foda-app.herokuapp.com', 'rafaelcastrocouto.github.io', 'inspectlet.com'],
+  allowed: [host + ':' + port, 'rafaelcastrocouto.repl.co', 'rafaelcastrocouto.github.io', 'inspectlet.com'],
   setHeaders: function (request, response) {
     var origin = request.headers.origin;
     if (servers.allowed.indexOf(origin) > -1) {

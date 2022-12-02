@@ -1,6 +1,6 @@
 var game = {
   staticHost: 'http://rafaelcastrocouto.github.io/foda/client/',
-  dynamicHost: 'https://foda-app.herokuapp.com/',
+  dynamicHost: 'https://foda-replit.rafaelcastrocouto.repl.co/',
   imageServer: 'https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img',
   audioServer: 'https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/audio',
   container: $('.game-container'),
