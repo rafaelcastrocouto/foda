@@ -3,8 +3,6 @@
 [![FODA icon](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/campaign/ico_rosh.png)][1]
 [![FODA rating](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/ratingsymbol_e10.png)][9]
 
-## Source Code [![Run on Repl.it](https://repl.it/badge/github/rafaelcastrocouto/foda.svg)](https://replit.com/@rafaelcastrocouto/foda-replit)
-
 A **card game** with magical heroes, each with unique skills and powerful abilities.
 
 Play for free [online in your browser][1] on our [heroku](https://heroku.com) servers.
@@ -34,7 +32,7 @@ Special thanks to:
 
 [![Powered by Github, Heroku, Grunt and Jquery](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/poweredby-banner.jpg)][1]
 
-[1]: https://foda-replit.rafaelcastrocouto.repl.co/
+[1]: https://imaginary-ribbon-mustard.glitch.me/debug.html
 
 [2]: https://discord.gg/a4TwjAR
 
