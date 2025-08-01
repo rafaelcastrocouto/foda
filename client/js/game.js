@@ -115,6 +115,11 @@ var game = {
     if (typeof send.data !== 'string') {
       send.data = JSON.stringify(send.data);
     }
+    if (game.debug) {
+      if (str) cb('');
+      else cb({});
+      return
+    }
     $.ajax({
       async: true,
       type: 'GET',

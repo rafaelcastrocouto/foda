@@ -21,21 +21,13 @@ game.events = {
     $(window).on('mousemove', game.parallax.move);
     $(window).on('deviceorientation', game.parallax.orientation);
     game.container.on('mousedown', game.events.hit);
-    game.container.on('touchstart', game.events.hit);
+    game.container[0].addEventListener('touchstart', game.events.hit, {passive: true});
     game.container.on('mousemove', game.events.move);
-    game.container.on('touchmove', game.events.touchmove);
+    game.container[0].addEventListener('touchmove', game.events.touchmove, {passive: true});
     game.container.on('touchend touchleave', game.events.touchend);
     game.container.on('mouseup mouseleave tap', game.events.end);
     game.container.on('contextmenu', game.events.rightclick);
     game.container.on('click tap', '.button, .card', game.events.click);
-
-    window.addEventListener('beforeinstallprompt', function(event) {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      event.preventDefault();
-      // Stash the event so it can be triggered later.
-      game.events.deferredPrompt = event;
-    });
-
   },
   getCoordinates: function(event) {
     var position = {

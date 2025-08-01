@@ -9,13 +9,12 @@ game.language = {
       game.language.set(lang);
       if (cb) { cb(); }
     } else game.db({ 'get': 'lang' }, function (data) {
-      if (data.lang) {
-        var language = data.lang.split(';')[0].split(',')[0],
-            detectLanguage = game.language.available.indexOf(language);
-        if (detectLanguage > 0) {
-          var lang = game.language.available[detectLanguage];
-          game.language.set(lang);
-        }
+      if (!data.lang) data.lang = navigator.language;
+      var language = data.lang.split(';')[0].split(',')[0],
+          detectLanguage = game.language.available.indexOf(language);
+      if (detectLanguage > 0) {
+        var lang = game.language.available[detectLanguage];
+        game.language.set(lang);
       }
       if (cb) { cb(); }
     });
