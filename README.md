@@ -32,7 +32,7 @@ Special thanks to:
 
 [![Powered by Github, Heroku, Grunt and Jquery](https://raw.githubusercontent.com/rafaelcastrocouto/dotacard/artwork/img/poweredby-banner.jpg)][1]
 
-[1]: https://foda-dotacard.glitch.me/debug.html
+[1]: https://rafaelcastrocouto.github.io/foda/client/debug.html
 
 [2]: https://discord.gg/a4TwjAR
 
